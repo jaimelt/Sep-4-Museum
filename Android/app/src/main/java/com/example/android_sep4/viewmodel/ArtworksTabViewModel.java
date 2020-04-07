@@ -24,4 +24,17 @@ public class ArtworksTabViewModel extends ViewModel {
     public LiveData<ArrayList<Artwork>> getArtworks() {
         return artworksList;
     }
+
+    public void removeArtwork(int position)
+    {
+        artworksRepository.removeArtwork(position);
+    }
+
+    public Artwork getArtwork(int position) {
+        return artworksRepository.getArtwork(position);
+    }
+
+    public void addArtwork(int position, Artwork artwork) {
+        artworksRepository.addArtwork(position, artwork);
+    }
 }

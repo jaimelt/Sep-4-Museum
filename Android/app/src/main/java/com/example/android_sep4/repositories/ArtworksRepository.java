@@ -38,4 +38,16 @@ public class ArtworksRepository {
         artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", "aa", "Rare", "Your Dick" ));
         artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", "aa", "Rare", "Your Dick" ));
     }
+
+    public void removeArtwork(int position) {
+        artworksDataSet.remove(position);
+    }
+
+    public Artwork getArtwork(int position) {
+        return artworksDataSet.get(position);
+    }
+
+    public void addArtwork(int position, Artwork artwork) {
+        artworksDataSet.add(position, artwork);
+    }
 }
