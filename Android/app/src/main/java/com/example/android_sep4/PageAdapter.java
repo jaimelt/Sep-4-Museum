@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.android_sep4.view.ArtworksTab;
+import com.example.android_sep4.view.MuseumTab;
+import com.example.android_sep4.view.RoomsTab;
+
 public class PageAdapter extends FragmentPagerAdapter {
 
     private int numberOfTabs;

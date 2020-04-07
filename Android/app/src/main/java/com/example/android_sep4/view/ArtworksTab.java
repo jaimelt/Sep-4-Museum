@@ -1,4 +1,4 @@
-package com.example.android_sep4;
+package com.example.android_sep4.view;
 
 import android.os.Bundle;
 
@@ -13,6 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android_sep4.R;
+import com.example.android_sep4.RecyclerViewAdapter;
+
 import java.util.ArrayList;
 
 
@@ -20,11 +23,10 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class ArtworksTab extends Fragment {
-    private ArrayList<String> artworksNames = new ArrayList<>();
+    private ArrayList<String> artworksNames;
     public ArtworksTab() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,7 +37,7 @@ public class ArtworksTab extends Fragment {
     }
 
     private void initArtworkNames() {
-
+        artworksNames = new ArrayList<>();
         artworksNames.add("Artwork 1");
         artworksNames.add("Artwork 2");
         artworksNames.add("Artwork 3");
@@ -49,6 +51,7 @@ public class ArtworksTab extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        initArtworkNames();
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(artworksNames);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
