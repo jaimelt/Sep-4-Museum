@@ -54,12 +54,4 @@ public class ArtworksTab extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
     }
-
-//    private void initRecyclerView() {
-//        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-//        RecyclerViewAdapter adapter = new RecyclerViewAdapter(artworksNames);
-//        recyclerView.setAdapter(adapter);
-//        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-//        recyclerView.setLayoutManager(llm);
-//    }
 }
