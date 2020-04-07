@@ -1,27 +1,28 @@
-package com.example.android_sep4;
+package com.example.android_sep4.adapters;
 
-import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android_sep4.R;
+import com.example.android_sep4.model.Artwork;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private static final String TAG = "RecyclerViewAdapter";
-    private ArrayList<String> artworksNames;
+    private ArrayList<Artwork> artworksNames;
 
 
-    public RecyclerViewAdapter(ArrayList<String> artworksNames) {
+    public RecyclerViewAdapter(ArrayList<Artwork> artworksNames) {
         this.artworksNames = artworksNames;
     }
 
@@ -37,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
-        holder.artworkName.setText(artworksNames.get(position));
+        holder.artworkName.setText(artworksNames.get(position).getName());
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override

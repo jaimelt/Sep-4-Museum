@@ -5,7 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,9 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.RecyclerViewAdapter;
+import com.example.android_sep4.adapters.RecyclerViewAdapter;
+import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.viewmodel.ArtworksTabViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -24,6 +30,8 @@ import java.util.ArrayList;
  */
 public class ArtworksTab extends Fragment {
     private ArrayList<String> artworksNames;
+    private ArtworksTabViewModel artworksTabViewModel;
+    private RecyclerViewAdapter adapter;
     public ArtworksTab() {
         // Required empty public constructor
     }
@@ -31,28 +39,27 @@ public class ArtworksTab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        initArtworkNames();
-        return inflater.inflate(R.layout.fragment_artworks_tab, container, false);
+        setViewModel();
 
+        return inflater.inflate(R.layout.fragment_artworks_tab, container, false);
     }
 
-    private void initArtworkNames() {
-        artworksNames = new ArrayList<>();
-        artworksNames.add("Artwork 1");
-        artworksNames.add("Artwork 2");
-        artworksNames.add("Artwork 3");
-        artworksNames.add("Artwork 4");
-        artworksNames.add("Artwork 5");
-        artworksNames.add("Artwork 6");
-        artworksNames.add("Artwork 7");
-        artworksNames.add("Artwork 8");
+    public void setViewModel() {
+        artworksTabViewModel = ViewModelProviders.of(this).get(ArtworksTabViewModel.class);
+        artworksTabViewModel.init();
+
+        artworksTabViewModel.getArtworks().observe(this, new Observer<List<Artwork>>() {
+            @Override
+            public void onChanged(List<Artwork> artworks) {
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        initArtworkNames();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(artworksNames);
+        adapter = new RecyclerViewAdapter(artworksTabViewModel.getArtworks().getValue());
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
