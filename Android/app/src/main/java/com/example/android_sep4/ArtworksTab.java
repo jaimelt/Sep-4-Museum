@@ -2,6 +2,8 @@ package com.example.android_sep4;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,16 +44,22 @@ public class ArtworksTab extends Fragment {
         artworksNames.add("Artwork 6");
         artworksNames.add("Artwork 7");
         artworksNames.add("Artwork 8");
-
-        initRecyclerView();
     }
 
-    private void initRecyclerView() {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_artworks_tab, null);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(artworksNames);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
     }
+
+//    private void initRecyclerView() {
+//        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+//        RecyclerViewAdapter adapter = new RecyclerViewAdapter(artworksNames);
+//        recyclerView.setAdapter(adapter);
+//        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+//        recyclerView.setLayoutManager(llm);
+//    }
 }
