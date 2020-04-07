@@ -8,13 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionBarStyle">@style/myTheme.ActionBar</item>
         <item name="tabBackground">@color/colorPrimary</item>
+        <item name="android:gravity">center</item>
         <item name="tabSelectedTextColor">@color/colorAccent</item>
+        <item name="android:textSize">5sp</item>
+
     </style>
 
     <style name="myTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar">
         <item name="background">@color/colorPrimary</item>
     </style>
-
 
     <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/CustomTextAppearance</item>
