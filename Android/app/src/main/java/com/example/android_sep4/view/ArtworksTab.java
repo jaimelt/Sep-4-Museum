@@ -1,5 +1,6 @@
 package com.example.android_sep4.view;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,8 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,15 +20,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapter;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.viewmodel.ArtworksTabViewModel;
+import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -55,9 +53,11 @@ public class ArtworksTab extends Fragment {
         setViewModel();
         deleteIcon = ContextCompat.getDrawable(Objects.requireNonNull(this.getContext()), R.drawable.ic_delete);
         return inflater.inflate(R.layout.fragment_artworks_tab, container, false);
+
+
     }
 
-    public void setViewModel() {
+    private void setViewModel() {
         artworksTabViewModel = ViewModelProviders.of(this).get(ArtworksTabViewModel.class);
         artworksTabViewModel.init();
 
@@ -77,9 +77,11 @@ public class ArtworksTab extends Fragment {
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
+
+        onClickListenerFAB(view);
     }
 
-    ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+    private ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
@@ -119,6 +121,17 @@ public class ArtworksTab extends Fragment {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };
+
+    private void onClickListenerFAB(View view)
+    {
+        FloatingActionButton myFab = (FloatingActionButton) view.findViewById(R.id.fab);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), NewArtworkActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
 
 }
