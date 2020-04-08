@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">Android_SEP4</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="app_name">Brukenthal museum</string>
+    <string name="tab1">Artworks</string>
+    <string name="tab2">Museum</string>
+    <string name="tab3">Rooms</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="artwork_text">Artwork Tab</string>
+    <string name="museum_text">Museum Tab</string>
+    <string name="rooms_text">Rooms Tab</string>
+
 </resources>
