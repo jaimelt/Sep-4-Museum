@@ -14,8 +14,10 @@ public class PageAdapter extends FragmentPagerAdapter {
     private int numberOfTabs;
 
     public PageAdapter(@NonNull FragmentManager fm, int numberOfTabs) {
-        super(fm);
+        //Avoiding deprecated method by having BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.numberOfTabs = numberOfTabs;
+
     }
 
     @NonNull

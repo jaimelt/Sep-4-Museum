@@ -17,6 +17,7 @@ import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.artwork.NewArtworkViewModel;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Objects;
 
 public class NewArtworkActivity extends AppCompatActivity {
 
@@ -41,7 +42,8 @@ public class NewArtworkActivity extends AppCompatActivity {
         typeField = findViewById(R.id.typeField);
         descriptionField = findViewById(R.id.descriptionField);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        setTitle("New artwork");
     }
 
     private void setViewModel() {
