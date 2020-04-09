@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,18 +20,22 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
 
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<Artwork> artworksNames;
+    final private OnListItemClickListener mOnListItemClickListener;
 
-
-    public RecyclerViewAdapterArtworks(ArrayList<Artwork> artworksNames) {
+    public RecyclerViewAdapterArtworks(ArrayList<Artwork> artworksNames, OnListItemClickListener listener) {
         this.artworksNames = artworksNames;
+        mOnListItemClickListener = listener;
+
     }
+
+
+
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
         return new ViewHolder(view);
-
     }
 
     @Override
@@ -55,7 +60,7 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         return artworksNames.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView artworkName;
         TextView artworkDescription;
@@ -71,7 +76,17 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
             artworkAuthor = itemView.findViewById(R.id.artworkAuthor);
             artworkType = itemView.findViewById(R.id.artworkType);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+            mOnListItemClickListener.onListItemClick(getAdapterPosition());
+        }
     }
+
+    public interface OnListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
+    }
+
 }

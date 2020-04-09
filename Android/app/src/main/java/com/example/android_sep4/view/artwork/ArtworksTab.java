@@ -1,4 +1,4 @@
-package com.example.android_sep4.view;
+package com.example.android_sep4.view.artwork;
 
 
 import android.content.Intent;
@@ -23,12 +23,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapterArtworks;
 import com.example.android_sep4.model.Artwork;
 
+import com.example.android_sep4.view.MainActivity;
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -40,12 +42,13 @@ import java.util.Objects;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ArtworksTab extends Fragment {
+public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks.OnListItemClickListener{
     private ArtworksTabViewModel artworksTabViewModel;
     private RecyclerViewAdapterArtworks adapter;
     private int removedPosition = 0;
     private Artwork removedArtwork;
     private Drawable deleteIcon;
+    static final String EXTRA_ARTWORK = "Artwork name";
 
 
     public ArtworksTab() {
@@ -84,7 +87,7 @@ public class ArtworksTab extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new RecyclerViewAdapterArtworks(artworksTabViewModel.getArtworks().getValue());
+        adapter = new RecyclerViewAdapterArtworks(artworksTabViewModel.getArtworks().getValue(), this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -126,7 +129,7 @@ public class ArtworksTab extends Fragment {
             background.setBounds(itemView.getLeft(), itemView.getTop(), ((int) dX), itemView.getBottom());
             background.draw(c);
 
-            int iconMargin = (itemView.getHeight() - deleteIcon.getIntrinsicHeight()) /2;
+            int iconMargin = (itemView.getHeight() - deleteIcon.getIntrinsicHeight()) / 2;
             deleteIcon.setBounds(itemView.getLeft() + iconMargin, itemView.getTop() + iconMargin, itemView.getLeft() + iconMargin + deleteIcon.getIntrinsicWidth(), itemView.getBottom() - iconMargin);
             deleteIcon.draw(c);
 
@@ -134,9 +137,8 @@ public class ArtworksTab extends Fragment {
         }
     };
 
-    private void onClickListenerFAB(View view)
-    {
-        FloatingActionButton myFab = (FloatingActionButton) view.findViewById(R.id.fab);
+    private void onClickListenerFAB(View view) {
+        FloatingActionButton myFab = view.findViewById(R.id.fab);
         myFab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), NewArtworkActivity.class);
@@ -145,4 +147,10 @@ public class ArtworksTab extends Fragment {
         });
     }
 
+    @Override
+    public void onListItemClick(int clickedItemIndex) {
+        int pokemonNumber = clickedItemIndex + 1;
+        Toast.makeText(getActivity(), "Pokemon Number: " + pokemonNumber, Toast.LENGTH_SHORT).show();
+
+    }
 }

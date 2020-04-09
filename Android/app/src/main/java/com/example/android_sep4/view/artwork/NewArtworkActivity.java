@@ -1,20 +1,17 @@
-package com.example.android_sep4.view;
+package com.example.android_sep4.view.artwork;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.artwork.NewArtworkViewModel;
@@ -34,7 +31,7 @@ public class NewArtworkActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_artwork_activity);
+        setContentView(R.layout.activity_edit_artwork);
 
         setViewModel();
 
@@ -69,13 +66,14 @@ public class NewArtworkActivity extends AppCompatActivity {
         String image = convertImageToString();
         newArtworkViewModel.addArtwork(name, author, type, description, image);
         finish();
+        Toast.makeText(this, "Artwork added to the list", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMAGE_PICK_CODE) {
-            imageHolder.setImageURI(data.getData());
+            imageHolder.setImageURI(data != null ? data.getData() : null);
             //TODO: ResultInfo failure when not selecting picture
         }
     }
