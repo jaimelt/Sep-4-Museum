@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.artwork.EditArtworkActivity"></activity>
-        <activity android:name=".view.artwork.NewArtworkActivity" />
+        <activity android:name=".view.artwork.EditArtworkActivity"/>
+        <activity android:name=".view.artwork.NewArtworkActivity"
+            android:parentActivityName=".view.MainActivity"/>
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

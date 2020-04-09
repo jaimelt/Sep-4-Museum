@@ -40,11 +40,20 @@ public class NewArtworkActivity extends AppCompatActivity {
         authorField = findViewById(R.id.authorField);
         typeField = findViewById(R.id.typeField);
         descriptionField = findViewById(R.id.descriptionField);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setViewModel() {
         newArtworkViewModel = new ViewModelProvider(this).get(NewArtworkViewModel.class);
         newArtworkViewModel.init();
+    }
+
+    @Override
+    //finish on activity when up navigation is clicked - animation slide to right
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     //TODO: Make scrollview for layout / limit height for multiline description
@@ -66,7 +75,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         String image = convertImageToString();
         newArtworkViewModel.addArtwork(name, author, type, description, image);
         finish();
-        Toast.makeText(this, "Artwork added to the list", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, name + " artwork added to the list", Toast.LENGTH_SHORT).show();
     }
 
     @Override
