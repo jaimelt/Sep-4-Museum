@@ -149,8 +149,8 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        int pokemonNumber = clickedItemIndex + 1;
-        Toast.makeText(getActivity(), "Pokemon Number: " + pokemonNumber, Toast.LENGTH_SHORT).show();
+        int number = clickedItemIndex + 1;
+        Toast.makeText(getActivity(), "Artwork Number: " + number, Toast.LENGTH_SHORT).show();
 
     }
 }
