@@ -21,19 +21,18 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<Artwork> artworksNames;
     private OnListItemClickListener mOnListItemClickListener;
-    private Context context;
 
-    public RecyclerViewAdapterArtworks(Context context, ArrayList<Artwork> artworksNames, OnListItemClickListener listener) {
+    public RecyclerViewAdapterArtworks(ArrayList<Artwork> artworksNames, OnListItemClickListener listener) {
         this.artworksNames = artworksNames;
         mOnListItemClickListener = listener;
-        this.context = context;
+
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
-        return new ViewHolder(view, mOnListItemClickListener, context);
+        return new ViewHolder(view, mOnListItemClickListener);
     }
 
     @Override
@@ -60,9 +59,8 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
 
         RelativeLayout parentLayout;
         OnListItemClickListener onListItemClickListener;
-        Context context;
 
-        public ViewHolder(@NonNull View itemView, OnListItemClickListener listener, Context context) {
+        public ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
             super(itemView);
             artworkName = itemView.findViewById(R.id.artworkName);
             artworkDescription = itemView.findViewById(R.id.artworkDescription);
@@ -70,7 +68,6 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
             artworkType = itemView.findViewById(R.id.artworkType);
             parentLayout = itemView.findViewById(R.id.parent_layout);
             onListItemClickListener = listener;
-            this.context = context;
             itemView.setOnClickListener(this);
         }
 

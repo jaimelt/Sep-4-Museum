@@ -91,7 +91,7 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new RecyclerViewAdapterArtworks(getContext(), artworksTabViewModel.getArtworks().getValue(), this);
+        adapter = new RecyclerViewAdapterArtworks(artworksTabViewModel.getArtworks().getValue(), this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -153,6 +153,8 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        Toast.makeText(getActivity(), "Item clicked: " + clickedItemIndex, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), EditArtworkActivity.class);
+        intent.putExtra(EXTRA_ARTWORK, clickedItemIndex);
+        startActivity(intent);
     }
 }
