@@ -11,7 +11,6 @@ import com.example.android_sep4.repositories.ArtworksRepository;
 public class NewArtworkViewModel extends ViewModel {
     private ArtworksRepository artworksRepository;
 
-
     public void init() {
         artworksRepository = ArtworksRepository.getInstance();
     }

@@ -55,4 +55,8 @@ public class ArtworksRepository {
         artworksDataSet.add(artwork);
     }
 
+    public void editArtwork(Artwork artwork, int position) {
+        artworksDataSet.remove(position);
+        artworksDataSet.add(position, artwork);
+    }
 }
