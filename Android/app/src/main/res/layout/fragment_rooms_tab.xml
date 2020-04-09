@@ -8,7 +8,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_viewRoom"
-        tools:listitem="@layout/layout_listroom"
+        tools:listitem="@layout/layout_list_room"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.Room;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
     @NonNull
     @Override
     public RecyclerViewAdapterRooms.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listroom, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_room, parent, false);
         RecyclerViewAdapterRooms.ViewHolder viewHolder = new RecyclerViewAdapterRooms.ViewHolder(view);
         return viewHolder;
     }
