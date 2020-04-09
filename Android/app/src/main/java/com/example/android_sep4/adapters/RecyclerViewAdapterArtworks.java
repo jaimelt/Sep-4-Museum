@@ -1,5 +1,6 @@
 package com.example.android_sep4.adapters;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,9 +27,6 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         this.artworksNames = artworksNames;
         mOnListItemClickListener = listener;
     }
-
-
-
 
     @NonNull
     @Override

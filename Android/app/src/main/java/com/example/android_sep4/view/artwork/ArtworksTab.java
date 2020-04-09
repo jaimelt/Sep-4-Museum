@@ -154,5 +154,8 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
     public void onListItemClick(int clickedItemIndex) {
         Log.d(TAG, "onListItemClick: clicked hahahahahahahahahahah" + clickedItemIndex);
 
+        Intent intent = new Intent(getActivity(), EditArtworkActivity.class);
+        startActivity(intent);
+
     }
 }
