@@ -8,7 +8,6 @@
     <string name="artwork_text">Artwork Tab</string>
     <string name="museum_text">Museum Tab</string>
     <string name="rooms_text">Rooms Tab</string>
-
     <string name="name">Name</string>
     <string name="description">Description</string>
     <string name="upload_image">Upload image for the artwork.</string>
