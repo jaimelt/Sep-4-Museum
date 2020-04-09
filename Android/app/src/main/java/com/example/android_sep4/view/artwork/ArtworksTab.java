@@ -45,7 +45,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks.OnListItemClickListener{
+public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks.OnListItemClickListener {
     private ArtworksTabViewModel artworksTabViewModel;
     private RecyclerViewAdapterArtworks adapter;
     private int removedPosition = 0;
@@ -64,6 +64,7 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
         setViewModel();
         deleteIcon = ContextCompat.getDrawable(Objects.requireNonNull(this.getContext()), R.drawable.ic_delete);
         return inflater.inflate(R.layout.fragment_artworks_tab, container, false);
+
     }
 
     @Override
@@ -90,7 +91,7 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new RecyclerViewAdapterArtworks(artworksTabViewModel.getArtworks().getValue(), this);
+        adapter = new RecyclerViewAdapterArtworks(getContext(), artworksTabViewModel.getArtworks().getValue(), this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -152,10 +153,6 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        Log.d(TAG, "onListItemClick: clicked hahahahahahahahahahah" + clickedItemIndex);
-
-        Intent intent = new Intent(getActivity(), EditArtworkActivity.class);
-        startActivity(intent);
-
+        Toast.makeText(getActivity(), "Item clicked: " + clickedItemIndex, Toast.LENGTH_SHORT).show();
     }
 }
