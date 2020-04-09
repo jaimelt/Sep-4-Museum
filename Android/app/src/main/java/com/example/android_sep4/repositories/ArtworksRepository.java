@@ -50,4 +50,9 @@ public class ArtworksRepository {
     public void addArtwork(int position, Artwork artwork) {
         artworksDataSet.add(position, artwork);
     }
+
+    public void addArtwork(Artwork artwork) {
+        artworksDataSet.add(artwork);
+    }
+
 }

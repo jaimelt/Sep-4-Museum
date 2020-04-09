@@ -1,5 +1,8 @@
 package com.example.android_sep4.view;
 
+
+import android.content.Intent;
+
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,6 +15,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
+
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -23,13 +27,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapter;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.viewmodel.ArtworksTabViewModel;
+
+import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -57,11 +65,20 @@ public class ArtworksTab extends Fragment {
         return inflater.inflate(R.layout.fragment_artworks_tab, container, false);
     }
 
-    public void setViewModel() {
-        artworksTabViewModel = ViewModelProviders.of(this).get(ArtworksTabViewModel.class);
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //update list when getting back from add activity
+        adapter.notifyDataSetChanged();
+    }
+
+    private void setViewModel() {
+        artworksTabViewModel = new ViewModelProvider(this).get(ArtworksTabViewModel.class);
         artworksTabViewModel.init();
 
-        artworksTabViewModel.getArtworks().observe(this, new Observer<List<Artwork>>() {
+        artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), new Observer<List<Artwork>>() {
+
             @Override
             public void onChanged(List<Artwork> artworks) {
                 adapter.notifyDataSetChanged();
@@ -77,9 +94,11 @@ public class ArtworksTab extends Fragment {
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
+        onClickListenerFAB(view);
     }
 
-    ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+    private ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
@@ -120,5 +139,15 @@ public class ArtworksTab extends Fragment {
         }
     };
 
+    private void onClickListenerFAB(View view)
+    {
+        FloatingActionButton myFab = (FloatingActionButton) view.findViewById(R.id.fab);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), NewArtworkActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
 }

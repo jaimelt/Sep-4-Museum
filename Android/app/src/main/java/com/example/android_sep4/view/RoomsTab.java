@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +30,12 @@ import java.util.List;
 import java.util.Objects;
 
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class RoomsTab extends Fragment {
+
 
     private RoomsTabViewModel roomsTabViewModel;
     private RecyclerViewAdapterRooms adapter;
@@ -41,6 +44,7 @@ public class RoomsTab extends Fragment {
     public RoomsTab() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,4 +73,5 @@ public class RoomsTab extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
     }
+
 }

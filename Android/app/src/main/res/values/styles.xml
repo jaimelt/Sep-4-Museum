@@ -10,7 +10,8 @@
         <item name="tabBackground">@color/colorPrimary</item>
         <item name="android:gravity">center</item>
         <item name="tabSelectedTextColor">@color/colorAccent</item>
-        <item name="android:textSize">5sp</item>
+        <item name="android:textColor">@color/white</item>
+
 
     </style>
 
@@ -29,6 +30,11 @@
 
     <style name="Background">
         <item name="backgroundColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="EditViewStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/grey</item>
     </style>
 
 
