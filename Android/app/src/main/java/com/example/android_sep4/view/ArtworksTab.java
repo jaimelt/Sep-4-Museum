@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -53,15 +54,21 @@ public class ArtworksTab extends Fragment {
         setViewModel();
         deleteIcon = ContextCompat.getDrawable(Objects.requireNonNull(this.getContext()), R.drawable.ic_delete);
         return inflater.inflate(R.layout.fragment_artworks_tab, container, false);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        //update list when getting back from add activity
+        adapter.notifyDataSetChanged();
     }
 
     private void setViewModel() {
-        artworksTabViewModel = ViewModelProviders.of(this).get(ArtworksTabViewModel.class);
+        artworksTabViewModel = new ViewModelProvider(this).get(ArtworksTabViewModel.class);
         artworksTabViewModel.init();
 
-        artworksTabViewModel.getArtworks().observe(this, new Observer<List<Artwork>>() {
+        artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), new Observer<List<Artwork>>() {
             @Override
             public void onChanged(List<Artwork> artworks) {
                 adapter.notifyDataSetChanged();

@@ -2,10 +2,15 @@ package com.example.android_sep4.view;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +18,8 @@ import android.widget.ImageView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.artwork.NewArtworkViewModel;
+
+import java.io.ByteArrayOutputStream;
 
 public class NewArtworkActivity extends AppCompatActivity {
 
@@ -39,7 +46,7 @@ public class NewArtworkActivity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        newArtworkViewModel = ViewModelProviders.of(this).get(NewArtworkViewModel.class);
+        newArtworkViewModel = new ViewModelProvider(this).get(NewArtworkViewModel.class);
         newArtworkViewModel.init();
     }
 
@@ -55,7 +62,13 @@ public class NewArtworkActivity extends AppCompatActivity {
 
     public void onCreateArtwork(View view)
     {
-
+        String name = nameField.getText().toString();
+        String author = authorField.getText().toString();
+        String type = typeField.getText().toString();
+        String description = descriptionField.getText().toString();
+        String image = convertImageToString();
+        newArtworkViewModel.addArtwork(name, author, type, description, image);
+        finish();
     }
 
     @Override
@@ -66,4 +79,16 @@ public class NewArtworkActivity extends AppCompatActivity {
             //TODO: ResultInfo failure when not selecting picture
         }
     }
+
+    private String convertImageToString()
+    {
+        imageHolder.buildDrawingCache();
+        Bitmap bm = imageHolder.getDrawingCache();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+        byte[] imageBytes = baos.toByteArray();
+        return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+    }
+
+
 }
