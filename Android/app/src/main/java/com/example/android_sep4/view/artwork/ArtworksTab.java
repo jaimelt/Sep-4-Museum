@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 import java.util.Objects;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 /**
@@ -149,8 +152,7 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        int number = clickedItemIndex + 1;
-        Toast.makeText(getActivity(), "Artwork Number: " + number, Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onListItemClick: clicked hahahahahahahahahahah" + clickedItemIndex);
 
     }
 }

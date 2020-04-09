@@ -16,12 +16,12 @@ public class EditArtworkActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        numberField = findViewById(R.id.numberField);
-        Bundle bundle = getIntent().getExtras();
-
-        if(bundle != null && bundle.containsKey(ArtworksTab.EXTRA_ARTWORK)) {
-            int number = bundle.getInt(ArtworksTab.EXTRA_ARTWORK);
-            numberField.setText(number);
-        }
+//        numberField = findViewById(R.id.numberField);
+//        Bundle bundle = getIntent().getExtras();
+//
+//        if(bundle != null && bundle.containsKey(ArtworksTab.EXTRA_ARTWORK)) {
+//            int number = bundle.getInt(ArtworksTab.EXTRA_ARTWORK);
+//            numberField.setText(number);
+//        }
     }
 }
