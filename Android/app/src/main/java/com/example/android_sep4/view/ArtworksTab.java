@@ -14,10 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,18 +23,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.adapters.RecyclerViewAdapter;
+import com.example.android_sep4.adapters.RecyclerViewAdapterArtworks;
 import com.example.android_sep4.model.Artwork;
 
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +42,7 @@ import java.util.Objects;
  */
 public class ArtworksTab extends Fragment {
     private ArtworksTabViewModel artworksTabViewModel;
-    private RecyclerViewAdapter adapter;
+    private RecyclerViewAdapterArtworks adapter;
     private int removedPosition = 0;
     private Artwork removedArtwork;
     private Drawable deleteIcon;
@@ -89,7 +84,7 @@ public class ArtworksTab extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new RecyclerViewAdapter(artworksTabViewModel.getArtworks().getValue());
+        adapter = new RecyclerViewAdapterArtworks(artworksTabViewModel.getArtworks().getValue());
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

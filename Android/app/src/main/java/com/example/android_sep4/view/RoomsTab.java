@@ -1,16 +1,12 @@
 package com.example.android_sep4.view;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,15 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.adapters.RecyclerViewAdapter;
 import com.example.android_sep4.adapters.RecyclerViewAdapterRooms;
-import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.viewmodel.RoomsTabViewModel;
 
 import java.util.List;
-import java.util.Objects;
-
 
 
 /**

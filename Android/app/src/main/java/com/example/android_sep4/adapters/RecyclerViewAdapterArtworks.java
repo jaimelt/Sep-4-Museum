@@ -14,15 +14,14 @@ import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerViewAdapterArtworks.ViewHolder>{
 
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<Artwork> artworksNames;
 
 
-    public RecyclerViewAdapter(ArrayList<Artwork> artworksNames) {
+    public RecyclerViewAdapterArtworks(ArrayList<Artwork> artworksNames) {
         this.artworksNames = artworksNames;
     }
 
