@@ -39,6 +39,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Log.d(TAG, "onBindViewHolder: called.");
 
         holder.artworkName.setText(artworksNames.get(position).getName());
+        holder.artworkType.setText(artworksNames.get(position).getType());
+        holder.artworkDescription.setText(artworksNames.get(position).getDescription());
+        holder.artworkAuthor.setText(artworksNames.get(position).getAuthor());
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,11 +59,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView artworkName;
+        TextView artworkDescription;
+        TextView artworkAuthor;
+        TextView artworkType;
+
         RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             artworkName = itemView.findViewById(R.id.artworkName);
+            artworkDescription = itemView.findViewById(R.id.artworkDescription);
+            artworkAuthor = itemView.findViewById(R.id.artworkAuthor);
+            artworkType = itemView.findViewById(R.id.artworkType);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
 
