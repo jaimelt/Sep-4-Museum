@@ -1,9 +1,11 @@
 package com.example.android_sep4.adapters;
 
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,10 +39,14 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
+        Uri uri = Uri.parse(artworksNames.get(position).getImage());
+        holder.imageView.setImageURI(uri);
         holder.artworkName.setText(artworksNames.get(position).getName());
         holder.artworkType.setText(artworksNames.get(position).getType());
         holder.artworkDescription.setText(artworksNames.get(position).getDescription());
         holder.artworkAuthor.setText(artworksNames.get(position).getAuthor());
+
+        //TODO:Setting image from local storage
 
     }
 
@@ -51,6 +57,7 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        ImageView imageView;
         TextView artworkName;
         TextView artworkDescription;
         TextView artworkAuthor;
@@ -61,6 +68,7 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
 
         public ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
             super(itemView);
+            imageView = itemView.findViewById(R.id.imageView);
             artworkName = itemView.findViewById(R.id.artworkName);
             artworkDescription = itemView.findViewById(R.id.artworkDescription);
             artworkAuthor = itemView.findViewById(R.id.artworkAuthor);

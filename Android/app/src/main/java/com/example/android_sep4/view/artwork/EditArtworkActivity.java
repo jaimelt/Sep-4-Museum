@@ -75,6 +75,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         authorField.setHint(editArtworkViewModel.getAuthor());
         typeField.setHint(editArtworkViewModel.getType());
         descriptionField.setHint(editArtworkViewModel.getDescription());
+        imageHolder.setImageURI(editArtworkViewModel.getImage());
     }
 
     @Override
