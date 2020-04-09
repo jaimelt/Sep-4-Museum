@@ -27,16 +27,16 @@ public class ArtworksRepository {
     }
 
     private void setArtworks() {
-        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", "aa", "Rare", "Your Dick" ));
-        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", "aa", "Rare", "Your Dick" ));
-        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", "aa", "Rare", "Your Dick" ));
-        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", "aa", "Rare", "Your Dick" ));
-        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", "aa", "Rare", "Your Dick" ));
-        artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6", "aa", "Rare", "Your Dick" ));
-        artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", "aa", "Rare", "Your Dick" ));
-        artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", "aa", "Rare", "Your Dick" ));
-        artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", "aa", "Rare", "Your Dick" ));
-        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", "aa", "Rare", "Your Dick" ));
+        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", "aa", "Rare1", "Your Dick1" ));
+        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", "aa", "Rare2", "Your Dick2" ));
+        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", "aa", "Rare3", "Your Dick3" ));
+        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", "aa", "Rare4", "Your Dick4" ));
+        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", "aa", "Rare5", "Your Dick5" ));
+        artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6", "aa", "Rare6", "Your Dick6" ));
+        artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", "aa", "Rare7", "Your Dick7" ));
+        artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", "aa", "Rare8", "Your Dick8" ));
+        artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", "aa", "Rare9", "Your Dick9" ));
+        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", "aa", "Rare10", "Your Dick10" ));
     }
 
     public void removeArtwork(int position) {
