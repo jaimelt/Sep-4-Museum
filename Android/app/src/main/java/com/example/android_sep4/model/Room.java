@@ -10,6 +10,7 @@ public class Room {
     private int totalCapacity;
     private ArrayList<Artwork> artworkList;
     private Measurements measurements;
+    private boolean expanded;
 
     public Room(ArrayList<Artwork> artworkList, Measurements measurements, String locationCode, String description, String roomType, int totalCapacity, int currentCapacity)
     {
@@ -19,10 +20,15 @@ public class Room {
         this.totalCapacity = totalCapacity;
         this.currentCapacity = currentCapacity;
         //TODO: currentCapacity = 0 ?
+        this.expanded = false;
 
         this.artworkList = artworkList;
         this.measurements = measurements;
     }
+
+    public boolean isExpanded(){return expanded;}
+
+    public void setExpanded( boolean expanded){this.expanded = expanded;}
 
     public void addArtwork(Artwork artwork)
     {
