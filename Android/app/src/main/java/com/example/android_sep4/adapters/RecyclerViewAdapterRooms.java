@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Room;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewAdapterRooms.ViewHolder> {
@@ -45,7 +47,9 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
         holder.lightValue.setText(Integer.toString(room.getMeasurements().getLight()));
         holder.temperatureValue.setText(Integer.toString(room.getMeasurements().getTemperature()));
         holder.humidityValue.setText(Integer.toString(room.getMeasurements().getHumidity()));
-        holder.roomCapacity.setText(Integer.toString(room.getCurrentCapacity()));
+        holder.roomCapacity.setText(Integer.toString(room.getTotalCapacity()));
+        holder.currentCapacity.setText(Integer.toString(room.getCurrentCapacity()));
+        holder.description.setText(room.getDescription());
 
         holder.parentLayoutRoom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,19 +73,23 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
         TextView humidityValue;
         TextView co2Value;
         TextView roomCapacity;
+        TextView currentCapacity;
         TextView locationCode;
+        TextView description;
         Button editRoomsConditions;
         RelativeLayout parentLayoutRoom;
         ConstraintLayout expandableLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            description = itemView.findViewById(R.id.descriptionContent);
             co2Value = itemView.findViewById(R.id.co2TextViewId);
             locationCode = itemView.findViewById(R.id.titleTextView);
             lightValue = itemView.findViewById(R.id.lightTextViewId);
             temperatureValue = itemView.findViewById(R.id.temperatureTextViewId);
             humidityValue = itemView.findViewById(R.id.humidityTextViewID);
-            roomCapacity = itemView.findViewById(R.id.roomCapacityValueTextView);
+            roomCapacity = itemView.findViewById(R.id.roomCapacityMaxValueTextView);
+            currentCapacity= itemView.findViewById(R.id.roomCapacityValueTextView);
             editRoomsConditions = itemView.findViewById(R.id.editOptimalButton);
             parentLayoutRoom = itemView.findViewById(R.id.parent_layoutRoom);
             expandableLayout = itemView.findViewById(R.id.expandableLayout);

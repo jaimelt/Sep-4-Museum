@@ -34,7 +34,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/expandableLayout"
                 android:layout_width="0dp"
-                android:layout_height="250dp"
+                android:layout_height="300dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -263,30 +263,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:textSize="20sp"
                     android:text="Capacity:"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/roomCapacityValueTextView"
                     app:layout_constraintTop_toBottomOf="@id/lightId"/>
                 <TextView
                     android:id="@+id/roomCapacityValueTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:textSize="20sp"
                     android:text="9"
-                    app:layout_constraintStart_toEndOf="@id/roomCapacityTextView"
+                    app:layout_constraintEnd_toStartOf="@id/slashCapacity"
                     app:layout_constraintTop_toBottomOf="@id/lightId"/>
                 <TextView
                     android:id="@+id/slashCapacity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:textSize="20sp"
                     android:text="/"
-                    app:layout_constraintStart_toEndOf="@id/roomCapacityValueTextView"
+                    app:layout_constraintEnd_toStartOf="@id/roomCapacityMaxValueTextView"
                     app:layout_constraintTop_toBottomOf="@id/lightId"/>
 
                     <TextView
@@ -294,11 +294,31 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="20dp"
                         android:textSize="20sp"
                         android:text="9"
-                        app:layout_constraintStart_toEndOf="@id/slashCapacity"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/lightId"/>
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Description :"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lightId" />
+                <TextView
+                    android:id="@+id/descriptionContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:textSize="20sp"
+                    android:textAlignment="viewStart"
+                    android:text="No description..."
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/description"/>
 
                     <Button
                     android:id="@+id/editOptimalButton"

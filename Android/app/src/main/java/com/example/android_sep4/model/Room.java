@@ -62,7 +62,7 @@ public class Room {
     }
 
     public int getCurrentCapacity() {
-        return currentCapacity-artworkList.size();
+        return currentCapacity;
     }
 
     public void setCurrentCapacity(int currentCapacity) {

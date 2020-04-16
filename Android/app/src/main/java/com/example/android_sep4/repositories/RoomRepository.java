@@ -29,7 +29,7 @@ public class RoomRepository {
     }
 
     private void setRooms() {
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(300, 30, 1422, 40), "Room1", "good room", "Paintings", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(300, 30, 1422, 40), "Room1", "good room", "Paintings", 10, 6));
         roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(500, 20, 5990, 40), "Room2", "bad room", "Stone", 10, 5));
         roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(100, 15, 5990, 40), "Room3", "excellent room", "Fresca", 10, 5));
         roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(600, 33, 5990, 40), "Room4", "worst room", "Medieval", 10, 5));
