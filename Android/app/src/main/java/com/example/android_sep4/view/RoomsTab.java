@@ -14,11 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapterRooms;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.viewmodel.RoomsTabViewModel;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -31,7 +35,8 @@ public class RoomsTab extends Fragment {
 
     private RoomsTabViewModel roomsTabViewModel;
     private RecyclerViewAdapterRooms adapter;
-    private int removedPosition = 0;
+
+
 
     public RoomsTab() {
         // Required empty public constructor

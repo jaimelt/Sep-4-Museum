@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,11 +21,11 @@ import java.util.ArrayList;
 public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewAdapterRooms.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
-    private ArrayList<Room> roomsName;
+    private ArrayList<Room> rooms;
 
 
-    public RecyclerViewAdapterRooms(ArrayList<Room> roomsName) {
-        this.roomsName = roomsName;
+    public RecyclerViewAdapterRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
     }
 
     @NonNull
@@ -38,39 +39,56 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapterRooms.ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
-
-        holder.roomName.setText(roomsName.get(position).getLocationCode()+" - "+roomsName.get(position).getRoomType());
+        Room room = rooms.get(position);
+        holder.locationCode.setText(room.getLocationCode()+" - "+room.getRoomType());
+        holder.co2Value.setText(Integer.toString(room.getMeasurements().getCo2()));
+        holder.lightValue.setText(Integer.toString(room.getMeasurements().getLight()));
+        holder.temperatureValue.setText(Integer.toString(room.getMeasurements().getTemperature()));
+        holder.humidityValue.setText(Integer.toString(room.getMeasurements().getHumidity()));
+        holder.roomCapacity.setText(Integer.toString(room.getCurrentCapacity()));
 
         holder.parentLayoutRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on:" + roomsName.get(position));
+                Log.d(TAG, "onClick: clicked on:" + rooms.get(position));
             }
         });
-        boolean isExpanded = roomsName.get(position).isExpanded();
+        boolean isExpanded = rooms.get(position).isExpanded();
         holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE );
     }
 
     @Override
     public int getItemCount() {
-        return roomsName.size();
+        return rooms.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView roomName;
+        TextView lightValue;
+        TextView temperatureValue;
+        TextView humidityValue;
+        TextView co2Value;
+        TextView roomCapacity;
+        TextView locationCode;
+        Button editRoomsConditions;
         RelativeLayout parentLayoutRoom;
         ConstraintLayout expandableLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            roomName = itemView.findViewById(R.id.titleTextView);
+            co2Value = itemView.findViewById(R.id.co2TextViewId);
+            locationCode = itemView.findViewById(R.id.titleTextView);
+            lightValue = itemView.findViewById(R.id.lightTextViewId);
+            temperatureValue = itemView.findViewById(R.id.temperatureTextViewId);
+            humidityValue = itemView.findViewById(R.id.humidityTextViewID);
+            roomCapacity = itemView.findViewById(R.id.roomCapacityValueTextView);
+            editRoomsConditions = itemView.findViewById(R.id.editOptimalButton);
             parentLayoutRoom = itemView.findViewById(R.id.parent_layoutRoom);
             expandableLayout = itemView.findViewById(R.id.expandableLayout);
-            roomName.setOnClickListener(new View.OnClickListener() {
+            locationCode.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Room room = roomsName.get(getAdapterPosition());
+                    Room room = rooms.get(getAdapterPosition());
                     room.setExpanded(!room.isExpanded());
                     notifyItemChanged(getAdapterPosition());
                 }

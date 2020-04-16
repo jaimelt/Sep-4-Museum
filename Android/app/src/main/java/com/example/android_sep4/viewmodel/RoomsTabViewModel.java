@@ -15,21 +15,18 @@ public class RoomsTabViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Room>> roomsList;
     private RoomRepository roomsRepository;
 
+
+
     public void init() {
         if(roomsList != null) {
             return;
         }
         roomsRepository = RoomRepository.getInstance();
-        roomsList = roomsRepository.getRoomsData();
+        roomsList = roomsRepository.getRoomsData();;
     }
 
     public LiveData<ArrayList<Room>> getRooms() {
         return roomsList;
     }
-
-    public Room getRoom(int position) {
-        return roomsRepository.getRoom(position);
-    }
-
 
 }

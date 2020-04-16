@@ -29,13 +29,13 @@ public class RoomRepository {
     }
 
     private void setRooms() {
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(), "Room1", "good room", "Paintings", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(), "Room2", "bad room", "Stone", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(), "Room3", "excellent room", "Fresca", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(), "Room4", "worst room", "Medieval", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(), "Room5", "goddest room", "Modern", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(), "Room6", "sex room", "Rustic", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(), "Room7", "play room", "Peric", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(300, 30, 1422, 40), "Room1", "good room", "Paintings", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(500, 20, 5990, 40), "Room2", "bad room", "Stone", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(100, 15, 5990, 40), "Room3", "excellent room", "Fresca", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(600, 33, 5990, 40), "Room4", "worst room", "Medieval", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(800, 34, 5990, 40), "Room5", "goddest room", "Modern", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(900, 99, 5990, 40), "Room6", "sex room", "Rustic", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(300, 35, 5990, 40), "Room7", "play room", "Peric", 10, 5));
     }
 
     public Room getRoom(int position) {
