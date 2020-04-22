@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,14 +19,17 @@ import com.example.android_sep4.model.Artwork;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerViewAdapterArtworks.ViewHolder>{
+public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerViewAdapterArtworks.ViewHolder> implements Filterable {
 
     private static final String TAG = "RecyclerViewAdapter";
-    private ArrayList<Artwork> artworksNames;
+    private ArrayList<Artwork> artworks;
+    private ArrayList<Artwork> copyOfArtworks;
     private OnListItemClickListener mOnListItemClickListener;
 
-    public RecyclerViewAdapterArtworks(ArrayList<Artwork> artworksNames, OnListItemClickListener listener) {
-        this.artworksNames = artworksNames;
+    public RecyclerViewAdapterArtworks(ArrayList<Artwork> artworks, OnListItemClickListener listener) {
+        this.artworks = artworks;
+        //Creating a duplicate of original list of artworks to not mess up with the original one
+        copyOfArtworks = new ArrayList<>(artworks);
         mOnListItemClickListener = listener;
 
     }
@@ -39,12 +44,12 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
-        Uri uri = Uri.parse(artworksNames.get(position).getImage());
+        Uri uri = Uri.parse(artworks.get(position).getImage());
         holder.imageView.setImageURI(uri);
-        holder.artworkName.setText(artworksNames.get(position).getName());
-        holder.artworkType.setText(artworksNames.get(position).getType());
-        holder.artworkDescription.setText(artworksNames.get(position).getDescription());
-        holder.artworkAuthor.setText(artworksNames.get(position).getAuthor());
+        holder.artworkName.setText(artworks.get(position).getName());
+        holder.artworkType.setText(artworks.get(position).getType());
+        holder.artworkDescription.setText(artworks.get(position).getDescription());
+        holder.artworkAuthor.setText(artworks.get(position).getAuthor());
 
         //TODO:Setting image from local storage
 
@@ -52,8 +57,47 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
 
     @Override
     public int getItemCount() {
-        return artworksNames.size();
+        return artworks.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        //constraint = input from the search function
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Artwork> filteredList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0)
+            {
+                filteredList.addAll(copyOfArtworks);
+            }
+            else
+            {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Artwork artwork : copyOfArtworks)
+                {
+                    if(artwork.getName().toLowerCase().contains(filterPattern) || artwork.getAuthor().toLowerCase().contains(filterPattern))
+                    {
+                        filteredList.add(artwork);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            //Clean the original list of artworks and we want to replace it with filtered list
+            artworks.clear();
+            artworks.addAll((ArrayList<Artwork>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
