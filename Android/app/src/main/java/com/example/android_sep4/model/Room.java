@@ -12,8 +12,6 @@ public class Room {
     private Measurements measurements;
     private boolean expanded;
 
-
-
     public Room(ArrayList<Artwork> artworkList, Measurements measurements, String locationCode, String description, String roomType, int totalCapacity, int currentCapacity)
     {
         this.locationCode = locationCode;

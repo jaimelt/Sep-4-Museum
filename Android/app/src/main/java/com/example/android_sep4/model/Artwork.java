@@ -1,12 +1,27 @@
 package com.example.android_sep4.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Artwork {
-    private String ID;
+    @SerializedName("id")
+    private int id;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("description")
     private String description;
+
+    @SerializedName("image")
     private String image;
+
+    @SerializedName("type")
     private String type;
+
+    @SerializedName("author")
     private String author;
+
+    @SerializedName("artworkMeasurements")
     private ArtworkMeasurements artworkMeasurements;
 
     public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author)
@@ -19,12 +34,12 @@ public class Artwork {
         this.author = author;
     }
 
-    public String getID() {
-        return ID;
+    public int getID() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setID(int ID) {
+        this.id = ID;
     }
 
     public String getName() {
