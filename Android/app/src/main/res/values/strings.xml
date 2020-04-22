@@ -16,5 +16,6 @@
     <string name="author">Author</string>
     <string name="add_artwork">Add artwork</string>
     <string name="search_title">Search</string>
+    <string name="toolbar_image_description">Museum</string>
 
 </resources>

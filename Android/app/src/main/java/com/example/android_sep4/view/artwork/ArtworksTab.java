@@ -28,14 +28,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
-import android.widget.Toast;
-
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapterArtworks;
 import com.example.android_sep4.model.Artwork;
 
-import com.example.android_sep4.view.MainActivity;
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
