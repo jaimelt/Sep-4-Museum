@@ -2,6 +2,7 @@ package com.example.android_sep4.view.artwork;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -12,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android_sep4.R;
@@ -42,6 +42,9 @@ public class EditArtworkActivity extends AppCompatActivity {
         }
         setViewModel();
 
+        Toolbar toolbar = findViewById(R.id.edit_artwork_toolbar);
+        setSupportActionBar(toolbar);
+
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setTitle("Edit artwork");
 
@@ -59,6 +62,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     @Override
     //finish on activity when up navigation is clicked - animation slide to right
     public boolean onSupportNavigateUp() {
+        onBackPressed();
         finish();
         return true;
     }

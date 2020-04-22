@@ -2,6 +2,7 @@ package com.example.android_sep4.view.artwork;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -35,6 +36,9 @@ public class NewArtworkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_artwork);
 
         setViewModel();
+
+        Toolbar toolbar = findViewById(R.id.edit_artwork_toolbar);
+        setSupportActionBar(toolbar);
 
         imageHolder = findViewById(R.id.imageHolder);
         nameField = findViewById(R.id.nameField);
