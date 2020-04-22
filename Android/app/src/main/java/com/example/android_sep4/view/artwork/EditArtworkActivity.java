@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.android_sep4.R;
@@ -27,7 +29,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private ImageView imageHolder;
     private EditText nameField;
     private EditText authorField;
-    private EditText typeField;
+    private RadioGroup typeGroup;
     private EditText descriptionField;
     private int position;
 
@@ -51,7 +53,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         imageHolder = findViewById(R.id.imageHolder);
         nameField = findViewById(R.id.nameField);
         authorField = findViewById(R.id.authorField);
-        typeField = findViewById(R.id.typeField);
+        typeGroup = findViewById(R.id.radio);
         descriptionField = findViewById(R.id.descriptionField);
 
         setText();
@@ -75,11 +77,20 @@ public class EditArtworkActivity extends AppCompatActivity {
     private void setText()
     {
         //TODO: How to set image
-        nameField.setHint(editArtworkViewModel.getName());
+        nameField.setText(editArtworkViewModel.getName());
         authorField.setHint(editArtworkViewModel.getAuthor());
-        typeField.setHint(editArtworkViewModel.getType());
         descriptionField.setHint(editArtworkViewModel.getDescription());
         imageHolder.setImageURI(editArtworkViewModel.getImage());
+
+        String type = editArtworkViewModel.getType();
+        for(int i = 0; i < 3; i ++)
+        {
+            RadioButton radioButton =  (RadioButton)typeGroup.getChildAt(i);
+            if(radioButton.getText().toString().equals(type))
+            {
+                radioButton.setChecked(true);
+            }
+        }
     }
 
     @Override
@@ -101,9 +112,12 @@ public class EditArtworkActivity extends AppCompatActivity {
 
     public void onCreateArtwork(View view)
     {
+        int selectedId = typeGroup.getCheckedRadioButtonId();
+        RadioButton selectedRadioButton = findViewById(selectedId);
+
         String name = nameField.getText().toString();
         String author = authorField.getText().toString();
-        String type = typeField.getText().toString();
+        String type = selectedRadioButton.getText().toString();
         String description = descriptionField.getText().toString();
         String image = convertImageToString();
         editArtworkViewModel.editArtwork(name, author, type, description, image, position);
