@@ -26,6 +26,7 @@ public class NewArtworkActivity extends AppCompatActivity {
 
     private static final int IMAGE_PICK_CODE = 1000;
     private ImageView imageHolder;
+    private ImageView imageUploader;
     private EditText nameField;
     private EditText authorField;
     private RadioGroup typeGroup;
@@ -35,7 +36,7 @@ public class NewArtworkActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_artwork);
+        setContentView(R.layout.activity_new_artwork);
 
         setViewModel();
 
@@ -43,9 +44,10 @@ public class NewArtworkActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         imageHolder = findViewById(R.id.imageHolder);
+        imageUploader = findViewById(R.id.imageUploader);
         nameField = findViewById(R.id.nameField);
         authorField = findViewById(R.id.authorField);
-        typeGroup = findViewById(R.id.radio);
+        typeGroup = findViewById(R.id.radioType);
         descriptionField = findViewById(R.id.descriptionField);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -94,6 +96,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMAGE_PICK_CODE) {
             imageHolder.setImageURI(data != null ? data.getData() : null);
+            imageUploader.setVisibility(View.INVISIBLE);
             //TODO: ResultInfo failure when not selecting picture
         }
     }

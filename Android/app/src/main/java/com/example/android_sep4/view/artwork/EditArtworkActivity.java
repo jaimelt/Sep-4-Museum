@@ -53,12 +53,11 @@ public class EditArtworkActivity extends AppCompatActivity {
         imageHolder = findViewById(R.id.imageHolder);
         nameField = findViewById(R.id.nameField);
         authorField = findViewById(R.id.authorField);
-        typeGroup = findViewById(R.id.radio);
+        typeGroup = findViewById(R.id.radioType);
         descriptionField = findViewById(R.id.descriptionField);
 
         setText();
         Button button = findViewById(R.id.artworkButton);
-        button.setText("Edit artwork");
     }
 
     @Override
@@ -77,7 +76,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private void setText()
     {
         //TODO: How to set image
-        nameField.setText(editArtworkViewModel.getName());
+        nameField.setHint(editArtworkViewModel.getName());
         authorField.setHint(editArtworkViewModel.getAuthor());
         descriptionField.setHint(editArtworkViewModel.getDescription());
         imageHolder.setImageURI(editArtworkViewModel.getImage());

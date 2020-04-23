@@ -13,11 +13,14 @@
     <string name="image_description">Image</string>
     <string name="type">Type</string>
     <string name="author">Author</string>
+    <string name="location">Location</string>
     <string name="add_artwork">Add artwork</string>
     <string name="search_title">Search</string>
     <string name="toolbar_image_description">Museum</string>
     <string name="painting">Painting</string>
     <string name="drawing">Drawing</string>
     <string name="ceramics">Ceramics</string>
+    <string name="edit_artwork">Edit artwork</string>
+    <string name="storage">Storage</string>
 
 </resources>

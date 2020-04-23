@@ -23,10 +23,10 @@
                 android:id="@+id/artworkButton"
                 android:layout_width="120dp"
                 android:layout_height="30dp"
-                android:layout_marginEnd="20dp"
                 android:background="@drawable/button_background"
+                android:layout_marginEnd="20dp"
                 android:onClick="onCreateArtwork"
-                android:text="@string/edit_artwork" />
+                android:text="@string/add_artwork"/>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -41,17 +41,26 @@
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
             android:orientation="vertical">
-
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+            <ImageView
+                android:id="@+id/imageUploader"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="75dp"
+                android:contentDescription="@string/image_description"
+                app:srcCompat="@drawable/ic_image_holder"
+                tools:ignore="VectorDrawableCompat" />
             <ImageView
                 android:id="@+id/imageHolder"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/image_description"
                 android:onClick="onSelectImage"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_image_holder"
                 tools:ignore="VectorDrawableCompat" />
-
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,58 +164,7 @@
                             android:text="@string/ceramics" />
                     </RadioGroup>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:gravity="start"
-                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/location"
-                        android:layout_marginBottom="10dp"
-                        android:textColor="@color/colorAccent" />
-
-                    <RadioGroup
-                        android:id="@+id/radioLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/artworkTypeRB"
-                            style="@style/ArtworkTypeRB"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_marginEnd="12dp"
-                            android:layout_weight="1"
-                            android:minWidth="70dp"
-                            android:text="@string/painting" />
-
-                        <RadioButton
-                            android:id="@+id/artworkTypeRB2"
-                            style="@style/ArtworkTypeRB"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_marginEnd="12dp"
-                            android:layout_weight="1"
-                            android:minWidth="80dp"
-                            android:text="@string/drawing" />
-
-                        <RadioButton
-                            style="@style/ArtworkTypeRB"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_marginEnd="12dp"
-                            android:minWidth="70dp"
-                            android:text="@string/storage" />
-                    </RadioGroup>
-                </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
