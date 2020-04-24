@@ -31,5 +31,13 @@
     <string name="room_b3">B3</string>
     <string name="room_b4">B4</string>
     <string name="room_storage">Storage</string>
+    <string name="optimal_conditions_title">Set optimal conditions</string>
+    <string name="temperature">Temperature</string>
+    <string name="co2">CO2</string>
+    <string name="light">Light</string>
+    <string name="humidity">Humidity</string>
+    <string name="min">min.</string>
+    <string name="max">max.</string>
+    <string name="touch">Touch to write</string>
 
 </resources>

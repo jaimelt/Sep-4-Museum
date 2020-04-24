@@ -31,6 +31,14 @@ public class NewArtworkActivity extends AppCompatActivity {
     private EditText authorField;
     private RadioGroup typeGroup;
     private EditText descriptionField;
+    private EditText minTemp;
+    private EditText maxTemp;
+    private EditText minLight;
+    private EditText maxLight;
+    private EditText minCO2;
+    private EditText maxCO2;
+    private EditText minHum;
+    private EditText maxHum;
     private NewArtworkViewModel newArtworkViewModel;
 
     @Override
@@ -43,12 +51,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.edit_artwork_toolbar);
         setSupportActionBar(toolbar);
 
-        imageHolder = findViewById(R.id.imageHolder);
-        imageUploader = findViewById(R.id.imageUploader);
-        nameField = findViewById(R.id.nameField);
-        authorField = findViewById(R.id.authorField);
-        typeGroup = findViewById(R.id.radioType);
-        descriptionField = findViewById(R.id.descriptionField);
+       bindViews();
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setTitle("New artwork");
@@ -87,6 +90,16 @@ public class NewArtworkActivity extends AppCompatActivity {
         String description = descriptionField.getText().toString();
         String image = convertImageToString();
         newArtworkViewModel.addArtwork(name, author, type, description, image, "Storage");
+
+        int minTempInt = Integer.parseInt(minTemp.getText().toString());
+        int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
+        int minLightInt = Integer.parseInt(minLight.getText().toString());
+        int maxLightInt = Integer.parseInt(maxLight.getText().toString());
+        int minCO2Int = Integer.parseInt(minCO2.getText().toString());
+        int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
+        int minHumInt = Integer.parseInt(minHum.getText().toString());
+        int maxHumInt = Integer.parseInt(maxHum.getText().toString());
+        newArtworkViewModel.addArtworkMeasurements(minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, minHumInt, maxHumInt);
         finish();
         Toast.makeText(this, name + " artwork added to the list", Toast.LENGTH_SHORT).show();
     }
@@ -109,6 +122,24 @@ public class NewArtworkActivity extends AppCompatActivity {
         bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
         byte[] imageBytes = baos.toByteArray();
         return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+    }
+
+    private void bindViews()
+    {
+        imageHolder = findViewById(R.id.imageHolder);
+        imageUploader = findViewById(R.id.imageUploader);
+        nameField = findViewById(R.id.nameField);
+        authorField = findViewById(R.id.authorField);
+        typeGroup = findViewById(R.id.radioType);
+        descriptionField = findViewById(R.id.descriptionField);
+        minTemp = findViewById(R.id.minTemp);
+        maxTemp = findViewById(R.id.maxTemp);
+        minLight = findViewById(R.id.minLight);
+        maxLight = findViewById(R.id.maxLight);
+        minCO2 = findViewById(R.id.minCO2);
+        maxCO2 = findViewById(R.id.maxCO2);
+        minHum = findViewById(R.id.minHum);
+        maxHum = findViewById(R.id.maxHum);
     }
 
 

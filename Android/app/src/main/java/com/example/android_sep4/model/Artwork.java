@@ -93,4 +93,12 @@ public class Artwork {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public ArtworkMeasurements getArtworkMeasurements() {
+        return artworkMeasurements;
+    }
+
+    public void setArtworkMeasurements(int minTemp, int maxTemp, int minLight, int maxLight, int minCO2, int maxCO2, int minHum, int maxHum) {
+        artworkMeasurements = new ArtworkMeasurements(minTemp, maxTemp, minLight, maxLight, minCO2, maxCO2, minHum, maxHum);
+    }
 }

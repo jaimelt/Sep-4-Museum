@@ -33,6 +33,14 @@ public class EditArtworkActivity extends AppCompatActivity {
     private RadioGroup typeGroup;
     private RadioGroup locationGroup;
     private EditText descriptionField;
+    private EditText minTemp;
+    private EditText maxTemp;
+    private EditText minLight;
+    private EditText maxLight;
+    private EditText minCO2;
+    private EditText maxCO2;
+    private EditText minHum;
+    private EditText maxHum;
     private int position;
 
     @Override
@@ -52,13 +60,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setTitle("Edit artwork");
 
-        imageHolder = findViewById(R.id.imageHolder);
-        nameField = findViewById(R.id.nameField);
-        authorField = findViewById(R.id.authorField);
-        typeGroup = findViewById(R.id.radioType);
-        locationGroup = findViewById(R.id.locationGroup1);
-        descriptionField = findViewById(R.id.descriptionField);
-
+        bindViews();
         setText();
     }
 
@@ -144,6 +146,16 @@ public class EditArtworkActivity extends AppCompatActivity {
         String description = descriptionField.getText().toString();
         String image = convertImageToString();
         editArtworkViewModel.editArtwork(name, author, type, location, description, image, position);
+
+        int minTempInt = Integer.parseInt(minTemp.getText().toString());
+        int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
+        int minLightInt = Integer.parseInt(minLight.getText().toString());
+        int maxLightInt = Integer.parseInt(maxLight.getText().toString());
+        int minCO2Int = Integer.parseInt(minCO2.getText().toString());
+        int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
+        int minHumInt = Integer.parseInt(minHum.getText().toString());
+        int maxHumInt = Integer.parseInt(maxHum.getText().toString());
+       editArtworkViewModel.editArtworkMeasurements(minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, minHumInt, maxHumInt);
         finish();
         Toast.makeText(this, name + " artwork edited", Toast.LENGTH_SHORT).show();
     }
@@ -156,6 +168,23 @@ public class EditArtworkActivity extends AppCompatActivity {
         bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
         byte[] imageBytes = baos.toByteArray();
         return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+    }
+
+    private void bindViews() {
+        imageHolder = findViewById(R.id.imageHolder);
+        nameField = findViewById(R.id.nameField);
+        authorField = findViewById(R.id.authorField);
+        typeGroup = findViewById(R.id.radioType);
+        locationGroup = findViewById(R.id.locationGroup1);
+        descriptionField = findViewById(R.id.descriptionField);
+        minTemp = findViewById(R.id.minTemp);
+        maxTemp = findViewById(R.id.maxTemp);
+        minLight = findViewById(R.id.minLight);
+        maxLight = findViewById(R.id.maxLight);
+        minCO2 = findViewById(R.id.minCO2);
+        maxCO2 = findViewById(R.id.maxCO2);
+        minHum = findViewById(R.id.minHum);
+        maxHum = findViewById(R.id.maxHum);
     }
 
 

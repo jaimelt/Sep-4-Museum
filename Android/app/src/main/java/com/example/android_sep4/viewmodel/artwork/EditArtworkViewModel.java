@@ -5,6 +5,7 @@ import android.net.Uri;
 import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.repositories.ArtworksRepository;
 
 public class EditArtworkViewModel extends ViewModel {
@@ -48,6 +49,11 @@ public class EditArtworkViewModel extends ViewModel {
         artwork.setDescription(description);
         artwork.setImage(image);
         artworksRepository.editArtwork(artwork, position);
+    }
+
+    public void editArtworkMeasurements(int minTemp, int maxTemp, int minLight, int maxLight, int minCO2, int maxCO2, int minHum, int maxHum)
+    {
+        artwork.setArtworkMeasurements(minTemp, maxTemp, minLight, maxLight, minCO2, maxCO2, minHum, maxHum);
     }
 
     public Uri getImage() {

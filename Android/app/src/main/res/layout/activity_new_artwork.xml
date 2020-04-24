@@ -38,7 +38,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:orientation="vertical">
             <RelativeLayout
@@ -101,18 +101,20 @@
 
                     <EditText
                         android:id="@+id/authorField"
-                        android:layout_width="wrap_content"
+                        style="@style/EditViewStyle"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        style="@style/EditViewStyle"
+                        android:autofillHints=""
                         android:backgroundTint="@color/white"
+                        android:hint="@string/touch"
                         android:inputType="textPersonName"
-                        tools:ignore="UnusedAttribute" />
+                        tools:ignore="LabelFor,UnusedAttribute" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
@@ -127,7 +129,9 @@
                         android:text="@string/type"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/colorAccent" />
-
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
                     <RadioGroup
                         android:id="@+id/radioType"
                         android:layout_width="wrap_content"
@@ -169,6 +173,7 @@
                             android:layout_height="32dp"
                             android:text="@string/photography" />
                     </RadioGroup>
+                    </HorizontalScrollView>
                 </LinearLayout>
 
                 <RelativeLayout
@@ -184,10 +189,11 @@
                         android:layout_marginTop="15dp"
                         android:background="@drawable/edit_border"
                         android:ems="10"
+                        android:hint="@string/touch"
+                        android:importantForAutofill="no"
                         android:inputType="textMultiLine"
                         android:lines="10"
                         android:minLines="4"
-                        android:importantForAutofill="no"
                         android:paddingStart="15dp"
                         android:paddingEnd="10dp"
                         tools:ignore="LabelFor" />
@@ -206,6 +212,7 @@
                 </RelativeLayout>
 
             </LinearLayout>
+            <include layout="@layout/conditions"/>
 
         </LinearLayout>
     </ScrollView>
