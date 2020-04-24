@@ -47,11 +47,11 @@ public class ArtworksRepository {
         String artwork8 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork8").toString();
         String artwork9 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork9").toString();
         String artwork10 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork10").toString();
-        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", artwork1, "Painting", "Your Dick1", "A1"));
-        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", artwork2, "Drawing", "Your Dick2", "A2"));
-        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", artwork3, "Ceramics", "Your Dick3", "A3"));
-        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", artwork4, "Photo", "Your Dick4", "B1"));
-        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", artwork5, "Painting", "Your Dick5", "B2"));
+        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", artwork1, "Painting", "Adamo Davide Romano", "A1"));
+        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", artwork2, "Drawing", "Giovanni Baglione", "A2"));
+        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", artwork3, "Ceramics", "Kalynn Campbell", "A3"));
+        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", artwork4, "Photo", "Eugène Delacroix", "B1"));
+        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", artwork5, "Painting", "Piero della Francesca", "B2"));
         artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6", artwork6, "Drawing", "Your Dick6", "B3"));
         artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", artwork7, "Ceramics", "Your Dick7", "B4"));
         artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", artwork8, "Photo", "Your Dick8", "A1"));

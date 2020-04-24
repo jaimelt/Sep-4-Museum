@@ -78,7 +78,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private void setText()
     {
         //TODO: How to set image
-        nameField.setHint(editArtworkViewModel.getName());
+        nameField.setText(editArtworkViewModel.getName());
         authorField.setHint(editArtworkViewModel.getAuthor());
         descriptionField.setHint(editArtworkViewModel.getDescription());
         imageHolder.setImageURI(editArtworkViewModel.getImage());
@@ -128,8 +128,16 @@ public class EditArtworkActivity extends AppCompatActivity {
 
         int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
+        String name = "";
+        if(!nameField.getText().toString().isEmpty())
+        {
+            name = nameField.getText().toString();
+        }
+        else
+        {
+            name = nameField.getHint().toString();
+        }
 
-        String name = nameField.getText().toString();
         String author = authorField.getText().toString();
         String type = selectedRadioButtonType.getText().toString();
         String location = selectedRadioButtonLocation.getText().toString();
