@@ -1,5 +1,6 @@
 package com.example.android_sep4.adapters;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         holder.artworkDescription.setText(artworks.get(position).getDescription());
         holder.artworkAuthor.setText(artworks.get(position).getAuthor());
 
+        setColors(artworks.get(position).getType(), holder);
         //TODO:Setting image from local storage
 
     }
@@ -91,6 +93,7 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         protected void publishResults(CharSequence constraint, FilterResults results) {
             //Clean the original list of artworks and we want to replace it with filtered list
             artworks.clear();
@@ -130,6 +133,25 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
 
     public interface OnListItemClickListener {
         void onListItemClick(int clickedItemIndex);
+    }
+
+    private void setColors(String type, ViewHolder holder)
+    {
+       switch (type){
+           case "Painting":
+               holder.artworkType.setTextColor(Color.parseColor("#4ACFAC"));
+               break;
+           case "Drawing":
+               holder.artworkType.setTextColor(Color.parseColor("#FFA48E"));
+               break;
+           case "Ceramics":
+               holder.artworkType.setTextColor(Color.parseColor("#F45C51"));
+               break;
+           case "Photo":
+               holder.artworkType.setTextColor(Color.parseColor("#7E8CE0"));
+               break;
+       }
+
     }
 
 }

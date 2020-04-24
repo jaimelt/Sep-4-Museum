@@ -140,7 +140,7 @@
 
                         <RadioButton
                             android:id="@+id/painting"
-                            style="@style/ArtworkTypeRB"
+                            style="@style/ArtworkRB"
                             android:layout_width="wrap_content"
                             android:layout_height="32dp"
                             android:layout_marginEnd="12dp"
@@ -150,7 +150,7 @@
 
                         <RadioButton
                             android:id="@+id/drawing"
-                            style="@style/ArtworkTypeRB"
+                            style="@style/ArtworkRB"
                             android:layout_width="wrap_content"
                             android:layout_height="32dp"
                             android:layout_marginEnd="12dp"
@@ -160,7 +160,7 @@
 
                         <RadioButton
                             android:id="@+id/ceramics"
-                            style="@style/ArtworkTypeRB"
+                            style="@style/ArtworkRB"
                             android:layout_width="wrap_content"
                             android:layout_height="32dp"
                             android:layout_marginEnd="12dp"
@@ -168,7 +168,7 @@
                             android:text="@string/ceramics" />
                         <RadioButton
                             android:id="@+id/photo"
-                            style="@style/ArtworkTypeRB"
+                            style="@style/ArtworkRB"
                             android:layout_width="wrap_content"
                             android:layout_height="32dp"
                             android:text="@string/photography" />
