@@ -36,10 +36,15 @@ public class EditArtworkViewModel extends ViewModel {
         return artwork.getAuthor();
     }
 
-    public void editArtwork(String name, String author, String type, String description, String image, int position) {
+    public String getLocation() {
+        return artwork.getLocation();
+    }
+
+    public void editArtwork(String name, String author, String type, String location, String description, String image, int position) {
         artwork.setName(name);
         artwork.setAuthor(author);
         artwork.setType(type);
+        artwork.setLocation(location);
         artwork.setDescription(description);
         artwork.setImage(image);
         artworksRepository.editArtwork(artwork, position);
@@ -48,4 +53,6 @@ public class EditArtworkViewModel extends ViewModel {
     public Uri getImage() {
         return Uri.parse(artwork.getImage());
     }
+
+
 }

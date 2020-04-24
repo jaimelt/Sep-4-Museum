@@ -162,6 +162,12 @@
                             android:layout_marginEnd="12dp"
                             android:minWidth="70dp"
                             android:text="@string/ceramics" />
+                        <RadioButton
+                            android:id="@+id/photo"
+                            style="@style/ArtworkTypeRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="@string/photography" />
                     </RadioGroup>
                 </LinearLayout>
 

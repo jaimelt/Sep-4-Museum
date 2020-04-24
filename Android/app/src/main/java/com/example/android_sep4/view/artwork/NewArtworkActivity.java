@@ -86,7 +86,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         String type = selectedRadioButton.getText().toString();
         String description = descriptionField.getText().toString();
         String image = convertImageToString();
-        newArtworkViewModel.addArtwork(name, author, type, description, image);
+        newArtworkViewModel.addArtwork(name, author, type, description, image, "Storage");
         finish();
         Toast.makeText(this, name + " artwork added to the list", Toast.LENGTH_SHORT).show();
     }

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:gravity="fill"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/edit_artwork_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,14 +89,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
                         android:text="@string/author"
-                        android:textColor="@color/colorAccent"/>
+                        android:textColor="@color/colorAccent" />
 
                     <EditText
                         android:id="@+id/authorField"
+                        style="@style/EditViewStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        style="@style/EditViewStyle"
                         android:backgroundTint="@color/white"
                         android:inputType="textPersonName"
                         tools:ignore="UnusedAttribute" />
@@ -115,8 +116,8 @@
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/type"
                         android:layout_marginBottom="10dp"
+                        android:text="@string/type"
                         android:textColor="@color/colorAccent" />
 
                     <RadioGroup
@@ -132,7 +133,6 @@
                             android:layout_height="32dp"
                             android:layout_marginEnd="12dp"
                             android:layout_weight="1"
-                            android:minWidth="70dp"
                             android:text="@string/painting" />
 
                         <RadioButton
@@ -142,7 +142,6 @@
                             android:layout_height="32dp"
                             android:layout_marginEnd="12dp"
                             android:layout_weight="1"
-                            android:minWidth="80dp"
                             android:text="@string/drawing" />
 
                         <RadioButton
@@ -151,16 +150,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="32dp"
                             android:layout_marginEnd="12dp"
-                            android:minWidth="70dp"
                             android:text="@string/ceramics" />
+
+                        <RadioButton
+                            android:id="@+id/photo"
+                            style="@style/ArtworkTypeRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="@string/photography" />
                     </RadioGroup>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:gravity="start"
                     android:orientation="vertical">
 
@@ -168,45 +174,72 @@
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/location"
                         android:layout_marginBottom="10dp"
+                        android:text="@string/location"
                         android:textColor="@color/colorAccent" />
 
                     <RadioGroup
-                        android:id="@+id/radioLocation"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/locationGroup1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/artworkTypeRB"
+                            android:id="@+id/a1"
                             style="@style/ArtworkTypeRB"
                             android:layout_width="wrap_content"
                             android:layout_height="32dp"
                             android:layout_marginEnd="12dp"
-                            android:layout_weight="1"
-                            android:minWidth="70dp"
-                            android:text="@string/painting" />
+                            android:minWidth="40dp"
+                            android:text="@string/room_a1" />
 
                         <RadioButton
-                            android:id="@+id/artworkTypeRB2"
+                            android:id="@+id/a2"
                             style="@style/ArtworkTypeRB"
                             android:layout_width="wrap_content"
                             android:layout_height="32dp"
                             android:layout_marginEnd="12dp"
-                            android:layout_weight="1"
-                            android:minWidth="80dp"
-                            android:text="@string/drawing" />
+                            android:minWidth="40dp"
+                            android:text="@string/room_a2" />
 
                         <RadioButton
+                            android:id="@+id/a3"
                             style="@style/ArtworkTypeRB"
                             android:layout_width="wrap_content"
                             android:layout_height="32dp"
                             android:layout_marginEnd="12dp"
-                            android:minWidth="70dp"
+                            android:minWidth="40dp"
+                            android:text="@string/room_a3" />
+
+                        <RadioButton
+                            android:id="@+id/storage"
+                            style="@style/ArtworkTypeRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="12dp"
+                            android:minWidth="40dp"
                             android:text="@string/storage" />
+
+                        <RadioButton
+                            android:id="@+id/b1"
+                            style="@style/ArtworkTypeRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="12dp"
+                            android:minWidth="40dp"
+                            android:text="@string/room_b1" />
+
+                        <RadioButton
+                            android:id="@+id/b2"
+                            style="@style/ArtworkTypeRB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:minWidth="40dp"
+                            android:text="@string/room_b2" />
+
                     </RadioGroup>
                 </LinearLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
@@ -220,10 +253,10 @@
                         android:layout_marginTop="15dp"
                         android:background="@drawable/edit_border"
                         android:ems="10"
+                        android:importantForAutofill="no"
                         android:inputType="textMultiLine"
                         android:lines="10"
                         android:minLines="4"
-                        android:importantForAutofill="no"
                         android:paddingStart="15dp"
                         android:paddingEnd="10dp"
                         tools:ignore="LabelFor" />

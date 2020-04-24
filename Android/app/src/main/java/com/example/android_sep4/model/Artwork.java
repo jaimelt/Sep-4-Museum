@@ -21,10 +21,13 @@ public class Artwork {
     @SerializedName("author")
     private String author;
 
+    @SerializedName("location")
+    private String location;
+
     @SerializedName("artworkMeasurements")
     private ArtworkMeasurements artworkMeasurements;
 
-    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author)
+    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author, String location)
     {
         this.artworkMeasurements = artworkMeasurements;
         this.name = name;
@@ -32,6 +35,7 @@ public class Artwork {
         this.image = image;
         this.type = type;
         this.author = author;
+        this.location = location;
     }
 
     public int getID() {
@@ -80,5 +84,13 @@ public class Artwork {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

@@ -10,15 +10,16 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.artwork.EditArtworkViewModel;
+import com.whygraphics.multilineradiogroup.MultiLineRadioGroup;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
@@ -30,6 +31,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private EditText nameField;
     private EditText authorField;
     private RadioGroup typeGroup;
+    private RadioGroup locationGroup;
     private EditText descriptionField;
     private int position;
 
@@ -54,10 +56,10 @@ public class EditArtworkActivity extends AppCompatActivity {
         nameField = findViewById(R.id.nameField);
         authorField = findViewById(R.id.authorField);
         typeGroup = findViewById(R.id.radioType);
+        locationGroup = findViewById(R.id.locationGroup1);
         descriptionField = findViewById(R.id.descriptionField);
 
         setText();
-        Button button = findViewById(R.id.artworkButton);
     }
 
     @Override
@@ -82,10 +84,20 @@ public class EditArtworkActivity extends AppCompatActivity {
         imageHolder.setImageURI(editArtworkViewModel.getImage());
 
         String type = editArtworkViewModel.getType();
-        for(int i = 0; i < 3; i ++)
+        for(int i = 0; i < typeGroup.getChildCount(); i ++)
         {
             RadioButton radioButton =  (RadioButton)typeGroup.getChildAt(i);
             if(radioButton.getText().toString().equals(type))
+            {
+                radioButton.setChecked(true);
+            }
+        }
+
+        String location = editArtworkViewModel.getLocation();
+        for(int i = 0; i < locationGroup.getChildCount(); i++)
+        {
+            RadioButton radioButton = (RadioButton) locationGroup.getChildAt(i);
+            if(radioButton.getText().toString().equals(location))
             {
                 radioButton.setChecked(true);
             }
@@ -111,15 +123,19 @@ public class EditArtworkActivity extends AppCompatActivity {
 
     public void onCreateArtwork(View view)
     {
-        int selectedId = typeGroup.getCheckedRadioButtonId();
-        RadioButton selectedRadioButton = findViewById(selectedId);
+        int selectedIdType = typeGroup.getCheckedRadioButtonId();
+        RadioButton selectedRadioButtonType = findViewById(selectedIdType);
+
+        int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
+        RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
 
         String name = nameField.getText().toString();
         String author = authorField.getText().toString();
-        String type = selectedRadioButton.getText().toString();
+        String type = selectedRadioButtonType.getText().toString();
+        String location = selectedRadioButtonLocation.getText().toString();
         String description = descriptionField.getText().toString();
         String image = convertImageToString();
-        editArtworkViewModel.editArtwork(name, author, type, description, image, position);
+        editArtworkViewModel.editArtwork(name, author, type, location, description, image, position);
         finish();
         Toast.makeText(this, name + " artwork edited", Toast.LENGTH_SHORT).show();
     }

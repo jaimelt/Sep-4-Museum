@@ -22,5 +22,14 @@
     <string name="ceramics">Ceramics</string>
     <string name="edit_artwork">Edit artwork</string>
     <string name="storage">Storage</string>
+    <string name="photography">Photo</string>
+    <string name="room_a1">A1</string>
+    <string name="room_a2">A2</string>
+    <string name="room_a3">A3</string>
+    <string name="room_b1">B1</string>
+    <string name="room_b2">B2</string>
+    <string name="room_b3">B3</string>
+    <string name="room_b4">B4</string>
+    <string name="room_storage">Storage</string>
 
 </resources>
