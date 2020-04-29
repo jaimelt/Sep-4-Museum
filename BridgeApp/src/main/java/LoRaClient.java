@@ -11,13 +11,14 @@ import java.util.concurrent.CompletionStage;
 
 public class LoRaClient implements WebSocket.Listener {
     private IDatabase database;
+    private final String TOKEN = "??????????????????????????????=";
 
     public LoRaClient() {
         database = new MongoDbDatabase();
 
         HttpClient client = HttpClient.newHttpClient();
         CompletableFuture<WebSocket> ws = client.newWebSocketBuilder()
-                .buildAsync(URI.create("wss://iotnet.teracom.dk/app?token=??????????????????????????????="), this);
+                .buildAsync(URI.create("wss://iotnet.teracom.dk/app?token=" + TOKEN), this);
     }
 
     //onOpen()
@@ -38,7 +39,7 @@ public class LoRaClient implements WebSocket.Listener {
     public CompletionStage<?> onClose(WebSocket webSocket, int statusCode, String reason) {
         System.out.println("WebSocket closed!");
         System.out.println("Status:" + statusCode + " Reason: " + reason);
-        return null; //new CompletableFuture().completedFuture("onClose() completed.").thenAccept(System.out::println);
+        return new CompletableFuture().completedFuture("onClose() completed.").thenAccept(System.out::println);
     }
 
     //onPing()
@@ -46,7 +47,7 @@ public class LoRaClient implements WebSocket.Listener {
         webSocket.request(1);
         System.out.println("Ping: Client ---> Server");
         System.out.println(message.asCharBuffer().toString());
-        return null; // new CompletableFuture().completedFuture("Ping completed.").thenAccept(System.out::println);
+        return new CompletableFuture().completedFuture("Ping completed.").thenAccept(System.out::println);
     }
 
     //onPong()
@@ -54,7 +55,7 @@ public class LoRaClient implements WebSocket.Listener {
         webSocket.request(1);
         System.out.println("Pong: Client ---> Server");
         System.out.println(message.asCharBuffer().toString());
-        return null; // new CompletableFuture().completedFuture("Pong completed.").thenAccept(System.out::println);
+        return new CompletableFuture().completedFuture("Pong completed.").thenAccept(System.out::println);
     }
 
     //onText()
@@ -63,7 +64,7 @@ public class LoRaClient implements WebSocket.Listener {
         webSocket.request(1);
         var dataAsString = data.toString();
         parseAndInsertData(dataAsString);
-        return null; // new CompletableFuture().completedFuture("onText() completed.").thenAccept(System.out::println);
+        return new CompletableFuture().completedFuture("onText() completed.").thenAccept(System.out::println);
     }
 
     private void parseAndInsertData(String jsonTelegram) {
