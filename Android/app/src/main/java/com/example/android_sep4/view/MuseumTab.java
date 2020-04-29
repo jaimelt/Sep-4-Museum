@@ -78,7 +78,7 @@ public class MuseumTab extends Fragment {
     }
 
     public void openRoomA2ClickListener() {
-        a1.setOnClickListener(new View.OnClickListener() {
+        a2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RoomA2Activity.class);
@@ -90,7 +90,7 @@ public class MuseumTab extends Fragment {
     }
 
     public void openRoomA3ClickListener() {
-        a1.setOnClickListener(new View.OnClickListener() {
+        a3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RoomA3Activity.class);
@@ -102,7 +102,7 @@ public class MuseumTab extends Fragment {
     }
 
     public void openRoomB1ClickListener() {
-        a1.setOnClickListener(new View.OnClickListener() {
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RoomB1Activity.class);
@@ -114,7 +114,7 @@ public class MuseumTab extends Fragment {
     }
 
     public void openRoomB2ClickListener() {
-        a1.setOnClickListener(new View.OnClickListener() {
+        b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RoomB2Activity.class);
@@ -126,7 +126,7 @@ public class MuseumTab extends Fragment {
     }
 
     public void openRoomB3ClickListener() {
-        a1.setOnClickListener(new View.OnClickListener() {
+        b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RoomB3Activity.class);
@@ -138,7 +138,7 @@ public class MuseumTab extends Fragment {
     }
 
     public void openRoomB4ClickListener() {
-        a1.setOnClickListener(new View.OnClickListener() {
+        b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RoomB4Activity.class);
