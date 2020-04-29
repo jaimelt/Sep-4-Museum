@@ -25,9 +25,9 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0 :
-                return new ArtworksTab();
-            case 1 :
                 return new MuseumTab();
+            case 1 :
+                return new ArtworksTab();
             case 2 :
                 return new RoomsTab();
             default:

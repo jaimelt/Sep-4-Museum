@@ -54,7 +54,6 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
     private Drawable deleteIcon;
     static final String EXTRA_ARTWORK = "Artwork name";
 
-
     public ArtworksTab() {
         // Required empty public constructor
     }

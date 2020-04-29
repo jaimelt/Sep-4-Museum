@@ -1,10 +1,5 @@
 package com.example.android_sep4.view.artwork;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,14 +7,17 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.artwork.EditArtworkViewModel;
-import com.whygraphics.multilineradiogroup.MultiLineRadioGroup;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
