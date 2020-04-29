@@ -59,4 +59,8 @@ public class LoRaClient implements WebSocket.Listener {
         webSocket.request(1);
         return null; // new CompletableFuture().completedFuture("onText() completed.").thenAccept(System.out::println);
     }
+
+    void parseAndInsertData(String jsonTelegram){
+        
+    }
 }
