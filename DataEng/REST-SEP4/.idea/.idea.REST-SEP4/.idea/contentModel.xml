@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="REST-SEP4" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="ArtworksController.cs" t="Include" />
+        </e>
+        <e p="Database" t="Include">
+          <e p="RoomContext.cs" t="Include" />
+        </e>
+        <e p="Datamodel" t="Include">
+          <e p="Artwork.cs" t="Include" />
+          <e p="ArtworkMeasurements.cs" t="Include" />
+          <e p="Measurements.cs" t="Include" />
+          <e p="Room.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20200429062047_InitialCreate.cs" t="Include" />
+          <e p="20200429062047_InitialCreate.Designer.cs" t="Include" />
+          <e p="RoomContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="museum.db" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="REST-SEP4.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="REST-SEP4.csproj" t="IncludeRecursive" />
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="REST-SEP4.sln" t="IncludeFlat" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_REST-SEP4.-689269365.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+  </component>
+</project>
