@@ -21,7 +21,7 @@ public interface ArtworkEndpoints {
     Call<Artwork> getArtwork(@Path("id") int id);
 
     @POST("/artworks")
-    Call<Artwork> addArtwork();
+    Call<Artwork> addArtwork(Artwork artwork);
 
     @PUT("/artworks?id={id}")
     Call<Artwork> editArtwork(@Path("id") int id);
