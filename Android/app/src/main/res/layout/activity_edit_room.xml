@@ -1,0 +1,136 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    >
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Optimal Conditions For This Room"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <TextView
+        android:id="@+id/editTemperatureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:text="Temperature : "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
+        android:id="@+id/editTemperatureEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="72dp"
+        android:inputType="number"
+        android:text="New Value"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/editTemperatureTextView"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/editHumidityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Humidity : "
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTemperatureTextView" />
+
+    <EditText
+        android:id="@+id/editHumidityEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:inputType="number"
+        android:text="New Value"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/editHumidityTextView"
+        app:layout_constraintTop_toBottomOf="@+id/editTemperatureEditText" />
+
+    <TextView
+        android:id="@+id/editCo2textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/co2"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editHumidityTextView" />
+
+    <EditText
+        android:id="@+id/editCo2EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:inputType="number"
+        android:text="New Value"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/editCo2textView"
+        app:layout_constraintTop_toBottomOf="@+id/editHumidityEditText" />
+
+    <TextView
+        android:id="@+id/editLightTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:text="@string/light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCo2textView" />
+
+    <EditText
+        android:id="@+id/editLightEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:inputType="number"
+        android:text="New Value"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/editLightTextView"
+        app:layout_constraintTop_toBottomOf="@+id/editCo2EditText" />
+
+    <Button
+        android:id="@+id/buttonSaveChanges"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:text="Save Changes"
+        android:onClick="onEditRoomOptimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editLightEditText"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

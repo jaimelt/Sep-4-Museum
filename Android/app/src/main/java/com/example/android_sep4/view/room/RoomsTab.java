@@ -1,5 +1,6 @@
-package com.example.android_sep4.view;
+package com.example.android_sep4.view.room;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapterRooms;
 import com.example.android_sep4.model.Room;
+import com.example.android_sep4.view.artwork.EditArtworkActivity;
 import com.example.android_sep4.viewmodel.RoomsTabViewModel;
 
 import org.w3c.dom.Text;
@@ -35,6 +37,7 @@ public class RoomsTab extends Fragment {
 
     private RoomsTabViewModel roomsTabViewModel;
     private RecyclerViewAdapterRooms adapter;
+    static final String EXTRA_ROOM = "Room Name";
 
 
 
@@ -71,4 +74,9 @@ public class RoomsTab extends Fragment {
         recyclerView.setLayoutManager(llm);
     }
 
+    public void onListItemClick(int clickedItemIndex) {
+        Intent intent = new Intent(getActivity(), EditRoomActivity.class);
+        intent.putExtra(EXTRA_ROOM, clickedItemIndex);
+        startActivity(intent);
+    }
 }
