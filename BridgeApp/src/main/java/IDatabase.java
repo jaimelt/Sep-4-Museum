@@ -1,3 +1,3 @@
 public interface IDatabase {
-    void insert(int co2, int humidity, int temperature, int roomId);
+    void insert(double co2, double humidity, double temperature, int roomId);
 }

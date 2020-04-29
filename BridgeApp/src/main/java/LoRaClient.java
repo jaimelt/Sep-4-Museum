@@ -61,6 +61,5 @@ public class LoRaClient implements WebSocket.Listener {
     }
 
     void parseAndInsertData(String jsonTelegram){
-        
     }
 }
