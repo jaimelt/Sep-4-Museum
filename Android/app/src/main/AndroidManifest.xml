@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android_sep4">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".view.rooms.PopUp"
+            android:theme="@style/AppTheme.PopUpTheme" />
+        <activity android:name=".view.rooms.RoomB4Activity" />
+        <activity android:name=".view.rooms.RoomB3Activity" />
+        <activity android:name=".view.rooms.RoomB2Activity" />
+        <activity android:name=".view.rooms.RoomB1Activity" />
+        <activity android:name=".view.rooms.RoomA3Activity" />
+        <activity android:name=".view.rooms.RoomA2Activity" />
+        <activity android:name=".view.rooms.RoomA1Activity" />
+        <activity android:name=".view.artwork.SpecificArtworkActivity" />
+        <activity
+            android:name=".view.artwork.EditArtworkActivity"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.artwork.NewArtworkActivity"
+            android:parentActivityName=".view.MainActivity" />
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

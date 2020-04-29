@@ -1,4 +1,4 @@
-package com.example.android_sep4.viewmodel;
+package com.example.android_sep4.viewmodel.artwork;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

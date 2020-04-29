@@ -1,4 +1,7 @@
-package com.example.android_sep4.view;
+package com.example.android_sep4.view.artwork;
+
+
+import android.content.Intent;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,39 +14,45 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
+
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.SearchView;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.adapters.RecyclerViewAdapter;
+import com.example.android_sep4.adapters.RecyclerViewAdapterArtworks;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.viewmodel.ArtworksTabViewModel;
+
+import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ArtworksTab extends Fragment {
+public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks.OnListItemClickListener {
     private ArtworksTabViewModel artworksTabViewModel;
-    private RecyclerViewAdapter adapter;
+    private RecyclerViewAdapterArtworks adapter;
     private int removedPosition = 0;
     private Artwork removedArtwork;
     private Drawable deleteIcon;
-
+    static final String EXTRA_ARTWORK = "Artwork name";
 
     public ArtworksTab() {
         // Required empty public constructor
@@ -53,15 +62,26 @@ public class ArtworksTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setViewModel();
+        setHasOptionsMenu(true);
         deleteIcon = ContextCompat.getDrawable(Objects.requireNonNull(this.getContext()), R.drawable.ic_delete);
         return inflater.inflate(R.layout.fragment_artworks_tab, container, false);
+
     }
 
-    public void setViewModel() {
-        artworksTabViewModel = ViewModelProviders.of(this).get(ArtworksTabViewModel.class);
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //update list when getting back from add activity
+        adapter.notifyDataSetChanged();
+    }
+
+    private void setViewModel() {
+        artworksTabViewModel = new ViewModelProvider(this).get(ArtworksTabViewModel.class);
         artworksTabViewModel.init();
 
-        artworksTabViewModel.getArtworks().observe(this, new Observer<List<Artwork>>() {
+        artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), new Observer<List<Artwork>>() {
+
             @Override
             public void onChanged(List<Artwork> artworks) {
                 adapter.notifyDataSetChanged();
@@ -72,14 +92,16 @@ public class ArtworksTab extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new RecyclerViewAdapter(artworksTabViewModel.getArtworks().getValue());
+        adapter = new RecyclerViewAdapterArtworks(artworksTabViewModel.getArtworks().getValue(), this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
+        onClickListenerFAB(view);
     }
 
-    ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+    private ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
@@ -112,7 +134,7 @@ public class ArtworksTab extends Fragment {
             background.setBounds(itemView.getLeft(), itemView.getTop(), ((int) dX), itemView.getBottom());
             background.draw(c);
 
-            int iconMargin = (itemView.getHeight() - deleteIcon.getIntrinsicHeight()) /2;
+            int iconMargin = (itemView.getHeight() - deleteIcon.getIntrinsicHeight()) / 2;
             deleteIcon.setBounds(itemView.getLeft() + iconMargin, itemView.getTop() + iconMargin, itemView.getLeft() + iconMargin + deleteIcon.getIntrinsicWidth(), itemView.getBottom() - iconMargin);
             deleteIcon.draw(c);
 
@@ -120,5 +142,42 @@ public class ArtworksTab extends Fragment {
         }
     };
 
+    private void onClickListenerFAB(View view) {
+        FloatingActionButton myFab = view.findViewById(R.id.fab);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), NewArtworkActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
+    @Override
+    public void onListItemClick(int clickedItemIndex) {
+        Intent intent = new Intent(getActivity(), EditArtworkActivity.class);
+        intent.putExtra(EXTRA_ARTWORK, clickedItemIndex);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    {
+        inflater.inflate(R.menu.toolbar_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            //To have real time filtering
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 }

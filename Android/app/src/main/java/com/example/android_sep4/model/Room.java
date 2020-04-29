@@ -5,45 +5,33 @@ import java.util.ArrayList;
 public class Room {
     private String locationCode;
     private String description;
-    private String roomType;
     private int currentCapacity;
     private int totalCapacity;
     private ArrayList<Artwork> artworkList;
-    private Measurements measurements;
+    private OptimalConditions optimalConditions;
+    private boolean expanded;
 
-    public Room(ArrayList<Artwork> artworkList, Measurements measurements, String locationCode, String description, String roomType, int totalCapacity, int currentCapacity)
+    public Room(ArrayList<Artwork> artworkList, OptimalConditions optimalConditions, String locationCode, String description, int totalCapacity, int currentCapacity)
     {
         this.locationCode = locationCode;
         this.description = description;
-        this.roomType = roomType;
         this.totalCapacity = totalCapacity;
         this.currentCapacity = currentCapacity;
-        //TODO: currentCapacity = 0 ?
-
+        this.expanded = false;
         this.artworkList = artworkList;
-        this.measurements = measurements;
+        this.optimalConditions = optimalConditions;
     }
 
-    public void addArtwork(Artwork artwork)
-    {
-        artworkList.add(artwork);
+    public OptimalConditions getOptimalConditions() {
+        return optimalConditions;
     }
 
-    public void deleteArtwork(Artwork artwork)
-    {
-        artworkList.remove(artwork);
+    public void setOptimalConditions(OptimalConditions optimalConditions) {
+        this.optimalConditions = optimalConditions;
     }
+    public boolean isExpanded(){return expanded;}
 
-    public void deleteArtworkByID(String ID)
-    {
-        for(Artwork artwork:artworkList)
-        {
-            if(artwork.getID().equals(ID))
-            {
-                artworkList.remove(artwork);
-            }
-        }
-    }
+    public void setExpanded( boolean expanded){this.expanded = expanded;}
 
     public String getLocationCode() {
         return locationCode;
@@ -59,14 +47,6 @@ public class Room {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
     }
 
     public int getCurrentCapacity() {

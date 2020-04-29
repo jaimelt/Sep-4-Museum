@@ -1,15 +1,33 @@
 package com.example.android_sep4.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Artwork {
-    private String ID;
+    @SerializedName("id")
+    private int id;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("description")
     private String description;
+
+    @SerializedName("image")
     private String image;
+
+    @SerializedName("type")
     private String type;
+
+    @SerializedName("author")
     private String author;
+
+    @SerializedName("location")
+    private String location;
+
+    @SerializedName("artworkMeasurements")
     private ArtworkMeasurements artworkMeasurements;
 
-    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author)
+    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author, String location)
     {
         this.artworkMeasurements = artworkMeasurements;
         this.name = name;
@@ -17,14 +35,15 @@ public class Artwork {
         this.image = image;
         this.type = type;
         this.author = author;
+        this.location = location;
     }
 
-    public String getID() {
-        return ID;
+    public int getID() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setID(int ID) {
+        this.id = ID;
     }
 
     public String getName() {
@@ -65,5 +84,21 @@ public class Artwork {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public ArtworkMeasurements getArtworkMeasurements() {
+        return artworkMeasurements;
+    }
+
+    public void setArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {
+        artworkMeasurements = new ArtworkMeasurements(maxLight, minLight, maxTemp, minTemp, maxHum, minHum, maxCO2, minCO2);
     }
 }
