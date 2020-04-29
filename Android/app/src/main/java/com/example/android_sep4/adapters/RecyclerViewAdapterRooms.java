@@ -1,6 +1,5 @@
 package com.example.android_sep4.adapters;
 
-import android.icu.text.Transliterator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Room;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -42,11 +39,11 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
     public void onBindViewHolder(@NonNull RecyclerViewAdapterRooms.ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
         Room room = rooms.get(position);
-        holder.locationCode.setText(room.getLocationCode()+" - "+room.getRoomType());
-        holder.co2Value.setText(Integer.toString(room.getMeasurements().getCo2()));
-        holder.lightValue.setText(Integer.toString(room.getMeasurements().getLight()));
-        holder.temperatureValue.setText(Integer.toString(room.getMeasurements().getTemperature()));
-        holder.humidityValue.setText(Integer.toString(room.getMeasurements().getHumidity()));
+        holder.locationCode.setText(room.getLocationCode());
+        holder.co2Value.setText(Integer.toString(room.getOptimalConditions().getCo2()));
+        holder.lightValue.setText(Integer.toString(room.getOptimalConditions().getLight()));
+        holder.temperatureValue.setText(Integer.toString(room.getOptimalConditions().getTemp()));
+        holder.humidityValue.setText(Integer.toString(room.getOptimalConditions().getHumidity()));
         holder.roomCapacity.setText(Integer.toString(room.getTotalCapacity()));
         holder.currentCapacity.setText(Integer.toString(room.getCurrentCapacity()));
         holder.description.setText(room.getDescription());

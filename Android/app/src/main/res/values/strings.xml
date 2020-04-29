@@ -39,5 +39,9 @@
     <string name="min">min.</string>
     <string name="max">max.</string>
     <string name="touch">Touch to write</string>
+    <string name="temperature_unit">°C</string>
+    <string name="light_unit">lx</string>
+    <string name="co2_unit">ppm</string>
+    <string name="humidity_unit">mg/L</string>
 
 </resources>

@@ -51,9 +51,9 @@ public class EditArtworkViewModel extends ViewModel {
         artworksRepository.editArtwork(artwork, position);
     }
 
-    public void editArtworkMeasurements(int minTemp, int maxTemp, int minLight, int maxLight, int minCO2, int maxCO2, int minHum, int maxHum)
+    public void editArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2)
     {
-        artwork.setArtworkMeasurements(minTemp, maxTemp, minLight, maxLight, minCO2, maxCO2, minHum, maxHum);
+        artwork.setArtworkMeasurements(maxLight, minLight, maxTemp, minTemp, maxHum, minHum, maxCO2, minCO2);
     }
 
     public Uri getImage() {

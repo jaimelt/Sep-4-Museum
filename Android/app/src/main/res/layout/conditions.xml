@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:columnCount="5">
+            android:columnCount="6">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,6 +59,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/temperature_unit"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@color/colorAccent"
                 android:text="@string/light"/>
             <TextView
@@ -91,6 +96,11 @@
                 android:inputType="textPersonName"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/light_unit"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -130,6 +140,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/co2_unit"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@color/colorAccent"
                 android:text="@string/humidity"/>
             <TextView
@@ -162,5 +177,10 @@
                 android:inputType="textPersonName"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/humidity_unit"/>
         </GridLayout>
 </LinearLayout>
