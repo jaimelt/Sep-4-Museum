@@ -153,7 +153,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
         int minHumInt = Integer.parseInt(minHum.getText().toString());
         int maxHumInt = Integer.parseInt(maxHum.getText().toString());
-       editArtworkViewModel.editArtworkMeasurements(minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, minHumInt, maxHumInt);
+       editArtworkViewModel.editArtworkMeasurements(maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
         finish();
         Toast.makeText(this, name + " artwork edited", Toast.LENGTH_SHORT).show();
     }

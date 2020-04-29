@@ -1,16 +1,17 @@
 package com.example.android_sep4.model;
 
-public class Measurements {
-    private int co2;
-    private int temperature;
+public class OptimalConditions {
     private int light;
+    private int temp;
     private int humidity;
+    private int co2;
 
-    public Measurements(int co2, int temperature, int light, int humidity) {
-        this.co2 = co2;
-        this.humidity = humidity;
+    public OptimalConditions(int light, int temp, int humidity, int co2) {
         this.light = light;
-        this.temperature = temperature;
+        this.temp = temp;
+        this.humidity = humidity;
+        this.co2 = co2;
+
     }
 
     public int getCo2() {
@@ -21,12 +22,12 @@ public class Measurements {
         this.co2 = co2;
     }
 
-    public int getTemperature() {
-        return temperature;
+    public int getTemp() {
+        return temp;
     }
 
-    public void setTemperature(int temperature) {
-        this.temperature = temperature;
+    public void setTemp(int temp) {
+        this.temp = temp;
     }
 
     public int getLight() {

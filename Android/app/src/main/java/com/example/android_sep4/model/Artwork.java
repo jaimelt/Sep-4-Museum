@@ -98,7 +98,7 @@ public class Artwork {
         return artworkMeasurements;
     }
 
-    public void setArtworkMeasurements(int minTemp, int maxTemp, int minLight, int maxLight, int minCO2, int maxCO2, int minHum, int maxHum) {
-        artworkMeasurements = new ArtworkMeasurements(minTemp, maxTemp, minLight, maxLight, minCO2, maxCO2, minHum, maxHum);
+    public void setArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {
+        artworkMeasurements = new ArtworkMeasurements(maxLight, minLight, maxTemp, minTemp, maxHum, minHum, maxCO2, minCO2);
     }
 }

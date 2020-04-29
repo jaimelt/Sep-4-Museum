@@ -3,7 +3,7 @@ package com.example.android_sep4.repositories;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.Measurements;
+import com.example.android_sep4.model.OptimalConditions;
 import com.example.android_sep4.model.Room;
 
 import java.util.ArrayList;
@@ -29,13 +29,13 @@ public class RoomRepository {
     }
 
     private void setRooms() {
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(300, 30, 1422, 40), "A1", "good room", "Paintings", 10, 6));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(500, 20, 5990, 40), "A2", "bad room", "Stone", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(100, 15, 5990, 40), "A3", "excellent room", "Fresca", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(600, 33, 5990, 40), "B1", "worst room", "Medieval", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(800, 34, 5990, 40), "B2", "goddest room", "Modern", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(900, 99, 5990, 40), "B3", "sex room", "Rustic", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new Measurements(300, 35, 5990, 40), "B4", "play room", "Peric", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new OptimalConditions(30, 30, 1422, 40), "A1", "good room", 10, 6));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new OptimalConditions(50, 20, 5990, 40), "A2", "bad room", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new OptimalConditions(10, 15, 5990, 40), "A3", "excellent room", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new OptimalConditions(60, 33, 5990, 40), "B1", "worst room", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new OptimalConditions(80, 34, 5990, 40), "B2", "goddest room", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new OptimalConditions(90, 99, 5990, 40), "B3", "sex room", 10, 5));
+        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new OptimalConditions(30, 35, 5990, 40), "B4", "play room", 10, 5));
     }
 
     public Room getRoom(int position) {

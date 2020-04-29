@@ -99,7 +99,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
         int minHumInt = Integer.parseInt(minHum.getText().toString());
         int maxHumInt = Integer.parseInt(maxHum.getText().toString());
-        newArtworkViewModel.addArtworkMeasurements(minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, minHumInt, maxHumInt);
+        newArtworkViewModel.addArtworkMeasurements(maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
         finish();
         Toast.makeText(this, name + " artwork added to the list", Toast.LENGTH_SHORT).show();
     }

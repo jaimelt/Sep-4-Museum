@@ -5,31 +5,29 @@ import java.util.ArrayList;
 public class Room {
     private String locationCode;
     private String description;
-    private String roomType;
     private int currentCapacity;
     private int totalCapacity;
     private ArrayList<Artwork> artworkList;
-    private Measurements measurements;
+    private OptimalConditions optimalConditions;
     private boolean expanded;
 
-    public Room(ArrayList<Artwork> artworkList, Measurements measurements, String locationCode, String description, String roomType, int totalCapacity, int currentCapacity)
+    public Room(ArrayList<Artwork> artworkList, OptimalConditions optimalConditions, String locationCode, String description, int totalCapacity, int currentCapacity)
     {
         this.locationCode = locationCode;
         this.description = description;
-        this.roomType = roomType;
         this.totalCapacity = totalCapacity;
         this.currentCapacity = currentCapacity;
         this.expanded = false;
         this.artworkList = artworkList;
-        this.measurements = measurements;
+        this.optimalConditions = optimalConditions;
     }
 
-    public Measurements getMeasurements() {
-        return measurements;
+    public OptimalConditions getOptimalConditions() {
+        return optimalConditions;
     }
 
-    public void setMeasurements(Measurements measurements) {
-        this.measurements = measurements;
+    public void setOptimalConditions(OptimalConditions optimalConditions) {
+        this.optimalConditions = optimalConditions;
     }
     public boolean isExpanded(){return expanded;}
 
@@ -49,14 +47,6 @@ public class Room {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
     }
 
     public int getCurrentCapacity() {
