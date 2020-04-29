@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.rooms.RoomB4Activity"></activity>
+        <activity
+            android:name=".view.rooms.PopUp"
+            android:theme="@style/AppTheme.PopUpTheme" />
+        <activity android:name=".view.rooms.RoomB4Activity" />
         <activity android:name=".view.rooms.RoomB3Activity" />
         <activity android:name=".view.rooms.RoomB2Activity" />
         <activity android:name=".view.rooms.RoomB1Activity" />

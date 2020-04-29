@@ -50,6 +50,11 @@
         <item name="android:background">@drawable/selectable_bg_color</item>
         <item name="android:button">@android:color/transparent</item>
     </style>
+    
+    <style name="AppTheme.PopUpTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
 
 
 
