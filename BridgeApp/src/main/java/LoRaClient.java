@@ -1,3 +1,7 @@
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.WebSocket;
@@ -57,9 +61,21 @@ public class LoRaClient implements WebSocket.Listener {
     public CompletionStage<?> onText​(WebSocket webSocket, CharSequence data, boolean last) {
         System.out.println(data);
         webSocket.request(1);
+        var dataAsString = data.toString();
+        parseAndInsertData(dataAsString);
         return null; // new CompletableFuture().completedFuture("onText() completed.").thenAccept(System.out::println);
     }
 
-    void parseAndInsertData(String jsonTelegram){
+    private void parseAndInsertData(String jsonTelegram) {
+        var parser = new JSONParser();
+        JSONObject json;
+        try {
+            json = (JSONObject) parser.parse(jsonTelegram);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+//        database.insert();
     }
 }
