@@ -18,7 +18,11 @@ public class RoomA1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_a1);
+        findViews();
+        setClickListeners();
+    }
 
+    public void findViews() {
         place_holder_1 = findViewById(R.id.artwork_place_1);
         place_holder_2 = findViewById(R.id.artwork_place_2);
         place_holder_3 = findViewById(R.id.artwork_place_3);
@@ -28,8 +32,6 @@ public class RoomA1Activity extends AppCompatActivity {
         place_holder_7 = findViewById(R.id.artwork_place_7);
         place_holder_8 = findViewById(R.id.artwork_place_8);
         place_holder_9 = findViewById(R.id.artwork_place_9);
-
-        setClickListeners();
     }
 
     private void setClickListeners() {
