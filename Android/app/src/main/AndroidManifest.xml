@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.rooms.PopUp"
+            android:name=".view.rooms.ArtworkDetails"
             android:theme="@style/AppTheme.PopUpTheme" />
         <activity android:name=".view.rooms.RoomB4Activity" />
         <activity android:name=".view.rooms.RoomB3Activity" />

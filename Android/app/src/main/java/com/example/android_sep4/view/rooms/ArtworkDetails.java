@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
 
-public class PopUp extends AppCompatActivity {
+public class ArtworkDetails extends AppCompatActivity {
 
     private TextView artworkName, artworkDescription;
 
@@ -18,12 +18,9 @@ public class PopUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.popupwindow);
+        setContentView(R.layout.activity_artwork_details);
         setMetrics();
-
-        artworkName = findViewById(R.id.artworkNamePopUp);
-        artworkDescription = findViewById(R.id.artworkDescriptionPopUp);
-
+        findViews();
         getIntentExtra();
     }
 
@@ -35,6 +32,11 @@ public class PopUp extends AppCompatActivity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int) (width*.8), (int) (height*.6));
+    }
+
+    public void findViews() {
+        artworkName = findViewById(R.id.artworkNamePopUp);
+        artworkDescription = findViewById(R.id.artworkDescriptionPopUp);
     }
 
     public void getIntentExtra() {

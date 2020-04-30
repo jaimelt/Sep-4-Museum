@@ -1,17 +1,26 @@
 package com.example.android_sep4.view.rooms;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android_sep4.R;
+import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.viewmodel.rooms.RoomB1ViewModel;
+
+import java.util.ArrayList;
 
 public class RoomB1Activity extends AppCompatActivity {
-
-    TextView place_holder_1, place_holder_2, place_holder_3 ,
+    private final static int ROOM_CAPACITY = 7;
+    private RoomB1ViewModel roomB1ViewModel;
+    private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
+    private ArrayList<TextView> textViews = new ArrayList<>();
+    private TextView place_holder_1, place_holder_2, place_holder_3 ,
             place_holder_4 ,place_holder_5 , place_holder_6 ,
             place_holder_7;
 
@@ -20,7 +29,20 @@ public class RoomB1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_b1);
         findViews();
-        setClickListeners();
+        setTextViews();
+        setViewModel();
+        viewArtworks();
+    }
+
+    private void setViewModel() {
+        roomB1ViewModel = new ViewModelProvider(this).get(RoomB1ViewModel.class);
+        roomB1ViewModel.init("B1");
+
+        artworksInRoom = roomB1ViewModel.getArtworksFromRoom().getValue();
+
+        for (int i = 0; i < ROOM_CAPACITY - 1; i++) {
+            textViews.get(i).setText(artworksInRoom.get(i).getName());
+        }
     }
 
     public void findViews() {
@@ -33,83 +55,28 @@ public class RoomB1Activity extends AppCompatActivity {
         place_holder_7 = findViewById(R.id.artwork_place_7);
     }
 
-    private void setClickListeners() {
-        viewArtwork1();
-        viewArtwork2();
-        viewArtwork3();
-        viewArtwork4();
-        viewArtwork5();
-        viewArtwork6();
-        viewArtwork7();
+    public void setTextViews() {
+        textViews.add(0, place_holder_1);
+        textViews.add(1, place_holder_2);
+        textViews.add(2, place_holder_3);
+        textViews.add(3, place_holder_4);
+        textViews.add(4, place_holder_5);
+        textViews.add(5, place_holder_6);
+        textViews.add(6, place_holder_7);
     }
 
-    public void viewArtwork1() {
-        place_holder_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoomB1Activity.this, PopUp.class);
-                startActivity(intent);
-            }
-        });
-    }
+    public void viewArtworks() {
+        for(final TextView textView : textViews) {
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(RoomB1Activity.this, ArtworkDetails.class);
+                    intent.putExtra("Artwork", artworksInRoom.get(textViews.indexOf(textView)));
+                    startActivity(intent);
 
-    public void viewArtwork2() {
-        place_holder_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoomB1Activity.this, PopUp.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void viewArtwork3() {
-        place_holder_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoomB1Activity.this, PopUp.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void viewArtwork4() {
-        place_holder_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoomB1Activity.this, PopUp.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void viewArtwork5() {
-        place_holder_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoomB1Activity.this, PopUp.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void viewArtwork6() {
-        place_holder_6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoomB1Activity.this, PopUp.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void viewArtwork7() {
-        place_holder_7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoomB1Activity.this, PopUp.class);
-                startActivity(intent);
-            }
-        });
+                    Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

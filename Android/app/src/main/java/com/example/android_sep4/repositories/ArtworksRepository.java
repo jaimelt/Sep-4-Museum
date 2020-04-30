@@ -77,8 +77,9 @@ public class ArtworksRepository {
         artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", null, "Painting", "Adamo Davide Romano", roomCode ));
         artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", null, "Painting", "Adamo Davide Romano", roomCode ));
         artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", null, "Painting", "Adamo Davide Romano", roomCode ));
-
-        System.out.println(Arrays.asList(artworksDataSet));
+        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork11", "This is artwork 11", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork12", "This is artwork 12", null, "Painting", "Adamo Davide Romano", roomCode ));
     }
 
     private void setArtworks() {

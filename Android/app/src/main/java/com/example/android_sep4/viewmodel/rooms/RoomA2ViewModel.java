@@ -5,14 +5,11 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.Room;
 import com.example.android_sep4.repositories.ArtworksRepository;
-import com.example.android_sep4.repositories.RoomRepository;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class RoomA1ViewModel extends ViewModel {
+public class RoomA2ViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomList;
     private ArtworksRepository artworksRepository;
 
@@ -27,4 +24,5 @@ public class RoomA1ViewModel extends ViewModel {
     public LiveData<ArrayList<Artwork>> getArtworksFromRoom() {
         return artworksInRoomList;
     }
+
 }

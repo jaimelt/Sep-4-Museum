@@ -3,23 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.MuseumTab">
 
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
-        android:id="@+id/room_b1_image"
+        android:id="@+id/room_museum"
         android:layout_width="match_parent"
         android:layout_height="304dp"
-        android:layout_gravity="top"
         android:text="@string/museum_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.163"
         app:srcCompat="@drawable/museum_graph" />
 
     <TextView
@@ -28,11 +29,11 @@
         android:layout_height="68dp"
         android:text="@string/room_a1"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/room_b1_image"
-        app:layout_constraintEnd_toEndOf="@id/room_b1_image"
+        app:layout_constraintBottom_toBottomOf="@id/room_museum"
+        app:layout_constraintEnd_toEndOf="@id/room_museum"
         app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="@id/room_b1_image"
-        app:layout_constraintTop_toTopOf="@id/room_b1_image"
+        app:layout_constraintStart_toStartOf="@id/room_museum"
+        app:layout_constraintTop_toTopOf="@id/room_museum"
         app:layout_constraintVertical_bias="0.559" />
 
     <TextView
@@ -41,11 +42,11 @@
         android:layout_height="58dp"
         android:text="@string/room_a2"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/room_b1_image"
-        app:layout_constraintEnd_toEndOf="@id/room_b1_image"
+        app:layout_constraintBottom_toBottomOf="@id/room_museum"
+        app:layout_constraintEnd_toEndOf="@id/room_museum"
         app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="@id/room_b1_image"
-        app:layout_constraintTop_toTopOf="@id/room_b1_image"
+        app:layout_constraintStart_toStartOf="@id/room_museum"
+        app:layout_constraintTop_toTopOf="@id/room_museum"
         app:layout_constraintVertical_bias="0.3" />
 
     <TextView
@@ -54,11 +55,11 @@
         android:layout_height="25dp"
         android:text="@string/room_a3"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/room_b1_image"
-        app:layout_constraintEnd_toEndOf="@id/room_b1_image"
+        app:layout_constraintBottom_toBottomOf="@id/room_museum"
+        app:layout_constraintEnd_toEndOf="@id/room_museum"
         app:layout_constraintHorizontal_bias="0.305"
-        app:layout_constraintStart_toStartOf="@id/room_b1_image"
-        app:layout_constraintTop_toTopOf="@id/room_b1_image"
+        app:layout_constraintStart_toStartOf="@id/room_museum"
+        app:layout_constraintTop_toTopOf="@id/room_museum"
         app:layout_constraintVertical_bias="0.143" />
 
     <TextView
@@ -67,11 +68,11 @@
         android:layout_height="39dp"
         android:text="@string/room_b1"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/room_b1_image"
-        app:layout_constraintEnd_toEndOf="@id/room_b1_image"
+        app:layout_constraintBottom_toBottomOf="@id/room_museum"
+        app:layout_constraintEnd_toEndOf="@id/room_museum"
         app:layout_constraintHorizontal_bias="0.239"
-        app:layout_constraintStart_toStartOf="@id/room_b1_image"
-        app:layout_constraintTop_toTopOf="@id/room_b1_image"
+        app:layout_constraintStart_toStartOf="@id/room_museum"
+        app:layout_constraintTop_toTopOf="@id/room_museum"
         app:layout_constraintVertical_bias="0.264" />
 
     <TextView
@@ -80,12 +81,12 @@
         android:layout_height="69dp"
         android:text="@string/room_b2"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/room_b1_image"
-        app:layout_constraintEnd_toEndOf="@id/room_b1_image"
+        app:layout_constraintBottom_toBottomOf="@id/room_museum"
+        app:layout_constraintEnd_toEndOf="@id/room_museum"
         app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="@id/room_b1_image"
-        app:layout_constraintTop_toTopOf="@id/room_b1_image"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintStart_toStartOf="@id/room_museum"
+        app:layout_constraintTop_toTopOf="@id/room_museum"
+        app:layout_constraintVertical_bias="0.204" />
 
     <TextView
         android:id="@+id/room_b3"
@@ -93,11 +94,11 @@
         android:layout_height="152dp"
         android:text="@string/room_b3"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/room_b1_image"
-        app:layout_constraintEnd_toEndOf="@id/room_b1_image"
+        app:layout_constraintBottom_toBottomOf="@id/room_museum"
+        app:layout_constraintEnd_toEndOf="@id/room_museum"
         app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toStartOf="@id/room_b1_image"
-        app:layout_constraintTop_toTopOf="@id/room_b1_image"
+        app:layout_constraintStart_toStartOf="@id/room_museum"
+        app:layout_constraintTop_toTopOf="@id/room_museum"
         app:layout_constraintVertical_bias="0.868" />
 
     <TextView
@@ -106,11 +107,11 @@
         android:layout_height="41dp"
         android:text="@string/room_b4"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/room_b1_image"
-        app:layout_constraintEnd_toEndOf="@id/room_b1_image"
+        app:layout_constraintBottom_toBottomOf="@id/room_museum"
+        app:layout_constraintEnd_toEndOf="@id/room_museum"
         app:layout_constraintHorizontal_bias="0.275"
-        app:layout_constraintStart_toStartOf="@id/room_b1_image"
-        app:layout_constraintTop_toTopOf="@id/room_b1_image"
+        app:layout_constraintStart_toStartOf="@id/room_museum"
+        app:layout_constraintTop_toTopOf="@id/room_museum"
         app:layout_constraintVertical_bias="0.931" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
