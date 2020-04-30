@@ -1,12 +1,12 @@
 package com.example.android_sep4.model;
 
-public class OptimalConditions {
+public class RoomMeasurements {
     private int light;
     private int temp;
     private int humidity;
     private int co2;
 
-    public OptimalConditions(int light, int temp, int humidity, int co2) {
+    public RoomMeasurements(int light, int temp, int humidity, int co2) {
         this.light = light;
         this.temp = temp;
         this.humidity = humidity;

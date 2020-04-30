@@ -1,6 +1,6 @@
 package com.example.android_sep4.requests;
 
-import com.example.android_sep4.model.OptimalConditions;
+import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Room;
 
 import java.util.ArrayList;
@@ -14,5 +14,5 @@ public interface RoomEndpoints {
     Call<ArrayList<Room>> getRoomsDetails();
 
     @GET("/")
-    Call<OptimalConditions> getMeasurements();
+    Call<RoomMeasurements> getMeasurements();
 }

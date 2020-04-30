@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.android_sep4.view.artwork.ArtworksTab;
 import com.example.android_sep4.view.MuseumTab;
-import com.example.android_sep4.view.RoomsTab;
+import com.example.android_sep4.view.room.RoomsTab;
 
 public class PageAdapter extends FragmentPagerAdapter {
 

@@ -15,7 +15,7 @@ import com.example.android_sep4.viewmodel.EditRoomsConditionsViewModel;
 import com.example.android_sep4.viewmodel.artwork.EditArtworkViewModel;
 
 public class EditRoomActivity extends AppCompatActivity {
-    EditRoomsConditionsViewModel editArtworkMeasurements;
+     EditRoomsConditionsViewModel editMeasurements;
      EditText temperature;
      EditText humidity;
      EditText co2;
@@ -26,24 +26,28 @@ public class EditRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_room);
-        temperature = (EditText) findViewById(R.id.editTemperatureEditText);
-        humidity = (EditText) findViewById(R.id.editHumidityEditText);
-        co2 = (EditText) findViewById(R.id.editCo2EditText);
-        light = (EditText) findViewById(R.id.editLightEditText);
-
         Bundle bundle = getIntent().getExtras();
         if(bundle != null && bundle.containsKey(RoomsTab.EXTRA_ROOM)) {
             position = bundle.getInt(RoomsTab.EXTRA_ROOM);
         }
+        temperature = (EditText) findViewById(R.id.editTemperatureEditText);
+        humidity = (EditText) findViewById(R.id.editHumidityEditText);
+        co2 = (EditText) findViewById(R.id.editCo2EditText);
+        light = (EditText) findViewById(R.id.editLightEditText);
+        temperature.setText(Integer.toString(bundle.getInt("temperature")));
+        co2.setText(Integer.toString(bundle.getInt("co2")));
+        light.setText(Integer.toString(bundle.getInt("light")));
+        humidity.setText(Integer.toString(bundle.getInt("humidity")));
+
     }
     public void onEditRoomOptimal(View view)
     {
-        int minTempInt = Integer.parseInt(temperature.getText().toString());
-        int maxTempInt = Integer.parseInt(co2.getText().toString());
-        int minLightInt = Integer.parseInt(humidity.getText().toString());
-        int maxLightInt = Integer.parseInt(light.getText().toString());
-        editArtworkMeasurements.editRoomOptimal(minTempInt, maxTempInt, minLightInt, maxLightInt);
+        int newTemperature = Integer.parseInt(temperature.getText().toString());
+        int newCo2 = Integer.parseInt(co2.getText().toString());
+        int newHumidity = Integer.parseInt(humidity.getText().toString());
+        int newLight = Integer.parseInt(light.getText().toString());
+        editMeasurements.editRoomOptimal(newLight, newCo2, newTemperature, newHumidity, position);
         finish();
-        Toast.makeText(this, name + " artwork edited", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,  " Optimal conditions edited", Toast.LENGTH_SHORT).show();
     }
 }

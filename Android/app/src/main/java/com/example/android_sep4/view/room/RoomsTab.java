@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.android_sep4.R;
+import com.example.android_sep4.adapters.RecyclerViewAdapterArtworks;
 import com.example.android_sep4.adapters.RecyclerViewAdapterRooms;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.view.artwork.EditArtworkActivity;
@@ -74,9 +75,4 @@ public class RoomsTab extends Fragment {
         recyclerView.setLayoutManager(llm);
     }
 
-    public void onListItemClick(int clickedItemIndex) {
-        Intent intent = new Intent(getActivity(), EditRoomActivity.class);
-        intent.putExtra(EXTRA_ROOM, clickedItemIndex);
-        startActivity(intent);
-    }
 }
