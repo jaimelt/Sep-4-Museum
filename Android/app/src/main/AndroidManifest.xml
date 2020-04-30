@@ -23,6 +23,7 @@
         <activity android:name=".view.rooms.RoomA2Activity" />
         <activity android:name=".view.rooms.RoomA1Activity" />
         <activity android:name=".view.room.EditRoomActivity"/>
+        <activity android:name=".view.room.RoomArtworksActivity"/>
         <activity android:name=".view.artwork.SpecificArtworkActivity" />
         <activity
             android:name=".view.artwork.EditArtworkActivity"

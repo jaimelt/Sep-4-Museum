@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.android_sep4.view.artwork.ArtworksTab;
 import com.example.android_sep4.view.MuseumTab;
+import com.example.android_sep4.view.artwork.ArtworksTab;
 import com.example.android_sep4.view.room.RoomsTab;
 
 public class PageAdapter extends FragmentPagerAdapter {
@@ -24,11 +24,11 @@ public class PageAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0 :
+            case 0:
                 return new MuseumTab();
-            case 1 :
+            case 1:
                 return new ArtworksTab();
-            case 2 :
+            case 2:
                 return new RoomsTab();
             default:
                 return null;

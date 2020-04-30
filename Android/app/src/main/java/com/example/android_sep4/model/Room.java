@@ -12,8 +12,7 @@ public class Room {
     private RoomMeasurements measurementConditions;
     private boolean expanded;
 
-    public Room(ArrayList<Artwork> artworkList, RoomMeasurements optimalMeasurementConditions, RoomMeasurements measurementConditions, String locationCode, String description, int totalCapacity, int currentCapacity)
-    {
+    public Room(ArrayList<Artwork> artworkList, RoomMeasurements optimalMeasurementConditions, RoomMeasurements measurementConditions, String locationCode, String description, int totalCapacity, int currentCapacity) {
         this.locationCode = locationCode;
         this.description = description;
         this.totalCapacity = totalCapacity;
@@ -21,7 +20,7 @@ public class Room {
         this.expanded = false;
         this.artworkList = artworkList;
         this.optimalMeasurementConditions = optimalMeasurementConditions;
-        this.measurementConditions =measurementConditions;
+        this.measurementConditions = measurementConditions;
     }
 
     public RoomMeasurements getMeasurementConditions() {
@@ -37,11 +36,16 @@ public class Room {
     }
 
     public void setOptimalMeasurementConditions(int humidity, int temp, int co2, int light) {
-        this.optimalMeasurementConditions = new RoomMeasurements(light,temp,humidity,co2);
+        this.optimalMeasurementConditions = new RoomMeasurements(light, temp, humidity, co2);
     }
-    public boolean isExpanded(){return expanded;}
 
-    public void setExpanded( boolean expanded){this.expanded = expanded;}
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
 
     public String getLocationCode() {
         return locationCode;

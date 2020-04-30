@@ -10,8 +10,7 @@ public class ArtworkMeasurements {
     private int maxCO2;
     private int minCO2;
 
-    public ArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHumidity, int minHumidity, int maxCO2, int minCO2)
-    {
+    public ArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHumidity, int minHumidity, int maxCO2, int minCO2) {
         this.maxLight = maxLight;
         this.minLight = minLight;
         this.maxTemp = maxTemp;

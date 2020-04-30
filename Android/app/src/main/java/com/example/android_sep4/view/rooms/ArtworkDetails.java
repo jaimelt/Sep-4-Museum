@@ -1,11 +1,11 @@
 package com.example.android_sep4.view.rooms;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
@@ -31,7 +31,7 @@ public class ArtworkDetails extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width*.8), (int) (height*.6));
+        getWindow().setLayout((int) (width * .8), (int) (height * .6));
     }
 
     public void findViews() {
@@ -43,7 +43,7 @@ public class ArtworkDetails extends AppCompatActivity {
         Intent intent = getIntent();
         Artwork artwork = intent.getParcelableExtra("Artwork");
 
-        if(artwork != null) {
+        if (artwork != null) {
             String name = artwork.getName();
             String description = artwork.getDescription();
 

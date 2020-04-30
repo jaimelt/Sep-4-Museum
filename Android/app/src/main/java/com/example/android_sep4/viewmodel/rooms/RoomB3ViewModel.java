@@ -14,11 +14,11 @@ public class RoomB3ViewModel extends ViewModel {
     private ArtworksRepository artworksRepository;
 
     public void init(String roomCode) {
-        if(artworksInRoomList != null) {
+        if (artworksInRoomList != null) {
             return;
         }
         artworksRepository = ArtworksRepository.getInstance();
-        artworksInRoomList = artworksRepository.getArtworksByRoomId(roomCode);;
+        artworksInRoomList = artworksRepository.getArtworksByRoomId(roomCode);
     }
 
     public LiveData<ArrayList<Artwork>> getArtworksFromRoom() {

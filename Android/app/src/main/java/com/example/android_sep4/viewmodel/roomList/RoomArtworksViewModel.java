@@ -1,4 +1,4 @@
-package com.example.android_sep4.viewmodel.rooms;
+package com.example.android_sep4.viewmodel.roomList;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -9,7 +9,7 @@ import com.example.android_sep4.repositories.ArtworksRepository;
 
 import java.util.ArrayList;
 
-public class RoomA2ViewModel extends ViewModel {
+public class RoomArtworksViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomList;
     private ArtworksRepository artworksRepository;
 
