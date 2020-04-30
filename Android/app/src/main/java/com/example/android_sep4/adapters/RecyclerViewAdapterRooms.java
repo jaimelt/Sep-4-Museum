@@ -59,11 +59,15 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
         holder.optimalCo2.setText(Integer.toString(room.getOptimalMeasurementConditions().getCo2()));
         holder.editRoomsConditions.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+
                     Intent intent = new Intent(v.getContext(), EditRoomActivity.class);
                     intent.putExtra("temperature", rooms.get(position).getOptimalMeasurementConditions().getTemp());
                     intent.putExtra("light", rooms.get(position).getOptimalMeasurementConditions().getLight());
                     intent.putExtra("co2", rooms.get(position).getOptimalMeasurementConditions().getCo2());
                     intent.putExtra("humidity", rooms.get(position).getOptimalMeasurementConditions().getHumidity());
+                    Room room = rooms.get(position);
+                    room.setExpanded(!room.isExpanded());
+                    notifyItemChanged(position);
                     v.getContext().startActivity(intent);
                 }
             });

@@ -37,7 +37,7 @@ public class EditRoomsConditionsViewModel extends ViewModel {
     }
 
     public void editRoomOptimal(int light, int co2, int temperature, int humidity, int position) {
-        roomRepository.editRoomOptimal(humidity,temperature,co2,light, position);
+        roomRepository.editRoomOptimal(light,co2,temperature,humidity, position);
     }
 
 
