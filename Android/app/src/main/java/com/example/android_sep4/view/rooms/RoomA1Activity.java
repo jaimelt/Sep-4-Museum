@@ -1,16 +1,29 @@
 package com.example.android_sep4.view.rooms;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android_sep4.R;
+import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
+import com.example.android_sep4.viewmodel.rooms.RoomA1ViewModel;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class RoomA1Activity extends AppCompatActivity {
-    TextView place_holder_1, place_holder_2, place_holder_3 ,
+    private RoomA1ViewModel roomA1ViewModel;
+    private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
+    private ArrayList<TextView> textViews = new ArrayList<>();
+    private TextView place_holder_1, place_holder_2, place_holder_3 ,
             place_holder_4 ,place_holder_5 , place_holder_6 ,
             place_holder_7 , place_holder_8 , place_holder_9;
 
@@ -19,7 +32,21 @@ public class RoomA1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_a1);
         findViews();
+        setTextViews();
+        setViewModel();
         setClickListeners();
+    }
+
+    private void setViewModel() {
+        roomA1ViewModel = new ViewModelProvider(this).get(RoomA1ViewModel.class);
+        roomA1ViewModel.init("A1");
+
+        artworksInRoom = roomA1ViewModel.getArtworksFromRoom().getValue();
+        System.out.println(Arrays.asList(artworksInRoom));
+
+        for(int i = 0; i < 8; i++) {
+            textViews.get(i).setText(artworksInRoom.get(i).getName());
+        }
     }
 
     public void findViews() {
@@ -32,6 +59,20 @@ public class RoomA1Activity extends AppCompatActivity {
         place_holder_7 = findViewById(R.id.artwork_place_7);
         place_holder_8 = findViewById(R.id.artwork_place_8);
         place_holder_9 = findViewById(R.id.artwork_place_9);
+    }
+
+    public void setTextViews() {
+        textViews.add(0, place_holder_1);
+        textViews.add(1, place_holder_2);
+        textViews.add(2, place_holder_3);
+        textViews.add(3, place_holder_4);
+        textViews.add(4, place_holder_5);
+        textViews.add(5, place_holder_6);
+        textViews.add(6, place_holder_7);
+        textViews.add(7, place_holder_8);
+        textViews.add(8, place_holder_9);
+        System.out.println(Arrays.asList(textViews.toString()));
+
     }
 
     private void setClickListeners() {
@@ -52,6 +93,9 @@ public class RoomA1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
                 startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(0).getName() , Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -62,6 +106,9 @@ public class RoomA1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
                 startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(1).getName() , Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -72,6 +119,9 @@ public class RoomA1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
                 startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(2).getName() , Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -82,6 +132,8 @@ public class RoomA1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
                 startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(3).getName() , Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -92,6 +144,9 @@ public class RoomA1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
                 startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(4).getName() , Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -102,6 +157,9 @@ public class RoomA1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
                 startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(5).getName() , Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -112,6 +170,9 @@ public class RoomA1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
                 startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(6).getName() , Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -122,6 +183,9 @@ public class RoomA1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
                 startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(7).getName() , Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -132,6 +196,9 @@ public class RoomA1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
                 startActivity(intent);
+
+                Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(8).getName() , Toast.LENGTH_SHORT).show();
+
             }
         });
     }
