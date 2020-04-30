@@ -92,6 +92,8 @@ public class RoomA1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
+
+                intent.putExtra("Artwork", artworksInRoom.get(0));
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(0).getName() , Toast.LENGTH_SHORT).show();
@@ -105,6 +107,7 @@ public class RoomA1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
+                intent.putExtra("Artwork", artworksInRoom.get(1));
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(1).getName() , Toast.LENGTH_SHORT).show();
@@ -118,6 +121,7 @@ public class RoomA1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
+                intent.putExtra("Artwork", artworksInRoom.get(2));
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(2).getName() , Toast.LENGTH_SHORT).show();
@@ -131,6 +135,7 @@ public class RoomA1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
+                intent.putExtra("Artwork", artworksInRoom.get(3));
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(3).getName() , Toast.LENGTH_SHORT).show();
@@ -143,6 +148,7 @@ public class RoomA1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
+                intent.putExtra("Artwork", artworksInRoom.get(4));
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(4).getName() , Toast.LENGTH_SHORT).show();
@@ -156,6 +162,7 @@ public class RoomA1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
+                intent.putExtra("Artwork", artworksInRoom.get(5));
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(5).getName() , Toast.LENGTH_SHORT).show();
@@ -169,6 +176,7 @@ public class RoomA1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
+                intent.putExtra("Artwork", artworksInRoom.get(6));
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(6).getName() , Toast.LENGTH_SHORT).show();
@@ -182,6 +190,7 @@ public class RoomA1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
+                intent.putExtra("Artwork", artworksInRoom.get(7));
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(7).getName() , Toast.LENGTH_SHORT).show();
@@ -195,6 +204,7 @@ public class RoomA1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomA1Activity.this, PopUp.class);
+                intent.putExtra("Artwork", artworksInRoom.get(8));
                 startActivity(intent);
 
                 Toast.makeText(getApplicationContext(), "This is artwork " + artworksInRoom.get(8).getName() , Toast.LENGTH_SHORT).show();
