@@ -129,8 +129,5 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
             });
 
         }
-
-
-
     }
 }

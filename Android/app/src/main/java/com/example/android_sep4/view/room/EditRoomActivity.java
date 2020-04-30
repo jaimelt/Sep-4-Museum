@@ -46,7 +46,7 @@ public class EditRoomActivity extends AppCompatActivity {
         int newCo2 = Integer.parseInt(co2.getText().toString());
         int newHumidity = Integer.parseInt(humidity.getText().toString());
         int newLight = Integer.parseInt(light.getText().toString());
-        editMeasurements.editRoomOptimal(newLight, newCo2, newTemperature, newHumidity, position);
+        editMeasurements.editRoomOptimal(newLight, newCo2, newTemperature, newHumidity,position);
         finish();
         Toast.makeText(this,  " Optimal conditions edited", Toast.LENGTH_SHORT).show();
     }

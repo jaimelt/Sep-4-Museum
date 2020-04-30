@@ -41,8 +41,9 @@ public class RoomRepository {
     public Room getRoom(int position) {
         return roomsDataSet.get(position);
     }
-    public void editRoomOptimal(RoomMeasurements room, int position) {
-        roomsDataSet.get(position).setOptimalMeasurementConditions(room.getCo2(),room.getHumidity(), room.getLight(), room.getTemp());
+    public void editRoomOptimal( int light, int co2, int temperature, int humidity, int position) {
+        roomsDataSet.get(position).setOptimalMeasurementConditions(humidity,temperature,co2,light);
+
     }
 
 }
