@@ -74,4 +74,8 @@ public class Room {
     public void setTotalCapacity(int totalCapacity) {
         this.totalCapacity = totalCapacity;
     }
+
+    public ArrayList<Artwork> getArtworkList() {
+        return artworkList;
+    }
 }
