@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.rooms.PopUp"
+            android:name=".view.rooms.ArtworkDetails"
             android:theme="@style/AppTheme.PopUpTheme" />
         <activity android:name=".view.rooms.RoomB4Activity" />
         <activity android:name=".view.rooms.RoomB3Activity" />
@@ -22,6 +22,7 @@
         <activity android:name=".view.rooms.RoomA3Activity" />
         <activity android:name=".view.rooms.RoomA2Activity" />
         <activity android:name=".view.rooms.RoomA1Activity" />
+        <activity android:name=".view.room.EditRoomActivity"/>
         <activity android:name=".view.artwork.SpecificArtworkActivity" />
         <activity
             android:name=".view.artwork.EditArtworkActivity"

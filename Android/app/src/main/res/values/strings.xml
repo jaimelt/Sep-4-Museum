@@ -43,5 +43,14 @@
     <string name="light_unit">lx</string>
     <string name="co2_unit">ppm</string>
     <string name="humidity_unit">mg/L</string>
+    <string name="position1">1</string>
+    <string name="position2">2</string>
+    <string name="position3">3</string>
+    <string name="position4">4</string>
+    <string name="position6">6</string>
+    <string name="position8">8</string>
+    <string name="position7">7</string>
+    <string name="position5">5</string>
+    <string name="position9">9</string>
 
 </resources>

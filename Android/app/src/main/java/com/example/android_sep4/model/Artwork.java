@@ -1,8 +1,11 @@
 package com.example.android_sep4.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Artwork {
+public class Artwork implements Parcelable {
     @SerializedName("id")
     private int id;
 
@@ -21,13 +24,16 @@ public class Artwork {
     @SerializedName("author")
     private String author;
 
-    @SerializedName("location")
-    private String location;
+    @SerializedName("roomCode")
+    private String roomCode;
 
     @SerializedName("artworkMeasurements")
     private ArtworkMeasurements artworkMeasurements;
 
-    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author, String location)
+    @SerializedName("artworkPosition")
+    private int artworkPosition;
+
+    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author, String roomCode)
     {
         this.artworkMeasurements = artworkMeasurements;
         this.name = name;
@@ -35,8 +41,31 @@ public class Artwork {
         this.image = image;
         this.type = type;
         this.author = author;
-        this.location = location;
+        this.roomCode = roomCode;
     }
+
+    protected Artwork(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        description = in.readString();
+        image = in.readString();
+        type = in.readString();
+        author = in.readString();
+        roomCode = in.readString();
+        artworkPosition = in.readInt();
+    }
+
+    public static final Creator<Artwork> CREATOR = new Creator<Artwork>() {
+        @Override
+        public Artwork createFromParcel(Parcel in) {
+            return new Artwork(in);
+        }
+
+        @Override
+        public Artwork[] newArray(int size) {
+            return new Artwork[size];
+        }
+    };
 
     public int getID() {
         return id;
@@ -87,11 +116,11 @@ public class Artwork {
     }
 
     public String getLocation() {
-        return location;
+        return roomCode;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(String roomCode) {
+        this.roomCode = roomCode;
     }
 
     public ArtworkMeasurements getArtworkMeasurements() {
@@ -100,5 +129,22 @@ public class Artwork {
 
     public void setArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {
         artworkMeasurements = new ArtworkMeasurements(maxLight, minLight, maxTemp, minTemp, maxHum, minHum, maxCO2, minCO2);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(description);
+        parcel.writeString(image);
+        parcel.writeString(type);
+        parcel.writeString(author);
+        parcel.writeString(roomCode);
+        parcel.writeInt(artworkPosition);
     }
 }

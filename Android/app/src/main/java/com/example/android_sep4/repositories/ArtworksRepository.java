@@ -1,13 +1,18 @@
 package com.example.android_sep4.repositories;
 
 import android.net.Uri;
+
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
+
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.model.Room;
 import com.example.android_sep4.requests.ArtworkEndpoints;
+import com.example.android_sep4.requests.RetrofitClientInstance;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +39,47 @@ public class ArtworksRepository {
         MutableLiveData<ArrayList<Artwork>> data = new MutableLiveData<>();
         data.setValue(artworksDataSet);
         return data;
+    }
+
+    public MutableLiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
+        setArtworksFromRoom(roomCode);
+
+        MutableLiveData<ArrayList<Artwork>> data = new MutableLiveData<>();
+        data.setValue(artworksDataSet);
+        return data;
+    }
+
+    private void setArtworksFromRoom(String roomCode) {
+//        ArtworkEndpoints endpoints = RetrofitClientInstance.getRetrofitInstance().create(ArtworkEndpoints.class);
+//
+//        Call<ArrayList<Artwork>> call = endpoints.getArtworksByRoomId(roomCode);
+//
+//        call.enqueue(new Callback<ArrayList<Artwork>>() {
+//            @Override
+//            public void onResponse(Call<ArrayList<Artwork>> call, Response<ArrayList<Artwork>> response) {
+//                ArrayList<Artwork> artworksFromRoom = response.body();
+//                if (artworksFromRoom != null) {
+//                    artworksDataSet.addAll(artworksFromRoom);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ArrayList<Artwork>> call, Throwable t) {
+//
+//            }
+//        });
+        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork11", "This is artwork 11", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet.add(new Artwork(null, "Artwork12", "This is artwork 12", null, "Painting", "Adamo Davide Romano", roomCode ));
     }
 
     private void setArtworks() {

@@ -9,8 +9,9 @@
 
     <ImageView
         android:id="@+id/room_b1_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="410dp"
+        android:layout_height="705dp"
+        android:layout_gravity="top"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,77 +23,77 @@
         android:id="@+id/artwork_place_1"
         android:layout_width="64dp"
         android:layout_height="59dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/room_b1_image"
+        app:layout_constraintEnd_toEndOf="@+id/room_b1_image"
         app:layout_constraintHorizontal_bias="0.668"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/room_b1_image"
+        app:layout_constraintTop_toTopOf="@+id/room_b1_image"
         app:layout_constraintVertical_bias="0.345" />
 
     <TextView
         android:id="@+id/artwork_place_7"
         android:layout_width="64dp"
         android:layout_height="59dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/room_b1_image"
+        app:layout_constraintEnd_toEndOf="@+id/room_b1_image"
         app:layout_constraintHorizontal_bias="0.798"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/room_b1_image"
+        app:layout_constraintTop_toTopOf="@+id/room_b1_image"
         app:layout_constraintVertical_bias="0.461" />
 
     <TextView
         android:id="@+id/artwork_place_3"
         android:layout_width="64dp"
         android:layout_height="59dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/room_b1_image"
+        app:layout_constraintEnd_toEndOf="@+id/room_b1_image"
         app:layout_constraintHorizontal_bias="0.207"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/room_b1_image"
+        app:layout_constraintTop_toTopOf="@+id/room_b1_image"
         app:layout_constraintVertical_bias="0.345" />
 
     <TextView
         android:id="@+id/artwork_place_2"
         android:layout_width="64dp"
         android:layout_height="59dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/room_b1_image"
+        app:layout_constraintEnd_toEndOf="@+id/room_b1_image"
         app:layout_constraintHorizontal_bias="0.429"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/room_b1_image"
+        app:layout_constraintTop_toTopOf="@+id/room_b1_image"
         app:layout_constraintVertical_bias="0.345" />
 
     <TextView
         android:id="@+id/artwork_place_4"
         android:layout_width="64dp"
         android:layout_height="59dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/room_b1_image"
+        app:layout_constraintEnd_toEndOf="@+id/room_b1_image"
         app:layout_constraintHorizontal_bias="0.187"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/room_b1_image"
+        app:layout_constraintTop_toTopOf="@+id/room_b1_image"
         app:layout_constraintVertical_bias="0.513" />
 
     <TextView
         android:id="@+id/artwork_place_6"
         android:layout_width="64dp"
         android:layout_height="59dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/room_b1_image"
+        app:layout_constraintEnd_toEndOf="@+id/room_b1_image"
         app:layout_constraintHorizontal_bias="0.613"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/room_b1_image"
+        app:layout_constraintTop_toTopOf="@+id/room_b1_image"
         app:layout_constraintVertical_bias="0.513" />
 
     <TextView
         android:id="@+id/artwork_place_5"
         android:layout_width="64dp"
         android:layout_height="59dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/room_b1_image"
+        app:layout_constraintEnd_toEndOf="@+id/room_b1_image"
         app:layout_constraintHorizontal_bias="0.391"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/room_b1_image"
+        app:layout_constraintTop_toTopOf="@+id/room_b1_image"
         app:layout_constraintVertical_bias="0.513" />
 
 

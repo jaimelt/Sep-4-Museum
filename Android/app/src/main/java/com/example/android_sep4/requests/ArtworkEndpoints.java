@@ -28,4 +28,8 @@ public interface ArtworkEndpoints {
 
     @DELETE("/artworks?id={id}")
     Call<Artwork> deleteArtwork(@Path("id") int id);
+
+    @GET("/artworks?roomCode={roomCode}")
+    Call<ArrayList<Artwork>> getArtworksByRoomId(@Path("roomCode") String roomCode);
+
 }
