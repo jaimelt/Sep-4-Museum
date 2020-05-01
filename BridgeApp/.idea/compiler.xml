@@ -9,7 +9,7 @@
         <module name="BridgeApp" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11">
       <module name="BridgeApp" target="11" />
     </bytecodeTargetLevel>
   </component>
