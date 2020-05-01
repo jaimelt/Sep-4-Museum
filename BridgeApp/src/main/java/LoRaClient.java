@@ -11,11 +11,10 @@ import java.util.concurrent.CompletionStage;
 
 public class LoRaClient implements WebSocket.Listener {
     private IDatabase database;
-    private final String TOKEN = "??????????????????????????????=";
+    private final String TOKEN = "vnoSvwAAABFpb3RuZXQudGVyYWNvbS5ka14S7zZXBMiAAcsYgh0N79M=";
 
     public LoRaClient() {
         database = new MongoDbDatabase();
-
         HttpClient client = HttpClient.newHttpClient();
         CompletableFuture<WebSocket> ws = client.newWebSocketBuilder()
                 .buildAsync(URI.create("wss://iotnet.teracom.dk/app?token=" + TOKEN), this);
