@@ -1,23 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:gravity="top"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/artworkNamePopUp"
-        android:layout_width="wrap_content"
+        android:id="@+id/artworkTypePopUp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HAHAHAHAHAH"
-        android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:text="TYPE"
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/artworkDescriptionPopUp"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/artworkImagePopUp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120sp"
+        android:layout_margin="1dp"
+        android:background="@android:drawable/dialog_holo_dark_frame"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            >
+
+            <TextView
+                android:id="@+id/artworkNamePopUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Name : Your dick"
+                android:gravity="left"
+                android:layout_margin="2sp"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/artworkAuthorPopUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Author: My Dick"
+                android:gravity="left"
+                android:layout_margin="2sp"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/artworkDescriptionPopUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2sp"
+            android:text="You dick aas fajf asfafa  a f  fdijb fdhbd df dig dfhg sd gsdhgsdjgis sidj g shdshg sdhgsdhg sdg s dghs dghsdguhsdjgs dgsdgi sdi gsdgh sdghsoj irut qp smmx vncxjb amzlxmapskorjeurioq asj f ds fsdjf sd jqokqpoiew qw ueq eq "
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="You dick"
-        android:textColor="@color/white"
-        android:textSize="20dp"/>
+        android:layout_margin="1dp"
+        android:background="@android:drawable/dialog_holo_dark_frame"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <ImageView
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/humidity" />
+
+        <TextView
+            android:id="@+id/humidityPopUp"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="100" />
+
+        <ImageView
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/co2" />
+
+        <TextView
+            android:id="@+id/co2PopUp"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="100" />
+
+        <ImageView
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/light" />
+
+        <TextView
+            android:id="@+id/lightPopUp"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="100" />
+
+        <ImageView
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/temperature" />
+
+        <TextView
+            android:id="@+id/tempPopUp"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="100" />
+
+    </LinearLayout>
+
 </LinearLayout>

@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.rooms.ArtworkDetails"
-            android:theme="@style/AppTheme.PopUpTheme" />
+            android:theme="@style/AppTheme.PopUpTheme"
+            />
         <activity android:name=".view.rooms.RoomB4Activity" />
         <activity android:name=".view.rooms.RoomB3Activity" />
         <activity android:name=".view.rooms.RoomB2Activity" />
