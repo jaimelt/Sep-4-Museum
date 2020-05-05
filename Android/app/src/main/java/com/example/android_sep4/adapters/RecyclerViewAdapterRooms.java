@@ -1,6 +1,5 @@
 package com.example.android_sep4.adapters;
 
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Room;
-import com.example.android_sep4.view.MainActivity;
-import com.example.android_sep4.view.artwork.NewArtworkActivity;
 import com.example.android_sep4.view.room.EditRoomActivity;
+import com.example.android_sep4.view.room.RoomArtworksActivity;
 
 import java.util.ArrayList;
 
@@ -57,20 +55,32 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
         holder.optimalLight.setText(Integer.toString(room.getOptimalMeasurementConditions().getLight()));
         holder.optimalHumidity.setText(Integer.toString(room.getOptimalMeasurementConditions().getHumidity()));
         holder.optimalCo2.setText(Integer.toString(room.getOptimalMeasurementConditions().getCo2()));
-        holder.editRoomsConditions.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
+        holder.viewRoomArtworks.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
-                    Intent intent = new Intent(v.getContext(), EditRoomActivity.class);
-                    intent.putExtra("temperature", rooms.get(position).getOptimalMeasurementConditions().getTemp());
-                    intent.putExtra("light", rooms.get(position).getOptimalMeasurementConditions().getLight());
-                    intent.putExtra("co2", rooms.get(position).getOptimalMeasurementConditions().getCo2());
-                    intent.putExtra("humidity", rooms.get(position).getOptimalMeasurementConditions().getHumidity());
-                    Room room = rooms.get(position);
-                    room.setExpanded(!room.isExpanded());
-                    notifyItemChanged(position);
-                    v.getContext().startActivity(intent);
-                }
-            });
+                Intent intent = new Intent(v.getContext(), RoomArtworksActivity.class);
+                Room room = rooms.get(position);
+                room.setExpanded(!room.isExpanded());
+                notifyItemChanged(position);
+                intent.putExtra("locationCode", room.getLocationCode());
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        holder.editRoomsConditions.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(v.getContext(), EditRoomActivity.class);
+                intent.putExtra("temperature", rooms.get(position).getOptimalMeasurementConditions().getTemp());
+                intent.putExtra("light", rooms.get(position).getOptimalMeasurementConditions().getLight());
+                intent.putExtra("co2", rooms.get(position).getOptimalMeasurementConditions().getCo2());
+                intent.putExtra("humidity", rooms.get(position).getOptimalMeasurementConditions().getHumidity());
+                Room room = rooms.get(position);
+                room.setExpanded(!room.isExpanded());
+                notifyItemChanged(position);
+                v.getContext().startActivity(intent);
+            }
+        });
 
 
         holder.parentLayoutRoom.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +90,7 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
             }
         });
         boolean isExpanded = rooms.get(position).isExpanded();
-        holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE );
+        holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -103,8 +113,10 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
         TextView optimalTemperature;
         TextView optimalHumidity;
         Button editRoomsConditions;
+        Button viewRoomArtworks;
         RelativeLayout parentLayoutRoom;
         ConstraintLayout expandableLayout;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             description = itemView.findViewById(R.id.descriptionContent);
@@ -114,10 +126,11 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
             temperatureValue = itemView.findViewById(R.id.temperatureTextViewId);
             humidityValue = itemView.findViewById(R.id.humidityTextViewID);
             roomCapacity = itemView.findViewById(R.id.roomCapacityMaxValueTextView);
-            currentCapacity= itemView.findViewById(R.id.roomCapacityValueTextView);
+            currentCapacity = itemView.findViewById(R.id.roomCapacityValueTextView);
             editRoomsConditions = itemView.findViewById(R.id.editOptimalButton);
             parentLayoutRoom = itemView.findViewById(R.id.parent_layoutRoom);
             expandableLayout = itemView.findViewById(R.id.expandableLayout);
+            viewRoomArtworks = itemView.findViewById(R.id.showRoomArtworks);
             //Optimal conditions
             optimalCo2 = itemView.findViewById(R.id.co2OptimalTextViewId);
             optimalHumidity = itemView.findViewById(R.id.humidityOptimalTextViewID);

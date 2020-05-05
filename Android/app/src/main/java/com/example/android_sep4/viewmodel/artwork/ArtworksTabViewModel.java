@@ -14,7 +14,7 @@ public class ArtworksTabViewModel extends ViewModel {
     private ArtworksRepository artworksRepository;
 
     public void init() {
-        if(artworksList != null) {
+        if (artworksList != null) {
             return;
         }
         artworksRepository = ArtworksRepository.getInstance();
@@ -25,8 +25,7 @@ public class ArtworksTabViewModel extends ViewModel {
         return artworksList;
     }
 
-    public void removeArtwork(int position)
-    {
+    public void removeArtwork(int position) {
         artworksRepository.removeArtwork(position);
     }
 

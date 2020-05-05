@@ -7,18 +7,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.Room;
-import com.example.android_sep4.requests.ArtworkEndpoints;
-import com.example.android_sep4.requests.RetrofitClientInstance;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ArtworksRepository {
     private static ArtworksRepository instance;
@@ -39,6 +29,7 @@ public class ArtworksRepository {
         MutableLiveData<ArrayList<Artwork>> data = new MutableLiveData<>();
         data.setValue(artworksDataSet);
         return data;
+
     }
 
     public MutableLiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
@@ -68,21 +59,36 @@ public class ArtworksRepository {
 //
 //            }
 //        });
-        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork11", "This is artwork 11", null, "Painting", "Adamo Davide Romano", roomCode ));
-        artworksDataSet.add(new Artwork(null, "Artwork12", "This is artwork 12", null, "Painting", "Adamo Davide Romano", roomCode ));
+        artworksDataSet = new ArrayList<>();
+        String artwork1 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork1").toString();
+        String artwork2 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork2").toString();
+        String artwork3 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork3").toString();
+        String artwork4 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork4").toString();
+        String artwork5 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork5").toString();
+        String artwork6 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork6").toString();
+        String artwork7 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork7").toString();
+        String artwork8 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork8").toString();
+        String artwork9 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork9").toString();
+        String artwork10 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork10").toString();
+        String artwork11 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork9").toString();
+        String artwork12 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork10").toString();
+        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", artwork1, "Painting", "Adamo Davide Romano", "A1"));
+        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", artwork2, "Drawing", "Giovanni Baglione", "A2"));
+        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", artwork3, "Ceramics", "Kalynn Campbell", "A3"));
+        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", artwork4, "Photo", "Eugène Delacroix", "B1"));
+        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", artwork5, "Painting", "Piero della Francesca", "B2"));
+        artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6", artwork6, "Drawing", "Your Dick6", "B3"));
+        artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", artwork7, "Ceramics", "Your Dick7", "B4"));
+        artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", artwork8, "Photo", "Your Dick8", "A1"));
+        artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", artwork9, "Painting", "Your Dick9", "A2"));
+        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", artwork10, "Drawing", "Your Dick10", "Storage"));
+        artworksDataSet.add(new Artwork(null, "Artwork11", "This is artwork 11", artwork11, "Drawing", "Your Dick11", "Storage"));
+        artworksDataSet.add(new Artwork(null, "Artwork12", "This is artwork 12", artwork12, "Drawing", "Your Dick12", "Storage"));
+
     }
 
     private void setArtworks() {
+        artworksDataSet = new ArrayList<>();
         String artwork1 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork1").toString();
         String artwork2 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork2").toString();
         String artwork3 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork3").toString();

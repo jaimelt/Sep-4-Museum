@@ -4,8 +4,7 @@ public class Administrator {
     private String username;
     private String password;
 
-    public Administrator(String username, String password)
-    {
+    public Administrator(String username, String password) {
         this.username = username;
         this.password = password;
     }

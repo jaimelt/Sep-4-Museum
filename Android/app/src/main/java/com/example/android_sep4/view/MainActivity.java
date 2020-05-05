@@ -1,11 +1,11 @@
 package com.example.android_sep4.view;
 
+import android.os.Bundle;
+import android.view.Menu;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
-
-import android.os.Bundle;
-import android.view.Menu;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.PageAdapter;
@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private PageAdapter pageAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                if(tab.getPosition() == 0) {
+                if (tab.getPosition() == 0) {
                     pageAdapter.notifyDataSetChanged();
-                } else if(tab.getPosition() == 1) {
+                } else if (tab.getPosition() == 1) {
                     pageAdapter.notifyDataSetChanged();
-                } else if(tab.getPosition() == 2) {
+                } else if (tab.getPosition() == 2) {
                     pageAdapter.notifyDataSetChanged();
                 }
             }

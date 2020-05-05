@@ -3,7 +3,6 @@ package com.example.android_sep4.viewmodel.artwork;
 import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.repositories.ArtworksRepository;
 
 public class NewArtworkViewModel extends ViewModel {
@@ -14,8 +13,7 @@ public class NewArtworkViewModel extends ViewModel {
         artworksRepository = ArtworksRepository.getInstance();
     }
 
-    public void addArtwork(String name, String author, String type, String description, String image, String location)
-    {
+    public void addArtwork(String name, String author, String type, String description, String image, String location) {
         artwork = new Artwork(null, name, description, image, type, author, location);
         artworksRepository.addArtwork(artwork);
     }

@@ -72,17 +72,12 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         //constraint = input from the search function
         protected FilterResults performFiltering(CharSequence constraint) {
             ArrayList<Artwork> filteredList = new ArrayList<>();
-            if(constraint == null || constraint.length() == 0)
-            {
+            if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(copyOfArtworks);
-            }
-            else
-            {
+            } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for(Artwork artwork : copyOfArtworks)
-                {
-                    if(artwork.getName().toLowerCase().contains(filterPattern) || artwork.getAuthor().toLowerCase().contains(filterPattern))
-                    {
+                for (Artwork artwork : copyOfArtworks) {
+                    if (artwork.getName().toLowerCase().contains(filterPattern) || artwork.getAuthor().toLowerCase().contains(filterPattern)) {
                         filteredList.add(artwork);
                     }
                 }
@@ -102,7 +97,7 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         }
     };
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
         TextView artworkName;
@@ -135,22 +130,21 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         void onListItemClick(int clickedItemIndex);
     }
 
-    private void setColors(String type, ViewHolder holder)
-    {
-       switch (type){
-           case "Painting":
-               holder.artworkType.setTextColor(Color.parseColor("#4ACFAC"));
-               break;
-           case "Drawing":
-               holder.artworkType.setTextColor(Color.parseColor("#FFA48E"));
-               break;
-           case "Ceramics":
-               holder.artworkType.setTextColor(Color.parseColor("#F45C51"));
-               break;
-           case "Photo":
-               holder.artworkType.setTextColor(Color.parseColor("#7E8CE0"));
-               break;
-       }
+    private void setColors(String type, ViewHolder holder) {
+        switch (type) {
+            case "Painting":
+                holder.artworkType.setTextColor(Color.parseColor("#4ACFAC"));
+                break;
+            case "Drawing":
+                holder.artworkType.setTextColor(Color.parseColor("#FFA48E"));
+                break;
+            case "Ceramics":
+                holder.artworkType.setTextColor(Color.parseColor("#F45C51"));
+                break;
+            case "Photo":
+                holder.artworkType.setTextColor(Color.parseColor("#7E8CE0"));
+                break;
+        }
 
     }
 

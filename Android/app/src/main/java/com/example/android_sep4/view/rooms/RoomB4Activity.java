@@ -1,13 +1,13 @@
 package com.example.android_sep4.view.rooms;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
@@ -20,8 +20,8 @@ public class RoomB4Activity extends AppCompatActivity {
     private RoomB4ViewModel roomB4ViewModel;
     private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
     private ArrayList<TextView> textViews = new ArrayList<>();
-    private TextView place_holder_1, place_holder_2, place_holder_3 ,
-            place_holder_4 ,place_holder_5 , place_holder_6;
+    private TextView place_holder_1, place_holder_2, place_holder_3,
+            place_holder_4, place_holder_5, place_holder_6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class RoomB4Activity extends AppCompatActivity {
 
 
     public void viewArtworks() {
-        for(final TextView textView : textViews) {
+        for (final TextView textView : textViews) {
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

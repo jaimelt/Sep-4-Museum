@@ -1,10 +1,5 @@
 package com.example.android_sep4.view.artwork;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -15,6 +10,11 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.artwork.NewArtworkViewModel;
@@ -51,7 +51,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.edit_artwork_toolbar);
         setSupportActionBar(toolbar);
 
-       bindViews();
+        bindViews();
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setTitle("New artwork");
@@ -71,16 +71,14 @@ public class NewArtworkActivity extends AppCompatActivity {
 
     //TODO: Make scrollview for layout / limit height for multiline description
 
-    public void onSelectImage(View view)
-    {
+    public void onSelectImage(View view) {
         Intent intent = new Intent(
                 Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_PICK_CODE);
     }
 
-    public void onCreateArtwork(View view)
-    {
+    public void onCreateArtwork(View view) {
         int selectedId = typeGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButton = findViewById(selectedId);
 
@@ -114,8 +112,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         }
     }
 
-    private String convertImageToString()
-    {
+    private String convertImageToString() {
         imageHolder.buildDrawingCache();
         Bitmap bm = imageHolder.getDrawingCache();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -124,8 +121,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
-    private void bindViews()
-    {
+    private void bindViews() {
         imageHolder = findViewById(R.id.imageHolder);
         imageUploader = findViewById(R.id.imageUploader);
         nameField = findViewById(R.id.nameField);

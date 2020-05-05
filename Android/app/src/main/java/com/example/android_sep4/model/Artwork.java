@@ -33,8 +33,7 @@ public class Artwork implements Parcelable {
     @SerializedName("artworkPosition")
     private int artworkPosition;
 
-    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author, String roomCode)
-    {
+    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author, String roomCode) {
         this.artworkMeasurements = artworkMeasurements;
         this.name = name;
         this.description = description;

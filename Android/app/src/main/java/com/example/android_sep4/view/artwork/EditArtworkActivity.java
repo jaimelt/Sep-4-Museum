@@ -47,7 +47,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_artwork);
 
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null && bundle.containsKey(ArtworksTab.EXTRA_ARTWORK)) {
+        if (bundle != null && bundle.containsKey(ArtworksTab.EXTRA_ARTWORK)) {
             position = bundle.getInt(ArtworksTab.EXTRA_ARTWORK);
         }
         setViewModel();
@@ -75,8 +75,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         editArtworkViewModel.init(position);
     }
 
-    private void setText()
-    {
+    private void setText() {
         //TODO: How to set image
         nameField.setText(editArtworkViewModel.getName());
         authorField.setHint(editArtworkViewModel.getAuthor());
@@ -84,21 +83,17 @@ public class EditArtworkActivity extends AppCompatActivity {
         imageHolder.setImageURI(editArtworkViewModel.getImage());
 
         String type = editArtworkViewModel.getType();
-        for(int i = 0; i < typeGroup.getChildCount(); i ++)
-        {
-            RadioButton radioButton =  (RadioButton)typeGroup.getChildAt(i);
-            if(radioButton.getText().toString().equals(type))
-            {
+        for (int i = 0; i < typeGroup.getChildCount(); i++) {
+            RadioButton radioButton = (RadioButton) typeGroup.getChildAt(i);
+            if (radioButton.getText().toString().equals(type)) {
                 radioButton.setChecked(true);
             }
         }
 
         String location = editArtworkViewModel.getLocation();
-        for(int i = 0; i < locationGroup.getChildCount(); i++)
-        {
+        for (int i = 0; i < locationGroup.getChildCount(); i++) {
             RadioButton radioButton = (RadioButton) locationGroup.getChildAt(i);
-            if(radioButton.getText().toString().equals(location))
-            {
+            if (radioButton.getText().toString().equals(location)) {
                 radioButton.setChecked(true);
             }
         }
@@ -113,28 +108,23 @@ public class EditArtworkActivity extends AppCompatActivity {
         }
     }
 
-    public void onSelectImage(View view)
-    {
+    public void onSelectImage(View view) {
         Intent intent = new Intent(
                 Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_PICK_CODE);
     }
 
-    public void onCreateArtwork(View view)
-    {
+    public void onCreateArtwork(View view) {
         int selectedIdType = typeGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButtonType = findViewById(selectedIdType);
 
         int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
         String name = "";
-        if(!nameField.getText().toString().isEmpty())
-        {
+        if (!nameField.getText().toString().isEmpty()) {
             name = nameField.getText().toString();
-        }
-        else
-        {
+        } else {
             name = nameField.getHint().toString();
         }
 
@@ -153,13 +143,12 @@ public class EditArtworkActivity extends AppCompatActivity {
         int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
         int minHumInt = Integer.parseInt(minHum.getText().toString());
         int maxHumInt = Integer.parseInt(maxHum.getText().toString());
-       editArtworkViewModel.editArtworkMeasurements(maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
+        editArtworkViewModel.editArtworkMeasurements(maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
         finish();
         Toast.makeText(this, name + " artwork edited", Toast.LENGTH_SHORT).show();
     }
 
-    private String convertImageToString()
-    {
+    private String convertImageToString() {
         imageHolder.buildDrawingCache();
         Bitmap bm = imageHolder.getDrawingCache();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
