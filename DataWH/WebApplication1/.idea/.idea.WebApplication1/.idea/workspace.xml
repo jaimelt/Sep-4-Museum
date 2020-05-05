@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2f36633a-bbcb-4838-9106-c6ed56e271b6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="museum" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="museum" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="museum" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="museum" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+        <item name="Artworks: table" type="3d80ac25:SqliteImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/DbInitialize.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepositoryBase&lt;T&gt;.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/RepositoryBase&lt;T&gt;.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/IArtworkRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/ArtworkRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Administrator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Artwork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Museum.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Administrator.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkMeasurement.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/appsettings.json" />
+        <option value="$PROJECT_DIR$/WebApplication1/Program.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Museum.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/OptimalRoomConditions.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/DbInitialize.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/RepoInterface.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepository.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRepository.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepository&lt;T&gt;.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Artwork.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepositoryBase&lt;T&gt;.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Startup.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/IArtworkRepository.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/ArtworkRepository.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/RepositoryBase&lt;T&gt;.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bIpuNQhxb3BFJJH7u6zu4wI3lx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.SolutionExplorerActivator" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.WebApplication1">
+    <configuration name="WebApplication1" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.1" />
+      <option name="LAUNCH_PROFILE_NAME" value="WebApplication1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WebApplication1: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.1" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2f36633a-bbcb-4838-9106-c6ed56e271b6" name="Default Changelist" comment="" />
+      <created>1588329683495</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588329683495</updated>
+      <workItem from="1588329685940" duration="12871000" />
+      <workItem from="1588348549202" duration="1386000" />
+      <workItem from="1588349961740" duration="62000" />
+      <workItem from="1588493955112" duration="1012000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="WindowStateProjectService">
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom" timestamp="1588349949839">
+      <screen x="-49" y="-1080" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588349949839" />
+    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588348525259" />
+    <state width="1878" height="304" key="GridCell.Tab.0.center" timestamp="1588349949838">
+      <screen x="-49" y="-1080" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="304" key="GridCell.Tab.0.center/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588349949838" />
+    <state width="1878" height="304" key="GridCell.Tab.0.center/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588348525253" />
+    <state width="1878" height="304" key="GridCell.Tab.0.left" timestamp="1588349949837">
+      <screen x="-49" y="-1080" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="304" key="GridCell.Tab.0.left/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588349949837" />
+    <state width="1878" height="304" key="GridCell.Tab.0.left/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588348525252" />
+    <state width="1878" height="304" key="GridCell.Tab.0.right" timestamp="1588349949838">
+      <screen x="-49" y="-1080" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="304" key="GridCell.Tab.0.right/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588349949838" />
+    <state width="1878" height="304" key="GridCell.Tab.0.right/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588348525254" />
+    <state x="605" y="-833" key="RiderGenerateDialog" timestamp="1588334694972">
+      <screen x="-49" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="605" y="-833" key="RiderGenerateDialog/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588334236232" />
+    <state x="605" y="-833" key="RiderGenerateDialog/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588334694972" />
+    <state x="51" y="-980" width="1720" height="880" key="dock-window-1" timestamp="1588333437808">
+      <screen x="-49" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="51" y="-980" width="1720" height="880" key="dock-window-1/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588333437808" />
+    <state x="51" y="-980" width="1720" height="880" key="dock-window-2" timestamp="1588333437809">
+      <screen x="-49" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="51" y="-980" width="1720" height="880" key="dock-window-2/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588333437809" />
+    <state x="51" y="-980" width="1720" height="880" key="dock-window-3" timestamp="1588333437810">
+      <screen x="-49" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="51" y="-980" width="1720" height="880" key="dock-window-3/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588333437810" />
+    <state x="574" y="-841" width="672" height="678" key="search.everywhere.popup" timestamp="1588337649371">
+      <screen x="-49" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="574" y="-841" width="672" height="678" key="search.everywhere.popup/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588337649371" />
+  </component>
+</project>

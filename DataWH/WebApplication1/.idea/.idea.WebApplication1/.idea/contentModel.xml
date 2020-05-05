@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="WebApplication1" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="ArtworkController.cs" t="Include" />
+        </e>
+        <e p="Database" t="Include">
+          <e p="DbInitialize.cs" t="Include" />
+          <e p="MuseumContext.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="ArtworkRep" t="Include">
+              <e p="ArtworkRepository.cs" t="Include" />
+              <e p="IArtworkRepository.cs" t="Include" />
+            </e>
+            <e p="IRepositoryBase&lt;T&gt;.cs" t="Include" />
+            <e p="RepositoryBase&lt;T&gt;.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Datamodel" t="Include">
+          <e p="Administrator.cs" t="Include" />
+          <e p="Artwork.cs" t="Include" />
+          <e p="ArtworkMeasurement.cs" t="Include" />
+          <e p="Museum.cs" t="Include" />
+          <e p="Room.cs" t="Include" />
+          <e p="RoomMeasurement.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20200501105255_InitialCreate.cs" t="Include" />
+          <e p="20200501105255_InitialCreate.Designer.cs" t="Include" />
+          <e p="MuseumContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="museum.db" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="WebApplication1.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="WebApplication1.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="WebApplication1.sln" t="IncludeFlat" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_WebApplication1.-1874281764.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+  </component>
+</project>
