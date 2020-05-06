@@ -28,10 +28,37 @@ namespace WebApplication1.Controllers
         }
 
         // GET: api/Rooms/5
-        [HttpGet("{id}")]
+        [HttpGet("get/{id}")]
         public Task<Room> GetRoom(string id)
         {
+            var room = roomRepository.GetRoomByLocationCodeAsync(id);
+
+            return room;
+        }
+
+        // GET: api/Rooms/5
+        [HttpGet("getdetails/{id}")]
+        public Task<Room> GetDetails(string id)
+        {
             var room = roomRepository.GetRoomWithDetailsAsync(id);
+
+            return room;
+        }
+
+        // GET: api/Rooms/5
+        [HttpGet("getoptimalmeasurements/{id}")]
+        public Task<Room> GetOptimalMeasurements(string id)
+        {
+            var room = roomRepository.GetRoomOptimalMeasurementsAsync(id);
+
+            return room;
+        }
+
+        // GET: api/Rooms/5
+        [HttpGet("getmeasurementconditions/{id}")]
+        public Task<Room> GetMeasurementConditions(string id)
+        {
+            var room = roomRepository.GetRoomMeasurementConditionsAsync(id);
 
             return room;
         }
@@ -92,19 +119,13 @@ namespace WebApplication1.Controllers
 
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
-        public Task<ActionResult<Room>> DeleteRoom(string id)
+        public async Task<ActionResult<Room>> DeleteRoom(string id)
         {
-            var room = roomRepository.GetRoomByLocationCodeAsync(id);
+            var room = await roomRepository.GetRoomByLocationCodeAsync(id);
 
             roomRepository.deleteRoom(room);
 
             return room;
-        }
-
-        private bool RoomExists(string id)
-        {
-            return roomRepository.Rooms.Any(e => e.locationCode == id);
-
         }
     }
 }

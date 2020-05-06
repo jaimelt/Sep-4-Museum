@@ -44,7 +44,7 @@ namespace WebApplication1.Database
 
             foreach (var c in artworks)
             {
-               // museumContext.Artworks.Add(c);
+                //museumContext.Artworks.Add(c);
                museumContext.Artworks.Update(c);
                // after adding, use update. Otherwise there will be issues in overwritting 
             }

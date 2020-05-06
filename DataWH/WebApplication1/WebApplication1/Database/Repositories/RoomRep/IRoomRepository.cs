@@ -15,11 +15,19 @@ namespace WebApplication1.Database.Repositories.RoomRep
 
         Task<Room> GetRoomWithDetailsAsync(string roomLocationCode);
 
+        Task<Room> GetRoomOptimalMeasurementsAsync(string roomLocationCode);
+
+        Task<Room> GetRoomMeasurementConditionsAsync(string roomLocationCode);
+
         void createRoom(Room room);
 
         void updateRoom(Room room);
 
         void deleteRoom(Room room);
+
+        bool roomExists(string roomLocationCode);
+
+        void saveChanges();
 
     }
 }
