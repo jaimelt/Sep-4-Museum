@@ -42,12 +42,39 @@ namespace WebApplication1.Database
                 }
             };
 
+
+
             foreach (var c in artworks)
             {
-               // museumContext.Artworks.Add(c);
+                //museumContext.Artworks.Add(c);
                museumContext.Artworks.Update(c);
                // after adding, use update. Otherwise there will be issues in overwritting 
             }
+
+            var rooms = new Room[]
+          {
+                new Room
+                {
+                    
+                    locationCode="A100", description="A room", currentCapacity=100, totalCapacity=200
+                    
+                },
+
+                new Room
+                {
+
+                    locationCode="A101", description="A second room", currentCapacity=100, totalCapacity=200
+
+                }
+            };
+
+            foreach (var r in rooms)
+            {
+                //museumContext.Rooms.Add(r);
+                museumContext.Rooms.Update(r);
+                // after adding, use update. Otherwise there will be issues in overwritting 
+            }
+
             museumContext.SaveChangesAsync();
            
 

@@ -1,5 +1,9 @@
 {
   "version": 1,
+<<<<<<< HEAD
   "dgSpecHash": "TnyDlNlQZjFRwbmS9rUOIKHHyAjsgrFC4in8kGSrSSYNmsoSc9sP/72jxjYA+bM873tKsaSx4y5fJVqk4YDwVw==",
+=======
+  "dgSpecHash": "/Qa4Y26PcVlQtN09L+wyrtConca3+cjRlPXtzofcOJfqJDy9uIJYJaveGUZGAcrC4Pn/UifHC0efrGRm6Uh2fg==",
+>>>>>>> origin/DATAWH-Sabin-Sprint2
   "success": true
 }

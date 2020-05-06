@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
@@ -15,11 +16,29 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+    "C:\\Users\\Sabin\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Sabin\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sabin\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectName": "WebApplication1",
+        "projectPath": "C:\\Users\\Sabin\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "packagesPath": "C:\\Users\\Sabin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sabin\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sabin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> origin/DATAWH-Sabin-Sprint2
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,7 +69,11 @@
             },
             "MongoDB.Driver": {
               "target": "Package",
+<<<<<<< HEAD
               "version": "[2.11.0-beta1, )"
+=======
+              "version": "[3.1.2, )"
+>>>>>>> origin/DATAWH-Sabin-Sprint2
             }
           },
           "imports": [
@@ -62,7 +85,20 @@
             "net48"
           ],
           "assetTargetFallback": true,
+<<<<<<< HEAD
           "warn": true
+=======
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+>>>>>>> origin/DATAWH-Sabin-Sprint2
         }
       }
     }
