@@ -8,7 +8,7 @@ using WebApplication1.Datamodel;
 
 namespace WebApplication1.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("rooms")]
     [ApiController]
     public class RoomController : ControllerBase
     {
@@ -66,13 +66,19 @@ namespace WebApplication1.Controllers
         // PUT: api/Rooms/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
+        [HttpPut("put/{id}")]
         public async Task<IActionResult> PutRoom(string id, Room room)
         {
+
+            Console.WriteLine(id);
+            Console.WriteLine(room.locationCode);
+
             if (id != room.locationCode)
             {
                 return BadRequest();
             }
+
+            
 
             //roomRepository.Entry(room).State = EntityState.Modified;
 
