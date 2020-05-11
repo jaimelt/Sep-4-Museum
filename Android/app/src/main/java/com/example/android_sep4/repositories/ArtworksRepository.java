@@ -1,23 +1,39 @@
 package com.example.android_sep4.repositories;
 
+import android.app.Application;
 import android.net.Uri;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.R;
+import com.example.android_sep4.database.ArtworkDao;
+import com.example.android_sep4.database.ArtworkWithMeasurements;
+import com.example.android_sep4.database.MuseumDb;
 import com.example.android_sep4.model.Artwork;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArtworksRepository {
+    private ArrayList<Artwork> artworksDataSet;
+    private ArtworkDao artworkDao;
     private static ArtworksRepository instance;
-    private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
-    private MediatorLiveData<ArrayList<Artwork>> artworks = new MediatorLiveData<>();
+    //TODO: needs to be updated, rn it is for testing
+    private LiveData<List<ArtworkWithMeasurements>> artworks;
 
-    public static ArtworksRepository getInstance() {
-        if (instance == null) {
-            instance = new ArtworksRepository();
+    //ArtworksRepository should not be singleton
+    public ArtworksRepository(Application application) {
+        MuseumDb database = MuseumDb.getInstance(application);
+        artworkDao = database.artworkDao();
+        artworks = artworkDao.getAllLiveArtworks();
+    }
+
+    public static synchronized ArtworksRepository getInstance(Application application) {
+        if (instance == null)
+        {
+            instance = new ArtworksRepository(application);
         }
         return instance;
     }
@@ -135,6 +151,7 @@ public class ArtworksRepository {
 //
 //            }
 //        });
+
     }
 
     public void removeArtwork(int position) {
@@ -156,5 +173,16 @@ public class ArtworksRepository {
     public void editArtwork(Artwork artwork, int position) {
         artworksDataSet.remove(position);
         artworksDataSet.add(position, artwork);
+    }
+
+    //From Room Database
+    public List<Artwork> getArtworks() {
+        List<ArtworkWithMeasurements> artworkWithMeasurements = artworkDao.getAllArtworks();
+        List<Artwork> artworks = new ArrayList<>();
+        for (ArtworkWithMeasurements artwork : artworkWithMeasurements) {
+            artwork.artwork.setArtworkMeasurements(artwork.roomMeasurements);
+            artworks.add(artwork.artwork);
+        }
+        return artworks;
     }
 }

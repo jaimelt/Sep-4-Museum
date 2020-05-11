@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapterRoomArtworks;
+import com.example.android_sep4.viewmodel.ViewModelFactory;
 import com.example.android_sep4.viewmodel.roomList.RoomArtworksViewModel;
 
 public class RoomArtworksActivity extends AppCompatActivity {
     private static final String TAG = "RoomArtworksActivity";
     private RoomArtworksViewModel roomArtworksViewModel;
     private RecyclerViewAdapterRoomArtworks adapter;
-    private String locationCod;
+    private String locationCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +24,11 @@ public class RoomArtworksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_room_artworks);
         setViewModel();
         Bundle bundle = getIntent().getExtras();
-        locationCod = bundle.getString("locationCode");
+        locationCode = bundle.getString("locationCode");
     }
 
     private void setViewModel() {
-        roomArtworksViewModel = new ViewModelProvider(this).get(RoomArtworksViewModel.class);
-        roomArtworksViewModel.init(locationCod);
+        roomArtworksViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), locationCode)).get(RoomArtworksViewModel.class);
         initRecycleView();
     }
 

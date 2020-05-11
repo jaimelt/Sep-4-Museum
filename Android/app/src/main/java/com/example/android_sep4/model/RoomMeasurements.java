@@ -1,6 +1,20 @@
 package com.example.android_sep4.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity(foreignKeys = {
+        @ForeignKey(
+                entity = Room.class,
+                parentColumns = "location_code",
+                childColumns = "id"
+        )})
 public class RoomMeasurements {
+    @PrimaryKey
+    @NonNull
+    private String id;
     private int light;
     private int temp;
     private int humidity;
@@ -11,7 +25,22 @@ public class RoomMeasurements {
         this.temp = temp;
         this.humidity = humidity;
         this.co2 = co2;
+    }
 
+    public RoomMeasurements(String locationCode, int light, int temp, int humidity, int co2) {
+        id = locationCode;
+        this.light = light;
+        this.temp = temp;
+        this.humidity = humidity;
+        this.co2 = co2;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getCo2() {
@@ -45,6 +74,7 @@ public class RoomMeasurements {
     public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
+
 
 
 }

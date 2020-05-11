@@ -59,7 +59,6 @@ public class NewArtworkActivity extends AppCompatActivity {
 
     private void setViewModel() {
         newArtworkViewModel = new ViewModelProvider(this).get(NewArtworkViewModel.class);
-        newArtworkViewModel.init();
     }
 
     @Override
@@ -89,14 +88,32 @@ public class NewArtworkActivity extends AppCompatActivity {
         String image = convertImageToString();
         newArtworkViewModel.addArtwork(name, author, type, description, image, "Storage");
 
-        int minTempInt = Integer.parseInt(minTemp.getText().toString());
-        int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
-        int minLightInt = Integer.parseInt(minLight.getText().toString());
-        int maxLightInt = Integer.parseInt(maxLight.getText().toString());
-        int minCO2Int = Integer.parseInt(minCO2.getText().toString());
-        int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
-        int minHumInt = Integer.parseInt(minHum.getText().toString());
-        int maxHumInt = Integer.parseInt(maxHum.getText().toString());
+        int minTempInt = 0, maxTempInt = 0, minLightInt = 0, maxLightInt = 0, minCO2Int = 0, maxCO2Int = 0, maxHumInt = 0, minHumInt = 0;
+        if (!minTemp.getText().toString().isEmpty()) {
+            minTempInt = Integer.parseInt(minTemp.getText().toString());
+        }
+        if (!maxTemp.getText().toString().isEmpty()) {
+            maxTempInt = Integer.parseInt(maxTemp.getText().toString());
+        }
+        if (!minLight.getText().toString().isEmpty()) {
+            minLightInt = Integer.parseInt(minLight.getText().toString());
+        }
+        if (!maxLight.getText().toString().isEmpty()) {
+            maxLightInt = Integer.parseInt(maxLight.getText().toString());
+        }
+        if (!minCO2.getText().toString().isEmpty()) {
+            minCO2Int = Integer.parseInt(minCO2.getText().toString());
+        }
+        if (!maxCO2.getText().toString().isEmpty()) {
+            maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
+        }
+        if (!minHum.getText().toString().isEmpty()) {
+            minHumInt = Integer.parseInt(minHum.getText().toString());
+        }
+        if (!maxHum.getText().toString().isEmpty()) {
+            maxHumInt = Integer.parseInt(maxHum.getText().toString());
+        }
+
         newArtworkViewModel.addArtworkMeasurements(maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
         finish();
         Toast.makeText(this, name + " artwork added to the list", Toast.LENGTH_SHORT).show();
