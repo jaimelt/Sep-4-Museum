@@ -2,6 +2,9 @@ package com.example.android_sep4.view.room;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -41,6 +44,7 @@ public class RoomsTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setViewModel();
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_rooms_tab, container, false);
     }
 
@@ -48,7 +52,7 @@ public class RoomsTab extends Fragment {
         roomsTabViewModel = new ViewModelProvider(this).get(RoomsTabViewModel.class);
         roomsTabViewModel.init();
 
-        roomsTabViewModel.getRooms().observe(this, new Observer<List<Room>>() {
+        roomsTabViewModel.getRooms().observe(getViewLifecycleOwner(), new Observer<List<Room>>() {
             @Override
             public void onChanged(List<Room> rooms) {
                 adapter.notifyDataSetChanged();
@@ -63,6 +67,17 @@ public class RoomsTab extends Fragment {
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.toolbar_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        MenuItem settingsItem = menu.findItem(R.id.settings);
+        searchItem.setVisible(false);
+        settingsItem.getActionView();
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
 }

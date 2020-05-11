@@ -3,6 +3,9 @@ package com.example.android_sep4.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -36,6 +39,7 @@ public class MuseumTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_museum_tab, container, false);
     }
 
@@ -54,7 +58,7 @@ public class MuseumTab extends Fragment {
 
     }
 
-    public void setUpClickListeners() {
+    private void setUpClickListeners() {
         openRoomA1ClickListener();
         openRoomA2ClickListener();
         openRoomA3ClickListener();
@@ -64,7 +68,7 @@ public class MuseumTab extends Fragment {
         openRoomB4ClickListener();
     }
 
-    public void openRoomA1ClickListener() {
+    private void openRoomA1ClickListener() {
         a1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +80,7 @@ public class MuseumTab extends Fragment {
         });
     }
 
-    public void openRoomA2ClickListener() {
+    private void openRoomA2ClickListener() {
         a2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +92,7 @@ public class MuseumTab extends Fragment {
         });
     }
 
-    public void openRoomA3ClickListener() {
+    private void openRoomA3ClickListener() {
         a3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,7 +104,7 @@ public class MuseumTab extends Fragment {
         });
     }
 
-    public void openRoomB1ClickListener() {
+    private void openRoomB1ClickListener() {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,7 +116,7 @@ public class MuseumTab extends Fragment {
         });
     }
 
-    public void openRoomB2ClickListener() {
+    private void openRoomB2ClickListener() {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,7 +128,7 @@ public class MuseumTab extends Fragment {
         });
     }
 
-    public void openRoomB3ClickListener() {
+    private void openRoomB3ClickListener() {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,7 +140,7 @@ public class MuseumTab extends Fragment {
         });
     }
 
-    public void openRoomB4ClickListener() {
+    private void openRoomB4ClickListener() {
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,5 +151,26 @@ public class MuseumTab extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.toolbar_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        MenuItem settingsItem = menu.findItem(R.id.settings);
+        searchItem.setVisible(false);
+        settingsItem.getActionView();
+
+        settingsItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent settingsIntent = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(settingsIntent);
+                return false;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
 
 }
