@@ -9,7 +9,7 @@ namespace WebApplication1.Database.Repositories.ArtworkRep
     {
         Task<IEnumerable<Artwork>> getAllArtworksAsync();
         Task<Artwork> GetArtworkByIdAsync(string artId);
-        Task<Artwork> GetArtowkrWithDetailsAsync(string artId);
+        Task<Artwork> GetArtworkWithDetailsAsync(string artId);
         void createArtwork(Artwork artwork);
         void updateArtwork(Artwork artwork);
         void deleteArtwork(Artwork artwork);
