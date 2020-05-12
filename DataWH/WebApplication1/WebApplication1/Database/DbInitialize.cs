@@ -45,6 +45,8 @@ namespace WebApplication1.Database
                // after adding, use update. Otherwise there will be issues in overwritting 
             }
 
+            string hello = "mu ";
+
             var rooms = new Room[]
           {
                 new Room
