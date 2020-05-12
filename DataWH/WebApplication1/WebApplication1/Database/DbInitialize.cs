@@ -14,21 +14,25 @@ namespace WebApplication1.Database
             {
                 return;
             }
-
-            ArtworkMeasurement artworkMeasurements = new ArtworkMeasurement();
+            
             
             var artworks = new[]
             {
                 new Artwork
                 {
                     Id = 1, Author = "fake", Description = "none", Image = "none", Location = "100",
-                    Name = "this is not an art",
+                    Name = "this is not an art", ArtworkMeasurement = new ArtworkMeasurement()
                 },
 
                 new Artwork
                 {
                     Id = 2, Author = "notfake", Description = "adescription", Image = "aimage", Location = "200",
-                    Name = "this is a piece of art",
+                    Name = "this is a piece of art",ArtworkMeasurement = new ArtworkMeasurement
+                    {
+                        Id = 1, MaxCo2 = 20, MaxHumidity = 20, MaxLight = 20, MaxTemperature = 20, 
+                        MinCo2 = 20, MinHumidity = 20, MinLight = 20, MinTemperature = 20
+                        
+                    }
                 }
             };
 
