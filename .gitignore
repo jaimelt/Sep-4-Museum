@@ -351,6 +351,7 @@ DataWH/WebApplication1/WebApplication1/obj/project.assets.json
 *.xml
 DataWH/WebApplication1/.idea/.idea.WebApplication1/.idea/workspace.xml
 *.xml
+*.dll
 DataWH/WebApplication1/WebApplication1/obj/WebApplication1.csproj.nuget.g.props
 DataWH/WebApplication1/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json
 DataWH/WebApplication1/WebApplication1/obj/WebApplication1.csproj.nuget.cache
