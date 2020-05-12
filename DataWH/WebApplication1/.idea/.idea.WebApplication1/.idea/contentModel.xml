@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Sabin\AppData\local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Sabin\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_WebApplication1.-1229387830.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Sabin\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1" t="IncludeFlat">
+    <e p="C:\Users\Jaime\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_WebApplication1.-2062594119.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="WebApplication1" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
@@ -14,7 +16,20 @@
           <e p="RoomController.cs" t="Include" />
         </e>
         <e p="Database" t="Include">
+          <e p="DbInitialize.cs" t="Include" />
           <e p="MuseumContext.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="ArtworkRep" t="Include">
+              <e p="ArtworkRepository.cs" t="Include" />
+              <e p="IArtworkRepository.cs" t="Include" />
+            </e>
+            <e p="IRepositoryBase_T_.cs" t="Include" />
+            <e p="RepositoryBase_T_.cs" t="Include" />
+            <e p="RoomRep" t="Include">
+              <e p="IRoomRepository.cs" t="Include" />
+              <e p="RoomRepository.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="database.db" t="Include" />
         <e p="Datamodel" t="Include">

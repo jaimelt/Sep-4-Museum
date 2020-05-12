@@ -1101,26 +1101,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sabin\\.nuget\\packages\\": {}
+    "C:\\Users\\Jaime\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sabin\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "C:\\Users\\Sabin\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-      "packagesPath": "C:\\Users\\Sabin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sabin\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\obj\\",
+      "projectPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "packagesPath": "C:\\Users\\Jaime\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sabin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1163,16 +1161,7 @@
           "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }
