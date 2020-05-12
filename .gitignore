@@ -365,12 +365,7 @@ DataWH/WebApplication1/.idea/.idea.WebApplication1/.idea/workspace.xml
 DataWH/WebApplication1/WebApplication1/bin/Debug/netcoreapp3.1/WebApplication1.deps.json
 DataWH/WebApplication1/WebApplication1/bin/Debug/netcoreapp3.1/WebApplication1.pdb
 DataWH/WebApplication1/WebApplication1/bin/Debug/netcoreapp3.1/WebApplication1.runtimeconfig.dev.json
-DataWH/WebApplication1/WebApplication1/Database/DbInitialize.cs
-DataWH/WebApplication1/WebApplication1/Database/Repositories/ArtworkRep/ArtworkRepository.cs
-DataWH/WebApplication1/WebApplication1/Database/Repositories/ArtworkRep/IArtworkRepository.cs
-DataWH/WebApplication1/WebApplication1/Database/Repositories/RoomRep/RoomRepository.cs
 DataWH/WebApplication1/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.CoreCompileInputs.cache
 DataWH/WebApplication1/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.FileListAbsolute.txt
 DataWH/WebApplication1/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csprojAssemblyReference.cache
-DataWH/WebApplication1/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.dll
 DataWH/WebApplication1/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.pdb
