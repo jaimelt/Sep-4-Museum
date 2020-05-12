@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f36633a-bbcb-4838-9106-c6ed56e271b6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/WebApplication1/MongoDB/IMongoDBSettings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApplication1/MongoDB/IMongoRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApplication1/MongoDB/MongoDbSettings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/project.packagespec.json" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="c631d761-966e-430e-8b67-01df1f9b59cd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,89 +21,46 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="museum" type="feb32156:DbDataSourceImpl" />
+        <item name="database" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="museum" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="museum [2]" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="museum" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="museum" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="Artworks: table" type="3d80ac25:SqliteImplModel$Table" />
+        <item name="museum [3]" type="feb32156:DbDataSourceImpl" />
       </path>
     </expand>
     <select />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/IMongoDBSettings.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/MongoDbSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/IMongoRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/IArtworkRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/DbInitialize.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Artwork.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1DBF32BD-3D26-46E5-857D-D08E041BC3B1/82/c46a32c3/IBsonSerializer`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Administrator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Startup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/ArtworkRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/70D5328E-4E1C-4EAF-9E78-24C1C001DCC0/76/2b925d7b/MongoClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Administrator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Artwork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Museum.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Startup.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Administrator.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Artwork.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkMeasurement.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/appsettings.json" />
-        <option value="$PROJECT_DIR$/WebApplication1/Program.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Museum.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/OptimalRoomConditions.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Database/DbInitialize.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/RepoInterface.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepository.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRepository.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepository&lt;T&gt;.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Artwork.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepositoryBase&lt;T&gt;.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/IArtworkRepository.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/ArtworkRepository.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/RepositoryBase&lt;T&gt;.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/MongoDB/IMongo.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/MongoDB/IMongoRepository.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/MongoDB/IMongoDBSettings.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/MongoDB/MongoDBSettings.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Startup.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/appsettings.Development.json" />
-        <option value="$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/appsettings.json" />
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1bIpuNQhxb3BFJJH7u6zu4wI3lx" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1bo1cPIu6AgBq6cCKRtWkq58eDP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -134,18 +72,6 @@
     <property name="Rider.SolutionExplorerActivator" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApplication1">
     <configuration name="WebApplication1" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -184,86 +110,24 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2f36633a-bbcb-4838-9106-c6ed56e271b6" name="Default Changelist" comment="" />
-      <created>1588329683495</created>
+      <changelist id="c631d761-966e-430e-8b67-01df1f9b59cd" name="Default Changelist" comment="" />
+      <created>1589283710460</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1588329683495</updated>
-      <workItem from="1588329685940" duration="12871000" />
-      <workItem from="1588348549202" duration="1386000" />
-      <workItem from="1588349961740" duration="62000" />
-      <workItem from="1588493955112" duration="1012000" />
-      <workItem from="1588707727628" duration="3812000" />
+      <updated>1589283710460</updated>
+      <workItem from="1589283717560" duration="2024000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="WindowStateProjectService">
-    <state width="1878" height="304" key="GridCell.Tab.0.bottom" timestamp="1588349949839">
-      <screen x="-49" y="-1080" width="1920" height="1080" />
+    <state x="965" y="476" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589284738917">
+      <screen x="0" y="23" width="2560" height="1363" />
     </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588349949839" />
-    <state width="1878" height="304" key="GridCell.Tab.0.bottom/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588348525259" />
-    <state width="1878" height="304" key="GridCell.Tab.0.center" timestamp="1588349949838">
-      <screen x="-49" y="-1080" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.center/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588349949838" />
-    <state width="1878" height="304" key="GridCell.Tab.0.center/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588348525253" />
-    <state width="1878" height="304" key="GridCell.Tab.0.left" timestamp="1588349949837">
-      <screen x="-49" y="-1080" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.left/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588349949837" />
-    <state width="1878" height="304" key="GridCell.Tab.0.left/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588348525252" />
-    <state width="1878" height="304" key="GridCell.Tab.0.right" timestamp="1588349949838">
-      <screen x="-49" y="-1080" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="304" key="GridCell.Tab.0.right/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588349949838" />
-    <state width="1878" height="304" key="GridCell.Tab.0.right/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588348525254" />
-    <state x="605" y="-833" key="RiderGenerateDialog" timestamp="1588334694972">
-      <screen x="-49" y="-1080" width="1920" height="1080" />
-    </state>
-    <state x="605" y="-833" key="RiderGenerateDialog/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588334236232" />
-    <state x="605" y="-833" key="RiderGenerateDialog/0.23.1440.877/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588334694972" />
-    <state x="51" y="-980" width="1720" height="880" key="dock-window-1" timestamp="1588333437808">
-      <screen x="-49" y="-1080" width="1920" height="1080" />
-    </state>
-    <state x="51" y="-980" width="1720" height="880" key="dock-window-1/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588333437808" />
-    <state x="51" y="-980" width="1720" height="880" key="dock-window-2" timestamp="1588333437809">
-      <screen x="-49" y="-1080" width="1920" height="1080" />
-    </state>
-    <state x="51" y="-980" width="1720" height="880" key="dock-window-2/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588333437809" />
-    <state x="51" y="-980" width="1720" height="880" key="dock-window-3" timestamp="1588333437810">
-      <screen x="-49" y="-1080" width="1920" height="1080" />
-    </state>
-    <state x="51" y="-980" width="1720" height="880" key="dock-window-3/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588333437810" />
-    <state x="574" y="-841" width="672" height="678" key="search.everywhere.popup" timestamp="1588337649371">
-      <screen x="-49" y="-1080" width="1920" height="1080" />
-    </state>
-    <state x="574" y="-841" width="672" height="678" key="search.everywhere.popup/0.0.1440.900/-49.-1080.1920.1080@-49.-1080.1920.1080" timestamp="1588337649371" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="965" y="476" key="#com.intellij.fileTypes.FileTypeChooser/-1920.360.1920.1080/0.23.2560.1363@0.23.2560.1363" timestamp="1589284738917" />
   </component>
 </project>

@@ -4,28 +4,18 @@
     <e p="C:\Users\Jaime\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\Jaime\.Rider2019.2\config\extensions" t="IncludeRecursive" />
     <e p="C:\Users\Jaime\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Jaime\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_WebApplication1.-2062594119.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1" t="IncludeFlat">
+    <e p="C:\Users\Jaime\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_WebApplication1.1828045670.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jaime\Desktop\sep4-fixed db.2\WebApplication1" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="WebApplication1" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Controllers" t="Include">
-          <e p="ArtworkController.cs" t="Include" />
-        </e>
+        <e p="Controllers" t="Include" />
         <e p="Database" t="Include">
-          <e p="DbInitialize.cs" t="Include" />
           <e p="MuseumContext.cs" t="Include" />
-          <e p="Repositories" t="Include">
-            <e p="ArtworkRep" t="Include">
-              <e p="ArtworkRepository.cs" t="Include" />
-              <e p="IArtworkRepository.cs" t="Include" />
-            </e>
-            <e p="IRepositoryBase_T_.cs" t="Include" />
-            <e p="RepositoryBase_T_.cs" t="Include" />
-          </e>
         </e>
+        <e p="database.db" t="Include" />
         <e p="Datamodel" t="Include">
           <e p="Administrator.cs" t="Include" />
           <e p="Artwork.cs" t="Include" />
@@ -35,15 +25,9 @@
           <e p="RoomMeasurement.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
-          <e p="20200501105255_InitialCreate.cs" t="Include" />
-          <e p="20200501105255_InitialCreate.Designer.cs" t="Include" />
+          <e p="20200512115556_InitialCreate.cs" t="Include" />
+          <e p="20200512115556_InitialCreate.Designer.cs" t="Include" />
           <e p="MuseumContextModelSnapshot.cs" t="Include" />
-        </e>
-        <e p="MongoDB" t="Include">
-          <e p="IMongoDBSettings.cs" t="Include" />
-          <e p="IMongoRepository.cs" t="Include" />
-          <e p="MongoDBSettings.cs" t="Include" />
-          <e p="MongoRepository.cs" t="Include" />
         </e>
         <e p="museum.db" t="Include" />
         <e p="obj" t="ExcludeRecursive">

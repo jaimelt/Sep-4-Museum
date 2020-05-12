@@ -9,7 +9,7 @@ using WebApplication1.Database;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(MuseumContext))]
-    [Migration("20200501105255_InitialCreate")]
+    [Migration("20200512115556_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,188 +20,204 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.Datamodel.Administrator", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Museumid")
+                    b.Property<int?>("MuseumId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("password")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("username")
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("Museumid");
+                    b.HasIndex("MuseumId");
 
                     b.ToTable("Administrators");
                 });
 
             modelBuilder.Entity("WebApplication1.Datamodel.Artwork", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ArtworkMeasurementId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Author")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Location")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("author")
+                    b.Property<string>("RoomLocationCode")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("image")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("location")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("type")
+                    b.Property<string>("Type")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ArtworkMeasurementId");
+
+                    b.HasIndex("RoomLocationCode");
 
                     b.ToTable("Artworks");
                 });
 
             modelBuilder.Entity("WebApplication1.Datamodel.ArtworkMeasurement", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ArtworkId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("maxCo2")
+                    b.Property<int>("MaxCo2")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("maxLight")
+                    b.Property<int>("MaxHumidity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("maxTemp")
+                    b.Property<int>("MaxLight")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("minCo2")
+                    b.Property<int>("MaxTemperature")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("minLight")
+                    b.Property<int>("MinCo2")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("minTemp")
+                    b.Property<int>("MinHumidity")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("id");
+                    b.Property<int>("MinLight")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("ArtworkId");
+                    b.Property<int>("MinTemperature")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
 
                     b.ToTable("ArtworkMeasurements");
                 });
 
             modelBuilder.Entity("WebApplication1.Datamodel.Museum", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Museum");
                 });
 
             modelBuilder.Entity("WebApplication1.Datamodel.Room", b =>
                 {
-                    b.Property<string>("locationCode")
+                    b.Property<string>("LocationCode")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Museumid")
+                    b.Property<int>("Co2")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("currentCapacity")
+                    b.Property<int>("CurrentCapacity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("totalCapacity")
+                    b.Property<int>("Humidity")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("locationCode");
+                    b.Property<int>("Light")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("Museumid");
+                    b.Property<int?>("MuseumId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Temperature")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TotalCapacity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("liveRoomMeasurementsId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("LocationCode");
+
+                    b.HasIndex("MuseumId");
+
+                    b.HasIndex("liveRoomMeasurementsId");
 
                     b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("WebApplication1.Datamodel.RoomMeasurement", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Co2")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("RoomlocationCode")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("RoomlocationCode1")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("humidity")
+                    b.Property<int>("Humidity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("light")
+                    b.Property<int>("Light")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("temp")
+                    b.Property<int>("Temperature")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("RoomlocationCode");
-
-                    b.HasIndex("RoomlocationCode1");
-
-                    b.ToTable("RoomMeasurement");
+                    b.ToTable("RoomMeasurements");
                 });
 
             modelBuilder.Entity("WebApplication1.Datamodel.Administrator", b =>
                 {
                     b.HasOne("WebApplication1.Datamodel.Museum", null)
-                        .WithMany("adminList")
-                        .HasForeignKey("Museumid");
+                        .WithMany("AdminList")
+                        .HasForeignKey("MuseumId");
                 });
 
-            modelBuilder.Entity("WebApplication1.Datamodel.ArtworkMeasurement", b =>
+            modelBuilder.Entity("WebApplication1.Datamodel.Artwork", b =>
                 {
-                    b.HasOne("WebApplication1.Datamodel.Artwork", null)
-                        .WithMany("artworkMeasurements")
-                        .HasForeignKey("ArtworkId");
+                    b.HasOne("WebApplication1.Datamodel.ArtworkMeasurement", "ArtworkMeasurement")
+                        .WithMany()
+                        .HasForeignKey("ArtworkMeasurementId");
+
+                    b.HasOne("WebApplication1.Datamodel.Room", null)
+                        .WithMany("ArtworkList")
+                        .HasForeignKey("RoomLocationCode");
                 });
 
             modelBuilder.Entity("WebApplication1.Datamodel.Room", b =>
                 {
                     b.HasOne("WebApplication1.Datamodel.Museum", null)
-                        .WithMany("roomList")
-                        .HasForeignKey("Museumid");
-                });
+                        .WithMany("RoomList")
+                        .HasForeignKey("MuseumId");
 
-            modelBuilder.Entity("WebApplication1.Datamodel.RoomMeasurement", b =>
-                {
-                    b.HasOne("WebApplication1.Datamodel.Room", null)
-                        .WithMany("measurementConditions")
-                        .HasForeignKey("RoomlocationCode");
-
-                    b.HasOne("WebApplication1.Datamodel.Room", null)
-                        .WithMany("optimalMeasurements")
-                        .HasForeignKey("RoomlocationCode1");
+                    b.HasOne("WebApplication1.Datamodel.RoomMeasurement", "liveRoomMeasurements")
+                        .WithMany()
+                        .HasForeignKey("liveRoomMeasurementsId");
                 });
 #pragma warning restore 612, 618
         }

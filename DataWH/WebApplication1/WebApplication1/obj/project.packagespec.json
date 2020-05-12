@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+    "projectUniqueName": "C:\\Users\\Jaime\\Desktop\\sep4-fixed db.2\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
     "projectName": "WebApplication1",
-    "projectPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-    "outputPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\obj\\",
+    "projectPath": "C:\\Users\\Jaime\\Desktop\\sep4-fixed db.2\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+    "outputPath": "C:\\Users\\Jaime\\Desktop\\sep4-fixed db.2\\WebApplication1\\WebApplication1\\obj\\",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp3.1"
@@ -26,6 +26,10 @@
   "frameworks": {
     "netcoreapp3.1": {
       "dependencies": {
+        "Microsoft.Data.Sqlite": {
+          "target": "Package",
+          "version": "[5.0.0-preview.3.20181.2, )"
+        },
         "Microsoft.EntityFrameworkCore": {
           "target": "Package",
           "version": "[5.0.0-preview.3.20181.2, )"
@@ -37,10 +41,6 @@
         "Microsoft.EntityFrameworkCore.Sqlite": {
           "target": "Package",
           "version": "[5.0.0-preview.3.20181.2, )"
-        },
-        "MongoDB.Driver": {
-          "target": "Package",
-          "version": "[2.11.0-beta1, )"
         }
       },
       "imports": [

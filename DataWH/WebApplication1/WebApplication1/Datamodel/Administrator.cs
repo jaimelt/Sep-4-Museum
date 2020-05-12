@@ -4,10 +4,8 @@ namespace WebApplication1.Datamodel
 {
     public class Administrator
     {
-        [Key] public int id { get; set; }
-        [Required] public string username { get; set; }
-        [Required] public string password { get; set; }
-        
-        
+        [Key] public int Id { get; set; }
+        [Required] public string Username { get; set; }
+        [Required] public string Password { get; set; }
     }
 }
