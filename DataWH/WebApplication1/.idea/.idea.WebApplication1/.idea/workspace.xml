@@ -1,7 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:Florin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c631d761-966e-430e-8b67-01df1f9b59cd" name="Default Changelist" comment="" />
+    <list default="true" id="c631d761-966e-430e-8b67-01df1f9b59cd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/project.packagespec.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,15 +76,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Administrator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Artwork.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Museum.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Artwork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Administrator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Museum.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -60,13 +99,14 @@
         <option value="$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Startup.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/appsettings.json" />
+        <option value="$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1bo1cPIu6AgBq6cCKRtWkq58eDP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -89,7 +129,7 @@
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <method v="2">
-        <option name="Build" enabled="true" />
+        <option name="Build" />
       </method>
     </configuration>
     <configuration name="WebApplication1: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -104,7 +144,7 @@
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <method v="2">
-        <option name="Build" enabled="true" />
+        <option name="Build" />
       </method>
     </configuration>
   </component>
@@ -119,14 +159,29 @@
       <option name="presentableId" value="Default" />
       <updated>1589283710460</updated>
       <workItem from="1589283717560" duration="2024000" />
+      <workItem from="1589291732720" duration="67000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="965" y="476" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589284738917">
       <screen x="0" y="23" width="2560" height="1363" />
