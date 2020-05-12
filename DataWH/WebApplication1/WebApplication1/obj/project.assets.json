@@ -1101,19 +1101,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jaime\\.nuget\\packages\\": {}
+    "/Users/florinbordei/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "/Users/florinbordei/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication1/WebApplication1/WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-      "packagesPath": "C:\\Users\\Jaime\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\obj\\",
+      "projectPath": "/Users/florinbordei/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication1/WebApplication1/WebApplication1.csproj",
+      "packagesPath": "/Users/florinbordei/.nuget/packages/",
+      "outputPath": "/Users/florinbordei/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication1/WebApplication1/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/florinbordei/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -1161,7 +1165,16 @@
           "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
       }
     }
   }
