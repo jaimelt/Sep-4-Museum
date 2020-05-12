@@ -7,9 +7,25 @@
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Controllers" t="Include" />
+        <e p="Controllers" t="Include">
+          <e p="ArtworkController.cs" t="Include" />
+          <e p="RoomController.cs" t="Include" />
+        </e>
         <e p="Database" t="Include">
+          <e p="DbInitialize.cs" t="Include" />
           <e p="MuseumContext.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="ArtworkRep" t="Include">
+              <e p="ArtworkRepository.cs" t="Include" />
+              <e p="IArtworkRepository.cs" t="Include" />
+            </e>
+            <e p="IRepositoryBase_T_.cs" t="Include" />
+            <e p="RepositoryBase_T_.cs" t="Include" />
+            <e p="RoomRep" t="Include">
+              <e p="IRoomRepository.cs" t="Include" />
+              <e p="RoomRepository.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="database.db" t="Include" />
         <e p="Datamodel" t="Include">
