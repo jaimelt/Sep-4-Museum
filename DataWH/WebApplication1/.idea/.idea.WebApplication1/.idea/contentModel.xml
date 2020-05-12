@@ -4,8 +4,8 @@
     <e p="C:\Users\Jaime\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\Jaime\.Rider2019.2\config\extensions" t="IncludeRecursive" />
     <e p="C:\Users\Jaime\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Jaime\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_WebApplication1.1828045670.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Jaime\Desktop\sep4-fixed db.2\WebApplication1" t="IncludeFlat">
+    <e p="C:\Users\Jaime\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_WebApplication1.-2062594119.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="WebApplication1" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
@@ -28,6 +28,12 @@
           <e p="20200512115556_InitialCreate.cs" t="Include" />
           <e p="20200512115556_InitialCreate.Designer.cs" t="Include" />
           <e p="MuseumContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="MongoDB" t="Include">
+          <e p="IMongoDBSettings.cs" t="Include" />
+          <e p="IMongoRepository.cs" t="Include" />
+          <e p="MongoDbSettings.cs" t="Include" />
+          <e p="MongoRepository.cs" t="Include" />
         </e>
         <e p="museum.db" t="Include" />
         <e p="obj" t="ExcludeRecursive">

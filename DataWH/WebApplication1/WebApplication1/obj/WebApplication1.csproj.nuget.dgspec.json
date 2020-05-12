@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jaime\\Desktop\\sep4-fixed db.2\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jaime\\Desktop\\sep4-fixed db.2\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jaime\\Desktop\\sep4-fixed db.2\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\Jaime\\Desktop\\sep4-fixed db.2\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "packagesPath": "C:\\Users\\Jaime\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jaime\\Desktop\\sep4-fixed db.2\\WebApplication1\\WebApplication1\\obj\\",
+        "outputPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DataWH\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
