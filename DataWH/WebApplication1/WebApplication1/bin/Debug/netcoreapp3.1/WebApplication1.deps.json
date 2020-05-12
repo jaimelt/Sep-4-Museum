@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "WebApplication1/1.0.0": {
         "dependencies": {
+          "Microsoft.Data.Sqlite": "5.0.0-preview.3.20181.2",
           "Microsoft.EntityFrameworkCore": "5.0.0-preview.3.20181.2",
           "Microsoft.EntityFrameworkCore.Design": "5.0.0-preview.3.20181.2",
           "Microsoft.EntityFrameworkCore.Sqlite": "5.0.0-preview.3.20181.2",
@@ -306,6 +307,12 @@
         }
       },
       "Microsoft.CSharp/4.7.0": {},
+      "Microsoft.Data.Sqlite/5.0.0-preview.3.20181.2": {
+        "dependencies": {
+          "Microsoft.Data.Sqlite.Core": "5.0.0-preview.3.20181.2",
+          "SQLitePCLRaw.bundle_e_sqlite3": "2.0.2"
+        }
+      },
       "Microsoft.Data.Sqlite.Core/5.0.0-preview.3.20181.2": {
         "dependencies": {
           "SQLitePCLRaw.core": "2.0.2"
@@ -2356,6 +2363,13 @@
       "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
       "path": "microsoft.csharp/4.7.0",
       "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
+    },
+    "Microsoft.Data.Sqlite/5.0.0-preview.3.20181.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NXbUaOm6AGDBjOzNqZt39rQN3gKfFrzVkHF3YzLtyGak2UsHi6CEtrooGFP7D/uNIBYDt2cxGEChfUrfdCclwQ==",
+      "path": "microsoft.data.sqlite/5.0.0-preview.3.20181.2",
+      "hashPath": "microsoft.data.sqlite.5.0.0-preview.3.20181.2.nupkg.sha512"
     },
     "Microsoft.Data.Sqlite.Core/5.0.0-preview.3.20181.2": {
       "type": "package",

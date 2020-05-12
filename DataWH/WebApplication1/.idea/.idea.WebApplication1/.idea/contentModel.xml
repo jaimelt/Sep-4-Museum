@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Jaime\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\Jaime\.Rider2019.2\config\extensions" t="IncludeRecursive" />
-    <e p="C:\Users\Jaime\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Jaime\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_WebApplication1.-2062594119.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1" t="IncludeFlat">
+    <e p="C:\Users\Sabin\AppData\local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Sabin\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_WebApplication1.-1229387830.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Sabin\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="WebApplication1" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Controllers" t="Include" />
+        <e p="Controllers" t="Include">
+          <e p="ArtworkController.cs" t="Include" />
+          <e p="RoomController.cs" t="Include" />
+        </e>
         <e p="Database" t="Include">
           <e p="MuseumContext.cs" t="Include" />
         </e>
