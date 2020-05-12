@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
+<<<<<<< HEAD
     <data-source name="museum" uuid="4d8d26a0-b1a8-48dd-83f4-91bbcb4792c5">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
       <schema-mapping />
@@ -20,6 +21,19 @@
     <data-source name="museum [4]" uuid="a4b93682-af3b-487f-ae4b-ec516f9fdeb9">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
       <schema-mapping />
+=======
+    <data-source name="museum" uuid="68d7e5f2-ee50-42bd-b405-67a302b7a5f3">
+      <database-info product="SQLite" version="3.25.1" jdbc-version="2.1" driver-name="SQLite JDBC" driver-version="3.25.1" dbms="SQLITE" exact-version="3.25.1" exact-driver-version="3.25">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <auth-required>false</auth-required>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="@" />
+        </introspection-scope>
+      </schema-mapping>
+>>>>>>> ce5e4c319fe00b50e149fc829dc8d36ddc03aa90
     </data-source>
   </component>
 </project>

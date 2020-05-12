@@ -370,3 +370,8 @@ DataWH/WebApplication1/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.c
 DataWH/WebApplication1/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.FileListAbsolute.txt
 DataWH/WebApplication1/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csprojAssemblyReference.cache
 DataWH/WebApplication1/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.pdb
+*.xml
+DATAWH/WebApplication1/WebApplication1/.DS_Store
+*.json
+*.pdb
+DATAWH/WebApplication1/WebApplication1/sep4-fixed db.2/.DS_Store
