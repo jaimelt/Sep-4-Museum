@@ -8,13 +8,15 @@ namespace WebApplication1.Database.Repositories.ArtworkRep
     public interface IArtworkRepository : IRepositoryBase<Artwork>
     {
         Task<IEnumerable<Artwork>> getAllArtworksAsync();
-        Task<Artwork> GetArtworkByIdAsync(string artId);
-        Task<Artwork> GetArtworkWithDetailsAsync(string artId);
+        Task<Artwork> GetArtworkByIdAsync(int artId);
+        Task<Artwork> GetArtworkWithDetailsAsync(int artId);
         void createArtwork(Artwork artwork);
         void updateArtwork(Artwork artwork);
+
+        void updateArtworkMeasurement(ArtworkMeasurement artworkMeasurement);
         void deleteArtwork(Artwork artwork);
 
-        bool artExists(string artId);
+        bool artExists(int artId);
 
         void saveChanges();
 

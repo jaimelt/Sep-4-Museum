@@ -10,9 +10,9 @@ namespace WebApplication1.Database
         {
             if (museumContext.Administrators.Any() && museumContext.Museum.Any()
                                                    && museumContext.Artworks.Any() && museumContext.Rooms.Any()
-                                                   && museumContext.ArtworkMeasurements.Any())
+                                                   && museumContext.ArtworkMeasurements.Any() && museumContext.RoomMeasurements.Any())
             {
-                return;
+                return; // seeding 
             }
             
             
@@ -33,19 +33,36 @@ namespace WebApplication1.Database
                         MinCo2 = 20, MinHumidity = 20, MinLight = 20, MinTemperature = 20
                         
                     }
-                }
+                }, 
+                
+                new Artwork
+                {
+                    Id = 3, Author = "florin", Description = "too many of a description", Image = "aimage", Location = "300",
+                    Name = "this is a piece of art",ArtworkMeasurement = new ArtworkMeasurement
+                    {
+                        Id = 2, MaxCo2 = 20, MaxHumidity = 20, MaxLight = 20, MaxTemperature = 20, 
+                        MinCo2 = 20, MinHumidity = 20, MinLight = 20, MinTemperature = 20
+                        
+                    }
+                }, 
+                
+                new Artwork
+                {
+                    Id = 4, Author = "fake", Description = "none", Image = "none", Location = "100",
+                    Name = "this is not an art", ArtworkMeasurement = new ArtworkMeasurement()
+                },
             };
 
 
 
             foreach (var c in artworks)
             {
-                //museumContext.Artworks.Add(c);
-               museumContext.Artworks.Update(c);
+                museumContext.Artworks.Add(c);
+             //  museumContext.Artworks.Update(c);
                // after adding, use update. Otherwise there will be issues in overwritting 
             }
 
-            string hello = "mu ";
+            
 
             var rooms = new Room[]
           {

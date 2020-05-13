@@ -11,6 +11,8 @@ namespace WebApplication1.Datamodel
         public string Type { get; set; }
         public string Author { get; set; }
         public string Location { get; set; }
+        
         public ArtworkMeasurement ArtworkMeasurement { get; set; }
+        
     }
 }

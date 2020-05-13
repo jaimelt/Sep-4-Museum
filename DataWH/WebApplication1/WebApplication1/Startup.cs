@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApplication1.Database;
+using WebApplication1.Database.Repositories.ArtworkRep;
 
 namespace WebApplication1
 {
@@ -27,6 +28,7 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ArtworkRepository>(); 
             services.AddDbContext<MuseumContext>(opt =>
                 opt.UseSqlite("Data source = museum.db"));
             services.AddControllers();
