@@ -17,7 +17,7 @@ namespace WebApplication1.Database.Repositories.RoomRep
 
         Task<Room> GetRoomOptimalMeasurementsAsync(string roomLocationCode);
 
-        Task<Room> GetRoomMeasurementConditionsAsync(string roomLocationCode);
+        Task<RoomMeasurement> GetRoomMeasurementConditionsAsync(string roomLocationCode);
 
         void createRoom(Room room);
 

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApplication1.Database;
 using WebApplication1.Database.Repositories.ArtworkRep;
+using WebApplication1.Database.Repositories.RoomRep;
 
 namespace WebApplication1
 {
@@ -29,6 +30,7 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ArtworkRepository>();
+            services.AddScoped<RoomRepository>();
             services.AddDbContext<MuseumContext>(opt =>
                 opt.UseSqlite("Data source = museum.db"));
             services.AddControllers();
