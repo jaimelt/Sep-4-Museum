@@ -5,8 +5,15 @@
 *  Author: Marina Ionel
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <ATMEGA_FreeRTOS.h>
+#include <stdio_driver.h>
 #include <hih8120.h>
 #include <tsl2591.h>
+
+#include "..\tasks\light_sensor_task.h"
 
 void setup_driver(){
 	//temperature/humidity sensor

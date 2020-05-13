@@ -5,9 +5,9 @@
 *  Author: Marina Ionel
 */
 
-#include <ATMEGA_FreeRTOS.h>
 #include <stdio.h>
-#include <stdio_driver.h>
+
+#include <ATMEGA_FreeRTOS.h>
 #include <task.h>
 #include <semphr.h>
 #include <event_groups.h>
