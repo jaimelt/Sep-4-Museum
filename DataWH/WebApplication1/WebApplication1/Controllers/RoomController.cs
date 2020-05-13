@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Database.Repositories.RoomRep;
 using WebApplication1.Datamodel;
+using WebApplication1.MongoDB;
 
 namespace WebApplication1.Controllers
 {
@@ -15,10 +16,13 @@ namespace WebApplication1.Controllers
     {
         //private readonly MuseumContext roomRepository;
         private readonly RoomRepository roomRepository;
+        private readonly IMongoRepository _mongoRepository;
 
-        public RoomController(RoomRepository roomRepository)
+
+        public RoomController(RoomRepository roomRepository, MongoRepository mongoRepository)
         {
             this.roomRepository = roomRepository;
+            _mongoRepository = mongoRepository;
         }
 
         // GET: api/Rooms
@@ -56,12 +60,25 @@ namespace WebApplication1.Controllers
         }
 
         // GET: api/Rooms/5
-        [HttpGet("getmeasurementconditions/{id}")]
-        public Task<RoomMeasurement> GetMeasurementConditions(string id)
+        [HttpGet("getmeasurementconditions/{id:int}")]
+        public async Task<ActionResult<RoomMeasurement>> GetMeasurementConditions([FromRoute] int id)
         {
-            var roomMeasurement = roomRepository.GetRoomMeasurementConditionsAsync(id);
+            Console.WriteLine("--------------------");
+           MongoMeasurement mongoMeasurement=  _mongoRepository.LoadLastRoomMeasurement(id);
+           RoomMeasurement temp = new RoomMeasurement();
+           temp.Co2 = mongoMeasurement.co2;
+           temp.Humidity = mongoMeasurement.humidity;
+           temp.Light = mongoMeasurement.light;
+           temp.Temperature = mongoMeasurement.temperature;
 
-            return roomMeasurement;
+
+           return temp;
+
+
+
+//            var roomMeasurement = roomRepository.GetRoomMeasurementConditionsAsync(id);
+//
+//            return roomMeasurement;
         }
 
         // PUT: api/Rooms/5
@@ -70,15 +87,14 @@ namespace WebApplication1.Controllers
         [HttpPut("put/{id}")]
         public async Task<IActionResult> PutRoom([FromRoute] string id, [FromBody] Room room)
         {
-
-            Console.WriteLine("This is the ID: " + id + ", and this is the location code: " + room.LocationCode + ", and they are equal: " + id.Equals(room.LocationCode));
+            Console.WriteLine("This is the ID: " + id + ", and this is the location code: " + room.LocationCode +
+                              ", and they are equal: " + id.Equals(room.LocationCode));
 
             if (!(id.Equals(room.LocationCode)))
             {
                 return BadRequest();
             }
 
-            
 
             //roomRepository.Entry(room).State = EntityState.Modified;
 
@@ -120,7 +136,7 @@ namespace WebApplication1.Controllers
             }
 
             roomRepository.createRoom(room);
-            return CreatedAtRoute("", new { id = room.LocationCode }, room);
+            return CreatedAtRoute("", new {id = room.LocationCode}, room);
         }
 
         // DELETE: api/Rooms/5

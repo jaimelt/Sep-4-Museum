@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
+    <e p="C:\Users\Jaime\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_WebApplication1.-2062594119.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="WebApplication1" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -28,6 +32,7 @@
         <e p="Datamodel" t="Include">
           <e p="Administrator.cs" t="Include" />
           <e p="Artwork.cs" t="Include" />
+          <e p="MongoMeasurement.cs" t="Include" />
           <e p="Museum.cs" t="Include" />
           <e p="Room.cs" t="Include" />
           <e p="RoomMeasurement.cs" t="Include" />
@@ -60,9 +65,5 @@
       </e>
       <e p="WebApplication1.sln" t="IncludeFlat" />
     </e>
-    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_WebApplication1.1691502537.00" t="ExcludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
   </component>
 </project>
