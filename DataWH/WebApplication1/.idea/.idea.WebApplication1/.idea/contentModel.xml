@@ -4,8 +4,6 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="WebApplication1" t="IncludeRecursive">
-        <e p="appsettings.Development.json" t="Include" />
-        <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="ArtworkController.cs" t="Include" />
@@ -34,6 +32,11 @@
           <e p="Room.cs" t="Include" />
           <e p="RoomMeasurement.cs" t="Include" />
         </e>
+        <e p="Migrations" t="Include">
+          <e p="20200513105342_InitialCreate.cs" t="Include" />
+          <e p="20200513105342_InitialCreate.Designer.cs" t="Include" />
+          <e p="MuseumContextModelSnapshot.cs" t="Include" />
+        </e>
         <e p="MongoDB" t="Include">
           <e p="IMongoDBSettings.cs" t="Include" />
           <e p="IMongoRepository.cs" t="Include" />
@@ -57,7 +60,9 @@
       </e>
       <e p="WebApplication1.sln" t="IncludeFlat" />
     </e>
-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_WebApplication1.-1113385347.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_WebApplication1.1691502537.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
   </component>
 </project>
