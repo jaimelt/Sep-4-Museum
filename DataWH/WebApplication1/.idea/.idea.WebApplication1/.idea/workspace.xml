@@ -25,12 +25,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c631d761-966e-430e-8b67-01df1f9b59cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c631d761-966e-430e-8b67-01df1f9b59cd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +157,7 @@
       <workItem from="1589290570938" duration="3760000" />
       <workItem from="1589344773412" duration="10499000" />
       <workItem from="1589378440015" duration="94000" />
-      <workItem from="1589378541233" duration="242000" />
+      <workItem from="1589378541233" duration="629000" />
     </task>
     <servers />
   </component>
