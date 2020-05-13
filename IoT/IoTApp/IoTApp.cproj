@@ -156,7 +156,13 @@
     <Compile Include="drivers\docs\example\loraWANHandler.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\setup\setup_drivers.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\tasks\light_sensor_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\tasks\light_sensor_task.h">
       <SubType>compile</SubType>
     </Compile>
     <None Include="drivers\docs\example\main.c">
@@ -333,6 +339,7 @@
     <Folder Include="FreeRTOS\FreeRTOSTraceDriver\" />
     <Folder Include="FreeRTOS\src\" />
     <Folder Include="src" />
+    <Folder Include="src\setup" />
     <Folder Include="src\tasks" />
   </ItemGroup>
   <ItemGroup>

@@ -133,6 +133,8 @@ void initialiseSystem()
 /*-----------------------------------------------------------*/
 int main(void)
 {
+	stdioCreate(0);
+	
 	initialiseSystem(); // Must be done as the very first thing!!
 	printf("Program Started!!\n");
 	vTaskStartScheduler(); // Initialise and run the freeRTOS scheduler. Execution should never return from here.
