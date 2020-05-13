@@ -30,15 +30,9 @@
         <e p="Datamodel" t="Include">
           <e p="Administrator.cs" t="Include" />
           <e p="Artwork.cs" t="Include" />
-          <e p="ArtworkMeasurement.cs" t="Include" />
           <e p="Museum.cs" t="Include" />
           <e p="Room.cs" t="Include" />
           <e p="RoomMeasurement.cs" t="Include" />
-        </e>
-        <e p="Migrations" t="Include">
-          <e p="20200512115556_InitialCreate.cs" t="Include" />
-          <e p="20200512115556_InitialCreate.Designer.cs" t="Include" />
-          <e p="MuseumContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="MongoDB" t="Include">
           <e p="IMongoDBSettings.cs" t="Include" />
