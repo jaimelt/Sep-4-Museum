@@ -26,6 +26,7 @@
 #include "../constants/global_constants.h"
 
 #include "../tasks/light_sensor_task.h"
+#include "../tasks/co2_sensor_task.h"
 
 #define SETUP_DRIVERS_TAG "SETUP DRIVERS"
 
@@ -34,14 +35,14 @@ void setup_light_driver(){
 	int result = tsl2591Create(LightSensor_callback);
 	if(result != TSL2591_OK) {
 		printf("%s :: FAILED DRIVER INITIALIZATION :: Light :: result code %d\n", SETUP_DRIVERS_TAG, result);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	
 	//enable
 	result = tsl2591Enable();
 	if(result != TSL2591_OK) {
 		printf("%s :: FAILED DRIVER ENABLING :: Light :: result code %d\n",SETUP_DRIVERS_TAG, result);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 }
 
@@ -53,6 +54,5 @@ void setup_temperature_humidity_driver(){
 }
 
 void setup_co2_driver(){
-	//TODO
-
+	//mh_z19_create(ser_USART3, co2Sensor_callback)
 }

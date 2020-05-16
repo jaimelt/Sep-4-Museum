@@ -30,7 +30,7 @@ SemaphoreHandle_t _xPrintfSemaphore;
 void initialiseSystem()
 {
 	// Set output ports for leds used in the example
-	DDRA |= _BV(DDA0) | _BV(DDA7);
+	//DDRA |= _BV(DDA0) | _BV(DDA7);
 	// Initialise the trace-driver to be used together with the R2R-Network
 	trace_init();
 	// Make it possible to use stdio on COM port 0 (USB) on Arduino board - Setting 57600,8,N,1
@@ -40,14 +40,15 @@ void initialiseSystem()
 /*-----------------------------------------------------------*/
 int main(void)
 {
+	initialiseSystem(); // Must be done as the very first thing!!
+		
 	_xPrintfSemaphore=xSemaphoreCreateMutex();
+	
 	if (_xPrintfSemaphore!=NULL){
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 		printf("Program Started!!\n");
 		xSemaphoreGive(_xPrintfSemaphore);
 	}
-	
-	initialiseSystem(); // Must be done as the very first thing!!
 	
 	sensorControl_create(_xPrintfSemaphore);
 	

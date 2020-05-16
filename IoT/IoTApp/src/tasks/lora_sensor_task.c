@@ -27,7 +27,7 @@ static char _out_buf[100];
 void setup_lora_driver(){
 	// vvvvvvvvvvvvvvvvv BELOW IS LoRaWAN initialisation vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	// Initialise the HAL layer and use 5 for LED driver priority
-	hal_create(5);
+	hal_create(LORAWAN_TASK_PRIORITY);
 	// Initialise the LoRaWAN driver without down-link buffer
 	lora_driver_create(LORA_USART, NULL);
 	
@@ -130,7 +130,7 @@ void vALoraTask(void* pvParameters){
 	{
 		if (_receivingQueue != NULL)
 		{
-			if (xQueueReceive((_receivingQueue),
+			if (xQueueReceive(_receivingQueue,
 			_lorapayload,
 			portMAX_DELAY) == pdPASS)
 			{
