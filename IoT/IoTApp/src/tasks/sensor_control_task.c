@@ -17,6 +17,7 @@
 #include "light_sensor_task.h"
 #include "../constants/global_constants.h"
 #include "../handler/sensor_data_package_handler.h"
+#include "lora_driver.h"
 
 //constants
 #define SENSOR_CONTROL_TAG "SENSOR CONTROL"
@@ -112,6 +113,7 @@ void sensorControl_create(SemaphoreHandle_t pPrintfSemaphore){
 	LightSensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
 	
 	//create lora driver
+	loraSensor_create(_sendingQueue, _xPrintfSemaphore);
 	
 	_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
 	if (_sendingQueue != NULL)
