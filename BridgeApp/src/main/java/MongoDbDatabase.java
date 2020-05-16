@@ -20,8 +20,13 @@ public class MongoDbDatabase implements IDatabase {
     }
 
     @Override
-    public void insert(double co2, double humidity, double temperature, int roomId) {
-        var document = new Document().append("room_no", roomId).append("time", new Date()).append("co2", co2).append("humidity", humidity).append("temperature", temperature);
+    public void insert(int co2, double humidity, double temperature, double light, int roomId) {
+        var document = new Document().append("room_no", roomId)
+                .append("time", new Date())
+                .append("co2", co2)
+                .append("humidity", humidity)
+                .append("temperature", temperature)
+                .append("light", light);
         mongoDatabase.getCollection(DATA_COLLECTION).insertOne(document);
     }
 

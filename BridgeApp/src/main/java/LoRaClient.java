@@ -95,14 +95,15 @@ public class LoRaClient implements WebSocket.Listener {
 
         int humidityAsInt = Integer.parseInt(measurementsAsHex[0], 16);
         int temperatureAsInt = Integer.parseInt(measurementsAsHex[1], 16);
-        int co2AsInt = Integer.parseInt(measurementsAsHex[2], 16);
+        int co2 = Integer.parseInt(measurementsAsHex[2], 16);
+        int lightAsInt = Integer.parseInt(measurementsAsHex[3], 16);
 
-        var ratio = 10;
+        var ratio = 100;
 
         double humidityAsDouble = ((double) humidityAsInt) / ratio;
         double temperatureAsDouble = ((double) temperatureAsInt) / ratio;
-        double co2AsDouble = ((double) co2AsInt) / ratio;
+        double lightAsDouble = ((double) lightAsInt) / ratio;
 
-        database.insert(co2AsDouble, humidityAsDouble, temperatureAsDouble, 1);
+        database.insert(co2, humidityAsDouble, temperatureAsDouble, lightAsDouble, 1);
     }
 }

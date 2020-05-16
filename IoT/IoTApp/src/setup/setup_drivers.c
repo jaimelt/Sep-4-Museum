@@ -5,38 +5,54 @@
 *  Author: Marina Ionel
 */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <avr/io.h>
+#include <avr/sfr_defs.h>
+
+#include <hal_defs.h>
+#include <ihal.h>
 
 #include <ATMEGA_FreeRTOS.h>
+
 #include <stdio_driver.h>
 #include <hih8120.h>
 #include <tsl2591.h>
+#include <lora_driver.h>
+#include <serial.h>
+#include <stdio_driver.h>
+#include <iled.h>
 
-#include "..\tasks\light_sensor_task.h"
+#include "../constants/global_constants.h"
 
-void setup_driver(){
-	//temperature/humidity sensor
-	if(HIH8120_OK != hih8120Create()) {
-		printf("FAILED INITIALIZATION::Temperature sensor\n");
-		exit(1);
-	}
-	
-	//co2 sensor
-	//TODO
-	
-	//light sensor
+#include "../tasks/light_sensor_task.h"
+
+#define SETUP_DRIVERS_TAG "SETUP DRIVERS"
+
+void setup_light_driver(){
 	//create
 	int result = tsl2591Create(LightSensor_callback);
 	if(result != TSL2591_OK) {
-		printf("FAILED INITIALIZATION::Light sensor: %d\n", result);
+		printf("%s :: FAILED DRIVER INITIALIZATION :: Light :: result code %d\n", SETUP_DRIVERS_TAG, result);
 		exit(1);
 	}
 	
 	//enable
 	result = tsl2591Enable();
 	if(result != TSL2591_OK) {
-		printf("FAILED ENABLING::Light sensor %d\n", result);
+		printf("%s :: FAILED DRIVER ENABLING :: Light :: result code %d\n",SETUP_DRIVERS_TAG, result);
 		exit(1);
 	}
+}
+
+void setup_temperature_humidity_driver(){
+	if(HIH8120_OK != hih8120Create()) {
+		printf("%s :: FAILED INITIALIZATION :: Temperature/humidity sensor\n", SETUP_DRIVERS_TAG);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void setup_co2_driver(){
+	//TODO
+
 }

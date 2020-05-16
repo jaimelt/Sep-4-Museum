@@ -11,10 +11,14 @@
 #include <task.h>
 #include <semphr.h>
 #include <event_groups.h>
+
 #include <tsl2591.h>
 
+#include "../constants/global_constants.h"
+
 #define LIGHT_TASK_PRIORITY (configMAX_PRIORITIES-4)
-#define LIGHT_BIT_3 (1<<3)
+#define LIGHT_SENSOR_TASK_NAME "Light Sensor Task"
+#define LIGHT_SENSOR_TAG "LIGHT SENSOR TASK"
 
 static SemaphoreHandle_t _printfSemaphore;
 static EventGroupHandle_t _eventGroupHandleMeasure;
@@ -25,10 +29,10 @@ static float _lastMeasurementLux;
 void vALightSensorTask(void* pvParameters){
 	for (;;){
 		xEventGroupWaitBits
-		(_eventGroupHandleMeasure,		/* The event group being tested. */
-		LIGHT_BIT_3,					/* The bits within the event group to wait for. */
-		pdTRUE,							/* BIT_0 & BIT_4 should be cleared before returning. */
-		pdFALSE,						/* Don't wait for both bits, either bit will do. */
+		(_eventGroupHandleMeasure,
+		LIGHT_MEASURE_BIT,
+		pdTRUE,
+		pdTRUE,
 		portMAX_DELAY );
 		
 		
@@ -36,7 +40,7 @@ void vALightSensorTask(void* pvParameters){
 		
 		if(result != TSL2591_OK) {
 			xSemaphoreTake(_printfSemaphore, portMAX_DELAY);
-			printf("Fetch light data failed %d\n", result);
+			printf("%s :: Fetch light data failed %d\n", LIGHT_SENSOR_TAG, result);
 			xSemaphoreGive(_printfSemaphore);
 		}
 	}
@@ -48,11 +52,12 @@ void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure,EventGroupHandle
 	_eventGroupHandleMeasure=pvEventHandleMeasure;
 	_eventGroupHandleNewData=pvEventHandleNewData;
 	_lastMeasurementLux=0;
+	
 	_lightSensorTaskHandle=NULL;
 	
 	xTaskCreate(
 	vALightSensorTask,
-	(const portCHAR*)"Light Sensor Task",
+	(const portCHAR*) LIGHT_SENSOR_TASK_NAME,
 	configMINIMAL_STACK_SIZE+200,
 	NULL,
 	LIGHT_TASK_PRIORITY,
@@ -63,20 +68,20 @@ void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure,EventGroupHandle
 void LightSensor_callback(tsl2591ReturnCode_t pvTsl2591ReturnCode){
 	if (pvTsl2591ReturnCode!=TSL2591_OK){
 		xSemaphoreTake(_printfSemaphore, portMAX_DELAY);
-		printf("Light measurement failed :: return code %d\n", pvTsl2591ReturnCode);
+		printf("%s :: Light measurement failed :: return code %d\n", LIGHT_SENSOR_TAG, pvTsl2591ReturnCode);
 		xSemaphoreGive(_printfSemaphore);
 	}
 	
-	float lux;
-	tsl2591ReturnCode_t result=tsl2591GetLux(&lux);
+	float _lux;
+	tsl2591ReturnCode_t result=tsl2591GetLux(&_lux);
 	if (TSL2591_OK==result){
-		xEventGroupSetBits(_eventGroupHandleNewData, LIGHT_BIT_3);
+		xEventGroupSetBits(_eventGroupHandleNewData, LIGHT_READY_BIT);
 		//set data
-		_lastMeasurementLux=lux;
+		_lastMeasurementLux=_lux;
 	}
 	else{
 		xSemaphoreTake(_printfSemaphore, portMAX_DELAY);
-		printf("Get light measurement failed :: return code %d\n", result);
+		printf("%s :: Get light measurement failed :: return code %d\n",LIGHT_SENSOR_TAG, result);
 		xSemaphoreTake(_printfSemaphore, portMAX_DELAY);
 	}
 }
