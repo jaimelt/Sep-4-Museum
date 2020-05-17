@@ -5,5 +5,5 @@
 *  Author:
 */
 
-void loraSensor_create(QueueHandle_t pQueue,  SemaphoreHandle_t pPrintfSemaphore);
-void vALoraTask(void* pvParameters);
+void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore);
+void vALoraTask(void *pvParameters);

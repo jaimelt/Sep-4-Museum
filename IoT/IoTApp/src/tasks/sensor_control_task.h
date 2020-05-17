@@ -3,6 +3,7 @@
  *
  * Created: 16/05/2020 10.20.54
  *  Author: Marina Ionel
- */ 
+ */
 
 void sensorControl_create(SemaphoreHandle_t pPrintfSemaphore);
+void vASensorControlTask(void *pvParameters);

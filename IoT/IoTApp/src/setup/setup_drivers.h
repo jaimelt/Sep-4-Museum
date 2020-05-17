@@ -5,6 +5,4 @@
 *  Author: Marina Ionel
 */
 
-void setup_light_driver();
-void setup_temperature_humidity_driver();
-void setup_co2_driver();
+void setup_drivers(SemaphoreHandle_t pPrintfSemaphore);

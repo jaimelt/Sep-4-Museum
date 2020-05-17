@@ -14,59 +14,70 @@
 #include <hal_defs.h>
 
 #include "../constants/global_constants.h"
+#include "../setup/setup_drivers.h"
 
 #define LORA_SENSOR_TAG "LORA SENSOR TASK"
 #define LORA_TASK_NAME "Lora Sensor Task"
-#define LORAWAN_TASK_PRIORITY (configMAX_PRIORITIES-3)
+#define LORAWAN_TASK_PRIORITY (configMAX_PRIORITIES - 1)
 
 static QueueHandle_t _receivingQueue;
 static SemaphoreHandle_t _xPrintfSemaphore;
 static TaskHandle_t _lora_task_handle;
+
 static char _out_buf[100];
 
-void setup_lora_driver(){
+static void _setup_lora_driver()
+{
 	// vvvvvvvvvvvvvvvvv BELOW IS LoRaWAN initialisation vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 	// Initialise the HAL layer and use 5 for LED driver priority
-	hal_create(LORAWAN_TASK_PRIORITY);
+	hal_create(5);
 	// Initialise the LoRaWAN driver without down-link buffer
 	lora_driver_create(LORA_USART, NULL);
-	
 	e_LoRa_return_code_t rc;
 	led_slow_blink(led_ST2); // OPTIONAL: Led the green led blink slowly while we are setting up LoRa
 
-	// Factory reset the transceiver
-	printf("FactoryReset >%s<\n", lora_driver_map_return_code_to_text(lora_driver_rn2483_factory_reset()));
-	
-	// Configure to EU868 LoRaWAN standards
-	printf("Configure to EU868 >%s<\n", lora_driver_map_return_code_to_text(lora_driver_configure_to_eu868()));
+	if (_xPrintfSemaphore != NULL)
+	{
+		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		// Factory reset the transceiver
+		printf("FactoryReset >%s<\n", lora_driver_map_return_code_to_text(lora_driver_rn2483_factory_reset()));
 
-	// Get the transceivers HW EUI
-	rc = lora_driver_get_rn2483_hweui(_out_buf);
-	printf("Get HWEUI >%s<: %s\n",lora_driver_map_return_code_to_text(rc), _out_buf);
+		// Configure to EU868 LoRaWAN standards
+		printf("Configure to EU868 >%s<\n", lora_driver_map_return_code_to_text(lora_driver_configure_to_eu868()));
 
-	// Set the HWEUI as DevEUI in the LoRaWAN software stack in the transceiver
-	printf("Set DevEUI: %s >%s<\n", _out_buf, lora_driver_map_return_code_to_text(lora_driver_set_device_identifier(_out_buf)));
+		// Get the transceivers HW EUI
+		rc = lora_driver_get_rn2483_hweui(_out_buf);
+		printf("Get HWEUI >%s<: %s\n", lora_driver_map_return_code_to_text(rc), _out_buf);
 
-	// Set Over The Air Activation parameters to be ready to join the LoRaWAN
-	printf("Set OTAA Identity appEUI:%s appKEY:%s devEUI:%s >%s<\n", LORA_appEUI, LORA_appKEY, _out_buf, lora_driver_map_return_code_to_text(lora_driver_set_otaa_identity(LORA_appEUI,LORA_appKEY,_out_buf)));
+		// Set the HWEUI as DevEUI in the LoRaWAN software stack in the transceiver
+		printf("Set DevEUI: %s >%s<\n", _out_buf, lora_driver_map_return_code_to_text(lora_driver_set_device_identifier(_out_buf)));
 
-	// Save all the MAC settings in the transceiver
-	printf("Save mac >%s<\n",lora_driver_map_return_code_to_text(lora_driver_save_mac()));
+		// Set Over The Air Activation parameters to be ready to join the LoRaWAN
+		printf("Set OTAA Identity appEUI:%s appKEY:%s devEUI:%s >%s<\n", LORA_appEUI, LORA_appKEY, _out_buf, lora_driver_map_return_code_to_text(lora_driver_set_otaa_identity(LORA_appEUI, LORA_appKEY, _out_buf)));
 
-	// Enable Adaptive Data Rate
-	printf("Set Adaptive Data Rate: ON >%s<\n", lora_driver_map_return_code_to_text(lora_driver_set_adaptive_data_rate(LoRa_ON)));
+		// Save all the MAC settings in the transceiver
+		printf("Save mac >%s<\n", lora_driver_map_return_code_to_text(lora_driver_save_mac()));
 
-	// Set receiver window1 delay to 500 ms - this is needed if down-link messages will be used
-	printf("Set Receiver Delay: %d ms >%s<\n", 500, lora_driver_map_return_code_to_text(lora_driver_set_receive_delay(500)));
+		// Enable Adaptive Data Rate
+		printf("Set Adaptive Data Rate: ON >%s<\n", lora_driver_map_return_code_to_text(lora_driver_set_adaptive_data_rate(LoRa_ON)));
 
+		// Set receiver window1 delay to 500 ms - this is needed if down-link messages will be used
+		printf("Set Receiver Delay: %d ms >%s<\n", 500, lora_driver_map_return_code_to_text(lora_driver_set_receive_delay(500)));
+		xSemaphoreGive(_xPrintfSemaphore);
+	}
 	// Join the LoRaWAN
 	uint8_t maxJoinTriesLeft = 10;
-	
-	do {
-		rc = lora_driver_join(LoRa_OTAA);
-		printf("Join Network TriesLeft:%d >%s<\n", maxJoinTriesLeft, lora_driver_map_return_code_to_text(rc));
 
-		if ( rc != LoRa_ACCEPTED)
+	do
+	{
+		rc = lora_driver_join(LoRa_OTAA);
+		if (_xPrintfSemaphore != NULL)
+		{
+			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+			printf("Join Network TriesLeft:%d >%s<\n", maxJoinTriesLeft, lora_driver_map_return_code_to_text(rc));
+			xSemaphoreGive(_xPrintfSemaphore);
+		}
+		if (rc != LoRa_ACCEPTED)
 		{
 			// Make the red led pulse to tell something went wrong
 			led_long_puls(led_ST1); // OPTIONAL
@@ -101,19 +112,22 @@ void setup_lora_driver(){
 	}
 }
 
-void loraDriver_sent_upload_message(lora_payload_t* uplink_lora_payoad){
+void loraDriver_sent_upload_message(lora_payload_t *uplink_lora_payoad)
+{
 	led_short_puls(led_ST4);
-	if (_xPrintfSemaphore!=NULL){
+	if (_xPrintfSemaphore != NULL)
+	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 		printf("Upload Message >%s<\n", lora_driver_map_return_code_to_text(
-		lora_driver_sent_upload_message(false, uplink_lora_payoad)));
+											lora_driver_sent_upload_message(false, uplink_lora_payoad)));
 		xSemaphoreGive(_xPrintfSemaphore);
 	}
 }
 
-void vALoraTask(void* pvParameters){
+void vALoraTask(void *pvParameters)
+{
 	//(void*)pvParameters;
-	
+
 	lora_driver_reset_rn2483(1);
 	vTaskDelay(2);
 	lora_driver_reset_rn2483(0);
@@ -121,18 +135,19 @@ void vALoraTask(void* pvParameters){
 
 	lora_driver_flush_buffers();
 
-	setup_lora_driver();
+	_setup_lora_driver();
+
 	vTaskDelay(150);
-	
-	lora_payload_t* _lorapayload = NULL;
-	
+
+	lora_payload_t *_lorapayload = NULL;
+
 	for (;;)
 	{
 		if (_receivingQueue != NULL)
 		{
 			if (xQueueReceive(_receivingQueue,
-			_lorapayload,
-			portMAX_DELAY) == pdPASS)
+							  _lorapayload,
+							  portMAX_DELAY) == pdPASS)
 			{
 				if (_lorapayload != NULL)
 				{
@@ -140,7 +155,8 @@ void vALoraTask(void* pvParameters){
 				}
 				else
 				{
-					if (_xPrintfSemaphore != NULL) {
+					if (_xPrintfSemaphore != NULL)
+					{
 						xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 						printf("%s :: NULL lora payload", LORA_SENSOR_TAG);
 						xSemaphoreGive(_xPrintfSemaphore);
@@ -152,16 +168,17 @@ void vALoraTask(void* pvParameters){
 	vTaskDelete(_lora_task_handle);
 }
 
-void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore){
-	_receivingQueue=pQueue;
-	_xPrintfSemaphore=pPrintfSemaphore;
-	_lora_task_handle=NULL;
-	
+void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore)
+{
+	_receivingQueue = pQueue;
+	_xPrintfSemaphore = pPrintfSemaphore;
+	_lora_task_handle = NULL;
+
 	xTaskCreate(
-	vALoraTask							/* Task function. */
-	, (const portCHAR*)LORA_TASK_NAME	/* String with name of task. */
-	, configMINIMAL_STACK_SIZE			/* Stack size in words. */
-	, NULL								/* Parameter passed as input of the task */
-	, LORAWAN_TASK_PRIORITY				/* Priority of the task. */
-	, &_lora_task_handle);				/* Task handle. */
+		vALoraTask,						  /* Task function. */
+		(const portCHAR *)LORA_TASK_NAME, /* String with name of task. */
+		configMINIMAL_STACK_SIZE,		  /* Stack size in words. */
+		NULL,							  /* Parameter passed as input of the task */
+		LORAWAN_TASK_PRIORITY,			  /* Priority of the task. */
+		&_lora_task_handle);			  /* Task handle. */
 }

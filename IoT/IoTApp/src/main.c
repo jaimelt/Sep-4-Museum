@@ -1,11 +1,3 @@
-/*
-* main.c
-* Author : IHA
-*
-* Example main file including LoRaWAN setup
-* Just for inspiration :)
-*/
-
 #include <stdio.h>
 #include <avr/io.h>
 #include <avr/sfr_defs.h>
@@ -19,8 +11,11 @@
 #include <FreeRTOSTraceDriver.h>
 #include <stdio_driver.h>
 #include <serial.h>
+#include <FreeRTOSConfig.h>
+#include <avr/interrupt.h>
 
 #include "tasks/sensor_control_task.h"
+#include "setup/setup_drivers.h"
 
 // Needed for LoRaWAN
 #include <lora_driver.h>
@@ -29,26 +24,25 @@ SemaphoreHandle_t _xPrintfSemaphore;
 
 void initialiseSystem()
 {
-	// Set output ports for leds used in the example
-	//DDRA |= _BV(DDA0) | _BV(DDA7);
-	// Initialise the trace-driver to be used together with the R2R-Network
 	trace_init();
-	// Make it possible to use stdio on COM port 0 (USB) on Arduino board - Setting 57600,8,N,1
 	stdioCreate(ser_USART0);
+	//enable interrupt
+	sei();
 }
 
 /*-----------------------------------------------------------*/
 int main(void)
 {
-	initialiseSystem(); // Must be done as the very first thing!!
-		
-	_xPrintfSemaphore=xSemaphoreCreateMutex();
+	initialiseSystem();
+	setup_drivers();
 	
+	_xPrintfSemaphore=xSemaphoreCreateMutex();
 	if (_xPrintfSemaphore!=NULL){
-		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("Program Started!!\n");
 		xSemaphoreGive(_xPrintfSemaphore);
 	}
+	xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+	printf("Program Started!!\n");
+	xSemaphoreGive(_xPrintfSemaphore);
 	
 	sensorControl_create(_xPrintfSemaphore);
 	
@@ -59,4 +53,3 @@ int main(void)
 	{
 	}
 }
-

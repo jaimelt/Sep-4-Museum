@@ -14,4 +14,4 @@ void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure,
 						SemaphoreHandle_t pvPrintfSemaphore);
 void LightSensor_callback(tsl2591ReturnCode_t pvTsl2591ReturnCode);
 float LightSensor_getLightMeasurement();
-void vALightSensorTask(void* pvParameters);
+void vALightSensorTask(void *pvParameters);
