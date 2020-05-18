@@ -17,9 +17,9 @@
 
 #include "../constants/global_constants.h"
 
-static int const LIGHT_TASK_PRIORITY = (configMAX_PRIORITIES - 3);
-static char const* LIGHT_SENSOR_TASK_NAME = "Light Sensor Task";
-static char const* LIGHT_SENSOR_TAG= "LIGHT SENSOR TASK";
+#define LIGHT_TASK_PRIORITY (configMAX_PRIORITIES - 3)
+#define LIGHT_SENSOR_TASK_NAME "Light Sensor Task"
+#define LIGHT_SENSOR_TAG "LIGHT SENSOR TASK"
 
 static SemaphoreHandle_t _xPrintfSemaphore;
 static EventGroupHandle_t _eventGroupHandleMeasure;
@@ -106,10 +106,10 @@ void vALightSensorTask(void *pvParameters)
 	for (;;)
 	{
 		xEventGroupWaitBits(_eventGroupHandleMeasure,
-							LIGHT_MEASURE_BIT,
-							pdTRUE,
-							pdTRUE,
-							portMAX_DELAY);
+		LIGHT_MEASURE_BIT,
+		pdTRUE,
+		pdTRUE,
+		portMAX_DELAY);
 
 		int result = tsl2591FetchData();
 
@@ -136,12 +136,12 @@ void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandl
 	_lightSensorTaskHandle = NULL;
 
 	xTaskCreate(
-		vALightSensorTask,
-		(const portCHAR *)LIGHT_SENSOR_TASK_NAME,
-		configMINIMAL_STACK_SIZE + 200,
-		NULL,
-		LIGHT_TASK_PRIORITY,
-		&_lightSensorTaskHandle);
+	vALightSensorTask,
+	(const portCHAR *)LIGHT_SENSOR_TASK_NAME,
+	configMINIMAL_STACK_SIZE + 200,
+	NULL,
+	LIGHT_TASK_PRIORITY,
+	&_lightSensorTaskHandle);
 }
 
 float LightSensor_getLightMeasurement()

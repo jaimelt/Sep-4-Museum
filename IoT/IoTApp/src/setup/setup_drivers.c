@@ -40,9 +40,7 @@ static void _setup_temperature_humidity_driver()
 	}
 	else
 	{
-
 		printf("%s :: SUCCESSFULL DRIVER INITIALIZATION :: Temperature/humidity\n", SETUP_DRIVERS_TAG);
-		xSemaphoreGive(_xPrintfSemaphore);
 	}
 }
 

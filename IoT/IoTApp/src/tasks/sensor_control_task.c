@@ -23,7 +23,7 @@
 #include "light_sensor_task.h"
 
 //constants
-static char const *SENSOR_CONTROL_TAG = "SENSOR CONTROL";
+#define SENSOR_CONTROL_TAG "SENSOR CONTROL"
 //5 minutes in ms
 #define TIME_DELAY_BETWEEN_MEASUREMENTS 300000
 #define SENSOR_CONTROL_TASK_PRIORITY (configMAX_PRIORITIES - 2)
