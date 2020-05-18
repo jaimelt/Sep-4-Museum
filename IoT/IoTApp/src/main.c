@@ -17,9 +17,6 @@
 #include "tasks/sensor_control_task.h"
 #include "setup/setup_drivers.h"
 
-// Needed for LoRaWAN
-#include <lora_driver.h>
-
 SemaphoreHandle_t _xPrintfSemaphore;
 
 void initialiseSystem()
@@ -27,28 +24,25 @@ void initialiseSystem()
 	trace_init();
 	stdioCreate(ser_USART0);
 	//enable interrupt
-	sei();
+	//sei();
 }
 
-/*-----------------------------------------------------------*/
 int main(void)
 {
 	initialiseSystem();
-	setup_drivers();
-	
-	_xPrintfSemaphore=xSemaphoreCreateMutex();
-	if (_xPrintfSemaphore!=NULL){
-		xSemaphoreGive(_xPrintfSemaphore);
-	}
-	xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-	printf("Program Started!!\n");
-	xSemaphoreGive(_xPrintfSemaphore);
-	
-	sensorControl_create(_xPrintfSemaphore);
-	
-	vTaskStartScheduler(); // Initialise and run the freeRTOS scheduler. Execution should never return from here.
 
-	/* Replace with your application code */
+	_xPrintfSemaphore = xSemaphoreCreateMutex();
+
+	// if (_xPrintfSemaphore!=NULL){
+	// 	xSemaphoreGive(_xPrintfSemaphore);
+	// }
+
+	sensorControl_create(_xPrintfSemaphore);
+
+	printf("Program Started!!\n");
+
+	vTaskStartScheduler();
+
 	while (1)
 	{
 	}

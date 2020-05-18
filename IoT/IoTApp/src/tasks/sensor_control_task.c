@@ -17,13 +17,13 @@
 #include <lora_driver.h>
 #include <stdio_driver.h>
 
-#include "light_sensor_task.h"
 #include "../constants/global_constants.h"
 #include "../handler/sensor_data_package_handler.h"
 #include "lora_sensor_task.h"
+#include "light_sensor_task.h"
 
 //constants
-#define SENSOR_CONTROL_TAG "SENSOR CONTROL"
+static char const *SENSOR_CONTROL_TAG = "SENSOR CONTROL";
 //5 minutes in ms
 #define TIME_DELAY_BETWEEN_MEASUREMENTS 300000
 #define SENSOR_CONTROL_TASK_PRIORITY (configMAX_PRIORITIES - 2)
@@ -75,66 +75,15 @@ void vASensorControlTask(void *pvParameters)
 void sensorControl_create(SemaphoreHandle_t pPrintfSemaphore)
 {
 	_xPrintfSemaphore = pPrintfSemaphore;
-	_event_group_measure = xEventGroupCreate();
 
-	if (_event_group_measure != NULL)
-	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: SUCCESS :: created event group measure\n", SENSOR_CONTROL_TAG);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-	}
-	else
-	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: ERROR :: creation of event group measure failed\n", SENSOR_CONTROL_TAG);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-	}
+	_event_group_measure = xEventGroupCreate();
+	_event_group_measure != NULL ? printf("%s :: SUCCESS :: created event group measure\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group measure failed\n", SENSOR_CONTROL_TAG);
 
 	_event_group_new_data = xEventGroupCreate();
-	if (_event_group_new_data != NULL)
-	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: SUCCESS :: created event group new data\n", SENSOR_CONTROL_TAG);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-	}
-	else
-	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: ERROR :: creation of event group new data failed\n", SENSOR_CONTROL_TAG);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-	}
+	_event_group_new_data != NULL ? printf("%s :: SUCCESS :: created event group new data\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group new data failed\n", SENSOR_CONTROL_TAG);
 
 	_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
-	if (_sendingQueue != NULL)
-	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: SUCCESS :: created queue\n", SENSOR_CONTROL_TAG);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-	}
-	else
-	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: ERROR :: creation of queue\n", SENSOR_CONTROL_TAG);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-	}
+	_sendingQueue != NULL ? printf("%s :: SUCCESS :: created queue\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of queue\n", SENSOR_CONTROL_TAG);
 
 	//create lora driver
 	loraSensor_create(_sendingQueue, _xPrintfSemaphore);
