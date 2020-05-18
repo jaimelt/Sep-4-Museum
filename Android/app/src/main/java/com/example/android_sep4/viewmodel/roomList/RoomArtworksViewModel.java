@@ -13,19 +13,17 @@ import com.example.android_sep4.repositories.ArtworksRepository;
 import java.util.ArrayList;
 
 public class RoomArtworksViewModel extends AndroidViewModel {
-    private MutableLiveData<ArrayList<Artwork>> artworksInRoomList;
     private ArtworksRepository artworksRepository;
 
     public RoomArtworksViewModel(Application application, String roomCode) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
-        artworksInRoomList = artworksRepository.getArtworksByRoomId(roomCode);
     }
 
-
-
     public LiveData<ArrayList<Artwork>> getArtworksFromRoom() {
-        return artworksInRoomList;
+//WE WILL NEED TO PASS THE ROOM CODE
+        String roomCode = "asfas";
+        return artworksRepository.getArtworksByRoomId(roomCode);
     }
 
 }

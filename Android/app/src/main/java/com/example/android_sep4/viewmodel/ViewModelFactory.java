@@ -31,21 +31,21 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         if (modelClass == RoomArtworksViewModel.class) {
             return (T) new RoomArtworksViewModel(application, param);
         } else if (modelClass == RoomA1ViewModel.class) {
-            return (T) new RoomA1ViewModel(application, param);
+            return (T) new RoomA1ViewModel(application);
         } else if (modelClass == RoomA2ViewModel.class) {
-            return (T) new RoomA2ViewModel(application, param);
+            return (T) new RoomA2ViewModel(application);
         } else if (modelClass == RoomA2ViewModel.class) {
-            return (T) new RoomA3ViewModel(application, param);
+            return (T) new RoomA3ViewModel(application);
         } else if (modelClass == RoomA3ViewModel.class) {
-            return (T) new RoomB1ViewModel(application, param);
+            return (T) new RoomB1ViewModel(application);
         } else if (modelClass == RoomB1ViewModel.class) {
-            return (T) new RoomA2ViewModel(application, param);
+            return (T) new RoomA2ViewModel(application);
         } else if (modelClass == RoomB2ViewModel.class) {
-            return (T) new RoomB2ViewModel(application, param);
+            return (T) new RoomB2ViewModel(application);
         } else if (modelClass == RoomB3ViewModel.class) {
-            return (T) new RoomB3ViewModel(application, param);
+            return (T) new RoomB3ViewModel(application);
         }else if (modelClass == RoomB4ViewModel.class) {
-            return (T) new RoomB4ViewModel(application, param);
+            return (T) new RoomB4ViewModel(application);
         } else {
             return super.create(modelClass);
         }
