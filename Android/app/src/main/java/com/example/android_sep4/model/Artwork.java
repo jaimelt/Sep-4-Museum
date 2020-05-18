@@ -9,7 +9,10 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import retrofit2.http.Body;
 
 @Entity(foreignKeys = {
         @ForeignKey(
@@ -20,33 +23,42 @@ import com.google.gson.annotations.SerializedName;
 public class Artwork implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
+    @Expose
     private int id;
 
     @SerializedName("name")
+    @Expose
     private String name;
 
     @SerializedName("description")
+    @Expose
     private String description;
 
     @SerializedName("image")
+    @Expose
     private String image;
 
     @SerializedName("type")
+    @Expose
     private String type;
 
     @SerializedName("author")
+    @Expose
     private String author;
 
     @ColumnInfo(name = "room_code")
     @SerializedName("roomCode")
+    @Expose
     private String roomCode;
 
     @ColumnInfo(name = "artwork_position")
     @SerializedName("artworkPosition")
+    @Expose
     private int artworkPosition;
 
     @Ignore
     @SerializedName("artworkMeasurements")
+    @Expose
     private ArtworkMeasurements artworkMeasurements;
 
     public Artwork() {

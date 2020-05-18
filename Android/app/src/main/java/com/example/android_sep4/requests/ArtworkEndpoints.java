@@ -5,6 +5,7 @@ import com.example.android_sep4.model.Artwork;
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -16,13 +17,13 @@ public interface ArtworkEndpoints {
     Call<ArrayList<Artwork>> getArtworks();
 
     @GET("/artworks?id={id}")
-    Call<Artwork> getArtwork(@Path("id") int id);
+    Call<Artwork> getArtworkById(@Path("id") int id);
 
     @POST("/artworks")
-    Call<Artwork> addArtwork(Artwork artwork);
+    Call<Artwork> addArtwork(@Body Artwork artwork);
 
     @PUT("/artworks?id={id}")
-    Call<Artwork> editArtwork(@Path("id") int id);
+    Call<Artwork> editArtwork(@Path("id") int id, @Body Artwork body);
 
     @DELETE("/artworks?id={id}")
     Call<Artwork> deleteArtwork(@Path("id") int id);
