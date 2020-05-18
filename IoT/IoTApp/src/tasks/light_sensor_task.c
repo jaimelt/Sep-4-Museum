@@ -60,45 +60,21 @@ static void _setup_light_driver()
 	int result = tsl2591Create(LightSensor_callback);
 	if (result != TSL2591_OK)
 	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: FAILED DRIVER INITIALIZATION :: result code %d\n", LIGHT_SENSOR_TAG, result);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
+		printf("%s :: FAILED DRIVER INITIALIZATION :: result code %d\n", LIGHT_SENSOR_TAG, result);
 		exit(EXIT_FAILURE);
 	}
 	else
-	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: SUCCESSFULL DRIVER INITIALIZATION :: Light\n", LIGHT_SENSOR_TAG);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-	}
+		printf("%s :: SUCCESSFULL DRIVER INITIALIZATION :: Light\n", LIGHT_SENSOR_TAG);
 
 	//enable
 	result = tsl2591Enable();
 	if (result != TSL2591_OK)
 	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: FAILED DRIVER ENABLING :: Light :: result code %d\n", LIGHT_SENSOR_TAG, result);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
+		printf("%s :: FAILED DRIVER ENABLING :: Light :: result code %d\n", LIGHT_SENSOR_TAG, result);
 		exit(EXIT_FAILURE);
 	}
 	else
-	{
-		if (_xPrintfSemaphore != NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: SUCCESSFULL DRIVER ENABLING :: Light\n", LIGHT_SENSOR_TAG);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-	}
+		printf("%s :: SUCCESSFULL DRIVER ENABLING :: Light\n", LIGHT_SENSOR_TAG);
 }
 
 void vALightSensorTask(void *pvParameters)
