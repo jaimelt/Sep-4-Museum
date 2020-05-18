@@ -1,15 +1,32 @@
 package com.example.android_sep4.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 
+@Entity
 public class Room {
+    @PrimaryKey
+    @ColumnInfo(name = "location_code")
+    @NonNull
     private String locationCode;
     private String description;
-    private int currentCapacity;
+    @ColumnInfo(name = "total_capacity")
     private int totalCapacity;
+
+    @Ignore
+    private int currentCapacity;
+    @Ignore
     private ArrayList<Artwork> artworkList;
+    @Ignore
     private RoomMeasurements optimalMeasurementConditions;
+    @Ignore
     private RoomMeasurements measurementConditions;
+    @Ignore
     private boolean expanded;
 
     public Room(ArrayList<Artwork> artworkList, RoomMeasurements optimalMeasurementConditions, RoomMeasurements measurementConditions, String locationCode, String description, int totalCapacity, int currentCapacity) {
@@ -21,6 +38,13 @@ public class Room {
         this.artworkList = artworkList;
         this.optimalMeasurementConditions = optimalMeasurementConditions;
         this.measurementConditions = measurementConditions;
+    }
+
+    public Room(@NonNull String locationCode, String description, int totalCapacity)
+    {
+        this.locationCode = locationCode;
+        this.description = description;
+        this.totalCapacity = totalCapacity;
     }
 
     public RoomMeasurements getMeasurementConditions() {

@@ -1,13 +1,34 @@
 package com.example.android_sep4.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity(foreignKeys = {
+        @ForeignKey(
+                entity = Artwork.class,
+                parentColumns = "id",
+                childColumns = "id"
+        )})
 public class ArtworkMeasurements {
+    @PrimaryKey
+    private int id;
+    @ColumnInfo(name = "max_light")
     private int maxLight;
+    @ColumnInfo(name = "min_light")
     private int minLight;
+    @ColumnInfo(name = "max_temperature")
     private int maxTemp;
+    @ColumnInfo(name = "min_temperature")
     private int minTemp;
+    @ColumnInfo(name = "max_humidity")
     private int maxHumidity;
+    @ColumnInfo(name = "min_humidity")
     private int minHumidity;
+    @ColumnInfo(name = "max_co2")
     private int maxCO2;
+    @ColumnInfo(name = "min_co2")
     private int minCO2;
 
     public ArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHumidity, int minHumidity, int maxCO2, int minCO2) {
@@ -19,6 +40,14 @@ public class ArtworkMeasurements {
         this.minHumidity = minHumidity;
         this.maxCO2 = maxCO2;
         this.minCO2 = minCO2;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getMaxLight() {

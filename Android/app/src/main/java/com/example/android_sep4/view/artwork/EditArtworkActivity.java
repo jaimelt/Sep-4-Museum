@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
+import com.example.android_sep4.viewmodel.ViewModelFactoryInteger;
 import com.example.android_sep4.viewmodel.artwork.EditArtworkViewModel;
 
 import java.io.ByteArrayOutputStream;
@@ -71,8 +72,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        editArtworkViewModel = new ViewModelProvider(this).get(EditArtworkViewModel.class);
-        editArtworkViewModel.init(position);
+        editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication(), position)).get(EditArtworkViewModel.class);
     }
 
     private void setText() {
