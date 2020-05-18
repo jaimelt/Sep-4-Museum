@@ -125,6 +125,7 @@ public class ArtworksRepository {
         artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", artwork8, "Photo", "Your Dick8", "A1"));
         artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", artwork9, "Painting", "Your Dick9", "A2"));
         artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", artwork10, "Drawing", "Your Dick10", "Storage"));
+        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 11", artwork10, "Drawing", "Your Dick11", "Storage"));
 
         //THIS IS THE API CALL TO GET ALL THE ARTWORKS!!!!!! WHEN THE API WILL BE READY WE WILL DELETE THE HARDCODED VALUES
 //        Retrofit.Builder builder = new Retrofit.Builder()
