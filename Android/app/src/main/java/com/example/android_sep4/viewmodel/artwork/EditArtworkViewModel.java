@@ -48,6 +48,9 @@ public class EditArtworkViewModel extends AndroidViewModel {
         artwork.setDescription(description);
         artwork.setImage(image);
         artworksRepository.editArtwork(artwork, position);
+
+//      REQUEST TO THE DATABASE TO EDIT THE ARTWORK (EVERYTHING ELSE HERE WILL BE DELETED)
+//      artworksRepository.editArtwork(artwork);
     }
 
     public void editArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {

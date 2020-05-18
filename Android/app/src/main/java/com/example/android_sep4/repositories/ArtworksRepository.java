@@ -81,7 +81,7 @@ public class ArtworksRepository {
     public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
         setArtworksFromRoom(roomCode);
 
-//      THIS WILL BE THE MAIN METHOD OF GETTING THE ARTWORKS BY ID FROM THE DATABASE (EVERYTHING ELSE WHICH IS NOT COMMENTED WILL BE DELETED)
+//      THIS WILL BE THE METHOD OF GETTING THE ARTWORKS BY ID FROM THE DATABASE (EVERYTHING ELSE WHICH IS NOT COMMENTED WILL BE DELETED)
 //        ArtworkEndpoints endpoints = RetrofitClientInstance.getRetrofitInstance().create(ArtworkEndpoints.class);
 //
 //        Call<ArrayList<Artwork>> call = endpoints.getArtworksByRoomId(roomCode);

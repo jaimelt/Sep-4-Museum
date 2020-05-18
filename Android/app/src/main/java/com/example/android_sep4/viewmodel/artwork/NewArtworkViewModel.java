@@ -21,6 +21,9 @@ public class NewArtworkViewModel extends AndroidViewModel {
     public void addArtwork(String name, String author, String type, String description, String image, String location) {
         artwork = new Artwork(null, name, description, image, type, author, location);
         artworksRepository.addArtwork(artwork);
+        //      THIS WILL BE THE REQUEST TO ADD THE ARTWORK AND WE WILL NEED TO PASS THE ARTWORK
+//        artworksRepository.addNewArtwork(artwork);
+
     }
 
     public void addArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {
