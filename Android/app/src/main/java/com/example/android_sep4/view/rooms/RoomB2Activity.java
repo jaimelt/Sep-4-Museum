@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.viewmodel.ViewModelFactory;
 import com.example.android_sep4.viewmodel.rooms.RoomB2ViewModel;
 
 import java.util.ArrayList;
@@ -35,8 +36,7 @@ public class RoomB2Activity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        roomB2ViewModel = new ViewModelProvider(this).get(RoomB2ViewModel.class);
-        roomB2ViewModel.init("B2");
+        roomB2ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), "B2")).get(RoomB2ViewModel.class);
 
         artworksInRoom = roomB2ViewModel.getArtworksFromRoom().getValue();
 

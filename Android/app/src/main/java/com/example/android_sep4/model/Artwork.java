@@ -3,35 +3,67 @@ package com.example.android_sep4.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import retrofit2.http.Body;
+
+@Entity(foreignKeys = {
+        @ForeignKey(
+                entity = Room.class,
+                parentColumns = "location_code",
+                childColumns = "room_code"
+        )})
 public class Artwork implements Parcelable {
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
+    @Expose
     private int id;
 
     @SerializedName("name")
+    @Expose
     private String name;
 
     @SerializedName("description")
+    @Expose
     private String description;
 
     @SerializedName("image")
+    @Expose
     private String image;
 
     @SerializedName("type")
+    @Expose
     private String type;
 
     @SerializedName("author")
+    @Expose
     private String author;
 
+    @ColumnInfo(name = "room_code")
     @SerializedName("roomCode")
+    @Expose
     private String roomCode;
 
+    @ColumnInfo(name = "artwork_position")
+    @SerializedName("artworkPosition")
+    @Expose
+    private int artworkPosition;
+
+    @Ignore
     @SerializedName("artworkMeasurements")
+    @Expose
     private ArtworkMeasurements artworkMeasurements;
 
-    @SerializedName("artworkPosition")
-    private int artworkPosition;
+    public Artwork() {
+
+    }
 
     public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author, String roomCode) {
         this.artworkMeasurements = artworkMeasurements;
@@ -66,11 +98,11 @@ public class Artwork implements Parcelable {
         }
     };
 
-    public int getID() {
+    public int getId() {
         return id;
     }
 
-    public void setID(int ID) {
+    public void setId(int ID) {
         this.id = ID;
     }
 
@@ -114,12 +146,20 @@ public class Artwork implements Parcelable {
         this.author = author;
     }
 
-    public String getLocation() {
+    public String getRoomCode() {
         return roomCode;
     }
 
-    public void setLocation(String roomCode) {
+    public void setRoomCode(String roomCode) {
         this.roomCode = roomCode;
+    }
+
+    public int getArtworkPosition() {
+        return artworkPosition;
+    }
+
+    public void setArtworkPosition(int artworkPosition) {
+        this.artworkPosition = artworkPosition;
     }
 
     public ArtworkMeasurements getArtworkMeasurements() {
@@ -128,6 +168,10 @@ public class Artwork implements Parcelable {
 
     public void setArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {
         artworkMeasurements = new ArtworkMeasurements(maxLight, minLight, maxTemp, minTemp, maxHum, minHum, maxCO2, minCO2);
+    }
+
+    public void setArtworkMeasurements(ArtworkMeasurements artworkMeasurements) {
+        this.artworkMeasurements = artworkMeasurements;
     }
 
     @Override

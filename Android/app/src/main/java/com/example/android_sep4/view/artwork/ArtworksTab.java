@@ -71,7 +71,6 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
 
     private void setViewModel() {
         artworksTabViewModel = new ViewModelProvider(this).get(ArtworksTabViewModel.class);
-        artworksTabViewModel.init();
 
         artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), new Observer<List<Artwork>>() {
 
