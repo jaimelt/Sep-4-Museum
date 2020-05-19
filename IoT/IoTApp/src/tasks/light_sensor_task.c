@@ -29,7 +29,7 @@ static float _lastMeasurementLux;
 
 void LightSensor_callback(tsl2591ReturnCode_t pvTsl2591ReturnCode)
 {
-	if (pvTsl2591ReturnCode != TSL2591_OK)
+	if (pvTsl2591ReturnCode != TSL2591_OK && pvTsl2591ReturnCode !=TSL2591_DATA_READY)
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 		printf("%s :: Light measurement failed :: return code %d\n", LIGHT_SENSOR_TAG, pvTsl2591ReturnCode);

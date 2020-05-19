@@ -90,8 +90,8 @@ public class LoRaClient implements WebSocket.Listener {
 
         var dataAsHex = (String) json.get("data");
 
-//        spit data string every 2 characters
-        String[] measurementsAsHex = dataAsHex.split("(?<=\\G..)");
+//        spit data string every 4 characters
+        String[] measurementsAsHex = dataAsHex.split("(?<=\\G....)");
 
         int humidityAsInt = Integer.parseInt(measurementsAsHex[0], 16);
         int temperatureAsInt = Integer.parseInt(measurementsAsHex[1], 16);
