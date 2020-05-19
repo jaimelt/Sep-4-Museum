@@ -10,6 +10,12 @@ using WebApplication1.Datamodel;
 
 namespace WebApplication1.Database.Repositories.ArtworkRep
 {
+
+    using System.Linq;
+    using WebApplication1.Database.Repositories;
+    using WebApplication1.Database.Repositories.ArtworkRep;
+    using WebApplication1.Datamodel;
+
     public class ArtworkRepository : RepositoryBase<Artwork>, IArtworkRepository
     {
         public ArtworkRepository(MuseumContext context) : base(context)
@@ -22,18 +28,19 @@ namespace WebApplication1.Database.Repositories.ArtworkRep
                 .ToListAsync();
         }
 
-        public async Task<Artwork> GetArtworkByIdAsync(string artId)
+
+        public async Task<Artwork> GetArtworkByIdAsync(int artId)
         {
             return await FindByCondition(art => art.Id.Equals(artId))
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<Artwork> GetArtowkrWithDetailsAsync(string artId)
-        {
-            return await FindByCondition(art => art.Id.Equals(artId))
-                .Include(cod => cod.artworkMeasurements)
-                .FirstOrDefaultAsync();
-        }
+        // public async Task<Artwork> GetArtworkWithDetailsAsync(int artId)
+        // {
+        //     return await FindByCondition(art => art.Id == artId)
+        //         .Where(artId == 2);
+        // }
+        
 
         public void createArtwork(Artwork artwork)
         {
@@ -53,14 +60,17 @@ namespace WebApplication1.Database.Repositories.ArtworkRep
             context.SaveChangesAsync();
         }
 
-        public bool artExists(string artId)
+        public bool artExists(int artId)
         {
-            return context.Artworks.Any(e => e.Id.Equals(artId));
+            return context.Artworks.Any(e => e.Id == artId);
         }
 
         public void saveChanges()
         {
             context.SaveChangesAsync();
         }
+
+
+
     }
 }

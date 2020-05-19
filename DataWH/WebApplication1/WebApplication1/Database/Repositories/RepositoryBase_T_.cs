@@ -34,6 +34,7 @@ namespace WebApplication1.Database.Repositories
         public void Update(T entity)
         {
             this.context.Set<T>().Update(entity);
+        
         }
 
         public void Delete(T entity)
