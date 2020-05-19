@@ -30,9 +30,15 @@ namespace WebApplication1.Controllers
 
         // GET
         [HttpGet("getall")]
-        public Task<IEnumerable<Artwork>> getallArtworks()
+        public ArtworkList getallArtworks()
         {
-            return artworkRepository.getAllArtworksAsync();
+//           return artworkRepository.getAllArtworksAsync();
+            ArtworkList artworkList = new ArtworkList();
+            artworkList.artworks = artworkRepository.getAllArtworksAsync().Result.ToList();
+
+            return artworkList;
+
+
         }
 
         // GET

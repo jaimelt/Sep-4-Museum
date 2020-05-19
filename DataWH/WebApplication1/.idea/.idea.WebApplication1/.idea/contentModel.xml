@@ -32,6 +32,7 @@
         <e p="Datamodel" t="Include">
           <e p="Administrator.cs" t="Include" />
           <e p="Artwork.cs" t="Include" />
+          <e p="ArtworkList.cs" t="Include" />
           <e p="MongoMeasurement.cs" t="Include" />
           <e p="Museum.cs" t="Include" />
           <e p="Room.cs" t="Include" />
