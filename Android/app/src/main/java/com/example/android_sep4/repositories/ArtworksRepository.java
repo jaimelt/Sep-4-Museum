@@ -2,7 +2,6 @@ package com.example.android_sep4.repositories;
 
 import android.app.Application;
 import android.net.Uri;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -13,7 +12,7 @@ import com.example.android_sep4.database.ArtworkWithMeasurements;
 import com.example.android_sep4.database.MuseumDb;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.requests.ArtworkEndpoints;
-import com.example.android_sep4.requests.RetrofitClientInstance;
+import com.example.android_sep4.requests.ServiceGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class ArtworksRepository {
         setArtworks();
 
 //        THIS IS THE API CALL TO GET ALL THE ARTWORKS!!!!!! WHEN THE API WILL BE READY WE WILL DELETE THE HARDCODED VALUES
-//        ArtworkEndpoints endpoints = RetrofitClientInstance.getRetrofitInstance().create(ArtworkEndpoints.class);
+//        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 //
 //        Call<ArrayList<Artwork>> call = endpoints.getArtworks();
 //
@@ -82,7 +81,7 @@ public class ArtworksRepository {
         setArtworksFromRoom(roomCode);
 
 //      THIS WILL BE THE METHOD OF GETTING THE ARTWORKS BY ID FROM THE DATABASE (EVERYTHING ELSE WHICH IS NOT COMMENTED WILL BE DELETED)
-//        ArtworkEndpoints endpoints = RetrofitClientInstance.getRetrofitInstance().create(ArtworkEndpoints.class);
+//        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 //
 //        Call<ArrayList<Artwork>> call = endpoints.getArtworksByRoomId(roomCode);
 //
@@ -110,7 +109,7 @@ public class ArtworksRepository {
     }
 
     public LiveData<Artwork> getArtworkById(int id) {
-        ArtworkEndpoints endpoints = RetrofitClientInstance.getRetrofitInstance().create(ArtworkEndpoints.class);
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
         Call<Artwork> call = endpoints.getArtworkById(id);
 
@@ -145,7 +144,7 @@ public class ArtworksRepository {
         updatedArtwork.setArtworkPosition(editedArtwork.getArtworkPosition());
         updatedArtwork.setArtworkMeasurements(editedArtwork.getArtworkMeasurements());
 
-        ArtworkEndpoints endpoints = RetrofitClientInstance.getRetrofitInstance().create(ArtworkEndpoints.class);
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
         Call<Artwork> call = endpoints.editArtwork(artworkID, updatedArtwork);
 
@@ -174,7 +173,7 @@ public class ArtworksRepository {
         newArtwork.setArtworkPosition(artwork.getArtworkPosition());
         newArtwork.setArtworkMeasurements(artwork.getArtworkMeasurements());
 
-        ArtworkEndpoints endpoints = RetrofitClientInstance.getRetrofitInstance().create(ArtworkEndpoints.class);
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
         Call<Artwork> call = endpoints.addArtwork(newArtwork);
 
@@ -192,7 +191,7 @@ public class ArtworksRepository {
     }
 
     public void deleteArtwork(int id) {
-        ArtworkEndpoints endpoints = RetrofitClientInstance.getRetrofitInstance().create(ArtworkEndpoints.class);
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
         Call<Artwork> call = endpoints.deleteArtwork(id);
         call.enqueue(new Callback<Artwork>() {
