@@ -12,7 +12,13 @@ public class ServiceGenerator {
 
     private static ArtworkEndpoints artworkEndpoints = retrofit.create(ArtworkEndpoints.class);
 
+    private static AuthEndpoints authEndpoints = retrofit.create(AuthEndpoints.class);
+
     public static ArtworkEndpoints getArtworkEndpoints() {
         return artworkEndpoints;
+    }
+
+    public static AuthEndpoints getAuthEndpoints() {
+        return authEndpoints;
     }
 }
