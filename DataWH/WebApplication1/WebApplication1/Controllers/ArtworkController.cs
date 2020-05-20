@@ -12,8 +12,9 @@ using WebApplication1.Datamodel;
 
 namespace WebApplication1.Controllers
 {
-    [Route("artworks")]
+    
     [ApiController]
+    [Route("artworks")]
     public class ArtworkController : ControllerBase
     {
         private readonly ArtworkRepository artworkRepository;
@@ -29,26 +30,32 @@ namespace WebApplication1.Controllers
 
         // GET
         [HttpGet("getall")]
-        public Task<IEnumerable<Artwork>> getallArtworks()
+        public ArtworkList getallArtworks()
         {
-            return artworkRepository.getAllArtworksAsync();
+//           return artworkRepository.getAllArtworksAsync();
+            ArtworkList artworkList = new ArtworkList();
+            artworkList.artworks = artworkRepository.getAllArtworksAsync().Result.ToList();
+
+            return artworkList;
+
+
         }
 
         // GET
-        [HttpGet("get/{id}")]
-        public async Task<Artwork> getOneArtwork(string id)
+        [HttpGet("getone/{id}")]
+        public async Task<Artwork> getOneArtwork(int id)
         {
             var obj = await artworkRepository.GetArtworkByIdAsync(id);
             return obj;
         }
 
         // GET
-        [HttpGet("getdetails/{id}")]
-        public async Task<Artwork> getDetails(string id)
-        {
-            var obj = await artworkRepository.GetArtowkrWithDetailsAsync(id);
-            return obj;
-        }
+        // [HttpGet("getdetails/{id}")]
+        // public async Task<Artwork> getDetails(int id)
+        // {
+        //     var obj = await artworkRepository.GetArtworkWithDetailsAsync(id);
+        //     return obj;
+        // }
 
         // POST
         [HttpPost("createartwork")]
@@ -70,29 +77,50 @@ namespace WebApplication1.Controllers
 
         // GET
         [HttpDelete("delete/{id}")]
-        public async Task<Artwork> deleteArtwork(string id)
+        public async Task<Artwork> deleteArtwork(int id)
         {
             var obj = await artworkRepository.GetArtworkByIdAsync(id);
             artworkRepository.deleteArtwork(obj);
             return obj;
         }
-
-        // PUT
+        
+        
         [HttpPut("edit/{id}")]
-        //TODO: This is not working yet, can't find item.id 
-        public async Task<IActionResult> updateArt(string id, Artwork item)
+        public async Task<IActionResult> PutArtwork([FromRoute] int id, [FromBody] Artwork artwork)
         {
-            
-            if (!id.Equals(item.Id))
+
+            Console.WriteLine("This is the ID: " + id + ", and this is the location code: " + artwork.Id + ", and they are equal: " + id.Equals(artwork.Id));    
+
+          if(id != artwork.Id)
             {
-                Console.WriteLine("it has not been found");
                 return BadRequest();
             }
 
-            artworkRepository.updateArtwork(item); 
             
+
+            //roomRepository.Entry(room).State = EntityState.Modified;
+
+            artworkRepository.updateArtwork(artwork);
+
+            try
+            {
+                artworkRepository.saveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (artworkRepository.artExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
             return NoContent();
         }
+        
         
   
     }

@@ -11,8 +11,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using WebApplication1.Database;
 using WebApplication1.Database.Repositories.ArtworkRep;
+using WebApplication1.Database.Repositories.RoomRep;
+using WebApplication1.MongoDB;
 
 namespace WebApplication1
 {
@@ -28,10 +31,18 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MongoDbSettings>(
+                Configuration.GetSection(nameof(MongoDbSettings)));
             services.AddScoped<ArtworkRepository>();
+            services.AddScoped<RoomRepository>();
+            services.AddScoped<MongoRepository>();
             services.AddDbContext<MuseumContext>(opt =>
                 opt.UseSqlite("Data source = museum.db"));
             services.AddControllers();
+            services.AddSingleton<IMongoDBSettings>(sp =>
+                sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+            services.AddControllers();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
