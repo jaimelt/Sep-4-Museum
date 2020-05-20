@@ -303,6 +303,41 @@
                         android:text="@string/description"
                         android:textColor="@color/colorAccent" />
                 </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp">
+
+                    <EditText
+                        android:id="@+id/commentsField"
+                        style="@style/EditViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/edit_border"
+                        android:ems="10"
+                        android:importantForAutofill="no"
+                        android:inputType="textMultiLine"
+                        android:lines="10"
+                        android:minLines="4"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="10dp"
+                        tools:ignore="LabelFor" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="7dp"
+                        android:background="@color/background"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:text="@string/comments"
+                        android:textColor="@color/colorAccent" />
+                </RelativeLayout>
 
             </LinearLayout>
 

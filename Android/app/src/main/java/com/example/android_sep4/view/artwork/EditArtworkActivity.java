@@ -40,6 +40,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private EditText maxCO2;
     private EditText minHum;
     private EditText maxHum;
+    private EditText commentsField;
     private int position;
 
     @Override
@@ -80,6 +81,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         nameField.setText(editArtworkViewModel.getName());
         authorField.setHint(editArtworkViewModel.getAuthor());
         descriptionField.setHint(editArtworkViewModel.getDescription());
+        commentsField.setHint(editArtworkViewModel.getComment());
         imageHolder.setImageURI(editArtworkViewModel.getImage());
 
         String type = editArtworkViewModel.getType();
@@ -132,8 +134,9 @@ public class EditArtworkActivity extends AppCompatActivity {
         String type = selectedRadioButtonType.getText().toString();
         String location = selectedRadioButtonLocation.getText().toString();
         String description = descriptionField.getText().toString();
+        String comment = commentsField.getText().toString();
         String image = convertImageToString();
-        editArtworkViewModel.editArtwork(name, author, type, location, description, image, position);
+        editArtworkViewModel.editArtwork(name, author, type, location, description, comment, image, position);
 
         int minTempInt = Integer.parseInt(minTemp.getText().toString());
         int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
@@ -164,6 +167,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         typeGroup = findViewById(R.id.radioType);
         locationGroup = findViewById(R.id.locationGroup1);
         descriptionField = findViewById(R.id.descriptionField);
+        commentsField = findViewById(R.id.commentsField);
         minTemp = findViewById(R.id.minTemp);
         maxTemp = findViewById(R.id.maxTemp);
         minLight = findViewById(R.id.minLight);
