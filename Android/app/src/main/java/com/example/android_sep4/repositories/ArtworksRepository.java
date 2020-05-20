@@ -2,8 +2,10 @@ package com.example.android_sep4.repositories;
 
 import android.app.Application;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -14,11 +16,14 @@ import com.example.android_sep4.database.MuseumDb;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.model.Artworks;
+import com.example.android_sep4.model.Visitor;
+import com.example.android_sep4.model.Visitors;
 import com.example.android_sep4.requests.ArtworkEndpoints;
 import com.example.android_sep4.model.ArtworkResponse;
 import com.example.android_sep4.requests.ServiceGenerator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -52,7 +57,9 @@ public class ArtworksRepository {
     }
 
     //This is the method where we are retrieving the artworks data from the webservice
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public LiveData<ArrayList<Artwork>> getArtworksData() {
+        System.out.println(VisitorsRepository.getInstance().createVisitorsForDay().toString());
         Log.i(TAG, "getArtworksData: called ");
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
