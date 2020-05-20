@@ -145,9 +145,6 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        Intent intent = new Intent(getActivity(), EditArtworkActivity.class);
-        intent.putExtra(EXTRA_ARTWORK, clickedItemIndex);
-        startActivity(intent);
     }
 
     @Override
