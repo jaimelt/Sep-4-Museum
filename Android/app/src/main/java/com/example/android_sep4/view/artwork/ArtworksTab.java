@@ -29,6 +29,7 @@ import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapterArtworks;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.view.ManageAccountsActivity;
+import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -174,5 +175,11 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
             startActivity(new Intent(getContext(), ManageAccountsActivity.class));
             return true;
         });
+
+        settingsItem.setOnMenuItemClickListener(item -> {
+            startActivity(new Intent(getContext(), SettingsActivity.class));
+            return true;
+        });
+
     }
 }
