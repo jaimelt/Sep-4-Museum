@@ -33,6 +33,7 @@ import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -73,19 +74,16 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
     private void setViewModel() {
         artworksTabViewModel = new ViewModelProvider(this).get(ArtworksTabViewModel.class);
 
-        artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), new Observer<List<Artwork>>() {
-
-            @Override
-            public void onChanged(List<Artwork> artworks) {
-                adapter.notifyDataSetChanged();
-            }
+        artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), artworks -> {
+            adapter.setArtworks(artworks);
+            adapter.notifyDataSetChanged();
         });
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new RecyclerViewAdapterArtworks(artworksTabViewModel.getArtworks().getValue(), getActivity(), this);
+        adapter = new RecyclerViewAdapterArtworks(getActivity(), this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

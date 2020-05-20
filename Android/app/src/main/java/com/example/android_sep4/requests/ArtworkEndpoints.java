@@ -14,7 +14,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ArtworkEndpoints {
-    @GET("/artworks")
+    @GET("/artworks/getall")
     Call<Artworks> getArtworks();
 
     @GET("/artworks?id={id}")

@@ -30,49 +30,6 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
     private ArrayList<Artwork> copyOfArtworks;
     private OnListItemClickListener mOnListItemClickListener;
     private Context context;
-
-    public RecyclerViewAdapterArtworks(ArrayList<Artwork> artworks, Context context, OnListItemClickListener listener) {
-        this.artworks = artworks;
-        //Creating a duplicate of original list of artworks to not mess up with the original one
-        copyOfArtworks = new ArrayList<>(artworks);
-        mOnListItemClickListener = listener;
-        this.context = context;
-
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_artwork, parent, false);
-        return new ViewHolder(view, mOnListItemClickListener);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: called.");
-        Uri uri = Uri.parse(artworks.get(position).getImage());
-//        holder.imageView.setImageURI(uri);
-        Picasso.with(context).load(uri).resize(0,300).into(holder.imageView);
-        holder.artworkName.setText(artworks.get(position).getName());
-        holder.artworkType.setText(artworks.get(position).getType());
-        holder.artworkDescription.setText(artworks.get(position).getDescription());
-        holder.artworkAuthor.setText(artworks.get(position).getAuthor());
-
-        setColors(artworks.get(position).getType(), holder);
-        //TODO:Setting image from local storage
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return artworks.size();
-    }
-
-    @Override
-    public Filter getFilter() {
-        return filter;
-    }
-
     private Filter filter = new Filter() {
         @Override
         //constraint = input from the search function
@@ -103,6 +60,78 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         }
     };
 
+    public RecyclerViewAdapterArtworks(Context context, OnListItemClickListener listener) {
+        //Creating a duplicate of original list of artworks to not mess up with the original one
+//        copyOfArtworks = new ArrayList<>(artworks);
+        mOnListItemClickListener = listener;
+        this.context = context;
+
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_artwork, parent, false);
+        return new ViewHolder(view, mOnListItemClickListener);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+        Log.d(TAG, "onBindViewHolder: called.");
+        Uri uri = Uri.parse(artworks.get(position).getImage());
+//        holder.imageView.setImageURI(uri);
+        Picasso.with(context).load(uri).resize(0, 300).into(holder.imageView);
+        holder.artworkName.setText(artworks.get(position).getName());
+        holder.artworkType.setText(artworks.get(position).getType());
+        holder.artworkDescription.setText(artworks.get(position).getDescription());
+        holder.artworkAuthor.setText(artworks.get(position).getAuthor());
+
+        setColors(artworks.get(position).getType(), holder);
+        //TODO:Setting image from local storage
+
+    }
+
+    @Override
+    public int getItemCount() {
+        if (artworks != null) {
+            return artworks.size();
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    public void setArtworks(ArrayList<Artwork> artworks) {
+        this.artworks = artworks;
+        notifyDataSetChanged();
+    }
+
+    private void setColors(String type, ViewHolder holder) {
+//        switch (type) {
+//            case "Painting":
+//                holder.artworkType.setTextColor(Color.parseColor("#4ACFAC"));
+//                break;
+//            case "Drawing":
+//                holder.artworkType.setTextColor(Color.parseColor("#FFA48E"));
+//                break;
+//            case "Ceramics":
+//                holder.artworkType.setTextColor(Color.parseColor("#F45C51"));
+//                break;
+//            case "Photo":
+//                holder.artworkType.setTextColor(Color.parseColor("#7E8CE0"));
+//                break;
+//        }
+
+    }
+
+    public interface OnListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
@@ -130,28 +159,6 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         public void onClick(View v) {
             onListItemClickListener.onListItemClick(getAdapterPosition());
         }
-    }
-
-    public interface OnListItemClickListener {
-        void onListItemClick(int clickedItemIndex);
-    }
-
-    private void setColors(String type, ViewHolder holder) {
-        switch (type) {
-            case "Painting":
-                holder.artworkType.setTextColor(Color.parseColor("#4ACFAC"));
-                break;
-            case "Drawing":
-                holder.artworkType.setTextColor(Color.parseColor("#FFA48E"));
-                break;
-            case "Ceramics":
-                holder.artworkType.setTextColor(Color.parseColor("#F45C51"));
-                break;
-            case "Photo":
-                holder.artworkType.setTextColor(Color.parseColor("#7E8CE0"));
-                break;
-        }
-
     }
 
 }

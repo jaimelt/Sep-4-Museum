@@ -2,6 +2,7 @@ package com.example.android_sep4.repositories;
 
 import android.app.Application;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -14,7 +15,7 @@ import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.model.Artworks;
 import com.example.android_sep4.requests.ArtworkEndpoints;
-import com.example.android_sep4.requests.ArtworkResponse;
+import com.example.android_sep4.model.ArtworkResponse;
 import com.example.android_sep4.requests.ServiceGenerator;
 
 import java.util.ArrayList;
@@ -24,12 +25,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.ContentValues.TAG;
+
 public class ArtworksRepository {
     private static ArtworksRepository instance;
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
     private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
-    private ArrayList<Artwork> artworksDataSet;
+    private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
     private ArtworkDao artworkDao;
+    private Artwork artwork = new Artwork();
     //TODO: needs to be updated, rn it is for testing
     private LiveData<List<ArtworkWithMeasurements>> artworks;
 
@@ -49,41 +53,34 @@ public class ArtworksRepository {
 
     //This is the method where we are retrieving the artworks data from the webservice
     public LiveData<ArrayList<Artwork>> getArtworksData() {
-        setArtworks();
+        Log.i(TAG, "getArtworksData: called ");
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-//        THIS IS THE API CALL TO GET ALL THE ARTWORKS!!!!!! WHEN THE API WILL BE READY WE WILL DELETE THE HARDCODED VALUES
-//        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
-//
-//        Call<Artworks> call = endpoints.getArtworks();
-//
-//        call.enqueue(new Callback<Artworks>() {
-//            @Override
-//            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
-//                Artworks apiArtworks = response.body();
-//                if (apiArtworks != null) {
-//                    for(ArtworkResponse apiArtwork :apiArtworks.getArtworks()) {
-//                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-//                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-//                        Artwork artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), apiArtwork.getComment(), apiArtwork.getImage(), apiArtwork.getType(),
-//                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), artworkMeasurements);
-//                        artworksDataSet.add(artwork);
-//                    }
-//                    artworksData.setValue(artworksDataSet);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Artworks> call, Throwable t) {
-//
-//            }
-//        });
-//
-//        return artworksData;
-//
-        MutableLiveData<ArrayList<Artwork>> data = new MutableLiveData<>();
-        data.setValue(artworksDataSet);
-        return data;
+        Call<Artworks> call = endpoints.getArtworks();
 
+        call.enqueue(new Callback<Artworks>() {
+            @Override
+            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+                Log.i(TAG, "onResponse: success!");
+                Artworks apiArtworks = response.body();
+                if (apiArtworks != null) {
+                    for(ArtworkResponse apiArtwork :apiArtworks.getArtworks()) {
+                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
+                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
+                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null , apiArtwork.getImage(), apiArtwork.getType(),
+                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), artworkMeasurements);
+                        artworksDataSet.add(artwork);
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<Artworks> call, Throwable t) {
+                Log.i(TAG, "onFailure: called");
+            }
+        });
+        artworksData.setValue(artworksDataSet);
+        artworksDataSet = new ArrayList<>();
+        return artworksData;
     }
 
     public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
@@ -208,12 +205,12 @@ public class ArtworksRepository {
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
-                System.out.println("SUCCESSFUL UPDATE!");
+                System.out.println("SUCCESSFUL DELETE!");
             }
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
-                System.out.println("UPDATE FAILED!");
+                System.out.println("DELETE FAILED!");
             }
         });
     }
