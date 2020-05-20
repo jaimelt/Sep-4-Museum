@@ -1,16 +1,49 @@
 package com.example.android_sep4.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.android_sep4.R;
+import com.example.android_sep4.viewmodel.ManageAccountsViewModel;
 
 public class ManageAccountsActivity extends AppCompatActivity {
+    private ManageAccountsViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_accounts);
+        viewModel = new ViewModelProvider(this).get(ManageAccountsViewModel.class);
+
+    }
+
+    public void onRegisterAccountClicked(View view)
+    {
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_register_account, null);
+        EditText emailField = dialogView.findViewById(R.id.emailField);
+        EditText passwordField = dialogView.findViewById(R.id.passwordField);
+        Button createAccountBtn = dialogView.findViewById(R.id.createAccountButton);
+        //Creating AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,  AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+        builder.setView(dialogView);
+        createAccountBtn.setOnClickListener(v -> {
+            String email = emailField.getText().toString().trim();
+            String password = passwordField.getText().toString().trim();
+            viewModel.registerAccount(email, password);
+        });
+        AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 }

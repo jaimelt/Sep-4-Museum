@@ -158,7 +158,7 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
         inflater.inflate(R.menu.toolbar_menu, menu);
 
         MenuItem searchItem = menu.findItem(R.id.search);
-        MenuItem manageItem = menu.findItem(R.id.manageAccounts);
+        MenuItem manageAccountsItem = menu.findItem(R.id.manageAccounts);
         MenuItem settingsItem = menu.findItem(R.id.settings);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -175,9 +175,9 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
             }
         });
 
-        manageItem.setOnMenuItemClickListener(item -> {
-           startActivity(new Intent(getContext(), ManageAccountsActivity.class));
-           return true;
+        manageAccountsItem.setOnMenuItemClickListener(item -> {
+            startActivity(new Intent(getContext(), ManageAccountsActivity.class));
+            return true;
         });
     }
 }
