@@ -1,6 +1,7 @@
 package com.example.android_sep4.requests;
 
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.model.Artworks;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import retrofit2.http.Path;
 
 public interface ArtworkEndpoints {
     @GET("/artworks")
-    Call<ArrayList<Artwork>> getArtworks();
+    Call<Artworks> getArtworks();
 
     @GET("/artworks?id={id}")
     Call<Artwork> getArtworkById(@Path("id") int id);
