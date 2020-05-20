@@ -1,7 +1,5 @@
 package com.example.android_sep4.model;
 
-import com.example.android_sep4.requests.ArtworkResponse;
-
 import java.util.ArrayList;
 
 public class Artworks {

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
     private static Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
-            .baseUrl("APi URL")
+            .baseUrl("https://webapp-200520114720.azurewebsites.net")
             .addConverterFactory(GsonConverterFactory.create());
 
     private static Retrofit retrofit = retrofitBuilder.build();
@@ -14,8 +14,14 @@ public class ServiceGenerator {
 
     private static AuthEndpoints authEndpoints = retrofit.create(AuthEndpoints.class);
 
+    private static RoomEndpoints roomEndpoints = retrofit.create(RoomEndpoints.class);
+
     public static ArtworkEndpoints getArtworkEndpoints() {
         return artworkEndpoints;
+    }
+
+    public static RoomEndpoints getRoomEndpoints() {
+        return roomEndpoints;
     }
 
     public static AuthEndpoints getAuthEndpoints() {

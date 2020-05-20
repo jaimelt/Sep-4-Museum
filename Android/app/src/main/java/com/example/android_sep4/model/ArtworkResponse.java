@@ -1,4 +1,4 @@
-package com.example.android_sep4.requests;
+package com.example.android_sep4.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.PrimaryKey;
