@@ -20,10 +20,12 @@ public interface ArtworkEndpoints {
     @GET("/artworks?id={id}")
     Call<Artwork> getArtworkById(@Path("id") int id);
 
-    @POST("/artworks")
+    //not working
+    @POST("/createartwork")
     Call<Artwork> addArtwork(@Body Artwork artwork);
 
-    @PUT("/artworks?id={id}")
+    //not working
+    @PUT("/edit/{id}")
     Call<Artwork> editArtwork(@Path("id") int id, @Body Artwork body);
 
     @DELETE("/artworks?id={id}")

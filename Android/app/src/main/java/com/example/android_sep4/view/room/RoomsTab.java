@@ -21,6 +21,7 @@ import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapterRooms;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.view.ManageAccountsActivity;
+import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.viewmodel.roomList.RoomsTabViewModel;
 
 import java.util.List;
@@ -30,9 +31,9 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class RoomsTab extends Fragment {
+    static final String EXTRA_ROOM = "Room Name";
     private RoomsTabViewModel roomsTabViewModel;
     private RecyclerViewAdapterRooms adapter;
-    static final String EXTRA_ROOM = "Room Name";
 
 
     public RoomsTab() {
@@ -75,6 +76,11 @@ public class RoomsTab extends Fragment {
             startActivity(new Intent(getContext(), ManageAccountsActivity.class));
             return true;
         });
+        settingsItem.setOnMenuItemClickListener(item -> {
+            startActivity(new Intent(getContext(), SettingsActivity.class));
+            return true;
+        });
+
 
     }
 

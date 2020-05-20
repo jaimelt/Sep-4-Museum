@@ -41,7 +41,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private EditText minHum;
     private EditText maxHum;
     private EditText commentsField;
-    private int position;
+    private int artworkID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class EditArtworkActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey(ArtworksTab.EXTRA_ARTWORK)) {
-            position = bundle.getInt(ArtworksTab.EXTRA_ARTWORK);
+            artworkID = bundle.getInt("id");
         }
         setViewModel();
 
@@ -73,7 +73,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication(), position)).get(EditArtworkViewModel.class);
+        editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication())).get(EditArtworkViewModel.class);
     }
 
     private void setText() {
@@ -136,7 +136,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         String description = descriptionField.getText().toString();
         String comment = commentsField.getText().toString();
         String image = convertImageToString();
-        editArtworkViewModel.editArtwork(name, author, type, location, description, comment, image, position);
+        editArtworkViewModel.editArtwork(artworkID, name, author, type, location, description, comment, image);
 
         int minTempInt = Integer.parseInt(minTemp.getText().toString());
         int maxTempInt = Integer.parseInt(maxTemp.getText().toString());

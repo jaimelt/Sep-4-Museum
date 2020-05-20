@@ -42,7 +42,8 @@ public class EditArtworkViewModel extends AndroidViewModel {
 
     public String getComment() { return  artwork.getComment();}
 
-    public void editArtwork(String name, String author, String type, String location, String description,String comment, String image, int position) {
+    public void editArtwork(int id, String name, String author, String type, String location, String description,String comment, String image) {
+        artwork.setId(id);
         artwork.setName(name);
         artwork.setAuthor(author);
         artwork.setType(type);
@@ -50,7 +51,7 @@ public class EditArtworkViewModel extends AndroidViewModel {
         artwork.setDescription(description);
         artwork.setComment(comment);
         artwork.setImage(image);
-        artworksRepository.editArtwork(artwork, position);
+        artworksRepository.editArtwork(artwork);
 
 //      REQUEST TO THE DATABASE TO EDIT THE ARTWORK (EVERYTHING ELSE HERE WILL BE DELETED)
 //      artworksRepository.editArtwork(artwork);

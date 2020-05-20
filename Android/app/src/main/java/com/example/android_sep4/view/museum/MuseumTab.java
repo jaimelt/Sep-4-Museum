@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.view.ManageAccountsActivity;
+import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.view.museum.rooms.RoomA1Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA2Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA3Activity;
@@ -69,6 +70,10 @@ public class MuseumTab extends Fragment {
         searchItem.setVisible(false);
         manageItem.setOnMenuItemClickListener(item -> {
             startActivity(new Intent(getContext(), ManageAccountsActivity.class));
+            return true;
+        });
+        settingsItem.setOnMenuItemClickListener(item -> {
+            startActivity(new Intent(getContext(), SettingsActivity.class));
             return true;
         });
     }

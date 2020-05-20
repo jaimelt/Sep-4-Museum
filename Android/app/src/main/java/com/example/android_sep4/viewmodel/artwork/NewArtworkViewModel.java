@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.repositories.ArtworksRepository;
 
 public class NewArtworkViewModel extends AndroidViewModel {
@@ -18,11 +19,12 @@ public class NewArtworkViewModel extends AndroidViewModel {
     }
 
     public void addArtwork(String name, String author, String type, String description, String comment, String image, String location) {
-//        int id = 0;
-//        artwork = new Artwork(id, name, description, comment, image, type, author, location );
-        artworksRepository.addArtwork(artwork);
+        int id = 0;
+        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(1, 1, 1, 1, 1, 1, 1, 1);
+        artwork = new Artwork(id, name, description, comment, image, type, author, location, artworkMeasurements);
+//        artworksRepository.addArtwork(artwork);
         //      THIS WILL BE THE REQUEST TO ADD THE ARTWORK AND WE WILL NEED TO PASS THE ARTWORK
-        //        artworksRepository.addNewArtwork(artwork);
+        artworksRepository.addNewArtwork(artwork);
 
     }
 

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ManageAccountsActivity"></activity>
+        <activity android:name=".view.SettingsActivity"></activity>
+        <activity android:name=".view.ManageAccountsActivity" />
         <activity android:name=".view.LoginActivity" />
         <activity
             android:name=".view.museum.rooms.ArtworkDetails"

@@ -1,6 +1,7 @@
 package com.example.android_sep4.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android_sep4.view.artwork.EditArtworkActivity;
 import com.squareup.picasso.Picasso;
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
@@ -88,6 +90,12 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
 
         setColors(artworks.get(position).getType(), holder);
         //TODO:Setting image from local storage
+
+        holder.parentLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), EditArtworkActivity.class);
+            intent.putExtra("id", artworks.get(position).getId());
+            v.getContext().startActivity(intent);
+        });
 
     }
 
