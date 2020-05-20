@@ -167,7 +167,7 @@ void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore)
 	xTaskCreate(
 		vALoraTask,						  /* Task function. */
 		(const portCHAR *)LORA_TASK_NAME, /* String with name of task. */
-		configMINIMAL_STACK_SIZE + 200,	  /* Stack size in words. */
+		configMINIMAL_STACK_SIZE + 300,	  /* Stack size in words. */
 		NULL,							  /* Parameter passed as input of the task */
 		LORAWAN_TASK_PRIORITY,			  /* Priority of the task. */
 		&_lora_task_handle);			  /* Task handle. */

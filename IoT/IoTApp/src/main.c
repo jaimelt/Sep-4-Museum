@@ -17,26 +17,20 @@
 #include "tasks/sensor_control_task.h"
 #include "setup/setup_drivers.h"
 
-SemaphoreHandle_t _xPrintfSemaphore;
+SemaphoreHandle_t _xPrintfSemaphore =NULL;
 
-void initialiseSystem()
+int main(void)
 {
 	trace_init();
 	stdioCreate(ser_USART0);
 	//enable interrupt
 	//sei();
-}
 
-int main(void)
-{
-	initialiseSystem();
-
-	_xPrintfSemaphore = xSemaphoreCreateMutex();
-
-	// if (_xPrintfSemaphore!=NULL){
-	// 	xSemaphoreGive(_xPrintfSemaphore);
-	// }
-
+	if (_xPrintfSemaphore==NULL){
+		_xPrintfSemaphore = xSemaphoreCreateMutex();
+		if (_xPrintfSemaphore!=NULL) xSemaphoreGive(_xPrintfSemaphore);
+	}
+	
 	sensorControl_create(_xPrintfSemaphore);
 
 	printf("Program Started!!\n");

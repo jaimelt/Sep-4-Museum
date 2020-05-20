@@ -102,7 +102,7 @@ void sensorControl_create(SemaphoreHandle_t pPrintfSemaphore)
 	xTaskCreate(
 		vASensorControlTask,						/* Task function. */
 		(const portCHAR *)SENSOR_CONTROL_TASK_NAME, /* String with name of task. */
-		configMINIMAL_STACK_SIZE,					/* Stack size in words. */
+		configMINIMAL_STACK_SIZE + 300,				/* Stack size in words. */
 		NULL,										/* Parameter passed as input of the task */
 		SENSOR_CONTROL_TASK_PRIORITY,				/* Priority of the task. */
 		&_sensor_control_task_handle);				/* Task handle. */
