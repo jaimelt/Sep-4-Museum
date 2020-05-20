@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/colorPrimary"
     android:layout_height="match_parent"
-    tools:context=".view.rooms.RoomB2Activity">
+    tools:context=".view.museum.rooms.RoomB2Activity">
 
     <ImageView
         android:id="@+id/room_b2_image"

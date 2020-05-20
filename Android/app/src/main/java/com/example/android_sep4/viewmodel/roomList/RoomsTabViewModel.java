@@ -1,5 +1,8 @@
 package com.example.android_sep4.viewmodel.roomList;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -9,15 +12,12 @@ import com.example.android_sep4.repositories.RoomRepository;
 
 import java.util.ArrayList;
 
-public class RoomsTabViewModel extends ViewModel {
+public class RoomsTabViewModel extends AndroidViewModel {
     private MutableLiveData<ArrayList<Room>> roomsList;
     private RoomRepository roomsRepository;
 
-
-    public void init() {
-        if (roomsList != null) {
-            return;
-        }
+    public RoomsTabViewModel(Application application) {
+        super(application);
         roomsRepository = RoomRepository.getInstance();
         roomsList = roomsRepository.getRoomsData();
     }
