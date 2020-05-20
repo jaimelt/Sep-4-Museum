@@ -15,7 +15,7 @@
     <string name="author">Author</string>
     <string name="location">Location</string>
     <string name="add_artwork">Add artwork</string>
-    <string name="search_title">Search</string>
+    <string name="action_search">Search</string>
     <string name="toolbar_image_description">Museum</string>
     <string name="painting">Painting</string>
     <string name="drawing">Drawing</string>
@@ -52,5 +52,6 @@
     <string name="position7">7</string>
     <string name="position5">5</string>
     <string name="position9">9</string>
+    <string name="action_manage_accounts">Manage accounts</string>
 
 </resources>

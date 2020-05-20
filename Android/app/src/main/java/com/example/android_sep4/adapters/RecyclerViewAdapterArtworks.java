@@ -1,5 +1,6 @@
 package com.example.android_sep4.adapters;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
@@ -12,9 +13,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
 
@@ -26,12 +29,14 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
     private ArrayList<Artwork> artworks;
     private ArrayList<Artwork> copyOfArtworks;
     private OnListItemClickListener mOnListItemClickListener;
+    private Context context;
 
-    public RecyclerViewAdapterArtworks(ArrayList<Artwork> artworks, OnListItemClickListener listener) {
+    public RecyclerViewAdapterArtworks(ArrayList<Artwork> artworks, Context context, OnListItemClickListener listener) {
         this.artworks = artworks;
         //Creating a duplicate of original list of artworks to not mess up with the original one
         copyOfArtworks = new ArrayList<>(artworks);
         mOnListItemClickListener = listener;
+        this.context = context;
 
     }
 
@@ -46,7 +51,8 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
         Uri uri = Uri.parse(artworks.get(position).getImage());
-        holder.imageView.setImageURI(uri);
+//        holder.imageView.setImageURI(uri);
+        Picasso.with(context).load(uri).resize(0,300).into(holder.imageView);
         holder.artworkName.setText(artworks.get(position).getName());
         holder.artworkType.setText(artworks.get(position).getType());
         holder.artworkDescription.setText(artworks.get(position).getDescription());
