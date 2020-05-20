@@ -33,16 +33,26 @@ public class ManageAccountsActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.dialog_register_account, null);
         EditText emailField = dialogView.findViewById(R.id.emailField);
         EditText passwordField = dialogView.findViewById(R.id.passwordField);
+        EditText repeatPasswordField = dialogView.findViewById(R.id.repeatPasswordField);
         Button createAccountBtn = dialogView.findViewById(R.id.createAccountButton);
         //Creating AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this,  AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
         createAccountBtn.setOnClickListener(v -> {
             String email = emailField.getText().toString().trim();
             String password = passwordField.getText().toString().trim();
-            viewModel.registerAccount(email, password);
+            String repeatPassword = repeatPasswordField.toString().trim();
+            String validation = viewModel.registerAccount(email, password, repeatPassword);
+            if(validation.equals("valid"))
+            {
+                dialog.dismiss();
+            }
+            else
+            {
+                Toast.makeText(this, validation, Toast.LENGTH_SHORT).show();
+            }
         });
-        AlertDialog dialog = builder.create();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
