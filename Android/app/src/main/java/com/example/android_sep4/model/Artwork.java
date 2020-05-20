@@ -67,8 +67,10 @@ public class Artwork implements Parcelable {
 
     }
 
-    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String comment, String image, String type, String author, String roomCode) {
+    public Artwork(int id, String name, String description, String comment, String image, String type, String author, String roomCode,  ArtworkMeasurements artworkMeasurements) {
         this.artworkMeasurements = artworkMeasurements;
+        this.id = id;
+        this.artworkPosition = artworkPosition;
         this.name = name;
         this.description = description;
         this.comment = comment;
