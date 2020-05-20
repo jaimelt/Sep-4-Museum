@@ -39,7 +39,7 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         } else if (modelClass == RoomA3ViewModel.class) {
             return (T) new RoomB1ViewModel(application);
         } else if (modelClass == RoomB1ViewModel.class) {
-            return (T) new RoomA2ViewModel(application);
+            return (T) new RoomB1ViewModel(application);
         } else if (modelClass == RoomB2ViewModel.class) {
             return (T) new RoomB2ViewModel(application);
         } else if (modelClass == RoomB3ViewModel.class) {
