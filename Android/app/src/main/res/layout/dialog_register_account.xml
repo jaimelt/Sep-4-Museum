@@ -1,49 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@color/background"
+        android:orientation="vertical"
         android:padding="20dp">
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:layout_margin="10dp"
-            android:text="@string/register_account" />
+            android:text="@string/register_account"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/emailField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:textColorHint="@color/grey"
-            android:textColor="@color/white"
-            android:layout_margin="5dp"
             android:hint="@string/hint_email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="@color/grey" />
 
-        <EditText
-            android:id="@+id/passwordField"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:textColorHint="@color/grey"
             android:backgroundTint="@color/white"
+            android:textColorHint="@color/grey"
+            app:passwordToggleTint="@color/grey"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/passwordField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/repeatPasswordLayout"
+            android:layout_width="match_parent"
+            android:textColorHint="@color/grey"
+            app:passwordToggleTint="@color/grey"
             android:textColor="@color/white"
-            android:ems="10"
-            android:hint="@string/hint_password"
-            android:inputType="textPassword" />
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/repeatPasswordField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:hint="@string/hint_repeat_password"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/createAccountButton"
