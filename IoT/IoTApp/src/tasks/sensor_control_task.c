@@ -26,15 +26,15 @@
 #define SENSOR_CONTROL_TAG "SENSOR CONTROL"
 //5 minutes in ms
 #define TIME_DELAY_BETWEEN_MEASUREMENTS 300000
-#define SENSOR_CONTROL_TASK_PRIORITY (configMAX_PRIORITIES - 2)
-#define SENSOR_CONTROL_TASK_NAME "Sensor Control Task"
+#define SENSOR_CONTROL_TASK_PRIORITY (configMAX_PRIORITIES - 3)
+#define SENSOR_CONTROL_TASK_NAME "SensorC"
 
 //private fields
-static TaskHandle_t _sensor_control_task_handle;
-static SemaphoreHandle_t _xPrintfSemaphore;
-static EventGroupHandle_t _event_group_measure;
-static EventGroupHandle_t _event_group_new_data;
-static QueueHandle_t _sendingQueue;
+static TaskHandle_t _sensor_control_task_handle = NULL;
+static SemaphoreHandle_t _xPrintfSemaphore = NULL;
+static EventGroupHandle_t _event_group_measure = NULL;
+static EventGroupHandle_t _event_group_new_data = NULL;
+static QueueHandle_t _sendingQueue = NULL;
 
 void vASensorControlTask(void *pvParameters)
 {
@@ -76,13 +76,16 @@ void sensorControl_create(SemaphoreHandle_t pPrintfSemaphore)
 {
 	_xPrintfSemaphore = pPrintfSemaphore;
 
-	_event_group_measure = xEventGroupCreate();
+	if (_event_group_measure == NULL)
+		_event_group_measure = xEventGroupCreate();
 	_event_group_measure != NULL ? printf("%s :: SUCCESS :: created event group measure\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group measure failed\n", SENSOR_CONTROL_TAG);
 
-	_event_group_new_data = xEventGroupCreate();
+	if (_event_group_new_data == NULL)
+		_event_group_new_data = xEventGroupCreate();
 	_event_group_new_data != NULL ? printf("%s :: SUCCESS :: created event group new data\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group new data failed\n", SENSOR_CONTROL_TAG);
 
-	_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
+	if (_sendingQueue == NULL)
+		_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
 	_sendingQueue != NULL ? printf("%s :: SUCCESS :: created queue\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of queue\n", SENSOR_CONTROL_TAG);
 
 	//create lora driver

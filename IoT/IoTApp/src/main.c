@@ -11,8 +11,8 @@
 #include <FreeRTOSTraceDriver.h>
 #include <stdio_driver.h>
 #include <serial.h>
-#include <FreeRTOSConfig.h>
 #include <avr/interrupt.h>
+#include <lora_driver.h>
 
 #include "tasks/sensor_control_task.h"
 #include "setup/setup_drivers.h"
@@ -23,8 +23,11 @@ int main(void)
 {
 	trace_init();
 	stdioCreate(ser_USART0);
-	//enable interrupt
-	//sei();
+	
+	hal_create(7);
+	// Initialise the LoRaWAN driver without down-link buffer
+	lora_driver_create(LORA_USART, NULL);
+	
 
 	if (_xPrintfSemaphore==NULL){
 		_xPrintfSemaphore = xSemaphoreCreateMutex();
@@ -33,7 +36,7 @@ int main(void)
 	
 	sensorControl_create(_xPrintfSemaphore);
 
-	printf("Program Started!!\n");
+	puts("Program Started!!\n");
 
 	vTaskStartScheduler();
 

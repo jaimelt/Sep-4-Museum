@@ -13,12 +13,10 @@
 #include <event_groups.h>
 #include <tsl2591.h>
 
-#include <tsl2591.h>
-
 #include "../constants/global_constants.h"
 
 #define LIGHT_TASK_PRIORITY (configMAX_PRIORITIES - 3)
-#define LIGHT_SENSOR_TASK_NAME "Light Sensor Task"
+#define LIGHT_SENSOR_TASK_NAME "Light"
 #define LIGHT_SENSOR_TAG "LIGHT SENSOR TASK"
 
 static SemaphoreHandle_t _xPrintfSemaphore;
@@ -37,7 +35,7 @@ void LightSensor_callback(tsl2591ReturnCode_t pvTsl2591ReturnCode)
 	}
 	else
 	{
-		float _lux;
+		float _lux = 0;
 		tsl2591ReturnCode_t result = tsl2591GetLux(&_lux);
 		if (TSL2591_OK == result)
 		{
@@ -78,7 +76,7 @@ static void _setup_light_driver()
 }
 
 void vALightSensorTask(void *pvParameters)
-{
+{	
 	for (;;)
 	{
 		xEventGroupWaitBits(_eventGroupHandleMeasure,
@@ -107,7 +105,6 @@ void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandl
 	_lastMeasurementLux = 0;
 
 	_setup_light_driver();
-	vTaskDelay(50);
 
 	_lightSensorTaskHandle = NULL;
 

@@ -17,7 +17,7 @@
 #include "../setup/setup_drivers.h"
 
 #define LORA_SENSOR_TAG "LORA SENSOR TASK"
-#define LORA_TASK_NAME "Lora Sensor Task"
+#define LORA_TASK_NAME "Lorawan"
 #define LORAWAN_TASK_PRIORITY (configMAX_PRIORITIES - 1)
 
 static QueueHandle_t _receivingQueue;
@@ -26,13 +26,14 @@ static TaskHandle_t _lora_task_handle;
 
 static char _out_buf[100];
 
+#define LED_TASK_PRIORITY   7
+
 static void _setup_lora_driver()
 {
-	// vvvvvvvvvvvvvvvvv BELOW IS LoRaWAN initialisation vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-	// Initialise the HAL layer and use 5 for LED driver priority
-	hal_create(5);
+	//hal_create(LED_TASK_PRIORITY);
 	// Initialise the LoRaWAN driver without down-link buffer
-	lora_driver_create(LORA_USART, NULL);
+	//lora_driver_create(LORA_USART, NULL);
+	
 	e_LoRa_return_code_t rc;
 	led_slow_blink(led_ST2); // OPTIONAL: Led the green led blink slowly while we are setting up LoRa
 
@@ -109,7 +110,7 @@ void loraDriver_sent_upload_message(lora_payload_t *uplink_lora_payoad)
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 		printf("Upload Message >%s<\n", lora_driver_map_return_code_to_text(
-											lora_driver_sent_upload_message(false, uplink_lora_payoad)));
+		lora_driver_sent_upload_message(false, uplink_lora_payoad)));
 		xSemaphoreGive(_xPrintfSemaphore);
 	}
 }
@@ -124,20 +125,19 @@ void vALoraTask(void *pvParameters)
 	vTaskDelay(150);
 
 	lora_driver_flush_buffers();
-
 	_setup_lora_driver();
 
 	vTaskDelay(150);
 
-	lora_payload_t *_lorapayload = NULL;
+	static lora_payload_t *_lorapayload = NULL;
 
 	for (;;)
 	{
 		if (_receivingQueue != NULL)
 		{
 			if (xQueueReceive(_receivingQueue,
-							  _lorapayload,
-							  portMAX_DELAY) == pdPASS)
+			_lorapayload,
+			portMAX_DELAY) == pdPASS)
 			{
 				if (_lorapayload != NULL)
 				{
@@ -165,10 +165,10 @@ void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore)
 	_lora_task_handle = NULL;
 
 	xTaskCreate(
-		vALoraTask,						  /* Task function. */
-		(const portCHAR *)LORA_TASK_NAME, /* String with name of task. */
-		configMINIMAL_STACK_SIZE + 300,	  /* Stack size in words. */
-		NULL,							  /* Parameter passed as input of the task */
-		LORAWAN_TASK_PRIORITY,			  /* Priority of the task. */
-		&_lora_task_handle);			  /* Task handle. */
+	vALoraTask,						  /* Task function. */
+	(const portCHAR *)LORA_TASK_NAME, /* String with name of task. */
+	configMINIMAL_STACK_SIZE + 300,	  /* Stack size in words. */
+	NULL,							  /* Parameter passed as input of the task */
+	LORAWAN_TASK_PRIORITY,			  /* Priority of the task. */
+	&_lora_task_handle);			  /* Task handle. */
 }
