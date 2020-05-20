@@ -10,6 +10,7 @@
     <string name="rooms_text">Rooms Tab</string>
     <string name="name">Add name for artwork…</string>
     <string name="description">Description</string>
+    <string name ="comments">Comments</string>
     <string name="image_description">Image</string>
     <string name="type">Type</string>
     <string name="author">Author</string>

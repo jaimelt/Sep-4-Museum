@@ -40,12 +40,15 @@ public class EditArtworkViewModel extends AndroidViewModel {
         return artwork.getRoomCode();
     }
 
-    public void editArtwork(String name, String author, String type, String location, String description, String image, int position) {
+    public String getComment() { return  artwork.getComment();}
+
+    public void editArtwork(String name, String author, String type, String location, String description,String comment, String image, int position) {
         artwork.setName(name);
         artwork.setAuthor(author);
         artwork.setType(type);
         artwork.setRoomCode(location);
         artwork.setDescription(description);
+        artwork.setComment(comment);
         artwork.setImage(image);
         artworksRepository.editArtwork(artwork, position);
 

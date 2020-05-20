@@ -138,6 +138,7 @@ public class ArtworksRepository {
         updatedArtwork.setName(editedArtwork.getName());
         updatedArtwork.setAuthor(editedArtwork.getAuthor());
         updatedArtwork.setDescription(editedArtwork.getDescription());
+        updatedArtwork.setComment(editedArtwork.getComment());
         updatedArtwork.setImage(editedArtwork.getImage());
         updatedArtwork.setType(editedArtwork.getType());
         updatedArtwork.setRoomCode(editedArtwork.getRoomCode());
@@ -167,6 +168,7 @@ public class ArtworksRepository {
         newArtwork.setName(artwork.getName());
         newArtwork.setAuthor(artwork.getAuthor());
         newArtwork.setDescription(artwork.getDescription());
+        newArtwork.setComment(artwork.getComment());
         newArtwork.setImage(artwork.getImage());
         newArtwork.setType(artwork.getType());
         newArtwork.setRoomCode(artwork.getRoomCode());
@@ -221,17 +223,17 @@ public class ArtworksRepository {
         String artwork10 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork10").toString();
         String artwork11 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork9").toString();
         String artwork12 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork10").toString();
-        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", artwork1, "Painting", "Adamo Davide Romano", "A1"));
-        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", artwork2, "Drawing", "Giovanni Baglione", "A2"));
-        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", artwork3, "Ceramics", "Kalynn Campbell", "A3"));
-        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", artwork4, "Photo", "Eugène Delacroix", "B1"));
-        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", artwork5, "Painting", "Piero della Francesca", "B2"));
-        artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6", artwork6, "Drawing", "Author6", "B3"));
-        artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", artwork7, "Ceramics", "Author7", "B4"));
-        artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", artwork8, "Photo", "Author8", "A1"));
-        artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", artwork9, "Painting", "Author9", "A2"));
-        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", artwork10, "Drawing", "Author10", "Storage"));
-        artworksDataSet.add(new Artwork(null, "Artwork11", "This is artwork 11", artwork10, "Drawing", "Author11", "Storage"));
+        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", "Storage now", artwork1, "Painting", "Adamo Davide Romano", "A1"));
+        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", artwork2, "Drawing","Storage now",  "Giovanni Baglione", "A2"));
+        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", artwork3, "Ceramics", "Storage now", "Kalynn Campbell", "A3"));
+        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", artwork4, "Photo","Storage now",  "Eugène Delacroix", "B1"));
+        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", artwork5, "Painting","Storage now",  "Piero della Francesca", "B2"));
+        artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6", artwork6, "Drawing", "Storage now", "Author6", "B3"));
+        artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", artwork7, "Ceramics", "Storage now", "Author7", "B4"));
+        artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", artwork8, "Photo", "Storage now", "Author8", "A1"));
+        artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", artwork9, "Painting","Storage now",  "Author9", "A2"));
+        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", artwork10, "Drawing","Storage now",  "Author10", "Storage"));
+        artworksDataSet.add(new Artwork(null, "Artwork11", "This is artwork 11", artwork10, "Drawing","Storage now",  "Author11", "Storage"));
 
     }
 
@@ -247,16 +249,16 @@ public class ArtworksRepository {
         String artwork8 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork8").toString();
         String artwork9 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork9").toString();
         String artwork10 = Uri.parse("android.resource://" + R.class.getPackage().getName() + "/drawable/" + "artwork10").toString();
-        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1", artwork1, "Painting", "Author1", "A1"));
-        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2", artwork2, "Drawing", "Author2", "A2"));
-        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3", artwork3, "Ceramics", "Author3", "A3"));
-        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4", artwork4, "Photo", "Author4", "B1"));
-        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5", artwork5, "Painting", "Author5", "B2"));
-        artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6", artwork6, "Drawing", "Author6", "B3"));
-        artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7", artwork7, "Ceramics", "Author7", "B4"));
-        artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8", artwork8, "Photo", "Author8", "A1"));
-        artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9", artwork9, "Painting", "Author9", "A2"));
-        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10", artwork10, "Drawing", "Author10", "Storage"));
+        artworksDataSet.add(new Artwork(null, "Artwork1", "This is artwork 1","Storage now",  artwork1, "Painting",  "Author1", "A1"));
+        artworksDataSet.add(new Artwork(null, "Artwork2", "This is artwork 2","Storage now",  artwork2, "Drawing", "Author2", "A2"));
+        artworksDataSet.add(new Artwork(null, "Artwork3", "This is artwork 3","Storage now",  artwork3, "Ceramics", "Author3", "A3"));
+        artworksDataSet.add(new Artwork(null, "Artwork4", "This is artwork 4","Storage now",  artwork4, "Photo", "Author4", "B1"));
+        artworksDataSet.add(new Artwork(null, "Artwork5", "This is artwork 5","Storage now",  artwork5, "Painting", "Author5", "B2"));
+        artworksDataSet.add(new Artwork(null, "Artwork6", "This is artwork 6","Storage now",  artwork6, "Drawing", "Author6", "B3"));
+        artworksDataSet.add(new Artwork(null, "Artwork7", "This is artwork 7","Storage now",  artwork7, "Ceramics", "Author7", "B4"));
+        artworksDataSet.add(new Artwork(null, "Artwork8", "This is artwork 8","Storage now",  artwork8, "Photo", "Author8", "A1"));
+        artworksDataSet.add(new Artwork(null, "Artwork9", "This is artwork 9","Storage now",  artwork9, "Painting", "Author9", "A2"));
+        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10","Storage now",  artwork10, "Drawing", "Author10", "Storage"));
     }
 
     public void removeArtwork(int position) {
