@@ -23,4 +23,17 @@ public class LoginActivityViewModel extends AndroidViewModel {
         return authRepository.getIsValidating();
     }
 
+    public int validateFields(String email, String password)
+    {
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return 2;
+        }
+        else if (password.isEmpty() || password.length() < 6 || password.length() > 16) {
+            return 3;
+        }
+        else {
+            return 1;
+        }
+    }
+
 }

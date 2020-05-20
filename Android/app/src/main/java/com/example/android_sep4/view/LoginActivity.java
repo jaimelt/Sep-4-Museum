@@ -65,21 +65,29 @@ public class LoginActivity extends AppCompatActivity {
     public void login() {
         Log.d(TAG, "Login");
 
-        if (!validate()) {
-            onLoginFailed();
-            return;
-        }
-
-        loginButton.setEnabled(false);
-
-        verifyLogin();
-    }
-
-    public void verifyLogin() {
-        loginButton.setEnabled(true);
-
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
+        int validation = loginActivityViewModel.validateFields(email, password);
+
+        loginButton.setEnabled(false);
+        switch (validation){
+            case 1:
+                verifyLogin(email, password);
+                break;
+            case 2:
+                emailField.setError("Email format is not valid");
+                break;
+            case 3:
+                passwordField.setError("Password needs to be between 6 and 16 characters");
+                break;
+        }
+
+    }
+
+    public void verifyLogin(String email, String password) {
+        loginButton.setEnabled(true);
+
+
         System.out.println(email + "  " + password);
 
         boolean valid = loginActivityViewModel.validateLogin(email, password);
@@ -88,37 +96,14 @@ public class LoginActivity extends AppCompatActivity {
             Intent mainActivity = new Intent(this, MainActivity.class);
             startActivity(mainActivity);
         } else {
-            onLoginFailed();
+            onLoginFailed("Email or password is not correct.");
         }
     }
 
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+    public void onLoginFailed(String feedback) {
+        Toast.makeText(getBaseContext(), feedback, Toast.LENGTH_LONG).show();
 
         loginButton.setEnabled(true);
-    }
-
-    public boolean validate() {
-        boolean valid = true;
-
-        String email = emailField.getText().toString();
-        String password = passwordField.getText().toString();
-
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailField.setError("Enter a valid username");
-            valid = false;
-        } else {
-            emailField.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 6 || password.length() > 16) {
-            passwordField.setError("The password should contain at least 6 characters");
-            valid = false;
-        } else {
-            passwordField.setError(null);
-        }
-
-        return valid;
     }
 
 }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.ManageAccountsViewModel;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class ManageAccountsActivity extends AppCompatActivity {
     private ManageAccountsViewModel viewModel;
@@ -27,8 +28,7 @@ public class ManageAccountsActivity extends AppCompatActivity {
 
     }
 
-    public void onRegisterAccountClicked(View view)
-    {
+    public void onRegisterAccountClicked(View view) {
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_register_account, null);
         EditText emailField = dialogView.findViewById(R.id.emailField);
@@ -36,21 +36,28 @@ public class ManageAccountsActivity extends AppCompatActivity {
         EditText repeatPasswordField = dialogView.findViewById(R.id.repeatPasswordField);
         Button createAccountBtn = dialogView.findViewById(R.id.createAccountButton);
         //Creating AlertDialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,  AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
         createAccountBtn.setOnClickListener(v -> {
             String email = emailField.getText().toString().trim();
             String password = passwordField.getText().toString().trim();
             String repeatPassword = repeatPasswordField.toString().trim();
-            String validation = viewModel.registerAccount(email, password, repeatPassword);
-            if(validation.equals("valid"))
-            {
-                dialog.dismiss();
-            }
-            else
-            {
-                Toast.makeText(this, validation, Toast.LENGTH_SHORT).show();
+            int validation = viewModel.registerAccount(email, password, repeatPassword);
+            switch (validation) {
+                case 1:
+                    dialog.dismiss();
+                    break;
+                case 2:
+                    emailField.setError("Email format is not valid");
+                    break;
+                case 3:
+                    TextInputLayout passwordLayout = dialogView.findViewById(R.id.passwordLayout);
+                    passwordLayout.setError("Password must be between 6 and 16 characters");
+                    break;
+                case 4:
+                    TextInputLayout repeatPasswordLayout = dialogView.findViewById(R.id.repeatPasswordLayout);
+                    repeatPasswordLayout.setError("Passwords do not match");
             }
         });
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

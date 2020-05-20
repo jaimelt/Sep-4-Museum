@@ -15,31 +15,23 @@ public class ManageAccountsViewModel extends AndroidViewModel {
         authRepository = AuthRepository.getInstance();
     }
 
-    public String registerAccount(String email, String password, String repeatPassword) {
-        String validation = validate(email, password, repeatPassword);
-        if(validation.equals("valid"))
-        {
+    public int registerAccount(String email, String password, String repeatPassword) {
+        int validation = validate(email, password, repeatPassword);
+        if (validation == 1) {
             authRepository.registerUser(email, password);
-            return validation;
         }
-        else {
-          return validation;
-        }
+        return validation;
     }
 
-    private String validate(String email, String password, String repeatPassword) {
+    private int validate(String email, String password, String repeatPassword) {
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return "invalid email";
-        }
-        else if (password.isEmpty() || password.length() < 6 || password.length() > 16) {
-            return "Invalid password. Password must be between 6 and 16 characters.";
-        }
-        else if(!password.equals(repeatPassword))
-        {
-            return "Passwords do not match";
-        }
-        else {
-            return "valid";
+            return 2;
+        } else if (password.isEmpty() || password.length() < 6 || password.length() > 16) {
+            return 3;
+        } else if (!password.equals(repeatPassword)) {
+            return 4;
+        } else {
+            return 1;
         }
     }
 }
