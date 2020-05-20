@@ -1,4 +1,4 @@
-package com.example.android_sep4.view.rooms;
+package com.example.android_sep4.view.museum.rooms;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,23 +12,22 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.viewmodel.ViewModelFactory;
-import com.example.android_sep4.viewmodel.rooms.RoomB1ViewModel;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomA3ViewModel;
 
 import java.util.ArrayList;
 
-public class RoomB1Activity extends AppCompatActivity {
-    private final static int ROOM_CAPACITY = 7;
-    private RoomB1ViewModel roomB1ViewModel;
+public class RoomA3Activity extends AppCompatActivity {
+    private final static int ROOM_CAPACITY = 4;
+    private RoomA3ViewModel roomA3ViewModel;
     private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
     private ArrayList<TextView> textViews = new ArrayList<>();
-    private TextView place_holder_1, place_holder_2, place_holder_3,
-            place_holder_4, place_holder_5, place_holder_6,
-            place_holder_7;
+    private TextView place_holder_1, place_holder_2,
+            place_holder_3, place_holder_4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_b1);
+        setContentView(R.layout.activity_room_a3);
         findViews();
         setTextViews();
         setViewModel();
@@ -36,9 +35,9 @@ public class RoomB1Activity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        roomB1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), "B1")).get(RoomB1ViewModel.class);
+        roomA3ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), "A3")).get(RoomA3ViewModel.class);
 
-        artworksInRoom = roomB1ViewModel.getArtworksFromRoom().getValue();
+        artworksInRoom = roomA3ViewModel.getArtworksFromRoom().getValue();
 
         for (int i = 0; i < ROOM_CAPACITY - 1; i++) {
             textViews.get(i).setText(artworksInRoom.get(i).getName());
@@ -50,9 +49,6 @@ public class RoomB1Activity extends AppCompatActivity {
         place_holder_2 = findViewById(R.id.artwork_place_2);
         place_holder_3 = findViewById(R.id.artwork_place_3);
         place_holder_4 = findViewById(R.id.artwork_place_4);
-        place_holder_5 = findViewById(R.id.artwork_place_5);
-        place_holder_6 = findViewById(R.id.artwork_place_6);
-        place_holder_7 = findViewById(R.id.artwork_place_7);
     }
 
     public void setTextViews() {
@@ -60,9 +56,6 @@ public class RoomB1Activity extends AppCompatActivity {
         textViews.add(1, place_holder_2);
         textViews.add(2, place_holder_3);
         textViews.add(3, place_holder_4);
-        textViews.add(4, place_holder_5);
-        textViews.add(5, place_holder_6);
-        textViews.add(6, place_holder_7);
     }
 
     public void viewArtworks() {
@@ -70,7 +63,7 @@ public class RoomB1Activity extends AppCompatActivity {
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(RoomB1Activity.this, ArtworkDetails.class);
+                    Intent intent = new Intent(RoomA3Activity.this, ArtworkDetails.class);
                     intent.putExtra("Artwork", artworksInRoom.get(textViews.indexOf(textView)));
                     startActivity(intent);
 

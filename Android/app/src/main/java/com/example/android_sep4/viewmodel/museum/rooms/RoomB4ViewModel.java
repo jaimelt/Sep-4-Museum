@@ -1,28 +1,27 @@
-package com.example.android_sep4.viewmodel.rooms;
+package com.example.android_sep4.viewmodel.museum.rooms;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.repositories.ArtworksRepository;
 
 import java.util.ArrayList;
 
-public class RoomA1ViewModel extends AndroidViewModel {
+public class RoomB4ViewModel extends AndroidViewModel {
     private ArtworksRepository artworksRepository;
 
-    public RoomA1ViewModel(Application application)  {
+    public RoomB4ViewModel(Application application)  {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
     }
 
     public LiveData<ArrayList<Artwork>> getArtworksFromRoom() {
-//WE WILL NEED TO PASS THE ROOM CODE
+        //WE WILL NEED TO PASS THE ROOM CODE
         String roomCode = "asfas";
         return artworksRepository.getArtworksByRoomId(roomCode);
     }
+
 }

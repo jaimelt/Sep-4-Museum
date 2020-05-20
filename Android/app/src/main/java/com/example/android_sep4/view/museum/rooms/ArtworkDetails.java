@@ -1,4 +1,4 @@
-package com.example.android_sep4.view.rooms;
+package com.example.android_sep4.view.museum.rooms;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

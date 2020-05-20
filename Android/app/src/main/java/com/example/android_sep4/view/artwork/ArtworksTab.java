@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RecyclerViewAdapterArtworks;
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.view.ManageAccountsActivity;
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -152,10 +153,13 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.toolbar_menu, menu);
 
         MenuItem searchItem = menu.findItem(R.id.search);
+        MenuItem manageItem = menu.findItem(R.id.manageAccounts);
+        MenuItem settingsItem = menu.findItem(R.id.settings);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -170,6 +174,10 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
                 return false;
             }
         });
-        super.onCreateOptionsMenu(menu, inflater);
+
+        manageItem.setOnMenuItemClickListener(item -> {
+           startActivity(new Intent(getContext(), ManageAccountsActivity.class));
+           return true;
+        });
     }
 }

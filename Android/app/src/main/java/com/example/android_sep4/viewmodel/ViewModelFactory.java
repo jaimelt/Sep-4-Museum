@@ -2,18 +2,17 @@ package com.example.android_sep4.viewmodel;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.viewmodel.roomList.RoomArtworksViewModel;
-import com.example.android_sep4.viewmodel.rooms.RoomA1ViewModel;
-import com.example.android_sep4.viewmodel.rooms.RoomA2ViewModel;
-import com.example.android_sep4.viewmodel.rooms.RoomA3ViewModel;
-import com.example.android_sep4.viewmodel.rooms.RoomB1ViewModel;
-import com.example.android_sep4.viewmodel.rooms.RoomB2ViewModel;
-import com.example.android_sep4.viewmodel.rooms.RoomB3ViewModel;
-import com.example.android_sep4.viewmodel.rooms.RoomB4ViewModel;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomA1ViewModel;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomA2ViewModel;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomA3ViewModel;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomB1ViewModel;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomB2ViewModel;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomB3ViewModel;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomB4ViewModel;
 
 public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
