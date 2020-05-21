@@ -31,6 +31,9 @@ public class ArtworkResponse {
     @SerializedName("location")
     @Expose
     private String roomCode;
+    @SerializedName("artworkPosition")
+    @Expose
+    private int artworkPosition;
     @SerializedName("maxLight")
     @Expose
     private int maxLight;
@@ -56,7 +59,7 @@ public class ArtworkResponse {
     @Expose
     private int minCo2;
 
-    public ArtworkResponse(int id, String name, String description, String comment, String image, String type, String author, String roomCode, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
+    public ArtworkResponse(int id, String name, String description, String comment, String image, String type, String author, String roomCode,int artworkPosition, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -65,6 +68,7 @@ public class ArtworkResponse {
         this.type = type;
         this.author = author;
         this.roomCode = roomCode;
+        this.artworkPosition = artworkPosition;
         this.maxLight = maxLight;
         this.minLight = minLight;
         this.maxTemperature = maxTemperature;
@@ -72,6 +76,78 @@ public class ArtworkResponse {
         this.maxHumidity = maxHumidity;
         this.minHumidity = minHumidity;
         this.maxCo2 = maxCo2;
+        this.minCo2 = minCo2;
+    }
+
+    public ArtworkResponse() {
+
+    }
+
+    public int getArtworkPosition() {
+        return artworkPosition;
+    }
+
+    public void setArtworkPosition(int artworkPosition) {
+        this.artworkPosition = artworkPosition;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setRoomCode(String roomCode) {
+        this.roomCode = roomCode;
+    }
+
+    public void setMaxLight(int maxLight) {
+        this.maxLight = maxLight;
+    }
+
+    public void setMinLight(int minLight) {
+        this.minLight = minLight;
+    }
+
+    public void setMaxTemperature(int maxTemperature) {
+        this.maxTemperature = maxTemperature;
+    }
+
+    public void setMinTemperature(int minTemperature) {
+        this.minTemperature = minTemperature;
+    }
+
+    public void setMaxHumidity(int maxHumidity) {
+        this.maxHumidity = maxHumidity;
+    }
+
+    public void setMinHumidity(int minHumidity) {
+        this.minHumidity = minHumidity;
+    }
+
+    public void setMaxCo2(int maxCo2) {
+        this.maxCo2 = maxCo2;
+    }
+
+    public void setMinCo2(int minCo2) {
         this.minCo2 = minCo2;
     }
 

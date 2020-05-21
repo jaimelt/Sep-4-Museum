@@ -45,9 +45,6 @@ import java.util.Objects;
 public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks.OnListItemClickListener {
     private ArtworksTabViewModel artworksTabViewModel;
     private RecyclerViewAdapterArtworks adapter;
-    private int removedPosition = 0;
-    private Artwork removedArtwork;
-    private Drawable deleteIcon;
     static final String EXTRA_ARTWORK = "Artwork name";
 
     public ArtworksTab() {
@@ -59,7 +56,6 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
                              Bundle savedInstanceState) {
         setViewModel();
         setHasOptionsMenu(true);
-        deleteIcon = ContextCompat.getDrawable(Objects.requireNonNull(this.getContext()), R.drawable.ic_delete);
         return inflater.inflate(R.layout.fragment_artworks_tab, container, false);
 
     }
@@ -85,54 +81,12 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         adapter = new RecyclerViewAdapterArtworks(getActivity(), this);
-        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
         onClickListenerFAB(view);
     }
 
-    private ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
-
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-            return false;
-        }
-
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            //Caching deleted artwork
-            removedPosition = viewHolder.getAdapterPosition();
-            removedArtwork = artworksTabViewModel.getArtwork(viewHolder.getAdapterPosition());
-
-            artworksTabViewModel.removeArtwork(viewHolder.getAdapterPosition());
-            adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-
-            Snackbar snackbar = Snackbar.make(viewHolder.itemView, "1 artwork item was deleted", Snackbar.LENGTH_LONG).setAction("UNDO", new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    artworksTabViewModel.addArtwork(removedPosition, removedArtwork);
-                    adapter.notifyItemInserted(removedPosition);
-                }
-            });
-            snackbar.show();
-
-        }
-
-        @Override
-        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-            View itemView = viewHolder.itemView;
-            final ColorDrawable background = new ColorDrawable(Color.parseColor("#BF1633"));
-            background.setBounds(itemView.getLeft(), itemView.getTop(), ((int) dX), itemView.getBottom());
-            background.draw(c);
-
-            int iconMargin = (itemView.getHeight() - deleteIcon.getIntrinsicHeight()) / 2;
-            deleteIcon.setBounds(itemView.getLeft() + iconMargin, itemView.getTop() + iconMargin, itemView.getLeft() + iconMargin + deleteIcon.getIntrinsicWidth(), itemView.getBottom() - iconMargin);
-            deleteIcon.draw(c);
-
-            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-        }
-    };
 
     private void onClickListenerFAB(View view) {
         FloatingActionButton myFab = view.findViewById(R.id.fab);

@@ -75,7 +75,7 @@ public class ArtworksRepository {
                         ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
                                 apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
                         artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null , apiArtwork.getImage(), apiArtwork.getType(),
-                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), artworkMeasurements);
+                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
                         artworksDataSet.add(artwork);
                     }
                 }
@@ -89,6 +89,7 @@ public class ArtworksRepository {
         artworksDataSet = new ArrayList<>();
         return artworksData;
     }
+
 
     public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
         setArtworksFromRoom(roomCode);
@@ -176,7 +177,7 @@ public class ArtworksRepository {
     }
 
     public void addNewArtwork(Artwork artwork) {
-        Artwork newArtwork = new Artwork();
+        ArtworkResponse newArtwork = new ArtworkResponse();
 
         newArtwork.setName(artwork.getName());
         newArtwork.setAuthor(artwork.getAuthor());
@@ -186,20 +187,27 @@ public class ArtworksRepository {
         newArtwork.setType(artwork.getType());
         newArtwork.setRoomCode(artwork.getRoomCode());
         newArtwork.setArtworkPosition(artwork.getArtworkPosition());
-        newArtwork.setArtworkMeasurements(artwork.getArtworkMeasurements());
+        newArtwork.setMaxCo2(artwork.getArtworkMeasurements().getMaxCO2());
+        newArtwork.setMinCo2(artwork.getArtworkMeasurements().getMinCO2());
+        newArtwork.setMaxHumidity(artwork.getArtworkMeasurements().getMaxHumidity());
+        newArtwork.setMinHumidity(artwork.getArtworkMeasurements().getMinHumidity());
+        newArtwork.setMaxLight(artwork.getArtworkMeasurements().getMaxLight());
+        newArtwork.setMinLight(artwork.getArtworkMeasurements().getMinLight());
+        newArtwork.setMaxTemperature(artwork.getArtworkMeasurements().getMaxTemp());
+        newArtwork.setMinTemperature(artwork.getArtworkMeasurements().getMinTemp());
 
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-        Call<Artwork> call = endpoints.addArtwork(newArtwork);
+        Call<ArtworkResponse> call = endpoints.addArtwork(newArtwork);
 
-        call.enqueue(new Callback<Artwork>() {
+        call.enqueue(new Callback<ArtworkResponse>() {
             @Override
-            public void onResponse(Call<Artwork> call, Response<Artwork> response) {
+            public void onResponse(Call<ArtworkResponse> call, Response<ArtworkResponse> response) {
                 System.out.println("SUCCESSFUL UPDATE!");
             }
 
             @Override
-            public void onFailure(Call<Artwork> call, Throwable t) {
+            public void onFailure(Call<ArtworkResponse> call, Throwable t) {
                 System.out.println("UPDATE FAILED!");
             }
         });
@@ -274,8 +282,12 @@ public class ArtworksRepository {
 //        artworksDataSet.add(new Artwork(null, "Artwork10", "This is artwork 10","Storage now",  artwork10, "Drawing", "Author10", "Storage"));
     }
 
-    public void removeArtwork(int position) {
-        artworksDataSet.remove(position);
+    public void positionToId(int position) {
+        int id = 0;
+        for (Artwork artwork: artworksDataSet) {
+             id = artworksDataSet.get(position).getId();
+        }
+        deleteArtwork(id);
     }
 
     public Artwork getArtwork(int position) {
