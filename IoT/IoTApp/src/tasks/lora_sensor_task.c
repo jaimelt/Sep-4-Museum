@@ -158,11 +158,18 @@ void vALoraTask(void *pvParameters)
 	vTaskDelete(_lora_task_handle);
 }
 
+static void _init_hal(){
+	hal_create(LED_TASK_PRIORITY);
+	lora_driver_create(LORA_USART, NULL);
+}
+
 void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore)
 {
 	_receivingQueue = pQueue;
 	_xPrintfSemaphore = pPrintfSemaphore;
 	_lora_task_handle = NULL;
+
+	_init_hal();
 
 	xTaskCreate(
 	vALoraTask,						  /* Task function. */

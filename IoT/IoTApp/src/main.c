@@ -22,12 +22,7 @@ SemaphoreHandle_t _xPrintfSemaphore =NULL;
 int main(void)
 {
 	trace_init();
-	stdioCreate(ser_USART0);
-	
-	hal_create(7);
-	// Initialise the LoRaWAN driver without down-link buffer
-	lora_driver_create(LORA_USART, NULL);
-	
+	stdioCreate(ser_USART0);	
 
 	if (_xPrintfSemaphore==NULL){
 		_xPrintfSemaphore = xSemaphoreCreateMutex();
