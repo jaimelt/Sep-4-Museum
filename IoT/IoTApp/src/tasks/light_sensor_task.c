@@ -25,30 +25,28 @@ static EventGroupHandle_t _eventGroupHandleNewData;
 static TaskHandle_t _lightSensorTaskHandle;
 static float _lastMeasurementLux;
 
-void LightSensor_callback(tsl2591ReturnCode_t pvTsl2591ReturnCode)
+void LightSensor_callback(tsl2591ReturnCode_t rc)
 {
-	if (pvTsl2591ReturnCode != TSL2591_OK && pvTsl2591ReturnCode !=TSL2591_DATA_READY)
+	if (rc != TSL2591_DATA_READY)
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("%s :: Light measurement failed :: return code %d\n", LIGHT_SENSOR_TAG, pvTsl2591ReturnCode);
+		printf("%s :: Light sensor not ready :: return code %d\n", LIGHT_SENSOR_TAG, rc);
 		xSemaphoreGive(_xPrintfSemaphore);
+		return;
+	}
+	float _lux = 0;
+	tsl2591ReturnCode_t result = tsl2591GetLux(&_lux);
+	if (TSL2591_OK == result)
+	{
+		//set data
+		_lastMeasurementLux = _lux;
+		xEventGroupSetBits(_eventGroupHandleNewData, LIGHT_READY_BIT);
 	}
 	else
 	{
-		float _lux = 0;
-		tsl2591ReturnCode_t result = tsl2591GetLux(&_lux);
-		if (TSL2591_OK == result)
-		{
-			//set data
-			_lastMeasurementLux = _lux;
-			xEventGroupSetBits(_eventGroupHandleNewData, LIGHT_READY_BIT);
-		}
-		else
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: Get light measurement failed :: return code %d\n", LIGHT_SENSOR_TAG, result);
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		}
+		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		printf("%s :: Get light measurement failed :: return code %d\n", LIGHT_SENSOR_TAG, result);
+		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 	}
 }
 
@@ -61,9 +59,10 @@ static void _setup_light_driver()
 		printf("%s :: FAILED DRIVER INITIALIZATION :: result code %d\n", LIGHT_SENSOR_TAG, result);
 		exit(EXIT_FAILURE);
 	}
-	else
-		printf("%s :: SUCCESSFULL DRIVER INITIALIZATION :: Light\n", LIGHT_SENSOR_TAG);
-
+	else{
+		printf("Initialized Light driver\n");
+	}
+	
 	//enable
 	result = tsl2591Enable();
 	if (result != TSL2591_OK)
@@ -71,12 +70,13 @@ static void _setup_light_driver()
 		printf("%s :: FAILED DRIVER ENABLING :: Light :: result code %d\n", LIGHT_SENSOR_TAG, result);
 		exit(EXIT_FAILURE);
 	}
-	else
-		printf("%s :: SUCCESSFULL DRIVER ENABLING :: Light\n", LIGHT_SENSOR_TAG);
+	else{
+		printf("Enabled light driver\n");
+	}
 }
 
 void vALightSensorTask(void *pvParameters)
-{	
+{
 	for (;;)
 	{
 		xEventGroupWaitBits(_eventGroupHandleMeasure,

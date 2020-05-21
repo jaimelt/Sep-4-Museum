@@ -34,9 +34,9 @@ int main(void)
 		if (_xPrintfSemaphore!=NULL) xSemaphoreGive(_xPrintfSemaphore);
 	}
 	
+	printf("Program Started!!\n");
+	
 	sensorControl_create(_xPrintfSemaphore);
-
-	puts("Program Started!!\n");
 
 	vTaskStartScheduler();
 
