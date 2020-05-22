@@ -10,6 +10,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of 5503ad8... jj
@@ -70,6 +71,8 @@
         </e>
         <e p="Startup.cs" t="Include" />
 >>>>>>> parent of 5503ad8... jj
+=======
+>>>>>>> parent of b3c9d00... ds
         <e p="WebApplication1.csproj" t="IncludeRecursive" />
       </e>
       <e p="WebApplication1.sln" t="IncludeFlat" />

@@ -5866,11 +5866,15 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of b3c9d00... ds
         "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
 =======
         "/Users/Florinelx/.config/NuGet/NuGet.Config"
 >>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
+<<<<<<< HEAD
 =======
         "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
 >>>>>>> parent of 5503ad8... jj
@@ -5892,11 +5896,14 @@
 =======
         "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
 >>>>>>> parent of 5503ad8... jj
+=======
+>>>>>>> parent of b3c9d00... ds
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5950,6 +5957,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of b3c9d00... ds
         "warn": true,
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
@@ -5964,6 +5974,7 @@
 =======
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
 >>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
+<<<<<<< HEAD
 =======
         "warn": true
 >>>>>>> parent of 5503ad8... jj
@@ -5985,6 +5996,8 @@
 =======
         "warn": true
 >>>>>>> parent of 5503ad8... jj
+=======
+>>>>>>> parent of b3c9d00... ds
       }
     }
   }

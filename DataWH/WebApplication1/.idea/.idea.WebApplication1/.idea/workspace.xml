@@ -25,12 +25,37 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c631d761-966e-430e-8b67-01df1f9b59cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkList.cs" afterDir="false" />
+    <list default="true" id="b1bca1c9-1d03-4f48-8062-fdfb23721e54" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/WebApplication1/Datamodel/RoomCopy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApplication1/Datamodel/RoomList.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApplication1/Datamodel/RoomListCopy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApplication1/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/Datamodel/MongoMeasurement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/Datamodel/MongoMeasurement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/WebApplication1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/WebApplication1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/WebApplication1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/WebApplication1.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/WebApplication1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/WebApplication1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/bin/Debug/netcoreapp3.1/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/Debug/netcoreapp3.1/WebApplication1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/WebApplication1.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication1/museum.db" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/museum.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/Controllers/RoomController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/Controllers/RoomController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +74,23 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="museum [2]" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="museum [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="museum [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
 =======
@@ -73,6 +114,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomList.cs" root0="FORCE_HIGHLIGHTING" />
 =======
 >>>>>>> parent of 5503ad8... jj
@@ -88,10 +130,15 @@
 >>>>>>> parent of 5503ad8... jj
 =======
 >>>>>>> parent of 5503ad8... jj
+=======
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomList.cs" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> parent of b3c9d00... ds
     <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepositoryBase_T_.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/IMongoDBSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomCopy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/RepositoryBase_T_.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/IMongoRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomListCopy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Database/DbInitialize.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Controllers/RoomController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -121,7 +168,6 @@
         <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Administrator.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkMeasurement.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Museum.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/appsettings.json" />
         <option value="$PROJECT_DIR$/WebApplication1/Database/Repositories/RoomRep/RoomRepository.cs" />
@@ -135,14 +181,19 @@
         <option value="$PROJECT_DIR$/WebApplication1/Startup.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/MongoDB/IMongoDBSettings.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/MongoDB/MongoDbSettings.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/MongoMeasurement.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/MongoDB/IMongoRepository.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Controllers/RoomController.cs" />
-        <option value="$PROJECT_DIR$/WebApplication1/Properties/launchSettings.json" />
         <option value="$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Properties/launchSettings.json" />
+        <option value="$PROJECT_DIR$/WebApplication1/Properties/appsettings.json" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/RoomCopy.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/RoomList.cs" />
         <option value="$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkList.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/RoomListCopy.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/MongoMeasurement.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Controllers/RoomController.cs" />
+        <option value="$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" />
       </list>
     </option>
   </component>
@@ -183,6 +234,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of b3c9d00... ds
   <component name="RunManager" selected="Azure - Publish Web App.Unnamed">
     <configuration name="Unnamed" type="AzureDotNetWebAppPublish" factoryName="Azure Web App">
       <option name="AZURE_WEB_APP_PROJECT" value="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" />
@@ -219,6 +273,7 @@
 =======
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApplication1">
 >>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
+<<<<<<< HEAD
 =======
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApplication1">
 >>>>>>> parent of 5503ad8... jj
@@ -240,6 +295,8 @@
 =======
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApplication1">
 >>>>>>> parent of 5503ad8... jj
+=======
+>>>>>>> parent of b3c9d00... ds
     <configuration name="WebApplication1" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.1" />
@@ -270,13 +327,28 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.WebApplication1" />
+      <item itemvalue=".NET Launch Settings Profile.WebApplication1: IIS Express" />
+      <item itemvalue="Azure - Publish Web App.Unnamed" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c631d761-966e-430e-8b67-01df1f9b59cd" name="Default Changelist" comment="" />
+      <changelist id="b1bca1c9-1d03-4f48-8062-fdfb23721e54" name="Default Changelist" comment="" />
       <created>1589283710460</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -297,11 +369,15 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of b3c9d00... ds
       <workItem from="1590140054898" duration="79000" />
       <workItem from="1590145984617" duration="4961000" />
 =======
       <workItem from="1589905286879" duration="279000" />
 >>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 5503ad8... jj
 =======
@@ -316,6 +392,8 @@
 >>>>>>> parent of 5503ad8... jj
 =======
 >>>>>>> parent of 5503ad8... jj
+=======
+>>>>>>> parent of b3c9d00... ds
     </task>
     <servers />
   </component>
