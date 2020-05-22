@@ -68,7 +68,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomList.cs" root0="FORCE_HIGHLIGHTING" />
+=======
+>>>>>>> parent of 5503ad8... jj
 =======
 >>>>>>> parent of 5503ad8... jj
 =======
@@ -163,6 +166,7 @@
   </component>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="RunManager" selected="Azure - Publish Web App.Unnamed">
     <configuration name="Unnamed" type="AzureDotNetWebAppPublish" factoryName="Azure Web App">
       <option name="AZURE_WEB_APP_PROJECT" value="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" />
@@ -199,6 +203,9 @@
 =======
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApplication1">
 >>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
+=======
+  <component name="RunManager" selected=".NET Launch Settings Profile.WebApplication1">
+>>>>>>> parent of 5503ad8... jj
 =======
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApplication1">
 >>>>>>> parent of 5503ad8... jj
@@ -257,11 +264,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1590140054898" duration="79000" />
       <workItem from="1590145984617" duration="4961000" />
 =======
       <workItem from="1589905286879" duration="279000" />
 >>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
+=======
+>>>>>>> parent of 5503ad8... jj
 =======
 >>>>>>> parent of 5503ad8... jj
 =======
