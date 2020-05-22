@@ -23,7 +23,7 @@ public class Room {
     @Ignore
     private ArtworkList artworkList;
     @Ignore
-    private int light;
+    private double light;
     private int temperature;
     private int humidity;
     private int co2;
@@ -32,7 +32,7 @@ public class Room {
     @Ignore
     private boolean expanded;
 
-    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, ArtworkList artworkList, int light, int temperature, int humidity, int co2, RoomMeasurements liveRoomMeasurements) {
+    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, ArtworkList artworkList, double light, int temperature, int humidity, int co2, RoomMeasurements liveRoomMeasurements) {
         this.locationCode = locationCode;
         this.description = description;
         this.totalCapacity = totalCapacity;
@@ -89,7 +89,7 @@ public class Room {
         this.artworkList = artworkList;
     }
 
-    public int getLight() {
+    public double getLight() {
         return light;
     }
 

@@ -32,7 +32,7 @@ public class EditRoomsConditionsViewModel extends AndroidViewModel {
         return room.getHumidity();
     }
 
-    public int getLight() {
+    public double getLight() {
         return room.getLight();
     }
 
