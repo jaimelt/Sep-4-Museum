@@ -4,10 +4,6 @@ namespace WebApplication1.Datamodel
 {
     public class RoomMeasurement
     {
-        public RoomMeasurement ()
-        {
-            
-        }
         [Key] public int Id { get; set; }
         public decimal Light { get; set; }
         public decimal Temperature { get; set; }

@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MongoDB.Bson;
-using WebApplication1.Database.Repositories.ArtworkRep;
 using WebApplication1.Database.Repositories.RoomRep;
 using WebApplication1.Datamodel;
 using WebApplication1.MongoDB;
@@ -19,92 +17,19 @@ namespace WebApplication1.Controllers
         //private readonly MuseumContext roomRepository;
         private readonly RoomRepository roomRepository;
         private readonly IMongoRepository _mongoRepository;
-        private readonly ArtworkRepository _artworkRepository;
 
 
-        public RoomController(RoomRepository roomRepository, MongoRepository mongoRepository,ArtworkRepository artworkRepository)
+        public RoomController(RoomRepository roomRepository, MongoRepository mongoRepository)
         {
             this.roomRepository = roomRepository;
             _mongoRepository = mongoRepository;
-            _artworkRepository = artworkRepository;
         }
 
         // GET: api/Rooms
         [HttpGet("getall")]
-        public RoomListCopy GetRooms()
+        public Task<IEnumerable<Room>> GetRooms()
         {
-            RoomListCopy copylist= new RoomListCopy();
-            RoomList roomList = new RoomList();
-            roomList.rooms = roomRepository.getAllRoomsAsync().Result.ToList();
-            RoomCopy roomCopy = new RoomCopy();
-            RoomCopy roomCopy2 = new RoomCopy();
-            
-            roomCopy.Co2 = roomList.rooms[0].Co2;
-            roomCopy.Description = roomList.rooms[0].Description;
-            roomCopy.Humidity = roomList.rooms[0].Humidity;
-            roomCopy.Light = roomList.rooms[0].Light;
-            roomCopy.Temperature = roomList.rooms[0].Temperature;
-            roomCopy.CurrentCapacity = roomList.rooms[0].CurrentCapacity;
-            roomCopy.TotalCapacity = roomList.rooms[0].TotalCapacity;
-            roomCopy2.Co2 = roomList.rooms[1].Co2;
-            roomCopy2.Description = roomList.rooms[1].Description;
-            roomCopy2.Humidity = roomList.rooms[1].Humidity;
-            roomCopy2.Light = roomList.rooms[1].Light;
-            roomCopy2.Temperature = roomList.rooms[1].Temperature;
-            roomCopy2.CurrentCapacity = roomList.rooms[1].CurrentCapacity;
-            roomCopy2.TotalCapacity = roomList.rooms[1].TotalCapacity;
-           
-            ArtworkList al1 = new ArtworkList();
-            ArtworkList al2 = new ArtworkList();
-            Artwork a1= new Artwork();
-            Artwork a2 = new Artwork();
-            RoomListCopy copy = new RoomListCopy();
-          
-          a1.Author = "Eins";
-          a1.Description = "Good";
-          a1.Id = 1;
-          a1.Location = "Center";
-          a1.Name = "Davin";
-          a1.MaxCo2 = 2;
-          a1.Image = "Noimage";
-          a1.Type = "NoType";
-          a1.MaxHumidity = 50;
-          a1.MaxTemperature = 20;
-          a1.MinCo2 = 1;
-          a1.MinHumidity = 2;
-          a1.MinTemperature = 1;
-          a2.Author = "Steven";
-          a2.Description = "Awasome";
-          a2.Id = 1;
-          a2.Location = "North";
-          a2.Name = "Cop";
-          a2.MaxCo2 = 2;
-          a2.MaxHumidity = 60;
-          a2.MaxTemperature = 23;
-          a2.MinCo2 = 11;
-          a2.MinHumidity = 22;
-          a2.MinTemperature = 12;
-          al1.artworks.Add(a1);
-          al2.artworks.Add(a2);
-          roomCopy.ArtworkList = al1;
-          roomCopy2.ArtworkList = al2;
-          RoomMeasurement roomMeasurement = new RoomMeasurement();
-
-          roomMeasurement.Co2 = 2;
-          roomMeasurement.Humidity = 3;
-          roomMeasurement.Light = 2;
-          roomMeasurement.Temperature = 18;
-         roomCopy.LiveRoomMeasurements = roomMeasurement;
-          copylist.rooms.Add(roomCopy);
-          copylist.rooms.Add(roomCopy2);
-        
-          
-            
-            
-            
-
-            return copylist;
-
+            return roomRepository.getAllRoomsAsync();
         }
 
         // GET: api/Rooms/5
@@ -145,7 +70,8 @@ namespace WebApplication1.Controllers
            temp.Humidity = mongoMeasurement.humidity;
            temp.Light = mongoMeasurement.light;
            temp.Temperature = mongoMeasurement.temperature;
-           
+
+
            return temp;
 
 
