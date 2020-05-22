@@ -39,14 +39,21 @@ namespace WebApplication1.Controllers
             RoomCopy roomCopy = new RoomCopy();
             RoomCopy roomCopy2 = new RoomCopy();
             
+            //A bloody hard-coded room
+            
             roomCopy.Co2 = roomList.rooms[0].Co2;
+            roomCopy.LocationCode = roomList.rooms[0].LocationCode;
             roomCopy.Description = roomList.rooms[0].Description;
             roomCopy.Humidity = roomList.rooms[0].Humidity;
             roomCopy.Light = roomList.rooms[0].Light;
             roomCopy.Temperature = roomList.rooms[0].Temperature;
             roomCopy.CurrentCapacity = roomList.rooms[0].CurrentCapacity;
             roomCopy.TotalCapacity = roomList.rooms[0].TotalCapacity;
+            
+            //Another hard-coded room
+            
             roomCopy2.Co2 = roomList.rooms[1].Co2;
+            roomCopy2.LocationCode = roomList.rooms[1].LocationCode;
             roomCopy2.Description = roomList.rooms[1].Description;
             roomCopy2.Humidity = roomList.rooms[1].Humidity;
             roomCopy2.Light = roomList.rooms[1].Light;
@@ -90,11 +97,11 @@ namespace WebApplication1.Controllers
           roomCopy2.ArtworkList = al2;
           RoomMeasurement roomMeasurement = new RoomMeasurement();
 
-          roomMeasurement.Co2 = 2;
-          roomMeasurement.Humidity = 3;
-          roomMeasurement.Light = 2;
-          roomMeasurement.Temperature = 18;
-         roomCopy.LiveRoomMeasurements = roomMeasurement;
+          roomMeasurement.Co2 = 0;
+          roomMeasurement.Humidity = 0;
+          roomMeasurement.Light = Convert.ToDecimal(315.3);
+          roomMeasurement.Temperature = 0;
+         roomCopy2.LiveRoomMeasurements = roomMeasurement;
           copylist.rooms.Add(roomCopy);
           copylist.rooms.Add(roomCopy2);
         
@@ -145,6 +152,8 @@ namespace WebApplication1.Controllers
            temp.Humidity = mongoMeasurement.humidity;
            temp.Light = mongoMeasurement.light;
            temp.Temperature = mongoMeasurement.temperature;
+           
+           //PutRoom("A100")
            
            return temp;
 
