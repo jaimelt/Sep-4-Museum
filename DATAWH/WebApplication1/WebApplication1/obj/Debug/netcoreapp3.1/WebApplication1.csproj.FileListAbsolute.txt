@@ -114,6 +114,6 @@ C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1\WebApplicati
 C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
 C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
 C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
+C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.csproj.CoreCompileInputs.cache
 C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication1\WebApplication1\obj\Debug\netcoreapp3.1\WebApplication1.genruntimeconfig.cache
-C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication1\WebApplication1\bin\Debug\netcoreapp3.1\appsettings.json

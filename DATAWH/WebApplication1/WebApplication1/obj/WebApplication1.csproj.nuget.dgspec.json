@@ -1,62 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/WebApplication1.csproj": {}
+    "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/WebApplication1.csproj": {
+    "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/WebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/WebApplication1.csproj",
-        "packagesPath": "/Users/Florinelx/.nuget/packages/",
-        "outputPath": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/obj/",
+        "projectPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "packagesPath": "C:\\Users\\Jaime\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of b3c9d00... ds
           "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-          "/Users/Florinelx/.config/NuGet/NuGet.Config"
->>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
-<<<<<<< HEAD
-=======
-          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> parent of 5503ad8... jj
-=======
-          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> parent of 5503ad8... jj
-=======
-          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> parent of 5503ad8... jj
-=======
-          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> parent of 5503ad8... jj
-=======
-          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> parent of 5503ad8... jj
-=======
-          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> parent of 5503ad8... jj
-=======
-          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> parent of 5503ad8... jj
-=======
->>>>>>> parent of b3c9d00... ds
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -109,54 +68,7 @@
             "net48"
           ],
           "assetTargetFallback": true,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of b3c9d00... ds
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
->>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
-<<<<<<< HEAD
-=======
           "warn": true
->>>>>>> parent of 5503ad8... jj
-=======
-          "warn": true
->>>>>>> parent of 5503ad8... jj
-=======
-          "warn": true
->>>>>>> parent of 5503ad8... jj
-=======
-          "warn": true
->>>>>>> parent of 5503ad8... jj
-=======
-          "warn": true
->>>>>>> parent of 5503ad8... jj
-=======
-          "warn": true
->>>>>>> parent of 5503ad8... jj
-=======
-          "warn": true
->>>>>>> parent of 5503ad8... jj
-=======
->>>>>>> parent of b3c9d00... ds
         }
       }
     }
