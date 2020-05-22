@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ArtworksRepository {
     private static ArtworksRepository instance;
-    private ArtworksAPIClient artworksAPIClient;
+    private ArtworksAPIClient artworksAPIClient = new ArtworksAPIClient();
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
     private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksDataSet = new ArrayList<>();

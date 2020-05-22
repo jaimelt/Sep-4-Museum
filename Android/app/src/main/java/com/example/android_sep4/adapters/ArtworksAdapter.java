@@ -2,7 +2,6 @@ package com.example.android_sep4.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +24,7 @@ import com.example.android_sep4.model.Artwork;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerViewAdapterArtworks.ViewHolder> implements Filterable {
+public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHolder> implements Filterable {
 
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<Artwork> artworks;
@@ -62,7 +61,7 @@ public class RecyclerViewAdapterArtworks extends RecyclerView.Adapter<RecyclerVi
         }
     };
 
-    public RecyclerViewAdapterArtworks(Context context, OnListItemClickListener listener) {
+    public ArtworksAdapter(Context context, OnListItemClickListener listener) {
         //Creating a duplicate of original list of artworks to not mess up with the original one
 //        copyOfArtworks = new ArrayList<>(artworks);
         mOnListItemClickListener = listener;

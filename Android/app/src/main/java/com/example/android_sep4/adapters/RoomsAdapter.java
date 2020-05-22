@@ -20,41 +20,41 @@ import com.example.android_sep4.view.room.RoomArtworksActivity;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewAdapterRooms.ViewHolder> {
+public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<Room> rooms;
 
-    public RecyclerViewAdapterRooms(ArrayList<Room> rooms) {
+    public RoomsAdapter(ArrayList<Room> rooms) {
         this.rooms = rooms;
     }
 
     @NonNull
     @Override
-    public RecyclerViewAdapterRooms.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RoomsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_room, parent, false);
-        RecyclerViewAdapterRooms.ViewHolder viewHolder = new RecyclerViewAdapterRooms.ViewHolder(view);
+        RoomsAdapter.ViewHolder viewHolder = new RoomsAdapter.ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final RecyclerViewAdapterRooms.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final RoomsAdapter.ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
         Room room = rooms.get(position);
 
         holder.locationCode.setText(room.getLocationCode());
-        holder.co2Value.setText(Integer.toString(room.getMeasurementConditions().getCo2()));
-        holder.lightValue.setText(Integer.toString(room.getMeasurementConditions().getLight()));
-        holder.temperatureValue.setText(Integer.toString(room.getMeasurementConditions().getTemp()));
-        holder.humidityValue.setText(Integer.toString(room.getMeasurementConditions().getHumidity()));
+        holder.co2Value.setText(Integer.toString(room.getLiveRoomMeasurements().getCo2()));
+        holder.lightValue.setText(Integer.toString(room.getLiveRoomMeasurements().getLight()));
+        holder.temperatureValue.setText(Integer.toString(room.getLiveRoomMeasurements().getTemp()));
+        holder.humidityValue.setText(Integer.toString(room.getLiveRoomMeasurements().getHumidity()));
         holder.roomCapacity.setText(Integer.toString(room.getTotalCapacity()));
         holder.currentCapacity.setText(Integer.toString(room.getCurrentCapacity()));
         holder.description.setText(room.getDescription());
         //Optimal conditions
-        holder.optimalTemperature.setText(Integer.toString(room.getOptimalMeasurementConditions().getTemp()));
-        holder.optimalLight.setText(Integer.toString(room.getOptimalMeasurementConditions().getLight()));
-        holder.optimalHumidity.setText(Integer.toString(room.getOptimalMeasurementConditions().getHumidity()));
-        holder.optimalCo2.setText(Integer.toString(room.getOptimalMeasurementConditions().getCo2()));
+        holder.optimalTemperature.setText(Integer.toString(room.getTemperature()));
+        holder.optimalLight.setText(Integer.toString(room.getLight()));
+        holder.optimalHumidity.setText(Integer.toString(room.getHumidity()));
+        holder.optimalCo2.setText(Integer.toString(room.getCo2()));
         holder.viewRoomArtworks.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -71,10 +71,10 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
             public void onClick(View v) {
 
                 Intent intent = new Intent(v.getContext(), EditRoomActivity.class);
-                intent.putExtra("temperature", rooms.get(position).getOptimalMeasurementConditions().getTemp());
-                intent.putExtra("light", rooms.get(position).getOptimalMeasurementConditions().getLight());
-                intent.putExtra("co2", rooms.get(position).getOptimalMeasurementConditions().getCo2());
-                intent.putExtra("humidity", rooms.get(position).getOptimalMeasurementConditions().getHumidity());
+                intent.putExtra("temperature", rooms.get(position).getTemperature());
+                intent.putExtra("light", rooms.get(position).getLight());
+                intent.putExtra("co2", rooms.get(position).getCo2());
+                intent.putExtra("humidity", rooms.get(position).getHumidity());
                 Room room = rooms.get(position);
                 room.setExpanded(!room.isExpanded());
                 notifyItemChanged(position);
@@ -96,6 +96,11 @@ public class RecyclerViewAdapterRooms extends RecyclerView.Adapter<RecyclerViewA
     @Override
     public int getItemCount() {
         return rooms.size();
+    }
+
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

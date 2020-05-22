@@ -16,7 +16,7 @@ public class RoomRepository {
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
-    private RoomsAPIClient roomsAPIClient;
+    private RoomsAPIClient roomsAPIClient = new RoomsAPIClient();
 
     public static RoomRepository getInstance() {
         if (instance == null) {
@@ -42,7 +42,10 @@ public class RoomRepository {
     }
 
     public void editRoomOptimal(int light, int co2, int temperature, int humidity, int position) {
-        roomsDataSet.get(position).setOptimalMeasurementConditions(humidity, temperature, co2, light);
-    }
+        roomsDataSet.get(position).setCo2(co2);
+        roomsDataSet.get(position).setHumidity(humidity);
+        roomsDataSet.get(position).setLight(light);
+        roomsDataSet.get(position).setTemperature(temperature);
 
+    }
 }

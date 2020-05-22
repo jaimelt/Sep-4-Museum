@@ -1,7 +1,6 @@
 package com.example.android_sep4.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,75 +15,53 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.view.artwork.EditArtworkActivity;
-import com.example.android_sep4.view.artwork.StorageActivity;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapterStorage extends RecyclerView.Adapter<RecyclerViewAdapterStorage.ViewHolder> {
-
-    private static final String TAG = "RecyclerViewAdapter";
+public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRoomsAdapter.ViewHolder> {
+    private static final String TAG = "RecycleViewAdapterRoom";
     private ArrayList<Artwork> artworks;
     private Context context;
-    final private OnListItemClickListener mOnListItemClickListener;
 
-
-    public RecyclerViewAdapterStorage( Context context, OnListItemClickListener listener) {
+    public ArtworksInRoomsAdapter(ArrayList<Artwork> artworks, Context context) {
+        this.artworks = artworks;
         this.context = context;
-        mOnListItemClickListener = listener;
     }
-
-    public interface OnListItemClickListener {
-        void onListItemClick(int clickedItemIndex);
-    }
-
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_artwork, parent, false);
-        return new ViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listroom_artworks, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
         Uri uri = Uri.parse(artworks.get(position).getImage());
         holder.imageView.setImageURI(uri);
-        Picasso.with(context).load(uri).resize(0, 300).into(holder.imageView);
         holder.artworkName.setText(artworks.get(position).getName());
         holder.artworkType.setText(artworks.get(position).getType());
         holder.artworkDescription.setText(artworks.get(position).getDescription());
         holder.artworkAuthor.setText(artworks.get(position).getAuthor());
-
-        //TODO:Setting image from local storage
     }
 
     @Override
     public int getItemCount() {
-        if (artworks != null) {
-            return artworks.size();
-        } else {
-            return 0;
-        }
+        return artworks.size();
     }
 
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-    public void setArtworks(ArrayList<Artwork> artworks) {
-        this.artworks = artworks;
-        notifyDataSetChanged();
-    }
-
-
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView imageView;
         TextView artworkName;
         TextView artworkDescription;
         TextView artworkAuthor;
         TextView artworkType;
+
+        RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,13 +70,7 @@ public class RecyclerViewAdapterStorage extends RecyclerView.Adapter<RecyclerVie
             artworkDescription = itemView.findViewById(R.id.artworkDescription);
             artworkAuthor = itemView.findViewById(R.id.artworkAuthor);
             artworkType = itemView.findViewById(R.id.artworkType);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            mOnListItemClickListener.onListItemClick(getAdapterPosition());
+            parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
-
 }

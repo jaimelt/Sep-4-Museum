@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.Room;
+import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Rooms;
 import com.example.android_sep4.requests.ArtworkEndpoints;
 import com.example.android_sep4.requests.RoomEndpoints;
@@ -39,7 +40,11 @@ public class RoomsAPIClient {
                 Log.i(TAG, "onResponse: success!");
                 Rooms apiRooms = response.body();
                 if (apiRooms != null) {
-                    roomsDataSet.addAll(apiRooms.getRooms());
+                    for(Room apiRoom : apiRooms.getRooms()) {
+                        room = new Room(apiRoom.getLocationCode(), apiRoom.getDescription(), apiRoom.getTotalCapacity(), apiRoom.getCurrentCapacity(), apiRoom.getArtworkList(),
+                                apiRoom.getLight(), apiRoom.getCo2(), apiRoom.getHumidity(), apiRoom.getTemperature(), apiRoom.getLiveRoomMeasurements());
+                        roomsDataSet.add(room);
+                    }
                 }
             }
             @Override
@@ -77,26 +82,26 @@ public class RoomsAPIClient {
     }
 
     public LiveData<Room> getRoomById(String id) {
-        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
-
-        Call<Room> call = endpoints.getRoomById(id);
-
-        call.enqueue(new Callback<Room>() {
-            @Override
-            public void onResponse(Call<Room> call, Response<Room> response) {
-                Log.i(TAG, "onResponse: success!");
-                Room apiRoomById = response.body();
-                if (apiRoomById != null) {
-                    room = new Room(apiRoomById.getArtworkList(), apiRoomById.getOptimalMeasurementConditions(), apiRoomById.getMeasurementConditions(),
-                            apiRoomById.getLocationCode(), apiRoomById.getDescription(), apiRoomById.getTotalCapacity(), apiRoomById.getCurrentCapacity());
-                }
-            }
-            @Override
-            public void onFailure(Call<Room> call, Throwable t) {
-                Log.i(TAG, "onFailure: called");
-            }
-        });
-        roomByIdData.setValue(room);
+//        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
+//
+//        Call<Room> call = endpoints.getRoomById(id);
+//
+//        call.enqueue(new Callback<Room>() {
+//            @Override
+//            public void onResponse(Call<Room> call, Response<Room> response) {
+//                Log.i(TAG, "onResponse: success!");
+//                Room apiRoomById = response.body();
+//                if (apiRoomById != null) {
+//                    room = new Room(apiRoomById.getArtworkList(), apiRoomById.getOptimalMeasurementConditions(), apiRoomById.getMeasurementConditions(),
+//                            apiRoomById.getLocationCode(), apiRoomById.getDescription(), apiRoomById.getTotalCapacity(), apiRoomById.getCurrentCapacity());
+//                }
+//            }
+//            @Override
+//            public void onFailure(Call<Room> call, Throwable t) {
+//                Log.i(TAG, "onFailure: called");
+//            }
+//        });
+//        roomByIdData.setValue(room);
         return roomByIdData;
 
     }

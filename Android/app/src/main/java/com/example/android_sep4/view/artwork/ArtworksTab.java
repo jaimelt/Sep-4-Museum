@@ -2,10 +2,6 @@ package com.example.android_sep4.view.artwork;
 
 
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,34 +13,25 @@ import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.adapters.RecyclerViewAdapterArtworks;
-import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.adapters.ArtworksAdapter;
 import com.example.android_sep4.view.ManageAccountsActivity;
 import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks.OnListItemClickListener {
+public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemClickListener {
     private ArtworksTabViewModel artworksTabViewModel;
-    private RecyclerViewAdapterArtworks adapter;
+    private ArtworksAdapter adapter;
     static final String EXTRA_ARTWORK = "Artwork name";
 
     public ArtworksTab() {
@@ -80,7 +67,7 @@ public class ArtworksTab extends Fragment implements RecyclerViewAdapterArtworks
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new RecyclerViewAdapterArtworks(getActivity(), this);
+        adapter = new ArtworksAdapter(getActivity(), this);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);

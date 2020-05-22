@@ -15,19 +15,19 @@ public class EditRoomsConditionsViewModel extends ViewModel {
     }
 
     public int getCo2() {
-        return room.getOptimalMeasurementConditions().getCo2();
+        return room.getCo2();
     }
 
     public int getHumidity() {
-        return room.getOptimalMeasurementConditions().getHumidity();
+        return room.getHumidity();
     }
 
     public int getLight() {
-        return room.getOptimalMeasurementConditions().getLight();
+        return room.getLight();
     }
 
     public int getTemperature() {
-        return room.getOptimalMeasurementConditions().getTemp();
+        return room.getTemperature();
     }
 
     public void editRoomOptimal(int light, int co2, int temperature, int humidity, int position) {

@@ -1,17 +1,14 @@
 package com.example.android_sep4.view.artwork;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -19,17 +16,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.adapters.RecyclerViewAdapterStorage;
+import com.example.android_sep4.adapters.StorageAdapter;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.viewmodel.artwork.ArtworksStorageViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.Objects;
-
-public class StorageActivity extends AppCompatActivity implements RecyclerViewAdapterStorage.OnListItemClickListener {
+public class StorageActivity extends AppCompatActivity implements StorageAdapter.OnListItemClickListener {
     private static final String TAG = "StorageActivity";
     private ArtworksStorageViewModel artworksStorageViewModel;
-    private RecyclerViewAdapterStorage adapter;
+    private StorageAdapter adapter;
     private int removedPosition = 0;
     private Artwork removedArtwork;
     private Drawable deleteIcon;
@@ -54,7 +49,7 @@ public class StorageActivity extends AppCompatActivity implements RecyclerViewAd
 
     private void initRecycleView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_view_storage);
-        adapter = new RecyclerViewAdapterStorage(this, this);
+        adapter = new StorageAdapter(this, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);

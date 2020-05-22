@@ -12,19 +12,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.adapters.RecyclerViewAdapterRooms;
-import com.example.android_sep4.model.Room;
+import com.example.android_sep4.adapters.RoomsAdapter;
 import com.example.android_sep4.view.ManageAccountsActivity;
 import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.viewmodel.roomList.RoomsTabViewModel;
-
-import java.util.List;
 
 
 /**
@@ -33,7 +29,7 @@ import java.util.List;
 public class RoomsTab extends Fragment {
     static final String EXTRA_ROOM = "Room Name";
     private RoomsTabViewModel roomsTabViewModel;
-    private RecyclerViewAdapterRooms adapter;
+    private RoomsAdapter adapter;
 
 
     public RoomsTab() {
@@ -51,13 +47,17 @@ public class RoomsTab extends Fragment {
     public void setViewModel() {
         roomsTabViewModel = new ViewModelProvider(this).get(RoomsTabViewModel.class);
 
-        roomsTabViewModel.getRooms().observe(getViewLifecycleOwner(), (Observer<List<Room>>) rooms -> adapter.notifyDataSetChanged());
+        roomsTabViewModel.getRooms().observe(getViewLifecycleOwner(), rooms -> {
+            adapter.setRooms(rooms);
+            adapter.notifyDataSetChanged();
+
+        });
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_viewRoom);
-        adapter = new RecyclerViewAdapterRooms(roomsTabViewModel.getRooms().getValue());
+        adapter = new RoomsAdapter(roomsTabViewModel.getRooms().getValue());
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
