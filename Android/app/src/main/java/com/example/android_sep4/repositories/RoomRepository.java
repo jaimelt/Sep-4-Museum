@@ -1,15 +1,34 @@
 package com.example.android_sep4.repositories;
 
+import android.util.Log;
+
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.model.ArtworkMeasurements;
+import com.example.android_sep4.model.ArtworkResponse;
+import com.example.android_sep4.model.Artworks;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.model.RoomMeasurements;
+import com.example.android_sep4.model.Rooms;
+import com.example.android_sep4.requests.ArtworkEndpoints;
+import com.example.android_sep4.requests.RoomEndpoints;
+import com.example.android_sep4.requests.ServiceGenerator;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
+
 public class RoomRepository {
     private static RoomRepository instance;
+    private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
+    private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
 
     public static RoomRepository getInstance() {
@@ -20,12 +39,52 @@ public class RoomRepository {
     }
 
     //This is the method where we are retrieving the artworks data from the webservice
-    public MutableLiveData<ArrayList<Room>> getRoomsData() {
-        setRooms();
+    public LiveData<ArrayList<Room>> getRoomsData() {
+        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
 
-        MutableLiveData<ArrayList<Room>> data = new MutableLiveData<>();
-        data.setValue(roomsDataSet);
-        return data;
+        Call<Rooms> call = endpoints.getRoomsDetails();
+
+        call.enqueue(new Callback<Rooms>() {
+            @Override
+            public void onResponse(Call<Rooms> call, Response<Rooms> response) {
+                Log.i(TAG, "onResponse: success!");
+                Rooms apiRooms = response.body();
+                if (apiRooms != null) {
+                    roomsDataSet.addAll(apiRooms.getRooms());
+                }
+            }
+            @Override
+            public void onFailure(Call<Rooms> call, Throwable t) {
+                Log.i(TAG, "onFailure: called");
+            }
+        });
+        roomsData.setValue(roomsDataSet);
+        roomsDataSet = new ArrayList<>();
+        return roomsData;
+    }
+
+    public LiveData<ArrayList<Artwork>> getArtworksByRoomIdData(String roomCode) {
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
+
+        Call<ArrayList<Artwork>> call = endpoints.getArtworksByRoomId(roomCode);
+
+        call.enqueue(new Callback<ArrayList<Artwork>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Artwork>> call, Response<ArrayList<Artwork>> response) {
+                Log.i(TAG, "onResponse: success!");
+                ArrayList<Artwork> apiArtworksInRoom = response.body();
+                if (apiArtworksInRoom != null) {
+                    artworksInRoomDataSet.addAll(apiArtworksInRoom);
+                }
+            }
+            @Override
+            public void onFailure(Call<ArrayList<Artwork>> call, Throwable t) {
+                Log.i(TAG, "onFailure: called");
+            }
+        });
+        artworksInRoomData.setValue(artworksInRoomDataSet);
+        artworksInRoomDataSet = new ArrayList<>();
+        return artworksInRoomData;
     }
 
     private void setRooms() {

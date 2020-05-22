@@ -13,17 +13,15 @@ import com.example.android_sep4.repositories.RoomRepository;
 import java.util.ArrayList;
 
 public class RoomsTabViewModel extends AndroidViewModel {
-    private MutableLiveData<ArrayList<Room>> roomsList;
     private RoomRepository roomsRepository;
 
     public RoomsTabViewModel(Application application) {
         super(application);
         roomsRepository = RoomRepository.getInstance();
-        roomsList = roomsRepository.getRoomsData();
     }
 
     public LiveData<ArrayList<Room>> getRooms() {
-        return roomsList;
+        return roomsRepository.getRoomsData();
     }
 
 
