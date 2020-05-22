@@ -1,74 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
-      <e p="packages" t="ExcludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\config\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jaime\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_WebApplication1.-2062594119.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1" t="IncludeFlat">
       <e p="WebApplication1" t="IncludeRecursive">
-        <e p="appsettings.json" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="Controllers" t="Include">
-          <e p="ArtworkController.cs" t="Include" />
-          <e p="RoomController.cs" t="Include" />
-        </e>
-        <e p="Database" t="Include">
-          <e p="DbInitialize.cs" t="Include" />
-          <e p="MuseumContext.cs" t="Include" />
-          <e p="Repositories" t="Include">
-            <e p="ArtworkRep" t="Include">
-              <e p="ArtworkRepository.cs" t="Include" />
-              <e p="IArtworkRepository.cs" t="Include" />
-            </e>
-            <e p="IRepositoryBase_T_.cs" t="Include" />
-            <e p="RepositoryBase_T_.cs" t="Include" />
-            <e p="RoomRep" t="Include">
-              <e p="IRoomRepository.cs" t="Include" />
-              <e p="RoomRepository.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Datamodel" t="Include">
-          <e p="Administrator.cs" t="Include" />
-          <e p="Artwork.cs" t="Include" />
-          <e p="ArtworkList.cs" t="Include" />
-          <e p="MongoMeasurement.cs" t="Include" />
-          <e p="Museum.cs" t="Include" />
-          <e p="Room.cs" t="Include" />
-          <e p="RoomCopy.cs" t="Include" />
-          <e p="RoomList.cs" t="Include" />
-          <e p="RoomListCopy.cs" t="Include" />
-          <e p="RoomMeasurement.cs" t="Include" />
-        </e>
-        <e p="Migrations" t="Include">
-          <e p="20200513105342_InitialCreate.cs" t="Include" />
-          <e p="20200513105342_InitialCreate.Designer.cs" t="Include" />
-          <e p="MuseumContextModelSnapshot.cs" t="Include" />
-        </e>
-        <e p="MongoDB" t="Include">
-          <e p="IMongoDBSettings.cs" t="Include" />
-          <e p="IMongoRepository.cs" t="Include" />
-          <e p="MongoDbSettings.cs" t="Include" />
-          <e p="MongoRepository.cs" t="Include" />
-        </e>
-        <e p="museum.db" t="Include" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp3.1" t="Include">
-              <e p="WebApplication1.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Program.cs" t="Include" />
-        <e p="Properties" t="Include">
-          <e p="launchSettings.json" t="Include" />
-        </e>
-        <e p="Startup.cs" t="Include" />
         <e p="WebApplication1.csproj" t="IncludeRecursive" />
       </e>
       <e p="WebApplication1.sln" t="IncludeFlat" />
     </e>
-    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.1/resharper-host/local/Transient/ReSharperHost/v201/SolutionCaches/_WebApplication1.-1113385347.00" t="ExcludeRecursive" />
   </component>
 </project>
