@@ -8,6 +8,7 @@
     <e p="C:\Users\Jaime\Documents\GitHub\Sep-4-Museum\DataWH\WebApplication1" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="WebApplication1" t="IncludeRecursive">
+        <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="ArtworkController.cs" t="Include" />
@@ -36,6 +37,9 @@
           <e p="MongoMeasurement.cs" t="Include" />
           <e p="Museum.cs" t="Include" />
           <e p="Room.cs" t="Include" />
+          <e p="RoomCopy.cs" t="Include" />
+          <e p="RoomList.cs" t="Include" />
+          <e p="RoomListCopy.cs" t="Include" />
           <e p="RoomMeasurement.cs" t="Include" />
         </e>
         <e p="Migrations" t="Include">
