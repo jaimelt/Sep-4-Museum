@@ -23,11 +23,15 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
 =======
           "/Users/Florinelx/.config/NuGet/NuGet.Config"
 >>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
+=======
+          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> parent of 5503ad8... jj
 =======
           "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config"
 >>>>>>> parent of 5503ad8... jj
@@ -99,6 +103,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           "warn": true,
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
@@ -113,6 +118,9 @@
 =======
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
 >>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
+=======
+          "warn": true
+>>>>>>> parent of 5503ad8... jj
 =======
           "warn": true
 >>>>>>> parent of 5503ad8... jj
