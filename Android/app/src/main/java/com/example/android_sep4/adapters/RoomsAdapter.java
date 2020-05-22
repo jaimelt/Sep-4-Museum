@@ -43,10 +43,13 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         Room room = rooms.get(position);
 
         holder.locationCode.setText(room.getLocationCode());
-        holder.co2Value.setText(Integer.toString(room.getLiveRoomMeasurements().getCo2()));
-        holder.lightValue.setText(Integer.toString(room.getLiveRoomMeasurements().getLight()));
-        holder.temperatureValue.setText(Integer.toString(room.getLiveRoomMeasurements().getTemp()));
-        holder.humidityValue.setText(Integer.toString(room.getLiveRoomMeasurements().getHumidity()));
+        if(room.getLiveRoomMeasurements() != null)
+        {
+            holder.co2Value.setText(Integer.toString(room.getLiveRoomMeasurements().getCo2()));
+            holder.lightValue.setText(Integer.toString(room.getLiveRoomMeasurements().getLight()));
+            holder.temperatureValue.setText(Integer.toString(room.getLiveRoomMeasurements().getTemp()));
+            holder.humidityValue.setText(Integer.toString(room.getLiveRoomMeasurements().getHumidity()));
+        }
         holder.roomCapacity.setText(Integer.toString(room.getTotalCapacity()));
         holder.currentCapacity.setText(Integer.toString(room.getCurrentCapacity()));
         holder.description.setText(room.getDescription());
@@ -95,7 +98,11 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return rooms.size();
+        if(rooms != null)
+        {
+            return rooms.size();
+        }
+        return 0;
     }
 
     public void setRooms(ArrayList<Room> rooms) {

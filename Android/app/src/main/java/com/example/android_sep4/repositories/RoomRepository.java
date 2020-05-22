@@ -1,5 +1,7 @@
 package com.example.android_sep4.repositories;
 
+import android.app.Application;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -11,16 +13,22 @@ import java.util.ArrayList;
 
 public class RoomRepository {
     private static RoomRepository instance;
-    private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
+//    private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
-    private RoomsAPIClient roomsAPIClient = new RoomsAPIClient();
+    private RoomsAPIClient roomsAPIClient;
+    private Application application;
 
-    public static RoomRepository getInstance() {
+    public RoomRepository(Application application) {
+        this.application = application;
+        roomsAPIClient = new RoomsAPIClient(application);
+    }
+
+    public static RoomRepository getInstance(Application application) {
         if (instance == null) {
-            instance = new RoomRepository();
+            instance = new RoomRepository(application);
         }
         return instance;
     }

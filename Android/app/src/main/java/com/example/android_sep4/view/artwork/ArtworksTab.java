@@ -77,11 +77,9 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
 
     private void onClickListenerFAB(View view) {
         FloatingActionButton myFab = view.findViewById(R.id.fab);
-        myFab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), NewArtworkActivity.class);
-                startActivity(intent);
-            }
+        myFab.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), NewArtworkActivity.class);
+            startActivity(intent);
         });
     }
 

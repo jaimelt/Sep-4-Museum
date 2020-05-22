@@ -1,17 +1,27 @@
 package com.example.android_sep4.viewmodel.roomList;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.repositories.RoomRepository;
 
-public class EditRoomsConditionsViewModel extends ViewModel {
+public class EditRoomsConditionsViewModel extends AndroidViewModel {
     private RoomRepository roomRepository;
     private Room room;
+    private int position;
 
-    public void init(int position) {
-        roomRepository = RoomRepository.getInstance();
+    public EditRoomsConditionsViewModel(@NonNull Application application) {
+        super(application);
+        roomRepository = RoomRepository.getInstance(application);
         room = roomRepository.getRoom(position);
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public int getCo2() {

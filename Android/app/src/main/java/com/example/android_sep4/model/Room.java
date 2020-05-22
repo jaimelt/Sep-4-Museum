@@ -21,7 +21,7 @@ public class Room {
     @Ignore
     private int currentCapacity;
     @Ignore
-    private ArrayList<Artwork> artworkList;
+    private ArtworkList artworkList;
     @Ignore
     private int light;
     private int temperature;
@@ -32,7 +32,7 @@ public class Room {
     @Ignore
     private boolean expanded;
 
-    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, ArrayList<Artwork> artworkList, int light, int temperature, int humidity, int co2, RoomMeasurements liveRoomMeasurements) {
+    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, ArtworkList artworkList, int light, int temperature, int humidity, int co2, RoomMeasurements liveRoomMeasurements) {
         this.locationCode = locationCode;
         this.description = description;
         this.totalCapacity = totalCapacity;
@@ -81,11 +81,11 @@ public class Room {
         this.currentCapacity = currentCapacity;
     }
 
-    public ArrayList<Artwork> getArtworkList() {
+    public ArtworkList getArtworkList() {
         return artworkList;
     }
 
-    public void setArtworkList(ArrayList<Artwork> artworkList) {
+    public void setArtworkList(ArtworkList artworkList) {
         this.artworkList = artworkList;
     }
 

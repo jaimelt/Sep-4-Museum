@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ArtworksRepository {
     private static ArtworksRepository instance;
-    private ArtworksAPIClient artworksAPIClient = new ArtworksAPIClient();
+    private ArtworksAPIClient artworksAPIClient;
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
     private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
@@ -32,6 +32,7 @@ public class ArtworksRepository {
         MuseumDb database = MuseumDb.getInstance(application);
         artworkDao = database.artworkDao();
         artworks = artworkDao.getAllLiveArtworks();
+        artworksAPIClient = new ArtworksAPIClient(application);
     }
 
     public static synchronized ArtworksRepository getInstance(Application application) {

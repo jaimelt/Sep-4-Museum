@@ -1,6 +1,8 @@
 package com.example.android_sep4.requests.clients;
 
+import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -32,18 +34,24 @@ public class RoomsAPIClient {
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
     private Room room;
     private Artwork artwork;
+    private Application application;
+
+    public RoomsAPIClient(Application application)
+    {
+        this.application = application;
+        roomsDataSet = new ArrayList<>();
+    }
 
     public LiveData<ArrayList<Room>> getRoomsData() {
         RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
-
         Call<Rooms> call = endpoints.getRoomsDetails();
-
         call.enqueue(new Callback<Rooms>() {
             @Override
             public void onResponse(Call<Rooms> call, Response<Rooms> response) {
                 Log.i(TAG, "onResponse: success!");
                 Rooms apiRooms = response.body();
                 if (apiRooms != null) {
+                    Toast.makeText(application, "IT WORKS", Toast.LENGTH_SHORT).show();
                     for(Room apiRoom : apiRooms.getRooms()) {
                         room = new Room(apiRoom.getLocationCode(), apiRoom.getDescription(), apiRoom.getTotalCapacity(), apiRoom.getCurrentCapacity(), apiRoom.getArtworkList(),
                                 apiRoom.getLight(), apiRoom.getCo2(), apiRoom.getHumidity(), apiRoom.getTemperature(), apiRoom.getLiveRoomMeasurements());
@@ -54,10 +62,15 @@ public class RoomsAPIClient {
             @Override
             public void onFailure(Call<Rooms> call, Throwable t) {
                 Log.i(TAG, "onFailure: called");
+                Toast.makeText(application, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         roomsData.setValue(roomsDataSet);
-        roomsDataSet = new ArrayList<>();
+        return roomsData;
+    }
+
+    public LiveData<ArrayList<Room>> getRooms()
+    {
         return roomsData;
     }
 

@@ -17,7 +17,7 @@ public class RoomsTabViewModel extends AndroidViewModel {
 
     public RoomsTabViewModel(Application application) {
         super(application);
-        roomsRepository = RoomRepository.getInstance();
+        roomsRepository = RoomRepository.getInstance(application);
     }
 
     public LiveData<ArrayList<Room>> getRooms() {

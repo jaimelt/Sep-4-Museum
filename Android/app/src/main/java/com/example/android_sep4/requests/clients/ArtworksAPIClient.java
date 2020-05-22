@@ -1,6 +1,8 @@
 package com.example.android_sep4.requests.clients;
 
+import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,6 +12,7 @@ import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.model.ArtworkResponse;
 import com.example.android_sep4.model.Artworks;
+import com.example.android_sep4.model.Room;
 import com.example.android_sep4.requests.ArtworkEndpoints;
 import com.example.android_sep4.requests.ServiceGenerator;
 
@@ -27,6 +30,12 @@ public class ArtworksAPIClient {
     private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
     private ArtworkDao artworkDao;
     private Artwork artwork = new Artwork();
+    private Application application;
+
+    public ArtworksAPIClient(Application application)
+    {
+        this.application = application;
+    }
 
     public LiveData<ArrayList<Artwork>> getArtworksData() {
         Log.i(TAG, "getArtworksData: called ");
