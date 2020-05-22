@@ -50,7 +50,6 @@ public class RoomsTab extends Fragment {
         roomsTabViewModel.getRooms().observe(getViewLifecycleOwner(), rooms -> {
             adapter.setRooms(rooms);
             adapter.notifyDataSetChanged();
-
         });
     }
 

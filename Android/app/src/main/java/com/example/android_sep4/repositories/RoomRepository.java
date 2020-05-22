@@ -24,6 +24,7 @@ public class RoomRepository {
     public RoomRepository(Application application) {
         this.application = application;
         roomsAPIClient = new RoomsAPIClient(application);
+        roomsAPIClient.getRoomsData();
     }
 
     public static RoomRepository getInstance(Application application) {
@@ -34,11 +35,11 @@ public class RoomRepository {
     }
 
     public LiveData<ArrayList<Room>> getRoomsData() {
-        return roomsAPIClient.getRoomsData();
+        return roomsAPIClient.getRooms();
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksByRoomIdData(String roomCode) {
-        return roomsAPIClient.getArtworksByRoomIdData(roomCode);
+    public ArrayList<Artwork> getArtworksByRoom(String roomCode) {
+        return roomsAPIClient.getArtworks(roomCode);
     }
 
     public LiveData<Room> getRoomById(String id) {

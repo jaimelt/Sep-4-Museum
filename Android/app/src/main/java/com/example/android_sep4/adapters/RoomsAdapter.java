@@ -45,19 +45,19 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.locationCode.setText(room.getLocationCode());
         if(room.getLiveRoomMeasurements() != null)
         {
-            holder.co2Value.setText(Integer.toString(room.getLiveRoomMeasurements().getCo2()));
-            holder.lightValue.setText(Integer.toString(room.getLiveRoomMeasurements().getLight()));
-            holder.temperatureValue.setText(Integer.toString(room.getLiveRoomMeasurements().getTemp()));
-            holder.humidityValue.setText(Integer.toString(room.getLiveRoomMeasurements().getHumidity()));
+            holder.co2Value.setText(String.valueOf(room.getLiveRoomMeasurements().getCo2()));
+            holder.lightValue.setText(String.valueOf(room.getLiveRoomMeasurements().getLight()));
+            holder.temperatureValue.setText(String.valueOf(room.getLiveRoomMeasurements().getTemp()));
+            holder.humidityValue.setText(String.valueOf(room.getLiveRoomMeasurements().getHumidity()));
         }
-        holder.roomCapacity.setText(Integer.toString(room.getTotalCapacity()));
-        holder.currentCapacity.setText(Integer.toString(room.getCurrentCapacity()));
+        holder.roomCapacity.setText(String.valueOf(room.getTotalCapacity()));
+        holder.currentCapacity.setText(String.valueOf(room.getCurrentCapacity()));
         holder.description.setText(room.getDescription());
         //Optimal conditions
-        holder.optimalTemperature.setText(Integer.toString(room.getTemperature()));
-        holder.optimalLight.setText(Integer.toString(room.getLight()));
-        holder.optimalHumidity.setText(Integer.toString(room.getHumidity()));
-        holder.optimalCo2.setText(Integer.toString(room.getCo2()));
+        holder.optimalTemperature.setText(String.valueOf(room.getTemperature()));
+        holder.optimalLight.setText(String.valueOf(room.getLight()));
+        holder.optimalHumidity.setText(String.valueOf(room.getHumidity()));
+        holder.optimalCo2.setText(String.valueOf(room.getCo2()));
         holder.viewRoomArtworks.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -148,13 +148,11 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             optimalHumidity = itemView.findViewById(R.id.humidityOptimalTextViewID);
             optimalLight = itemView.findViewById(R.id.lightOptimalTextViewId);
             optimalTemperature = itemView.findViewById(R.id.temperatureOptimalTextViewId);
-            locationCode.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Room room = rooms.get(getAdapterPosition());
-                    room.setExpanded(!room.isExpanded());
-                    notifyItemChanged(getAdapterPosition());
-                }
+
+            locationCode.setOnClickListener(view -> {
+                Room room = rooms.get(getAdapterPosition());
+                room.setExpanded(!room.isExpanded());
+                notifyItemChanged(getAdapterPosition());
             });
 
         }

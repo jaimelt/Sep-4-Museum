@@ -36,73 +36,63 @@ public class RoomsAPIClient {
     private Artwork artwork;
     private Application application;
 
-    public RoomsAPIClient(Application application)
-    {
+    public RoomsAPIClient(Application application) {
         this.application = application;
-        roomsDataSet = new ArrayList<>();
     }
 
-    public LiveData<ArrayList<Room>> getRoomsData() {
+    public void getRoomsData() {
         RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
         Call<Rooms> call = endpoints.getRoomsDetails();
         call.enqueue(new Callback<Rooms>() {
             @Override
             public void onResponse(Call<Rooms> call, Response<Rooms> response) {
                 Log.i(TAG, "onResponse: success!");
-                Rooms apiRooms = response.body();
-                if (apiRooms != null) {
-                    Toast.makeText(application, "IT WORKS", Toast.LENGTH_SHORT).show();
-                    for(Room apiRoom : apiRooms.getRooms()) {
-                        room = new Room(apiRoom.getLocationCode(), apiRoom.getDescription(), apiRoom.getTotalCapacity(), apiRoom.getCurrentCapacity(), apiRoom.getArtworkList(),
-                                apiRoom.getLight(), apiRoom.getCo2(), apiRoom.getHumidity(), apiRoom.getTemperature(), apiRoom.getLiveRoomMeasurements());
-                        roomsDataSet.add(room);
-                    }
+                if (response.isSuccessful()) {
+                    roomsData.setValue(response.body().getRooms());
                 }
             }
+
             @Override
             public void onFailure(Call<Rooms> call, Throwable t) {
                 Log.i(TAG, "onFailure: called");
                 Toast.makeText(application, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        roomsData.setValue(roomsDataSet);
+    }
+
+    public LiveData<ArrayList<Room>> getRooms() {
         return roomsData;
     }
 
-    public LiveData<ArrayList<Room>> getRooms()
-    {
-        return roomsData;
-    }
-
-    public LiveData<ArrayList<Artwork>> getArtworksByRoomIdData(String roomCode) {
-        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
-
-        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
-
-        call.enqueue(new Callback<Artworks>() {
-            @Override
-            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
-                Artworks artworksFromRoom = response.body();
-                if (artworksFromRoom != null) {
-                    for (ArtworkResponse apiArtwork : artworksFromRoom.getArtworks()) {
-                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
-                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
-                        artworksInRoomDataSet.add(artwork);
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Artworks> call, Throwable t) {
-
-            }
-        });
-        artworksInRoomData.setValue(artworksInRoomDataSet);
-        artworksInRoomDataSet = new ArrayList<>();
-        return artworksInRoomData;
-    }
+//    public LiveData<ArrayList<Artwork>> getArtworksByRoomIdData(String roomCode) {
+//        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
+//
+//        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
+//
+//        call.enqueue(new Callback<Artworks>() {
+//            @Override
+//            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+//                Artworks artworksFromRoom = response.body();
+//                if (artworksFromRoom != null) {
+//                    for (ArtworkResponse apiArtwork : artworksFromRoom.getArtworks()) {
+//                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
+//                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
+//                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
+//                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
+//                        artworksInRoomDataSet.add(artwork);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Artworks> call, Throwable t) {
+//
+//            }
+//        });
+//        artworksInRoomData.setValue(artworksInRoomDataSet);
+//        artworksInRoomDataSet = new ArrayList<>();
+//        return artworksInRoomData;
+//    }
 
     public LiveData<Room> getRoomById(String id) {
 //        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
@@ -126,7 +116,18 @@ public class RoomsAPIClient {
 //        });
 //        roomByIdData.setValue(room);
         return roomByIdData;
-
     }
 
+    public ArrayList<Artwork> getArtworks(String roomCode) {
+        ArrayList<Artwork> artworks = new ArrayList<>();
+        Toast.makeText(application, "ROOMCODE = " + roomCode, Toast.LENGTH_SHORT).show();
+        Toast.makeText(application, "" + roomCode, Toast.LENGTH_SHORT).show();
+        for (Room room : roomsData.getValue()) {
+            if (room.getLocationCode().equals(roomCode)) {
+                artworks = room.getArtworkList().getArtworks();
+            }
+        }
+
+        return artworks;
+    }
 }

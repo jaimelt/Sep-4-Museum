@@ -5,6 +5,11 @@ import java.util.ArrayList;
 public class ArtworkList {
     private ArrayList<Artwork> artworks;
 
+    public ArtworkList(ArrayList<Artwork> artworks)
+    {
+        this.artworks = artworks;
+    }
+
     public ArrayList<Artwork> getArtworks() {
         return artworks;
     }
