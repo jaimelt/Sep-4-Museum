@@ -1,21 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-        "packagesPath": "C:\\Users\\Jaime\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication1\\WebApplication1\\obj\\",
+        "projectPath": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/WebApplication1.csproj",
+        "packagesPath": "/Users/Florinelx/.nuget/packages/",
+        "outputPath": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DataWH/WebApplication1/WebApplication1/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+          "/Users/Florinelx/.config/NuGet/NuGet.Config"
+>>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -77,7 +84,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
+>>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
         }
       }
     }

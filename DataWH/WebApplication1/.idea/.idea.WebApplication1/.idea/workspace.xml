@@ -57,12 +57,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApplication1/Controllers/RoomController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/Controllers/RoomController.cs" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
     <option name="GROUP_DATA_SOURCES" value="true" />
@@ -93,21 +93,20 @@
     </expand>
     <select />
   </component>
+=======
+>>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkList.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/IArtworkRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Startup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/MongoDbSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/MongoMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/RepositoryBase_T_.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepositoryBase_T_.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/RoomRep/IRoomRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/RoomRep/RoomRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/IArtworkRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/ArtworkRep/ArtworkRepository.cs" root0="FORCE_HIGHLIGHTING" />
+<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Database/Repositories/IRepositoryBase_T_.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/IMongoDBSettings.cs" root0="FORCE_HIGHLIGHTING" />
@@ -118,12 +117,25 @@
     <setting file="file://$PROJECT_DIR$/WebApplication1/Database/DbInitialize.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Controllers/RoomController.cs" root0="FORCE_HIGHLIGHTING" />
+=======
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Museum.cs" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
     <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/RoomMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Artwork.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Museum.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/MongoMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/Administrator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Controllers/ArtworkController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Controllers/RoomController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Datamodel/ArtworkList.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/IMongoDBSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/IMongoRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/MongoDbSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/MuseumContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/MongoDB/MongoRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApplication1/Database/DbInitialize.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -177,6 +189,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
+<<<<<<< HEAD
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -222,6 +235,9 @@
       <option name="AZURE_SQL_DATABASE_COLLATION" value="SQL_Latin1_General_CP1_CI_AS" />
       <method v="2" />
     </configuration>
+=======
+  <component name="RunManager" selected=".NET Launch Settings Profile.WebApplication1">
+>>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
     <configuration name="WebApplication1" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApplication1/WebApplication1.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.1" />
@@ -234,7 +250,7 @@
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <method v="2">
-        <option name="Build" enabled="true" />
+        <option name="Build" />
       </method>
     </configuration>
     <configuration name="WebApplication1: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -249,7 +265,7 @@
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
       <method v="2">
-        <option name="Build" enabled="true" />
+        <option name="Build" />
       </method>
     </configuration>
     <list>
@@ -286,13 +302,17 @@
       <workItem from="1589816112630" duration="39000" />
       <workItem from="1589885231320" duration="77000" />
       <workItem from="1589885447103" duration="142000" />
+<<<<<<< HEAD
       <workItem from="1590140054898" duration="79000" />
       <workItem from="1590145984617" duration="4961000" />
+=======
+      <workItem from="1589905286879" duration="279000" />
+>>>>>>> 793c1a68b820c36f9681e8903106720c186b8d66
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
@@ -301,13 +321,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -329,28 +348,28 @@
       <screen x="0" y="23" width="2560" height="1363" />
     </state>
     <state x="965" y="476" key="#com.intellij.fileTypes.FileTypeChooser/-1920.360.1920.1080/0.23.2560.1363@0.23.2560.1363" timestamp="1589284738917" />
-    <state width="2518" height="424" key="GridCell.Tab.0.bottom" timestamp="1589363913214">
+    <state width="2518" height="423" key="GridCell.Tab.0.bottom" timestamp="1589905245612">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="424" key="GridCell.Tab.0.bottom/-1920.360.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1589363913214" />
+    <state width="2518" height="423" key="GridCell.Tab.0.bottom/-1920.360.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1589905245612" />
     <state width="2518" height="424" key="GridCell.Tab.0.bottom/-1920.383.1920.1057/0.23.2560.1363@0.23.2560.1363" timestamp="1589352734600" />
     <state width="1398" height="213" key="GridCell.Tab.0.bottom/0.23.1440.827@0.23.1440.827" timestamp="1589295531381" />
-    <state width="2518" height="424" key="GridCell.Tab.0.center" timestamp="1589363913212">
+    <state width="2518" height="423" key="GridCell.Tab.0.center" timestamp="1589905245610">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="424" key="GridCell.Tab.0.center/-1920.360.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1589363913212" />
+    <state width="2518" height="423" key="GridCell.Tab.0.center/-1920.360.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1589905245610" />
     <state width="2518" height="424" key="GridCell.Tab.0.center/-1920.383.1920.1057/0.23.2560.1363@0.23.2560.1363" timestamp="1589352734598" />
     <state width="1398" height="213" key="GridCell.Tab.0.center/0.23.1440.827@0.23.1440.827" timestamp="1589295531380" />
-    <state width="2518" height="424" key="GridCell.Tab.0.left" timestamp="1589363913211">
+    <state width="2518" height="423" key="GridCell.Tab.0.left" timestamp="1589905245610">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="424" key="GridCell.Tab.0.left/-1920.360.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1589363913211" />
+    <state width="2518" height="423" key="GridCell.Tab.0.left/-1920.360.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1589905245610" />
     <state width="2518" height="424" key="GridCell.Tab.0.left/-1920.383.1920.1057/0.23.2560.1363@0.23.2560.1363" timestamp="1589352734593" />
     <state width="1398" height="213" key="GridCell.Tab.0.left/0.23.1440.827@0.23.1440.827" timestamp="1589295531375" />
-    <state width="2518" height="424" key="GridCell.Tab.0.right" timestamp="1589363913213">
+    <state width="2518" height="423" key="GridCell.Tab.0.right" timestamp="1589905245611">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="424" key="GridCell.Tab.0.right/-1920.360.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1589363913213" />
+    <state width="2518" height="423" key="GridCell.Tab.0.right/-1920.360.1920.1080/0.0.2560.1440@0.0.2560.1440" timestamp="1589905245611" />
     <state width="2518" height="424" key="GridCell.Tab.0.right/-1920.383.1920.1057/0.23.2560.1363@0.23.2560.1363" timestamp="1589352734599" />
     <state width="1398" height="213" key="GridCell.Tab.0.right/0.23.1440.827@0.23.1440.827" timestamp="1589295531381" />
     <state width="233" height="455" key="HiddenNamespacesPopup" timestamp="1589345211290">
