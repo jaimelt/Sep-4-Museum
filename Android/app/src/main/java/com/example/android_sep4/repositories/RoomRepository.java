@@ -28,8 +28,10 @@ public class RoomRepository {
     private static RoomRepository instance;
     private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
+    private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
+    private Room room;
 
     public static RoomRepository getInstance() {
         if (instance == null) {
@@ -85,6 +87,31 @@ public class RoomRepository {
         artworksInRoomData.setValue(artworksInRoomDataSet);
         artworksInRoomDataSet = new ArrayList<>();
         return artworksInRoomData;
+    }
+
+    public LiveData<Room> getRoomById(String id) {
+        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
+
+        Call<Room> call = endpoints.getRoomById(id);
+
+        call.enqueue(new Callback<Room>() {
+            @Override
+            public void onResponse(Call<Room> call, Response<Room> response) {
+                Log.i(TAG, "onResponse: success!");
+                Room apiRoomById = response.body();
+                if (apiRoomById != null) {
+                    room = new Room(apiRoomById.getArtworkList(), apiRoomById.getOptimalMeasurementConditions(), apiRoomById.getMeasurementConditions(),
+                            apiRoomById.getLocationCode(), apiRoomById.getDescription(), apiRoomById.getTotalCapacity(), apiRoomById.getCurrentCapacity());
+                }
+            }
+            @Override
+            public void onFailure(Call<Room> call, Throwable t) {
+                Log.i(TAG, "onFailure: called");
+            }
+        });
+        roomByIdData.setValue(room);
+        return roomByIdData;
+
     }
 
     private void setRooms() {
