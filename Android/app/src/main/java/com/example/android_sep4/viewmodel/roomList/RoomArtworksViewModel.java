@@ -9,21 +9,21 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.repositories.ArtworksRepository;
+import com.example.android_sep4.repositories.RoomRepository;
 
 import java.util.ArrayList;
 
 public class RoomArtworksViewModel extends AndroidViewModel {
-    private ArtworksRepository artworksRepository;
+    private RoomRepository roomRepository;
 
     public RoomArtworksViewModel(Application application, String roomCode) {
         super(application);
-        artworksRepository = ArtworksRepository.getInstance(application);
+        roomRepository = RoomRepository.getInstance();
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksFromRoom() {
+    public LiveData<ArrayList<Artwork>> getArtworksFromRoom(String locationCode) {
 //WE WILL NEED TO PASS THE ROOM CODE
-        String roomCode = "asfas";
-        return artworksRepository.getArtworksByRoomId(roomCode);
+        return roomRepository.getArtworksByRoomIdData(locationCode);
     }
 
 }

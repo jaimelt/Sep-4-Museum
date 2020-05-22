@@ -63,24 +63,30 @@ public class ArtworksAPIClient {
     public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-        Call<ArrayList<Artwork>> call = endpoints.getArtworksByRoomId(roomCode);
+        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
 
-        call.enqueue(new Callback<ArrayList<Artwork>>() {
+        call.enqueue(new Callback<Artworks>() {
             @Override
-            public void onResponse(Call<ArrayList<Artwork>> call, Response<ArrayList<Artwork>> response) {
-                ArrayList<Artwork> artworksFromRoom = response.body();
+            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+                Artworks artworksFromRoom = response.body();
                 if (artworksFromRoom != null) {
-                    artworksDataSet.addAll(artworksFromRoom);
-                    artworksData.setValue(artworksDataSet);
+                    for (ArtworkResponse apiArtwork : artworksFromRoom.getArtworks()) {
+                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
+                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
+                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
+                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
+                        artworksDataSet.add(artwork);
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Artwork>> call, Throwable t) {
+            public void onFailure(Call<Artworks> call, Throwable t) {
 
             }
         });
-
+        artworksData.setValue(artworksDataSet);
+        artworksDataSet = new ArrayList<>();
         return artworksData;
     }
 

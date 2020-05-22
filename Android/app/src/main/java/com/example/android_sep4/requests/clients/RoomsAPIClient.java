@@ -6,6 +6,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.model.ArtworkMeasurements;
+import com.example.android_sep4.model.ArtworkResponse;
+import com.example.android_sep4.model.Artworks;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Rooms;
@@ -28,6 +31,7 @@ public class RoomsAPIClient {
     private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
     private Room room;
+    private Artwork artwork;
 
     public LiveData<ArrayList<Room>> getRoomsData() {
         RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
@@ -58,22 +62,28 @@ public class RoomsAPIClient {
     }
 
     public LiveData<ArrayList<Artwork>> getArtworksByRoomIdData(String roomCode) {
-        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
+        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
 
-        Call<ArrayList<Artwork>> call = endpoints.getArtworksByRoomId(roomCode);
+        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
 
-        call.enqueue(new Callback<ArrayList<Artwork>>() {
+        call.enqueue(new Callback<Artworks>() {
             @Override
-            public void onResponse(Call<ArrayList<Artwork>> call, Response<ArrayList<Artwork>> response) {
-                Log.i(TAG, "onResponse: success!");
-                ArrayList<Artwork> apiArtworksInRoom = response.body();
-                if (apiArtworksInRoom != null) {
-                    artworksInRoomDataSet.addAll(apiArtworksInRoom);
+            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+                Artworks artworksFromRoom = response.body();
+                if (artworksFromRoom != null) {
+                    for (ArtworkResponse apiArtwork : artworksFromRoom.getArtworks()) {
+                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
+                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
+                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
+                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
+                        artworksInRoomDataSet.add(artwork);
+                    }
                 }
             }
+
             @Override
-            public void onFailure(Call<ArrayList<Artwork>> call, Throwable t) {
-                Log.i(TAG, "onFailure: called");
+            public void onFailure(Call<Artworks> call, Throwable t) {
+
             }
         });
         artworksInRoomData.setValue(artworksInRoomDataSet);

@@ -1,5 +1,6 @@
 package com.example.android_sep4.requests;
 
+import com.example.android_sep4.model.Artworks;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Rooms;
@@ -20,5 +21,8 @@ public interface RoomEndpoints {
 
     @GET("get/{id}")
     Call<Room> getRoomById(@Path("id") String id);
+
+    @GET("/artworks?roomCode={roomCode}")
+    Call<Artworks> getArtworksByRoomId(@Path("roomCode") String roomCode);
 
 }

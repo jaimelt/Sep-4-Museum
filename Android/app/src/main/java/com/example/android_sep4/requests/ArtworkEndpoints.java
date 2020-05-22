@@ -34,6 +34,6 @@ public interface ArtworkEndpoints {
     Call<Artwork> deleteArtwork(@Path("id") int id);
 
     @GET("/artworks?roomCode={roomCode}")
-    Call<ArrayList<Artwork>> getArtworksByRoomId(@Path("roomCode") String roomCode);
+    Call<Artworks> getArtworksByRoomId(@Path("roomCode") String roomCode);
 
 }

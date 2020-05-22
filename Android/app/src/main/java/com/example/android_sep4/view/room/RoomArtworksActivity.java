@@ -3,14 +3,18 @@ package com.example.android_sep4.view.room;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.ArtworksInRoomsAdapter;
+import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.viewmodel.ViewModelFactory;
 import com.example.android_sep4.viewmodel.roomList.RoomArtworksViewModel;
+
+import java.util.ArrayList;
 
 public class RoomArtworksActivity extends AppCompatActivity {
     private static final String TAG = "RoomArtworksActivity";
@@ -30,11 +34,16 @@ public class RoomArtworksActivity extends AppCompatActivity {
     private void setViewModel() {
         roomArtworksViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), locationCode)).get(RoomArtworksViewModel.class);
         initRecycleView();
+
+        roomArtworksViewModel.getArtworksFromRoom(locationCode).observe(this, artworks -> {
+            adapter.setArtworksInRoom(artworks);
+            adapter.notifyDataSetChanged();
+        });
     }
 
     private void initRecycleView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_viewArtworkList);
-        adapter = new ArtworksInRoomsAdapter(roomArtworksViewModel.getArtworksFromRoom().getValue(), this);
+        adapter = new ArtworksInRoomsAdapter(roomArtworksViewModel.getArtworksFromRoom(locationCode).getValue(), this);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
