@@ -10,6 +10,7 @@
     <string name="description">Description</string>
     <string name="comments">Comments</string>
     <string name="image_description">Image</string>
+    <string name="deleteInstruction">To remove an artwork, please swipe right</string>
     <string name="type">Type</string>
     <string name="author">Author</string>
     <string name="location">Location</string>

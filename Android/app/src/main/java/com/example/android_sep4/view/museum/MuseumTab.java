@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.example.android_sep4.R;
 import com.example.android_sep4.view.ManageAccountsActivity;
 import com.example.android_sep4.view.SettingsActivity;
+import com.example.android_sep4.view.artwork.StorageActivity;
 import com.example.android_sep4.view.museum.rooms.RoomA1Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA2Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA3Activity;
@@ -32,6 +34,7 @@ import com.example.android_sep4.view.museum.rooms.RoomB4Activity;
 public class MuseumTab extends Fragment {
 
     private TextView a1, a2, a3, b1, b2, b3, b4;
+    private Button storage;
 
     public MuseumTab() {
         // Required empty public constructor
@@ -48,6 +51,7 @@ public class MuseumTab extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        storage = view.findViewById(R.id.storage);
         a1 = view.findViewById(R.id.room_a1);
         a2 = view.findViewById(R.id.room_a2);
         a3 = view.findViewById(R.id.room_a3);
@@ -86,6 +90,17 @@ public class MuseumTab extends Fragment {
         openRoomB2ClickListener();
         openRoomB3ClickListener();
         openRoomB4ClickListener();
+        viewStorageClickListener();
+    }
+
+    private void viewStorageClickListener() {
+        storage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), StorageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void openRoomA1ClickListener() {

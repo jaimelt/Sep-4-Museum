@@ -25,6 +25,7 @@
         <activity android:name=".view.museum.rooms.RoomA3Activity" />
         <activity android:name=".view.museum.rooms.RoomA2Activity" />
         <activity android:name=".view.museum.rooms.RoomA1Activity" />
+        <activity android:name=".view.artwork.StorageActivity"/>
         <activity android:name=".view.room.EditRoomActivity" />
         <activity android:name=".view.room.RoomArtworksActivity" />
         <activity android:name=".view.artwork.SpecificArtworkActivity" />

@@ -8,6 +8,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.museum.MuseumTab">
 
+    <Button
+        android:id="@+id/storage"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/button_background"
+        android:textSize="17sp"
+        android:text="@string/storage"
+        android:textAllCaps="false"
+        android:layout_margin="20dp"/>
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
