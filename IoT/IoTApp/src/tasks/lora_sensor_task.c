@@ -103,14 +103,14 @@ static void _setup_lora_driver()
 	}
 }
 
-void loraDriver_sent_upload_message(lora_payload_t *uplink_lora_payoad)
+void loraDriver_sent_upload_message(lora_payload_t uplink_lora_payoad)
 {
 	led_short_puls(led_ST4);
 	if (_xPrintfSemaphore != NULL)
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 		printf("Upload Message >%s<\n", lora_driver_map_return_code_to_text(
-		lora_driver_sent_upload_message(false, uplink_lora_payoad)));
+		lora_driver_sent_upload_message(false, &uplink_lora_payoad)));
 		xSemaphoreGive(_xPrintfSemaphore);
 	}
 }
@@ -129,21 +129,21 @@ void vALoraTask(void *pvParameters)
 
 	vTaskDelay(150);
 
-	static lora_payload_t *_lorapayload = NULL;
+	static lora_payload_t _lorapayload;
 
 	for (;;)
 	{
 		if (_receivingQueue != NULL)
 		{
 			if (xQueueReceive(_receivingQueue,
-			_lorapayload,
+			&_lorapayload,
 			portMAX_DELAY) == pdPASS)
 			{
-				if (_lorapayload != NULL)
-				{
+				//if (_lorapayload != NULL)
+				//{
 					loraDriver_sent_upload_message(_lorapayload);
-				}
-				else
+				//}
+				/*else
 				{
 					if (_xPrintfSemaphore != NULL)
 					{
@@ -151,7 +151,7 @@ void vALoraTask(void *pvParameters)
 						printf("%s :: NULL lora payload", LORA_SENSOR_TAG);
 						xSemaphoreGive(_xPrintfSemaphore);
 					}
-				}
+				}*/
 			}
 		}
 	}
