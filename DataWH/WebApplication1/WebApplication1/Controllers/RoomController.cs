@@ -92,7 +92,7 @@ namespace WebApplication1.Controllers
 
           roomMeasurement.Co2 = 2;
           roomMeasurement.Humidity = 3;
-          roomMeasurement.Light = 2;
+          roomMeasurement.Light = 315;
           roomMeasurement.Temperature = 18;
          roomCopy.LiveRoomMeasurements = roomMeasurement;
           copylist.rooms.Add(roomCopy);
