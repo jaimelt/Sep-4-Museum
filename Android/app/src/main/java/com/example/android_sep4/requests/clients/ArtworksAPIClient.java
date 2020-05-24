@@ -62,6 +62,7 @@ public class ArtworksAPIClient {
             @Override
             public void onFailure(Call<Artworks> call, Throwable t) {
                 Log.i(TAG, "onFailure: called");
+                // DAVE HERE YOU ARE CALLING THE ROOM DATABASE AND YOU ARE SETTING THE ARTWORKS DATA SET TO THE ARTWORKS THAT WE HAVE IN THERE
             }
         });
         artworksData.setValue(artworksDataSet);
@@ -91,7 +92,7 @@ public class ArtworksAPIClient {
 
             @Override
             public void onFailure(Call<Artworks> call, Throwable t) {
-
+                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
             }
         });
         artworksData.setValue(artworksDataSet);
@@ -115,7 +116,7 @@ public class ArtworksAPIClient {
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
-
+                //CALL DATABASE TO SET THE ARTWORK BY ID
             }
         });
 
@@ -144,11 +145,13 @@ public class ArtworksAPIClient {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
                 System.out.println("SUCCESSFUL UPDATE!");
+                //HERE YOU WILL CALL THE ROOM DATABASE TO EDIT THE ARTWORK FROM THERE
             }
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
                 System.out.println("UPDATE FAILED!");
+                //ALSO HERE, IF THE CALL IS FAILED AT LEAST WE WILL UPDATE IT IN THE LOCAL DATABASE
             }
         });
     }
@@ -181,11 +184,13 @@ public class ArtworksAPIClient {
             @Override
             public void onResponse(Call<ArtworkResponse> call, Response<ArtworkResponse> response) {
                 System.out.println("SUCCESSFUL UPDATE!");
+                //CALL ROOM DATABASE TO ADD
             }
 
             @Override
             public void onFailure(Call<ArtworkResponse> call, Throwable t) {
                 System.out.println("UPDATE FAILED!");
+                //CALL THE ROOM TO ADD ALSO IN CASE THE API IS FAILED
             }
         });
     }
