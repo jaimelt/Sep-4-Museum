@@ -1,6 +1,7 @@
 package com.example.android_sep4.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
@@ -26,6 +27,12 @@ public class ManageAccountsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manage_accounts);
         viewModel = new ViewModelProvider(this).get(ManageAccountsViewModel.class);
 
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
     }
 
     public void onRegisterAccountClicked(View view) {
@@ -35,6 +42,11 @@ public class ManageAccountsActivity extends AppCompatActivity {
         EditText passwordField = dialogView.findViewById(R.id.passwordField);
         EditText repeatPasswordField = dialogView.findViewById(R.id.repeatPasswordField);
         Button createAccountBtn = dialogView.findViewById(R.id.createAccountButton);
+        createDialog(dialogView, emailField, passwordField, repeatPasswordField, createAccountBtn);
+    }
+
+    private void createDialog(View dialogView, EditText emailField, EditText passwordField, EditText repeatPasswordField, Button createAccountBtn)
+    {
         //Creating AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         builder.setView(dialogView);
