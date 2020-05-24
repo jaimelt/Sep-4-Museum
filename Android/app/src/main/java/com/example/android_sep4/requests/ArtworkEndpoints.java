@@ -33,7 +33,7 @@ public interface ArtworkEndpoints {
     @DELETE("/artworks/delete/{id}")
     Call<Artwork> deleteArtwork(@Path("id") int id);
 
-    @GET("/artworks?roomCode={roomCode}")
+    @GET("/artworks/{roomCode}")
     Call<Artworks> getArtworksByRoomId(@Path("roomCode") String roomCode);
 
 }
