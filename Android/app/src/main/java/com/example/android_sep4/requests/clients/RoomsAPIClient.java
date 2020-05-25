@@ -36,6 +36,7 @@ public class RoomsAPIClient {
     private Artwork artwork;
     private Application application;
 
+
     public RoomsAPIClient(Application application) {
         this.application = application;
     }
@@ -64,70 +65,57 @@ public class RoomsAPIClient {
         return roomsData;
     }
 
-//    public LiveData<ArrayList<Artwork>> getArtworksByRoomIdData(String roomCode) {
-//        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
-//
-//        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
-//
-//        call.enqueue(new Callback<Artworks>() {
-//            @Override
-//            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
-//                Artworks artworksFromRoom = response.body();
-//                if (artworksFromRoom != null) {
-//                    for (ArtworkResponse apiArtwork : artworksFromRoom.getArtworks()) {
-//                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-//                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-//                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
-//                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
-//                        artworksInRoomDataSet.add(artwork);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Artworks> call, Throwable t) {
-//
-//            }
-//        });
-//        artworksInRoomData.setValue(artworksInRoomDataSet);
-//        artworksInRoomDataSet = new ArrayList<>();
-//        return artworksInRoomData;
-//    }
+    public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-    public LiveData<Room> getRoomById(String id) {
-//        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
-//
-//        Call<Room> call = endpoints.getRoomById(id);
-//
-//        call.enqueue(new Callback<Room>() {
-//            @Override
-//            public void onResponse(Call<Room> call, Response<Room> response) {
-//                Log.i(TAG, "onResponse: success!");
-//                Room apiRoomById = response.body();
-//                if (apiRoomById != null) {
-//                    room = new Room(apiRoomById.getArtworkList(), apiRoomById.getOptimalMeasurementConditions(), apiRoomById.getMeasurementConditions(),
-//                            apiRoomById.getLocationCode(), apiRoomById.getDescription(), apiRoomById.getTotalCapacity(), apiRoomById.getCurrentCapacity());
-//                }
-//            }
-//            @Override
-//            public void onFailure(Call<Room> call, Throwable t) {
-//                Log.i(TAG, "onFailure: called");
-//            }
-//        });
-//        roomByIdData.setValue(room);
-        return roomByIdData;
+        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
+
+        call.enqueue(new Callback<Artworks>() {
+            @Override
+            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+                Artworks artworksFromRoom = response.body();
+                if (artworksFromRoom != null) {
+                    for (ArtworkResponse apiArtwork : artworksFromRoom.getArtworks()) {
+                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
+                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
+                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
+                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
+                        artworksInRoomDataSet.add(artwork);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Artworks> call, Throwable t) {
+                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
+            }
+        });
+        artworksInRoomData.setValue(artworksInRoomDataSet);
+        artworksInRoomDataSet = new ArrayList<>();
+        return artworksInRoomData;
     }
 
-    public ArrayList<Artwork> getArtworks(String roomCode) {
-        ArrayList<Artwork> artworks = new ArrayList<>();
-        Toast.makeText(application, "ROOMCODE = " + roomCode, Toast.LENGTH_SHORT).show();
-        Toast.makeText(application, "" + roomCode, Toast.LENGTH_SHORT).show();
-        for (Room room : roomsData.getValue()) {
-            if (room.getLocationCode().equals(roomCode)) {
-                artworks = room.getArtworkList().getArtworks();
-            }
-        }
+    public LiveData<Room> getRoomById(String id) {
+        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
 
-        return artworks;
+        Call<Room> call = endpoints.getRoomById(id);
+
+        call.enqueue(new Callback<Room>() {
+            @Override
+            public void onResponse(Call<Room> call, Response<Room> response) {
+                Log.i(TAG, "onResponse: success!");
+                Room apiRoomById = response.body();
+                if (apiRoomById != null) {
+                    room = new Room(apiRoomById.getLocationCode(), apiRoomById.getDescription(), apiRoomById.getTotalCapacity(), apiRoomById.getCurrentCapacity(),apiRoomById.getArtworkList(), apiRoomById.getLight(), apiRoomById.getTemperature(),apiRoomById.getHumidity(),apiRoomById.getCo2(),
+                            apiRoomById.getLiveRoomMeasurements()  );
+                }
+            }
+            @Override
+            public void onFailure(Call<Room> call, Throwable t) {
+                Log.i(TAG, "onFailure: called");
+            }
+        });
+        roomByIdData.setValue(room);
+        return roomByIdData;
     }
 }

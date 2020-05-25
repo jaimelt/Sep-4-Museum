@@ -70,35 +70,6 @@ public class ArtworksAPIClient {
         return artworksData;
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
-        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
-
-        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
-
-        call.enqueue(new Callback<Artworks>() {
-            @Override
-            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
-                Artworks artworksFromRoom = response.body();
-                if (artworksFromRoom != null) {
-                    for (ArtworkResponse apiArtwork : artworksFromRoom.getArtworks()) {
-                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
-                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
-                        artworksDataSet.add(artwork);
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Artworks> call, Throwable t) {
-                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
-            }
-        });
-        artworksData.setValue(artworksDataSet);
-        artworksDataSet = new ArrayList<>();
-        return artworksData;
-    }
 
     public LiveData<Artwork> getArtworkById(int id) {
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();

@@ -21,7 +21,7 @@ public class Room {
     @Ignore
     private int currentCapacity;
     @Ignore
-    private ArtworkList artworkList;
+    private Artworks artworkList;
     @Ignore
     private double light;
     private int temperature;
@@ -32,7 +32,7 @@ public class Room {
     @Ignore
     private boolean expanded;
 
-    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, ArtworkList artworkList, double light, int temperature, int humidity, int co2, RoomMeasurements liveRoomMeasurements) {
+    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, Artworks artworkList, double light, int temperature, int humidity, int co2, RoomMeasurements liveRoomMeasurements) {
         this.locationCode = locationCode;
         this.description = description;
         this.totalCapacity = totalCapacity;
@@ -81,11 +81,11 @@ public class Room {
         this.currentCapacity = currentCapacity;
     }
 
-    public ArtworkList getArtworkList() {
+    public Artworks getArtworkList() {
         return artworkList;
     }
 
-    public void setArtworkList(ArtworkList artworkList) {
+    public void setArtworkList(Artworks artworkList) {
         this.artworkList = artworkList;
     }
 
@@ -136,4 +136,5 @@ public class Room {
     public void setExpanded(boolean expanded) {
         this.expanded = expanded;
     }
+
 }

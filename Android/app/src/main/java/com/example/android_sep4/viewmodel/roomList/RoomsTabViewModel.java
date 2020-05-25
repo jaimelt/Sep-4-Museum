@@ -23,6 +23,6 @@ public class RoomsTabViewModel extends AndroidViewModel {
     public LiveData<ArrayList<Room>> getRooms() {
         return roomsRepository.getRoomsData();
     }
-
+    public Boolean getIsInDanger(){return roomsRepository.getIsInDanger();}
 
 }

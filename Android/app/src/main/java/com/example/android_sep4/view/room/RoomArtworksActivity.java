@@ -38,7 +38,7 @@ public class RoomArtworksActivity extends AppCompatActivity {
 
     private void initRecycleView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_viewArtworkList);
-        adapter = new ArtworksInRoomsAdapter(roomArtworksViewModel.getArtworksFromRoom(locationCode), this);
+        adapter = new ArtworksInRoomsAdapter(roomArtworksViewModel.getArtworksFromRoom(locationCode).getValue(), this);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);

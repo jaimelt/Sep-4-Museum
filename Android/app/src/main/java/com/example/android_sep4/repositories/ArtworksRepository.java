@@ -46,13 +46,9 @@ public class ArtworksRepository {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public LiveData<ArrayList<Artwork>> getArtworksData() {
         artworksDataSet.addAll(artworksAPIClient.getArtworksData().getValue());
-        roomDatabase.add(artworksDataSet);
         return artworksAPIClient.getArtworksData();
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
-        return artworksAPIClient.getArtworksByRoomId(roomCode);
-    }
 
     public LiveData<Artwork> getArtworkById(int id) {
         return artworksAPIClient.getArtworkById(id);

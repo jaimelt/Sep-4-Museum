@@ -1,6 +1,11 @@
 package com.example.android_sep4.view.room;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,6 +16,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,9 +48,36 @@ public class RoomsTab extends Fragment {
                              Bundle savedInstanceState) {
         setViewModel();
         setHasOptionsMenu(true);
+        notification();
         return inflater.inflate(R.layout.fragment_rooms_tab, container, false);
     }
 
+   private void notification(){
+        createNotificationChannel();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity().getBaseContext(), "museum")
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle("Title")
+                .setContentText("text")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getActivity().getBaseContext());
+        if(roomsTabViewModel.getIsInDanger()) {
+            notificationManager.notify(100, builder.build());
+        }
+    }
+
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "studentChannel";
+            String description = "Channel for room";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("museum",name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
     public void setViewModel() {
         roomsTabViewModel = new ViewModelProvider(this).get(RoomsTabViewModel.class);
 

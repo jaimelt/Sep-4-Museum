@@ -17,7 +17,6 @@ public class EditRoomsConditionsViewModel extends AndroidViewModel {
     public EditRoomsConditionsViewModel(@NonNull Application application) {
         super(application);
         roomRepository = RoomRepository.getInstance(application);
-        room = roomRepository.getRoom(position);
     }
 
     public void setPosition(int position) {
