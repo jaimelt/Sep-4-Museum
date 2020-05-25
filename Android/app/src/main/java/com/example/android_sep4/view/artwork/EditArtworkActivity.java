@@ -40,8 +40,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private EditText maxCO2;
     private EditText minHum;
     private EditText maxHum;
-    private EditText commentsField;
-    private int artworkID;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class EditArtworkActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey(ArtworksTab.EXTRA_ARTWORK)) {
-            artworkID = bundle.getInt("id");
+            position = bundle.getInt(ArtworksTab.EXTRA_ARTWORK);
         }
         setViewModel();
 
@@ -73,7 +72,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication())).get(EditArtworkViewModel.class);
+        editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication(), position)).get(EditArtworkViewModel.class);
     }
 
     private void setText() {
@@ -81,7 +80,6 @@ public class EditArtworkActivity extends AppCompatActivity {
         nameField.setText(editArtworkViewModel.getName());
         authorField.setHint(editArtworkViewModel.getAuthor());
         descriptionField.setHint(editArtworkViewModel.getDescription());
-        commentsField.setHint(editArtworkViewModel.getComment());
         imageHolder.setImageURI(editArtworkViewModel.getImage());
 
         String type = editArtworkViewModel.getType();
@@ -134,9 +132,8 @@ public class EditArtworkActivity extends AppCompatActivity {
         String type = selectedRadioButtonType.getText().toString();
         String location = selectedRadioButtonLocation.getText().toString();
         String description = descriptionField.getText().toString();
-        String comment = commentsField.getText().toString();
         String image = convertImageToString();
-        editArtworkViewModel.editArtwork(artworkID, name, author, type, location, description, comment, image);
+        editArtworkViewModel.editArtwork(name, author, type, location, description, image, position);
 
         int minTempInt = Integer.parseInt(minTemp.getText().toString());
         int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
@@ -167,7 +164,6 @@ public class EditArtworkActivity extends AppCompatActivity {
         typeGroup = findViewById(R.id.radioType);
         locationGroup = findViewById(R.id.locationGroup1);
         descriptionField = findViewById(R.id.descriptionField);
-        commentsField = findViewById(R.id.commentsField);
         minTemp = findViewById(R.id.minTemp);
         maxTemp = findViewById(R.id.maxTemp);
         minLight = findViewById(R.id.minLight);

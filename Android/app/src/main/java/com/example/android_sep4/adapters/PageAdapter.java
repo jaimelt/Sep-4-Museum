@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.android_sep4.view.museum.MuseumTab;
+import com.example.android_sep4.view.MuseumTab;
 import com.example.android_sep4.view.artwork.ArtworksTab;
 import com.example.android_sep4.view.room.RoomsTab;
 

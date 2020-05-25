@@ -64,14 +64,14 @@ public abstract class MuseumDb extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-//            roomDao.insert(new Room("A1", "Special 56m2 room located in the west of Pation room", 9));
-//            roomDao.insert(new Room("A2", "Special 80m2 room located in the north of A1", 8));
-//            roomDao.insert(new Room("A3", "Smallest special room of 27m2 located in the north of the museum", 4));
-//            roomDao.insert(new Room("B1", "35m2 room located in the south of A3", 7));
-//            roomDao.insert(new Room("B2", "35m2 room located in northeast of the museum", 8));
-//            roomDao.insert(new Room("B3", "Largest 77m2 room located in the east of the museum ", 12));
-//            roomDao.insert(new Room("B4", "35m2 room located in the south of the museum", 6));
-//            roomDao.insert(new Room("Storage", "Storage room to store new artworks", 50));
+            roomDao.insert(new Room("A1", "Special 56m2 room located in the west of Pation room", 9));
+            roomDao.insert(new Room("A2", "Special 80m2 room located in the north of A1", 8));
+            roomDao.insert(new Room("A3", "Smallest special room of 27m2 located in the north of the museum", 4));
+            roomDao.insert(new Room("B1", "35m2 room located in the south of A3", 7));
+            roomDao.insert(new Room("B2", "35m2 room located in northeast of the museum", 8));
+            roomDao.insert(new Room("B3", "Largest 77m2 room located in the east of the museum ", 12));
+            roomDao.insert(new Room("B4", "35m2 room located in the south of the museum", 6));
+            roomDao.insert(new Room("Storage", "Storage room to store new artworks", 50));
 
             roomDao.insert(new RoomMeasurements("A1", 0, 0, 0, 0));
             roomDao.insert(new RoomMeasurements("A2", 0, 0, 0, 0));

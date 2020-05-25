@@ -33,9 +33,7 @@ public class Artwork implements Parcelable {
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("comment")
-    @Expose
-    private String comment;
+
     @SerializedName("image")
     @Expose
     private String image;
@@ -67,13 +65,10 @@ public class Artwork implements Parcelable {
 
     }
 
-    public Artwork(int id, String name, String description, String comment, String image, String type, String author, String roomCode,  ArtworkMeasurements artworkMeasurements) {
+    public Artwork(ArtworkMeasurements artworkMeasurements, String name, String description, String image, String type, String author, String roomCode) {
         this.artworkMeasurements = artworkMeasurements;
-        this.id = id;
-        this.artworkPosition = artworkPosition;
         this.name = name;
         this.description = description;
-        this.comment = comment;
         this.image = image;
         this.type = type;
         this.author = author;
@@ -125,14 +120,6 @@ public class Artwork implements Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public String getImage() {

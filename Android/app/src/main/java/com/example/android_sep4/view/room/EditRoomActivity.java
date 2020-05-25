@@ -43,7 +43,7 @@ public class EditRoomActivity extends AppCompatActivity {
 
     private void setViewModel() {
         editMeasurements = new ViewModelProvider(this).get(EditRoomsConditionsViewModel.class);
-        editMeasurements.setPosition(position);
+        editMeasurements.init(position);
     }
 
     public void onEditRoomOptimal(View view) {
