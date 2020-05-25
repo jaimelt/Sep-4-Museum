@@ -1,41 +1,49 @@
 package com.example.android_sep4.repositories;
 
+import android.app.Application;
+
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.Room;
-import com.example.android_sep4.model.RoomMeasurements;
+import com.example.android_sep4.requests.clients.RoomsAPIClient;
 
 import java.util.ArrayList;
 
 public class RoomRepository {
     private static RoomRepository instance;
+//    private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
+    private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
+    private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
+    private RoomsAPIClient roomsAPIClient;
+    private Application application;
 
-    public static RoomRepository getInstance() {
+    public RoomRepository(Application application) {
+        this.application = application;
+        roomsAPIClient = new RoomsAPIClient(application);
+        roomsAPIClient.getRoomsData();
+    }
+
+    public static RoomRepository getInstance(Application application) {
         if (instance == null) {
-            instance = new RoomRepository();
+            instance = new RoomRepository(application);
         }
         return instance;
     }
 
-    //This is the method where we are retrieving the artworks data from the webservice
-    public MutableLiveData<ArrayList<Room>> getRoomsData() {
-        setRooms();
-
-        MutableLiveData<ArrayList<Room>> data = new MutableLiveData<>();
-        data.setValue(roomsDataSet);
-        return data;
+    public LiveData<ArrayList<Room>> getRoomsData() {
+        return roomsAPIClient.getRooms();
     }
 
-    private void setRooms() {
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new RoomMeasurements(3000, 30, 14, 400), new RoomMeasurements(5000, 30, 14, 400), "A1", "good room", 10, 6));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new RoomMeasurements(5000, 20, 90, 400), new RoomMeasurements(5000, 30, 22, 400), "A2", "bad room", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new RoomMeasurements(1000, 15, 59, 400), new RoomMeasurements(5000, 30, 12, 400), "A3", "excellent room", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new RoomMeasurements(6000, 33, 50, 400), new RoomMeasurements(5000, 30, 22, 400), "B1", "worst room", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new RoomMeasurements(8000, 34, 90, 400), new RoomMeasurements(5000, 30, 14, 400), "B2", "goddest room", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new RoomMeasurements(9000, 99, 59, 400), new RoomMeasurements(5000, 30, 12, 400), "B3", "sex room", 10, 5));
-        roomsDataSet.add(new Room(new ArrayList<Artwork>(), new RoomMeasurements(3000, 35, 90, 400), new RoomMeasurements(5000, 30, 22, 400), "B4", "play room", 10, 5));
+    public ArrayList<Artwork> getArtworksByRoom(String roomCode) {
+        return roomsAPIClient.getArtworks(roomCode);
+    }
+
+    public LiveData<Room> getRoomById(String id) {
+        return roomsAPIClient.getRoomById(id);
     }
 
     public Room getRoom(int position) {
@@ -43,7 +51,10 @@ public class RoomRepository {
     }
 
     public void editRoomOptimal(int light, int co2, int temperature, int humidity, int position) {
-        roomsDataSet.get(position).setOptimalMeasurementConditions(humidity, temperature, co2, light);
-    }
+        roomsDataSet.get(position).setCo2(co2);
+        roomsDataSet.get(position).setHumidity(humidity);
+        roomsDataSet.get(position).setLight(light);
+        roomsDataSet.get(position).setTemperature(temperature);
 
+    }
 }

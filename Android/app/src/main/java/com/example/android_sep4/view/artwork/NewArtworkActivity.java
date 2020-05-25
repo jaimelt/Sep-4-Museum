@@ -31,6 +31,7 @@ public class NewArtworkActivity extends AppCompatActivity {
     private EditText authorField;
     private RadioGroup typeGroup;
     private EditText descriptionField;
+    private EditText commentField;
     private EditText minTemp;
     private EditText maxTemp;
     private EditText minLight;
@@ -85,8 +86,9 @@ public class NewArtworkActivity extends AppCompatActivity {
         String author = authorField.getText().toString();
         String type = selectedRadioButton.getText().toString();
         String description = descriptionField.getText().toString();
+        String comment = commentField.getText().toString();
         String image = convertImageToString();
-        newArtworkViewModel.addArtwork(name, author, type, description, image, "Storage");
+        newArtworkViewModel.addArtwork(name, author, type, description, comment, image, "Storage");
 
         int minTempInt = 0, maxTempInt = 0, minLightInt = 0, maxLightInt = 0, minCO2Int = 0, maxCO2Int = 0, maxHumInt = 0, minHumInt = 0;
         if (!minTemp.getText().toString().isEmpty()) {
@@ -145,6 +147,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         authorField = findViewById(R.id.authorField);
         typeGroup = findViewById(R.id.radioType);
         descriptionField = findViewById(R.id.descriptionField);
+        commentField = findViewById(R.id.commentsField);
         minTemp = findViewById(R.id.minTemp);
         maxTemp = findViewById(R.id.maxTemp);
         minLight = findViewById(R.id.minLight);

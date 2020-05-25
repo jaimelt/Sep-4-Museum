@@ -11,6 +11,7 @@
     <color name="color_drawing">#FFA48E</color>
     <color name="color_ceramics">#F45C51</color>
     <color name="color_photo">#7E8CE0</color>
+    <color name="grey_options_menu">#333333</color>
 
 
 </resources>

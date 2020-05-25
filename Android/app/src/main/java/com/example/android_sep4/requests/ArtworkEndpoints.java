@@ -1,9 +1,12 @@
 package com.example.android_sep4.requests;
 
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.model.ArtworkResponse;
+import com.example.android_sep4.model.Artworks;
 
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -13,22 +16,24 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ArtworkEndpoints {
-    @GET("/artworks")
-    Call<ArrayList<Artwork>> getArtworks();
+    @GET("/artworks/getall")
+    Call<Artworks> getArtworks();
 
-    @GET("/artworks?id={id}")
+    @GET("/artworks/getone/{id}")
     Call<Artwork> getArtworkById(@Path("id") int id);
 
-    @POST("/artworks")
-    Call<Artwork> addArtwork(@Body Artwork artwork);
+    //not working
+    @POST("/artworks/createartwork")
+    Call<ArtworkResponse> addArtwork(@Body ArtworkResponse artwork);
 
-    @PUT("/artworks?id={id}")
+    //not working
+    @PUT("/artworks/edit/{id}")
     Call<Artwork> editArtwork(@Path("id") int id, @Body Artwork body);
 
-    @DELETE("/artworks?id={id}")
+    @DELETE("/artworks/delete/{id}")
     Call<Artwork> deleteArtwork(@Path("id") int id);
 
-    @GET("/artworks?roomCode={roomCode}")
-    Call<ArrayList<Artwork>> getArtworksByRoomId(@Path("roomCode") String roomCode);
+    @GET("/artworks/{roomCode}")
+    Call<Artworks> getArtworksByRoomId(@Path("roomCode") String roomCode);
 
 }
