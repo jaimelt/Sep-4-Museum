@@ -45,6 +45,8 @@ public class ArtworksRepository {
     //This is the method where we are retrieving the artworks data from the webservice
     @RequiresApi(api = Build.VERSION_CODES.O)
     public LiveData<ArrayList<Artwork>> getArtworksData() {
+        artworksDataSet.addAll(artworksAPIClient.getArtworksData().getValue());
+        roomDatabase.add(artworksDataSet);
         return artworksAPIClient.getArtworksData();
     }
 
