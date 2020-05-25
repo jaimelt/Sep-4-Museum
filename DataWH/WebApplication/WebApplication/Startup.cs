@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WebApplication.Database;
 using WebApplication.MongoDB;
+using WebApplication1.Database.Repositories.AccountRep;
 using WebApplication1.Database.Repositories.ArtworkRep;
 using WebApplication1.Database.Repositories.RoomRep;
 
@@ -35,11 +36,12 @@ namespace WebApplication
            services.AddScoped<ArtworkRepository>();
            services.AddScoped<RoomRepository>();
           services.AddScoped<MongoRepository>();
-
+          services.AddScoped<AccountRepository>();
          string ConnectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<MuseumContext>(opt =>
-                opt.UseSqlServer(ConnectionString));
+                opt.UseSqlServer("Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;"));
             services.AddControllers();
+            
             
            // services.AddSingleton<IMongoDBSettings>(sp =>
           //      sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);

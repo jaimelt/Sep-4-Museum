@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="museum@sqlserversss.database.windows.net" uuid="434944a0-4269-4c30-aec4-3842eaeba7c1">
-      <driver-ref>sqlserver.ms</driver-ref>
+    <data-source source="LOCAL" name="museum@sqlserversss.database.windows.net" uuid="e0ab5b88-798c-4430-972a-3b988d095229">
+      <driver-ref>sqlserver.jtds</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://sqlserversss.database.windows.net:1433;database=museum</jdbc-url>
+      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:jtds:sqlserver://sqlserversss.database.windows.net/museum;instance=museum</jdbc-url>
+      <driver-properties>
+        <property name="applicationName" value="DataGrip" />
+        <property name="appName" value="DataGrip" />
+      </driver-properties>
     </data-source>
   </component>
 </project>
