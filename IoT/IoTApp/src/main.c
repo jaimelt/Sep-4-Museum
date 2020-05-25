@@ -23,15 +23,10 @@ int main(void)
 {
 	trace_init();
 	stdioCreate(ser_USART0);	
-
-	if (_xPrintfSemaphore==NULL){
-		_xPrintfSemaphore = xSemaphoreCreateMutex();
-		if (_xPrintfSemaphore!=NULL) xSemaphoreGive(_xPrintfSemaphore);
-	}
 	
 	printf("Program Started!!\n");
 	
-	sensorControl_create(_xPrintfSemaphore);
+	sensorControl_create();
 
 	vTaskStartScheduler();
 

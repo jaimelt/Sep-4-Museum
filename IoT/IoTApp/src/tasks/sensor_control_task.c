@@ -76,9 +76,12 @@ void vASensorControlTask(void *pvParameters)
 	vTaskDelete(_sensor_control_task_handle);
 }
 
-void sensorControl_create(SemaphoreHandle_t pPrintfSemaphore)
+void sensorControl_create()
 {
-	_xPrintfSemaphore = pPrintfSemaphore;
+	if (_xPrintfSemaphore==NULL){
+		_xPrintfSemaphore = xSemaphoreCreateMutex();
+		if (_xPrintfSemaphore!=NULL) xSemaphoreGive(_xPrintfSemaphore);
+	}
 
 	if (_event_group_measure == NULL)
 	_event_group_measure = xEventGroupCreate();

@@ -5,5 +5,5 @@
  *  Author: Marina Ionel
  */
 
-void sensorControl_create(SemaphoreHandle_t pPrintfSemaphore);
+void sensorControl_create();
 void vASensorControlTask(void *pvParameters);
