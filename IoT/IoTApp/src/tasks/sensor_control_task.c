@@ -25,7 +25,7 @@
 //constants
 #define SENSOR_CONTROL_TAG "SENSOR CONTROL"
 //1 minutes in ms = 60000
-#define TIME_DELAY_BETWEEN_MEASUREMENTS ((5*60000)/ portTICK_PERIOD_MS)
+#define TIME_DELAY_BETWEEN_MEASUREMENTS ((5 * 60000) / portTICK_PERIOD_MS)
 #define SENSOR_CONTROL_TASK_PRIORITY (configMAX_PRIORITIES - 3)
 #define SENSOR_CONTROL_TASK_NAME "SensorC"
 
@@ -47,11 +47,11 @@ void vASensorControlTask(void *pvParameters)
 
 		//wait for new data bits
 		xEventGroupWaitBits(
-		_event_group_new_data,
-		LIGHT_READY_BIT,
-		pdTRUE,
-		pdTRUE,
-		portMAX_DELAY);
+			_event_group_new_data,
+			LIGHT_READY_BIT,
+			pdTRUE,
+			pdTRUE,
+			portMAX_DELAY);
 
 		//get co2
 		//get temperature
@@ -59,7 +59,7 @@ void vASensorControlTask(void *pvParameters)
 
 		//get light
 		float _lightInLux = LightSensor_getLightMeasurement();
-		
+
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 		printf("Light %.2f \n", _lightInLux);
 		xSemaphoreGive(_xPrintfSemaphore);
@@ -68,8 +68,8 @@ void vASensorControlTask(void *pvParameters)
 		lora_payload_t _lora_payload = SensorDataPackageHandler_getLoraPayload(LORA_PAYLOAD_PORT_NO);
 
 		xQueueSend(_sendingQueue, //queue handler
-		(void *)&_lora_payload,
-		portMAX_DELAY);
+				   (void *)&_lora_payload,
+				   portMAX_DELAY);
 
 		vTaskDelay(TIME_DELAY_BETWEEN_MEASUREMENTS);
 	}
@@ -78,21 +78,23 @@ void vASensorControlTask(void *pvParameters)
 
 void sensorControl_create()
 {
-	if (_xPrintfSemaphore==NULL){
+	if (_xPrintfSemaphore == NULL)
+	{
 		_xPrintfSemaphore = xSemaphoreCreateMutex();
-		if (_xPrintfSemaphore!=NULL) xSemaphoreGive(_xPrintfSemaphore);
+		if (_xPrintfSemaphore != NULL)
+			xSemaphoreGive(_xPrintfSemaphore);
 	}
 
 	if (_event_group_measure == NULL)
-	_event_group_measure = xEventGroupCreate();
+		_event_group_measure = xEventGroupCreate();
 	//_event_group_measure != NULL ? printf("%s :: SUCCESS :: created event group measure\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group measure failed\n", SENSOR_CONTROL_TAG);
 
 	if (_event_group_new_data == NULL)
-	_event_group_new_data = xEventGroupCreate();
+		_event_group_new_data = xEventGroupCreate();
 	//_event_group_new_data != NULL ? printf("%s :: SUCCESS :: created event group new data\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group new data failed\n", SENSOR_CONTROL_TAG);
 
 	if (_sendingQueue == NULL)
-	_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
+		_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
 	//_sendingQueue != NULL ? printf("%s :: SUCCESS :: created queue\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of queue\n", SENSOR_CONTROL_TAG);
 
 	//create lora driver
@@ -110,10 +112,10 @@ void sensorControl_create()
 	_sensor_control_task_handle = NULL;
 	//create the task
 	xTaskCreate(
-	vASensorControlTask,						/* Task function. */
-	(const portCHAR *)SENSOR_CONTROL_TASK_NAME, /* String with name of task. */
-	configMINIMAL_STACK_SIZE + 300,				/* Stack size in words. */
-	NULL,										/* Parameter passed as input of the task */
-	SENSOR_CONTROL_TASK_PRIORITY,				/* Priority of the task. */
-	&_sensor_control_task_handle);				/* Task handle. */
+		vASensorControlTask,						/* Task function. */
+		(const portCHAR *)SENSOR_CONTROL_TASK_NAME, /* String with name of task. */
+		configMINIMAL_STACK_SIZE + 300,				/* Stack size in words. */
+		NULL,										/* Parameter passed as input of the task */
+		SENSOR_CONTROL_TASK_PRIORITY,				/* Priority of the task. */
+		&_sensor_control_task_handle);				/* Task handle. */
 }
