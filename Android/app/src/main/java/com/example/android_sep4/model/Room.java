@@ -21,61 +21,39 @@ public class Room {
     @Ignore
     private int currentCapacity;
     @Ignore
-    private ArrayList<Artwork> artworkList;
+    private ArtworkList artworkList;
     @Ignore
-    private RoomMeasurements optimalMeasurementConditions;
+    private double light;
+    private int temperature;
+    private int humidity;
+    private int co2;
     @Ignore
-    private RoomMeasurements measurementConditions;
+    private RoomMeasurements liveRoomMeasurements;
     @Ignore
     private boolean expanded;
 
-    public Room(ArrayList<Artwork> artworkList, RoomMeasurements optimalMeasurementConditions, RoomMeasurements measurementConditions, String locationCode, String description, int totalCapacity, int currentCapacity) {
+    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, ArtworkList artworkList, double light, int temperature, int humidity, int co2, RoomMeasurements liveRoomMeasurements) {
         this.locationCode = locationCode;
         this.description = description;
         this.totalCapacity = totalCapacity;
         this.currentCapacity = currentCapacity;
-        this.expanded = false;
         this.artworkList = artworkList;
-        this.optimalMeasurementConditions = optimalMeasurementConditions;
-        this.measurementConditions = measurementConditions;
+        this.light = light;
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.co2 = co2;
+        this.liveRoomMeasurements = liveRoomMeasurements;
     }
 
-    public Room(@NonNull String locationCode, String description, int totalCapacity)
-    {
-        this.locationCode = locationCode;
-        this.description = description;
-        this.totalCapacity = totalCapacity;
+    public Room() {
     }
 
-    public RoomMeasurements getMeasurementConditions() {
-        return measurementConditions;
-    }
-
-    public void setMeasurementConditions(RoomMeasurements measurementConditions) {
-        this.measurementConditions = measurementConditions;
-    }
-
-    public RoomMeasurements getOptimalMeasurementConditions() {
-        return optimalMeasurementConditions;
-    }
-
-    public void setOptimalMeasurementConditions(int humidity, int temp, int co2, int light) {
-        this.optimalMeasurementConditions = new RoomMeasurements(light, temp, humidity, co2);
-    }
-
-    public boolean isExpanded() {
-        return expanded;
-    }
-
-    public void setExpanded(boolean expanded) {
-        this.expanded = expanded;
-    }
-
+    @NonNull
     public String getLocationCode() {
         return locationCode;
     }
 
-    public void setLocationCode(String locationCode) {
+    public void setLocationCode(@NonNull String locationCode) {
         this.locationCode = locationCode;
     }
 
@@ -87,14 +65,6 @@ public class Room {
         this.description = description;
     }
 
-    public int getCurrentCapacity() {
-        return currentCapacity;
-    }
-
-    public void setCurrentCapacity(int currentCapacity) {
-        this.currentCapacity = currentCapacity;
-    }
-
     public int getTotalCapacity() {
         return totalCapacity;
     }
@@ -103,7 +73,67 @@ public class Room {
         this.totalCapacity = totalCapacity;
     }
 
-    public ArrayList<Artwork> getArtworkList() {
+    public int getCurrentCapacity() {
+        return currentCapacity;
+    }
+
+    public void setCurrentCapacity(int currentCapacity) {
+        this.currentCapacity = currentCapacity;
+    }
+
+    public ArtworkList getArtworkList() {
         return artworkList;
+    }
+
+    public void setArtworkList(ArtworkList artworkList) {
+        this.artworkList = artworkList;
+    }
+
+    public double getLight() {
+        return light;
+    }
+
+    public void setLight(int light) {
+        this.light = light;
+    }
+
+    public int getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(int temperature) {
+        this.temperature = temperature;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
+
+    public int getCo2() {
+        return co2;
+    }
+
+    public void setCo2(int co2) {
+        this.co2 = co2;
+    }
+
+    public RoomMeasurements getLiveRoomMeasurements() {
+        return liveRoomMeasurements;
+    }
+
+    public void setLiveRoomMeasurements(RoomMeasurements liveRoomMeasurements) {
+        this.liveRoomMeasurements = liveRoomMeasurements;
+    }
+
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
     }
 }

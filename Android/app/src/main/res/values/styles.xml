@@ -11,8 +11,17 @@
         <item name="android:gravity">center</item>
         <item name="tabSelectedTextColor">@color/colorAccent</item>
         <item name="android:textColor">@color/white</item>
+        <item name="actionOverflowMenuStyle">@style/CMOptionsMenu</item>
+    </style>
 
+    <style name="CMOptionsMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@color/grey_options_menu</item>
+    </style>
 
+    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
     <style name="myTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar">
@@ -55,8 +64,5 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
-
-
-
 
 </resources>

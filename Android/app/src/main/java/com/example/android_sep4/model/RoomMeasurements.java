@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity(foreignKeys = {
         @ForeignKey(
                 entity = Room.class,
@@ -15,19 +17,20 @@ public class RoomMeasurements {
     @PrimaryKey
     @NonNull
     private String id;
-    private int light;
+    private double light;
+    @SerializedName("temperature")
     private int temp;
     private int humidity;
     private int co2;
 
-    public RoomMeasurements(int light, int temp, int humidity, int co2) {
+    public RoomMeasurements(double light, int temp, int humidity, int co2) {
         this.light = light;
         this.temp = temp;
         this.humidity = humidity;
         this.co2 = co2;
     }
 
-    public RoomMeasurements(String locationCode, int light, int temp, int humidity, int co2) {
+    public RoomMeasurements(String locationCode, double light, int temp, int humidity, int co2) {
         id = locationCode;
         this.light = light;
         this.temp = temp;
@@ -59,7 +62,7 @@ public class RoomMeasurements {
         this.temp = temp;
     }
 
-    public int getLight() {
+    public double getLight() {
         return light;
     }
 

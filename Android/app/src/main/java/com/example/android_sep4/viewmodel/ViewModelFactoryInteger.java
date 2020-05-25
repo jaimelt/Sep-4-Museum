@@ -9,12 +9,11 @@ import com.example.android_sep4.viewmodel.artwork.EditArtworkViewModel;
 
 public class ViewModelFactoryInteger implements ViewModelProvider.Factory {
     private Application mApplication;
-    private int mParam;
+    private int mParam = 0;
 
 
-    public ViewModelFactoryInteger(Application application, int param) {
+    public ViewModelFactoryInteger(Application application) {
         mApplication = application;
-        mParam = param;
     }
 
 
