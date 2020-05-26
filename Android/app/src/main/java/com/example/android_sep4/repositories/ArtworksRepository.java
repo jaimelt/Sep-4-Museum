@@ -2,6 +2,7 @@ package com.example.android_sep4.repositories;
 
 import android.app.Application;
 import android.os.Build;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
@@ -26,6 +27,7 @@ public class ArtworksRepository {
     private Artwork artwork = new Artwork();
     //TODO: needs to be updated, rn it is for testing
     private LiveData<List<ArtworkWithMeasurements>> artworks;
+    private Application application;
 
     //ArtworksRepository should not be singleton
     public ArtworksRepository(Application application) {
@@ -33,6 +35,7 @@ public class ArtworksRepository {
         artworkDao = database.artworkDao();
         artworks = artworkDao.getAllLiveArtworks();
         artworksAPIClient = new ArtworksAPIClient(application);
+        this.application = application;
     }
 
     public static synchronized ArtworksRepository getInstance(Application application) {
@@ -46,7 +49,16 @@ public class ArtworksRepository {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public LiveData<ArrayList<Artwork>> getArtworksData() {
         artworksDataSet.addAll(artworksAPIClient.getArtworksData().getValue());
-        return artworksAPIClient.getArtworksData();
+        if(artworksDataSet!= null)
+        {
+            artworksData.setValue(artworksDataSet);
+            Toast.makeText(application, "IT WORKS", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            //ROOM Database
+        }
+        artworksDataSet = new ArrayList<>();
+        return artworksData;
     }
 
 
