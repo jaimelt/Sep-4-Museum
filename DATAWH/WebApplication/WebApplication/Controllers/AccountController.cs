@@ -26,7 +26,7 @@ namespace WebApplication.Controllers
            
         }
         // Login method, verifies if given username/password matches in the database
-        [HttpGet ("login")]
+        [HttpGet ]
         public bool login([FromBody] Administrator admin)
         {
             if (admin == null)
@@ -38,7 +38,7 @@ namespace WebApplication.Controllers
         }
         
         // Create new account
-        [HttpPost ("create")]
+        [HttpPost]
         public async Task<IActionResult> createAccount([FromBody] Administrator admin)
         {
             if (admin == null)
@@ -56,7 +56,7 @@ namespace WebApplication.Controllers
         }
         
         // Delete existing account by username//password
-        [HttpDelete("delete")]
+        [HttpDelete]
         public async Task<Administrator> deleteAdmin(Administrator admin)
         {
             Console.WriteLine("delete admin");
@@ -67,7 +67,7 @@ namespace WebApplication.Controllers
         }
         
         // Edit admin account username or password
-        [HttpPut("edit")]
+        [HttpPut]
         public async Task<IActionResult> UpdateAdmin([FromBody] Administrator admin)
         {
 
