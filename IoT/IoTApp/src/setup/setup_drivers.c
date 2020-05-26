@@ -43,9 +43,3 @@ static void _setup_temperature_humidity_driver()
 		printf("%s :: SUCCESSFULL DRIVER INITIALIZATION :: Temperature/humidity\n", SETUP_DRIVERS_TAG);
 	}
 }
-
-static void _setup_co2_driver()
-{
-	mh_z19_create(ser_USART3, co2Sensor_callback);
-	printf("%s :: SUCCESSFULL DRIVER INITIALIZATION :: co2\n", SETUP_DRIVERS_TAG);
-}

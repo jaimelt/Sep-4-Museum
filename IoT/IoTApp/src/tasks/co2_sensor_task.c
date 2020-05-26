@@ -16,7 +16,6 @@
 #include <mh_z19.h>
 
 #include "../constants/global_constants.h"
-#include "../setup/setup_drivers.h"
 
 #define CO2_TASK_PRIORITY (configMAX_PRIORITIES - 3)
 #define CO2_SENSOR_TAG "CO2 SENSOR TASK"
@@ -39,7 +38,7 @@ uint16_t co2sensor_getCo2()
 	return _lastCo2Measurement;
 }
 
-void vACo2SensorTask()
+void vACo2Task(void *pvParameters)
 {
 	for(;;)
 	{
@@ -48,26 +47,22 @@ void vACo2SensorTask()
 		pdTRUE,
 		pdTRUE,
 		portMAX_DELAY);
-		
-		uint16_t co2 = NULL;
-		co2 = co2sensor_getCo2();
-
-		if(co2 == NULL)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: Fetch co2 data failed\n", CO2_SENSOR_TAG);
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-		else
-		{
-			xEventGroupSetBits(_eventGroupHandleNewData, CO2_MEASURE_BIT);
-		}
+				
+		co2sensor_measure();
 	}
 }
 
-void CO2_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore)
+static void _setup_co2_driver()
 {
-	_xPrintfSemaphore = pvPrintfSemaphore;
+	mh_z19_create(ser_USART3, co2Sensor_callback);
+	xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+	//printf("%s :: SUCCESSFULL DRIVER INITIALIZATION\n", CO2_SENSOR_TAG);
+	xSemaphoreGive(_xPrintfSemaphore);
+}
+
+void co2Sensor_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pPrintfSemaphore)
+{
+	_xPrintfSemaphore = pPrintfSemaphore;
 	_eventGroupHandleMeasure = pvEventHandleMeasure;
 	_eventGroupHandleNewData = pvEventHandleNewData;
 	
@@ -76,7 +71,7 @@ void CO2_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandle_t pvEv
 	_setup_co2_driver();
 	
 	xTaskCreate(
-	vACo2SensorTask,
+	vACo2Task,
 	(const portCHAR *)CO2_SENSOR_TASK_NAME,
 	configMINIMAL_STACK_SIZE + 200,
 	NULL,
@@ -92,7 +87,8 @@ void co2sensor_measure()
 	if(rc != MHZ19_OK)
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("%s :: CO2 sensor not ready :: return code %d\n", CO2_SENSOR_TAG, rc);
+		//printf("%s :: CO2 sensor not ready :: return code %d\n", CO2_SENSOR_TAG, rc);
+		printf("pls");
 		xSemaphoreGive(_xPrintfSemaphore);
 	}
 	
@@ -101,12 +97,18 @@ void co2sensor_measure()
 	if(rc != MHZ19_OK)
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("%s :: CO2 sensor not ready :: return code %d\n", CO2_SENSOR_TAG, rc);
+		printf("work");
+		//printf("%s :: CO2 sensor not ready :: return code %d\n", CO2_SENSOR_TAG, rc);
 		xSemaphoreGive(_xPrintfSemaphore);
 	}
 	else
 	{
+		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		printf("works");
+		//printf("%s :: CO2 sensor data retrived\n", CO2_SENSOR_TAG);
+		xSemaphoreGive(_xPrintfSemaphore);
 		_lastCo2Measurement = ppm;
+		xEventGroupSetBits(_eventGroupHandleNewData, CO2_READY_BIT);
 	}
 }
 

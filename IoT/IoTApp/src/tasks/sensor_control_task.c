@@ -43,14 +43,14 @@ void vASensorControlTask(void *pvParameters)
 	for (;;)
 	{
 		//set bits to measure
-		xEventGroupSetBits(_event_group_measure, LIGHT_MEASURE_BIT);
+		xEventGroupSetBits(_event_group_measure, LIGHT_MEASURE_BIT | CO2_MEASURE_BIT);
 
 		/*CO2_READY_BIT | TEMPERATURE_HUMIDITY_READY_BIT | */
 
 		//wait for new data bits
 		xEventGroupWaitBits(
 		_event_group_new_data,
-		LIGHT_READY_BIT,
+		LIGHT_READY_BIT | CO2_READY_BIT,
 		pdTRUE,
 		pdTRUE,
 		portMAX_DELAY);
@@ -124,7 +124,7 @@ void sensorControl_create()
 	loraSensor_create(_sendingQueue, _xPrintfSemaphore);
 
 	//create co2
-	//co2Sensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
+	co2Sensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
 
 	//create humidity/temperature
 	//temperatureHumiditySensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
