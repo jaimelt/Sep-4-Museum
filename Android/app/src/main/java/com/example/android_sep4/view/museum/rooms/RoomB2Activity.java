@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class RoomB2Activity extends AppCompatActivity {
     private final static int ROOM_CAPACITY = 8;
+    private final static String ROOM_CODE = "B2";
     private RoomB2ViewModel roomB2ViewModel;
     private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
     private ArrayList<TextView> textViews = new ArrayList<>();
@@ -38,7 +39,7 @@ public class RoomB2Activity extends AppCompatActivity {
     private void setViewModel() {
         roomB2ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), "B2")).get(RoomB2ViewModel.class);
 
-        artworksInRoom = roomB2ViewModel.getArtworksFromRoom().getValue();
+        artworksInRoom = roomB2ViewModel.getArtworksFromRoom(ROOM_CODE).getValue();
 
         for (int i = 0; i < ROOM_CAPACITY - 1; i++) {
             textViews.get(i).setText(artworksInRoom.get(i).getName());

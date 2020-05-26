@@ -19,9 +19,7 @@ public class RoomA3ViewModel extends AndroidViewModel {
         roomRepository = RoomRepository.getInstance(application);
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksFromRoom() {
-//WE WILL NEED TO PASS THE ROOM CODE
-        String roomCode = "asfas";
+    public LiveData<ArrayList<Artwork>> getArtworksFromRoom(String roomCode) {
         return roomRepository.getArtworksByRoomId(roomCode);
     }
 }
