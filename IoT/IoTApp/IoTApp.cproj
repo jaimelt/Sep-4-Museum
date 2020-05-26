@@ -208,6 +208,12 @@
     <Compile Include="src\tasks\sensor_control_task.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\tasks\temperature_humidity_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\tasks\temperature_humidity_task.h">
+      <SubType>compile</SubType>
+    </Compile>
     <None Include="drivers\docs\example\main.c">
       <SubType>compile</SubType>
     </None>
