@@ -22,6 +22,7 @@ import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.ArtworksAdapter;
 import com.example.android_sep4.view.ManageAccountsActivity;
 import com.example.android_sep4.view.SettingsActivity;
+import com.example.android_sep4.view.VisitorsActivity;
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,9 +31,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * A simple {@link Fragment} subclass.
  */
 public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemClickListener {
+    static final String EXTRA_ARTWORK = "Artwork name";
     private ArtworksTabViewModel artworksTabViewModel;
     private ArtworksAdapter adapter;
-    static final String EXTRA_ARTWORK = "Artwork name";
 
     public ArtworksTab() {
         // Required empty public constructor
@@ -95,6 +96,7 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
         MenuItem searchItem = menu.findItem(R.id.search);
         MenuItem manageAccountsItem = menu.findItem(R.id.manageAccounts);
         MenuItem settingsItem = menu.findItem(R.id.settings);
+        MenuItem visitorsItem = menu.findItem(R.id.visitors);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -120,5 +122,9 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
             return true;
         });
 
+        visitorsItem.setOnMenuItemClickListener(item -> {
+            startActivity(new Intent(getContext(), VisitorsActivity.class));
+            return true;
+        });
     }
 }

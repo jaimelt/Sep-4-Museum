@@ -60,5 +60,6 @@
     <string name="hint_email">Email *</string>
     <string name="hint_password">Password *</string>
     <string name="hint_repeat_password">Repeat password *</string>
+    <string name="visitors">Visitors</string>
 
 </resources>

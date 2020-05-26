@@ -16,6 +16,8 @@ public class ServiceGenerator {
 
     private static RoomEndpoints roomEndpoints = retrofit.create(RoomEndpoints.class);
 
+    private static VisitorsEndpoints visitorsEndpoints = retrofit.create(VisitorsEndpoints.class);
+
     public static ArtworkEndpoints getArtworkEndpoints() {
         return artworkEndpoints;
     }
@@ -26,5 +28,9 @@ public class ServiceGenerator {
 
     public static AuthEndpoints getAuthEndpoints() {
         return authEndpoints;
+    }
+
+    public static VisitorsEndpoints getVisitorsEndpoints() {
+        return visitorsEndpoints;
     }
 }
