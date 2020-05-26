@@ -3,7 +3,7 @@ package com.example.android_sep4.model;
 import java.util.ArrayList;
 
 public class Visitors {
-    ArrayList<Visitor> visitors;
+    private ArrayList<Visitor> visitors;
 
     public Visitors(ArrayList<Visitor> visitors) {
         this.visitors = visitors;
