@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,8 @@ namespace WebApplication.Controllers
 {
     [ApiController]
     [Route("visitors")]
-
     public class VisitorController : ControllerBase
     {
-
         private readonly MuseumContext context;
 
         public VisitorController(MuseumContext context)
@@ -21,17 +20,19 @@ namespace WebApplication.Controllers
 
         // POST
         [HttpPost]
-        public Task<IActionResult> createArtwork([FromBody] List<Visitor> visitors)
+        public IActionResult createArtwork([FromBody] VisitorList visitors)
         {
 
-            foreach (var e in visitors)
+
+            foreach (var v in visitors.visitors)
             {
-                context.Visitors.Add(e);
+                context.Visitors.Add(v);
             }
+            
+            context.SaveChanges();
 
-            return null;
 
-
+            return Ok("");
         }
     }
 }
