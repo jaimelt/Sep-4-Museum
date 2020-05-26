@@ -25,12 +25,22 @@ namespace WebApplication.Controllers
             _accountRepository = accountRepository;
            
         }
-        
-        // POST
-        [HttpPost ("create")]
-        public IActionResult createAccount([FromBody] Administrator admin)
+        // Login method, verifies if given username/password matches in the database
+        [HttpGet ("login")]
+        public bool login([FromBody] Administrator admin)
         {
-            Console.WriteLine("----------------------------");
+            if (admin == null)
+            {
+                Console.WriteLine("admin is null");
+                return false;
+            }
+            return _accountRepository.login(admin);
+        }
+        
+        // Create new account
+        [HttpPost ("create")]
+        public async Task<IActionResult> createAccount([FromBody] Administrator admin)
+        {
             if (admin == null)
             {
                 return BadRequest();
@@ -45,11 +55,34 @@ namespace WebApplication.Controllers
             return CreatedAtRoute("", new {id = admin.Id}, admin);
         }
         
-        [HttpGet("getall")]
-        public Task<IEnumerable<Room>> GetRooms()
+        // Delete existing account by username//password
+        [HttpDelete("delete")]
+        public async Task<Administrator> deleteAdmin(Administrator admin)
         {
-            Console.Write("dsadsadsadsa");
-            return null;
+            Console.WriteLine("delete admin");
+            var obj =  _accountRepository.GetAdminByUsername(admin);
+            Task.Delay(5000);
+              _accountRepository.Delete(await obj);
+            return admin;
+        }
+        
+        // Edit admin account username or password
+        [HttpPut("edit")]
+        public async Task<IActionResult> UpdateAdmin([FromBody] Administrator admin)
+        {
+
+            
+            if(admin == null)
+            {
+                return BadRequest();
+            }
+
+            Console.WriteLine("This is the ID:  and this is the location code: " + admin.Id + ", and they are equal: ");    
+            
+
+            _accountRepository.Update(admin);
+            
+            return NoContent();
         }
 
         

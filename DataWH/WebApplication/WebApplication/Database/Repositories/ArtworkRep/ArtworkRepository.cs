@@ -58,7 +58,7 @@ namespace WebApplication1.Database.Repositories.ArtworkRep
         public void deleteArtwork(Artwork artwork)
         {
             Delete(artwork);
-            context.SaveChangesAsync();
+            context.SaveChanges();
         }
 
         public bool artExists(int artId)
