@@ -1,23 +1,31 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebApplication.Database.Repositories;
+using WebApplication.Datamodel;
+using WebApplication1.Database.Repositories;
 using WebApplication1.Datamodel;
 
-namespace WebApplication1.Database.Repositories.ArtworkRep
+namespace WebApplication.Database.Repositories.ArtworkRep
 {
     public interface IArtworkRepository : IRepositoryBase<Artwork>
     {
-        Task<IEnumerable<Artwork>> getAllArtworksAsync();
-        Task<Artwork> GetArtworkByIdAsync(int artId);
-        //Task<Artwork> GetArtworkWithDetailsAsync(int artId);
-        void createArtwork(Artwork artwork);
-        void updateArtwork(Artwork artwork);
+        Task<IEnumerable<Artwork>> GetAllArtWorksAsync();
+
+        Task<Artwork> GetArtworkById(int artId);
+
+        Task<IEnumerable<Artwork>> GetArtworksByRoom(string Location);
+
+        void CreateArtWork(Artwork artwork);
+
+        void UpdateArtwork(Artwork artwork);
+
+        void DeleteArtwork(Artwork artwork);
         
-        void deleteArtwork(Artwork artwork);
+        bool ArtworkExists(int artId);
 
-        bool artExists(int artId);
+        Task saveChanges();
 
-        void saveChanges();
 
     }
 }

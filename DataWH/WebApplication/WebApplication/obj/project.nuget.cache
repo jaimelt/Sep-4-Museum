@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Py7ne70RDGoq40kETFcBwgAdjwqvjvlQpqap2sz3hLzJLbrEd1uKxfVMWkkupb28HFfhDm/U29Y+RW7XutolIQ==",
+  "dgSpecHash": "u/cu+VtRuqlqSNbLsXqiBK47sx0rnJE3Opt76a1Tp7N/odSd45XyFDSnS2cyDam9q5WiVfcMarm692JRdJzasA==",
   "success": true,
-  "projectFilePath": "/Users/Florinelx/Desktop/sep4-museumDWsqlserver/WebApplication/WebApplication/WebApplication.csproj",
+  "projectFilePath": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/WebApplication.csproj",
   "expectedPackageFiles": [
     "/Users/Florinelx/.nuget/packages/dnsclient/1.3.1/dnsclient.1.3.1.nupkg.sha512",
     "/Users/Florinelx/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",

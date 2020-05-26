@@ -7,15 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using WebApplication.Database;
+using WebApplication1.Database.Repositories;
 using WebApplication1.Datamodel;
 
-namespace WebApplication1.Database.Repositories.ArtworkRep
+
+namespace WebApplication.Database.Repositories.ArtworkRep
 {
 
-    using System.Linq;
-    using WebApplication1.Database.Repositories;
-    using WebApplication1.Database.Repositories.ArtworkRep;
-    using WebApplication1.Datamodel;
+ 
 
     public class ArtworkRepository : RepositoryBase<Artwork>, IArtworkRepository
     {
@@ -23,55 +22,49 @@ namespace WebApplication1.Database.Repositories.ArtworkRep
         {
         }
 
-        public async Task<IEnumerable<Artwork>> getAllArtworksAsync()
+
+        public async Task<IEnumerable<Artwork>> GetAllArtWorksAsync()
         {
-            return await FindAll().OrderBy(art => art.Name)
-                .ToListAsync();
+            return await FindAll().OrderBy(art => art.Name).ToListAsync();
         }
 
-
-        public async Task<Artwork> GetArtworkByIdAsync(int artId)
+        public async Task<Artwork> GetArtworkById(int artId)
         {
             return await FindByCondition(art => art.Id.Equals(artId))
                 .FirstOrDefaultAsync();
         }
 
-        // public async Task<Artwork> GetArtworkWithDetailsAsync(int artId)
-        // {
-        //     return await FindByCondition(art => art.Id == artId)
-        //         .Where(artId == 2);
-        // }
-        
+        public async Task<IEnumerable<Artwork>> GetArtworksByRoom(string Location)
+        {
+            return await FindAll().Where(art => art.Location.Equals(Location))
+                .ToListAsync();
+        }
 
-        public void createArtwork(Artwork artwork)
+        public void CreateArtWork(Artwork artwork)
         {
             Create(artwork);
-            context.SaveChangesAsync();
         }
 
-        public void updateArtwork(Artwork artwork)
+        public void UpdateArtwork(Artwork artwork)
         {
-            context.Entry(artwork).State = EntityState.Modified;
-            context.SaveChangesAsync();
+            Update(artwork);
         }
 
-        public void deleteArtwork(Artwork artwork)
+        public void DeleteArtwork(Artwork artwork)
         {
             Delete(artwork);
-            context.SaveChangesAsync();
         }
 
-        public bool artExists(int artId)
+        public bool ArtworkExists(int artId)
         {
-            return context.Artworks.Any(e => e.Id == artId);
+            return context.Artworks.Any(e => e.Id.Equals(artId));
         }
 
-        public void saveChanges()
+        public  Task saveChanges()
         {
-            context.SaveChangesAsync();
+           return  context.SaveChangesAsync();
         }
-
-
-
+        
+     
     }
 }
