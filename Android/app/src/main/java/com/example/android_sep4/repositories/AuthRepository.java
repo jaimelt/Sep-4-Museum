@@ -106,6 +106,42 @@ public class AuthRepository {
 
     }
 
+    public void deleteUser(User user) {
+        AuthEndpoints endpoints = ServiceGenerator.getAuthEndpoints();
+
+        Call<User> call = endpoints.deleteUser(user);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                System.out.println("User deleted");
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                System.out.println("User was not deleted");
+            }
+        });
+    }
+
+    public void updateUser(User updatedUser) {
+        AuthEndpoints endpoints = ServiceGenerator.getAuthEndpoints();
+
+        User user = new User(updatedUser.getEmail(), updatedUser.getPassword());
+
+        Call<User> call = endpoints.updateUser(user);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
+    }
+
     public MutableLiveData<Boolean> getIsValidating() {
         return isValidating;
     }

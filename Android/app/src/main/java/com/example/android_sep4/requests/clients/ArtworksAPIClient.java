@@ -140,11 +140,11 @@ public class ArtworksAPIClient {
         newArtwork.setName(artwork.getName());
         newArtwork.setAuthor(artwork.getAuthor());
         newArtwork.setDescription(artwork.getDescription());
-//        newArtwork.setComment(artwork.getComment());
+        newArtwork.setComment(artwork.getComment());
         newArtwork.setImage(artwork.getImage());
         newArtwork.setType(artwork.getType());
         newArtwork.setRoomCode(artwork.getRoomCode());
-//        newArtwork.setArtworkPosition(artwork.getArtworkPosition());
+        newArtwork.setArtworkPosition(artwork.getArtworkPosition());
         newArtwork.setMaxCo2(artwork.getArtworkMeasurements().getMaxCO2());
         newArtwork.setMinCo2(artwork.getArtworkMeasurements().getMinCO2());
         newArtwork.setMaxHumidity(artwork.getArtworkMeasurements().getMaxHumidity());

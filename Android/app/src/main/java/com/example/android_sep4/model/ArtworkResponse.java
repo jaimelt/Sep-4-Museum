@@ -1,5 +1,6 @@
 package com.example.android_sep4.model;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.PrimaryKey;
 
@@ -12,51 +13,67 @@ public class ArtworkResponse {
     private int id;
     @SerializedName("name")
     @Expose
+    @Nullable
     private String name;
     @SerializedName("description")
     @Expose
+    @Nullable
     private String description;
     @SerializedName("comment")
     @Expose
+    @Nullable
     private String comment;
     @SerializedName("image")
     @Expose
+    @Nullable
     private String image;
     @SerializedName("type")
     @Expose
+    @Nullable
     private String type;
     @SerializedName("author")
     @Expose
+    @Nullable
     private String author;
     @SerializedName("location")
     @Expose
+    @Nullable
     private String roomCode;
     @SerializedName("artworkPosition")
     @Expose
+    @Nullable
     private int artworkPosition;
     @SerializedName("maxLight")
     @Expose
+    @Nullable
     private int maxLight;
     @SerializedName("minLight")
     @Expose
+    @Nullable
     private int minLight;
     @SerializedName("maxTemperature")
     @Expose
+    @Nullable
     private int maxTemperature;
     @SerializedName("minTemperature")
     @Expose
+    @Nullable
     private int minTemperature;
     @SerializedName("maxHumidity")
     @Expose
+    @Nullable
     private int maxHumidity;
     @SerializedName("minHumidity")
     @Expose
+    @Nullable
     private int minHumidity;
     @SerializedName("maxCo2")
     @Expose
+    @Nullable
     private int maxCo2;
     @SerializedName("minCo2")
     @Expose
+    @Nullable
     private int minCo2;
 
     public ArtworkResponse(int id, String name, String description, String comment, String image, String type, String author, String roomCode,int artworkPosition, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {

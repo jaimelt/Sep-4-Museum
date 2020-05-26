@@ -54,10 +54,11 @@ public class ManageAccountsActivity extends AppCompatActivity {
         createAccountBtn.setOnClickListener(v -> {
             String email = emailField.getText().toString().trim();
             String password = passwordField.getText().toString().trim();
-            String repeatPassword = repeatPasswordField.toString().trim();
+            String repeatPassword = repeatPasswordField.getText().toString().trim();
             int validation = viewModel.registerAccount(email, password, repeatPassword);
             switch (validation) {
                 case 1:
+                    viewModel.registerAccount(email, password, repeatPassword);
                     dialog.dismiss();
                     break;
                 case 2:

@@ -182,11 +182,10 @@ public class VisitorsRepository {
         return reasons.get(random.nextInt(reasons.size()));
     }
 
-    public void addDay() {
+    private void addDay() {
         date = date.plusDays(1);
         System.out.println(date);
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Visitors createVisitorsForDay() {

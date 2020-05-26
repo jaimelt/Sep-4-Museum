@@ -20,7 +20,7 @@ public interface AuthEndpoints {
     Call<User> registerUser(@Body User user);
 
     @PUT("/")
-    Call<User> update(@Body User user);
+    Call<User> updateUser(@Body User user);
 
     @DELETE("/")
     Call<User> deleteUser(@Body User user);
