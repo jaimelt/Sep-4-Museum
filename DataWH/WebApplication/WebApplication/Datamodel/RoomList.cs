@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WebApplication1.Datamodel
+namespace WebApplication.Datamodel
 {
     public class RoomList
     {

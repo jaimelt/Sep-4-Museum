@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using WebApplication.Database.Repositories.ArtworkRep;
-using WebApplication1.Datamodel;
+using WebApplication.Database.Repositories.RoomRep;
+using WebApplication.Datamodel;
 
 
 namespace WebApplication.Controllers
@@ -41,6 +42,8 @@ namespace WebApplication.Controllers
                 logger.LogInformation("Returning all the artworks stored in the database");
 
                 return Ok(artworkList);
+
+               
             }
             catch (Exception exception)
             {

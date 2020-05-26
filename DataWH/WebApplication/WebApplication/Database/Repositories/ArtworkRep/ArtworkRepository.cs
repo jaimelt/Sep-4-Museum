@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using WebApplication.Database;
-using WebApplication1.Database.Repositories;
-using WebApplication1.Datamodel;
+using WebApplication.Database.Repositories;
+using WebApplication.Datamodel;
+using WebApplication.Database.Repositories;
 
 
 namespace WebApplication.Database.Repositories.ArtworkRep
@@ -43,6 +44,7 @@ namespace WebApplication.Database.Repositories.ArtworkRep
         public void CreateArtWork(Artwork artwork)
         {
             Create(artwork);
+            
         }
 
         public void UpdateArtwork(Artwork artwork)

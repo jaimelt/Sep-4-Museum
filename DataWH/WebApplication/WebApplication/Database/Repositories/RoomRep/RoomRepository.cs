@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication.Database;
-using WebApplication1.Datamodel;
+using WebApplication.Datamodel;
+using WebApplication.Database.Repositories;
+using WebApplication.Database.Repositories;
 
-namespace WebApplication1.Database.Repositories.RoomRep
+
+namespace WebApplication.Database.Repositories.RoomRep
 {
     public class RoomRepository : RepositoryBase<Room>, IRoomRepository
     {
@@ -25,54 +27,32 @@ namespace WebApplication1.Database.Repositories.RoomRep
             return await FindByCondition(room => room.LocationCode.
             Equals(roomLocationCode)).FirstOrDefaultAsync();
         }
-
-        public async Task<Room> GetRoomWithDetailsAsync(string roomLocationCode)
-        {
-            return await FindByCondition(room => room.LocationCode.Equals(roomLocationCode)).
-            Include(cod => cod.LiveRoomMeasurements).FirstOrDefaultAsync();
-            
-        }
-
-        public async Task<Room> GetRoomOptimalMeasurementsAsync(string roomLocationCode)
-        {
-// TODO : work more here to return
-            return await FindByCondition(room => room.LocationCode.Equals(roomLocationCode)).
-            Include(cod => cod.LiveRoomMeasurements).FirstOrDefaultAsync();
-        }
+        
 
         public async Task<RoomMeasurement> GetRoomMeasurementConditionsAsync(string roomLocationCode)
         {
-            //return await FindByCondition(room => room.LocationCode.Equals(roomLocationCode)).
-            //     Include(cod => cod.LiveRoomMeasurements).FirstOrDefaultAsync();
             var selectedRoom = await FindByCondition(room => room.LocationCode.Equals(roomLocationCode)).
                 Include(cod => cod.LiveRoomMeasurements).FirstOrDefaultAsync();
             return  selectedRoom.LiveRoomMeasurements;
         }
-
-        // TODO : work more here 
-        // public async Task<Room> GetRoomMeasurementConditionsAsync(string roomLocationCode)
-        // {
-        //
-        //     return await FindByCondition(room => room.locationCode.Equals(roomLocationCode)).
-        //     Include(cod => cod.measurementConditions).FirstOrDefaultAsync();
-        // }
+        
 
         public void createRoom(Room room)
         {
             Create(room);
-            context.SaveChangesAsync();
+          
         }
 
         public void updateRoom(Room room)
         {
             Update(room);
-            context.SaveChangesAsync();
+           
         }
 
         public void deleteRoom(Room room)
         {
             Delete(room);
-            context.SaveChangesAsync();
+            
         }
 
         public bool roomExists(string roomLocationCode)
@@ -80,9 +60,9 @@ namespace WebApplication1.Database.Repositories.RoomRep
             return context.Rooms.Any(e => e.LocationCode.Equals(roomLocationCode));
         }
 
-        public void saveChanges()
+        public Task saveChanges()
         {
-            context.SaveChangesAsync();
+           return context.SaveChangesAsync();
         }
 
     }
