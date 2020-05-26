@@ -1,27 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj": {}
+    "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/WebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj": {
+    "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/WebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
+        "projectUniqueName": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/WebApplication.csproj",
         "projectName": "WebApplication",
-        "projectPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
-        "packagesPath": "C:\\Users\\Jaime\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\obj\\",
+        "projectPath": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/WebApplication.csproj",
+        "packagesPath": "/Users/Florinelx/.nuget/packages/",
+        "outputPath": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/Florinelx/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,7 +69,16 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.300/RuntimeIdentifierGraph.json"
         }
       }
     }

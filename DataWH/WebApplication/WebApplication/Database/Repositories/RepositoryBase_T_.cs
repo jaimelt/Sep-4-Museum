@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using WebApplication.Database;
-using WebApplication1.Datamodel;
+using WebApplication.Database.Repositories;
 
 namespace WebApplication1.Database.Repositories
 {

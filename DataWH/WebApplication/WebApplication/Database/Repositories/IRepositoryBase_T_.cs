@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace WebApplication1.Database.Repositories
+namespace WebApplication.Database.Repositories
 {
     public interface IRepositoryBase<T>
     {
