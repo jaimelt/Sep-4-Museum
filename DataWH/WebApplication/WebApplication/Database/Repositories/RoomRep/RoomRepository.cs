@@ -29,6 +29,8 @@ namespace WebApplication.Database.Repositories.RoomRep
         }
         
 
+        
+
         public async Task<RoomMeasurement> GetRoomMeasurementConditionsAsync(string roomLocationCode)
         {
             var selectedRoom = await FindByCondition(room => room.LocationCode.Equals(roomLocationCode)).

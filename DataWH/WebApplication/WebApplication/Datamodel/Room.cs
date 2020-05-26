@@ -23,5 +23,8 @@ namespace WebApplication.Datamodel
         public RoomMeasurement LiveRoomMeasurements { get; set; }
         
         
+        
+        
+        
     }
 }

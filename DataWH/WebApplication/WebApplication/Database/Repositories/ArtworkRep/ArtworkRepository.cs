@@ -33,7 +33,9 @@ namespace WebApplication.Database.Repositories.ArtworkRep
         {
             return await FindByCondition(art => art.Id.Equals(artId))
                 .FirstOrDefaultAsync();
+            
         }
+        
 
         public async Task<IEnumerable<Artwork>> GetArtworksByRoom(string Location)
         {

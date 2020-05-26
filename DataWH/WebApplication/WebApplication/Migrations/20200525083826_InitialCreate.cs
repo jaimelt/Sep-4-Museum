@@ -63,7 +63,7 @@ namespace WebApplication.Migrations
                     Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Age = table.Column<int>(type: "int", nullable: false),
                     ReasonToVisit = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    VisitingDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    VisitingDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
