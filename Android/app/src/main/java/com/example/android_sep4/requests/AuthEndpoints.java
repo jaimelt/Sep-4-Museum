@@ -16,13 +16,13 @@ public interface AuthEndpoints {
     @GET("/login")
     Call<Boolean> validateLogin(@Body User user);
 
-    @POST("/")
+    @POST("/account")
     Call<User> registerUser(@Body User user);
 
-    @PUT("/")
+    @PUT("/account")
     Call<User> updateUser(@Body User user);
 
-    @DELETE("/")
+    @DELETE("/account")
     Call<User> deleteUser(@Body User user);
 
 }

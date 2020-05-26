@@ -19,7 +19,7 @@ import retrofit2.Response;
 public class AuthRepository {
     private static AuthRepository instance;
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
-    private AuthAPIClient authAPIClient;
+    private AuthAPIClient authAPIClient =  new AuthAPIClient();
     private Boolean valid = false;
 
     public static AuthRepository getInstance() {

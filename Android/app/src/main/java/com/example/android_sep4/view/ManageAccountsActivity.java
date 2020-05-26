@@ -58,7 +58,6 @@ public class ManageAccountsActivity extends AppCompatActivity {
             int validation = viewModel.registerAccount(email, password, repeatPassword);
             switch (validation) {
                 case 1:
-                    viewModel.registerAccount(email, password, repeatPassword);
                     dialog.dismiss();
                     break;
                 case 2:
