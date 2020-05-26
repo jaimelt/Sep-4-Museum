@@ -50,9 +50,10 @@ public class EditArtworkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_artwork);
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null && bundle.containsKey(ArtworksTab.EXTRA_ARTWORK)) {
+        if (bundle != null) {
             artworkID = bundle.getInt("id");
         }
+        System.out.println(artworkID);
         setViewModel();
 
         Toolbar toolbar = findViewById(R.id.edit_artwork_toolbar);
