@@ -122,10 +122,10 @@ void sensorControl_create()
 	loraSensor_create(_sendingQueue, _xPrintfSemaphore);
 
 	//create co2
-	//TODO
+	//co2Sensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
 
 	//create humidity/temperature
-	//TODO
+	//temperatureHumiditySensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
 
 	//create light
 	LightSensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
