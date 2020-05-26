@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WebApplication.Database.Repositories;
 using WebApplication.Datamodel;
-using WebApplication1.Database.Repositories;
-using WebApplication1.Datamodel;
 
 namespace WebApplication.Database.Repositories.ArtworkRep
 {

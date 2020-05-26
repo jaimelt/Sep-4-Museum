@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Datamodel;
+using WebApplication.Datamodel;
 
 namespace WebApplication.Database
 {

@@ -2,9 +2,12 @@
 using System.Linq;
 using System.Linq.Expressions;
 using WebApplication.Database;
-using WebApplication1.Datamodel;
+using WebApplication.Database.Repositories;
+using WebApplication.Datamodel;
+using WebApplication.Database.Repositories;
 
-namespace WebApplication1.Database.Repositories.AccountRep
+
+namespace WebApplication.Database.Repositories.AccountRep
 {
     public class AccountRepository : RepositoryBase<Artwork>, IAccountRepository
     {

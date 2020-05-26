@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using WebApplication.Database;
-using WebApplication1.Datamodel;
+using WebApplication.Datamodel;
 
-namespace WebApplication1.Database
+namespace WebApplication.Database
 {
     public class DbInitialize
     {
@@ -17,33 +17,83 @@ namespace WebApplication1.Database
                 
             }
             
-        
-
-
-
-
-            
-
             var rooms = new Room[]
           {
                 new Room
                 {
-                    
-                    LocationCode= "A100", Description= "A room", CurrentCapacity= 100, TotalCapacity= 200, 
+                    LocationCode= "A1", Description= "A room", CurrentCapacity= 100, TotalCapacity= 200, 
                     Light = 15, Temperature = 25, Humidity = 35, Co2 = 10,
                     ArtworkList = new List<Artwork>(),
                     LiveRoomMeasurements = new RoomMeasurement
                     {
                         Id = 1, Light = 10, Temperature = 20, Humidity = 30, Co2 = 5
                     }
-                    
                 },
 
                 new Room
                 {
 
-                    LocationCode= "A101", Description= "A second room", CurrentCapacity= 100, TotalCapacity= 200,
+                    LocationCode= "A2", Description= "A second room", CurrentCapacity= 100, TotalCapacity= 200,
                     Light = 17, Temperature = 27, Humidity = 37, Co2 = 12,
+                    ArtworkList = new List<Artwork>(),
+                    LiveRoomMeasurements = new RoomMeasurement()
+                }
+                ,
+                new Room
+                {
+
+                    LocationCode= "A3", Description= "A second room", CurrentCapacity= 100, TotalCapacity= 200,
+                    Light = 17, Temperature = 27, Humidity = 37, Co2 = 12,
+                    ArtworkList = new List<Artwork>(),
+                    LiveRoomMeasurements = new RoomMeasurement()
+                }
+                ,
+                new Room
+                {
+
+                    LocationCode= "B1", Description= "A second room", CurrentCapacity= 100, TotalCapacity= 200,
+                    Light = 17, Temperature = 27, Humidity = 37, Co2 = 12,
+                    ArtworkList = new List<Artwork>(),
+                    LiveRoomMeasurements = new RoomMeasurement()
+                }
+                
+                ,
+
+                new Room
+                {
+
+                    LocationCode= "B2", Description= "A second room", CurrentCapacity= 100, TotalCapacity= 200,
+                    Light = 0, Temperature = 27, Humidity = 37, Co2 = 12,
+                    ArtworkList = new List<Artwork>(),
+                    LiveRoomMeasurements = new RoomMeasurement()
+
+                },
+
+                new Room
+                {
+
+                    LocationCode= "B3", Description= "A second room", CurrentCapacity= 100, TotalCapacity= 200,
+                    Light = 0, Temperature = 0, Humidity = 0, Co2 = 0,
+                    ArtworkList = new List<Artwork>(),
+                    LiveRoomMeasurements = new RoomMeasurement()
+
+                },
+
+                new Room
+                {
+
+                    LocationCode= "B4", Description= "A second room", CurrentCapacity= 100, TotalCapacity= 200,
+                    Light = 0, Temperature = 0, Humidity = 0, Co2 = 0,
+                    ArtworkList = new List<Artwork>(),
+                    LiveRoomMeasurements = new RoomMeasurement()
+
+                },
+
+                new Room
+                {
+
+                    LocationCode= "Storage", Description= "A second room", CurrentCapacity= 100, TotalCapacity= 200,
+                    Light = 0, Temperature = 0, Humidity = 0, Co2 = 0,
                     ArtworkList = new List<Artwork>(),
                     LiveRoomMeasurements = new RoomMeasurement()
 
@@ -52,9 +102,8 @@ namespace WebApplication1.Database
 
             foreach (var r in rooms)
             {
-                //museumContext.Rooms.Add(r);
-                museumContext.Rooms.Update(r);
-                // after adding, use update. Otherwise there will be issues in overwritting 
+                museumContext.Rooms.Add(r);
+                //museumContext.Rooms.Update(r);
             }
 
             museumContext.SaveChangesAsync();

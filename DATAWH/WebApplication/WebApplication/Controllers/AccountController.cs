@@ -4,11 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebApplication.Database.Repositories.AccountRep;
 using WebApplication.Datamodel;
 using WebApplication.MongoDB;
-using WebApplication1.Database.Repositories.AccountRep;
-using WebApplication1.Database.Repositories.RoomRep;
-using WebApplication1.Datamodel;
+using WebApplication.Datamodel;
 
 
 namespace WebApplication.Controllers

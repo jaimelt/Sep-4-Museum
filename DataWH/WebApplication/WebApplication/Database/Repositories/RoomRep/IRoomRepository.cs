@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication1.Datamodel;
+using WebApplication.Datamodel;
 
-namespace WebApplication1.Database.Repositories.RoomRep
+namespace WebApplication.Database.Repositories.RoomRep
 {
-    interface IRoomRepository
+    interface IRoomRepository : IRepositoryBase<Room>
     {
 
         Task<IEnumerable<Room>> getAllRoomsAsync();
 
         Task<Room> GetRoomByLocationCodeAsync(string roomLocationCode);
 
-        Task<Room> GetRoomWithDetailsAsync(string roomLocationCode);
-
-        Task<Room> GetRoomOptimalMeasurementsAsync(string roomLocationCode);
+       // Task<Room> GetRoomOptimalMeasurementsAsync(string roomLocationCode);
 
         Task<RoomMeasurement> GetRoomMeasurementConditionsAsync(string roomLocationCode);
 
@@ -27,7 +25,7 @@ namespace WebApplication1.Database.Repositories.RoomRep
 
         bool roomExists(string roomLocationCode);
 
-        void saveChanges();
+        Task saveChanges();
 
     }
 }

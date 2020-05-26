@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication.Database;
 using WebApplication.Database.Repositories;
 
-namespace WebApplication1.Database.Repositories
+namespace WebApplication.Database.Repositories
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T: class
     {

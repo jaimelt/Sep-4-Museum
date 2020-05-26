@@ -1,6 +1,6 @@
-﻿using WebApplication1.Datamodel;
+﻿using WebApplication.Datamodel;
 
-namespace WebApplication1.Database.Repositories.AccountRep
+namespace WebApplication.Database.Repositories.AccountRep
 {
     public interface IAccountRepository : IRepositoryBase<Administrator>
     {
