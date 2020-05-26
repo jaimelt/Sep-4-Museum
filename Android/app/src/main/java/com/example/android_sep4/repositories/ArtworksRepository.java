@@ -86,8 +86,17 @@ public class ArtworksRepository {
         deleteArtwork(id);
     }
 
-    public Artwork getArtwork(int position) {
-        return artworksData.getValue().get(position);
+    public Artwork getArtwork(int id) {
+        Artwork newArtwork = new Artwork();
+        for(Artwork artwork : artworksData.getValue())
+        {
+            if(artwork.getId() == id)
+            {
+                newArtwork = artwork;
+            }
+        }
+        return newArtwork;
+
     }
 
     public void addArtwork(int position, Artwork artwork) {

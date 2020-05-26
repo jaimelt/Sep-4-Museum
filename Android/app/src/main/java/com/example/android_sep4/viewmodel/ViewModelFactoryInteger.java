@@ -12,8 +12,9 @@ public class ViewModelFactoryInteger implements ViewModelProvider.Factory {
     private int mParam = 0;
 
 
-    public ViewModelFactoryInteger(Application application) {
+    public ViewModelFactoryInteger(Application application, int mParam) {
         mApplication = application;
+        this.mParam = mParam;
     }
 
 

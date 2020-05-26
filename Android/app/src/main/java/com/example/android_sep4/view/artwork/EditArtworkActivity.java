@@ -52,6 +52,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             artworkID = bundle.getInt("id");
+            Toast.makeText(this, "" + artworkID, Toast.LENGTH_SHORT).show();
         }
         System.out.println(artworkID);
         setViewModel();
@@ -75,7 +76,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication())).get(EditArtworkViewModel.class);
+        editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication(), artworkID)).get(EditArtworkViewModel.class);
     }
 
     private void setText() {

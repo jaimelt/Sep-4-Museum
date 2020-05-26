@@ -14,11 +14,11 @@ public class EditArtworkViewModel extends AndroidViewModel {
     private ArtworksRepository artworksRepository;
     private Artwork artwork;
 
-    public EditArtworkViewModel(Application application, int position)
+    public EditArtworkViewModel(Application application, int id)
     {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
-        artwork = artworksRepository.getArtwork(position);
+        artwork = artworksRepository.getArtwork(id);
     }
 
     public String getName() {
