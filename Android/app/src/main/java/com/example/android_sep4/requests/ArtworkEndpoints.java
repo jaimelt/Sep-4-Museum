@@ -28,7 +28,7 @@ public interface ArtworkEndpoints {
 
     //not working
     @PUT("/artworks/edit/{id}")
-    Call<Artwork> editArtwork(@Path("id") int id, @Body Artwork body);
+    Call<ArtworkResponse> editArtwork(@Path("id") int id, @Body ArtworkResponse body);
 
     @DELETE("/artworks/delete/{id}")
     Call<Artwork> deleteArtwork(@Path("id") int id);

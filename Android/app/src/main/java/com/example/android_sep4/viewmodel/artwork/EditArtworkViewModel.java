@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.repositories.ArtworksRepository;
 
 public class EditArtworkViewModel extends AndroidViewModel {
@@ -42,19 +43,19 @@ public class EditArtworkViewModel extends AndroidViewModel {
 
     public String getComment() { return  artwork.getComment();}
 
-    public void editArtwork(int id, String name, String author, String type, String location, String description,String comment, String image) {
-        artwork.setId(id);
-        artwork.setName(name);
-        artwork.setAuthor(author);
-        artwork.setType(type);
-        artwork.setRoomCode(location);
-        artwork.setDescription(description);
-        artwork.setComment(comment);
-        artwork.setImage(image);
-        artworksRepository.editArtwork(artwork);
-
+    public void editArtwork(int id, String name, String author, String type, String location, String description, String comment, String image, ArtworkMeasurements artworkMeasurements) {
+//        artwork.setId(id);
+//        artwork.setName(name);
+//        artwork.setAuthor(author);
+//        artwork.setType(type);
+//        artwork.setRoomCode(location);
+//        artwork.setDescription(description);
+//        artwork.setComment(comment);
+//        artwork.setImage(image);
+//        artworksRepository.editArtwork(artwork);
+        Artwork artwork = new Artwork(id, name , description, comment, image, type, author, location, artworkMeasurements);
 //      REQUEST TO THE DATABASE TO EDIT THE ARTWORK (EVERYTHING ELSE HERE WILL BE DELETED)
-//      artworksRepository.editArtwork(artwork);
+      artworksRepository.editArtwork(artwork);
     }
 
     public void editArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {

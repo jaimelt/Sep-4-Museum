@@ -87,7 +87,7 @@ public class ArtworksRepository {
     }
 
     public Artwork getArtwork(int position) {
-        return artworksDataSet.get(position);
+        return artworksData.getValue().get(position);
     }
 
     public void addArtwork(int position, Artwork artwork) {

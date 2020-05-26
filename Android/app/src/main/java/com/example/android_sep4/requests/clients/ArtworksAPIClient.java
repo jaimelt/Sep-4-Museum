@@ -97,7 +97,7 @@ public class ArtworksAPIClient {
     public void editArtwork(Artwork editedArtwork) {
         int artworkID = editedArtwork.getId();
 
-        Artwork updatedArtwork = new Artwork();
+        ArtworkResponse updatedArtwork = new ArtworkResponse();
         updatedArtwork.setName(editedArtwork.getName());
         updatedArtwork.setAuthor(editedArtwork.getAuthor());
         updatedArtwork.setDescription(editedArtwork.getDescription());
@@ -106,21 +106,28 @@ public class ArtworksAPIClient {
         updatedArtwork.setType(editedArtwork.getType());
         updatedArtwork.setRoomCode(editedArtwork.getRoomCode());
         updatedArtwork.setArtworkPosition(editedArtwork.getArtworkPosition());
-        updatedArtwork.setArtworkMeasurements(editedArtwork.getArtworkMeasurements());
+        updatedArtwork.setMaxCo2(editedArtwork.getArtworkMeasurements().getMaxCO2());
+        updatedArtwork.setMinCo2(editedArtwork.getArtworkMeasurements().getMinCO2());
+        updatedArtwork.setMaxHumidity(editedArtwork.getArtworkMeasurements().getMaxHumidity());
+        updatedArtwork.setMinHumidity(editedArtwork.getArtworkMeasurements().getMinHumidity());
+        updatedArtwork.setMaxTemperature(editedArtwork.getArtworkMeasurements().getMaxTemp());
+        updatedArtwork.setMinTemperature(editedArtwork.getArtworkMeasurements().getMinTemp());
+        updatedArtwork.setMinLight(editedArtwork.getArtworkMeasurements().getMinLight());
+        updatedArtwork.setMaxLight(editedArtwork.getArtworkMeasurements().getMaxLight());
 
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-        Call<Artwork> call = endpoints.editArtwork(artworkID, updatedArtwork);
+        Call<ArtworkResponse> call = endpoints.editArtwork(artworkID, updatedArtwork);
 
-        call.enqueue(new Callback<Artwork>() {
+        call.enqueue(new Callback<ArtworkResponse>() {
             @Override
-            public void onResponse(Call<Artwork> call, Response<Artwork> response) {
+            public void onResponse(Call<ArtworkResponse> call, Response<ArtworkResponse> response) {
                 System.out.println("SUCCESSFUL UPDATE!");
                 //HERE YOU WILL CALL THE ROOM DATABASE TO EDIT THE ARTWORK FROM THERE
             }
 
             @Override
-            public void onFailure(Call<Artwork> call, Throwable t) {
+            public void onFailure(Call<ArtworkResponse> call, Throwable t) {
                 System.out.println("UPDATE FAILED!");
                 //ALSO HERE, IF THE CALL IS FAILED AT LEAST WE WILL UPDATE IT IN THE LOCAL DATABASE
             }
@@ -133,11 +140,11 @@ public class ArtworksAPIClient {
         newArtwork.setName(artwork.getName());
         newArtwork.setAuthor(artwork.getAuthor());
         newArtwork.setDescription(artwork.getDescription());
-        newArtwork.setComment(artwork.getComment());
+//        newArtwork.setComment(artwork.getComment());
         newArtwork.setImage(artwork.getImage());
         newArtwork.setType(artwork.getType());
         newArtwork.setRoomCode(artwork.getRoomCode());
-        newArtwork.setArtworkPosition(artwork.getArtworkPosition());
+//        newArtwork.setArtworkPosition(artwork.getArtworkPosition());
         newArtwork.setMaxCo2(artwork.getArtworkMeasurements().getMaxCO2());
         newArtwork.setMinCo2(artwork.getArtworkMeasurements().getMinCO2());
         newArtwork.setMaxHumidity(artwork.getArtworkMeasurements().getMaxHumidity());
