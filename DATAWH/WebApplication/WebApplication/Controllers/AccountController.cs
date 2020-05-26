@@ -61,7 +61,7 @@ namespace WebApplication.Controllers
         {
             Console.WriteLine("delete admin");
             var obj =  _accountRepository.GetAdminByUsername(admin);
-            Task.Delay(5000);
+            Task.Delay(3000);
               _accountRepository.Delete(await obj);
             return admin;
         }
@@ -70,8 +70,9 @@ namespace WebApplication.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateAdmin([FromBody] Administrator admin)
         {
-
-            
+            Console.WriteLine("update admin");
+            var obj =  _accountRepository.GetAdminByUsername(admin);
+            Task.Delay(3000);
             if(admin == null)
             {
                 return BadRequest();
@@ -80,7 +81,7 @@ namespace WebApplication.Controllers
             Console.WriteLine("This is the ID:  and this is the location code: " + admin.Id + ", and they are equal: ");    
             
 
-            _accountRepository.Update(admin);
+            _accountRepository.Update(await obj);
             
             return NoContent();
         }

@@ -53,10 +53,8 @@ namespace WebApplication.Database.Repositories.ArtworkRep
         public void DeleteArtwork(Artwork artwork)
         {
             Delete(artwork);
-<<<<<<< HEAD
+
             context.SaveChanges();
-=======
->>>>>>> origin/dh.florinx
         }
 
         public bool ArtworkExists(int artId)

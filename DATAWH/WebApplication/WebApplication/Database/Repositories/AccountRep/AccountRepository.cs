@@ -27,7 +27,7 @@ namespace WebApplication1.Database.Repositories.AccountRep
         public void Update(Administrator entity)
         {
             context.Administrators.Update(entity);
-            context.SaveChangesAsync();
+            context.SaveChanges();
         }
 
         public void Delete(Administrator entity)
@@ -52,7 +52,7 @@ namespace WebApplication1.Database.Repositories.AccountRep
 
         public async Task<Administrator> GetAdminByUsername(Administrator entity)
         {
-            return await FindByCondition(art => art.Username.Equals(entity.Username))
+            return await FindByCondition(art => art.Email.Equals(entity.Email))
                 .FirstOrDefaultAsync();
         }
     }
