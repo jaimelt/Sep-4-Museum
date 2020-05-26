@@ -30,10 +30,6 @@ static char _out_buf[100];
 
 static void _setup_lora_driver()
 {
-	//hal_create(LED_TASK_PRIORITY);
-	// Initialise the LoRaWAN driver without down-link buffer
-	//lora_driver_create(LORA_USART, NULL);
-	
 	e_LoRa_return_code_t rc;
 	led_slow_blink(led_ST2); // OPTIONAL: Led the green led blink slowly while we are setting up LoRa
 
@@ -117,8 +113,6 @@ void loraDriver_sent_upload_message(lora_payload_t uplink_lora_payoad)
 
 void vALoraTask(void *pvParameters)
 {
-	//(void*)pvParameters;
-
 	lora_driver_reset_rn2483(1);
 	vTaskDelay(2);
 	lora_driver_reset_rn2483(0);
@@ -139,19 +133,7 @@ void vALoraTask(void *pvParameters)
 			&_lorapayload,
 			portMAX_DELAY) == pdPASS)
 			{
-				//if (_lorapayload != NULL)
-				//{
-					loraDriver_sent_upload_message(_lorapayload);
-				//}
-				/*else
-				{
-					if (_xPrintfSemaphore != NULL)
-					{
-						xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-						printf("%s :: NULL lora payload", LORA_SENSOR_TAG);
-						xSemaphoreGive(_xPrintfSemaphore);
-					}
-				}*/
+				loraDriver_sent_upload_message(_lorapayload);
 			}
 		}
 	}
