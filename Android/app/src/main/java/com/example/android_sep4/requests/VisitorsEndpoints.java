@@ -8,4 +8,6 @@ import retrofit2.http.POST;
 
 public interface VisitorsEndpoints {
 
+    @POST("/")
+    Call<Visitors> sendVisitors(@Body Visitors visitors);
 }
