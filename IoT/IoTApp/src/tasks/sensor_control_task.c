@@ -12,6 +12,7 @@
 #include <task.h>
 #include <semphr.h>
 #include <queue.h>
+#include <event_groups.h>
 
 //drivers
 #include <lora_driver.h>
@@ -21,6 +22,7 @@
 #include "../handler/sensor_data_package_handler.h"
 #include "lora_sensor_task.h"
 #include "light_sensor_task.h"
+#include "temperature_humidity_task.h"
 
 //constants
 #define SENSOR_CONTROL_TAG "SENSOR CONTROL"

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="..\IoT\IoTApp\src\handler\sensor_data_package_handler.c">
+      <Filter>IoTProjectFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\IoT\IoTApp\src\tasks\co2_sensor_task.c">
+      <Filter>IoTProjectFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\IoT\IoTApp\src\tasks\light_sensor_task.c">
+      <Filter>IoTProjectFiles</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="IoTProjectFiles">
+      <UniqueIdentifier>{36b91b6b-4d73-4ff4-b0a6-eb972ae9e978}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\IoT\IoTApp\src\handler\sensor_data_package_handler.h">
+      <Filter>IoTProjectFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IoT\IoTApp\src\constants\global_constants.h">
+      <Filter>IoTProjectFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IoT\IoTApp\src\tasks\co2_sensor_task.h">
+      <Filter>IoTProjectFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IoT\IoTApp\src\tasks\light_sensor_task.h">
+      <Filter>IoTProjectFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="fff\fff.h" />
+  </ItemGroup>
+</Project>
