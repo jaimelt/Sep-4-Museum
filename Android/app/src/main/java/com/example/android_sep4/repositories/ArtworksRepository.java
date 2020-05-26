@@ -113,13 +113,13 @@ public class ArtworksRepository {
     }
 
     //From Room Database
-    public List<Artwork> getArtworks() {
-        List<ArtworkWithMeasurements> artworkWithMeasurements = artworkDao.getAllArtworks();
-        List<Artwork> artworks = new ArrayList<>();
-        for (ArtworkWithMeasurements artwork : artworkWithMeasurements) {
-            artwork.artwork.setArtworkMeasurements(artwork.roomMeasurements);
-            artworks.add(artwork.artwork);
-        }
-        return artworks;
-    }
+//    public List<Artwork> getArtworks() {
+//        List<ArtworkWithMeasurements> artworkWithMeasurements = artworkDao.getAllArtworks();
+//        List<Artwork> artworks = new ArrayList<>();
+//        for (ArtworkWithMeasurements artwork : artworkWithMeasurements) {
+//            artwork.artwork.setArtworkMeasurements(artwork.roomMeasurements);
+//            artworks.add(artwork.artwork);
+//        }
+//        return artworks;
+//    }
 }

@@ -3,6 +3,7 @@ package com.example.android_sep4.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -52,25 +53,49 @@ public class Artwork implements Parcelable {
     @SerializedName("roomCode")
     @Expose
     private String roomCode;
-
     @ColumnInfo(name = "artwork_position")
     @SerializedName("artworkPosition")
     @Expose
     private int artworkPosition;
-
-    @Ignore
-    @SerializedName("artworkMeasurements")
+    @SerializedName("maxLight")
     @Expose
-    private ArtworkMeasurements artworkMeasurements;
+    @Nullable
+    private int maxLight;
+    @SerializedName("minLight")
+    @Expose
+    @Nullable
+    private int minLight;
+    @SerializedName("maxTemperature")
+    @Expose
+    @Nullable
+    private int maxTemperature;
+    @SerializedName("minTemperature")
+    @Expose
+    @Nullable
+    private int minTemperature;
+    @SerializedName("maxHumidity")
+    @Expose
+    @Nullable
+    private int maxHumidity;
+    @SerializedName("minHumidity")
+    @Expose
+    @Nullable
+    private int minHumidity;
+    @SerializedName("maxCo2")
+    @Expose
+    @Nullable
+    private int maxCo2;
+    @SerializedName("minCo2")
+    @Expose
+    @Nullable
+    private int minCo2;
 
     public Artwork() {
 
     }
 
-    public Artwork(int id, String name, String description, String comment, String image, String type, String author, String roomCode,  ArtworkMeasurements artworkMeasurements) {
-        this.artworkMeasurements = artworkMeasurements;
+    public Artwork(int id, String name, String description, String comment, String image, String type, String author, String roomCode, int artworkPosition, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
         this.id = id;
-        this.artworkPosition = artworkPosition;
         this.name = name;
         this.description = description;
         this.comment = comment;
@@ -78,37 +103,23 @@ public class Artwork implements Parcelable {
         this.type = type;
         this.author = author;
         this.roomCode = roomCode;
+        this.artworkPosition = artworkPosition;
+        this.maxLight = maxLight;
+        this.minLight = minLight;
+        this.maxTemperature = maxTemperature;
+        this.minTemperature = minTemperature;
+        this.maxHumidity = maxHumidity;
+        this.minHumidity = minHumidity;
+        this.maxCo2 = maxCo2;
+        this.minCo2 = minCo2;
     }
-
-    protected Artwork(Parcel in) {
-        id = in.readInt();
-        name = in.readString();
-        description = in.readString();
-        image = in.readString();
-        type = in.readString();
-        author = in.readString();
-        roomCode = in.readString();
-        artworkPosition = in.readInt();
-    }
-
-    public static final Creator<Artwork> CREATOR = new Creator<Artwork>() {
-        @Override
-        public Artwork createFromParcel(Parcel in) {
-            return new Artwork(in);
-        }
-
-        @Override
-        public Artwork[] newArray(int size) {
-            return new Artwork[size];
-        }
-    };
 
     public int getId() {
         return id;
     }
 
-    public void setId(int ID) {
-        this.id = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -175,16 +186,68 @@ public class Artwork implements Parcelable {
         this.artworkPosition = artworkPosition;
     }
 
-    public ArtworkMeasurements getArtworkMeasurements() {
-        return artworkMeasurements;
+    public int getMaxLight() {
+        return maxLight;
     }
 
-    public void setArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {
-        artworkMeasurements = new ArtworkMeasurements(maxLight, minLight, maxTemp, minTemp, maxHum, minHum, maxCO2, minCO2);
+    public void setMaxLight(int maxLight) {
+        this.maxLight = maxLight;
     }
 
-    public void setArtworkMeasurements(ArtworkMeasurements artworkMeasurements) {
-        this.artworkMeasurements = artworkMeasurements;
+    public int getMinLight() {
+        return minLight;
+    }
+
+    public void setMinLight(int minLight) {
+        this.minLight = minLight;
+    }
+
+    public int getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public void setMaxTemperature(int maxTemperature) {
+        this.maxTemperature = maxTemperature;
+    }
+
+    public int getMinTemperature() {
+        return minTemperature;
+    }
+
+    public void setMinTemperature(int minTemperature) {
+        this.minTemperature = minTemperature;
+    }
+
+    public int getMaxHumidity() {
+        return maxHumidity;
+    }
+
+    public void setMaxHumidity(int maxHumidity) {
+        this.maxHumidity = maxHumidity;
+    }
+
+    public int getMinHumidity() {
+        return minHumidity;
+    }
+
+    public void setMinHumidity(int minHumidity) {
+        this.minHumidity = minHumidity;
+    }
+
+    public int getMaxCo2() {
+        return maxCo2;
+    }
+
+    public void setMaxCo2(int maxCo2) {
+        this.maxCo2 = maxCo2;
+    }
+
+    public int getMinCo2() {
+        return minCo2;
+    }
+
+    public void setMinCo2(int minCo2) {
+        this.minCo2 = minCo2;
     }
 
     @Override

@@ -8,11 +8,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.ArtworkMeasurements;
-import com.example.android_sep4.model.ArtworkResponse;
 import com.example.android_sep4.model.Artworks;
 import com.example.android_sep4.model.Room;
-import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Rooms;
 import com.example.android_sep4.requests.ArtworkEndpoints;
 import com.example.android_sep4.requests.RoomEndpoints;
@@ -76,11 +73,10 @@ public class RoomsAPIClient {
             public void onResponse(Call<Artworks> call, Response<Artworks> response) {
                 Artworks artworksFromRoom = response.body();
                 if (artworksFromRoom != null) {
-                    for (ArtworkResponse apiArtwork : artworksFromRoom.getArtworks()) {
-                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
+                    for (Artwork apiArtwork : artworksFromRoom.getArtworks()) {
+                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), apiArtwork.getComment(), apiArtwork.getImage(), apiArtwork.getType(),
+                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), apiArtwork.getArtworkPosition(), apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
                                 apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
-                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
                         artworksInRoomDataSet.add(artwork);
                     }
                 }

@@ -115,8 +115,6 @@ public class NewArtworkActivity extends AppCompatActivity {
         if (!maxHum.getText().toString().isEmpty()) {
             maxHumInt = Integer.parseInt(maxHum.getText().toString());
         }
-
-        newArtworkViewModel.addArtworkMeasurements(maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
         finish();
         Toast.makeText(this, name + " artwork added to the list", Toast.LENGTH_SHORT).show();
     }

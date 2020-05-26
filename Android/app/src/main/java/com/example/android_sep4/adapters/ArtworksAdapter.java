@@ -93,6 +93,7 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
         holder.parentLayout.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), EditArtworkActivity.class);
             intent.putExtra("id", artworks.get(position).getId());
+            intent.putExtra("position", artworks.get(position).getArtworkPosition());
             v.getContext().startActivity(intent);
         });
 

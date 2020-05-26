@@ -9,8 +9,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.database.ArtworkDao;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.ArtworkMeasurements;
-import com.example.android_sep4.model.ArtworkResponse;
 import com.example.android_sep4.model.Artworks;
 import com.example.android_sep4.requests.ArtworkEndpoints;
 import com.example.android_sep4.requests.ServiceGenerator;
@@ -49,11 +47,10 @@ public class ArtworksAPIClient {
                 Artworks apiArtworks = response.body();
                 if (apiArtworks != null) {
                     Toast.makeText(application, "it works in artwork", Toast.LENGTH_SHORT).show();
-                    for (ArtworkResponse apiArtwork : apiArtworks.getArtworks()) {
-                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
+                    for (Artwork apiArtwork : apiArtworks.getArtworks()) {
                         artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
-                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
+                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), apiArtwork.getArtworkPosition(), apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
+                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
                         artworksDataSet.add(artwork);
                     }
                 }
@@ -97,7 +94,7 @@ public class ArtworksAPIClient {
     public void editArtwork(Artwork editedArtwork) {
         int artworkID = editedArtwork.getId();
 
-        ArtworkResponse updatedArtwork = new ArtworkResponse();
+        Artwork updatedArtwork = new Artwork();
         updatedArtwork.setName(editedArtwork.getName());
         updatedArtwork.setAuthor(editedArtwork.getAuthor());
         updatedArtwork.setDescription(editedArtwork.getDescription());
@@ -106,28 +103,28 @@ public class ArtworksAPIClient {
         updatedArtwork.setType(editedArtwork.getType());
         updatedArtwork.setRoomCode(editedArtwork.getRoomCode());
         updatedArtwork.setArtworkPosition(editedArtwork.getArtworkPosition());
-        updatedArtwork.setMaxCo2(editedArtwork.getArtworkMeasurements().getMaxCO2());
-        updatedArtwork.setMinCo2(editedArtwork.getArtworkMeasurements().getMinCO2());
-        updatedArtwork.setMaxHumidity(editedArtwork.getArtworkMeasurements().getMaxHumidity());
-        updatedArtwork.setMinHumidity(editedArtwork.getArtworkMeasurements().getMinHumidity());
-        updatedArtwork.setMaxTemperature(editedArtwork.getArtworkMeasurements().getMaxTemp());
-        updatedArtwork.setMinTemperature(editedArtwork.getArtworkMeasurements().getMinTemp());
-        updatedArtwork.setMinLight(editedArtwork.getArtworkMeasurements().getMinLight());
-        updatedArtwork.setMaxLight(editedArtwork.getArtworkMeasurements().getMaxLight());
+        updatedArtwork.setMaxCo2(editedArtwork.getMaxCo2());
+        updatedArtwork.setMinCo2(editedArtwork.getMinCo2());
+        updatedArtwork.setMaxHumidity(editedArtwork.getMaxHumidity());
+        updatedArtwork.setMinHumidity(editedArtwork.getMinHumidity());
+        updatedArtwork.setMaxTemperature(editedArtwork.getMaxTemperature());
+        updatedArtwork.setMinTemperature(editedArtwork.getMinTemperature());
+        updatedArtwork.setMinLight(editedArtwork.getMinLight());
+        updatedArtwork.setMaxLight(editedArtwork.getMaxLight());
 
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-        Call<ArtworkResponse> call = endpoints.editArtwork(artworkID, updatedArtwork);
+        Call<Artwork> call = endpoints.editArtwork(artworkID, updatedArtwork);
 
-        call.enqueue(new Callback<ArtworkResponse>() {
+        call.enqueue(new Callback<Artwork>() {
             @Override
-            public void onResponse(Call<ArtworkResponse> call, Response<ArtworkResponse> response) {
+            public void onResponse(Call<Artwork> call, Response<Artwork> response) {
                 System.out.println("SUCCESSFUL UPDATE!");
                 //HERE YOU WILL CALL THE ROOM DATABASE TO EDIT THE ARTWORK FROM THERE
             }
 
             @Override
-            public void onFailure(Call<ArtworkResponse> call, Throwable t) {
+            public void onFailure(Call<Artwork> call, Throwable t) {
                 System.out.println("UPDATE FAILED!");
                 //ALSO HERE, IF THE CALL IS FAILED AT LEAST WE WILL UPDATE IT IN THE LOCAL DATABASE
             }
@@ -135,7 +132,7 @@ public class ArtworksAPIClient {
     }
 
     public void addNewArtwork(Artwork artwork) {
-        ArtworkResponse newArtwork = new ArtworkResponse();
+        Artwork newArtwork = new Artwork();
 
         newArtwork.setName(artwork.getName());
         newArtwork.setAuthor(artwork.getAuthor());
@@ -145,28 +142,28 @@ public class ArtworksAPIClient {
         newArtwork.setType(artwork.getType());
         newArtwork.setRoomCode(artwork.getRoomCode());
         newArtwork.setArtworkPosition(artwork.getArtworkPosition());
-        newArtwork.setMaxCo2(artwork.getArtworkMeasurements().getMaxCO2());
-        newArtwork.setMinCo2(artwork.getArtworkMeasurements().getMinCO2());
-        newArtwork.setMaxHumidity(artwork.getArtworkMeasurements().getMaxHumidity());
-        newArtwork.setMinHumidity(artwork.getArtworkMeasurements().getMinHumidity());
-        newArtwork.setMaxLight(artwork.getArtworkMeasurements().getMaxLight());
-        newArtwork.setMinLight(artwork.getArtworkMeasurements().getMinLight());
-        newArtwork.setMaxTemperature(artwork.getArtworkMeasurements().getMaxTemp());
-        newArtwork.setMinTemperature(artwork.getArtworkMeasurements().getMinTemp());
+        newArtwork.setMaxCo2(artwork.getMaxCo2());
+        newArtwork.setMinCo2(artwork.getMinCo2());
+        newArtwork.setMaxHumidity(artwork.getMaxHumidity());
+        newArtwork.setMinHumidity(artwork.getMinHumidity());
+        newArtwork.setMaxTemperature(artwork.getMaxTemperature());
+        newArtwork.setMinTemperature(artwork.getMinTemperature());
+        newArtwork.setMinLight(artwork.getMinLight());
+        newArtwork.setMaxLight(artwork.getMaxLight());
 
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-        Call<ArtworkResponse> call = endpoints.addArtwork(newArtwork);
+        Call<Artwork> call = endpoints.addArtwork(newArtwork);
 
-        call.enqueue(new Callback<ArtworkResponse>() {
+        call.enqueue(new Callback<Artwork>() {
             @Override
-            public void onResponse(Call<ArtworkResponse> call, Response<ArtworkResponse> response) {
+            public void onResponse(Call<Artwork> call, Response<Artwork> response) {
                 System.out.println("SUCCESSFUL UPDATE!");
                 //CALL ROOM DATABASE TO ADD
             }
 
             @Override
-            public void onFailure(Call<ArtworkResponse> call, Throwable t) {
+            public void onFailure(Call<Artwork> call, Throwable t) {
                 System.out.println("UPDATE FAILED!");
                 //CALL THE ROOM TO ADD ALSO IN CASE THE API IS FAILED
             }

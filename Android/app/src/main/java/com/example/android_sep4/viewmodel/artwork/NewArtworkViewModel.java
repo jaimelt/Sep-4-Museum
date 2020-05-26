@@ -21,14 +21,10 @@ public class NewArtworkViewModel extends AndroidViewModel {
     public void addArtwork(String name, String author, String type, String description, String comment, String image, String location) {
         int id = 0;
         ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(1, 1, 1, 1, 1, 1, 1, 1);
-        artwork = new Artwork(id, name, description, comment, image, type, author, location, artworkMeasurements);
+        artwork = new Artwork(id, name, description, comment, image, type, author, location, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 //        artworksRepository.addArtwork(artwork);
         //      THIS WILL BE THE REQUEST TO ADD THE ARTWORK AND WE WILL NEED TO PASS THE ARTWORK
         artworksRepository.addNewArtwork(artwork);
 
-    }
-
-    public void addArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {
-        artwork.setArtworkMeasurements(maxLight, minLight, maxTemp, minTemp, maxHum, minHum, maxCO2, minCO2);
     }
 }

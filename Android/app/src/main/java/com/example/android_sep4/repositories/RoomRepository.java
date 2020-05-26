@@ -5,7 +5,6 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.ArtworkResponse;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.requests.clients.RoomsAPIClient;
 
@@ -50,7 +49,7 @@ public class RoomRepository {
 
     public boolean getIsInDanger() {
         for (Room room : roomsDataSet) {
-            for (ArtworkResponse artwork : room.getArtworkList().getArtworks()) {
+            for (Artwork artwork : room.getArtworkList().getArtworks()) {
                 System.out.println(room.getArtworkList().getArtworks().size());
                 if (artwork.getMaxCo2() < room.getLiveRoomMeasurements().getCo2() || artwork.getMinCo2() > room.getLiveRoomMeasurements().getCo2()) {
                     danger = true;
