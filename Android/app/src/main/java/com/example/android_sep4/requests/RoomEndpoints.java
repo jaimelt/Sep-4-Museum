@@ -16,7 +16,7 @@ public interface RoomEndpoints {
     @GET("/rooms/getall")
     Call<Rooms> getRoomsDetails();
 
-    @GET("/{locationCode}")
+    @GET("rooms/{locationCode}")
     Call<Room> getRoomByLocation(@Path("locationCode") String locationCode);
 
     @GET("get/{id}")

@@ -44,7 +44,11 @@ public class RoomRepository {
         return roomsAPIClient.getRooms();
     }
 
-    public Boolean getIsInDanger() {
+    public boolean getDanger(){
+        return danger;
+    }
+
+    public boolean getIsInDanger() {
         for (Room room : roomsDataSet) {
             for (ArtworkResponse artwork : room.getArtworkList().getArtworks()) {
                 System.out.println(room.getArtworkList().getArtworks().size());

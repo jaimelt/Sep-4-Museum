@@ -12,7 +12,6 @@ import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.model.ArtworkResponse;
 import com.example.android_sep4.model.Artworks;
-import com.example.android_sep4.model.Room;
 import com.example.android_sep4.requests.ArtworkEndpoints;
 import com.example.android_sep4.requests.ServiceGenerator;
 
@@ -49,6 +48,7 @@ public class ArtworksAPIClient {
                 Log.i(TAG, "onResponse: success!");
                 Artworks apiArtworks = response.body();
                 if (apiArtworks != null) {
+                    Toast.makeText(application, "it works in artwork", Toast.LENGTH_SHORT).show();
                     for (ArtworkResponse apiArtwork : apiArtworks.getArtworks()) {
                         ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
                                 apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
