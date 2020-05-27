@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.android_sep4.view.museum.MuseumTab;
 import com.example.android_sep4.view.artwork.ArtworksTab;
@@ -17,7 +18,6 @@ public class PageAdapter extends FragmentPagerAdapter {
         //Avoiding deprecated method by having BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.numberOfTabs = numberOfTabs;
-
     }
 
     @NonNull

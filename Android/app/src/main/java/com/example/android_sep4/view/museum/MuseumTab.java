@@ -104,96 +104,72 @@ public class MuseumTab extends Fragment {
     }
 
     private void viewStorageClickListener() {
-        storage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), StorageActivity.class);
-                startActivity(intent);
-            }
+        storage.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), StorageActivity.class);
+            startActivity(intent);
         });
     }
 
     private void openRoomA1ClickListener() {
-        a1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RoomA1Activity.class);
-                startActivity(intent);
+        a1.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), RoomA1Activity.class);
+            startActivity(intent);
 
-                Toast.makeText(getActivity(), "Room A1 opened", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getActivity(), "Room A1 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void openRoomA2ClickListener() {
-        a2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RoomA2Activity.class);
-                startActivity(intent);
+        a2.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), RoomA2Activity.class);
+            startActivity(intent);
 
-                Toast.makeText(getActivity(), "Room A2 opened", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getActivity(), "Room A2 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void openRoomA3ClickListener() {
-        a3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RoomA3Activity.class);
-                startActivity(intent);
+        a3.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), RoomA3Activity.class);
+            startActivity(intent);
 
-                Toast.makeText(getActivity(), "Room A3 opened", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getActivity(), "Room A3 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void openRoomB1ClickListener() {
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RoomB1Activity.class);
-                startActivity(intent);
+        b1.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), RoomB1Activity.class);
+            startActivity(intent);
 
-                Toast.makeText(getActivity(), "Room B1 opened", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getActivity(), "Room B1 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void openRoomB2ClickListener() {
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RoomB2Activity.class);
-                startActivity(intent);
+        b2.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), RoomB2Activity.class);
+            startActivity(intent);
 
-                Toast.makeText(getActivity(), "Room B2 opened", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getActivity(), "Room B2 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void openRoomB3ClickListener() {
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RoomB3Activity.class);
-                startActivity(intent);
+        b3.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), RoomB3Activity.class);
+            startActivity(intent);
 
-                Toast.makeText(getActivity(), "Room B3 opened", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getActivity(), "Room B3 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void openRoomB4ClickListener() {
-        b4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RoomB4Activity.class);
-                startActivity(intent);
+        b4.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), RoomB4Activity.class);
+            startActivity(intent);
 
-                Toast.makeText(getActivity(), "Room B4 opened", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getActivity(), "Room B4 opened", Toast.LENGTH_SHORT).show();
         });
     }
 

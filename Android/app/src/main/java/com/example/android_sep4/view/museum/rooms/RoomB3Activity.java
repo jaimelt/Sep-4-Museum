@@ -40,10 +40,15 @@ public class RoomB3Activity extends AppCompatActivity {
     private void setViewModel() {
         roomB3ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomB3ViewModel.class);
 
-        artworksInRoom = roomB3ViewModel.getArtworksFromRoom(ROOM_CODE).getValue();
+        roomB3ViewModel.getArtworksFromRoom(ROOM_CODE).observe(this, artworks -> artworksInRoom.addAll(artworks));
 
-        for (int i = 0; i < ROOM_CAPACITY - 1; i++) {
-            textViews.get(i).setText(artworksInRoom.get(i).getName());
+        for (Artwork artwork : artworksInRoom) {
+            if (artwork != null) {
+                for (TextView textView : textViews) {
+                    textView.setText(artwork.getName());
+                    artwork.setArtworkPosition(textViews.indexOf(textView));
+                }
+            }
         }
     }
 

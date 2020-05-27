@@ -57,7 +57,7 @@ public class ArtworksRepository {
             //ROOM Database
         }
         artworksDataSet = new ArrayList<>();
-        return artworksData;
+        return artworksAPIClient.getArtworksData();
     }
 
 

@@ -58,7 +58,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.optimalHumidity.setText(String.valueOf(room.getHumidity()));
         holder.optimalCo2.setText(String.valueOf(room.getCo2()));
         holder.viewRoomArtworks.setOnClickListener(v -> {
-
             Intent intent = new Intent(v.getContext(), RoomArtworksActivity.class);
             Room room1 = rooms.get(position);
             room1.setExpanded(!room1.isExpanded());

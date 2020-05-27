@@ -114,6 +114,38 @@ public class Artwork implements Parcelable {
         this.minCo2 = minCo2;
     }
 
+    protected Artwork(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        description = in.readString();
+        comment = in.readString();
+        image = in.readString();
+        type = in.readString();
+        author = in.readString();
+        roomCode = in.readString();
+        artworkPosition = in.readInt();
+        maxLight = in.readInt();
+        minLight = in.readInt();
+        maxTemperature = in.readInt();
+        minTemperature = in.readInt();
+        maxHumidity = in.readInt();
+        minHumidity = in.readInt();
+        maxCo2 = in.readInt();
+        minCo2 = in.readInt();
+    }
+
+    public static final Creator<Artwork> CREATOR = new Creator<Artwork>() {
+        @Override
+        public Artwork createFromParcel(Parcel in) {
+            return new Artwork(in);
+        }
+
+        @Override
+        public Artwork[] newArray(int size) {
+            return new Artwork[size];
+        }
+    };
+
     public int getId() {
         return id;
     }

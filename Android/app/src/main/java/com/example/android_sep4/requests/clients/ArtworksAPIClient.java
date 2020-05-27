@@ -61,7 +61,6 @@ public class ArtworksAPIClient {
                 // DAVE HERE YOU ARE CALLING THE ROOM DATABASE AND YOU ARE SETTING THE ARTWORKS DATA SET TO THE ARTWORKS THAT WE HAVE IN THERE
             }
         });
-        artworksData.setValue(artworksDataSet);
         artworksDataSet = new ArrayList<>();
         return artworksData;
     }
