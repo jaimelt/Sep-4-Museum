@@ -34,6 +34,14 @@ public class RoomArtworksActivity extends AppCompatActivity {
     private void setViewModel() {
         roomArtworksViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), locationCode)).get(RoomArtworksViewModel.class);
         initRecycleView();
+
+        roomArtworksViewModel.getArtworksFromRoom(locationCode).observe(this, new Observer<ArrayList<Artwork>>() {
+            @Override
+            public void onChanged(ArrayList<Artwork> artworks) {
+                adapter.setArtworksInRoom(artworks);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void initRecycleView() {

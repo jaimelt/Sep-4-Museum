@@ -153,13 +153,13 @@ public class VisitorsRepository {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Visitor createRandomMaleVisitor(LocalDate date) {
-        return new Visitor(getRandomMaleName(), getRandomLastName(), "Male", getRandomCountry(), getRandomAge(), getRandomReason(), date);
+        return new Visitor(getRandomMaleName(), getRandomLastName(), "Male", getRandomCountry(), getRandomAge(), getRandomReason());
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Visitor createRandomFemaleVisitor(LocalDate date) {
-        return new Visitor(getRandomFemaleName(), getRandomLastName(), "Female", getRandomCountry(), getRandomAge(), getRandomReason(), date);
+        return new Visitor(getRandomFemaleName(), getRandomLastName(), "Female", getRandomCountry(), getRandomAge(), getRandomReason());
     }
 
 
@@ -204,7 +204,7 @@ public class VisitorsRepository {
         ArrayList<Visitor> femaleVisitors = new ArrayList<>();
         ArrayList<Visitor> visitors = new ArrayList<>();
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 2; i++) {
             addDay();
             for (int j = 0; j < random.nextInt(15) + 35; j++) {
                 maleVisitors.add(j, createRandomMaleVisitor(date));
@@ -214,7 +214,8 @@ public class VisitorsRepository {
                 femaleVisitors.add(j, createRandomFemaleVisitor(date));
             }
             visitors.addAll(maleVisitors);
-            visitors.addAll(femaleVisitors);
+
+            System.out.println(visitors);
         }
         return new Visitors(visitors);
     }

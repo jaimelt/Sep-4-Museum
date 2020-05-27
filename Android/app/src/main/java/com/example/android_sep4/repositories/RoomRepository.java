@@ -38,7 +38,7 @@ public class RoomRepository {
 
         if (roomsAPIClient.getRooms().getValue() != null) {
             roomsDataSet.addAll(roomsAPIClient.getRooms().getValue());
-            danger = getIsInDanger();
+//            danger = getIsInDanger();
         }
         return roomsAPIClient.getRooms();
     }
@@ -47,23 +47,23 @@ public class RoomRepository {
         return danger;
     }
 
-    public boolean getIsInDanger() {
-        for (Room room : roomsDataSet) {
-            for (Artwork artwork : room.getArtworkList().getArtworks()) {
-                System.out.println(room.getArtworkList().getArtworks().size());
-                if (artwork.getMaxCo2() < room.getLiveRoomMeasurements().getCo2() || artwork.getMinCo2() > room.getLiveRoomMeasurements().getCo2()) {
-                    danger = true;
-                } else if (artwork.getMaxHumidity() < room.getLiveRoomMeasurements().getHumidity() || artwork.getMinHumidity() > room.getLiveRoomMeasurements().getHumidity()) {
-                    danger = true;
-                } else if (artwork.getMaxTemperature() < room.getLiveRoomMeasurements().getTemp() || artwork.getMinTemperature() > room.getLiveRoomMeasurements().getTemp()) {
-                    danger = true;
-                } else if (artwork.getMaxLight() < room.getLiveRoomMeasurements().getLight() || artwork.getMinLight() > room.getLiveRoomMeasurements().getLight()) {
-                    danger = true;
-                }
-            }
-        }
-        return danger;
-    }
+//    public boolean getIsInDanger() {
+//        for (Room room : roomsDataSet) {
+//            for (Artwork artwork : room.getArtworkList().getArtworks()) {
+//                System.out.println(room.getArtworkList().getArtworks().size());
+//                if (artwork.getMaxCo2() < room.getLiveRoomMeasurements().getCo2() || artwork.getMinCo2() > room.getLiveRoomMeasurements().getCo2()) {
+//                    danger = true;
+//                } else if (artwork.getMaxHumidity() < room.getLiveRoomMeasurements().getHumidity() || artwork.getMinHumidity() > room.getLiveRoomMeasurements().getHumidity()) {
+//                    danger = true;
+//                } else if (artwork.getMaxTemperature() < room.getLiveRoomMeasurements().getTemp() || artwork.getMinTemperature() > room.getLiveRoomMeasurements().getTemp()) {
+//                    danger = true;
+//                } else if (artwork.getMaxLight() < room.getLiveRoomMeasurements().getLight() || artwork.getMinLight() > room.getLiveRoomMeasurements().getLight()) {
+//                    danger = true;
+//                }
+//            }
+//        }
+//        return danger;
+//    }
 
     public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
         return roomsAPIClient.getArtworksByRoomId(roomCode);
