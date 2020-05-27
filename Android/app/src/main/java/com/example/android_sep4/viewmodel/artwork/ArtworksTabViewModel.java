@@ -22,7 +22,6 @@ public class ArtworksTabViewModel extends AndroidViewModel {
         artworksRepository = ArtworksRepository.getInstance(application);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public LiveData<ArrayList<Artwork>> getArtworks() {
         return artworksRepository.getArtworksData();
     }

@@ -24,9 +24,6 @@ import static android.content.ContentValues.TAG;
 public class ArtworksAPIClient {
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
     private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
-    private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
-    private ArtworkDao artworkDao;
-    private Artwork artwork = new Artwork();
     private Application application;
 
     public ArtworksAPIClient(Application application) {
@@ -44,17 +41,11 @@ public class ArtworksAPIClient {
             public void onResponse(Call<Artworks> call, Response<Artworks> response) {
                 Log.i(TAG, "onResponse: success!");
                 Artworks apiArtworks = response.body();
-                if (apiArtworks != null) {
-                    Toast.makeText(application, "ARTWORKS", Toast.LENGTH_SHORT).show();
-                    for (Artwork apiArtwork : apiArtworks.getArtworks()) {
-                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), apiArtwork.getComment(), apiArtwork.getImage(), apiArtwork.getType(),
-                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), apiArtwork.getArtworkPosition(), apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-                        artworksDataSet.add(artwork);
-                    }
+                if (apiArtworks != null && response.body() != null) {
+                    Toast.makeText(application, "Artworks loaded successfully", Toast.LENGTH_SHORT).show();
+                    artworksData.setValue(response.body().getArtworks());
                 }
-                artworksData.setValue(artworksDataSet);
-//                artworksDataSet = new ArrayList<>();
+
             }
 
             @Override
@@ -68,7 +59,7 @@ public class ArtworksAPIClient {
     }
 
 
-    public LiveData<Artwork> getArtworkById(int id) {
+    public void getArtworkById(int id) {
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
         System.out.println("ARTWORK ID IN THE APICLIENT IS: " + id);
         Call<Artwork> call = endpoints.getArtworkById(id);
@@ -76,12 +67,12 @@ public class ArtworksAPIClient {
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
-                Artwork apiArtwork = response.body();
-                if (apiArtwork != null) {
-                    artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), apiArtwork.getComment(), apiArtwork.getImage(), apiArtwork.getType(),
-                            apiArtwork.getAuthor(), apiArtwork.getRoomCode(), apiArtwork.getArtworkPosition(), apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-                            apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-                    System.out.println("artwork id in response " + artwork.getId());
+                if (response.isSuccessful() && response.body() != null) {
+//                    artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), apiArtwork.getComment(), apiArtwork.getImage(), apiArtwork.getType(),
+//                            apiArtwork.getAuthor(), apiArtwork.getRoomCode(), apiArtwork.getArtworkPosition(), apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
+//                            apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
+//                    System.out.println("artwork id in response " + artwork.getId());
+                    artworkData.setValue(response.body());
                 }
             }
 
@@ -90,7 +81,11 @@ public class ArtworksAPIClient {
                 //CALL DATABASE TO SET THE ARTWORK BY ID
             }
         });
-        artworkData.setValue(artwork);
+
+    }
+
+    public LiveData<Artwork> getArtworkByIdLive()
+    {
         return artworkData;
     }
 
@@ -192,7 +187,6 @@ public class ArtworksAPIClient {
 
 
     public LiveData<ArrayList<Artwork>> getArtworks() {
-        getArtworksData();
         return artworksData;
     }
 }

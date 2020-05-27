@@ -143,7 +143,7 @@ public class AuthAPIClient {
             public void onResponse(Call<Users> call, Response<Users> response) {
                 if(response.isSuccessful())
                 {
-                    Toast.makeText(application, "IT WORKS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(application, "User accounts loaded successfully", Toast.LENGTH_SHORT).show();
                     usersData.setValue(response.body().getUsers());
                 }
 

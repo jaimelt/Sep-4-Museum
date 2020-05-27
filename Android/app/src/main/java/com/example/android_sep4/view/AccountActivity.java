@@ -46,7 +46,7 @@ public class AccountActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        setTitle("Manage user accounts");
     }
 
     public void onRegisterAccountClicked(View view) {

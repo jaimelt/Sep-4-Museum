@@ -28,7 +28,6 @@ public class RoomsAPIClient {
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
-    private ArrayList<Room> roomsDataSet = new ArrayList<>();
     private Room room;
     private Artwork artwork = new Artwork();
     private Application application;
@@ -45,7 +44,8 @@ public class RoomsAPIClient {
             @Override
             public void onResponse(Call<Rooms> call, Response<Rooms> response) {
                 Log.i(TAG, "onResponse: success!");
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Toast.makeText(application, "Rooms loaded successfully", Toast.LENGTH_SHORT).show();
                     roomsData.setValue(response.body().getRooms());
                 }
             }

@@ -62,10 +62,8 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
         }
     };
 
-    public ArtworksAdapter(ArrayList<Artwork> artworks, Context context, OnListItemClickListener listener) {
+    public ArtworksAdapter(Context context, OnListItemClickListener listener) {
         //Creating a duplicate of original list of artworks to not mess up with the original one
-//        copyOfArtworks = new ArrayList<>(artworks);
-        this.artworks = artworks;
         mOnListItemClickListener = listener;
         this.context = context;
 
@@ -117,6 +115,7 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
 
     public void setArtworks(ArrayList<Artwork> artworks) {
         this.artworks = artworks;
+        copyOfArtworks = new ArrayList<>(artworks);
         notifyDataSetChanged();
     }
 

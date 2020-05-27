@@ -25,8 +25,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<Room> rooms;
 
-    public RoomsAdapter(ArrayList<Room> rooms) {
-        this.rooms = rooms;
+    public RoomsAdapter() {
     }
 
     @NonNull

@@ -83,14 +83,13 @@ public class RoomsTab extends Fragment {
 
         roomsTabViewModel.getRooms().observe(getViewLifecycleOwner(), rooms -> {
             adapter.setRooms(rooms);
-            adapter.notifyDataSetChanged();
         });
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_viewRoom);
-        adapter = new RoomsAdapter(roomsTabViewModel.getRooms().getValue());
+        adapter = new RoomsAdapter();
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);

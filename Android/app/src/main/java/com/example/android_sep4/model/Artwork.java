@@ -50,7 +50,7 @@ public class Artwork implements Parcelable {
     private String author;
 
     @ColumnInfo(name = "room_code")
-    @SerializedName("roomCode")
+    @SerializedName("location")
     @Expose
     private String roomCode;
     @ColumnInfo(name = "artwork_position")

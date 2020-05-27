@@ -4,6 +4,8 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.requests.clients.RoomsAPIClient;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 
 public class RoomRepository {
     private static RoomRepository instance;
-    //    private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
+        private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
@@ -24,7 +26,7 @@ public class RoomRepository {
     public RoomRepository(Application application) {
         this.application = application;
         roomsAPIClient = new RoomsAPIClient(application);
-        roomsAPIClient.getRoomsData();
+
     }
 
     public static RoomRepository getInstance(Application application) {
@@ -35,12 +37,21 @@ public class RoomRepository {
     }
 
     public LiveData<ArrayList<Room>> getRoomsData() {
-
-        if (roomsAPIClient.getRooms().getValue() != null) {
-            roomsDataSet.addAll(roomsAPIClient.getRooms().getValue());
-//            danger = getIsInDanger();
-        }
-        return roomsAPIClient.getRooms();
+        roomsAPIClient.getRoomsData();
+        roomsAPIClient.getRooms().observeForever(new Observer<ArrayList<Room>>() {
+            @Override
+            public void onChanged(ArrayList<Room> rooms) {
+                if(rooms.size() == 0)
+                {
+                    //ROOM DATABASE
+                }
+                else {
+                    roomsData.setValue(rooms);
+                    //danger = getIsInDanger();
+                }
+            }
+        });
+        return roomsData;
     }
 
     public boolean getDanger(){

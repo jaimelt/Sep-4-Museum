@@ -14,9 +14,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
+import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.viewmodel.ViewModelFactoryInteger;
 import com.example.android_sep4.viewmodel.artwork.EditArtworkViewModel;
@@ -54,8 +56,8 @@ public class EditArtworkActivity extends AppCompatActivity {
         if (bundle != null) {
             artworkID = bundle.getInt("id");
             artworkPosition = bundle.getInt("position");
-            Toast.makeText(this, "" + artworkID, Toast.LENGTH_SHORT).show();
         }
+
         System.out.println(artworkID);
         setViewModel();
 
@@ -66,7 +68,6 @@ public class EditArtworkActivity extends AppCompatActivity {
         setTitle("Edit artwork");
 
         bindViews();
-        setText();
     }
 
     @Override
@@ -79,17 +80,24 @@ public class EditArtworkActivity extends AppCompatActivity {
 
     private void setViewModel() {
         editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication(), artworkID)).get(EditArtworkViewModel.class);
+
+        editArtworkViewModel.getArtwork().observe(this, artwork -> {
+            setText(artwork);
+            Toast.makeText(this, "Data received" + artwork.getName(), Toast.LENGTH_SHORT).show();
+        });
+
     }
 
-    private void setText() {
+    private void setText(Artwork artwork) {
         //TODO: How to set image
-        nameField.setText(editArtworkViewModel.getName());
-        authorField.setHint(editArtworkViewModel.getAuthor());
-        descriptionField.setHint(editArtworkViewModel.getDescription());
-        commentsField.setHint(editArtworkViewModel.getComment());
-        imageHolder.setImageURI(editArtworkViewModel.getImage());
 
-        String type = editArtworkViewModel.getType();
+        nameField.setText(artwork.getName());
+        authorField.setHint(artwork.getAuthor());
+        descriptionField.setHint(artwork.getDescription());
+        commentsField.setHint(artwork.getComment());
+//        imageHolder.setImageURI(editArtworkViewModel.getImage());
+
+        String type = artwork.getType();
         for (int i = 0; i < typeGroup.getChildCount(); i++) {
             RadioButton radioButton = (RadioButton) typeGroup.getChildAt(i);
             if (radioButton.getText().toString().equals(type)) {
@@ -97,13 +105,22 @@ public class EditArtworkActivity extends AppCompatActivity {
             }
         }
 
-        String location = editArtworkViewModel.getLocation();
+        String location = artwork.getRoomCode();
         for (int i = 0; i < locationGroup.getChildCount(); i++) {
             RadioButton radioButton = (RadioButton) locationGroup.getChildAt(i);
             if (radioButton.getText().toString().equals(location)) {
                 radioButton.setChecked(true);
             }
         }
+
+        minTemp.setText(String.valueOf(artwork.getMinTemperature()));
+        maxTemp.setText(String.valueOf(artwork.getMaxTemperature()));
+        minHum.setText(String.valueOf(artwork.getMinHumidity()));
+        maxHum.setText(String.valueOf(artwork.getMaxHumidity()));
+        minCO2.setText(String.valueOf(artwork.getMinCo2()));
+        maxCO2.setText(String.valueOf(artwork.getMaxCo2()));
+        minLight.setText(String.valueOf(artwork.getMinLight()));
+        maxLight.setText(String.valueOf(artwork.getMaxLight()));
     }
 
     @Override

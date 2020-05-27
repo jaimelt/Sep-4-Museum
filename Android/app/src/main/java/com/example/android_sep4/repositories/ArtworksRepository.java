@@ -2,7 +2,6 @@ package com.example.android_sep4.repositories;
 
 import android.app.Application;
 import android.os.Build;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
@@ -47,8 +46,8 @@ public class ArtworksRepository {
     }
 
     //This is the method where we are retrieving the artworks data from the webservice
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public LiveData<ArrayList<Artwork>> getArtworksData() {
+        artworksAPIClient.getArtworksData();
         artworksAPIClient.getArtworks().observeForever(new Observer<ArrayList<Artwork>>() {
             @Override
             public void onChanged(ArrayList<Artwork> artworks) {
@@ -64,9 +63,9 @@ public class ArtworksRepository {
         return artworksData;
     }
 
-
     public LiveData<Artwork> getArtworkById(int id) {
-        return artworksAPIClient.getArtworkById(id);
+        artworksAPIClient.getArtworkById(id);
+        return artworksAPIClient.getArtworkByIdLive();
     }
 
     public void editArtwork(Artwork editedArtwork) {

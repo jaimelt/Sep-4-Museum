@@ -65,7 +65,6 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
 
         artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), artworks -> {
             adapter.setArtworks(artworks);
-            adapter.notifyDataSetChanged();
         });
     }
 
@@ -73,7 +72,7 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new ArtworksAdapter(artworksTabViewModel.getArtworks().getValue(), getActivity(), this);
+        adapter = new ArtworksAdapter(getActivity(), this);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
