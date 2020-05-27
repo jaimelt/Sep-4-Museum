@@ -7,7 +7,6 @@ import android.widget.Toast;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.android_sep4.database.ArtworkDao;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.Artworks;
 import com.example.android_sep4.requests.ArtworkEndpoints;
@@ -30,7 +29,7 @@ public class ArtworksAPIClient {
         this.application = application;
     }
 
-    public void getArtworksData() {
+    public LiveData<ArrayList<Artwork>> getArtworksData() {
         Log.i(TAG, "getArtworksData: called ");
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
@@ -56,6 +55,7 @@ public class ArtworksAPIClient {
                 // DAVE HERE YOU ARE CALLING THE ROOM DATABASE AND YOU ARE SETTING THE ARTWORKS DATA SET TO THE ARTWORKS THAT WE HAVE IN THERE
             }
         });
+        return artworksData;
     }
 
 
@@ -183,10 +183,5 @@ public class ArtworksAPIClient {
                 System.out.println("DELETE FAILED!");
             }
         });
-    }
-
-
-    public LiveData<ArrayList<Artwork>> getArtworks() {
-        return artworksData;
     }
 }

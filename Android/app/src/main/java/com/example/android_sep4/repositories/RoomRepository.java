@@ -37,8 +37,7 @@ public class RoomRepository {
     }
 
     public LiveData<ArrayList<Room>> getRoomsData() {
-        roomsAPIClient.getRoomsData();
-        roomsAPIClient.getRooms().observeForever(new Observer<ArrayList<Room>>() {
+        roomsAPIClient.getRoomsData().observeForever(new Observer<ArrayList<Room>>() {
             @Override
             public void onChanged(ArrayList<Room> rooms) {
                 if(rooms.size() == 0)

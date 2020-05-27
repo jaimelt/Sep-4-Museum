@@ -37,7 +37,7 @@ public class RoomsAPIClient {
         this.application = application;
     }
 
-    public void getRoomsData() {
+    public LiveData<ArrayList<Room>> getRoomsData() {
         RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
         Call<Rooms> call = endpoints.getRoomsDetails();
         call.enqueue(new Callback<Rooms>() {
@@ -53,12 +53,10 @@ public class RoomsAPIClient {
             @Override
             public void onFailure(Call<Rooms> call, Throwable t) {
                 Log.i(TAG, "onFailure: called");
-                Toast.makeText(application, t.getMessage(), Toast.LENGTH_LONG).show();
+                ArrayList<Room> arrayList = new ArrayList<>();
+                roomsData.setValue(arrayList);
             }
         });
-    }
-
-    public LiveData<ArrayList<Room>> getRooms() {
         return roomsData;
     }
 
