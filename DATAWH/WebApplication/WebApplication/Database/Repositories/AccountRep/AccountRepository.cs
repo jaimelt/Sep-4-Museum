@@ -46,7 +46,7 @@ namespace WebApplication.Database.Repositories.AccountRep
 
         public bool login(Administrator admin)
         {
-            Administrator a1=  GetAdminByUsername(admin).Result;
+            Administrator a1=  GetAdminByEmail(admin).Result;
             if (a1 == null)
             {
                 Console.WriteLine("null object---------------------");
@@ -58,7 +58,7 @@ namespace WebApplication.Database.Repositories.AccountRep
             return false;
         }
 
-        public async Task<Administrator> GetAdminByUsername(Administrator entity)
+        public async Task<Administrator> GetAdminByEmail(Administrator entity)
         {
             return await FindByCondition(art => art.Email.Equals(entity.Email))
                 .FirstOrDefaultAsync();

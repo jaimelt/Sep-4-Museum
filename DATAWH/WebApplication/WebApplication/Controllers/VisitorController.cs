@@ -20,7 +20,7 @@ namespace WebApplication.Controllers
 
         // POST
         [HttpPost]
-        public IActionResult createArtwork([FromBody] VisitorList visitors)
+        public IActionResult postVisitors([FromBody] VisitorList visitors)
         {
 
 

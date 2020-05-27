@@ -92,6 +92,7 @@ namespace WebApplication.Controllers
             temp.Humidity = mongoMeasurement.humidity;
             temp.Light = mongoMeasurement.light;
             temp.Temperature = mongoMeasurement.temperature;
+            temp.setroomNoFromInt(mongoMeasurement.room_no);
 
             return temp;
 

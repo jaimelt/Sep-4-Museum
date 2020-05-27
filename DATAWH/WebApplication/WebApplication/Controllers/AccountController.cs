@@ -37,7 +37,7 @@ namespace WebApplication.Controllers
             return _accountRepository.login(admin);
         }
 
-        [HttpGet]
+        [HttpGet ("users")]
         public async Task<IActionResult> getAll()
         {
             AdministratorList users = new AdministratorList();
@@ -73,7 +73,7 @@ namespace WebApplication.Controllers
         public async Task<Administrator> deleteAdmin(Administrator admin)
         {
             Console.WriteLine("delete admin");
-            var obj = _accountRepository.GetAdminByUsername(admin);
+            var obj = _accountRepository.GetAdminByEmail(admin);
             Task.Delay(3000);
             _accountRepository.Delete(await obj);
             return admin;
@@ -84,7 +84,7 @@ namespace WebApplication.Controllers
         public async Task<IActionResult> UpdateAdmin([FromBody] Administrator admin)
         {
             Console.WriteLine("update admin");
-            var obj = _accountRepository.GetAdminByUsername(admin);
+            var obj = _accountRepository.GetAdminByEmail(admin);
             Task.Delay(3000);
             if (admin == null)
             {
