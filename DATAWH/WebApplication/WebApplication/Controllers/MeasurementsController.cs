@@ -38,14 +38,16 @@ namespace WebApplication.Controllers
         {
             ArtworkAudit artworkAudit = new ArtworkAudit();
           
-            for (int i = 0; i < 7; i++)
+            for (int i = 1; i < 2; i++)
             {
                 RoomMeasurement roomMeasurement = new RoomMeasurement();
-                roomMeasurement.setMeasurementsFromMongo(_mongoRepository.LoadLastRoomMeasurement(i));
+               roomMeasurement.setMeasurementsFromMongo(_mongoRepository.LoadLastRoomMeasurement(i));
                 artworkAudit.MeasurementList.Measurements.Add(roomMeasurement);
             }
-       
+            Console.Write(_artworkRepository.GetAllArtWorksAsync().Result.ToList()==null);
+
             artworkAudit.CheckArtworkConditions(_artworkRepository.GetAllArtWorksAsync().Result.ToList());
+            
 
             return artworkAudit.Artworks;
         }

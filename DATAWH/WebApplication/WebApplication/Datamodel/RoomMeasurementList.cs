@@ -6,6 +6,7 @@ namespace WebApplication.Datamodel
     {
         public RoomMeasurementList()
         {
+            Measurements = new List<RoomMeasurement>();
         }
 
         public List<RoomMeasurement> Measurements { get; set; }
