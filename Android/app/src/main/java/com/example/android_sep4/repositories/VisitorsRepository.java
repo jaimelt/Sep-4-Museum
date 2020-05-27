@@ -153,13 +153,13 @@ public class VisitorsRepository {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Visitor createRandomMaleVisitor(LocalDate date) {
-        return new Visitor(getRandomMaleName(), getRandomLastName(), "Male", getRandomCountry(), getRandomAge(), getRandomReason());
+        return new Visitor(getRandomMaleName(), getRandomLastName(), "Male", getRandomCountry(), getRandomAge());
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Visitor createRandomFemaleVisitor(LocalDate date) {
-        return new Visitor(getRandomFemaleName(), getRandomLastName(), "Female", getRandomCountry(), getRandomAge(), getRandomReason());
+        return new Visitor(getRandomFemaleName(), getRandomLastName(), "Female", getRandomCountry(), getRandomAge());
     }
 
 

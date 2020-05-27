@@ -37,12 +37,13 @@ public class RoomA1Activity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        roomA1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), "A1")).get(RoomA1ViewModel.class);
+        roomA1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA1ViewModel.class);
 
-        artworksInRoom = roomA1ViewModel.getArtworksFromRoom(ROOM_CODE).getValue();
+        artworksInRoom.addAll(roomA1ViewModel.getArtworksFromRoom(ROOM_CODE).getValue());
 
         for (int i = 0; i < ROOM_CAPACITY - 1; i++) {
             textViews.get(i).setText(artworksInRoom.get(i).getName());
+            artworksInRoom.get(i).setArtworkPosition(i);
         }
     }
 

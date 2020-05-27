@@ -32,21 +32,18 @@ public class RoomArtworksActivity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        roomArtworksViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), locationCode)).get(RoomArtworksViewModel.class);
+        roomArtworksViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomArtworksViewModel.class);
         initRecycleView();
 
-        roomArtworksViewModel.getArtworksFromRoom(locationCode).observe(this, new Observer<ArrayList<Artwork>>() {
-            @Override
-            public void onChanged(ArrayList<Artwork> artworks) {
-                adapter.setArtworksInRoom(artworks);
-                adapter.notifyDataSetChanged();
-            }
+        roomArtworksViewModel.getArtworksFromRoom(locationCode).observe(this, artworks -> {
+            adapter.setArtworksInRoom(artworks);
+            adapter.notifyDataSetChanged();
         });
     }
 
     private void initRecycleView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_viewArtworkList);
-        adapter = new ArtworksInRoomsAdapter(roomArtworksViewModel.getArtworksFromRoom(locationCode).getValue(), this);
+        adapter = new ArtworksInRoomsAdapter(this);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);

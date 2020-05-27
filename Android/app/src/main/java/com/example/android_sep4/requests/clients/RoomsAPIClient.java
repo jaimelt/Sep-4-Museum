@@ -71,6 +71,7 @@ public class RoomsAPIClient {
         call.enqueue(new Callback<Artworks>() {
             @Override
             public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+                Log.i(TAG, "onResponse: artworks in room");
                 Artworks artworksFromRoom = response.body();
                 if (artworksFromRoom != null) {
                     for (Artwork apiArtwork : artworksFromRoom.getArtworks()) {
@@ -87,6 +88,7 @@ public class RoomsAPIClient {
                 //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
             }
         });
+        System.out.println(artworksInRoomDataSet.size());
         artworksInRoomData.setValue(artworksInRoomDataSet);
         artworksInRoomDataSet = new ArrayList<>();
         return artworksInRoomData;

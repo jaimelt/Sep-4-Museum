@@ -16,16 +16,13 @@ public class Visitor {
     private String nationality;
     @SerializedName("Age")
     private int age;
-    @SerializedName("ReasonToVisit")
-    private String reasonToVisit;
 
-    public Visitor(String firstName, String lastName, String gender, String nationality, int age, String reasonToVisit) {
+    public Visitor(String firstName, String lastName, String gender, String nationality, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.nationality = nationality;
         this.age = age;
-        this.reasonToVisit = reasonToVisit;
     }
 
     public String getFirstName() {
@@ -68,14 +65,6 @@ public class Visitor {
         this.age = age;
     }
 
-    public String getReasonToVisit() {
-        return reasonToVisit;
-    }
-
-    public void setReasonToVisit(String reasonToVisit) {
-        this.reasonToVisit = reasonToVisit;
-    }
-
     @Override
     public String toString() {
         return "Visitor{" +
@@ -84,7 +73,7 @@ public class Visitor {
                 ", gender='" + gender + '\'' +
                 ", nationality='" + nationality + '\'' +
                 ", age=" + age +
-                ", reasonToVisit='" + reasonToVisit + '\'' +
+                 + '\'' +
                 '}';
     }
 }

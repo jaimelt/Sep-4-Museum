@@ -18,18 +18,15 @@ import com.example.android_sep4.viewmodel.museum.rooms.RoomB4ViewModel;
 public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
     private Application application;
-    private String param;
 
-
-    public ViewModelFactory(Application application, String param) {
+    public ViewModelFactory(Application application) {
         this.application = application;
-        this.param = param;
     }
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
         if (modelClass == RoomArtworksViewModel.class) {
-            return (T) new RoomArtworksViewModel(application, param);
+            return (T) new RoomArtworksViewModel(application);
         } else if (modelClass == RoomA1ViewModel.class) {
             return (T) new RoomA1ViewModel(application);
         } else if (modelClass == RoomA2ViewModel.class) {

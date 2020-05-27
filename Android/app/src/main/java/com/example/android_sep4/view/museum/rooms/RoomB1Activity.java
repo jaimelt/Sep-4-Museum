@@ -37,7 +37,7 @@ public class RoomB1Activity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        roomB1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), "B1")).get(RoomB1ViewModel.class);
+        roomB1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomB1ViewModel.class);
 
         artworksInRoom = roomB1ViewModel.getArtworksFromRoom(ROOM_CODE).getValue();
 

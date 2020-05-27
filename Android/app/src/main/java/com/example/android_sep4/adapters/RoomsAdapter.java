@@ -43,8 +43,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         Room room = rooms.get(position);
 
         holder.locationCode.setText(room.getLocationCode());
-        if(room.getLiveRoomMeasurements() != null)
-        {
+        if (room.getLiveRoomMeasurements() != null) {
             holder.co2Value.setText(String.valueOf(room.getLiveRoomMeasurements().getCo2()));
             holder.lightValue.setText(String.valueOf(room.getLiveRoomMeasurements().getLight()));
             holder.temperatureValue.setText(String.valueOf(room.getLiveRoomMeasurements().getTemp()));
@@ -58,48 +57,39 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.optimalLight.setText(String.valueOf(room.getLight()));
         holder.optimalHumidity.setText(String.valueOf(room.getHumidity()));
         holder.optimalCo2.setText(String.valueOf(room.getCo2()));
-        holder.viewRoomArtworks.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        holder.viewRoomArtworks.setOnClickListener(v -> {
 
-                Intent intent = new Intent(v.getContext(), RoomArtworksActivity.class);
-                Room room = rooms.get(position);
-                room.setExpanded(!room.isExpanded());
-                notifyItemChanged(position);
-                intent.putExtra("locationCode", room.getLocationCode());
-                v.getContext().startActivity(intent);
-            }
+            Intent intent = new Intent(v.getContext(), RoomArtworksActivity.class);
+            Room room1 = rooms.get(position);
+            room1.setExpanded(!room1.isExpanded());
+            notifyItemChanged(position);
+            intent.putExtra("locationCode", room1.getLocationCode());
+            System.out.println(room1.getLocationCode());
+            v.getContext().startActivity(intent);
         });
 
-        holder.editRoomsConditions.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        holder.editRoomsConditions.setOnClickListener(v -> {
 
-                Intent intent = new Intent(v.getContext(), EditRoomActivity.class);
-                intent.putExtra("temperature", rooms.get(position).getTemperature());
-                intent.putExtra("light", rooms.get(position).getLight());
-                intent.putExtra("co2", rooms.get(position).getCo2());
-                intent.putExtra("humidity", rooms.get(position).getHumidity());
-                Room room = rooms.get(position);
-                room.setExpanded(!room.isExpanded());
-                notifyItemChanged(position);
-                v.getContext().startActivity(intent);
-            }
+            Intent intent = new Intent(v.getContext(), EditRoomActivity.class);
+            intent.putExtra("temperature", rooms.get(position).getTemperature());
+            intent.putExtra("light", rooms.get(position).getLight());
+            intent.putExtra("co2", rooms.get(position).getCo2());
+            intent.putExtra("humidity", rooms.get(position).getHumidity());
+            Room room12 = rooms.get(position);
+            room12.setExpanded(!room12.isExpanded());
+            notifyItemChanged(position);
+            v.getContext().startActivity(intent);
         });
 
 
-        holder.parentLayoutRoom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on:" + rooms.get(position));
-            }
-        });
+        holder.parentLayoutRoom.setOnClickListener(view -> Log.d(TAG, "onClick: clicked on:" + rooms.get(position)));
         boolean isExpanded = rooms.get(position).isExpanded();
         holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
     }
 
     @Override
     public int getItemCount() {
-        if(rooms != null)
-        {
+        if (rooms != null) {
             return rooms.size();
         }
         return 0;

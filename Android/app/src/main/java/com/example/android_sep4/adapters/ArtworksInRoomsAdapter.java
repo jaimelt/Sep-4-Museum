@@ -23,8 +23,7 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
     private ArrayList<Artwork> artworks;
     private Context context;
 
-    public ArtworksInRoomsAdapter(ArrayList<Artwork> artworks, Context context) {
-        this.artworks = artworks;
+    public ArtworksInRoomsAdapter(Context context) {
         this.context = context;
     }
 
@@ -74,7 +73,7 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
             artworkDescription = itemView.findViewById(R.id.artworkDescription);
             artworkAuthor = itemView.findViewById(R.id.artworkAuthor);
             artworkType = itemView.findViewById(R.id.artworkType);
-            parentLayout = itemView.findViewById(R.id.parent_layout);
+            parentLayout = itemView.findViewById(R.id.parent_layout_room_artworks);
         }
     }
 }
