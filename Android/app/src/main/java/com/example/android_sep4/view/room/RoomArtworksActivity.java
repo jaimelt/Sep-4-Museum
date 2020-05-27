@@ -26,9 +26,10 @@ public class RoomArtworksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_artworks);
-        setViewModel();
         Bundle bundle = getIntent().getExtras();
         locationCode = bundle.getString("locationCode");
+
+        setViewModel();
     }
 
     private void setViewModel() {
