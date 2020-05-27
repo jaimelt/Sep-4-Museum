@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace WebApplication.Datamodel
 {
@@ -16,37 +17,50 @@ namespace WebApplication.Datamodel
 
         public void CheckArtworkConditions(List<Artwork> artworks)
         {
+        
             foreach (var a in artworks)
             {
-                bool addToList = false;
-                RoomMeasurement actualRoom = MeasurementList.getRoomMeasurementByRoomNo(a.Location);
-                if (a.MaxCo2 < actualRoom.Co2 && a.MinCo2 > actualRoom.Co2)
+                if (!a.Location.Equals("Storage"))
                 {
-                    a.Comment += "Bad Co2 Levels,";
-                    addToList = true;
-                }
+                    bool addToList = false;
+                    Console.WriteLine("a location="+a.Location);
+                    RoomMeasurement actualRoom = MeasurementList.getRoomMeasurementByRoomNo(a.Location);
+                    if (actualRoom != null)
+                    {
+                        Console.WriteLine("aMaxCo2 ="+a.MaxCo2+"actualRoomCo2:"+actualRoom.Co2);
+                        if (a.MaxCo2 < actualRoom.Co2 ||  a.MinCo2 > actualRoom.Co2)
+                        {
+                            a.Comment += "Bad Co2 Levels,";
+                            addToList = true;
+                        }
 
-                if (a.MaxHumidity < actualRoom.Humidity && a.MinHumidity > actualRoom.Humidity)
-                {
-                    a.Comment += "Bad Humidity Levels,";
-                    addToList = true;
-                }
+                        if (a.MaxHumidity < actualRoom.Humidity || a.MinHumidity > actualRoom.Humidity)
+                        {
+                            a.Comment += "Bad Humidity Levels,";
+                            addToList = true;
+                        }
 
-                if (a.MaxLight < actualRoom.Light && a.MinLight > actualRoom.Light)
-                {
-                    a.Comment += "Bad Light Levels,";
-                    addToList = true;
-                }
+                        if (a.MaxLight < actualRoom.Light || a.MinLight > actualRoom.Light)
+                        {
+                            a.Comment += "Bad Light Levels,";
+                            addToList = true;
+                        }
 
-                if (a.MaxTemperature < actualRoom.Temperature && a.MinTemperature > actualRoom.Temperature)
-                {
-                    a.Comment += "Bad Temperature Levels,";
-                    addToList = true;
-                }
+                        if (a.MaxTemperature < actualRoom.Temperature || a.MinTemperature > actualRoom.Temperature)
+                        {
+                            a.Comment += "Bad Temperature Levels,";
+                            addToList = true;
+                        }
 
-                if (addToList == true)
-                    Artworks.artworks.Add(a);
+                        if (addToList)
+                            Artworks.artworks.Add(a);
+                        Console.WriteLine("artwork added"+a.Author);
+                    
 
+                    }
+                    }
+                    
+               
             }   
         }
         

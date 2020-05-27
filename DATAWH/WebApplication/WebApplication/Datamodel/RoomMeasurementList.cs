@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace WebApplication.Datamodel
 {
@@ -19,12 +20,14 @@ namespace WebApplication.Datamodel
                     return roomMeasurement;
             }
 
+            Console.WriteLine("RETURNING NULL");
             return null;
         }
 
         public void addRoomMeasurement(RoomMeasurement roomMeasurement)
         {
             Measurements.Add(roomMeasurement);
+Console.WriteLine( roomMeasurement.roomNo);
         }
     }
 }

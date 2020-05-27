@@ -39,10 +39,14 @@ namespace WebApplication.Datamodel
                 case 7:
                     this.roomNo = "B4";
                     break;
+                case 8:
+                    this.roomNo = "Storage";
+                    break;
 
                 default:
                     this.roomNo = "No Value";
                     break;
+                
             }
         }
 
