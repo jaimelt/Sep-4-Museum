@@ -34,6 +34,7 @@ static void _setup_lora_driver()
 	led_slow_blink(led_ST2); // OPTIONAL: Led the green led blink slowly while we are setting up LoRa
 
 	// Factory reset the transceiver
+	xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 	printf("FactoryReset >%s<\n", lora_driver_map_return_code_to_text(lora_driver_rn2483_factory_reset()));
 
 	// Configure to EU868 LoRaWAN standards
@@ -76,7 +77,9 @@ static void _setup_lora_driver()
 			break;
 		}
 	} while (--maxJoinTriesLeft);
-
+	
+	xSemaphoreGive(_xPrintfSemaphore);
+	
 	if (rc == LoRa_ACCEPTED)
 	{
 		// Connected to LoRaWAN :-)

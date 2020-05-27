@@ -43,57 +43,120 @@ void vASensorControlTask(void *pvParameters)
 	for (;;)
 	{
 		//set bits to measure
-		xEventGroupSetBits(_event_group_measure, LIGHT_MEASURE_BIT | CO2_MEASURE_BIT);
+		xEventGroupSetBits(_event_group_measure, CO2_READY_BIT);
 
 		/*CO2_READY_BIT | TEMPERATURE_HUMIDITY_READY_BIT | */
 
 		//wait for new data bits
-		xEventGroupWaitBits(
-		_event_group_new_data,
-		LIGHT_READY_BIT | CO2_READY_BIT,
-		pdTRUE,
-		pdTRUE,
-		portMAX_DELAY);
+		EventBits_t bits =xEventGroupWaitBits(
+								_event_group_new_data,
+								CO2_READY_BIT,
+								pdTRUE,
+								pdTRUE,
+								5000);
+		
+		//------------------------------------------------------					
+		////get co2
+		//uint16_t _co2 = co2sensor_getCo2();
+		//
+		//xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		//printf("Co2 %d \n", _co2);
+		//xSemaphoreGive(_xPrintfSemaphore);
+		//
+		////get temperature
+		//float _temperature=temperatureHumiditySensor_getTemperature();
+		//
+		//xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		//printf("Temperature %.2f \n", _temperature);
+		//xSemaphoreGive(_xPrintfSemaphore);
+		//
+		////get humidity
+		//float _humidity=temperatureHumiditySensor_getHumidity();
+		//
+		//xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		//printf("Humidity %.2f \n", _humidity);
+		//xSemaphoreGive(_xPrintfSemaphore);
+		//
+		////get light
+		//float _lightInLux = LightSensor_getLightMeasurement();
+		//
+		//xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		//printf("Light %.2f \n", _lightInLux);
+		//xSemaphoreGive(_xPrintfSemaphore);
+		//
+		//SensorDataPackageHandler_setCo2ppm(_co2);
+		//SensorDataPackageHandler_setTemperature(_temperature);
+		//SensorDataPackageHandler_setHumidity(_humidity);
+		//SensorDataPackageHandler_setLight(_lightInLux);
+		//
+		//lora_payload_t _lora_payload = SensorDataPackageHandler_getLoraPayload(LORA_PAYLOAD_PORT_NO);
+		//
+		//xQueueSend(_sendingQueue, //queue handler
+		//(void *)&_lora_payload,
+		//portMAX_DELAY);
 
-		//get co2
-		uint16_t _co2=co2sensor_getCo2();
-		
-		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("Co2 %d \n", _co2);
-		xSemaphoreGive(_xPrintfSemaphore);
-		
-		//get temperature
-		float _temperature=temperatureHumiditySensor_getTemperature();
-		
-		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("Temperature %.2f \n", _temperature);
-		xSemaphoreGive(_xPrintfSemaphore);
-		
-		//get humidity
-		float _humidity=temperatureHumiditySensor_getHumidity();
-		
-		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("Humidity %.2f \n", _humidity);
-		xSemaphoreGive(_xPrintfSemaphore);
-		
-		//get light
-		float _lightInLux = LightSensor_getLightMeasurement();
+		//----------------------------------------------------------------
 
-		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("Light %.2f \n", _lightInLux);
-		xSemaphoreGive(_xPrintfSemaphore);
-		
-		SensorDataPackageHandler_setCo2ppm(_co2);
-		SensorDataPackageHandler_setTemperature(_temperature);
-		SensorDataPackageHandler_setHumidity(_humidity);
-		SensorDataPackageHandler_setLight(_lightInLux);
-		
-		lora_payload_t _lora_payload = SensorDataPackageHandler_getLoraPayload(LORA_PAYLOAD_PORT_NO);
+		if(bits & (LIGHT_MEASURE_BIT | CO2_READY_BIT) == (LIGHT_MEASURE_BIT | CO2_READY_BIT))
+		{
+			//get co2
+			uint16_t _co2 = co2sensor_getCo2();
+			
+			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+			printf("Co2 %d \n", _co2);
+			xSemaphoreGive(_xPrintfSemaphore);
+			
+			//get temperature
+			float _temperature=temperatureHumiditySensor_getTemperature();
+			
+			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+			printf("Temperature %.2f \n", _temperature);
+			xSemaphoreGive(_xPrintfSemaphore);
+			
+			//get humidity
+			float _humidity=temperatureHumiditySensor_getHumidity();
+			
+			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+			printf("Humidity %.2f \n", _humidity);
+			xSemaphoreGive(_xPrintfSemaphore);
+			
+			//get light
+			float _lightInLux = LightSensor_getLightMeasurement();
 
-		xQueueSend(_sendingQueue, //queue handler
-		(void *)&_lora_payload,
-		portMAX_DELAY);
+			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+			printf("Light %.2f \n", _lightInLux);
+			xSemaphoreGive(_xPrintfSemaphore);
+			
+			SensorDataPackageHandler_setCo2ppm(_co2);
+			SensorDataPackageHandler_setTemperature(_temperature);
+			SensorDataPackageHandler_setHumidity(_humidity);
+			SensorDataPackageHandler_setLight(_lightInLux);
+			
+			lora_payload_t _lora_payload = SensorDataPackageHandler_getLoraPayload(LORA_PAYLOAD_PORT_NO);
 
+			xQueueSend(_sendingQueue, //queue handler
+			(void *)&_lora_payload,
+			portMAX_DELAY);
+		}
+		else if((bits & LIGHT_MEASURE_BIT) == LIGHT_MEASURE_BIT)
+		{
+			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+			printf("CO2 not set\n");
+			xSemaphoreGive(_xPrintfSemaphore);
+		}
+		else if((bits & CO2_READY_BIT) == CO2_READY_BIT)
+		{
+			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+			printf("Light not set\n");
+			xSemaphoreGive(_xPrintfSemaphore);
+		}
+		else
+		{
+			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+			printf("Both not set\n");
+			xSemaphoreGive(_xPrintfSemaphore);
+		}
+		
 		vTaskDelay(TIME_DELAY_BETWEEN_MEASUREMENTS);
 	}
 	vTaskDelete(_sensor_control_task_handle);
