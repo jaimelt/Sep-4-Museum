@@ -64,6 +64,7 @@ public class RoomsAPIClient {
     }
 
     public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
+        isLoading.setValue(true);
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
         Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
@@ -81,6 +82,7 @@ public class RoomsAPIClient {
                         artworksInRoomDataSet.add(artwork);
                     }
                     artworksInRoomData.setValue(artworksInRoomDataSet);
+                    isLoading.setValue(false);
                 }
             }
 

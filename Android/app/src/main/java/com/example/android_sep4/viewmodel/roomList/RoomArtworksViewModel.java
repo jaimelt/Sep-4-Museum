@@ -22,4 +22,8 @@ public class RoomArtworksViewModel extends AndroidViewModel {
         return roomRepository.getArtworksByRoomId(locationCode);
     }
 
+    public LiveData<Boolean> getIsLoading() {
+        return roomRepository.getIsLoading();
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.example.android_sep4.view.room;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -21,6 +23,7 @@ public class RoomArtworksActivity extends AppCompatActivity {
     private RoomArtworksViewModel roomArtworksViewModel;
     private ArtworksInRoomsAdapter adapter;
     private String locationCode;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,15 @@ public class RoomArtworksActivity extends AppCompatActivity {
             adapter.setArtworksInRoom(artworks);
             adapter.notifyDataSetChanged();
         });
+
+        roomArtworksViewModel.getIsLoading().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    progressBar.setVisibility(View.VISIBLE);
+                } else progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void initRecycleView() {
@@ -48,5 +60,6 @@ public class RoomArtworksActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
+        progressBar = findViewById(R.id.progress_bar_artworks_in_room);
     }
 }

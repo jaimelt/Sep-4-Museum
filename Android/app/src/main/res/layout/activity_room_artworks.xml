@@ -12,4 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/layout_list_artwork"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_artworks_in_room"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true" />
+
 </RelativeLayout>
