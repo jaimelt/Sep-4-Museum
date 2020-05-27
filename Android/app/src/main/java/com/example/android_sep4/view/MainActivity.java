@@ -8,10 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.adapters.PageAdapter;
 import com.example.android_sep4.view.artwork.ArtworksTab;
 import com.example.android_sep4.view.museum.MuseumTab;
 import com.example.android_sep4.view.room.RoomsTab;

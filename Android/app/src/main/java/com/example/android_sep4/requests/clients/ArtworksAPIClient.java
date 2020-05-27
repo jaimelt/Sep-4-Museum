@@ -33,7 +33,7 @@ public class ArtworksAPIClient {
         this.application = application;
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksData() {
+    public void getArtworksData() {
         Log.i(TAG, "getArtworksData: called ");
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
@@ -53,17 +53,18 @@ public class ArtworksAPIClient {
                         artworksDataSet.add(artwork);
                     }
                 }
+                artworksData.setValue(artworksDataSet);
+//                artworksDataSet = new ArrayList<>();
             }
 
             @Override
             public void onFailure(Call<Artworks> call, Throwable t) {
+                ArrayList<Artwork> arrayList = new ArrayList<>();
+                artworksData.setValue(arrayList);
                 Log.i(TAG, "onFailure: called");
                 // DAVE HERE YOU ARE CALLING THE ROOM DATABASE AND YOU ARE SETTING THE ARTWORKS DATA SET TO THE ARTWORKS THAT WE HAVE IN THERE
             }
         });
-        artworksData.setValue(artworksDataSet);
-        artworksDataSet = new ArrayList<>();
-        return artworksData;
     }
 
 
@@ -190,4 +191,8 @@ public class ArtworksAPIClient {
     }
 
 
+    public LiveData<ArrayList<Artwork>> getArtworks() {
+        getArtworksData();
+        return artworksData;
+    }
 }
