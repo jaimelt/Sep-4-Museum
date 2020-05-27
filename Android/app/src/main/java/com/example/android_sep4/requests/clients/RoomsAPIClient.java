@@ -30,7 +30,7 @@ public class RoomsAPIClient {
     private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
     private Room room;
-    private Artwork artwork;
+    private Artwork artwork = new Artwork();
     private Application application;
 
 

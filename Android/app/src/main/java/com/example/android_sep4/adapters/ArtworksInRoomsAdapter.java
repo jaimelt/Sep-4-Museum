@@ -53,6 +53,7 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
 
     public void setArtworksInRoom(ArrayList<Artwork> artworks) {
         this.artworks = artworks;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

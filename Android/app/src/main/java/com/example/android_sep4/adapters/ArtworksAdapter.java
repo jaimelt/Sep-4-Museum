@@ -2,6 +2,7 @@ package com.example.android_sep4.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -119,21 +120,20 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
     }
 
     private void setColors(String type, ViewHolder holder) {
-//        switch (type) {
-//            case "Painting":
-//                holder.artworkType.setTextColor(Color.parseColor("#4ACFAC"));
-//                break;
-//            case "Drawing":
-//                holder.artworkType.setTextColor(Color.parseColor("#FFA48E"));
-//                break;
-//            case "Ceramics":
-//                holder.artworkType.setTextColor(Color.parseColor("#F45C51"));
-//                break;
-//            case "Photo":
-//                holder.artworkType.setTextColor(Color.parseColor("#7E8CE0"));
-//                break;
-//        }
-
+        switch (type) {
+            case "Painting":
+                holder.artworkType.setTextColor(Color.parseColor("#4ACFAC"));
+                break;
+            case "Drawing":
+                holder.artworkType.setTextColor(Color.parseColor("#FFA48E"));
+                break;
+            case "Ceramics":
+                holder.artworkType.setTextColor(Color.parseColor("#F45C51"));
+                break;
+            case "Photo":
+                holder.artworkType.setTextColor(Color.parseColor("#7E8CE0"));
+                break;
+        }
     }
 
     public interface OnListItemClickListener {
