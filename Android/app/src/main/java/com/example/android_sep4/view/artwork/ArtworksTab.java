@@ -10,12 +10,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +38,7 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
     static final String EXTRA_ARTWORK = "Artwork name";
     private ArtworksTabViewModel artworksTabViewModel;
     private ArtworksAdapter adapter;
+    private ProgressBar progressBar;
 
     public ArtworksTab() {
         // Required empty public constructor
@@ -66,6 +69,15 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
         artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), artworks -> {
             adapter.setArtworks(artworks);
         });
+
+        artworksTabViewModel.getIsLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    progressBar.setVisibility(View.VISIBLE);
+                } else progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -77,6 +89,7 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
         onClickListenerFAB(view);
+        progressBar = view.findViewById(R.id.progress_bar_artworks);
     }
 
 

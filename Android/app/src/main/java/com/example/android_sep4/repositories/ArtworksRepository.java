@@ -84,6 +84,10 @@ public class ArtworksRepository {
         deleteArtwork(id);
     }
 
+    public LiveData<Boolean> getIsLoading() {
+        return artworksAPIClient.getIsLoading();
+    }
+
     //From Room Database
 //    public List<Artwork> getArtworks() {
 //        List<ArtworkWithMeasurements> artworkWithMeasurements = artworkDao.getAllArtworks();

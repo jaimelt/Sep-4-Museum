@@ -23,6 +23,7 @@ import static android.content.ContentValues.TAG;
 public class ArtworksAPIClient {
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
     private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private Application application;
 
     public ArtworksAPIClient(Application application) {
@@ -31,6 +32,7 @@ public class ArtworksAPIClient {
 
     public LiveData<ArrayList<Artwork>> getArtworksData() {
         Log.i(TAG, "getArtworksData: called ");
+        isLoading.setValue(true);
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
         Call<Artworks> call = endpoints.getArtworks();
@@ -44,7 +46,7 @@ public class ArtworksAPIClient {
                     Toast.makeText(application, "Artworks loaded successfully", Toast.LENGTH_SHORT).show();
                     artworksData.setValue(response.body().getArtworks());
                 }
-
+                isLoading.setValue(false);
             }
 
             @Override
@@ -183,5 +185,9 @@ public class ArtworksAPIClient {
                 System.out.println("DELETE FAILED!");
             }
         });
+    }
+
+    public LiveData<Boolean> getIsLoading() {
+        return isLoading;
     }
 }

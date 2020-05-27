@@ -26,4 +26,8 @@ public class ArtworksTabViewModel extends AndroidViewModel {
         return artworksRepository.getArtworksData();
     }
 
+    public LiveData<Boolean> getIsLoading() {
+        return artworksRepository.getIsLoading();
+    }
+
 }

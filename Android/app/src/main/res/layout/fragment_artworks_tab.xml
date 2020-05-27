@@ -22,4 +22,11 @@
         android:layout_margin="30dp"
         android:src="@drawable/ic_add" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar_artworks"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
