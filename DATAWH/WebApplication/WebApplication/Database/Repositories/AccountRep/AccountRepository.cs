@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -18,6 +19,10 @@ namespace WebApplication.Database.Repositories.AccountRep
         public AccountRepository(MuseumContext context) : base(context)
         {
             
+        }
+        public async Task<IEnumerable<Administrator>> getAllUsernames()
+        {
+            return await FindAll().OrderBy(room => room.Email).ToListAsync();
         }
         
         public  void Create(Administrator entity)
