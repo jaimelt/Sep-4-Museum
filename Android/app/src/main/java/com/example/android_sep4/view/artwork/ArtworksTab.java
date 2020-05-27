@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.ArtworksAdapter;
-import com.example.android_sep4.view.ManageAccountsActivity;
+import com.example.android_sep4.view.AccountActivity;
 import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.view.VisitorsActivity;
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
@@ -113,7 +113,7 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
         });
 
         manageAccountsItem.setOnMenuItemClickListener(item -> {
-            startActivity(new Intent(getContext(), ManageAccountsActivity.class));
+            startActivity(new Intent(getContext(), AccountActivity.class));
             return true;
         });
 

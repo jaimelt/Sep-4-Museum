@@ -15,7 +15,7 @@
         <activity android:name=".view.VisitorsActivity"></activity>
         <activity android:name=".view.SettingsActivity" />
         <activity
-            android:name=".view.ManageAccountsActivity"
+            android:name=".view.AccountActivity"
             android:parentActivityName=".view.MainActivity" />
         <activity android:name=".view.LoginActivity" />
         <activity

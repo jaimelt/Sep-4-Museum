@@ -1,8 +1,14 @@
 package com.example.android_sep4.requests.clients;
 
+import android.app.Application;
+import android.widget.Toast;
+
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.User;
+import com.example.android_sep4.model.Users;
 import com.example.android_sep4.requests.AuthEndpoints;
 import com.example.android_sep4.requests.ServiceGenerator;
 
@@ -10,6 +16,8 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,7 +25,15 @@ import retrofit2.Response;
 
 public class AuthAPIClient {
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<User>> usersData = new MutableLiveData<>();
+    private ArrayList<User> usersDataSet = new ArrayList<>();
     private Boolean valid = false;
+    private User user = new User();
+    private Application application;
+
+    public AuthAPIClient(Application application){
+        this.application = application;
+    }
 
     private static String convertToHex(byte[] data) {
         StringBuilder buf = new StringBuilder();
@@ -118,4 +134,31 @@ public class AuthAPIClient {
         });
     }
 
+    public void getUsers() {
+        AuthEndpoints endpoints = ServiceGenerator.getAuthEndpoints();
+
+        Call<Users> call = endpoints.getUsers();
+        call.enqueue(new Callback<Users>() {
+            @Override
+            public void onResponse(Call<Users> call, Response<Users> response) {
+                if(response.isSuccessful())
+                {
+                    Toast.makeText(application, "IT WORKS", Toast.LENGTH_SHORT).show();
+                    usersData.setValue(response.body().getUsers());
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Users> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public LiveData<ArrayList<User>> getUsersLive() {
+        getUsers();
+        return usersData;
+    }
 }

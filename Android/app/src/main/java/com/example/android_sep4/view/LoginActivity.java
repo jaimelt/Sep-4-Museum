@@ -40,25 +40,16 @@ public class LoginActivity extends AppCompatActivity {
         emailField = findViewById(R.id.input_email);
         passwordField = findViewById(R.id.input_password);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
+        loginButton.setOnClickListener(v -> login());
     }
 
     private void setViewModel() {
         loginActivityViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
-        loginActivityViewModel.getIsValidating().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (!aBoolean) {
-                    progressDialog.show();
-                } else progressDialog.dismiss();
-            }
+        loginActivityViewModel.getIsValidating().observe(this, aBoolean -> {
+            if (!aBoolean) {
+                progressDialog.show();
+            } else progressDialog.dismiss();
         });
     }
 

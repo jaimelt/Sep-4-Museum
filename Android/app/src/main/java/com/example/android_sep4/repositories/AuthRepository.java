@@ -1,5 +1,9 @@
 package com.example.android_sep4.repositories;
 
+import android.app.Application;
+import android.widget.Toast;
+
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.User;
@@ -11,6 +15,8 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,12 +25,19 @@ import retrofit2.Response;
 public class AuthRepository {
     private static AuthRepository instance;
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
-    private AuthAPIClient authAPIClient =  new AuthAPIClient();
+    private AuthAPIClient authAPIClient;
     private Boolean valid = false;
+    private Application application;
 
-    public static AuthRepository getInstance() {
+    public AuthRepository(Application application)
+    {
+        this.application = application;
+        authAPIClient = new AuthAPIClient(application);
+    }
+
+    public static AuthRepository getInstance(Application application) {
         if (instance == null) {
-            instance = new AuthRepository();
+            instance = new AuthRepository(application);
         }
         return instance;
     }
@@ -47,5 +60,9 @@ public class AuthRepository {
 
     public MutableLiveData<Boolean> getIsValidating() {
         return isValidating;
+    }
+
+    public LiveData<ArrayList<User>> getUsers() {
+        return authAPIClient.getUsersLive();
     }
 }

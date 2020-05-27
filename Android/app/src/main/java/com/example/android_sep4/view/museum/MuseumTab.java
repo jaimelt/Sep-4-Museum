@@ -17,7 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.view.ManageAccountsActivity;
+import com.example.android_sep4.view.AccountActivity;
 import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.view.VisitorsActivity;
 import com.example.android_sep4.view.artwork.StorageActivity;
@@ -76,7 +76,7 @@ public class MuseumTab extends Fragment {
         searchItem.setVisible(false);
 
         manageItem.setOnMenuItemClickListener(item -> {
-            startActivity(new Intent(getContext(), ManageAccountsActivity.class));
+            startActivity(new Intent(getContext(), AccountActivity.class));
             return true;
         });
 
