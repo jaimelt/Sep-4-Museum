@@ -48,7 +48,11 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
 
     @Override
     public int getItemCount() {
-        return artworks.size();
+        if (artworks != null) {
+            return artworks.size();
+        } else {
+            return 0;
+        }
     }
 
     public void setArtworksInRoom(ArrayList<Artwork> artworks) {

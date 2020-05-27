@@ -17,7 +17,7 @@ public class EditArtworkViewModel extends AndroidViewModel {
     public EditArtworkViewModel(Application application, int id) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
-        artwork = artworksRepository.getArtwork(id);
+//        artwork = artworksRepository.getArtworkById(id);
     }
 
     public String getName() {

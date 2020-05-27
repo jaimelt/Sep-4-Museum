@@ -67,12 +67,13 @@
         </com.google.android.material.tabs.TabLayout>
    </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <LinearLayout
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorPrimary"
+        android:orientation="vertical" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

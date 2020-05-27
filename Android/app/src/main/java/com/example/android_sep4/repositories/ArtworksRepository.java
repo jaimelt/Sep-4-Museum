@@ -85,32 +85,6 @@ public class ArtworksRepository {
         deleteArtwork(id);
     }
 
-    public Artwork getArtwork(int id) {
-        Artwork newArtwork = new Artwork();
-        for(Artwork artwork : artworksData.getValue())
-        {
-            if(artwork.getId() == id)
-            {
-                newArtwork = artwork;
-            }
-        }
-        return newArtwork;
-
-    }
-
-    public void addArtwork(int position, Artwork artwork) {
-        artworksDataSet.add(position, artwork);
-    }
-
-    public void addArtwork(Artwork artwork) {
-        artworksDataSet.add(artwork);
-    }
-
-    public void editArtwork(Artwork artwork, int position) {
-        artworksDataSet.remove(position);
-        artworksDataSet.add(position, artwork);
-    }
-
     //From Room Database
 //    public List<Artwork> getArtworks() {
 //        List<ArtworkWithMeasurements> artworkWithMeasurements = artworkDao.getAllArtworks();

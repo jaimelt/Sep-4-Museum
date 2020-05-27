@@ -70,7 +70,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             //Caching deleted artwork
             removedPosition = viewHolder.getAdapterPosition();
-            removedArtwork = artworksStorageViewModel.getArtwork(viewHolder.getAdapterPosition());
+//            removedArtwork = artworksStorageViewModel.getArtwork(viewHolder.getAdapterPosition());
             artworksStorageViewModel.removeArtwork(viewHolder.getAdapterPosition());
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
 

@@ -29,8 +29,7 @@ public class ArtworksAPIClient {
     private Artwork artwork = new Artwork();
     private Application application;
 
-    public ArtworksAPIClient(Application application)
-    {
+    public ArtworksAPIClient(Application application) {
         this.application = application;
     }
 
@@ -46,6 +45,7 @@ public class ArtworksAPIClient {
                 Log.i(TAG, "onResponse: success!");
                 Artworks apiArtworks = response.body();
                 if (apiArtworks != null) {
+                    Toast.makeText(application, "ARTWORKS", Toast.LENGTH_SHORT).show();
                     for (Artwork apiArtwork : apiArtworks.getArtworks()) {
                         artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), apiArtwork.getComment(), apiArtwork.getImage(), apiArtwork.getType(),
                                 apiArtwork.getAuthor(), apiArtwork.getRoomCode(), apiArtwork.getArtworkPosition(), apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
@@ -69,15 +69,18 @@ public class ArtworksAPIClient {
 
     public LiveData<Artwork> getArtworkById(int id) {
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
-
+        System.out.println("ARTWORK ID IN THE APICLIENT IS: " + id);
         Call<Artwork> call = endpoints.getArtworkById(id);
 
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
-                Artwork artworkAPI = response.body();
-                if (artworkAPI != null) {
-                    artworkData.setValue(artworkAPI);
+                Artwork apiArtwork = response.body();
+                if (apiArtwork != null) {
+                    artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), apiArtwork.getComment(), apiArtwork.getImage(), apiArtwork.getType(),
+                            apiArtwork.getAuthor(), apiArtwork.getRoomCode(), apiArtwork.getArtworkPosition(), apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
+                            apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
+                    System.out.println("artwork id in response " + artwork.getId());
                 }
             }
 
@@ -86,7 +89,7 @@ public class ArtworksAPIClient {
                 //CALL DATABASE TO SET THE ARTWORK BY ID
             }
         });
-
+        artworkData.setValue(artwork);
         return artworkData;
     }
 
