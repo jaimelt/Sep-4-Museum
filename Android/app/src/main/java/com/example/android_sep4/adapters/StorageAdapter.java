@@ -1,6 +1,10 @@
 package com.example.android_sep4.adapters;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
@@ -23,6 +28,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<Artwork> artworks;
     private Context context;
+    private Drawable deleteIcon;
     final private OnListItemClickListener mOnListItemClickListener;
 
 
@@ -69,9 +75,9 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
 
     public void setArtworks(ArrayList<Artwork> artworks) {
         this.artworks = artworks;
+        System.out.println(artworks.size()+"adaptor");
         notifyDataSetChanged();
     }
-
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

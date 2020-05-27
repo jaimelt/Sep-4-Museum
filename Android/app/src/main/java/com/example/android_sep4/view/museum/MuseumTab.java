@@ -20,7 +20,7 @@ import com.example.android_sep4.R;
 import com.example.android_sep4.view.AccountActivity;
 import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.view.VisitorsActivity;
-import com.example.android_sep4.view.artwork.StorageActivity;
+import com.example.android_sep4.view.room.StorageActivity;
 import com.example.android_sep4.view.museum.rooms.RoomA1Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA2Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA3Activity;

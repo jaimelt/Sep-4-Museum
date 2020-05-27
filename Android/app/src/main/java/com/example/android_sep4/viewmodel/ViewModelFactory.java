@@ -5,7 +5,6 @@ import android.app.Application;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.android_sep4.viewmodel.artwork.ArtworksStorageViewModel;
 import com.example.android_sep4.viewmodel.roomList.RoomArtworksViewModel;
 import com.example.android_sep4.viewmodel.museum.rooms.RoomA1ViewModel;
 import com.example.android_sep4.viewmodel.museum.rooms.RoomA2ViewModel;

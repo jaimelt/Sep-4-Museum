@@ -1,4 +1,4 @@
-package com.example.android_sep4.view.artwork;
+package com.example.android_sep4.view.room;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -18,21 +18,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.StorageAdapter;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.viewmodel.artwork.ArtworksStorageViewModel;
+import com.example.android_sep4.viewmodel.roomList.ArtworksStorageViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
 public class StorageActivity extends AppCompatActivity implements StorageAdapter.OnListItemClickListener {
     private static final String TAG = "StorageActivity";
     private ArtworksStorageViewModel artworksStorageViewModel;
     private StorageAdapter adapter;
-    private int removedPosition = 0;
-    private Artwork removedArtwork;
     private Drawable deleteIcon;
+    private String locationCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
+        locationCode = "Storage";
         deleteIcon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_delete);
         setViewModel();
     }
@@ -40,7 +40,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
     private void setViewModel() {
         artworksStorageViewModel = new ViewModelProvider(this).get(ArtworksStorageViewModel.class);
 
-        artworksStorageViewModel.getArtworks().observe(this, artworks -> {
+        artworksStorageViewModel.getArtworksFromRoom(locationCode).observe(this, artworks -> {
             adapter.setArtworks(artworks);
             adapter.notifyDataSetChanged();
         });
@@ -56,6 +56,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         recyclerView.setLayoutManager(llm);
     }
     public void onListItemClick(int clickedItemIndex) {
+
     }
 
 
@@ -68,21 +69,9 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            //Caching deleted artwork
-            removedPosition = viewHolder.getAdapterPosition();
-//            removedArtwork = artworksStorageViewModel.getArtwork(viewHolder.getAdapterPosition());
-            artworksStorageViewModel.removeArtwork(viewHolder.getAdapterPosition());
+
+            artworksStorageViewModel.positionToId(viewHolder.getAdapterPosition());
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-
-
-            Snackbar snackbar = Snackbar.make(viewHolder.itemView, "1 artwork item was deleted", Snackbar.LENGTH_LONG).setAction("UNDO", new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    artworksStorageViewModel.addArtwork(removedPosition, removedArtwork);
-                    adapter.notifyItemInserted(removedPosition);
-                }
-            });
-            snackbar.show();
         }
 
         @Override
