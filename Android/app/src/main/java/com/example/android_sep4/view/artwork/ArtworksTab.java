@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.ArtworksAdapter;
-import com.example.android_sep4.view.ManageAccountsActivity;
+import com.example.android_sep4.view.AccountActivity;
 import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.view.VisitorsActivity;
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
@@ -65,7 +65,6 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
 
         artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), artworks -> {
             adapter.setArtworks(artworks);
-            adapter.notifyDataSetChanged();
         });
     }
 
@@ -73,7 +72,7 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new ArtworksAdapter(artworksTabViewModel.getArtworks().getValue(), getActivity(), this);
+        adapter = new ArtworksAdapter(getActivity(), this);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
@@ -118,7 +117,7 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
         });
 
         manageAccountsItem.setOnMenuItemClickListener(item -> {
-            startActivity(new Intent(getContext(), ManageAccountsActivity.class));
+            startActivity(new Intent(getContext(), AccountActivity.class));
             return true;
         });
 

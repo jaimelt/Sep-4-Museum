@@ -2,9 +2,7 @@ package com.example.android_sep4.view.room;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
-import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RoomsAdapter;
-import com.example.android_sep4.view.ManageAccountsActivity;
+import com.example.android_sep4.view.AccountActivity;
 import com.example.android_sep4.view.SettingsActivity;
 import com.example.android_sep4.view.VisitorsActivity;
 import com.example.android_sep4.viewmodel.roomList.RoomsTabViewModel;
@@ -85,14 +83,13 @@ public class RoomsTab extends Fragment {
 
         roomsTabViewModel.getRooms().observe(getViewLifecycleOwner(), rooms -> {
             adapter.setRooms(rooms);
-            adapter.notifyDataSetChanged();
         });
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_viewRoom);
-        adapter = new RoomsAdapter(roomsTabViewModel.getRooms().getValue());
+        adapter = new RoomsAdapter();
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
@@ -109,7 +106,7 @@ public class RoomsTab extends Fragment {
         MenuItem visitorsItem = menu.findItem(R.id.visitors);
         searchItem.setVisible(false);
         manageItem.setOnMenuItemClickListener(item -> {
-            startActivity(new Intent(getContext(), ManageAccountsActivity.class));
+            startActivity(new Intent(getContext(), AccountActivity.class));
             return true;
         });
 

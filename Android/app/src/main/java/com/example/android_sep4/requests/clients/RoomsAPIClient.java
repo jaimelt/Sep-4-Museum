@@ -28,7 +28,6 @@ public class RoomsAPIClient {
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
-    private ArrayList<Room> roomsDataSet = new ArrayList<>();
     private Room room;
     private Artwork artwork = new Artwork();
     private Application application;
@@ -38,15 +37,15 @@ public class RoomsAPIClient {
         this.application = application;
     }
 
-    public void getRoomsData() {
+    public LiveData<ArrayList<Room>> getRoomsData() {
         RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
         Call<Rooms> call = endpoints.getRoomsDetails();
         call.enqueue(new Callback<Rooms>() {
             @Override
             public void onResponse(Call<Rooms> call, Response<Rooms> response) {
                 Log.i(TAG, "onResponse: success!");
-                if (response.isSuccessful()) {
-                    Toast.makeText(application, "ROOMS", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body() != null) {
+                    Toast.makeText(application, "Rooms loaded successfully", Toast.LENGTH_SHORT).show();
                     roomsData.setValue(response.body().getRooms());
                 }
             }
@@ -54,12 +53,10 @@ public class RoomsAPIClient {
             @Override
             public void onFailure(Call<Rooms> call, Throwable t) {
                 Log.i(TAG, "onFailure: called");
-                Toast.makeText(application, t.getMessage(), Toast.LENGTH_LONG).show();
+                ArrayList<Room> arrayList = new ArrayList<>();
+                roomsData.setValue(arrayList);
             }
         });
-    }
-
-    public LiveData<ArrayList<Room>> getRooms() {
         return roomsData;
     }
 

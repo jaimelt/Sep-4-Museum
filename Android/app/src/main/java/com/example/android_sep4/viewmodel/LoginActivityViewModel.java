@@ -12,7 +12,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
 
     public LoginActivityViewModel(Application application)  {
         super(application);
-        authRepository = AuthRepository.getInstance();
+        authRepository = AuthRepository.getInstance(application);
     }
 
     public boolean validateLogin(String email, String password) {

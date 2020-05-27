@@ -4,6 +4,8 @@ import android.app.Application;
 import android.net.Uri;
 
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
@@ -12,36 +14,12 @@ import com.example.android_sep4.repositories.ArtworksRepository;
 
 public class EditArtworkViewModel extends AndroidViewModel {
     private ArtworksRepository artworksRepository;
-    private Artwork artwork;
+    private int id;
 
     public EditArtworkViewModel(Application application, int id) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
-//        artwork = artworksRepository.getArtworkById(id);
-    }
-
-    public String getName() {
-        return artwork.getName();
-    }
-
-    public String getType() {
-        return artwork.getType();
-    }
-
-    public String getDescription() {
-        return artwork.getDescription();
-    }
-
-    public String getAuthor() {
-        return artwork.getAuthor();
-    }
-
-    public String getLocation() {
-        return artwork.getRoomCode();
-    }
-
-    public String getComment() {
-        return artwork.getComment();
+        this.id = id;
     }
 
     public void editArtwork(int id, String name, String author, String type, String location, String description, String comment, String image, int position, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
@@ -49,9 +27,7 @@ public class EditArtworkViewModel extends AndroidViewModel {
         artworksRepository.editArtwork(artwork);
     }
 
-    public Uri getImage() {
-        return Uri.parse(artwork.getImage());
+    public LiveData<Artwork> getArtwork() {
+        return artworksRepository.getArtworkById(id);
     }
-
-
 }

@@ -1,12 +1,9 @@
 package com.example.android_sep4.repositories;
 
 import android.app.Application;
-import android.os.Build;
-import android.widget.Toast;
-
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.android_sep4.database.ArtworkDao;
 import com.example.android_sep4.database.ArtworkWithMeasurements;
@@ -46,23 +43,25 @@ public class ArtworksRepository {
     }
 
     //This is the method where we are retrieving the artworks data from the webservice
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public LiveData<ArrayList<Artwork>> getArtworksData() {
-        artworksDataSet.addAll(artworksAPIClient.getArtworksData().getValue());
-        if(artworksDataSet!= null)
-        {
-            artworksData.setValue(artworksDataSet);
-        }
-        else {
-            //ROOM Database
-        }
-        artworksDataSet = new ArrayList<>();
-        return artworksAPIClient.getArtworksData();
+        artworksAPIClient.getArtworksData().observeForever(new Observer<ArrayList<Artwork>>() {
+            @Override
+            public void onChanged(ArrayList<Artwork> artworks) {
+                if(artworks.size() == 0)
+                {
+                    //ROOM DATABASE
+                }
+                else {
+                    artworksData.setValue(artworks);
+                }
+            }
+        });
+        return artworksData;
     }
 
-
     public LiveData<Artwork> getArtworkById(int id) {
-        return artworksAPIClient.getArtworkById(id);
+        artworksAPIClient.getArtworkById(id);
+        return artworksAPIClient.getArtworkByIdLive();
     }
 
     public void editArtwork(Artwork editedArtwork) {

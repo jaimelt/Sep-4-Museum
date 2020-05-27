@@ -3,6 +3,8 @@ package com.example.android_sep4.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.graphics.Color;
@@ -12,27 +14,39 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.viewmodel.ManageAccountsViewModel;
+import com.example.android_sep4.adapters.AccountAdapter;
+import com.example.android_sep4.viewmodel.AccountViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class ManageAccountsActivity extends AppCompatActivity {
-    private ManageAccountsViewModel viewModel;
+public class AccountActivity extends AppCompatActivity {
+    private AccountViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manage_accounts);
-        viewModel = new ViewModelProvider(this).get(ManageAccountsViewModel.class);
+        setContentView(R.layout.activity_account);
 
+        viewModel = new ViewModelProvider(this).get(AccountViewModel.class);
+        setToolbar();
+        setRecyclerView();
+    }
+
+    private void setRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        AccountAdapter accountAdapter = new AccountAdapter();
+        recyclerView.setAdapter(accountAdapter);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(llm);
+        viewModel.getUsers().observe(this, accountAdapter::setUsers);
+    }
+
+    private void setToolbar() {
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-
+        setTitle("Manage user accounts");
     }
 
     public void onRegisterAccountClicked(View view) {
@@ -45,8 +59,7 @@ public class ManageAccountsActivity extends AppCompatActivity {
         createDialog(dialogView, emailField, passwordField, repeatPasswordField, createAccountBtn);
     }
 
-    private void createDialog(View dialogView, EditText emailField, EditText passwordField, EditText repeatPasswordField, Button createAccountBtn)
-    {
+    private void createDialog(View dialogView, EditText emailField, EditText passwordField, EditText repeatPasswordField, Button createAccountBtn) {
         //Creating AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         builder.setView(dialogView);
@@ -74,5 +87,13 @@ public class ManageAccountsActivity extends AppCompatActivity {
         });
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
+    }
+
+    @Override
+    //finish on activity when up navigation is clicked - animation slide to right
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        finish();
+        return true;
     }
 }
