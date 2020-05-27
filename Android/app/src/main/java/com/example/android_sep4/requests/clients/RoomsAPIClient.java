@@ -80,6 +80,7 @@ public class RoomsAPIClient {
                                 apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
                         artworksInRoomDataSet.add(artwork);
                     }
+                    artworksInRoomData.setValue(artworksInRoomDataSet);
                 }
             }
 
@@ -89,7 +90,6 @@ public class RoomsAPIClient {
             }
         });
         System.out.println(artworksInRoomDataSet.size());
-        artworksInRoomData.setValue(artworksInRoomDataSet);
         artworksInRoomDataSet = new ArrayList<>();
         return artworksInRoomData;
     }

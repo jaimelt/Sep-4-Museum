@@ -76,7 +76,19 @@ public class RoomRepository {
 //    }
 
     public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
-        return roomsAPIClient.getArtworksByRoomId(roomCode);
+        roomsAPIClient.getArtworksByRoomId(roomCode).observeForever(new Observer<ArrayList<Artwork>>() {
+            @Override
+            public void onChanged(ArrayList<Artwork> artworks) {
+                if(artworks.size() == 0)
+                {
+                    //ROOM DATABASE
+                }
+                else {
+                    artworksInRoomData.setValue(artworks);
+                }
+            }
+        });
+        return artworksInRoomData;
     }
 
     public LiveData<Room> getRoomById(String locationCode) {
