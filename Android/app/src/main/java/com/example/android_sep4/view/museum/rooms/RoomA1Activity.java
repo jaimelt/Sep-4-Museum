@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
@@ -30,20 +31,25 @@ public class RoomA1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_a1);
+        setViewModel();
         findViews();
         setTextViews();
-        setViewModel();
         viewArtworks();
     }
 
     private void setViewModel() {
         roomA1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA1ViewModel.class);
 
-        artworksInRoom.addAll(roomA1ViewModel.getArtworksFromRoom(ROOM_CODE).getValue());
+        roomA1ViewModel.getArtworksFromRoom(ROOM_CODE).observe(this, artworks -> artworksInRoom = artworks);
 
-        for (int i = 0; i < ROOM_CAPACITY - 1; i++) {
-            textViews.get(i).setText(artworksInRoom.get(i).getName());
-            artworksInRoom.get(i).setArtworkPosition(i);
+        System.out.println(artworksInRoom.size());
+        for (Artwork artwork : artworksInRoom) {
+            if(artwork != null) {
+                for(TextView textView : textViews) {
+                    textView.setText(artwork.getName());
+                    artwork.setArtworkPosition(textViews.indexOf(textView));
+                }
+            }
         }
     }
 
@@ -73,15 +79,12 @@ public class RoomA1Activity extends AppCompatActivity {
 
     public void viewArtworks() {
         for (final TextView textView : textViews) {
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
-                    intent.putExtra("Artwork", artworksInRoom.get(textViews.indexOf(textView)));
-                    startActivity(intent);
+            textView.setOnClickListener(view -> {
+                Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
+                intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
+                startActivity(intent);
 
-                    Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
             });
         }
     }
