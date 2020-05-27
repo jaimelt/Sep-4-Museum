@@ -2,23 +2,35 @@ package com.example.android_sep4.view;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.PageAdapter;
+import com.example.android_sep4.view.artwork.ArtworksTab;
+import com.example.android_sep4.view.museum.MuseumTab;
+import com.example.android_sep4.view.room.RoomsTab;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    private ViewPager viewPager;
-    private PageAdapter pageAdapter;
+    private LinearLayout viewPager;
+    private MuseumTab museumTab;
+    private RoomsTab roomsTab;
+    private ArtworksTab artworksTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        museumTab = new MuseumTab();
+        artworksTab = new ArtworksTab();
+        roomsTab = new RoomsTab();
 
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -26,19 +38,17 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewpager);
 
-        pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pageAdapter);
+        setFragment(museumTab);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition() == 0) {
-                    pageAdapter.notifyDataSetChanged();
+                    setFragment(museumTab);
                 } else if (tab.getPosition() == 1) {
-                    pageAdapter.notifyDataSetChanged();
+                    setFragment(artworksTab);
                 } else if (tab.getPosition() == 2) {
-                    pageAdapter.notifyDataSetChanged();
+                    setFragment(roomsTab);
                 }
             }
 
@@ -52,13 +62,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
+    }
+
+    private void setFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        fragmentTransaction.replace(R.id.viewpager, fragment);
+        fragmentTransaction.commit();
     }
 
 
