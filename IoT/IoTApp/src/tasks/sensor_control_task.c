@@ -43,13 +43,17 @@ void vASensorControlTask(void *pvParameters)
 	for (;;)
 	{
 		//set bits to measure
-		xEventGroupSetBits(_event_group_measure, CO2_READY_BIT);
+		xEventGroupSetBits(_event_group_measure,
+			LIGHT_MEASURE_BIT 
+			| CO2_MEASURE_BIT
+			);
 
 		/*CO2_READY_BIT | TEMPERATURE_HUMIDITY_READY_BIT | */
 
 		//wait for new data bits
 		EventBits_t bits =xEventGroupWaitBits(
 								_event_group_new_data,
+								LIGHT_READY_BIT |
 								CO2_READY_BIT,
 								pdTRUE,
 								pdTRUE,
@@ -97,7 +101,7 @@ void vASensorControlTask(void *pvParameters)
 
 		//----------------------------------------------------------------
 
-		if(bits & (LIGHT_MEASURE_BIT | CO2_READY_BIT) == (LIGHT_MEASURE_BIT | CO2_READY_BIT))
+		if(bits & (LIGHT_READY_BIT | CO2_READY_BIT) == (LIGHT_READY_BIT | CO2_READY_BIT))
 		{
 			//get co2
 			uint16_t _co2 = co2sensor_getCo2();
@@ -138,7 +142,7 @@ void vASensorControlTask(void *pvParameters)
 			(void *)&_lora_payload,
 			portMAX_DELAY);
 		}
-		else if((bits & LIGHT_MEASURE_BIT) == LIGHT_MEASURE_BIT)
+		else if((bits & LIGHT_READY_BIT) == LIGHT_READY_BIT)
 		{
 			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 			printf("CO2 not set\n");

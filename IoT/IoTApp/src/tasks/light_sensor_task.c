@@ -30,7 +30,8 @@ void LightSensor_callback(tsl2591ReturnCode_t rc)
 	if (rc != TSL2591_DATA_READY)
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("%s :: Light sensor not ready :: return code %d\n", LIGHT_SENSOR_TAG, rc);
+		//printf("%s :: Light sensor not ready :: return code %d\n", LIGHT_SENSOR_TAG, rc);
+		printf("Light sensor not ready :: return code %d\n", rc);
 		xSemaphoreGive(_xPrintfSemaphore);
 		return;
 	}
