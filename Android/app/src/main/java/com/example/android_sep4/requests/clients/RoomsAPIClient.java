@@ -46,7 +46,6 @@ public class RoomsAPIClient {
             public void onResponse(Call<Rooms> call, Response<Rooms> response) {
                 Log.i(TAG, "onResponse: success!");
                 if (response.isSuccessful()) {
-                    Toast.makeText(application, "it works", Toast.LENGTH_SHORT).show();
                     roomsData.setValue(response.body().getRooms());
                 }
             }

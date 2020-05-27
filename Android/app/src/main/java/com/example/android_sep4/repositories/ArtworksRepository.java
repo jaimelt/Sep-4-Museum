@@ -52,7 +52,6 @@ public class ArtworksRepository {
         if(artworksDataSet!= null)
         {
             artworksData.setValue(artworksDataSet);
-            Toast.makeText(application, "IT WORKS", Toast.LENGTH_SHORT).show();
         }
         else {
             //ROOM Database
