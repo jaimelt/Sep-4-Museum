@@ -27,6 +27,7 @@ public class RoomsAPIClient {
     private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private Room room;
     private Artwork artwork = new Artwork();
@@ -38,6 +39,7 @@ public class RoomsAPIClient {
     }
 
     public LiveData<ArrayList<Room>> getRoomsData() {
+        isLoading.setValue(true);
         RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
         Call<Rooms> call = endpoints.getRoomsDetails();
         call.enqueue(new Callback<Rooms>() {
@@ -48,6 +50,7 @@ public class RoomsAPIClient {
                     Toast.makeText(application, "Rooms loaded successfully", Toast.LENGTH_SHORT).show();
                     roomsData.setValue(response.body().getRooms());
                 }
+                isLoading.setValue(false);
             }
 
             @Override
@@ -114,4 +117,9 @@ public class RoomsAPIClient {
         roomByIdData.setValue(room);
         return roomByIdData;
     }
+
+    public LiveData<Boolean> getIsLoading() {
+        return isLoading;
+    }
+
 }

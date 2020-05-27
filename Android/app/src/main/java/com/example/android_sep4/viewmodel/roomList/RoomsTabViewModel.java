@@ -24,6 +24,10 @@ public class RoomsTabViewModel extends AndroidViewModel {
         return roomsRepository.getRoomsData();
     }
 
+    public LiveData<Boolean> getIsLoading() {
+        return roomsRepository.getIsLoading();
+    }
+
     public boolean getIsInDanger(){return roomsRepository.getDanger();}
 
 }

@@ -11,12 +11,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +38,7 @@ public class RoomsTab extends Fragment {
     static final String EXTRA_ROOM = "Room Name";
     private RoomsTabViewModel roomsTabViewModel;
     private RoomsAdapter adapter;
-
+    private ProgressBar progressBar;
 
     public RoomsTab() {
         // Required empty public constructor
@@ -84,6 +86,16 @@ public class RoomsTab extends Fragment {
         roomsTabViewModel.getRooms().observe(getViewLifecycleOwner(), rooms -> {
             adapter.setRooms(rooms);
         });
+
+        roomsTabViewModel.getIsLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    progressBar.setVisibility(View.VISIBLE);
+                } else progressBar.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     @Override
@@ -93,6 +105,7 @@ public class RoomsTab extends Fragment {
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
+        progressBar = view.findViewById(R.id.progress_bar_rooms);
     }
 
     @Override

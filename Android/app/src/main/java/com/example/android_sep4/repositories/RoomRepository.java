@@ -83,6 +83,9 @@ public class RoomRepository {
         return roomsAPIClient.getRoomById(locationCode);
     }
 
+    public LiveData<Boolean> getIsLoading() {
+        return roomsAPIClient.getIsLoading();
+    }
 
     public void editRoomOptimal(int light, int co2, int temperature, int humidity, int position) {
        //to implement the edit room optional
