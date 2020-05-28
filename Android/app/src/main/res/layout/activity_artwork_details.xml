@@ -11,7 +11,7 @@
         android:id="@+id/artworkTypePopUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TYPE"
+        android:text="@string/type"
         android:textStyle="bold" />
 
     <ImageView
@@ -41,8 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name : Your dick"
-                android:gravity="left"
+                android:text="@string/nameArtwork"
+                android:gravity="start"
                 android:layout_margin="2sp"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
@@ -52,8 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Author: My Dick"
-                android:gravity="left"
+                android:text="@string/authorName"
+                android:gravity="start"
                 android:layout_margin="2sp"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2sp"
-            android:text="You dick aas fajf asfafa  a f  fdijb fdhbd df dig dfhg sd gsdhgsdjgis sidj g shdshg sdhgsdhg sdg s dghs dghsdguhsdjgs dgsdgi sdi gsdgh sdghsoj irut qp smmx vncxjb amzlxmapskorjeurioq asj f ds fsdjf sd jqokqpoiew qw ueq eq "
+            android:text="@string/loremIpsum"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="italic" />
@@ -93,7 +93,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="100" />
+            android:text="@string/measurementValue" />
 
         <ImageView
             android:layout_width="25sp"
@@ -107,7 +107,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="100" />
+            android:text="@string/measurementValue" />
 
         <ImageView
             android:layout_width="25sp"
@@ -121,7 +121,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="100" />
+            android:text="@string/measurementValue" />
 
         <ImageView
             android:layout_width="25sp"
@@ -135,7 +135,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="100" />
+            android:text="@string/measurementValue" />
 
     </LinearLayout>
 

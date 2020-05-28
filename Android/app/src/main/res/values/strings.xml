@@ -18,7 +18,13 @@
     <string name="toolbar_image_description">Museum</string>
     <string name="painting">Painting</string>
     <string name="drawing">Drawing</string>
+    <string name="nameArtwork">Name : Artwork name</string>
+    <string name="authorName">Author: Author name</string>
+    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sollicitudin mauris at arcu pellentesque, non aliquet lorem congue. Donec sit amet eros ullamcorper, luctus nulla ac, egestas lacus. Mauris sit amet iaculis nisi.  </string>
     <string name="ceramics">Ceramics</string>
+    <string name="measurementValue">100</string>
+    <string name="editRoomHeader">Edit Optimal Conditions For This Room</string>
+    <string name="newValue">New Value</string>
     <string name="edit_artwork">Edit artwork</string>
     <string name="storage">Storage</string>
     <string name="photography">Photo</string>
@@ -32,6 +38,16 @@
     <string name="room_storage">Storage</string>
     <string name="optimal_conditions_title">Set optimal conditions</string>
     <string name="temperature">Temperature</string>
+    <string name="temperatureEditRoom">Temperature : </string>
+    <string name="humidityEditRoom">Humidity : </string>
+    <string name="co2EditRoom">CO2 :</string>
+    <string name="lightEditRoom">Light :</string>
+    <string name="saveChanges">Save Changes</string>
+    <string name="artwork">Artwork</string>
+    <string name="room">Room</string>
+    <string name="backSlash">/</string>
+    <string name="login">Login</string>
+    <string name="sendVisitors">Send visitors</string>
     <string name="co2">CO2</string>
     <string name="light">Light</string>
     <string name="humidity">Humidity</string>
@@ -62,5 +78,10 @@
     <string name="hint_repeat_password">Repeat password *</string>
     <string name="visitors">Visitors</string>
     <string name="no_artwork">No artwork</string>
+    <string name="capacity">Capacity :</string>
+    <string name="descriptionRoom">Description :</string>
+    <string name="no_description">No description...</string>
+    <string name="edit">Edit</string>
+    <string name="artworks">Artworks</string>
 
 </resources>
