@@ -5,6 +5,7 @@ import android.net.Uri;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
@@ -28,6 +29,6 @@ public class EditArtworkViewModel extends AndroidViewModel {
     }
 
     public LiveData<Artwork> getArtwork() {
-        return artworksRepository.getArtworkById(id);
+       return artworksRepository.getArtworkById(id);
     }
 }

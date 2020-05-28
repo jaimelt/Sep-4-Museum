@@ -18,6 +18,7 @@ public class ArtworkDetailsViewModel extends AndroidViewModel {
     }
 
     public LiveData<Artwork> getArtworkById(int id) {
-        return  artworksRepository.getArtworkById(id);
+        return artworksRepository.getArtworkById(id);
     }
+
 }

@@ -125,7 +125,6 @@ public class ArtworksRepository {
     }
 
 
-
     //From Room Database
 //    public List<Artwork> getArtworks() {
 //        List<ArtworkWithMeasurements> artworkWithMeasurements = artworkDao.getAllArtworks();

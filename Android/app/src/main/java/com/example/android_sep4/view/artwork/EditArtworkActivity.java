@@ -14,12 +14,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.viewmodel.ViewModelFactoryInteger;
 import com.example.android_sep4.viewmodel.artwork.EditArtworkViewModel;
 
@@ -80,8 +78,11 @@ public class EditArtworkActivity extends AppCompatActivity {
 
     private void setViewModel() {
         editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication(), artworkID)).get(EditArtworkViewModel.class);
-
-        editArtworkViewModel.getArtwork().observe(this, this::setText);
+        editArtworkViewModel.getArtwork().observe(this, artwork -> {
+            editArtworkViewModel.getArtwork().removeObservers(this);
+            Toast.makeText(this, "" + artwork.getName(), Toast.LENGTH_SHORT).show();
+            setText(artwork);
+        });
 
     }
 

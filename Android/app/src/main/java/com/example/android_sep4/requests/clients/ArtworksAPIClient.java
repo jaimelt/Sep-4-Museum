@@ -70,6 +70,7 @@ public class ArtworksAPIClient {
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     artworkData.setValue(response.body());
+                    artworkData = new MutableLiveData<>();
                 }
             }
 
@@ -81,9 +82,6 @@ public class ArtworksAPIClient {
         return artworkData;
     }
 
-    public LiveData<Artwork> getArtworkByIdLive() {
-        return artworkData;
-    }
 
     public void editArtwork(Artwork editedArtwork) {
         int artworkID = editedArtwork.getId();
@@ -212,5 +210,4 @@ public class ArtworksAPIClient {
     public LiveData<Boolean> getIsLoading() {
         return isLoading;
     }
-
 }
