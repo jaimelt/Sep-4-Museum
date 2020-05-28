@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -83,7 +82,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
             artworksStorageViewModel.positionToId(viewHolder.getAdapterPosition());
-            adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+            adapter.deleteArtwork(viewHolder.getAdapterPosition());
             adapter.notifyDataSetChanged();
         }
 

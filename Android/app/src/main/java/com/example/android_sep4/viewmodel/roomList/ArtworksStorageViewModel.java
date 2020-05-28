@@ -48,7 +48,6 @@ public class ArtworksStorageViewModel extends AndroidViewModel {
         int id = 0;
         artworks.addAll(artworksLive.getValue());
         id = artworks.get(position).getId();
-        System.out.println(id + "viewmodel id");
         removeArtwork(id);
     }
 }

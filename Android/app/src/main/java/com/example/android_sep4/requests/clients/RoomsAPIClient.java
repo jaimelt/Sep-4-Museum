@@ -28,7 +28,6 @@ public class RoomsAPIClient {
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private Room room;
-    private Artwork artwork = new Artwork();
     private Application application;
 
 
