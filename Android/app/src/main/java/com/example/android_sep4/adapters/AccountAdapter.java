@@ -17,8 +17,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
     private ArrayList<User> users;
     private OnListItemClickListener mOnListItemClickListener;
 
-    public AccountAdapter(OnListItemClickListener listener)
-    {
+    public AccountAdapter(OnListItemClickListener listener) {
         this.mOnListItemClickListener = listener;
     }
 
@@ -48,10 +47,15 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
 
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public interface OnListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView email;
-        private  OnListItemClickListener onListItemClickListener;
-        public ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
+        private OnListItemClickListener onListItemClickListener;
+
+        ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
             super(itemView);
             email = itemView.findViewById(R.id.emailText);
             onListItemClickListener = listener;
@@ -62,10 +66,6 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
         public void onClick(View v) {
             onListItemClickListener.onListItemClick(getAdapterPosition());
         }
-    }
-
-    public interface OnListItemClickListener {
-        void onListItemClick(int clickedItemIndex);
     }
 
 }

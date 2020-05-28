@@ -26,10 +26,10 @@ import java.util.ArrayList;
 public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
+    final private OnListItemClickListener mOnListItemClickListener;
     private ArrayList<Artwork> artworks;
     private Context context;
     private Drawable deleteIcon;
-    final private OnListItemClickListener mOnListItemClickListener;
 
 
     public StorageAdapter(Context context, OnListItemClickListener listener) {
@@ -37,10 +37,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
         mOnListItemClickListener = listener;
     }
 
-    public interface OnListItemClickListener {
-        void onListItemClick(int clickedItemIndex);
-    }
-    public void deleteArtwork(int position){
+    public void deleteArtwork(int position) {
         artworks.remove(position);
     }
 
@@ -61,8 +58,6 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
         holder.artworkType.setText(artworks.get(position).getType());
         holder.artworkDescription.setText(artworks.get(position).getDescription());
         holder.artworkAuthor.setText(artworks.get(position).getAuthor());
-
-        //TODO:Setting image from local storage
     }
 
     @Override
@@ -74,15 +69,18 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
         }
     }
 
-
     public void setArtworks(ArrayList<Artwork> artworks) {
         this.artworks = artworks;
-        System.out.println(artworks.size()+"adaptor");
+        System.out.println(artworks.size() + "adaptor");
         notifyDataSetChanged();
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public interface OnListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
         TextView artworkName;
@@ -90,7 +88,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
         TextView artworkAuthor;
         TextView artworkType;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             artworkName = itemView.findViewById(R.id.artworkName);

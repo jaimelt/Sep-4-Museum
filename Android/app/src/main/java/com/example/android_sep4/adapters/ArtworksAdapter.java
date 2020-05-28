@@ -88,7 +88,6 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
         holder.artworkAuthor.setText(artworks.get(position).getAuthor());
 
         setColors(artworks.get(position).getType(), holder);
-        //TODO:Setting image from local storage
 
         holder.parentLayout.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), EditArtworkActivity.class);
@@ -96,7 +95,6 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
             intent.putExtra("position", artworks.get(position).getArtworkPosition());
             v.getContext().startActivity(intent);
         });
-
     }
 
     @Override
@@ -140,7 +138,7 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
         void onListItemClick(int clickedItemIndex);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
         TextView artworkName;
@@ -151,7 +149,7 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
         RelativeLayout parentLayout;
         OnListItemClickListener onListItemClickListener;
 
-        public ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
+        ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             artworkName = itemView.findViewById(R.id.artworkName);

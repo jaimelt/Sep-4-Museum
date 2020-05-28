@@ -1,6 +1,9 @@
 package com.example.android_sep4.repositories;
 
 import android.app.Application;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
@@ -11,7 +14,12 @@ import com.example.android_sep4.database.MuseumDb;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.requests.clients.ArtworksAPIClient;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 public class ArtworksRepository {
@@ -99,6 +107,22 @@ public class ArtworksRepository {
             }
         });
         return artworksInRoomData;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public String encoder(String imagePath) {
+        String base64Image = "";
+        File file = new File(imagePath);
+        try (FileInputStream imageInFile = new FileInputStream(file)) {
+            byte[] imageData = new byte[(int) file.length()];
+            imageInFile.read(imageData);
+            base64Image = Base64.getEncoder().encodeToString(imageData);
+        } catch (FileNotFoundException e) {
+            System.out.println("Image not found" + e);
+        } catch (IOException ioe) {
+            System.out.println("Exception while reading the Image " + ioe);
+        }
+        return base64Image;
     }
 
 

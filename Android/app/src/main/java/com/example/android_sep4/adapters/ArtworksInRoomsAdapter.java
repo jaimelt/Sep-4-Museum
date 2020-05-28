@@ -60,7 +60,7 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
 
         ImageView imageView;
@@ -71,7 +71,7 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
 
         RelativeLayout parentLayout;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             artworkName = itemView.findViewById(R.id.artworkName);

@@ -98,7 +98,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView lightValue;
         TextView temperatureValue;
@@ -117,7 +117,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         RelativeLayout parentLayoutRoom;
         ConstraintLayout expandableLayout;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             description = itemView.findViewById(R.id.descriptionContent);
             co2Value = itemView.findViewById(R.id.co2TextViewId);
@@ -131,7 +131,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             parentLayoutRoom = itemView.findViewById(R.id.parent_layoutRoom);
             expandableLayout = itemView.findViewById(R.id.expandableLayout);
             viewRoomArtworks = itemView.findViewById(R.id.showRoomArtworks);
-            //Optimal conditions
             optimalCo2 = itemView.findViewById(R.id.co2OptimalTextViewId);
             optimalHumidity = itemView.findViewById(R.id.humidityOptimalTextViewID);
             optimalLight = itemView.findViewById(R.id.lightOptimalTextViewId);
