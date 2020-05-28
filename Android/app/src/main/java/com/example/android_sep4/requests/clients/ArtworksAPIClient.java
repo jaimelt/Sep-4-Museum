@@ -174,6 +174,8 @@ public class ArtworksAPIClient {
                 Log.i(TAG, "onResponse: artworks in room");
                 if (response.body() != null && response.isSuccessful()) {
                     artworksInRoomData.setValue(response.body().getArtworks());
+                    Toast.makeText(application, "" + response.body().getArtworks().size(), Toast.LENGTH_SHORT).show();
+//                    artworksInRoomData = new MutableLiveData<>();
                     isLoading.setValue(false);
                 }
             }

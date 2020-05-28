@@ -114,8 +114,6 @@ public class MuseumTab extends Fragment {
         a1.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), RoomA1Activity.class);
             startActivity(intent);
-
-            Toast.makeText(getActivity(), "Room A1 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -123,8 +121,6 @@ public class MuseumTab extends Fragment {
         a2.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), RoomA2Activity.class);
             startActivity(intent);
-
-            Toast.makeText(getActivity(), "Room A2 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -132,8 +128,6 @@ public class MuseumTab extends Fragment {
         a3.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), RoomA3Activity.class);
             startActivity(intent);
-
-            Toast.makeText(getActivity(), "Room A3 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -141,8 +135,6 @@ public class MuseumTab extends Fragment {
         b1.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), RoomB1Activity.class);
             startActivity(intent);
-
-            Toast.makeText(getActivity(), "Room B1 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -150,8 +142,6 @@ public class MuseumTab extends Fragment {
         b2.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), RoomB2Activity.class);
             startActivity(intent);
-
-            Toast.makeText(getActivity(), "Room B2 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -159,8 +149,6 @@ public class MuseumTab extends Fragment {
         b3.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), RoomB3Activity.class);
             startActivity(intent);
-
-            Toast.makeText(getActivity(), "Room B3 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -169,7 +157,6 @@ public class MuseumTab extends Fragment {
             Intent intent = new Intent(getActivity(), RoomB4Activity.class);
             startActivity(intent);
 
-            Toast.makeText(getActivity(), "Room B4 opened", Toast.LENGTH_SHORT).show();
         });
     }
 
