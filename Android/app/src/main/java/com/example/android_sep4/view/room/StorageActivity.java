@@ -83,7 +83,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
             artworksStorageViewModel.positionToId(viewHolder.getAdapterPosition());
-
+            adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
             adapter.notifyDataSetChanged();
         }
 
