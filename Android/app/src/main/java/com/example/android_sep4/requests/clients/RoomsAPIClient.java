@@ -28,7 +28,6 @@ public class RoomsAPIClient {
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
-    private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private Room room;
     private Artwork artwork = new Artwork();
     private Application application;
@@ -81,6 +80,8 @@ public class RoomsAPIClient {
             @Override
             public void onFailure(Call<Artworks> call, Throwable t) {
                 //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
+                ArrayList<Artwork> artworkArrayList = new ArrayList<>();
+                artworksInRoomData.setValue(artworkArrayList);
             }
         });
         return artworksInRoomData;

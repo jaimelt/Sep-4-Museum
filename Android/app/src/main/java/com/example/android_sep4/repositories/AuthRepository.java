@@ -65,4 +65,12 @@ public class AuthRepository {
     public LiveData<ArrayList<User>> getUsers() {
         return authAPIClient.getUsersLive();
     }
+
+    public LiveData<Boolean> getIsLoading() {
+        return authAPIClient.getIsLoading();
+    }
+
+    public LiveData<Boolean> getValidResponse() {
+        return authAPIClient.getValidResponse();
+    }
 }

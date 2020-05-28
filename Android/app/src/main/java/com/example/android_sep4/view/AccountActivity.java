@@ -2,6 +2,8 @@ package com.example.android_sep4.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.AccountAdapter;
@@ -22,6 +26,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class AccountActivity extends AppCompatActivity {
     private AccountViewModel viewModel;
+    private AccountAdapter accountAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +36,30 @@ public class AccountActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(AccountViewModel.class);
         setToolbar();
         setRecyclerView();
+        setProgressBar();
+    }
+
+    private void setProgressBar() {
+        ProgressBar progressBar = findViewById(R.id.progress_bar_artworks);
+        viewModel.getIsLoading().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    progressBar.setVisibility(View.VISIBLE);
+                } else progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void setRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        AccountAdapter accountAdapter = new AccountAdapter();
+        accountAdapter = new AccountAdapter();
         recyclerView.setAdapter(accountAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
-        viewModel.getUsers().observe(this, accountAdapter::setUsers);
+        viewModel.getUsers().observe(this, users -> {
+            accountAdapter.setUsers(users);
+        });
     }
 
     private void setToolbar() {
@@ -57,6 +77,21 @@ public class AccountActivity extends AppCompatActivity {
         EditText repeatPasswordField = dialogView.findViewById(R.id.repeatPasswordField);
         Button createAccountBtn = dialogView.findViewById(R.id.createAccountButton);
         createDialog(dialogView, emailField, passwordField, repeatPasswordField, createAccountBtn);
+
+        LiveData<Boolean> validResponse = viewModel.getValidResponse();
+        validResponse.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean)
+                {
+                    accountAdapter.setUsers(viewModel.getUsers().getValue());
+                }
+                else {
+                    Toast.makeText(AccountActivity.this, "Error occurred with registering a user", Toast.LENGTH_SHORT).show();
+                }
+                validResponse.removeObserver(this);
+            }
+        });
     }
 
     private void createDialog(View dialogView, EditText emailField, EditText passwordField, EditText repeatPasswordField, Button createAccountBtn) {
