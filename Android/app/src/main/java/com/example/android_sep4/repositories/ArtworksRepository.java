@@ -33,6 +33,7 @@ public class ArtworksRepository {
         artworks = artworkDao.getAllLiveArtworks();
         artworksAPIClient = new ArtworksAPIClient(application);
         this.application = application;
+
     }
 
     public static synchronized ArtworksRepository getInstance(Application application) {
@@ -47,7 +48,7 @@ public class ArtworksRepository {
         artworksAPIClient.getArtworksData().observeForever(new Observer<ArrayList<Artwork>>() {
             @Override
             public void onChanged(ArrayList<Artwork> artworks) {
-                if(artworks.size() == 0)
+                if(artworks.isEmpty())
                 {
                     //ROOM DATABASE
                 }

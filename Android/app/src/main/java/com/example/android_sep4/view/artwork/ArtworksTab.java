@@ -68,6 +68,7 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
 
         artworksTabViewModel.getArtworks().observe(getViewLifecycleOwner(), artworks -> {
             adapter.setArtworks(artworks);
+
         });
 
         artworksTabViewModel.getIsLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
