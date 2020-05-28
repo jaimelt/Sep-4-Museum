@@ -28,6 +28,7 @@ public class ArtworksRepository {
     private ArtworksAPIClient artworksAPIClient;
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Artwork>> artworksInStorage = new MutableLiveData<>();
     private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
     private ArtworkDao artworkDao;
     private Artwork artwork = new Artwork();
@@ -100,6 +101,8 @@ public class ArtworksRepository {
             @Override
             public void onChanged(ArrayList<Artwork> artworks) {
                 if (artworks.isEmpty()) {
+                    artworks = new ArrayList<>();
+                    artworksInRoomData.setValue(artworks);
                     //ROOM DATABASE
                 } else {
                     artworksInRoomData.setValue(artworks);
@@ -108,6 +111,21 @@ public class ArtworksRepository {
         });
         return artworksInRoomData;
     }
+
+    public LiveData<ArrayList<Artwork>> getArtworksFromStorage(String roomCode) {
+        artworksAPIClient.getArtworksFromStorage(roomCode).observeForever(new Observer<ArrayList<Artwork>>() {
+            @Override
+            public void onChanged(ArrayList<Artwork> artworks) {
+                if (artworks.isEmpty()) {
+                    //ROOM DATABASE
+                } else {
+                    artworksInStorage.setValue(artworks);
+                }
+            }
+        });
+        return artworksInStorage;
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String encoder(String imagePath) {

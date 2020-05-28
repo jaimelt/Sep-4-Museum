@@ -39,7 +39,10 @@ public class RoomA2Activity extends AppCompatActivity {
     private void setViewModel() {
         roomA2ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA2ViewModel.class);
 
-        roomA2ViewModel.getArtworksFromRoom(ROOM_CODE).observe(this, artworks -> artworksInRoom.addAll(artworks));
+        roomA2ViewModel.getArtworksFromRoom(ROOM_CODE).observe(this, artworks -> {
+            roomA2ViewModel.getArtworksFromRoom(ROOM_CODE).removeObservers(this);
+            artworksInRoom.addAll(artworks);
+        });
 
         for (Artwork artwork : artworksInRoom) {
             if (artwork != null) {
@@ -79,7 +82,7 @@ public class RoomA2Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(RoomA2Activity.this, ArtworkDetails.class);
-                    intent.putExtra("Artwork", artworksInRoom.get(textViews.indexOf(textView)));
+                    intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
                     startActivity(intent);
 
                     Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();

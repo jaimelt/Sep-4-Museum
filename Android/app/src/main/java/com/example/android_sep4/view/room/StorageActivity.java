@@ -26,14 +26,13 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
     private ArtworksStorageViewModel artworksStorageViewModel;
     private StorageAdapter adapter;
     private Drawable deleteIcon;
-    private String locationCode;
+    private final static String LOCATION_CODE = "storage";
     private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
-        locationCode = "Storage";
         progressBar = findViewById(R.id.progress_bar_storage);
         deleteIcon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_delete);
         setViewModel();
@@ -42,7 +41,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
     private void setViewModel() {
         artworksStorageViewModel = new ViewModelProvider(this).get(ArtworksStorageViewModel.class);
         initRecycleView();
-        artworksStorageViewModel.getArtworksFromRoom(locationCode).observe(this, artworks -> {
+        artworksStorageViewModel.getArtworksFromStorage(LOCATION_CODE).observe(this, artworks -> {
             adapter.setArtworks(artworks);
             adapter.notifyDataSetChanged();
         });
@@ -101,4 +100,18 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         }
     };
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        artworksStorageViewModel.getArtworksFromStorage(LOCATION_CODE).removeObservers(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        artworksStorageViewModel.getArtworksFromStorage(LOCATION_CODE).observe(this, artworks -> {
+            adapter.setArtworks(artworks);
+            adapter.notifyDataSetChanged();
+        });
+    }
 }

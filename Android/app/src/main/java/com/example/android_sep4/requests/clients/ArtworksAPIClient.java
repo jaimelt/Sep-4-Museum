@@ -25,6 +25,7 @@ public class ArtworksAPIClient {
     private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Artwork>> artworksInStorage = new MutableLiveData<>();
     private Application application;
 
     public ArtworksAPIClient(Application application) {
@@ -65,6 +66,7 @@ public class ArtworksAPIClient {
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
         Call<Artwork> call = endpoints.getArtworkById(id);
 
+        System.out.println("API CLIENT ID " + id);
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
@@ -174,7 +176,7 @@ public class ArtworksAPIClient {
                 Log.i(TAG, "onResponse: artworks in room");
                 if (response.body() != null && response.isSuccessful()) {
                     artworksInRoomData.setValue(response.body().getArtworks());
-//                    artworksInRoomData = new MutableLiveData<>();
+                    artworksInRoomData = new MutableLiveData<>();
                     isLoading.setValue(false);
                     Toast.makeText(application, "ROOMS ARTWORKS" + response.body().getArtworks().size() + " " + roomCode, Toast.LENGTH_SHORT).show();
                 }
@@ -188,6 +190,34 @@ public class ArtworksAPIClient {
             }
         });
         return artworksInRoomData;
+    }
+
+    public LiveData<ArrayList<Artwork>> getArtworksFromStorage(String roomCode) {
+        isLoading.setValue(true);
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
+
+        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
+
+        call.enqueue(new Callback<Artworks>() {
+            @Override
+            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+                Log.i(TAG, "onResponse: artworks in room");
+                if (response.body() != null && response.isSuccessful()) {
+                    artworksInStorage.setValue(response.body().getArtworks());
+                    artworksInStorage = new MutableLiveData<>();
+                    isLoading.setValue(false);
+                    Toast.makeText(application, "ROOMS ARTWORKS" + response.body().getArtworks().size() + " " + roomCode, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Artworks> call, Throwable t) {
+                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
+                ArrayList<Artwork> artworkArrayList = new ArrayList<>();
+                artworksInStorage.setValue(artworkArrayList);
+            }
+        });
+        return artworksInStorage;
     }
 
     public void deleteArtwork(int id) {

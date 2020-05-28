@@ -30,21 +30,26 @@ public class RoomA1Activity extends AppCompatActivity {
     private TextView place_holder_1, place_holder_2, place_holder_3,
             place_holder_4, place_holder_5, place_holder_6,
             place_holder_7, place_holder_8, place_holder_9;
+    private int artworkID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_a1);
-        setViewModel();
         findViews();
         setTextViews();
+        setViewModel();
         viewArtworks();
     }
 
     private void setViewModel() {
         roomA1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA1ViewModel.class);
 
-        roomA1ViewModel.getArtworksFromRoom(ROOM_CODE).observe(this, artworks -> artworksInRoom.addAll(artworks));
+        roomA1ViewModel.getArtworksFromRoom(ROOM_CODE).observe(this, artworks -> {
+            roomA1ViewModel.getArtworksFromRoom(ROOM_CODE).removeObservers(this);
+            artworksInRoom.addAll(artworks);
+        });
+
 
         for (Artwork artwork : artworksInRoom) {
             if (artwork != null) {
@@ -83,7 +88,7 @@ public class RoomA1Activity extends AppCompatActivity {
         for (TextView textView : textViews) {
                 textView.setOnClickListener(view -> {
                     Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
-                    intent.putExtra("Artwork", artworksInRoom.get(textViews.indexOf(textView)));
+                    intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
                     startActivity(intent);
 
                     Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();

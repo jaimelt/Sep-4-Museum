@@ -24,9 +24,9 @@ public class ArtworksStorageViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksFromRoom(String id) {
+    public LiveData<ArrayList<Artwork>> getArtworksFromStorage(String id) {
 
-        artworksRepository.getArtworksByRoomId(id).observeForever(new Observer<ArrayList<Artwork>>() {
+        artworksRepository.getArtworksFromStorage(id).observeForever(new Observer<ArrayList<Artwork>>() {
             @Override
             public void onChanged(ArrayList<Artwork> artworks) {
                     artworksLive.setValue(artworks);
