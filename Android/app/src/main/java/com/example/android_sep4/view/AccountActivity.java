@@ -81,21 +81,6 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
         EditText repeatPasswordField = dialogView.findViewById(R.id.repeatPasswordField);
         Button createAccountBtn = dialogView.findViewById(R.id.createAccountButton);
         openCreateDialog(dialogView, emailField, passwordField, repeatPasswordField, createAccountBtn);
-
-        LiveData<Boolean> validResponse = viewModel.getValidResponse();
-        validResponse.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if(aBoolean)
-                {
-                    accountAdapter.setUsers(viewModel.getUsers().getValue());
-                }
-                else {
-                    Toast.makeText(AccountActivity.this, "Error occurred with registering a user", Toast.LENGTH_SHORT).show();
-                }
-                validResponse.removeObserver(this);
-            }
-        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)

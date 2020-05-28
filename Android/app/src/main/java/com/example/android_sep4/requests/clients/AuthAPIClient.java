@@ -27,7 +27,6 @@ public class AuthAPIClient {
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
     private MutableLiveData<ArrayList<User>> usersData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
-    private MutableLiveData<Boolean> validResponse = new MutableLiveData<>();
     private ArrayList<User> usersDataSet = new ArrayList<>();
     private Boolean valid = false;
     private User user = new User();
@@ -90,12 +89,12 @@ public class AuthAPIClient {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                validResponse.setValue(true);
+                getUsers();
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                validResponse.setValue(false);
+                 getUsers();
             }
         });
     }
@@ -166,10 +165,6 @@ public class AuthAPIClient {
 
     public LiveData<Boolean> getIsLoading() {
         return isLoading;
-    }
-
-    public LiveData<Boolean> getValidResponse() {
-        return validResponse;
     }
 
     public void deleteUserByIndex(int index) {

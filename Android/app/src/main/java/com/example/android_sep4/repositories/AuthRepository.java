@@ -69,8 +69,4 @@ public class AuthRepository {
     public LiveData<Boolean> getIsLoading() {
         return authAPIClient.getIsLoading();
     }
-
-    public LiveData<Boolean> getValidResponse() {
-        return authAPIClient.getValidResponse();
-    }
 }
