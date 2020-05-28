@@ -43,7 +43,6 @@ public class ArtworksAPIClient {
                 Log.i(TAG, "onResponse: success!");
                 Artworks apiArtworks = response.body();
                 if (apiArtworks != null && response.body() != null) {
-                    Toast.makeText(application, "Artworks loaded successfully", Toast.LENGTH_SHORT).show();
                     artworksData.setValue(response.body().getArtworks());
                 }
                 isLoading.setValue(false);
@@ -70,10 +69,6 @@ public class ArtworksAPIClient {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
                 if (response.isSuccessful() && response.body() != null) {
-//                    artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), apiArtwork.getComment(), apiArtwork.getImage(), apiArtwork.getType(),
-//                            apiArtwork.getAuthor(), apiArtwork.getRoomCode(), apiArtwork.getArtworkPosition(), apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-//                            apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-//                    System.out.println("artwork id in response " + artwork.getId());
                     artworkData.setValue(response.body());
                 }
             }
@@ -190,4 +185,5 @@ public class ArtworksAPIClient {
     public LiveData<Boolean> getIsLoading() {
         return isLoading;
     }
+
 }
