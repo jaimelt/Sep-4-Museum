@@ -1,7 +1,11 @@
 package com.example.android_sep4.view.museum.rooms;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,11 +83,11 @@ public class RoomA1Activity extends AppCompatActivity {
     public void viewArtworks() {
         for (final TextView textView : textViews) {
             textView.setOnClickListener(view -> {
-                Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
-                intent.putExtra("Artwork", artworksInRoom.get(textViews.indexOf(textView)));
-                startActivity(intent);
+                    Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
+                    intent.putExtra("Artwork", artworksInRoom.get(textViews.indexOf(textView)));
+                    startActivity(intent);
 
-                Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
             });
         }
     }
