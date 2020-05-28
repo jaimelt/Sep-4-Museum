@@ -40,7 +40,9 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
     public interface OnListItemClickListener {
         void onListItemClick(int clickedItemIndex);
     }
-
+    public void deleteArtwork(int position){
+        artworks.remove(position);
+    }
 
     @NonNull
     @Override

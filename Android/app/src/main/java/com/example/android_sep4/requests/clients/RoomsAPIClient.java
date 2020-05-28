@@ -25,7 +25,6 @@ import static android.content.ContentValues.TAG;
 
 public class RoomsAPIClient {
     private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
-    private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private Room room;
@@ -61,31 +60,7 @@ public class RoomsAPIClient {
         return roomsData;
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
-        isLoading.setValue(true);
-        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
-
-        call.enqueue(new Callback<Artworks>() {
-            @Override
-            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
-                Log.i(TAG, "onResponse: artworks in room");
-                if (response.body() != null && response.isSuccessful()) {
-                    artworksInRoomData.setValue(response.body().getArtworks());
-                    isLoading.setValue(false);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Artworks> call, Throwable t) {
-                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
-                ArrayList<Artwork> artworkArrayList = new ArrayList<>();
-                artworksInRoomData.setValue(artworkArrayList);
-            }
-        });
-        return artworksInRoomData;
-    }
 
     public LiveData<Room> getRoomById(String id) {
         RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();

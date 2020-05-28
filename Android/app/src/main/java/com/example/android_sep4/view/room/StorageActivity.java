@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,9 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.StorageAdapter;
-import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.viewmodel.roomList.ArtworksStorageViewModel;
-import com.google.android.material.snackbar.Snackbar;
 
 public class StorageActivity extends AppCompatActivity implements StorageAdapter.OnListItemClickListener {
     private static final String TAG = "StorageActivity";
@@ -43,7 +42,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
 
     private void setViewModel() {
         artworksStorageViewModel = new ViewModelProvider(this).get(ArtworksStorageViewModel.class);
-
+        initRecycleView();
         artworksStorageViewModel.getArtworksFromRoom(locationCode).observe(this, artworks -> {
             adapter.setArtworks(artworks);
             adapter.notifyDataSetChanged();
@@ -58,7 +57,6 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
             }
         });
 
-        initRecycleView();
     }
 
     private void initRecycleView() {
@@ -85,7 +83,8 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
             artworksStorageViewModel.positionToId(viewHolder.getAdapterPosition());
-            adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+
+            adapter.notifyDataSetChanged();
         }
 
         @Override

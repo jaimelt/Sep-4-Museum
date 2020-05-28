@@ -12,15 +12,16 @@ import com.example.android_sep4.repositories.RoomRepository;
 import java.util.ArrayList;
 
 public class RoomB4ViewModel extends AndroidViewModel {
-    private RoomRepository roomRepository;
+
+    private ArtworksRepository artworksRepository;
 
     public RoomB4ViewModel(Application application)  {
         super(application);
-        roomRepository = RoomRepository.getInstance(application);
+        artworksRepository = ArtworksRepository.getInstance(application);
     }
 
     public LiveData<ArrayList<Artwork>> getArtworksFromRoom(String roomCode) {
-        return roomRepository.getArtworksByRoomId(roomCode);
+        return artworksRepository.getArtworksByRoomId(roomCode);
     }
 }
 

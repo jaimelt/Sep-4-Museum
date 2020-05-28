@@ -24,6 +24,7 @@ public class ArtworksAPIClient {
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
     private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private Application application;
 
     public ArtworksAPIClient(Application application) {
@@ -163,22 +164,50 @@ public class ArtworksAPIClient {
         });
     }
 
-    public void deleteArtwork(int id) {
+    public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
+        isLoading.setValue(true);
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
+        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
+
+        call.enqueue(new Callback<Artworks>() {
+            @Override
+            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+                Log.i(TAG, "onResponse: artworks in room");
+                if (response.body() != null && response.isSuccessful()) {
+                    artworksInRoomData.setValue(response.body().getArtworks());
+                    isLoading.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Artworks> call, Throwable t) {
+                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
+                ArrayList<Artwork> artworkArrayList = new ArrayList<>();
+                artworksInRoomData.setValue(artworkArrayList);
+            }
+        });
+        return artworksInRoomData;
+    }
+
+    public void deleteArtwork(int id) {
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
         Call<Artwork> call = endpoints.deleteArtwork(id);
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
                 System.out.println("SUCCESSFUL DELETE!");
+                getArtworksByRoomId("Storage");
             }
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
                 System.out.println("DELETE FAILED!");
+                getArtworksByRoomId("Storage");
             }
         });
     }
+
 
     public LiveData<Boolean> getIsLoading() {
         return isLoading;

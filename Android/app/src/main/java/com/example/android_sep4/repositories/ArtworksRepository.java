@@ -18,6 +18,7 @@ public class ArtworksRepository {
     private static ArtworksRepository instance;
     private ArtworksAPIClient artworksAPIClient;
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
     private ArtworkDao artworkDao;
@@ -48,11 +49,9 @@ public class ArtworksRepository {
         artworksAPIClient.getArtworksData().observeForever(new Observer<ArrayList<Artwork>>() {
             @Override
             public void onChanged(ArrayList<Artwork> artworks) {
-                if(artworks.isEmpty())
-                {
+                if (artworks.isEmpty()) {
                     //ROOM DATABASE
-                }
-                else {
+                } else {
                     artworksData.setValue(artworks);
                 }
             }
@@ -87,6 +86,22 @@ public class ArtworksRepository {
     public LiveData<Boolean> getIsLoading() {
         return artworksAPIClient.getIsLoading();
     }
+
+    public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
+        artworksAPIClient.getArtworksByRoomId(roomCode).observeForever(new Observer<ArrayList<Artwork>>() {
+            @Override
+            public void onChanged(ArrayList<Artwork> artworks) {
+                if (artworks.isEmpty()) {
+                    //ROOM DATABASE
+                } else {
+                    artworksInRoomData.setValue(artworks);
+                }
+            }
+        });
+        return artworksInRoomData;
+    }
+
+
 
     //From Room Database
 //    public List<Artwork> getArtworks() {

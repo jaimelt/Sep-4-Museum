@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.repositories.ArtworksRepository;
@@ -14,18 +16,22 @@ import java.util.ArrayList;
 
 public class ArtworksStorageViewModel extends AndroidViewModel {
     private ArtworksRepository artworksRepository;
-    private RoomRepository roomRepository;
     private ArrayList<Artwork> artworks = new ArrayList<>();
-    private LiveData<ArrayList<Artwork>> artworksLive;
+    private MutableLiveData<ArrayList<Artwork>> artworksLive = new MutableLiveData<>();
     public ArtworksStorageViewModel(Application application) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
-        roomRepository = RoomRepository.getInstance(application);
 
     }
 
     public LiveData<ArrayList<Artwork>> getArtworksFromRoom(String id) {
-        artworksLive = roomRepository.getArtworksByRoomId(id);
+
+        artworksRepository.getArtworksByRoomId(id).observeForever(new Observer<ArrayList<Artwork>>() {
+            @Override
+            public void onChanged(ArrayList<Artwork> artworks) {
+                    artworksLive.setValue(artworks);
+            }
+        });
         return artworksLive;
     }
 
@@ -34,7 +40,7 @@ public class ArtworksStorageViewModel extends AndroidViewModel {
     }
 
     public LiveData<Boolean> getIsLoading() {
-        return roomRepository.getIsLoading();
+        return artworksRepository.getIsLoading();
     }
 
     public void positionToId(int position) {
