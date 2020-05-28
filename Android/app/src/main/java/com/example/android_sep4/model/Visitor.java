@@ -1,28 +1,25 @@
 package com.example.android_sep4.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.time.LocalDate;
 import java.util.Date;
 
 public class Visitor {
-    @SerializedName("FirstNameName")
     private String firstName;
-    @SerializedName("LastName")
     private String lastName;
-    @SerializedName("Gender")
     private String gender;
-    @SerializedName("Nationality")
     private String nationality;
-    @SerializedName("Age")
     private int age;
+    private String reasonToVisit;
+    private LocalDate visitingDate;
 
-    public Visitor(String firstName, String lastName, String gender, String nationality, int age) {
+    public Visitor(String firstName, String lastName, String gender, String nationality, int age, String reasonToVisit, LocalDate visitingDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.nationality = nationality;
         this.age = age;
+        this.reasonToVisit = reasonToVisit;
+        this.visitingDate = visitingDate;
     }
 
     public String getFirstName() {
@@ -65,6 +62,22 @@ public class Visitor {
         this.age = age;
     }
 
+    public String getReasonToVisit() {
+        return reasonToVisit;
+    }
+
+    public void setReasonToVisit(String reasonToVisit) {
+        this.reasonToVisit = reasonToVisit;
+    }
+
+    public LocalDate getVisitingDate() {
+        return visitingDate;
+    }
+
+    public void setVisitingDate(LocalDate visitingDate) {
+        this.visitingDate = visitingDate;
+    }
+
     @Override
     public String toString() {
         return "Visitor{" +
@@ -73,7 +86,8 @@ public class Visitor {
                 ", gender='" + gender + '\'' +
                 ", nationality='" + nationality + '\'' +
                 ", age=" + age +
-                 + '\'' +
+                ", reasonToVisit='" + reasonToVisit + '\'' +
+                ", visitingDate=" + visitingDate +
                 '}';
     }
 }

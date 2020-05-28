@@ -6,10 +6,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,12 +29,14 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
     private StorageAdapter adapter;
     private Drawable deleteIcon;
     private String locationCode;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
         locationCode = "Storage";
+        progressBar = findViewById(R.id.progress_bar_storage);
         deleteIcon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_delete);
         setViewModel();
     }
@@ -44,6 +48,16 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
             adapter.setArtworks(artworks);
             adapter.notifyDataSetChanged();
         });
+
+        artworksStorageViewModel.getIsLoading().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(aBoolean) {
+                    progressBar.setVisibility(View.VISIBLE);
+                } else progressBar.setVisibility(View.GONE);
+            }
+        });
+
         initRecycleView();
     }
 
