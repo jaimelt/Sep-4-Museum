@@ -52,4 +52,8 @@ public class AccountViewModel extends AndroidViewModel {
     public LiveData<Boolean> getValidResponse() {
         return authRepository.getValidResponse();
     }
+
+    public void deleteUser(int index) {
+        authRepository.deleteUser(index);
+    }
 }

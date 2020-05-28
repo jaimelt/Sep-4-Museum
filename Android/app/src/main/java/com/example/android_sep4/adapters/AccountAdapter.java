@@ -15,17 +15,18 @@ import java.util.ArrayList;
 
 public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHolder> {
     private ArrayList<User> users;
+    private OnListItemClickListener mOnListItemClickListener;
 
-    public AccountAdapter()
+    public AccountAdapter(OnListItemClickListener listener)
     {
-
+        this.mOnListItemClickListener = listener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_account, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, mOnListItemClickListener);
     }
 
     @Override
@@ -47,12 +48,24 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
 
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView email;
-        public ViewHolder(@NonNull View itemView) {
+        private  OnListItemClickListener onListItemClickListener;
+        public ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
             super(itemView);
             email = itemView.findViewById(R.id.emailText);
+            onListItemClickListener = listener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onListItemClickListener.onListItemClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
     }
 
 }

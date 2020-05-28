@@ -100,10 +100,10 @@ public class AuthAPIClient {
         });
     }
 
-    public void deleteUser(User user) {
+    public void deleteUser(String email) {
         AuthEndpoints endpoints = ServiceGenerator.getAuthEndpoints();
 
-        Call<User> call = endpoints.deleteUser(user);
+        Call<User> call = endpoints.deleteUser(email);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
@@ -170,5 +170,14 @@ public class AuthAPIClient {
 
     public LiveData<Boolean> getValidResponse() {
         return validResponse;
+    }
+
+    public void deleteUserByIndex(int index) {
+        User user = new User();
+        if(usersData.getValue() != null)
+        {
+             user = usersData.getValue().get(index);
+        }
+        deleteUser(user.getEmail());
     }
 }

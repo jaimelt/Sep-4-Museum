@@ -1,5 +1,6 @@
 package com.example.android_sep4.view;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.LiveData;
@@ -9,8 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +27,7 @@ import com.example.android_sep4.adapters.AccountAdapter;
 import com.example.android_sep4.viewmodel.AccountViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class AccountActivity extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity implements AccountAdapter.OnListItemClickListener {
     private AccountViewModel viewModel;
     private AccountAdapter accountAdapter;
 
@@ -53,7 +56,7 @@ public class AccountActivity extends AppCompatActivity {
 
     private void setRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        accountAdapter = new AccountAdapter();
+        accountAdapter = new AccountAdapter(this);
         recyclerView.setAdapter(accountAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
@@ -69,6 +72,7 @@ public class AccountActivity extends AppCompatActivity {
         setTitle("Manage user accounts");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
     public void onRegisterAccountClicked(View view) {
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_register_account, null);
@@ -76,7 +80,7 @@ public class AccountActivity extends AppCompatActivity {
         EditText passwordField = dialogView.findViewById(R.id.passwordField);
         EditText repeatPasswordField = dialogView.findViewById(R.id.repeatPasswordField);
         Button createAccountBtn = dialogView.findViewById(R.id.createAccountButton);
-        createDialog(dialogView, emailField, passwordField, repeatPasswordField, createAccountBtn);
+        openCreateDialog(dialogView, emailField, passwordField, repeatPasswordField, createAccountBtn);
 
         LiveData<Boolean> validResponse = viewModel.getValidResponse();
         validResponse.observe(this, new Observer<Boolean>() {
@@ -94,9 +98,10 @@ public class AccountActivity extends AppCompatActivity {
         });
     }
 
-    private void createDialog(View dialogView, EditText emailField, EditText passwordField, EditText repeatPasswordField, Button createAccountBtn) {
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+    private void openCreateDialog(View dialogView, EditText emailField, EditText passwordField, EditText repeatPasswordField, Button createAccountBtn) {
         //Creating AlertDialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert);
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
         createAccountBtn.setOnClickListener(v -> {
@@ -120,7 +125,10 @@ public class AccountActivity extends AppCompatActivity {
                     repeatPasswordLayout.setError("Passwords do not match");
             }
         });
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        if(dialog.getWindow() != null)
+        {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         dialog.show();
     }
 
@@ -130,5 +138,32 @@ public class AccountActivity extends AppCompatActivity {
         onBackPressed();
         finish();
         return true;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+    @Override
+    public void onListItemClick(int clickedItemIndex) {
+        openDeleteDialog(clickedItemIndex);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+    private void openDeleteDialog(int index)
+    {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert);
+        alertDialog.setTitle("Exit");
+        alertDialog.setMessage("Are you sure about deleting this user account?");
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                viewModel.deleteUser(index);
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 }

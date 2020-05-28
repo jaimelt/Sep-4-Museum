@@ -11,6 +11,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface AuthEndpoints {
     @GET("/account/users")
@@ -25,8 +26,8 @@ public interface AuthEndpoints {
     @PUT("/account")
     Call<User> updateUser(@Body User user);
 
-    @DELETE("/account")
-    Call<User> deleteUser(@Body User user);
+    @DELETE("/account/{email}")
+    Call<User> deleteUser(@Path("email") String email);
 
 
 
