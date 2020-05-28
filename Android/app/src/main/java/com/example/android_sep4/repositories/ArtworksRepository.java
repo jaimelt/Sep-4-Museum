@@ -61,8 +61,7 @@ public class ArtworksRepository {
     }
 
     public LiveData<Artwork> getArtworkById(int id) {
-        artworksAPIClient.getArtworkById(id);
-        return artworksAPIClient.getArtworkByIdLive();
+        return artworksAPIClient.getArtworkById(id);
     }
 
     public void editArtwork(Artwork editedArtwork) {

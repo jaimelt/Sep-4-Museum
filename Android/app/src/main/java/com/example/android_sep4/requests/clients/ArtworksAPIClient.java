@@ -60,9 +60,8 @@ public class ArtworksAPIClient {
     }
 
 
-    public void getArtworkById(int id) {
+    public LiveData<Artwork> getArtworkById(int id) {
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
-        System.out.println("ARTWORK ID IN THE APICLIENT IS: " + id);
         Call<Artwork> call = endpoints.getArtworkById(id);
 
         call.enqueue(new Callback<Artwork>() {
@@ -78,11 +77,10 @@ public class ArtworksAPIClient {
                 //CALL DATABASE TO SET THE ARTWORK BY ID
             }
         });
-
+        return artworkData;
     }
 
-    public LiveData<Artwork> getArtworkByIdLive()
-    {
+    public LiveData<Artwork> getArtworkByIdLive() {
         return artworkData;
     }
 
