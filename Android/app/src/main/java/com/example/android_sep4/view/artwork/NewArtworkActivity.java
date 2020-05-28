@@ -114,7 +114,7 @@ public class NewArtworkActivity extends AppCompatActivity {
             maxHumInt = Integer.parseInt(maxHum.getText().toString());
         }
 
-        int validation = newArtworkViewModel.validateFields(name, author, selectedRadioButton, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
+        int validation = newArtworkViewModel.validateFields(name, author, typeGroup, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
 
         switch (validation) {
             case 1:
