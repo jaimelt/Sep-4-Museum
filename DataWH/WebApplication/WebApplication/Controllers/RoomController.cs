@@ -11,6 +11,7 @@ using WebApplication.Datamodel;
 using WebApplication.MongoDB;
 using WebApplication.Database.Repositories.RoomRep;
 using WebApplication.Datamodel;
+using WebApplication.SQLCommands;
 
 
 namespace WebApplication.Controllers
@@ -37,7 +38,7 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> GetRooms()
         {
-
+                TransferSql.TransferDataFromSQL();
             try
             {
                 RoomList roomList = new RoomList();
