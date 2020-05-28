@@ -26,7 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.RoomsAdapter;
 import com.example.android_sep4.view.AccountActivity;
-import com.example.android_sep4.view.SettingsActivity;
+import com.example.android_sep4.view.settings.SettingsActivity;
 import com.example.android_sep4.view.VisitorsActivity;
 import com.example.android_sep4.viewmodel.roomList.RoomsTabViewModel;
 

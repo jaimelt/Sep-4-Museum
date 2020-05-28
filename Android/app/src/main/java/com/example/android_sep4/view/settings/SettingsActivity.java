@@ -1,4 +1,4 @@
-package com.example.android_sep4.view;
+package com.example.android_sep4.view.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 

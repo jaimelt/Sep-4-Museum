@@ -27,7 +27,6 @@ public class ArtworksRepository {
     private ArtworksAPIClient artworksAPIClient;
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
-    private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
     private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
     private ArtworkDao artworkDao;
     private Artwork artwork = new Artwork();
