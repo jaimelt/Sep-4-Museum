@@ -194,7 +194,7 @@ public class VisitorsRepository {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public Visitors createVisitorsForDays() {
+    public Visitors createVisitorsForDays(LocalDate date) {
         setMalesFirstNames();
         setFemaleFirstNames();
         setLastNames();
@@ -223,7 +223,7 @@ public class VisitorsRepository {
     public void sendVisitorsData() {
         VisitorsEndpoints endpoints = ServiceGenerator.getVisitorsEndpoints();
 
-        Call<Visitors> call = endpoints.sendVisitors(createVisitorsForDays());
+        Call<Visitors> call = endpoints.sendVisitors(createVisitorsForDays(date));
         call.enqueue(new Callback<Visitors>() {
             @Override
             public void onResponse(Call<Visitors> call, Response<Visitors> response) {

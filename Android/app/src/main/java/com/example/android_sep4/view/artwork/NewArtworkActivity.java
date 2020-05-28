@@ -84,11 +84,9 @@ public class NewArtworkActivity extends AppCompatActivity {
 
         String name = nameField.getText().toString();
         String author = authorField.getText().toString();
-        String type = selectedRadioButton.getText().toString();
         String description = descriptionField.getText().toString();
         String comment = commentField.getText().toString();
         String image = convertImageToString();
-        newArtworkViewModel.addArtwork(name, author, type, description, comment, image, "Storage");
 
         int minTempInt = 0, maxTempInt = 0, minLightInt = 0, maxLightInt = 0, minCO2Int = 0, maxCO2Int = 0, maxHumInt = 0, minHumInt = 0;
         if (!minTemp.getText().toString().isEmpty()) {
@@ -115,8 +113,60 @@ public class NewArtworkActivity extends AppCompatActivity {
         if (!maxHum.getText().toString().isEmpty()) {
             maxHumInt = Integer.parseInt(maxHum.getText().toString());
         }
-        finish();
-        Toast.makeText(this, name + " artwork added to the list", Toast.LENGTH_SHORT).show();
+
+        int validation = newArtworkViewModel.validateFields(name, author, selectedRadioButton, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
+
+        switch (validation) {
+            case 1:
+                nameField.setError("Enter the name of the artwork");
+                break;
+            case 2:
+                authorField.setError("Enter the author of the artwork");
+                break;
+            case 3:
+                Toast.makeText(this, "Select the type of the artwork", Toast.LENGTH_SHORT).show();
+                break;
+            case 4:
+                descriptionField.setError("Enter the description of the artwork");
+                break;
+            case 5:
+                commentField.setError("Enter the comment of the artwork");
+                break;
+            case 6:
+                Toast.makeText(this, "Select the image of the artwork", Toast.LENGTH_SHORT).show();;
+                break;
+            case 7:
+                minTemp.setError("Enter the minimum temperature of the artwork");
+                break;
+            case 8:
+                maxTemp.setError("Enter the maximum temperature of the artwork");
+                break;
+            case 9:
+                minCO2.setError("Enter the minimum CO2 value of the artwork");
+                break;
+            case 10:
+                maxCO2.setError("Enter the maximum CO2 value of the artwork");
+                break;
+            case 11:
+                minHum.setError("Enter the minimum humidity of the artwork");
+                break;
+            case 12:
+                maxHum.setError("Enter the maximum humidity of the artwork");
+                break;
+            case 13:
+                minLight.setError("Enter the minimum light value of the artwork");
+                break;
+            case 14:
+                maxLight.setError("Enter the maximum light value of the artwork");
+                break;
+            case 15:
+                String type = selectedRadioButton.getText().toString();
+                newArtworkViewModel.addArtwork(name, author, type, description, comment, image, "Storage", minCO2Int, maxCO2Int, minHumInt, maxHumInt, minLightInt, maxLightInt, minTempInt, maxTempInt);
+                finish();
+                Toast.makeText(this, name + " artwork added to the list", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
     }
 
     @Override

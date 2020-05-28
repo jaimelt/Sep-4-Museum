@@ -50,7 +50,7 @@ public class RoomA1Activity extends AppCompatActivity {
             if (artwork != null) {
                 for (TextView textView : textViews) {
                     textView.setText(artwork.getName());
-                    artwork.setArtworkPosition(textViews.indexOf(textView));
+                    artwork.setArtworkPosition(Integer.parseInt(textView.getText().toString()));
                 }
             }
         }
@@ -81,14 +81,33 @@ public class RoomA1Activity extends AppCompatActivity {
     }
 
     public void viewArtworks() {
-        for (final TextView textView : textViews) {
-            textView.setOnClickListener(view -> {
+        for (TextView textView : textViews) {
+            if (artworksInRoom.size() < (textViews.indexOf(textView) + 1)) {
+                System.out.println("SIZE " + artworksInRoom.size());
+                System.out.println("TEXTVIEW INDEX " + (textViews.indexOf(textView) + 1));
+
+                textView.setOnClickListener(view -> {
                     Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
                     intent.putExtra("Artwork", artworksInRoom.get(textViews.indexOf(textView)));
                     startActivity(intent);
 
                     Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
-            });
+                });
+            } else {
+                textView.setOnClickListener(view -> {
+                    LayoutInflater inflater = this.getLayoutInflater();
+                    View dialogView = inflater.inflate(R.layout.dialog_register_no_artwork, null);
+                    createDialog(dialogView);
+                });
+            }
         }
+    }
+
+    private void createDialog(View dialogView) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+        builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 }
