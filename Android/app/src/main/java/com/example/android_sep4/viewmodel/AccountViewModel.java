@@ -44,4 +44,12 @@ public class AccountViewModel extends AndroidViewModel {
     public LiveData<ArrayList<User>> getUsers() {
         return authRepository.getUsers();
     }
+
+    public LiveData<Boolean> getIsLoading() {
+        return authRepository.getIsLoading();
+    }
+
+    public void deleteUser(int index) {
+        authRepository.deleteUser(index);
+    }
 }

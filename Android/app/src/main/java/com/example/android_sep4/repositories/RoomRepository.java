@@ -40,7 +40,7 @@ public class RoomRepository {
         roomsAPIClient.getRoomsData().observeForever(new Observer<ArrayList<Room>>() {
             @Override
             public void onChanged(ArrayList<Room> rooms) {
-                if(rooms.size() == 0)
+                if(rooms.isEmpty())
                 {
                     //ROOM DATABASE
                 }
@@ -79,7 +79,7 @@ public class RoomRepository {
         roomsAPIClient.getArtworksByRoomId(roomCode).observeForever(new Observer<ArrayList<Artwork>>() {
             @Override
             public void onChanged(ArrayList<Artwork> artworks) {
-                if(artworks.size() == 0)
+                if(artworks.isEmpty())
                 {
                     //ROOM DATABASE
                 }

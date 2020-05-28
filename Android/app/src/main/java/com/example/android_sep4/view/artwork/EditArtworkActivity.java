@@ -81,10 +81,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private void setViewModel() {
         editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication(), artworkID)).get(EditArtworkViewModel.class);
 
-        editArtworkViewModel.getArtwork().observe(this, artwork -> {
-            setText(artwork);
-            Toast.makeText(this, "Data received" + artwork.getName(), Toast.LENGTH_SHORT).show();
-        });
+        editArtworkViewModel.getArtwork().observe(this, this::setText);
 
     }
 

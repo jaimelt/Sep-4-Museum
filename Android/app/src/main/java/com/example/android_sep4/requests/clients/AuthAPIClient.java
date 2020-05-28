@@ -26,6 +26,7 @@ import retrofit2.Response;
 public class AuthAPIClient {
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
     private MutableLiveData<ArrayList<User>> usersData = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private ArrayList<User> usersDataSet = new ArrayList<>();
     private Boolean valid = false;
     private User user = new User();
@@ -88,20 +89,20 @@ public class AuthAPIClient {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                System.out.println("New User Registered");
+                getUsers();
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                System.out.println("Registration failed");
+                 getUsers();
             }
         });
     }
 
-    public void deleteUser(User user) {
+    public void deleteUser(String email) {
         AuthEndpoints endpoints = ServiceGenerator.getAuthEndpoints();
 
-        Call<User> call = endpoints.deleteUser(user);
+        Call<User> call = endpoints.deleteUser(email);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
@@ -138,16 +139,16 @@ public class AuthAPIClient {
         AuthEndpoints endpoints = ServiceGenerator.getAuthEndpoints();
 
         Call<Users> call = endpoints.getUsers();
+        isLoading.setValue(true);
         call.enqueue(new Callback<Users>() {
             @Override
             public void onResponse(Call<Users> call, Response<Users> response) {
-                if(response.isSuccessful())
+                if(response.isSuccessful() && response.body() != null)
                 {
-                    Toast.makeText(application, "User accounts loaded successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(application, "IT WORKS", Toast.LENGTH_LONG).show();
                     usersData.setValue(response.body().getUsers());
+                    isLoading.setValue(false);
                 }
-
-
             }
 
             @Override
@@ -160,5 +161,18 @@ public class AuthAPIClient {
     public LiveData<ArrayList<User>> getUsersLive() {
         getUsers();
         return usersData;
+    }
+
+    public LiveData<Boolean> getIsLoading() {
+        return isLoading;
+    }
+
+    public void deleteUserByIndex(int index) {
+        User user = new User();
+        if(usersData.getValue() != null)
+        {
+             user = usersData.getValue().get(index);
+        }
+        deleteUser(user.getEmail());
     }
 }

@@ -28,7 +28,6 @@ public class RoomsAPIClient {
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
-    private ArrayList<Artwork> artworksInRoomDataSet = new ArrayList<>();
     private Room room;
     private Artwork artwork = new Artwork();
     private Application application;
@@ -72,15 +71,8 @@ public class RoomsAPIClient {
             @Override
             public void onResponse(Call<Artworks> call, Response<Artworks> response) {
                 Log.i(TAG, "onResponse: artworks in room");
-                Artworks artworksFromRoom = response.body();
-                if (artworksFromRoom != null) {
-                    for (Artwork apiArtwork : artworksFromRoom.getArtworks()) {
-                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), apiArtwork.getComment(), apiArtwork.getImage(), apiArtwork.getType(),
-                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), apiArtwork.getArtworkPosition(), apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-                        artworksInRoomDataSet.add(artwork);
-                    }
-                    artworksInRoomData.setValue(artworksInRoomDataSet);
+                if (response.body() != null && response.isSuccessful()) {
+                    artworksInRoomData.setValue(response.body().getArtworks());
                     isLoading.setValue(false);
                 }
             }
@@ -88,10 +80,10 @@ public class RoomsAPIClient {
             @Override
             public void onFailure(Call<Artworks> call, Throwable t) {
                 //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
+                ArrayList<Artwork> artworkArrayList = new ArrayList<>();
+                artworksInRoomData.setValue(artworkArrayList);
             }
         });
-        System.out.println(artworksInRoomDataSet.size());
-        artworksInRoomDataSet = new ArrayList<>();
         return artworksInRoomData;
     }
 

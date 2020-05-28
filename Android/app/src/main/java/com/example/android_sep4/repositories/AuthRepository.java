@@ -50,8 +50,8 @@ public class AuthRepository {
         authAPIClient.registerUser(email, password);
     }
 
-    public void deleteUser(User user) {
-        authAPIClient.deleteUser(user);
+    public void deleteUser(int index) {
+        authAPIClient.deleteUserByIndex(index);
     }
 
     public void updateUser(User updatedUser) {
@@ -64,5 +64,9 @@ public class AuthRepository {
 
     public LiveData<ArrayList<User>> getUsers() {
         return authAPIClient.getUsersLive();
+    }
+
+    public LiveData<Boolean> getIsLoading() {
+        return authAPIClient.getIsLoading();
     }
 }
