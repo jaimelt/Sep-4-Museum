@@ -182,9 +182,6 @@
     <Compile Include="src\setup\setup_drivers.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\setup\setup_drivers.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="src\tasks\co2_sensor_task.c">
       <SubType>compile</SubType>
     </Compile>
