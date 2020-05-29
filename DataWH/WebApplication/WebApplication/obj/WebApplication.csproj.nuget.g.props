@@ -17,5 +17,7 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\Jaime\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.0-preview.4.20220.10</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgNewtonsoft_Json Condition=" '$(PkgNewtonsoft_Json)' == '' ">/usr/local/share/dotnet/sdk/NuGetFallbackFolder/newtonsoft.json/10.0.1</PkgNewtonsoft_Json>
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">/Users/Florinelx/.nuget/packages/microsoft.entityframeworkcore.tools/5.0.0-preview.4.20220.10</PkgMicrosoft_EntityFrameworkCore_Tools>
   </PropertyGroup>
 </Project>

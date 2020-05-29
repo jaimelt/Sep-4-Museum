@@ -8,7 +8,6 @@
     <ItemGroup>
       <PackageReference Include="ADONetHelper.SqlServer" Version="2.2.1" />
       <PackageReference Include="Dapper" Version="2.0.35" />
-      <PackageReference Include="ETLBox" Version="1.8.8" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.4.20220.10" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-preview.4.20220.10" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0-preview.4.20220.10" />
