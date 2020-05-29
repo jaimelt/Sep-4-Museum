@@ -69,10 +69,19 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.editRoomsConditions.setOnClickListener(v -> {
 
             Intent intent = new Intent(v.getContext(), EditRoomActivity.class);
-            intent.putExtra("temperature", rooms.get(position).getTemperature());
-            intent.putExtra("light", rooms.get(position).getLight());
-            intent.putExtra("co2", rooms.get(position).getCo2());
-            intent.putExtra("humidity", rooms.get(position).getHumidity());
+            intent.putExtra("optimalTemperature", rooms.get(position).getTemperature());
+            intent.putExtra("optimalLight", rooms.get(position).getLight());
+            intent.putExtra("optimalCo2", rooms.get(position).getCo2());
+            intent.putExtra("optimalHumidity", rooms.get(position).getHumidity());
+            intent.putExtra("locationCode", rooms.get(position).getLocationCode());
+            intent.putExtra("description", rooms.get(position).getDescription());
+            intent.putExtra("totalCapacity", rooms.get(position).getTotalCapacity());
+            intent.putExtra("currentCapacity", rooms.get(position).getCurrentCapacity());
+            intent.putExtra("liveTemperature", rooms.get(position).getLiveRoomMeasurements().getTemp());
+            intent.putExtra("liveHumidity", rooms.get(position).getLiveRoomMeasurements().getHumidity());
+            intent.putExtra("liveCo2", rooms.get(position).getLiveRoomMeasurements().getCo2());
+            intent.putExtra("liveLight", rooms.get(position).getLiveRoomMeasurements().getLight());
+
             Room room12 = rooms.get(position);
             room12.setExpanded(!room12.isExpanded());
             notifyItemChanged(position);

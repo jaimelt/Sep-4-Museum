@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.Room;
+import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.requests.clients.RoomsAPIClient;
 
 import java.util.ArrayList;
@@ -83,8 +84,7 @@ public class RoomRepository {
         return roomsAPIClient.getIsLoading();
     }
 
-    public void editRoomOptimal(int light, int co2, int temperature, int humidity, int position) {
-       //to implement the edit room optional
-
+    public void editRoomOptimal(Room room) {
+        roomsAPIClient.editRoomOptimalConditions(room);
     }
 }
