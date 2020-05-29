@@ -32,16 +32,32 @@ namespace WebApplication.Database.Repositories.AccountRep
          context.SaveChanges();
         }
 
-        public void Update(Administrator entity)
+        public bool Update(Administrator entity)
         {
-            context.Administrators.Update(entity);
-            context.SaveChanges();
+            if (entity != null)
+            {
+                Console.WriteLine("Email:"+entity.Email);
+                Console.WriteLine("password:"+entity.Password);
+                context.Administrators.Update(entity);
+                context.SaveChanges();
+                return true;
+            }
+
+            return false;
+
         }
 
-        public void Delete(Administrator entity)
+        public bool Delete(Administrator entity)
         {
-            context.Administrators.Remove(entity);
-            context.SaveChanges();
+            if (entity != null)
+            {
+                context.Administrators.Remove(entity);
+                context.SaveChanges();
+                return true;
+            }
+
+            return false;
+
         }
 
         public bool login(Administrator admin)
@@ -60,8 +76,18 @@ namespace WebApplication.Database.Repositories.AccountRep
 
         public async Task<Administrator> GetAdminByEmail(Administrator entity)
         {
-            return await FindByCondition(art => art.Email.Equals(entity.Email))
-                .FirstOrDefaultAsync();
+            try
+            {
+                return await FindByCondition(art => art.Email.Equals(entity.Email))
+                    .FirstOrDefaultAsync();
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+          
+
         }
     }
 }
