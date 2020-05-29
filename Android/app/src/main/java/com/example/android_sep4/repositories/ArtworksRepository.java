@@ -99,13 +99,14 @@ public class ArtworksRepository {
     public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
         artworksAPIClient.getArtworksByRoomId(roomCode).observeForever(new Observer<ArrayList<Artwork>>() {
             @Override
-            public void onChanged(ArrayList<Artwork> artworks) {
-                if (artworks.isEmpty()) {
-                    artworks = new ArrayList<>();
-                    artworksInRoomData.setValue(artworks);
+            public void onChanged(ArrayList<Artwork> artworksArrayList) {
+                if (artworksArrayList.isEmpty()) {
+                    artworksArrayList = new ArrayList<>();
+                    artworksInRoomData.setValue(artworksArrayList);
                     //ROOM DATABASE
                 } else {
-                    artworksInRoomData.setValue(artworks);
+                    artworksInRoomData.setValue(artworksArrayList);
+                   artworksInRoomData = new MutableLiveData<>();
                 }
             }
         });
