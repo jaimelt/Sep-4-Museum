@@ -2,7 +2,6 @@ package com.example.android_sep4.requests.clients;
 
 import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -32,7 +31,7 @@ public class ArtworksAPIClient {
         this.application = application;
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksData() {
+    public void getArtworksData() {
         Log.i(TAG, "getArtworksData: called ");
         isLoading.setValue(true);
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
@@ -43,8 +42,7 @@ public class ArtworksAPIClient {
             @Override
             public void onResponse(Call<Artworks> call, Response<Artworks> response) {
                 Log.i(TAG, "onResponse: success!");
-                Artworks apiArtworks = response.body();
-                if (apiArtworks != null && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     artworksData.setValue(response.body().getArtworks());
                 }
                 isLoading.setValue(false);
@@ -58,7 +56,6 @@ public class ArtworksAPIClient {
                 // DAVE HERE YOU ARE CALLING THE ROOM DATABASE AND YOU ARE SETTING THE ARTWORKS DATA SET TO THE ARTWORKS THAT WE HAVE IN THERE
             }
         });
-        return artworksData;
     }
 
 
@@ -78,6 +75,7 @@ public class ArtworksAPIClient {
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
+                artworkData.setValue(new Artwork());
                 //CALL DATABASE TO SET THE ARTWORK BY ID
             }
         });
@@ -152,12 +150,14 @@ public class ArtworksAPIClient {
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
+                getArtworksData();
                 System.out.println("SUCCESSFUL UPDATE!");
                 //CALL ROOM DATABASE TO ADD
             }
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
+                getArtworksData();
                 System.out.println("UPDATE FAILED!");
                 //CALL THE ROOM TO ADD ALSO IN CASE THE API IS FAILED
             }
@@ -178,15 +178,13 @@ public class ArtworksAPIClient {
                     artworksInRoomData.setValue(response.body().getArtworks());
                     artworksInRoomData = new MutableLiveData<>();
                     isLoading.setValue(false);
-                    Toast.makeText(application, "ROOMS ARTWORKS" + response.body().getArtworks().size() + " " + roomCode, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Artworks> call, Throwable t) {
                 //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
-                ArrayList<Artwork> artworkArrayList = new ArrayList<>();
-                artworksInRoomData.setValue(artworkArrayList);
+                artworksInRoomData.setValue(new ArrayList<>());
             }
         });
         return artworksInRoomData;
@@ -206,15 +204,13 @@ public class ArtworksAPIClient {
                     artworksInStorage.setValue(response.body().getArtworks());
                     artworksInStorage = new MutableLiveData<>();
                     isLoading.setValue(false);
-                    Toast.makeText(application, "ROOMS ARTWORKS" + response.body().getArtworks().size() + " " + roomCode, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Artworks> call, Throwable t) {
                 //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
-                ArrayList<Artwork> artworkArrayList = new ArrayList<>();
-                artworksInStorage.setValue(artworkArrayList);
+                artworksInStorage.setValue(new ArrayList<>());
             }
         });
         return artworksInStorage;
@@ -238,8 +234,11 @@ public class ArtworksAPIClient {
         });
     }
 
-
     public LiveData<Boolean> getIsLoading() {
         return isLoading;
+    }
+
+    public LiveData<ArrayList<Artwork>> getArtworksDataLive() {
+        return artworksData;
     }
 }

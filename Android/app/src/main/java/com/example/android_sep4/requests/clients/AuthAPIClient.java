@@ -1,12 +1,10 @@
 package com.example.android_sep4.requests.clients;
 
 import android.app.Application;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.User;
 import com.example.android_sep4.model.Users;
 import com.example.android_sep4.requests.AuthEndpoints;
@@ -17,7 +15,6 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,12 +24,11 @@ public class AuthAPIClient {
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
     private MutableLiveData<ArrayList<User>> usersData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
-    private ArrayList<User> usersDataSet = new ArrayList<>();
     private Boolean valid = false;
-    private User user = new User();
     private Application application;
 
-    public AuthAPIClient(Application application){
+    public AuthAPIClient(Application application)
+    {
         this.application = application;
     }
 
@@ -145,15 +141,14 @@ public class AuthAPIClient {
             public void onResponse(Call<Users> call, Response<Users> response) {
                 if(response.isSuccessful() && response.body() != null)
                 {
-                    Toast.makeText(application, "IT WORKS", Toast.LENGTH_LONG).show();
                     usersData.setValue(response.body().getUsers());
-                    isLoading.setValue(false);
                 }
+                isLoading.setValue(false);
             }
 
             @Override
             public void onFailure(Call<Users> call, Throwable t) {
-
+                usersData.setValue(new ArrayList<>());
             }
         });
     }
