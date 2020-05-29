@@ -11,9 +11,6 @@
     <ClCompile Include="..\IoT\IoTApp\src\tasks\light_sensor_task.c">
       <Filter>IoTProjectFiles</Filter>
     </ClCompile>
-    <ClCompile Include="..\IoT\IoTApp\src\tasks\sensor_control_task.c">
-      <Filter>IoTProjectFiles</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="IoTProjectFiles">

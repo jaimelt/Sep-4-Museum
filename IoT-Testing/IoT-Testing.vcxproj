@@ -42,7 +42,6 @@
     <ClCompile Include="..\IoT\IoTApp\src\handler\sensor_data_package_handler.c" />
     <ClCompile Include="..\IoT\IoTApp\src\tasks\co2_sensor_task.c" />
     <ClCompile Include="..\IoT\IoTApp\src\tasks\light_sensor_task.c" />
-    <ClCompile Include="..\IoT\IoTApp\src\tasks\sensor_control_task.c" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
