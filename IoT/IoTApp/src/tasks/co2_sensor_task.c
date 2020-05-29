@@ -59,6 +59,11 @@ void vACo2Task(void *pvParameters)
 			printf("CO2 didnt measure");
 			xSemaphoreGive(_xPrintfSemaphore);
 		}
+		else
+		{
+			xEventGroupSetBits(_event_group_measure, CO2_READY_BIT);
+			printf("CO2 measured");
+		}
 	}
 	vTaskDelete(_co2SensorTaskHandle);
 }
