@@ -14,21 +14,29 @@ public class Room {
     @ColumnInfo(name = "location_code")
     @NonNull
     private String locationCode;
+
     private String description;
+
     @ColumnInfo(name = "total_capacity")
     private int totalCapacity;
 
     @Ignore
     private int currentCapacity;
+
     @Ignore
     private Artworks artworkList;
-    @Ignore
+
     private double light;
+
     private int temperature;
+
     private int humidity;
+
     private int co2;
+
     @Ignore
     private RoomMeasurements liveRoomMeasurements;
+
     @Ignore
     private boolean expanded;
 

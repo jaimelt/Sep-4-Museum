@@ -7,13 +7,10 @@ import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import retrofit2.http.Body;
 
 @Entity(foreignKeys = {
         @ForeignKey(
@@ -22,6 +19,7 @@ import retrofit2.http.Body;
                 childColumns = "room_code"
         )})
 public class Artwork implements Parcelable {
+
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
@@ -34,9 +32,11 @@ public class Artwork implements Parcelable {
     @SerializedName("description")
     @Expose
     private String description;
+
     @SerializedName("comment")
     @Expose
     private String comment;
+
     @SerializedName("image")
     @Expose
     private String image;
@@ -53,38 +53,55 @@ public class Artwork implements Parcelable {
     @SerializedName("location")
     @Expose
     private String roomCode;
+
     @ColumnInfo(name = "artwork_position")
     @SerializedName("artworkPosition")
     @Expose
     private int artworkPosition;
+
+    @ColumnInfo(name = "max_light")
     @SerializedName("maxLight")
     @Expose
     @Nullable
     private int maxLight;
+
+    @ColumnInfo(name = "min_light")
     @SerializedName("minLight")
     @Expose
     @Nullable
     private int minLight;
+
+    @ColumnInfo(name = "max_temperature")
     @SerializedName("maxTemperature")
     @Expose
     @Nullable
     private int maxTemperature;
+
+    @ColumnInfo(name = "min_temperature")
     @SerializedName("minTemperature")
     @Expose
     @Nullable
     private int minTemperature;
+
+    @ColumnInfo(name = "max_humidity")
     @SerializedName("maxHumidity")
     @Expose
     @Nullable
     private int maxHumidity;
+
+    @ColumnInfo(name = "min_humidity")
     @SerializedName("minHumidity")
     @Expose
     @Nullable
     private int minHumidity;
+
+    @ColumnInfo(name = "max_co2")
     @SerializedName("maxCo2")
     @Expose
     @Nullable
     private int maxCo2;
+
+    @ColumnInfo(name = "min_co2")
     @SerializedName("minCo2")
     @Expose
     @Nullable
@@ -96,6 +113,26 @@ public class Artwork implements Parcelable {
 
     public Artwork(int id, String name, String description, String comment, String image, String type, String author, String roomCode, int artworkPosition, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
         this.id = id;
+        this.name = name;
+        this.description = description;
+        this.comment = comment;
+        this.image = image;
+        this.type = type;
+        this.author = author;
+        this.roomCode = roomCode;
+        this.artworkPosition = artworkPosition;
+        this.maxLight = maxLight;
+        this.minLight = minLight;
+        this.maxTemperature = maxTemperature;
+        this.minTemperature = minTemperature;
+        this.maxHumidity = maxHumidity;
+        this.minHumidity = minHumidity;
+        this.maxCo2 = maxCo2;
+        this.minCo2 = minCo2;
+    }
+
+    //Constructor for Room database
+    public Artwork(String name, String description, String comment, String image, String type, String author, String roomCode, int artworkPosition, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
         this.name = name;
         this.description = description;
         this.comment = comment;
