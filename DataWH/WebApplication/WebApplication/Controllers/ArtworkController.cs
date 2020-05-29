@@ -190,138 +190,149 @@ namespace WebApplication.Controllers
                 var MovingArtwork = await artworkRepository.GetArtworkById(id);
                 var newRoom = await RoomRepository.GetRoomByLocationCodeAsync(artwork.Location);
                 var previousRoom = await RoomRepository.GetRoomByLocationCodeAsync(MovingArtwork.Location);
-                
 
-                switch (newRoom.LocationCode)
+                if (!previousRoom.LocationCode.Equals(newRoom.LocationCode))
                 {
-                    case "A1":
-                        if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
-                        {
-                            logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
-                            return BadRequest("The room is at full capacity and cannot take more");
-                        }
-                        else
-                        {
-                            previousRoom.ArtworkList.Remove(artwork);
-                            previousRoom.CurrentCapacity--;
-                            newRoom.ArtworkList.Add(artwork);
-                            newRoom.CurrentCapacity++; 
-                            logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
-                        }
-                        break;
-                    case "A2":
-                        if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
-                        {
-                            logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
-                            return BadRequest("The room is at full capacity and cannot take more");
-                        }
-                        else
-                        {
-                            previousRoom.ArtworkList.Remove(artwork);
-                            previousRoom.CurrentCapacity--;
-                            newRoom.ArtworkList.Add(artwork);
-                            newRoom.CurrentCapacity++; 
-                            logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
-                        }
-                        break;
-                    case "A3":
-                        if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
-                        {
-                            logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
-                            return BadRequest("The room is at full capacity and cannot take more");
-                        }
-                        else
-                        {
-                            previousRoom.ArtworkList.Remove(artwork);
-                            previousRoom.CurrentCapacity--;
-                            newRoom.ArtworkList.Add(artwork);
-                            newRoom.CurrentCapacity++; 
-                            logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
-                        }
-                        break;
-                    case "B1":
-                        if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
-                        {
-                            logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
-                            return BadRequest("The room is at full capacity and cannot take more");
-                        }
-                        else
-                        {
-                            previousRoom.ArtworkList.Remove(artwork);
-                            previousRoom.CurrentCapacity--;
-                            newRoom.ArtworkList.Add(artwork);
-                            newRoom.CurrentCapacity++; 
-                            logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
-                        }
-                        break;
-                    case "B2":
-                        if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
-                        {
-                            logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
-                            return BadRequest("The room is at full capacity and cannot take more");
-                        }
-                        else
-                        {
-                            previousRoom.ArtworkList.Remove(artwork);
-                            previousRoom.CurrentCapacity--;
-                            newRoom.ArtworkList.Add(artwork);
-                            newRoom.CurrentCapacity++; 
-                            logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
-                        }
-                        break;
-                    case "B3":
-                        if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
-                        {
-                            logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
-                            return BadRequest("The room is at full capacity and cannot take more");
-                        }
-                        else
-                        {
-                            previousRoom.ArtworkList.Remove(artwork);
-                            previousRoom.CurrentCapacity--;
-                            newRoom.ArtworkList.Add(artwork);
-                            newRoom.CurrentCapacity++; 
-                            logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
-                        }
-                        break;
-                    case "B4":
-                        if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
-                        {
-                            logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
-                            return BadRequest("The room is at full capacity and cannot take more");
-                        }
-                        else
-                        {
-                            previousRoom.ArtworkList.Remove(artwork);
-                            previousRoom.CurrentCapacity--;
-                            newRoom.ArtworkList.Add(artwork);
-                            newRoom.CurrentCapacity++; 
-                            logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
-                        }
-                        break;
-                    case "Storage":
-                        if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
-                        {
-                            logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
-                            return BadRequest("The room is at full capacity and cannot take more");
-                        }
-                        else
-                        {
-                            previousRoom.ArtworkList.Remove(artwork);
-                            previousRoom.CurrentCapacity--;
-                            newRoom.ArtworkList.Add(artwork);
-                            newRoom.CurrentCapacity++; 
-                            logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
-                        }
-                        break;
-                    default:
-                        logger.LogError("There has been an error somewhere");
-                        return BadRequest("Internal server error in switch/ room Controller");
+                    switch (newRoom.LocationCode)
+                    {
+                        case "A1":
+                            if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
+                            {
+                                logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
+                                return BadRequest("The room is at full capacity and cannot take more");
+                            }
+                            else
+                            {
+                                previousRoom.ArtworkList.Remove(artwork);
+                                previousRoom.CurrentCapacity--;
+                                newRoom.ArtworkList.Add(artwork);
+                                newRoom.CurrentCapacity++;
+                                logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                            }
 
+                            break;
+                        case "A2":
+                            if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
+                            {
+                                logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
+                                return BadRequest("The room is at full capacity and cannot take more");
+                            }
+                            else
+                            {
+                                previousRoom.ArtworkList.Remove(artwork);
+                                previousRoom.CurrentCapacity--;
+                                newRoom.ArtworkList.Add(artwork);
+                                newRoom.CurrentCapacity++;
+                                logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                            }
+
+                            break;
+                        case "A3":
+                            if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
+                            {
+                                logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
+                                return BadRequest("The room is at full capacity and cannot take more");
+                            }
+                            else
+                            {
+                                previousRoom.ArtworkList.Remove(artwork);
+                                previousRoom.CurrentCapacity--;
+                                newRoom.ArtworkList.Add(artwork);
+                                newRoom.CurrentCapacity++;
+                                logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                            }
+
+                            break;
+                        case "B1":
+                            if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
+                            {
+                                logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
+                                return BadRequest("The room is at full capacity and cannot take more");
+                            }
+                            else
+                            {
+                                previousRoom.ArtworkList.Remove(artwork);
+                                previousRoom.CurrentCapacity--;
+                                newRoom.ArtworkList.Add(artwork);
+                                newRoom.CurrentCapacity++;
+                                logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                            }
+
+                            break;
+                        case "B2":
+                            if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
+                            {
+                                logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
+                                return BadRequest("The room is at full capacity and cannot take more");
+                            }
+                            else
+                            {
+                                previousRoom.ArtworkList.Remove(artwork);
+                                previousRoom.CurrentCapacity--;
+                                newRoom.ArtworkList.Add(artwork);
+                                newRoom.CurrentCapacity++;
+                                logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                            }
+
+                            break;
+                        case "B3":
+                            if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
+                            {
+                                logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
+                                return BadRequest("The room is at full capacity and cannot take more");
+                            }
+                            else
+                            {
+                                previousRoom.ArtworkList.Remove(artwork);
+                                previousRoom.CurrentCapacity--;
+                                newRoom.ArtworkList.Add(artwork);
+                                newRoom.CurrentCapacity++;
+                                logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                            }
+
+                            break;
+                        case "B4":
+                            if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
+                            {
+                                logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
+                                return BadRequest("The room is at full capacity and cannot take more");
+                            }
+                            else
+                            {
+                                previousRoom.ArtworkList.Remove(artwork);
+                                previousRoom.CurrentCapacity--;
+                                newRoom.ArtworkList.Add(artwork);
+                                newRoom.CurrentCapacity++;
+                                logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                            }
+
+                            break;
+                        case "Storage":
+                            if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
+                            {
+                                logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
+                                return BadRequest("The room is at full capacity and cannot take more");
+                            }
+                            else
+                            {
+                                previousRoom.ArtworkList.Remove(artwork);
+                                previousRoom.CurrentCapacity--;
+                                newRoom.ArtworkList.Add(artwork);
+                                newRoom.CurrentCapacity++;
+                                logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                            }
+
+                            break;
+                        default:
+                            logger.LogError("There has been an error somewhere");
+                            return BadRequest("Internal server error in switch/ room Controller");
+
+                    }
                 }
+
                 artworkRepository.UpdateArtwork(artwork);
                 await artworkRepository.saveChanges();
-                return Ok("Artwork has been moved");
+                return Ok("Artwork has been moved or has been edited");
             }
             catch (Exception e)
             {
