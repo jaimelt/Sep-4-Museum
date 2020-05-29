@@ -15,7 +15,7 @@ public class RoomB1ViewModel extends AndroidViewModel {
 
     private ArtworksRepository artworksRepository;
 
-    public RoomB1ViewModel(Application application)  {
+    public RoomB1ViewModel(Application application) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
     }
@@ -23,5 +23,10 @@ public class RoomB1ViewModel extends AndroidViewModel {
     public LiveData<ArrayList<Artwork>> getArtworksFromRoom(String roomCode) {
         return artworksRepository.getArtworksByRoomId(roomCode);
     }
+
+    public LiveData<Boolean> getIsLoading() {
+        return artworksRepository.getIsLoading();
+    }
+
 }
 

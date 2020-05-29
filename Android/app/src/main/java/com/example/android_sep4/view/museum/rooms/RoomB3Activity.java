@@ -3,15 +3,18 @@ package com.example.android_sep4.view.museum.rooms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.viewmodel.ViewModelFactory;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomB2ViewModel;
 import com.example.android_sep4.viewmodel.museum.rooms.RoomB3ViewModel;
 
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ public class RoomB3Activity extends AppCompatActivity {
     private RoomB3ViewModel roomB3ViewModel;
     private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
     private ArrayList<TextView> textViews = new ArrayList<>();
+    private ProgressBar progressBar;
     private TextView place_holder_1, place_holder_2, place_holder_3,
             place_holder_4, place_holder_5, place_holder_6,
             place_holder_7, place_holder_8, place_holder_9,
@@ -40,7 +44,26 @@ public class RoomB3Activity extends AppCompatActivity {
     private void setViewModel() {
         roomB3ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomB3ViewModel.class);
 
-        roomB3ViewModel.getArtworksFromRoom(ROOM_CODE).observe(this, artworks -> artworksInRoom.addAll(artworks));
+        roomB3ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomB3ViewModel.class);
+        LiveData<ArrayList<Artwork>> liveData = roomB3ViewModel.getArtworksFromRoom(ROOM_CODE);
+        liveData.observe(this, artworks -> {
+            liveData.removeObservers(this);
+            artworksInRoom.addAll(artworks);
+        });
+
+        roomB3ViewModel.getIsLoading().observe(this, aBoolean -> {
+            if (aBoolean) {
+                progressBar.setVisibility(View.VISIBLE);
+                for (TextView textView : textViews) {
+                    textView.setClickable(false);
+                }
+            } else {
+                progressBar.setVisibility(View.GONE);
+                for(TextView textView : textViews) {
+                    textView.setClickable(true);
+                }
+            }
+        });
 
         for (Artwork artwork : artworksInRoom) {
             if (artwork != null) {
@@ -65,6 +88,7 @@ public class RoomB3Activity extends AppCompatActivity {
         place_holder_10 = findViewById(R.id.artwork_place_10);
         place_holder_11 = findViewById(R.id.artwork_place_11);
         place_holder_12 = findViewById(R.id.artwork_place_12);
+        progressBar = findViewById(R.id.progress_bar_roomB3);
     }
 
     public void setTextViews() {

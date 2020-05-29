@@ -3,6 +3,7 @@ package com.example.android_sep4.view.museum.rooms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class RoomA3Activity extends AppCompatActivity {
     private RoomA3ViewModel roomA3ViewModel;
     private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
     private ArrayList<TextView> textViews = new ArrayList<>();
+    private ProgressBar progressBar;
     private TextView place_holder_1, place_holder_2,
             place_holder_3, place_holder_4;
 
@@ -46,6 +48,21 @@ public class RoomA3Activity extends AppCompatActivity {
             artworksInRoom.addAll(artworks);
         });
 
+        roomA3ViewModel.getIsLoading().observe(this, aBoolean -> {
+            if (aBoolean) {
+                progressBar.setVisibility(View.VISIBLE);
+                for (TextView textView : textViews) {
+                    textView.setClickable(false);
+                }
+            } else {
+                progressBar.setVisibility(View.GONE);
+                for(TextView textView : textViews) {
+                    textView.setClickable(true);
+                }
+            }
+        });
+
+
         for (Artwork artwork : artworksInRoom) {
             if (artwork != null) {
                 for (TextView textView : textViews) {
@@ -61,6 +78,7 @@ public class RoomA3Activity extends AppCompatActivity {
         place_holder_2 = findViewById(R.id.artwork_place_2);
         place_holder_3 = findViewById(R.id.artwork_place_3);
         place_holder_4 = findViewById(R.id.artwork_place_4);
+        progressBar = findViewById(R.id.progress_bar_roomA3);
     }
 
     public void setTextViews() {

@@ -106,7 +106,7 @@ public class ArtworksRepository {
                     //ROOM DATABASE
                 } else {
                     artworksInRoomData.setValue(artworksArrayList);
-                   artworksInRoomData = new MutableLiveData<>();
+                    artworksInRoomData = new MutableLiveData<>();
                 }
             }
         });

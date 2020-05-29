@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,10 +29,10 @@ public class RoomA1Activity extends AppCompatActivity {
     private RoomA1ViewModel roomA1ViewModel;
     private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
     private ArrayList<TextView> textViews = new ArrayList<>();
+    private ProgressBar progressBar;
     private TextView place_holder_1, place_holder_2, place_holder_3,
             place_holder_4, place_holder_5, place_holder_6,
             place_holder_7, place_holder_8, place_holder_9;
-    private int artworkID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,19 @@ public class RoomA1Activity extends AppCompatActivity {
             artworksInRoom.addAll(artworks);
         });
 
+        roomA1ViewModel.getIsLoading().observe(this, aBoolean -> {
+            if (aBoolean) {
+                progressBar.setVisibility(View.VISIBLE);
+                for (TextView textView : textViews) {
+                    textView.setClickable(false);
+                }
+            } else {
+                progressBar.setVisibility(View.GONE);
+                for(TextView textView : textViews) {
+                    textView.setClickable(true);
+                }
+            }
+        });
 
         for (Artwork artwork : artworksInRoom) {
             if (artwork != null) {
@@ -71,6 +85,7 @@ public class RoomA1Activity extends AppCompatActivity {
         place_holder_7 = findViewById(R.id.artwork_place_7);
         place_holder_8 = findViewById(R.id.artwork_place_8);
         place_holder_9 = findViewById(R.id.artwork_place_9);
+        progressBar = findViewById(R.id.progress_bar_roomA1);
     }
 
     public void setTextViews() {
@@ -87,13 +102,13 @@ public class RoomA1Activity extends AppCompatActivity {
 
     public void viewArtworks() {
         for (TextView textView : textViews) {
-                textView.setOnClickListener(view -> {
-                    Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
-                    intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
-                    startActivity(intent);
+            textView.setOnClickListener(view -> {
+                Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
+                intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
+                startActivity(intent);
 
-                    Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
-                });
+                Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
+            });
         }
     }
 

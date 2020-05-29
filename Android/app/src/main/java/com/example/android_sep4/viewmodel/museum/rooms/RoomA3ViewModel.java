@@ -21,4 +21,9 @@ public class RoomA3ViewModel extends AndroidViewModel {
     public LiveData<ArrayList<Artwork>> getArtworksFromRoom(String roomCode) {
         return artworksRepository.getArtworksByRoomId(roomCode);
     }
+
+    public LiveData<Boolean> getIsLoading() {
+        return artworksRepository.getIsLoading();
+    }
+
 }
