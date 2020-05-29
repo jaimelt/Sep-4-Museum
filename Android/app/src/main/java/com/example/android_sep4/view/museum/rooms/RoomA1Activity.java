@@ -5,15 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
@@ -32,6 +29,7 @@ public class RoomA1Activity extends AppCompatActivity {
             place_holder_4, place_holder_5, place_holder_6,
             place_holder_7, place_holder_8, place_holder_9;
     private int artworkID;
+    private  LiveData<ArrayList<Artwork>> liveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +43,7 @@ public class RoomA1Activity extends AppCompatActivity {
 
     private void setViewModel() {
         roomA1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA1ViewModel.class);
-        LiveData<ArrayList<Artwork>> liveData = roomA1ViewModel.getArtworksFromRoom(ROOM_CODE);
+        liveData = roomA1ViewModel.getArtworksFromRoom(ROOM_CODE);
         liveData.observe(this, artworks -> {
             liveData.removeObservers(this);
             artworksInRoom.addAll(artworks);
@@ -59,6 +57,18 @@ public class RoomA1Activity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    @Override
+    protected void onPause() {
+        liveData.removeObservers(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        liveData.observe(this, artworks -> artworksInRoom.addAll(artworks));
+        super.onResume();
     }
 
     public void findViews() {
