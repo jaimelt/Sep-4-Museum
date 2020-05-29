@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.Artworks;
 import com.example.android_sep4.model.Room;
+import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Rooms;
 import com.example.android_sep4.requests.ArtworkEndpoints;
 import com.example.android_sep4.requests.RoomEndpoints;
@@ -60,7 +61,6 @@ public class RoomsAPIClient {
     }
 
 
-
     public LiveData<Room> getRoomById(String id) {
         RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
 
@@ -72,10 +72,11 @@ public class RoomsAPIClient {
                 Log.i(TAG, "onResponse: success!");
                 Room apiRoomById = response.body();
                 if (apiRoomById != null) {
-                    room = new Room(apiRoomById.getLocationCode(), apiRoomById.getDescription(), apiRoomById.getTotalCapacity(), apiRoomById.getCurrentCapacity(),apiRoomById.getArtworkList(), apiRoomById.getLight(), apiRoomById.getTemperature(),apiRoomById.getHumidity(),apiRoomById.getCo2(),
-                            apiRoomById.getLiveRoomMeasurements()  );
+                    room = new Room(apiRoomById.getLocationCode(), apiRoomById.getDescription(), apiRoomById.getTotalCapacity(), apiRoomById.getCurrentCapacity(), apiRoomById.getArtworkList(), apiRoomById.getLight(), apiRoomById.getTemperature(), apiRoomById.getHumidity(), apiRoomById.getCo2(),
+                            apiRoomById.getLiveRoomMeasurements());
                 }
             }
+
             @Override
             public void onFailure(Call<Room> call, Throwable t) {
                 Log.i(TAG, "onFailure: called");
@@ -89,4 +90,23 @@ public class RoomsAPIClient {
         return isLoading;
     }
 
+    public void editRoomOptimalConditions(Room room) {
+        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
+
+        String locationCode = room.getLocationCode();
+
+        Call<Room> call = endpoints.editOptimalConditions(locationCode, room);
+
+        call.enqueue(new Callback<Room>() {
+            @Override
+            public void onResponse(Call<Room> call, Response<Room> response) {
+                Log.i(TAG, "onResponse: success!");
+            }
+
+            @Override
+            public void onFailure(Call<Room> call, Throwable t) {
+                Log.i(TAG, "onFailure: called");
+            }
+        });
+    }
 }
