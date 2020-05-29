@@ -24,15 +24,15 @@ public class Room {
     private Artworks artworkList;
     @Ignore
     private double light;
-    private int temperature;
-    private int humidity;
-    private int co2;
+    private double temperature;
+    private double humidity;
+    private double co2;
     @Ignore
     private RoomMeasurements liveRoomMeasurements;
     @Ignore
     private boolean expanded;
 
-    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, Artworks artworkList, double light, int temperature, int humidity, int co2, RoomMeasurements liveRoomMeasurements) {
+    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, Artworks artworkList, double light, double temperature, double humidity, double co2, RoomMeasurements liveRoomMeasurements) {
         this.locationCode = locationCode;
         this.description = description;
         this.totalCapacity = totalCapacity;
@@ -93,31 +93,31 @@ public class Room {
         return light;
     }
 
-    public void setLight(int light) {
+    public void setLight(double light) {
         this.light = light;
     }
 
-    public int getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
 
-    public int getHumidity() {
+    public double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(int humidity) {
+    public void setHumidity(double humidity) {
         this.humidity = humidity;
     }
 
-    public int getCo2() {
+    public double getCo2() {
         return co2;
     }
 
-    public void setCo2(int co2) {
+    public void setCo2(double co2) {
         this.co2 = co2;
     }
 

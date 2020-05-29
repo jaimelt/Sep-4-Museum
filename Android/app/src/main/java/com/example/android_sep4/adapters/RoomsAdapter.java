@@ -77,10 +77,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             intent.putExtra("description", rooms.get(position).getDescription());
             intent.putExtra("totalCapacity", rooms.get(position).getTotalCapacity());
             intent.putExtra("currentCapacity", rooms.get(position).getCurrentCapacity());
-            intent.putExtra("liveTemperature", rooms.get(position).getLiveRoomMeasurements().getTemp());
-            intent.putExtra("liveHumidity", rooms.get(position).getLiveRoomMeasurements().getHumidity());
-            intent.putExtra("liveCo2", rooms.get(position).getLiveRoomMeasurements().getCo2());
-            intent.putExtra("liveLight", rooms.get(position).getLiveRoomMeasurements().getLight());
 
             Room room12 = rooms.get(position);
             room12.setExpanded(!room12.isExpanded());
