@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -37,11 +38,11 @@ namespace WebApplication.Controllers
             return _accountRepository.login(admin);
         }
 
-        [HttpGet ("users")]
+        [HttpGet("users")]
         public async Task<IActionResult> getAll()
         {
             AdministratorList users = new AdministratorList();
-              users.users =  (List<Administrator>) _accountRepository.getAllUsernames().Result;
+            users.users = (List<Administrator>) _accountRepository.getAllUsernames().Result;
             foreach (var u in users.users)
             {
                 u.Password = "";
@@ -69,14 +70,18 @@ namespace WebApplication.Controllers
         }
 
         // Delete existing account by username//password
-        [HttpDelete]
-        public async Task<Administrator> deleteAdmin(Administrator admin)
+        [HttpDelete("delete/{email}")]
+        public async Task<IActionResult> deleteAdmin(string email)
         {
+            Administrator admin = new Administrator();
+            admin.Email = email;
             Console.WriteLine("delete admin");
             var obj = _accountRepository.GetAdminByEmail(admin);
             Task.Delay(3000);
-            _accountRepository.Delete(await obj);
-            return admin;
+            if (_accountRepository.Delete(await obj))
+                return Ok("Account deleted.");
+            
+            return BadRequest("Account doesn't exist");
         }
 
         // Edit admin account username or password
@@ -85,7 +90,10 @@ namespace WebApplication.Controllers
         {
             Console.WriteLine("update admin");
             var obj = _accountRepository.GetAdminByEmail(admin);
+
+
             Task.Delay(3000);
+
             if (admin == null)
             {
                 return BadRequest();
@@ -93,10 +101,15 @@ namespace WebApplication.Controllers
 
             Console.WriteLine("This is the ID:  and this is the location code: " + admin.Id + ", and they are equal: ");
 
+            if (obj.Result != null)
+            {
+                obj.Result.Password = admin.Password;
+                if (_accountRepository.Update(await obj))
+                    return Ok("User updated");
+            }
+          
 
-            _accountRepository.Update(await obj);
-
-            return NoContent();
+            return BadRequest("Username doesn't exist");
         }
     }
 }
