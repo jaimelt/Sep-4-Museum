@@ -57,8 +57,7 @@ namespace WebApplication.Datamodel
                         Console.WriteLine("artwork added"+a.Author);
                     
 
-                    }
-                    }
+                    }}
                     
                
             }   
