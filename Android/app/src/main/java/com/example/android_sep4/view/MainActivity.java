@@ -2,12 +2,16 @@ package com.example.android_sep4.view;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.view.artwork.ArtworksTab;
@@ -16,10 +20,13 @@ import com.example.android_sep4.view.room.RoomsTab;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    private LinearLayout viewPager;
+    private static final String CURRENT_POSITION_KEY = "Position";
+    private static final String CURRENT_POSITION2_KEY = "PositionTab";
+    private ViewPager viewPager;
     private MuseumTab museumTab;
     private RoomsTab roomsTab;
     private ArtworksTab artworksTab;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +40,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewpager);
 
-        setFragment(museumTab);
+        if (savedInstanceState != null) {
+            int currentPos = savedInstanceState.getInt(CURRENT_POSITION_KEY);
+            int currentTabPos = savedInstanceState.getInt(CURRENT_POSITION2_KEY);
+            tabLayout.getTabAt(currentTabPos).select();
+            viewPager.setCurrentItem(currentPos);
+        }
+        else {
+            setFragment(museumTab);
+        }
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -67,10 +83,22 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        int position = tabLayout.getSelectedTabPosition();
+        savedInstanceState.putInt(CURRENT_POSITION_KEY, viewPager.getCurrentItem());
+        savedInstanceState.putInt(CURRENT_POSITION2_KEY, position);
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        fragmentTransaction.replace(R.id.viewpager, fragment);
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
     }
 

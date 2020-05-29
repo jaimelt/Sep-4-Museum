@@ -20,7 +20,7 @@ import com.example.android_sep4.model.RoomMeasurements;
         ArtworkMeasurements.class,
         RoomMeasurements.class
         },
-        version = 1)
+        version = 2)
 public abstract class MuseumDb extends RoomDatabase {
     //Singleton database - to use the same instance of this
     private static MuseumDb instance;
