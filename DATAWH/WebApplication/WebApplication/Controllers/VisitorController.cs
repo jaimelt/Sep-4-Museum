@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WebApplication.Database;
+using WebApplication.Database.Repositories.VisitorRep;
 using WebApplication.Datamodel;
 
 namespace WebApplication.Controllers
@@ -11,28 +13,39 @@ namespace WebApplication.Controllers
     [Route("visitors")]
     public class VisitorController : ControllerBase
     {
-        private readonly MuseumContext context;
+        private readonly VisitorRepository VisitorRepository;
+        private readonly ILogger<VisitorController> Logger;
 
-        public VisitorController(MuseumContext context)
+        public VisitorController(VisitorRepository VisitorRepository, ILogger<VisitorController> Logger)
         {
-            this.context = context;
+            this.VisitorRepository = VisitorRepository;
+            this.Logger = Logger; 
         }
 
         // POST
         [HttpPost]
-        public IActionResult postVisitors([FromBody] VisitorList visitors)
+        public async Task<IActionResult> postVisitors([FromBody] VisitorList visitors)
         {
-
-
-            foreach (var v in visitors.visitors)
+            try
             {
-                context.Visitors.Add(v);
+                if (visitors == null)
+                {
+                    Logger.LogError("The visitor List is null. ");
+                    return BadRequest("Null visitor list");
+                }
+                
+                VisitorRepository.AddVisitors(visitors);
+                await VisitorRepository.saveChanges();
+
             }
-            
-            context.SaveChanges();
+            catch
+            {
+                Logger.LogError("Something went wrong internally in the server");
+                return StatusCode(500, "Internal server error");
+            }
 
+            return Ok("Visitor List has been added to the database");
 
-            return Ok("");
         }
     }
 }

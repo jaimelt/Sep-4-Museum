@@ -16,6 +16,7 @@ using WebApplication.Database;
 using WebApplication.Database.Repositories.AccountRep;
 using WebApplication.Database.Repositories.ArtworkRep;
 using WebApplication.Database.Repositories.RoomRep;
+using WebApplication.Database.Repositories.VisitorRep;
 using WebApplication.MongoDB;
 
 
@@ -37,6 +38,7 @@ namespace WebApplication
            services.AddScoped<ArtworkRepository>();
            services.AddScoped<RoomRepository>();
           services.AddScoped<MongoRepository>();
+          services.AddScoped<VisitorRepository>();
           services.AddScoped<AccountRepository>();
          string ConnectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<MuseumContext>(opt =>
