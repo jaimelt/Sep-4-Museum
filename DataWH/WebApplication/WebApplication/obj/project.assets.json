@@ -2,44 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "ADONetHelper/4.1.1": {
-        "type": "package",
-        "dependencies": {
-          "ADONetHelper.Core": "1.2.7"
-        },
-        "compile": {
-          "lib/netstandard2.1/ADONetHelper.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/ADONetHelper.dll": {}
-        }
-      },
-      "ADONetHelper.Core/1.2.7": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyModel": "3.1.2",
-          "System.Runtime.Loader": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/ADONetHelper.Core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/ADONetHelper.Core.dll": {}
-        }
-      },
-      "ADONetHelper.SqlServer/2.2.1": {
-        "type": "package",
-        "dependencies": {
-          "ADONetHelper": "4.1.1",
-          "Microsoft.Data.SqlClient": "1.1.1"
-        },
-        "compile": {
-          "lib/netcoreapp2.1/ADONetHelper.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/ADONetHelper.SqlServer.dll": {}
-        }
-      },
       "Dapper/2.0.35": {
         "type": "package",
         "dependencies": {
@@ -272,18 +234,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.Extensions.DependencyModel/3.1.2": {
-        "type": "package",
-        "dependencies": {
-          "System.Text.Json": "4.7.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
       "Microsoft.Extensions.Logging/5.0.0-preview.2.20160.3": {
@@ -1673,20 +1623,6 @@
           }
         }
       },
-      "System.Runtime.Loader/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "System.IO": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
-        },
-        "compile": {
-          "ref/netstandard1.5/System.Runtime.Loader.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.5/System.Runtime.Loader.dll": {}
-        }
-      },
       "System.Runtime.Numerics/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2084,15 +2020,6 @@
           "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
         }
       },
-      "System.Text.Json/4.7.1": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.0/System.Text.Json.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/System.Text.Json.dll": {}
-        }
-      },
       "System.Text.RegularExpressions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2255,62 +2182,6 @@
     }
   },
   "libraries": {
-    "ADONetHelper/4.1.1": {
-      "sha512": "aDY/JnNmAV3aQ6bx7qHlZByf7xyRI178OPNKqKtkchHdAxzVDNle4+UiA2JHVDIGeRmnnf7QZXDX2I5PBt7N5Q==",
-      "type": "package",
-      "path": "adonethelper/4.1.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "CONTRIBUTING.md",
-        "LICENSE.md",
-        "README.md",
-        "adonethelper.4.1.1.nupkg.sha512",
-        "adonethelper.nuspec",
-        "lib/net461/ADONetHelper.dll",
-        "lib/net461/ADONetHelper.xml",
-        "lib/netstandard2.0/ADONetHelper.dll",
-        "lib/netstandard2.0/ADONetHelper.xml",
-        "lib/netstandard2.1/ADONetHelper.dll",
-        "lib/netstandard2.1/ADONetHelper.xml"
-      ]
-    },
-    "ADONetHelper.Core/1.2.7": {
-      "sha512": "h+k8zDmShdIT+qjpmp4of7rLxql7Hl/257jlVJNiae6ngH0IT05bWAEfUlB4YBO24yP2Uz96Bz2MS18gVzj/Sw==",
-      "type": "package",
-      "path": "adonethelper.core/1.2.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.md",
-        "adonethelper.core.1.2.7.nupkg.sha512",
-        "adonethelper.core.nuspec",
-        "lib/net461/ADONetHelper.Core.dll",
-        "lib/net461/ADONetHelper.Core.xml",
-        "lib/netstandard2.0/ADONetHelper.Core.dll",
-        "lib/netstandard2.0/ADONetHelper.Core.xml",
-        "lib/netstandard2.1/ADONetHelper.Core.dll",
-        "lib/netstandard2.1/ADONetHelper.Core.xml"
-      ]
-    },
-    "ADONetHelper.SqlServer/2.2.1": {
-      "sha512": "Z6ZFePWyOk9zEvxKdnFJPgl2Lh3rh0iFtek56XRTpCfQNQ84MEHNcIXC06IpuCy5HsLzVZKs0mBXR3u6Y4vr9A==",
-      "type": "package",
-      "path": "adonethelper.sqlserver/2.2.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.md",
-        "adonethelper.sqlserver.2.2.1.nupkg.sha512",
-        "adonethelper.sqlserver.nuspec",
-        "lib/net461/ADONetHelper.SqlServer.dll",
-        "lib/net461/ADONetHelper.SqlServer.xml",
-        "lib/netcoreapp2.1/ADONetHelper.SqlServer.dll",
-        "lib/netcoreapp2.1/ADONetHelper.SqlServer.xml",
-        "lib/netstandard2.0/ADONetHelper.SqlServer.dll",
-        "lib/netstandard2.0/ADONetHelper.SqlServer.xml"
-      ]
-    },
     "Dapper/2.0.35": {
       "sha512": "/xAgd8BO8EDnJ0sURWEV8LptHHvTKxoYiT63YUF2U/yWE2VyUCqR2jcrtEyNngT9Kjzppecz95UKiBla3PnR7g==",
       "type": "package",
@@ -2688,28 +2559,6 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "microsoft.extensions.dependencyinjection.abstractions.5.0.0-preview.2.20160.3.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec"
-      ]
-    },
-    "Microsoft.Extensions.DependencyModel/3.1.2": {
-      "sha512": "AZR4ChHbwEHArC6iuLyf5Pr7BANayuVGcDUzuF+HoX5P1MTxFnyJu7cYOgRwPWAgIDZftqqeOm4LbGIQnQXsTw==",
-      "type": "package",
-      "path": "microsoft.extensions.dependencymodel/3.1.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net451/Microsoft.Extensions.DependencyModel.dll",
-        "lib/net451/Microsoft.Extensions.DependencyModel.xml",
-        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.dll",
-        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.xml",
-        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll",
-        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.xml",
-        "microsoft.extensions.dependencymodel.3.1.2.nupkg.sha512",
-        "microsoft.extensions.dependencymodel.nuspec"
       ]
     },
     "Microsoft.Extensions.Logging/5.0.0-preview.2.20160.3": {
@@ -6115,38 +5964,6 @@
         "system.runtime.interopservices.runtimeinformation.nuspec"
       ]
     },
-    "System.Runtime.Loader/4.3.0": {
-      "sha512": "DHMaRn8D8YCK2GG2pw+UzNxn/OHVfaWx7OTLBD/hPegHZZgcZh3H6seWegrC4BYwsfuGrywIuT+MQs+rPqRLTQ==",
-      "type": "package",
-      "path": "system.runtime.loader/4.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net462/_._",
-        "lib/netstandard1.5/System.Runtime.Loader.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/netstandard1.5/System.Runtime.Loader.dll",
-        "ref/netstandard1.5/System.Runtime.Loader.xml",
-        "ref/netstandard1.5/de/System.Runtime.Loader.xml",
-        "ref/netstandard1.5/es/System.Runtime.Loader.xml",
-        "ref/netstandard1.5/fr/System.Runtime.Loader.xml",
-        "ref/netstandard1.5/it/System.Runtime.Loader.xml",
-        "ref/netstandard1.5/ja/System.Runtime.Loader.xml",
-        "ref/netstandard1.5/ko/System.Runtime.Loader.xml",
-        "ref/netstandard1.5/ru/System.Runtime.Loader.xml",
-        "ref/netstandard1.5/zh-hans/System.Runtime.Loader.xml",
-        "ref/netstandard1.5/zh-hant/System.Runtime.Loader.xml",
-        "system.runtime.loader.4.3.0.nupkg.sha512",
-        "system.runtime.loader.nuspec"
-      ]
-    },
     "System.Runtime.Numerics/4.3.0": {
       "sha512": "yMH+MfdzHjy17l2KESnPiF2dwq7T+xLnSJar7slyimAkUh/gTrS9/UQOtv7xarskJ2/XDSNvfLGOBQPjL7PaHQ==",
       "type": "package",
@@ -6990,28 +6807,6 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
-    "System.Text.Json/4.7.1": {
-      "sha512": "XwzMbct3iNepJaFylN1+l8weWlFburEzXidqleSsLvSXdHSIJHEKtRVKHPlpWcFmJX6k3goPFfVgUfp40RR+bg==",
-      "type": "package",
-      "path": "system.text.json/4.7.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Text.Json.dll",
-        "lib/net461/System.Text.Json.xml",
-        "lib/netcoreapp3.0/System.Text.Json.dll",
-        "lib/netcoreapp3.0/System.Text.Json.xml",
-        "lib/netstandard2.0/System.Text.Json.dll",
-        "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.4.7.1.nupkg.sha512",
-        "system.text.json.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Text.RegularExpressions/4.3.0": {
       "sha512": "RpT2DA+L660cBt1FssIE9CAGpLFdFPuheB7pLpKpn6ZXNby7jDERe8Ua/Ne2xGiwLVG2JOqziiaVCGDon5sKFA==",
       "type": "package",
@@ -7553,7 +7348,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "ADONetHelper.SqlServer >= 2.2.1",
       "Dapper >= 2.0.35",
       "Microsoft.EntityFrameworkCore >= 5.0.0-preview.4.20220.10",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.0-preview.4.20220.10",
@@ -7601,10 +7395,6 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
-          "ADONetHelper.SqlServer": {
-            "target": "Package",
-            "version": "[2.2.1, )"
-          },
           "Dapper": {
             "target": "Package",
             "version": "[2.0.35, )"
