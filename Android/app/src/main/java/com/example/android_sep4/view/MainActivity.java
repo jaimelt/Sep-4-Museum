@@ -1,29 +1,45 @@
 package com.example.android_sep4.view;
 
-import android.content.SharedPreferences;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.preference.PreferenceManager;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.android_sep4.R;
+import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.view.artwork.ArtworksTab;
 import com.example.android_sep4.view.museum.MuseumTab;
 import com.example.android_sep4.view.room.RoomsTab;
+import com.example.android_sep4.viewmodel.NotificationsViewModel;
+import com.example.android_sep4.viewmodel.ViewModelFactory;
+import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
+import com.example.android_sep4.viewmodel.museum.rooms.RoomA1ViewModel;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static final String CURRENT_POSITION_KEY = "Position";
     private static final String CURRENT_POSITION2_KEY = "PositionTab";
+    private NotificationsViewModel notificationsViewModel;
+    private ArrayList<Artwork> artworksInDanger = new ArrayList<>();
     private ViewPager viewPager;
     private MuseumTab museumTab;
     private RoomsTab roomsTab;
@@ -33,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setViewModel();
         setContentView(R.layout.activity_main);
 
         museumTab = new MuseumTab();
@@ -55,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
             setFragment(museumTab);
         }
 
-       
-
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -78,6 +93,48 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
+            }
+        });
+    }
+
+    private void notification() {
+        createNotificationChannel();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "museum")
+                .setSmallIcon(R.drawable.logo)
+                .setContentTitle("Artworks are in danger !")
+                .setContentText("Check artworks in rooms")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        if (!(artworksInDanger.isEmpty())) {
+            notificationManager.notify(100, builder.build());
+        }
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "studentChannel";
+            String description = "Channel for room";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("museum", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    private void setViewModel() {
+        notificationsViewModel = new ViewModelProvider(this).get(NotificationsViewModel.class);
+        LiveData<ArrayList<Artwork>> liveData = notificationsViewModel.getArtworksInDanger();
+        liveData.observe(this, artworks -> {
+            liveData.removeObservers(this);
+            artworksInDanger.addAll(artworks);
+            System.out.println(artworksInDanger.size() + "artworks in danger");
+        });
+        notificationsViewModel.getIsLoaded().observe(this, aBoolean -> {
+            if (aBoolean) {
+                notification();
             }
         });
     }

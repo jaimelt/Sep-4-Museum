@@ -10,6 +10,8 @@ public class ServiceGenerator {
 
     private static Retrofit retrofit = retrofitBuilder.build();
 
+    private static NotificationsEndpoints notificationsEndpoints = retrofit.create(NotificationsEndpoints.class);
+
     private static ArtworkEndpoints artworkEndpoints = retrofit.create(ArtworkEndpoints.class);
 
     private static AuthEndpoints authEndpoints = retrofit.create(AuthEndpoints.class);
@@ -33,4 +35,6 @@ public class ServiceGenerator {
     public static VisitorsEndpoints getVisitorsEndpoints() {
         return visitorsEndpoints;
     }
+
+    public static NotificationsEndpoints getNotificationsEndpoints(){return notificationsEndpoints;}
 }
