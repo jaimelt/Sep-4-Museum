@@ -26,6 +26,7 @@ public class Room {
     @Ignore
     private Artworks artworkList;
 
+    @Ignore
     private double light;
 
     private int temperature;
