@@ -38,7 +38,6 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> GetRooms()
         {
-                TransferSql.TransferDataFromSQL();
             try
             {
                 RoomList roomList = new RoomList();
