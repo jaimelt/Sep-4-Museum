@@ -47,10 +47,6 @@
               "target": "Package",
               "version": "[2.0.35, )"
             },
-            "ETLBox": {
-              "target": "Package",
-              "version": "[1.8.8, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.0-preview.4.20220.10, )"

@@ -28,15 +28,6 @@ namespace WebApplication.Database.Repositories.RoomRep
             Equals(roomLocationCode)).FirstOrDefaultAsync();
         }
         
-
-        
-
-        public async Task<RoomMeasurement> GetRoomMeasurementConditionsAsync(string roomLocationCode)
-        {
-            var selectedRoom = await FindByCondition(room => room.LocationCode.Equals(roomLocationCode)).
-                Include(cod => cod.LiveRoomMeasurements).FirstOrDefaultAsync();
-            return  selectedRoom.LiveRoomMeasurements;
-        }
         
 
         public void createRoom(Room room)

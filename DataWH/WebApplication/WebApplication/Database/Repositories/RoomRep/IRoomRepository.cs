@@ -12,10 +12,7 @@ namespace WebApplication.Database.Repositories.RoomRep
         Task<IEnumerable<Room>> getAllRoomsAsync();
 
         Task<Room> GetRoomByLocationCodeAsync(string roomLocationCode);
-
-       // Task<Room> GetRoomOptimalMeasurementsAsync(string roomLocationCode);
-
-        Task<RoomMeasurement> GetRoomMeasurementConditionsAsync(string roomLocationCode);
+        
 
         void createRoom(Room room);
 
