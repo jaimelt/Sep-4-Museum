@@ -5,6 +5,8 @@
 *  Author: Marina Ionel
 */
 
+#include "sensor_data_package_handler.h"
+
 #define RATIO 100
 
 static uint16_t _co2_ppm = 0;

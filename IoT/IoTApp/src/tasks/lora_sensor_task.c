@@ -14,7 +14,6 @@
 #include <hal_defs.h>
 
 #include "../constants/global_constants.h"
-#include "../setup/setup_drivers.h"
 
 #define LORA_SENSOR_TAG "LORA SENSOR TASK"
 #define LORA_TASK_NAME "Lorawan"
