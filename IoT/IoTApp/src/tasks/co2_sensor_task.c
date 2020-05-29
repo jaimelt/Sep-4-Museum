@@ -61,7 +61,7 @@ void vACo2Task(void *pvParameters)
 		}
 		else
 		{
-			xEventGroupSetBits(_event_group_measure, CO2_READY_BIT);
+			xEventGroupSetBits(_eventGroupHandleNewData, CO2_READY_BIT);
 			printf("CO2 measured");
 		}
 	}
