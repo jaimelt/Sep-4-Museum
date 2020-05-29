@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private MuseumTab museumTab;
     private RoomsTab roomsTab;
     private ArtworksTab artworksTab;
-    private int position;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewpager);
 
         if (savedInstanceState != null) {
@@ -59,13 +59,10 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
                     setFragment(museumTab);
-                    position = 0;
                 } else if (tab.getPosition() == 1) {
                     setFragment(artworksTab);
-                    position = 1;
                 } else if (tab.getPosition() == 2) {
                     setFragment(roomsTab);
-                    position = 2;
                 }
             }
 
@@ -90,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save the user's current game state
+        int position = tabLayout.getSelectedTabPosition();
         savedInstanceState.putInt(CURRENT_POSITION_KEY, viewPager.getCurrentItem());
         savedInstanceState.putInt(CURRENT_POSITION2_KEY, position);
 
