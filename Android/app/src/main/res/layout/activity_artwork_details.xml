@@ -11,7 +11,7 @@
         android:id="@+id/artworkTypePopUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/type"
+        android:text="@string/artwork_type_text"
         android:textStyle="bold" />
 
     <ImageView
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/nameArtwork"
+                android:text="@string/name_artwork"
                 android:gravity="start"
                 android:layout_margin="2sp"
                 android:textColor="@color/white"
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/authorName"
+                android:text="@string/author_name"
                 android:gravity="start"
                 android:layout_margin="2sp"
                 android:textColor="@color/white"
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2sp"
-            android:text="@string/loremIpsum"
+            android:text="@string/lorem_ipsum"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="italic" />
@@ -93,7 +93,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/measurementValue" />
+            android:text="@string/measurement_value" />
 
         <ImageView
             android:layout_width="25sp"
@@ -107,7 +107,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/measurementValue" />
+            android:text="@string/measurement_value" />
 
         <ImageView
             android:layout_width="25sp"
@@ -121,7 +121,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/measurementValue" />
+            android:text="@string/measurement_value" />
 
         <ImageView
             android:layout_width="25sp"
@@ -135,7 +135,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/measurementValue" />
+            android:text="@string/measurement_value" />
 
     </LinearLayout>
 

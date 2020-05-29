@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<SwitchPreference
+    android:defaultValue="@bool/pref_notification_default"
+    android:key="@string/pref_notification_key"
+    app:iconSpaceReserved="false"
+    android:summaryOff="@string/pref_notification_sum_off"
+    android:summaryOn="@string/pref_notification_sum_on"
+    android:title="@string/pref_notification_label"/>
+</PreferenceScreen>

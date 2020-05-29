@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/deleteInstruction"
+        android:text="@string/delete_instruction"
         android:layout_marginTop="50dp"
         />
     <androidx.recyclerview.widget.RecyclerView

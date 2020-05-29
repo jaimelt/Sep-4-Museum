@@ -1,48 +1,48 @@
 <resources>
-    <string name="app_name">Brukenthal museum</string>
+    <string name="app_name" translatable="false">Brukenthal museum</string>
     <string name="tab1">Museum</string>
     <string name="tab2">Artworks</string>
     <string name="tab3">Rooms</string>
-    <string name="artwork_text">Artwork Tab</string>
-    <string name="museum_text">Museum Tab</string>
-    <string name="rooms_text">Rooms Tab</string>
-    <string name="name">Add name for artwork…</string>
-    <string name="description">Description</string>
-    <string name="comments">Comments</string>
+    <string name="tab_artwork_text">Artwork Tab</string>
+    <string name="tab_museum_text">Museum Tab</string>
+    <string name="tab_rooms_text">Rooms Tab</string>
+    <string name="artwork_name_text">Add name for artwork…</string>
+    <string name="artwork_description_text">Description</string>
+    <string name="artwork_comments_text">Comments</string>
     <string name="image_description">Image</string>
-    <string name="deleteInstruction">To remove an artwork, please swipe right</string>
-    <string name="type">Type</string>
-    <string name="author">Author</string>
-    <string name="location">Location</string>
+    <string name="delete_instruction">To remove an artwork, please swipe right</string>
+    <string name="artwork_type_text">Type</string>
+    <string name="artwork_author_text">Author</string>
+    <string name="artwork_location_text">Location</string>
     <string name="add_artwork">Add artwork</string>
     <string name="toolbar_image_description">Museum</string>
     <string name="painting">Painting</string>
     <string name="drawing">Drawing</string>
-    <string name="nameArtwork">Name : Artwork name</string>
-    <string name="authorName">Author: Author name</string>
-    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sollicitudin mauris at arcu pellentesque, non aliquet lorem congue. Donec sit amet eros ullamcorper, luctus nulla ac, egestas lacus. Mauris sit amet iaculis nisi.  </string>
+    <string name="name_artwork">Name : Artwork name</string>
+    <string name="author_name">Author: Author name</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sollicitudin mauris at arcu pellentesque, non aliquet lorem congue. Donec sit amet eros ullamcorper, luctus nulla ac, egestas lacus. Mauris sit amet iaculis nisi.  </string>
     <string name="ceramics">Ceramics</string>
-    <string name="measurementValue">100</string>
-    <string name="editRoomHeader">Edit Optimal Conditions For This Room</string>
-    <string name="newValue">New Value</string>
+    <string name="measurement_value">100</string>
+    <string name="edit_room_header">Edit Optimal Conditions For This Room</string>
+    <string name="new_value">New Value</string>
     <string name="edit_artwork">Edit artwork</string>
     <string name="storage">Storage</string>
     <string name="photography">Photo</string>
-    <string name="room_a1">A1</string>
-    <string name="room_a2">A2</string>
-    <string name="room_a3">A3</string>
-    <string name="room_b1">B1</string>
-    <string name="room_b2">B2</string>
-    <string name="room_b3">B3</string>
-    <string name="room_b4">B4</string>
+    <string name="room_a1" translatable="false">A1</string>
+    <string name="room_a2" translatable="false">A2</string>
+    <string name="room_a3" translatable="false">A3</string>
+    <string name="room_b1" translatable="false">B1</string>
+    <string name="room_b2" translatable="false">B2</string>
+    <string name="room_b3" translatable="false">B3</string>
+    <string name="room_b4" translatable="false">B4</string>
     <string name="room_storage">Storage</string>
     <string name="optimal_conditions_title">Set optimal conditions</string>
     <string name="temperature">Temperature</string>
-    <string name="temperatureEditRoom">Temperature : </string>
-    <string name="humidityEditRoom">Humidity : </string>
-    <string name="co2EditRoom">CO2 :</string>
-    <string name="lightEditRoom">Light :</string>
-    <string name="saveChanges">Save Changes</string>
+    <string name="temperature_edit_room">Temperature : </string>
+    <string name="humidity_edit_room">Humidity : </string>
+    <string name="co_edit_room">CO2 :</string>
+    <string name="light_edit_room">Light :</string>
+    <string name="save_changes">Save Changes</string>
     <string name="artwork">Artwork</string>
     <string name="room">Room</string>
     <string name="backSlash">/</string>
@@ -58,15 +58,15 @@
     <string name="light_unit">lx</string>
     <string name="co2_unit">ppm</string>
     <string name="humidity_unit">mg/L</string>
-    <string name="position1">1</string>
-    <string name="position2">2</string>
-    <string name="position3">3</string>
-    <string name="position4">4</string>
-    <string name="position6">6</string>
-    <string name="position8">8</string>
-    <string name="position7">7</string>
-    <string name="position5">5</string>
-    <string name="position9">9</string>
+    <string name="position1" translatable="false">1</string>
+    <string name="position2" translatable="false">2</string>
+    <string name="position3" translatable="false">3</string>
+    <string name="position4" translatable="false">4</string>
+    <string name="position6" translatable="false">6</string>
+    <string name="position8" translatable="false">8</string>
+    <string name="position7" translatable="false">7</string>
+    <string name="position5" translatable="false">5</string>
+    <string name="position9" translatable="false">9</string>
     <string name="action_search">Search</string>
     <string name="action_manage_accounts">Manage accounts</string>
     <string name="action_settings">Settings</string>
@@ -79,11 +79,15 @@
     <string name="visitors">Visitors</string>
     <string name="no_artwork">No artwork</string>
     <string name="capacity">Capacity :</string>
-    <string name="descriptionRoom">Description :</string>
-    <string name="no_description">No description...</string>
+    <string name="description_room">Description :</string>
+    <string name="no_description">No description…</string>
     <string name="edit">Edit</string>
     <string name="artworks">Artworks</string>
     <string name="logo">Logo</string>
     <string name="title">Museum name</string>
+    <string name="pref_notification_label">Notifications for artwork deviations</string>
+    <string name="pref_notification_sum_off">Turned off</string>
+    <string name="pref_notification_sum_on">Turned on</string>
+    <string name="pref_notification_key" translatable="false">notification</string>
 
 </resources>

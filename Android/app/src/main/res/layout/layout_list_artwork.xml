@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="@string/author"
+            android:text="@string/artwork_author_text"
             android:textAlignment="center"
             android:textColor="@color/grey"
             android:textSize="12sp" />
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="@string/type"
+            android:text="@string/artwork_type_text"
             android:textAlignment="center"
             android:textColor="@color/grey"
             android:textSize="12sp" />
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="@string/description"
+            android:text="@string/artwork_description_text"
             android:textAlignment="center"
             android:textColor="@color/grey"
             android:textSize="12sp"

@@ -12,6 +12,9 @@
         <item name="tabSelectedTextColor">@color/colorAccent</item>
         <item name="android:textColor">@color/white</item>
         <item name="actionOverflowMenuStyle">@style/CMOptionsMenu</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="android:colorControlActivated">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/grey</item>
     </style>
 
     <style name="CMOptionsMenu" parent="Widget.AppCompat.PopupMenu.Overflow">

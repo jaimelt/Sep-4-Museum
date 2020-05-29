@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@null"
-                    android:hint="@string/name"
+                    android:hint="@string/artwork_name_text"
                     android:importantForAutofill="no"
                     android:inputType="textNoSuggestions"
                     android:maxWidth="200dp"
@@ -101,7 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
-                        android:text="@string/author"
+                        android:text="@string/artwork_author_text"
                         android:textColor="@color/colorAccent" />
 
                     <EditText
@@ -132,7 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:text="@string/type"
+                        android:text="@string/artwork_type_text"
                         android:textColor="@color/colorAccent" />
 
                     <HorizontalScrollView
@@ -215,7 +215,7 @@
                         android:background="@color/background"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="@string/description"
+                        android:text="@string/artwork_description_text"
                         android:textColor="@color/colorAccent" />
                 </RelativeLayout>
 
@@ -252,7 +252,7 @@
                         android:background="@color/background"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="@string/comments"
+                        android:text="@string/artwork_comments_text"
                         android:textColor="@color/colorAccent" />
                 </RelativeLayout>
 

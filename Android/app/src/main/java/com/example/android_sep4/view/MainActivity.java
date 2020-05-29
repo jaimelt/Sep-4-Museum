@@ -1,5 +1,6 @@
 package com.example.android_sep4.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.FrameLayout;
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         else {
             setFragment(museumTab);
         }
+
+       
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
