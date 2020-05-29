@@ -4,6 +4,7 @@
  * Created: 16/05/2020 11.15.11
  *  Author: Marina Ionel
  */
+#pragma once
 
 #include <stdint.h>
 #include <ATMEGA_FreeRTOS.h>

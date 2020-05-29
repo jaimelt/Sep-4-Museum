@@ -4,6 +4,8 @@
 * Created: 13/05/2020 18.44.41
 *  Author: Marina Ionel
 */
+#pragma once
+
 #include <ATMEGA_FreeRTOS.h>
 #include <semphr.h>
 #include <event_groups.h>

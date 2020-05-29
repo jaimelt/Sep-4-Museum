@@ -5,6 +5,8 @@
  *  Author: Marina Ionel
  */
 
+#pragma once
+
 #define LORA_appEUI "e8ba58083fa48824"
 #define LORA_appKEY "33a1fd9d394852209520d4bf0c15bfda"
 

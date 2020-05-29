@@ -5,13 +5,6 @@
 *  Author: Marina Ionel
 */
 
-#include <stdint.h>
-
-#include <ATMEGA_FreeRTOS.h>
-#include <stdio_driver.h>
-
-#include <lora_driver.h>
-
 #define RATIO 100
 
 static uint16_t _co2_ppm = 0;
