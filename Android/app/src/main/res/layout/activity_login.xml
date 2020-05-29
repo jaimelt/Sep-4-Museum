@@ -10,12 +10,15 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/logo" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/museum_name" />
+        android:src="@drawable/museum_name"
+        android:contentDescription="@string/title" />
 
     <LinearLayout
         android:layout_width="300sp"

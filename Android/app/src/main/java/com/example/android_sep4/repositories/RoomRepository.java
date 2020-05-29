@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class RoomRepository {
     private static RoomRepository instance;
-        private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
     private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
     private RoomsAPIClient roomsAPIClient;
@@ -36,14 +36,13 @@ public class RoomRepository {
     }
 
     public LiveData<ArrayList<Room>> getRoomsData() {
-        roomsAPIClient.getRoomsData().observeForever(new Observer<ArrayList<Room>>() {
+        roomsAPIClient.getRoomsData();
+        roomsAPIClient.getRoomsDataLive().observeForever(new Observer<ArrayList<Room>>() {
             @Override
             public void onChanged(ArrayList<Room> rooms) {
-                if(rooms.isEmpty())
-                {
+                if (rooms.isEmpty()) {
                     //ROOM DATABASE
-                }
-                else {
+                } else {
                     roomsData.setValue(rooms);
                     //danger = getIsInDanger();
                 }
@@ -52,7 +51,7 @@ public class RoomRepository {
         return roomsData;
     }
 
-    public boolean getDanger(){
+    public boolean getDanger() {
         return danger;
     }
 
@@ -73,7 +72,6 @@ public class RoomRepository {
 //        }
 //        return danger;
 //    }
-
 
 
     public LiveData<Room> getRoomById(String locationCode) {
