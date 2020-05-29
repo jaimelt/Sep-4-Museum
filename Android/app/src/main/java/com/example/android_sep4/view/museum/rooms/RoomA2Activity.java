@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
@@ -39,8 +40,10 @@ public class RoomA2Activity extends AppCompatActivity {
     private void setViewModel() {
         roomA2ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA2ViewModel.class);
 
-        roomA2ViewModel.getArtworksFromRoom(ROOM_CODE).observe(this, artworks -> {
-            roomA2ViewModel.getArtworksFromRoom(ROOM_CODE).removeObservers(this);
+        roomA2ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA2ViewModel.class);
+        LiveData<ArrayList<Artwork>> liveData = roomA2ViewModel.getArtworksFromRoom(ROOM_CODE);
+        liveData.observe(this, artworks -> {
+            liveData.removeObservers(this);
             artworksInRoom.addAll(artworks);
         });
 
