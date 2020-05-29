@@ -31,5 +31,9 @@
       <Filter>IoTProjectFiles</Filter>
     </ClInclude>
     <ClInclude Include="fff\fff.h" />
+    <ClInclude Include="force_include.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -53,6 +53,7 @@
     <ClInclude Include="..\IoT\IoTApp\src\tasks\co2_sensor_task.h" />
     <ClInclude Include="..\IoT\IoTApp\src\tasks\light_sensor_task.h" />
     <ClInclude Include="fff\fff.h" />
+    <ClInclude Include="force_include.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -68,6 +69,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
+      <ForcedIncludeFiles>"C:\Users\Marina Ionel\OneDrive - ViaUC\semester 4\SEP4\Sep-4-Museum\IoT-Testing\force_include.h";%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -97,6 +99,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ForcedIncludeFiles>"C:\Users\Marina Ionel\OneDrive - ViaUC\semester 4\SEP4\Sep-4-Museum\IoT-Testing\force_include.h";%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
