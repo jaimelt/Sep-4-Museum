@@ -179,9 +179,6 @@
     <Compile Include="src\main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\setup\setup_drivers.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="src\tasks\co2_sensor_task.c">
       <SubType>compile</SubType>
     </Compile>
@@ -385,7 +382,6 @@
     <Folder Include="src" />
     <Folder Include="src\constants" />
     <Folder Include="src\handler" />
-    <Folder Include="src\setup" />
     <Folder Include="src\tasks" />
   </ItemGroup>
   <ItemGroup>

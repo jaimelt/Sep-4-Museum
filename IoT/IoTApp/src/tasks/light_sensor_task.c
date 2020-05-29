@@ -4,14 +4,10 @@
 * Created: 13/05/2020 16.19.34
 *  Author: Marina Ionel
 */
+#include "light_sensor_task.h"
+
 #include <stdlib.h>
 #include <stdio.h>
-
-#include <ATMEGA_FreeRTOS.h>
-#include <task.h>
-#include <semphr.h>
-#include <event_groups.h>
-#include <tsl2591.h>
 
 #include "../constants/global_constants.h"
 
@@ -30,7 +26,7 @@ void LightSensor_callback(tsl2591ReturnCode_t rc)
 	if (rc != TSL2591_DATA_READY)
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		//printf("%s :: Light sensor not ready :: return code %d\n", LIGHT_SENSOR_TAG, rc);
+		printf("%s :: ", LIGHT_SENSOR_TAG);
 		printf("Light sensor not ready :: return code %d\n", rc);
 		xSemaphoreGive(_xPrintfSemaphore);
 		return;
@@ -46,7 +42,8 @@ void LightSensor_callback(tsl2591ReturnCode_t rc)
 	else
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		printf("%s :: Get light measurement failed :: return code %d\n", LIGHT_SENSOR_TAG, result);
+		printf("%s :: ", LIGHT_SENSOR_TAG);
+		printf("Get light measurement failed :: return code %d\n", result);
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 	}
 }
@@ -57,22 +54,28 @@ static void _setup_light_driver()
 	int result = tsl2591Create(LightSensor_callback);
 	if (result != TSL2591_OK)
 	{
-		printf("%s :: FAILED DRIVER INITIALIZATION :: result code %d\n", LIGHT_SENSOR_TAG, result);
+		printf("%s :: ", LIGHT_SENSOR_TAG);
+		printf("FAILED DRIVER INITIALIZATION :: result code %d\n", result);
 		exit(EXIT_FAILURE);
 	}
-	else{
-		printf("Initialized Light driver\n");
+	else
+	{
+		printf("%s :: ", LIGHT_SENSOR_TAG);
+		printf("SUCCESSFUL DRIVER INITIALIZATION\n");
 	}
-	
+
 	//enable
 	result = tsl2591Enable();
 	if (result != TSL2591_OK)
 	{
-		printf("%s :: FAILED DRIVER ENABLING :: Light :: result code %d\n", LIGHT_SENSOR_TAG, result);
+		printf("%s :: ", LIGHT_SENSOR_TAG);
+		printf("FAILED DRIVER ENABLING :: Light :: result code %d\n", result);
 		exit(EXIT_FAILURE);
 	}
-	else{
-		printf("Enabled light driver\n");
+	else
+	{
+		printf("%s :: ", LIGHT_SENSOR_TAG);
+		printf("SUCCESSFUL DRIVER ENABLING\n");
 	}
 }
 
@@ -81,17 +84,19 @@ void vALightSensorTask(void *pvParameters)
 	for (;;)
 	{
 		xEventGroupWaitBits(_eventGroupHandleMeasure,
-		LIGHT_MEASURE_BIT,
-		pdTRUE,
-		pdTRUE,
-		portMAX_DELAY);
+							LIGHT_MEASURE_BIT,
+							pdTRUE,
+							pdTRUE,
+							portMAX_DELAY);
 
 		int result = tsl2591FetchData();
 
 		if (result != TSL2591_OK)
 		{
 			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			printf("%s :: Fetch light data failed %d\n", LIGHT_SENSOR_TAG, result);
+			printf("%s :: ", LIGHT_SENSOR_TAG);
+			printf("ERROR :: ");
+			printf("Fetch light data failed %d\n", result);
 			xSemaphoreGive(_xPrintfSemaphore);
 		}
 	}
@@ -110,12 +115,12 @@ void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandl
 	_lightSensorTaskHandle = NULL;
 
 	xTaskCreate(
-	vALightSensorTask,
-	(const portCHAR *)LIGHT_SENSOR_TASK_NAME,
-	configMINIMAL_STACK_SIZE + 200,
-	NULL,
-	LIGHT_TASK_PRIORITY,
-	&_lightSensorTaskHandle);
+		vALightSensorTask,
+		(const portCHAR *)LIGHT_SENSOR_TASK_NAME,
+		configMINIMAL_STACK_SIZE + 200,
+		NULL,
+		LIGHT_TASK_PRIORITY,
+		&_lightSensorTaskHandle);
 }
 
 float LightSensor_getLightMeasurement()

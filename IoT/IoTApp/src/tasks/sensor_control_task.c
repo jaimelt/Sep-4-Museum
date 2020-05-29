@@ -38,16 +38,13 @@ static EventGroupHandle_t _event_group_measure = NULL;
 static EventGroupHandle_t _event_group_new_data = NULL;
 static QueueHandle_t _sendingQueue = NULL;
 
-void vASensorControlTask(void *pvParameters)
+void vASensorControlTask(void* pvParameters)
 {
 	for (;;)
 	{
 		//set bits to measure
 		xEventGroupSetBits(_event_group_measure,
-						   ALL_MEASURE_BITS);
-
-		/*CO2_READY_BIT | TEMPERATURE_HUMIDITY_READY_BIT | */
-		//LIGHT_MEASURE_BIT | CO2_MEASURE_BIT
+			ALL_MEASURE_BITS);
 
 		//wait for new data bits
 		EventBits_t bits = xEventGroupWaitBits(
@@ -66,6 +63,7 @@ void vASensorControlTask(void *pvParameters)
 		uint16_t _co2 = co2sensor_getCo2();
 
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		printf("%s :: ", SENSOR_CONTROL_TAG);
 		printf("Co2 %d \n", _co2);
 		xSemaphoreGive(_xPrintfSemaphore);
 
@@ -73,6 +71,7 @@ void vASensorControlTask(void *pvParameters)
 		float _temperature = temperatureHumiditySensor_getTemperature();
 
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		printf("%s :: ", SENSOR_CONTROL_TAG);
 		printf("Temperature %.2f \n", _temperature);
 		xSemaphoreGive(_xPrintfSemaphore);
 
@@ -80,6 +79,7 @@ void vASensorControlTask(void *pvParameters)
 		float _humidity = temperatureHumiditySensor_getHumidity();
 
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		printf("%s :: ", SENSOR_CONTROL_TAG);
 		printf("Humidity %.2f \n", _humidity);
 		xSemaphoreGive(_xPrintfSemaphore);
 
@@ -87,6 +87,7 @@ void vASensorControlTask(void *pvParameters)
 		float _lightInLux = LightSensor_getLightMeasurement();
 
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		printf("%s :: ", SENSOR_CONTROL_TAG);
 		printf("Light %.2f \n", _lightInLux);
 		xSemaphoreGive(_xPrintfSemaphore);
 
@@ -98,8 +99,8 @@ void vASensorControlTask(void *pvParameters)
 		lora_payload_t _lora_payload = SensorDataPackageHandler_getLoraPayload(LORA_PAYLOAD_PORT_NO);
 
 		xQueueSend(_sendingQueue, //queue handler
-				   (void *)&_lora_payload,
-				   portMAX_DELAY);
+			(void*)&_lora_payload,
+			portMAX_DELAY);
 
 		vTaskDelay(TIME_DELAY_BETWEEN_MEASUREMENTS);
 	}
@@ -117,15 +118,44 @@ void sensorControl_create()
 
 	if (_event_group_measure == NULL)
 		_event_group_measure = xEventGroupCreate();
-	//_event_group_measure != NULL ? printf("%s :: SUCCESS :: created event group measure\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group measure failed\n", SENSOR_CONTROL_TAG);
+
+	if (_event_group_measure != NULL)
+	{
+		printf("%s :: ", SENSOR_CONTROL_TAG);
+		printf("SUCCESS :: created event group measure\n");
+	}
+	else
+	{
+		printf("%s :: ", SENSOR_CONTROL_TAG);
+		printf("ERROR :: creation of event group measure failed\n");
+	}
 
 	if (_event_group_new_data == NULL)
 		_event_group_new_data = xEventGroupCreate();
-	//_event_group_new_data != NULL ? printf("%s :: SUCCESS :: created event group new data\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group new data failed\n", SENSOR_CONTROL_TAG);
+
+	if (_event_group_new_data != NULL) {
+		printf("%s :: ", SENSOR_CONTROL_TAG);
+		printf("SUCCESS :: created event group new data\n");
+	}
+	else
+	{
+		printf("%s :: ", SENSOR_CONTROL_TAG);
+		printf("ERROR :: creation of event group new data failed\n");
+	}
 
 	if (_sendingQueue == NULL)
 		_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
-	//_sendingQueue != NULL ? printf("%s :: SUCCESS :: created queue\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of queue\n", SENSOR_CONTROL_TAG);
+
+	if (_sendingQueue != NULL)
+	{
+		printf("%s :: ", SENSOR_CONTROL_TAG);
+		printf("SUCCESS :: created queue\n");
+	}
+	else
+	{
+		printf("%s :: ", SENSOR_CONTROL_TAG);
+		printf("ERROR :: creation of queue\n");
+	}
 
 	//create lora driver
 	loraSensor_create(_sendingQueue, _xPrintfSemaphore);
@@ -143,7 +173,7 @@ void sensorControl_create()
 	//create the task
 	xTaskCreate(
 		vASensorControlTask,						/* Task function. */
-		(const portCHAR *)SENSOR_CONTROL_TASK_NAME, /* String with name of task. */
+		(const portCHAR*)SENSOR_CONTROL_TASK_NAME, /* String with name of task. */
 		configMINIMAL_STACK_SIZE + 300,				/* Stack size in words. */
 		NULL,										/* Parameter passed as input of the task */
 		SENSOR_CONTROL_TASK_PRIORITY,				/* Priority of the task. */

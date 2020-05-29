@@ -9,6 +9,7 @@
 #include <ATMEGA_FreeRTOS.h>
 #include <semphr.h>
 #include <event_groups.h>
+#include <task.h>
 #include <tsl2591.h>
 
 void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure,
