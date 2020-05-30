@@ -50,7 +50,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
 
@@ -76,7 +76,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something else went wrong");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
 
@@ -97,7 +97,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -130,7 +130,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
 
@@ -157,7 +157,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -334,9 +334,9 @@ namespace WebApplication.Controllers
                 await artworkRepository.saveChanges();
                 return Ok("Artwork has been moved or has been edited");
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
      

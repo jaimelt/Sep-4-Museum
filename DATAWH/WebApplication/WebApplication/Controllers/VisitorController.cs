@@ -38,9 +38,9 @@ namespace WebApplication.Controllers
                 await VisitorRepository.saveChanges();
 
             }
-            catch
+            catch(Exception exception)
             {
-                Logger.LogError("Something went wrong internally in the server");
+                Logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
 
