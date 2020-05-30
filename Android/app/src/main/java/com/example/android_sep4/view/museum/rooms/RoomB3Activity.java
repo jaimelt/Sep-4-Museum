@@ -42,8 +42,6 @@ public class RoomB3Activity extends AppCompatActivity {
 
     private void setViewModel() {
         roomB3ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomB3ViewModel.class);
-
-        roomB3ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomB3ViewModel.class);
         LiveData<ArrayList<Artwork>> liveData = roomB3ViewModel.getArtworksFromRoom(ROOM_CODE);
         liveData.observe(this, artworks -> {
             liveData.removeObservers(this);

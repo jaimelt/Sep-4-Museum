@@ -27,7 +27,6 @@ public class RoomA2Activity extends AppCompatActivity {
     private TextView place_holder_1, place_holder_2, place_holder_3,
             place_holder_4, place_holder_5, place_holder_6,
             place_holder_7, place_holder_8;
-    private LiveData<ArrayList<Artwork>> liveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +40,7 @@ public class RoomA2Activity extends AppCompatActivity {
 
     private void setViewModel() {
         roomA2ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA2ViewModel.class);
-
-        roomA2ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA2ViewModel.class);
-        liveData = roomA2ViewModel.getArtworksFromRoom(ROOM_CODE);
+        LiveData<ArrayList<Artwork>> liveData = roomA2ViewModel.getArtworksFromRoom(ROOM_CODE);
         liveData.observe(this, artworks -> {
             liveData.removeObservers(this);
             artworksInRoom.addAll(artworks);
@@ -66,23 +63,10 @@ public class RoomA2Activity extends AppCompatActivity {
         for (Artwork artwork : artworksInRoom) {
             if (artwork != null) {
                 for (TextView textView : textViews) {
-                    textView.setText(artwork.getName());
-                    artwork.setArtworkPosition(textViews.indexOf(textView));
+                    artwork.setArtworkPosition(Integer.parseInt(textView.getText().toString()));
                 }
             }
         }
-    }
-
-    @Override
-    protected void onPause() {
-        liveData.removeObservers(this);
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        liveData.observe(this, artworks -> artworksInRoom.addAll(artworks));
-        super.onResume();
     }
 
     public void findViews() {

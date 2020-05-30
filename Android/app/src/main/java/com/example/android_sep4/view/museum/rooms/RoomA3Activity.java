@@ -26,7 +26,6 @@ public class RoomA3Activity extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView place_holder_1, place_holder_2,
             place_holder_3, place_holder_4;
-    private LiveData<ArrayList<Artwork>> liveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +39,9 @@ public class RoomA3Activity extends AppCompatActivity {
 
     private void setViewModel() {
         roomA3ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA3ViewModel.class);
-
-        roomA3ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA3ViewModel.class);
-        liveData = roomA3ViewModel.getArtworksFromRoom(ROOM_CODE);
+        LiveData<ArrayList<Artwork>> liveData = roomA3ViewModel.getArtworksFromRoom(ROOM_CODE);
         liveData.observe(this, artworks -> {
-
+            liveData.removeObservers(this);
             artworksInRoom.addAll(artworks);
         });
 
@@ -71,18 +68,6 @@ public class RoomA3Activity extends AppCompatActivity {
                 }
             }
         }
-    }
-
-    @Override
-    protected void onPause() {
-        liveData.removeObservers(this);
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        liveData.observe(this, artworks -> artworksInRoom.addAll(artworks));
-        super.onResume();
     }
 
     public void findViews() {
