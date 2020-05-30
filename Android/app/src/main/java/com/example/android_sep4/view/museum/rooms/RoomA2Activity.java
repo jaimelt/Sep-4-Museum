@@ -19,7 +19,6 @@ import com.example.android_sep4.viewmodel.museum.rooms.RoomA2ViewModel;
 import java.util.ArrayList;
 
 public class RoomA2Activity extends AppCompatActivity {
-    private final static int ROOM_CAPACITY = 8;
     private final static String ROOM_CODE = "A2";
     private RoomA2ViewModel roomA2ViewModel;
     private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
@@ -110,15 +109,15 @@ public class RoomA2Activity extends AppCompatActivity {
     }
 
     public void viewArtworks() {
-        for (final TextView textView : textViews) {
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        for (TextView textView : textViews) {
+            textView.setOnClickListener(view -> {
+                try {
                     Intent intent = new Intent(RoomA2Activity.this, ArtworkDetails.class);
                     intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
                     startActivity(intent);
-
-                    Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
+                } catch (IndexOutOfBoundsException e) {
+                    Intent intent = new Intent(RoomA2Activity.this, EmptyArtworkActivity.class);
+                    startActivity(intent);
                 }
             });
         }
