@@ -1,8 +1,8 @@
+using System.Data;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
-using NLog;
 
 namespace WebApplication.SQLCommands
 {
@@ -111,6 +111,34 @@ namespace WebApplication.SQLCommands
                  LastUpdate Date);
                  ";
              
+             await commandCreateLastUpdate.ExecuteNonQueryAsync();
+             await commandCreateLastUpdate.DisposeAsync();
+
+             return null;
+         }
+         
+         public static async Task<IActionResult> something()
+         {
+             await using var sqlConnection = new SqlConnection(Dimensions.WarehouseConnectionString);
+             await sqlConnection.OpenAsync();
+             var commandCreateLastUpdate = sqlConnection.CreateCommand();
+
+             string sql = @"USE [museum.warehouse]
+                    GO
+                    CREATE TABLE test2(
+                    name int);
+                 ";
+
+             await using (var command = new SqlCommand("hello", sqlConnection)
+             {
+                 CommandType = CommandType.StoredProcedure
+             })
+             {
+                 sqlConnection.Open();
+                 command.ExecuteNonQuery();
+             }
+            
+         
              await commandCreateLastUpdate.ExecuteNonQueryAsync();
              await commandCreateLastUpdate.DisposeAsync();
 

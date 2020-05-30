@@ -38,6 +38,7 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> GetRooms()
         {
+           
             try
             {
                 RoomList roomList = new RoomList();
@@ -50,8 +51,9 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
+                
             }
 
         }
@@ -76,7 +78,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something else went wrong");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
 
@@ -131,7 +133,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
 
@@ -295,9 +297,9 @@ namespace WebApplication.Controllers
 
                 return Ok("Artwork has been moved");
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
      
@@ -326,7 +328,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -359,7 +361,7 @@ namespace WebApplication.Controllers
             }
             catch (Exception exception)
             {
-                logger.LogError("Something went wrong internally in the server");
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
 

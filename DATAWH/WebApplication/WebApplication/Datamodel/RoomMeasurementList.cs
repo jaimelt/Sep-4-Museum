@@ -27,7 +27,7 @@ namespace WebApplication.Datamodel
         public void addRoomMeasurement(RoomMeasurement roomMeasurement)
         {
             Measurements.Add(roomMeasurement);
-Console.WriteLine( roomMeasurement.roomNo);
+            Console.WriteLine(roomMeasurement.roomNo);
         }
     }
 }

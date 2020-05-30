@@ -20,7 +20,7 @@ namespace WebApplication.Datamodel
         // live room measurements  & artworks 
         
         public ICollection<Artwork> ArtworkList { get; set; }
-        public RoomMeasurement LiveRoomMeasurements { get; set; }
+   
         
         
         
