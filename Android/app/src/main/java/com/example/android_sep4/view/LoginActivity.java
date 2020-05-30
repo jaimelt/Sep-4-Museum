@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = passwordField.getText().toString();
         int validation = loginActivityViewModel.validateFields(email, password);
 
-        loginButton.setEnabled(false);
+        loginButton.setEnabled(true);
         switch (validation){
             case 1:
                 verifyLogin(email, password);
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void verifyLogin(String email, String password) {
-        loginButton.setEnabled(true);
+        loginButton.setEnabled(false);
 
 
         System.out.println(email + "  " + password);
