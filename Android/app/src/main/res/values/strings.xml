@@ -89,5 +89,8 @@
     <string name="pref_notification_sum_off">Turned off</string>
     <string name="pref_notification_sum_on">Turned on</string>
     <string name="pref_notification_key" translatable="false">notification</string>
+    <string name="position12">12</string>
+    <string name="position11">11</string>
+    <string name="position10">10</string>
 
 </resources>
