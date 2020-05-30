@@ -2,6 +2,7 @@ package com.example.android_sep4.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -63,7 +65,6 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
 
     public ArtworksAdapter(Context context, OnListItemClickListener listener) {
         //Creating a duplicate of original list of artworks to not mess up with the original one
-//        copyOfArtworks = new ArrayList<>(artworks);
         mOnListItemClickListener = listener;
         this.context = context;
 
@@ -88,14 +89,13 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
         holder.artworkAuthor.setText(artworks.get(position).getAuthor());
 
         setColors(artworks.get(position).getType(), holder);
-        //TODO:Setting image from local storage
 
         holder.parentLayout.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), EditArtworkActivity.class);
             intent.putExtra("id", artworks.get(position).getId());
+            intent.putExtra("position", artworks.get(position).getArtworkPosition());
             v.getContext().startActivity(intent);
         });
-
     }
 
     @Override
@@ -114,32 +114,32 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
 
     public void setArtworks(ArrayList<Artwork> artworks) {
         this.artworks = artworks;
+        copyOfArtworks = new ArrayList<>(artworks);
         notifyDataSetChanged();
     }
 
     private void setColors(String type, ViewHolder holder) {
-//        switch (type) {
-//            case "Painting":
-//                holder.artworkType.setTextColor(Color.parseColor("#4ACFAC"));
-//                break;
-//            case "Drawing":
-//                holder.artworkType.setTextColor(Color.parseColor("#FFA48E"));
-//                break;
-//            case "Ceramics":
-//                holder.artworkType.setTextColor(Color.parseColor("#F45C51"));
-//                break;
-//            case "Photo":
-//                holder.artworkType.setTextColor(Color.parseColor("#7E8CE0"));
-//                break;
-//        }
-
+        switch (type) {
+            case "Painting":
+                holder.artworkType.setTextColor(Color.parseColor("#4ACFAC"));
+                break;
+            case "Drawing":
+                holder.artworkType.setTextColor(Color.parseColor("#FFA48E"));
+                break;
+            case "Ceramics":
+                holder.artworkType.setTextColor(Color.parseColor("#F45C51"));
+                break;
+            case "Photo":
+                holder.artworkType.setTextColor(Color.parseColor("#7E8CE0"));
+                break;
+        }
     }
 
     public interface OnListItemClickListener {
         void onListItemClick(int clickedItemIndex);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
         TextView artworkName;
@@ -150,7 +150,7 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
         RelativeLayout parentLayout;
         OnListItemClickListener onListItemClickListener;
 
-        public ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
+        ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             artworkName = itemView.findViewById(R.id.artworkName);

@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
+import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.viewmodel.ViewModelFactoryInteger;
 import com.example.android_sep4.viewmodel.artwork.EditArtworkViewModel;
 
@@ -42,6 +43,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private EditText maxHum;
     private EditText commentsField;
     private int artworkID;
+    private int artworkPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +51,12 @@ public class EditArtworkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_artwork);
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null && bundle.containsKey(ArtworksTab.EXTRA_ARTWORK)) {
+        if (bundle != null) {
             artworkID = bundle.getInt("id");
+            artworkPosition = bundle.getInt("position");
         }
+
+        System.out.println(artworkID);
         setViewModel();
 
         Toolbar toolbar = findViewById(R.id.edit_artwork_toolbar);
@@ -61,7 +66,6 @@ public class EditArtworkActivity extends AppCompatActivity {
         setTitle("Edit artwork");
 
         bindViews();
-        setText();
     }
 
     @Override
@@ -73,18 +77,25 @@ public class EditArtworkActivity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication())).get(EditArtworkViewModel.class);
+        editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication(), artworkID)).get(EditArtworkViewModel.class);
+        editArtworkViewModel.getArtwork().observe(this, artwork -> {
+            editArtworkViewModel.getArtwork().removeObservers(this);
+            Toast.makeText(this, "" + artwork.getName(), Toast.LENGTH_SHORT).show();
+            setText(artwork);
+        });
+
     }
 
-    private void setText() {
+    private void setText(Artwork artwork) {
         //TODO: How to set image
-        nameField.setText(editArtworkViewModel.getName());
-        authorField.setHint(editArtworkViewModel.getAuthor());
-        descriptionField.setHint(editArtworkViewModel.getDescription());
-        commentsField.setHint(editArtworkViewModel.getComment());
-        imageHolder.setImageURI(editArtworkViewModel.getImage());
 
-        String type = editArtworkViewModel.getType();
+        nameField.setText(artwork.getName());
+        authorField.setHint(artwork.getAuthor());
+        descriptionField.setHint(artwork.getDescription());
+        commentsField.setHint(artwork.getComment());
+//        imageHolder.setImageURI(editArtworkViewModel.getImage());
+
+        String type = artwork.getType();
         for (int i = 0; i < typeGroup.getChildCount(); i++) {
             RadioButton radioButton = (RadioButton) typeGroup.getChildAt(i);
             if (radioButton.getText().toString().equals(type)) {
@@ -92,13 +103,22 @@ public class EditArtworkActivity extends AppCompatActivity {
             }
         }
 
-        String location = editArtworkViewModel.getLocation();
+        String location = artwork.getRoomCode();
         for (int i = 0; i < locationGroup.getChildCount(); i++) {
             RadioButton radioButton = (RadioButton) locationGroup.getChildAt(i);
             if (radioButton.getText().toString().equals(location)) {
                 radioButton.setChecked(true);
             }
         }
+
+        minTemp.setText(String.valueOf(artwork.getMinTemperature()));
+        maxTemp.setText(String.valueOf(artwork.getMaxTemperature()));
+        minHum.setText(String.valueOf(artwork.getMinHumidity()));
+        maxHum.setText(String.valueOf(artwork.getMaxHumidity()));
+        minCO2.setText(String.valueOf(artwork.getMinCo2()));
+        maxCO2.setText(String.valueOf(artwork.getMaxCo2()));
+        minLight.setText(String.valueOf(artwork.getMinLight()));
+        maxLight.setText(String.valueOf(artwork.getMaxLight()));
     }
 
     @Override
@@ -136,8 +156,6 @@ public class EditArtworkActivity extends AppCompatActivity {
         String description = descriptionField.getText().toString();
         String comment = commentsField.getText().toString();
         String image = convertImageToString();
-        editArtworkViewModel.editArtwork(artworkID, name, author, type, location, description, comment, image);
-
         int minTempInt = Integer.parseInt(minTemp.getText().toString());
         int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
         int minLightInt = Integer.parseInt(minLight.getText().toString());
@@ -146,7 +164,8 @@ public class EditArtworkActivity extends AppCompatActivity {
         int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
         int minHumInt = Integer.parseInt(minHum.getText().toString());
         int maxHumInt = Integer.parseInt(maxHum.getText().toString());
-        editArtworkViewModel.editArtworkMeasurements(maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
+        editArtworkViewModel.editArtwork(artworkID, name, author, type, location, description, comment, image, artworkPosition, maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
+
         finish();
         Toast.makeText(this, name + " artwork edited", Toast.LENGTH_SHORT).show();
     }

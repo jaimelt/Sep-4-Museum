@@ -14,20 +14,28 @@ import androidx.room.PrimaryKey;
 public class ArtworkMeasurements {
     @PrimaryKey
     private int id;
+
     @ColumnInfo(name = "max_light")
     private int maxLight;
+
     @ColumnInfo(name = "min_light")
     private int minLight;
+
     @ColumnInfo(name = "max_temperature")
     private int maxTemp;
+
     @ColumnInfo(name = "min_temperature")
     private int minTemp;
+
     @ColumnInfo(name = "max_humidity")
     private int maxHumidity;
+
     @ColumnInfo(name = "min_humidity")
     private int minHumidity;
+
     @ColumnInfo(name = "max_co2")
     private int maxCO2;
+
     @ColumnInfo(name = "min_co2")
     private int minCO2;
 

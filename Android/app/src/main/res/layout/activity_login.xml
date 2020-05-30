@@ -10,12 +10,15 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/logo" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/museum_name" />
+        android:src="@drawable/museum_name"
+        android:contentDescription="@string/title" />
 
     <LinearLayout
         android:layout_width="300sp"
@@ -34,7 +37,7 @@
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E-mail"
+                android:hint="@string/hint_email"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +52,7 @@
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/hint_password"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -61,6 +64,6 @@
         android:layout_marginBottom="24dp"
         android:background="@android:drawable/dialog_holo_dark_frame"
         android:padding="12dp"
-        android:text="Login" />
+        android:text="@string/login" />
 
 </LinearLayout>

@@ -12,7 +12,6 @@
         android:layout_width="410dp"
         android:layout_height="705dp"
         android:layout_gravity="top"
-        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,6 +101,17 @@
         app:layout_constraintStart_toStartOf="@+id/room_b1_image"
         app:layout_constraintTop_toTopOf="@+id/room_b1_image"
         app:layout_constraintVertical_bias="0.513" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_roomB1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

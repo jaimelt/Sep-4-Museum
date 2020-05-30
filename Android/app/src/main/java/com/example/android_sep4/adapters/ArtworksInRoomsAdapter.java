@@ -23,8 +23,7 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
     private ArrayList<Artwork> artworks;
     private Context context;
 
-    public ArtworksInRoomsAdapter(ArrayList<Artwork> artworks, Context context) {
-        this.artworks = artworks;
+    public ArtworksInRoomsAdapter(Context context) {
         this.context = context;
     }
 
@@ -49,14 +48,19 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
 
     @Override
     public int getItemCount() {
-        return artworks.size();
+        if (artworks != null) {
+            return artworks.size();
+        } else {
+            return 0;
+        }
     }
 
     public void setArtworksInRoom(ArrayList<Artwork> artworks) {
         this.artworks = artworks;
+        notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
 
         ImageView imageView;
@@ -67,14 +71,14 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
 
         RelativeLayout parentLayout;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             artworkName = itemView.findViewById(R.id.artworkName);
             artworkDescription = itemView.findViewById(R.id.artworkDescription);
             artworkAuthor = itemView.findViewById(R.id.artworkAuthor);
             artworkType = itemView.findViewById(R.id.artworkType);
-            parentLayout = itemView.findViewById(R.id.parent_layout);
+            parentLayout = itemView.findViewById(R.id.parent_layout_room_artworks);
         }
     }
 }

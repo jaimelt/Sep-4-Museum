@@ -7,10 +7,12 @@ import androidx.lifecycle.LiveData;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.repositories.ArtworksRepository;
+import com.example.android_sep4.repositories.RoomRepository;
 
 import java.util.ArrayList;
 
 public class RoomB3ViewModel extends AndroidViewModel {
+
     private ArtworksRepository artworksRepository;
 
     public RoomB3ViewModel(Application application)  {
@@ -18,10 +20,12 @@ public class RoomB3ViewModel extends AndroidViewModel {
         artworksRepository = ArtworksRepository.getInstance(application);
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksFromRoom() {
-        //WE WILL NEED TO PASS THE ROOM CODE
-        String roomCode = "asfas";
+    public LiveData<ArrayList<Artwork>> getArtworksFromRoom(String roomCode) {
         return artworksRepository.getArtworksByRoomId(roomCode);
+    }
+
+    public LiveData<Boolean> getIsLoading() {
+        return artworksRepository.getIsLoading();
     }
 
 }

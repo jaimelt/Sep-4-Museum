@@ -1,12 +1,20 @@
 package com.example.android_sep4.view.museum.rooms;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
@@ -17,10 +25,11 @@ import com.example.android_sep4.viewmodel.museum.rooms.RoomA1ViewModel;
 import java.util.ArrayList;
 
 public class RoomA1Activity extends AppCompatActivity {
-    private final static int ROOM_CAPACITY = 9;
+    private final static String ROOM_CODE = "A1";
     private RoomA1ViewModel roomA1ViewModel;
     private ArrayList<Artwork> artworksInRoom = new ArrayList<>();
     private ArrayList<TextView> textViews = new ArrayList<>();
+    private ProgressBar progressBar;
     private TextView place_holder_1, place_holder_2, place_holder_3,
             place_holder_4, place_holder_5, place_holder_6,
             place_holder_7, place_holder_8, place_holder_9;
@@ -36,12 +45,33 @@ public class RoomA1Activity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        roomA1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication(), "A1")).get(RoomA1ViewModel.class);
+        roomA1ViewModel = new ViewModelProvider(this, new ViewModelFactory(this.getApplication())).get(RoomA1ViewModel.class);
+        LiveData<ArrayList<Artwork>> liveData = roomA1ViewModel.getArtworksFromRoom(ROOM_CODE);
+        liveData.observe(this, artworks -> {
+            liveData.removeObservers(this);
+            artworksInRoom.addAll(artworks);
+        });
 
-        artworksInRoom = roomA1ViewModel.getArtworksFromRoom().getValue();
+        roomA1ViewModel.getIsLoading().observe(this, aBoolean -> {
+            if (aBoolean) {
+                progressBar.setVisibility(View.VISIBLE);
+                for (TextView textView : textViews) {
+                    textView.setClickable(false);
+                }
+            } else {
+                progressBar.setVisibility(View.GONE);
+                for(TextView textView : textViews) {
+                    textView.setClickable(true);
+                }
+            }
+        });
 
-        for (int i = 0; i < ROOM_CAPACITY - 1; i++) {
-            textViews.get(i).setText(artworksInRoom.get(i).getName());
+        for (Artwork artwork : artworksInRoom) {
+            if (artwork != null) {
+                for (TextView textView : textViews) {
+                    artwork.setArtworkPosition(Integer.parseInt(textView.getText().toString()));
+                }
+            }
         }
     }
 
@@ -55,6 +85,7 @@ public class RoomA1Activity extends AppCompatActivity {
         place_holder_7 = findViewById(R.id.artwork_place_7);
         place_holder_8 = findViewById(R.id.artwork_place_8);
         place_holder_9 = findViewById(R.id.artwork_place_9);
+        progressBar = findViewById(R.id.progress_bar_roomA1);
     }
 
     public void setTextViews() {
@@ -70,15 +101,15 @@ public class RoomA1Activity extends AppCompatActivity {
     }
 
     public void viewArtworks() {
-        for (final TextView textView : textViews) {
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        for (TextView textView : textViews) {
+            textView.setOnClickListener(view -> {
+                try {
                     Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
-                    intent.putExtra("Artwork", artworksInRoom.get(textViews.indexOf(textView)));
+                    intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
                     startActivity(intent);
-
-                    Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
+                } catch (IndexOutOfBoundsException e) {
+                    Intent intent = new Intent(RoomA1Activity.this, EmptyArtworkActivity.class);
+                    startActivity(intent);
                 }
             });
         }

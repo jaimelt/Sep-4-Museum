@@ -1,8 +1,19 @@
 package com.example.android_sep4.model;
 
 public class User {
+    private int id;
     private String email;
     private String password;
+
+    public User() {
+
+    }
+
+    public User(int id, String email)
+    {
+        this.id= id;
+
+    }
 
     public User(String email, String password) {
         this.email = email;
@@ -15,5 +26,9 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public int getId() {
+        return id;
     }
 }

@@ -12,8 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.SettingsActivity"></activity>
-        <activity android:name=".view.ManageAccountsActivity" />
+        <activity android:name=".view.museum.rooms.EmptyArtworkActivity"
+            android:theme="@style/AppTheme.PopUpTheme"/>
+        <activity android:name=".view.VisitorsActivity" />
+        <activity android:name=".view.settings.SettingsActivity" />
+        <activity
+            android:name=".view.AccountActivity"
+            android:parentActivityName=".view.MainActivity" />
         <activity android:name=".view.LoginActivity" />
         <activity
             android:name=".view.museum.rooms.ArtworkDetails"
@@ -25,10 +30,9 @@
         <activity android:name=".view.museum.rooms.RoomA3Activity" />
         <activity android:name=".view.museum.rooms.RoomA2Activity" />
         <activity android:name=".view.museum.rooms.RoomA1Activity" />
-        <activity android:name=".view.artwork.StorageActivity"/>
+        <activity android:name=".view.room.StorageActivity" />
         <activity android:name=".view.room.EditRoomActivity" />
         <activity android:name=".view.room.RoomArtworksActivity" />
-        <activity android:name=".view.artwork.SpecificArtworkActivity" />
         <activity
             android:name=".view.artwork.EditArtworkActivity"
             android:parentActivityName=".view.MainActivity" />

@@ -13,15 +13,17 @@ import java.util.ArrayList;
 public class RoomA3ViewModel extends AndroidViewModel {
     private ArtworksRepository artworksRepository;
 
-    public RoomA3ViewModel(Application application)  {
+    public RoomA3ViewModel(Application application) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksFromRoom() {
-        //WE WILL NEED TO PASS THE ROOM CODE
-        String roomCode = "asfas";
+    public LiveData<ArrayList<Artwork>> getArtworksFromRoom(String roomCode) {
         return artworksRepository.getArtworksByRoomId(roomCode);
+    }
+
+    public LiveData<Boolean> getIsLoading() {
+        return artworksRepository.getIsLoading();
     }
 
 }

@@ -1,16 +1,16 @@
-package com.example.android_sep4.view.artwork;
-
-import android.os.Bundle;
+package com.example.android_sep4.view.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
+
 import com.example.android_sep4.R;
 
-public class SpecificArtworkActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_specific_artwork);
+        setContentView(R.layout.activity_settings);
     }
 }

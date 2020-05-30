@@ -4,15 +4,21 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
+import com.example.android_sep4.model.User;
 import com.example.android_sep4.repositories.AuthRepository;
 
-public class ManageAccountsViewModel extends AndroidViewModel {
+import java.util.ArrayList;
+import java.util.List;
+
+public class AccountViewModel extends AndroidViewModel {
     private AuthRepository authRepository;
 
-    public ManageAccountsViewModel(@NonNull Application application) {
+    public AccountViewModel(@NonNull Application application) {
         super(application);
-        authRepository = AuthRepository.getInstance();
+        authRepository = AuthRepository.getInstance(application);
+
     }
 
     public int registerAccount(String email, String password, String repeatPassword) {
@@ -33,5 +39,17 @@ public class ManageAccountsViewModel extends AndroidViewModel {
         } else {
             return 1;
         }
+    }
+
+    public LiveData<ArrayList<User>> getUsers() {
+        return authRepository.getUsers();
+    }
+
+    public LiveData<Boolean> getIsLoading() {
+        return authRepository.getIsLoading();
+    }
+
+    public void deleteUser(int index) {
+        authRepository.deleteUser(index);
     }
 }

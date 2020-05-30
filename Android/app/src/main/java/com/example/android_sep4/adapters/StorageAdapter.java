@@ -1,6 +1,10 @@
 package com.example.android_sep4.adapters;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
@@ -21,9 +26,10 @@ import java.util.ArrayList;
 public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
+    final private OnListItemClickListener mOnListItemClickListener;
     private ArrayList<Artwork> artworks;
     private Context context;
-    final private OnListItemClickListener mOnListItemClickListener;
+    private Drawable deleteIcon;
 
 
     public StorageAdapter(Context context, OnListItemClickListener listener) {
@@ -31,10 +37,9 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
         mOnListItemClickListener = listener;
     }
 
-    public interface OnListItemClickListener {
-        void onListItemClick(int clickedItemIndex);
+    public void deleteArtwork(int position) {
+        artworks.remove(position);
     }
-
 
     @NonNull
     @Override
@@ -53,8 +58,6 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
         holder.artworkType.setText(artworks.get(position).getType());
         holder.artworkDescription.setText(artworks.get(position).getDescription());
         holder.artworkAuthor.setText(artworks.get(position).getAuthor());
-
-        //TODO:Setting image from local storage
     }
 
     @Override
@@ -66,15 +69,18 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
         }
     }
 
-
     public void setArtworks(ArrayList<Artwork> artworks) {
         this.artworks = artworks;
+        System.out.println(artworks.size() + "adaptor");
         notifyDataSetChanged();
     }
 
 
+    public interface OnListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
+    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
         TextView artworkName;
@@ -82,7 +88,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
         TextView artworkAuthor;
         TextView artworkType;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             artworkName = itemView.findViewById(R.id.artworkName);

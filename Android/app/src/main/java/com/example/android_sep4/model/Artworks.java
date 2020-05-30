@@ -3,13 +3,13 @@ package com.example.android_sep4.model;
 import java.util.ArrayList;
 
 public class Artworks {
-    private ArrayList<ArtworkResponse> artworks;
+    private ArrayList<Artwork> artworks;
 
-    public Artworks(ArrayList<ArtworkResponse> artworks) {
+    public Artworks(ArrayList<Artwork> artworks) {
         this.artworks = artworks;
     }
 
-    public ArrayList<ArtworkResponse> getArtworks() {
+    public ArrayList<Artwork> getArtworks() {
         return artworks;
     }
 }

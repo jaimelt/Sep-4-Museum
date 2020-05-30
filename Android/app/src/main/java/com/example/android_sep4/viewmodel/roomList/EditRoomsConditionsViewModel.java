@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Room;
+import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.repositories.RoomRepository;
 
 public class EditRoomsConditionsViewModel extends AndroidViewModel {
@@ -17,18 +18,17 @@ public class EditRoomsConditionsViewModel extends AndroidViewModel {
     public EditRoomsConditionsViewModel(@NonNull Application application) {
         super(application);
         roomRepository = RoomRepository.getInstance(application);
-        room = roomRepository.getRoom(position);
     }
 
     public void setPosition(int position) {
         this.position = position;
     }
 
-    public int getCo2() {
+    public double getCo2() {
         return room.getCo2();
     }
 
-    public int getHumidity() {
+    public double getHumidity() {
         return room.getHumidity();
     }
 
@@ -36,13 +36,14 @@ public class EditRoomsConditionsViewModel extends AndroidViewModel {
         return room.getLight();
     }
 
-    public int getTemperature() {
+    public double getTemperature() {
         return room.getTemperature();
     }
 
-    public void editRoomOptimal(int light, int co2, int temperature, int humidity, int position) {
-        roomRepository.editRoomOptimal(light, co2, temperature, humidity, position);
+    public void editRoomOptimal(String locationCode, String description, int totalCapacity, int currentCapacity,  double light, double co2,
+                                double temperature, double humidity, RoomMeasurements roomMeasurements) {
+        Room room = new Room(locationCode, description, totalCapacity, currentCapacity, null, light, temperature, humidity, co2, roomMeasurements);
+        roomRepository.editRoomOptimal(room);
     }
-
 
 }

@@ -6,11 +6,17 @@ import androidx.annotation.RequiresApi;
 
 import com.example.android_sep4.model.Visitor;
 import com.example.android_sep4.model.Visitors;
+import com.example.android_sep4.requests.ServiceGenerator;
+import com.example.android_sep4.requests.VisitorsEndpoints;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class VisitorsRepository {
@@ -182,14 +188,13 @@ public class VisitorsRepository {
         return reasons.get(random.nextInt(reasons.size()));
     }
 
-    public void addDay() {
+    private void addDay() {
         date = date.plusDays(1);
         System.out.println(date);
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public Visitors createVisitorsForDay() {
+    public Visitors createVisitorsForDays(LocalDate date) {
         setMalesFirstNames();
         setFemaleFirstNames();
         setLastNames();
@@ -199,18 +204,37 @@ public class VisitorsRepository {
         ArrayList<Visitor> femaleVisitors = new ArrayList<>();
         ArrayList<Visitor> visitors = new ArrayList<>();
 
-        for (int i = 0; i < 356; i++) {
+        for (int i = 0; i < 2; i++) {
             addDay();
-            for (int j = 0; j < random.nextInt(1) + 1; j++) {
+            for (int j = 0; j < random.nextInt(15) + 35; j++) {
                 maleVisitors.add(j, createRandomMaleVisitor(date));
             }
 
-            for (int j = 0; j < random.nextInt(1) + 1; j++) {
+            for (int j = 0; j < random.nextInt(15) + 35; j++) {
                 femaleVisitors.add(j, createRandomFemaleVisitor(date));
             }
             visitors.addAll(maleVisitors);
-            visitors.addAll(femaleVisitors);
+
+            System.out.println(visitors);
         }
         return new Visitors(visitors);
+    }
+
+    public void sendVisitorsData() {
+        VisitorsEndpoints endpoints = ServiceGenerator.getVisitorsEndpoints();
+
+        Call<Visitors> call = endpoints.sendVisitors(createVisitorsForDays(date));
+        call.enqueue(new Callback<Visitors>() {
+            @Override
+            public void onResponse(Call<Visitors> call, Response<Visitors> response) {
+                System.out.println("Visitors sent");
+            }
+
+            @Override
+            public void onFailure(Call<Visitors> call, Throwable t) {
+                System.out.println("Visitors failed");
+            }
+        });
+
     }
 }

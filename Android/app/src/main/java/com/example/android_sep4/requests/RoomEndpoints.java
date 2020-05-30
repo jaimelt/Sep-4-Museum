@@ -8,7 +8,9 @@ import com.example.android_sep4.model.Rooms;
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface RoomEndpoints {
@@ -16,7 +18,7 @@ public interface RoomEndpoints {
     @GET("/rooms/getall")
     Call<Rooms> getRoomsDetails();
 
-    @GET("/{locationCode}")
+    @GET("rooms/{locationCode}")
     Call<Room> getRoomByLocation(@Path("locationCode") String locationCode);
 
     @GET("get/{id}")
@@ -24,5 +26,8 @@ public interface RoomEndpoints {
 
     @GET("/artworks?roomCode={roomCode}")
     Call<Artworks> getArtworksByRoomId(@Path("roomCode") String roomCode);
+
+    @PUT("/put/{id}")
+    Call<Room> editOptimalConditions(@Path("id") String id, @Body Room room);
 
 }

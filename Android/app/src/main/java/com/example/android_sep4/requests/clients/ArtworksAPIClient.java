@@ -2,17 +2,12 @@ package com.example.android_sep4.requests.clients;
 
 import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.android_sep4.database.ArtworkDao;
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.ArtworkMeasurements;
-import com.example.android_sep4.model.ArtworkResponse;
 import com.example.android_sep4.model.Artworks;
-import com.example.android_sep4.model.Room;
 import com.example.android_sep4.requests.ArtworkEndpoints;
 import com.example.android_sep4.requests.ServiceGenerator;
 
@@ -27,18 +22,18 @@ import static android.content.ContentValues.TAG;
 public class ArtworksAPIClient {
     private MutableLiveData<ArrayList<Artwork>> artworksData = new MutableLiveData<>();
     private MutableLiveData<Artwork> artworkData = new MutableLiveData<>();
-    private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
-    private ArtworkDao artworkDao;
-    private Artwork artwork = new Artwork();
+    private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Artwork>> artworksInStorage = new MutableLiveData<>();
     private Application application;
 
-    public ArtworksAPIClient(Application application)
-    {
+    public ArtworksAPIClient(Application application) {
         this.application = application;
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksData() {
+    public void getArtworksData() {
         Log.i(TAG, "getArtworksData: called ");
+        isLoading.setValue(true);
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
         Call<Artworks> call = endpoints.getArtworks();
@@ -47,80 +42,46 @@ public class ArtworksAPIClient {
             @Override
             public void onResponse(Call<Artworks> call, Response<Artworks> response) {
                 Log.i(TAG, "onResponse: success!");
-                Artworks apiArtworks = response.body();
-                if (apiArtworks != null) {
-                    for (ArtworkResponse apiArtwork : apiArtworks.getArtworks()) {
-                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
-                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
-                        artworksDataSet.add(artwork);
-                    }
+                if (response.isSuccessful() && response.body() != null) {
+                    artworksData.setValue(response.body().getArtworks());
                 }
+                isLoading.setValue(false);
             }
 
             @Override
             public void onFailure(Call<Artworks> call, Throwable t) {
+                ArrayList<Artwork> arrayList = new ArrayList<>();
+                artworksData.setValue(arrayList);
                 Log.i(TAG, "onFailure: called");
+                // DAVE HERE YOU ARE CALLING THE ROOM DATABASE AND YOU ARE SETTING THE ARTWORKS DATA SET TO THE ARTWORKS THAT WE HAVE IN THERE
             }
         });
-        artworksData.setValue(artworksDataSet);
-        artworksDataSet = new ArrayList<>();
-        return artworksData;
     }
 
-    public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
-        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
-
-        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
-
-        call.enqueue(new Callback<Artworks>() {
-            @Override
-            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
-                Artworks artworksFromRoom = response.body();
-                if (artworksFromRoom != null) {
-                    for (ArtworkResponse apiArtwork : artworksFromRoom.getArtworks()) {
-                        ArtworkMeasurements artworkMeasurements = new ArtworkMeasurements(apiArtwork.getMaxLight(), apiArtwork.getMinLight(), apiArtwork.getMaxTemperature(),
-                                apiArtwork.getMinTemperature(), apiArtwork.getMaxHumidity(), apiArtwork.getMinHumidity(), apiArtwork.getMaxCo2(), apiArtwork.getMinCo2());
-                        artwork = new Artwork(apiArtwork.getId(), apiArtwork.getName(), apiArtwork.getDescription(), null, apiArtwork.getImage(), apiArtwork.getType(),
-                                apiArtwork.getAuthor(), apiArtwork.getRoomCode(), /*apiArtwork.getArtworkPosition() ,*/ artworkMeasurements);
-                        artworksDataSet.add(artwork);
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Artworks> call, Throwable t) {
-
-            }
-        });
-        artworksData.setValue(artworksDataSet);
-        artworksDataSet = new ArrayList<>();
-        return artworksData;
-    }
 
     public LiveData<Artwork> getArtworkById(int id) {
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
-
         Call<Artwork> call = endpoints.getArtworkById(id);
 
+        System.out.println("API CLIENT ID " + id);
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
-                Artwork artworkAPI = response.body();
-                if (artworkAPI != null) {
-                    artworkData.setValue(artworkAPI);
+                if (response.isSuccessful() && response.body() != null) {
+                    artworkData.setValue(response.body());
+                    artworkData = new MutableLiveData<>();
                 }
             }
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
-
+                artworkData.setValue(new Artwork());
+                //CALL DATABASE TO SET THE ARTWORK BY ID
             }
         });
-
         return artworkData;
     }
+
 
     public void editArtwork(Artwork editedArtwork) {
         int artworkID = editedArtwork.getId();
@@ -134,7 +95,14 @@ public class ArtworksAPIClient {
         updatedArtwork.setType(editedArtwork.getType());
         updatedArtwork.setRoomCode(editedArtwork.getRoomCode());
         updatedArtwork.setArtworkPosition(editedArtwork.getArtworkPosition());
-        updatedArtwork.setArtworkMeasurements(editedArtwork.getArtworkMeasurements());
+        updatedArtwork.setMaxCo2(editedArtwork.getMaxCo2());
+        updatedArtwork.setMinCo2(editedArtwork.getMinCo2());
+        updatedArtwork.setMaxHumidity(editedArtwork.getMaxHumidity());
+        updatedArtwork.setMinHumidity(editedArtwork.getMinHumidity());
+        updatedArtwork.setMaxTemperature(editedArtwork.getMaxTemperature());
+        updatedArtwork.setMinTemperature(editedArtwork.getMinTemperature());
+        updatedArtwork.setMinLight(editedArtwork.getMinLight());
+        updatedArtwork.setMaxLight(editedArtwork.getMaxLight());
 
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
@@ -144,17 +112,19 @@ public class ArtworksAPIClient {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
                 System.out.println("SUCCESSFUL UPDATE!");
+                //HERE YOU WILL CALL THE ROOM DATABASE TO EDIT THE ARTWORK FROM THERE
             }
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
                 System.out.println("UPDATE FAILED!");
+                //ALSO HERE, IF THE CALL IS FAILED AT LEAST WE WILL UPDATE IT IN THE LOCAL DATABASE
             }
         });
     }
 
     public void addNewArtwork(Artwork artwork) {
-        ArtworkResponse newArtwork = new ArtworkResponse();
+        Artwork newArtwork = new Artwork();
 
         newArtwork.setName(artwork.getName());
         newArtwork.setAuthor(artwork.getAuthor());
@@ -164,48 +134,111 @@ public class ArtworksAPIClient {
         newArtwork.setType(artwork.getType());
         newArtwork.setRoomCode(artwork.getRoomCode());
         newArtwork.setArtworkPosition(artwork.getArtworkPosition());
-        newArtwork.setMaxCo2(artwork.getArtworkMeasurements().getMaxCO2());
-        newArtwork.setMinCo2(artwork.getArtworkMeasurements().getMinCO2());
-        newArtwork.setMaxHumidity(artwork.getArtworkMeasurements().getMaxHumidity());
-        newArtwork.setMinHumidity(artwork.getArtworkMeasurements().getMinHumidity());
-        newArtwork.setMaxLight(artwork.getArtworkMeasurements().getMaxLight());
-        newArtwork.setMinLight(artwork.getArtworkMeasurements().getMinLight());
-        newArtwork.setMaxTemperature(artwork.getArtworkMeasurements().getMaxTemp());
-        newArtwork.setMinTemperature(artwork.getArtworkMeasurements().getMinTemp());
+        newArtwork.setMaxCo2(artwork.getMaxCo2());
+        newArtwork.setMinCo2(artwork.getMinCo2());
+        newArtwork.setMaxHumidity(artwork.getMaxHumidity());
+        newArtwork.setMinHumidity(artwork.getMinHumidity());
+        newArtwork.setMaxTemperature(artwork.getMaxTemperature());
+        newArtwork.setMinTemperature(artwork.getMinTemperature());
+        newArtwork.setMinLight(artwork.getMinLight());
+        newArtwork.setMaxLight(artwork.getMaxLight());
 
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-        Call<ArtworkResponse> call = endpoints.addArtwork(newArtwork);
+        Call<Artwork> call = endpoints.addArtwork(newArtwork);
 
-        call.enqueue(new Callback<ArtworkResponse>() {
+        call.enqueue(new Callback<Artwork>() {
             @Override
-            public void onResponse(Call<ArtworkResponse> call, Response<ArtworkResponse> response) {
+            public void onResponse(Call<Artwork> call, Response<Artwork> response) {
+                getArtworksData();
                 System.out.println("SUCCESSFUL UPDATE!");
+                //CALL ROOM DATABASE TO ADD
             }
 
             @Override
-            public void onFailure(Call<ArtworkResponse> call, Throwable t) {
+            public void onFailure(Call<Artwork> call, Throwable t) {
+                getArtworksData();
                 System.out.println("UPDATE FAILED!");
+                //CALL THE ROOM TO ADD ALSO IN CASE THE API IS FAILED
             }
         });
     }
 
-    public void deleteArtwork(int id) {
+    public LiveData<ArrayList<Artwork>> getArtworksByRoomId(String roomCode) {
+        isLoading.setValue(true);
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
+        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
+
+        call.enqueue(new Callback<Artworks>() {
+            @Override
+            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+                Log.i(TAG, "onResponse: artworks in room");
+                if (response.body() != null && response.isSuccessful()) {
+                    artworksInRoomData.setValue(response.body().getArtworks());
+                    artworksInRoomData = new MutableLiveData<>();
+                    isLoading.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Artworks> call, Throwable t) {
+                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
+                artworksInRoomData.setValue(new ArrayList<>());
+            }
+        });
+        return artworksInRoomData;
+    }
+
+    public LiveData<ArrayList<Artwork>> getArtworksFromStorage(String roomCode) {
+        isLoading.setValue(true);
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
+
+        Call<Artworks> call = endpoints.getArtworksByRoomId(roomCode);
+
+        call.enqueue(new Callback<Artworks>() {
+            @Override
+            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+                Log.i(TAG, "onResponse: artworks in room");
+                if (response.body() != null && response.isSuccessful()) {
+                    artworksInStorage.setValue(response.body().getArtworks());
+                    artworksInStorage = new MutableLiveData<>();
+                    isLoading.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Artworks> call, Throwable t) {
+                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
+                artworksInStorage.setValue(new ArrayList<>());
+            }
+        });
+        return artworksInStorage;
+    }
+
+    public void deleteArtwork(int id) {
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
         Call<Artwork> call = endpoints.deleteArtwork(id);
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
                 System.out.println("SUCCESSFUL DELETE!");
+                getArtworksByRoomId("Storage");
             }
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
                 System.out.println("DELETE FAILED!");
+                getArtworksByRoomId("Storage");
             }
         });
     }
 
+    public LiveData<Boolean> getIsLoading() {
+        return isLoading;
+    }
 
+    public LiveData<ArrayList<Artwork>> getArtworksDataLive() {
+        return artworksData;
+    }
 }

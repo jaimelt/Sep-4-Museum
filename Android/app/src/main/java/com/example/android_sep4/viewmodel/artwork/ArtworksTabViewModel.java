@@ -1,7 +1,9 @@
 package com.example.android_sep4.viewmodel.artwork;
 
 import android.app.Application;
+import android.os.Build;
 
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -22,6 +24,10 @@ public class ArtworksTabViewModel extends AndroidViewModel {
 
     public LiveData<ArrayList<Artwork>> getArtworks() {
         return artworksRepository.getArtworksData();
+    }
+
+    public LiveData<Boolean> getIsLoading() {
+        return artworksRepository.getIsLoading();
     }
 
 }

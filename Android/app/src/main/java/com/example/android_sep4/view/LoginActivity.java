@@ -40,25 +40,16 @@ public class LoginActivity extends AppCompatActivity {
         emailField = findViewById(R.id.input_email);
         passwordField = findViewById(R.id.input_password);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
+        loginButton.setOnClickListener(v -> login());
     }
 
     private void setViewModel() {
         loginActivityViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
-        loginActivityViewModel.getIsValidating().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (!aBoolean) {
-                    progressDialog.show();
-                } else progressDialog.dismiss();
-            }
+        loginActivityViewModel.getIsValidating().observe(this, aBoolean -> {
+            if (!aBoolean) {
+                progressDialog.show();
+            } else progressDialog.dismiss();
         });
     }
 
@@ -69,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = passwordField.getText().toString();
         int validation = loginActivityViewModel.validateFields(email, password);
 
-        loginButton.setEnabled(false);
+        loginButton.setEnabled(true);
         switch (validation){
             case 1:
                 verifyLogin(email, password);
@@ -85,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void verifyLogin(String email, String password) {
-        loginButton.setEnabled(true);
+        loginButton.setEnabled(false);
 
 
         System.out.println(email + "  " + password);

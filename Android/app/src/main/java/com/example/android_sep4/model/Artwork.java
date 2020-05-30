@@ -3,16 +3,14 @@ package com.example.android_sep4.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import retrofit2.http.Body;
 
 @Entity(foreignKeys = {
         @ForeignKey(
@@ -21,6 +19,7 @@ import retrofit2.http.Body;
                 childColumns = "room_code"
         )})
 public class Artwork implements Parcelable {
+
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
@@ -33,9 +32,11 @@ public class Artwork implements Parcelable {
     @SerializedName("description")
     @Expose
     private String description;
+
     @SerializedName("comment")
     @Expose
     private String comment;
+
     @SerializedName("image")
     @Expose
     private String image;
@@ -49,7 +50,7 @@ public class Artwork implements Parcelable {
     private String author;
 
     @ColumnInfo(name = "room_code")
-    @SerializedName("roomCode")
+    @SerializedName("location")
     @Expose
     private String roomCode;
 
@@ -58,19 +59,60 @@ public class Artwork implements Parcelable {
     @Expose
     private int artworkPosition;
 
-    @Ignore
-    @SerializedName("artworkMeasurements")
+    @ColumnInfo(name = "max_light")
+    @SerializedName("maxLight")
     @Expose
-    private ArtworkMeasurements artworkMeasurements;
+    @Nullable
+    private int maxLight;
+
+    @ColumnInfo(name = "min_light")
+    @SerializedName("minLight")
+    @Expose
+    @Nullable
+    private int minLight;
+
+    @ColumnInfo(name = "max_temperature")
+    @SerializedName("maxTemperature")
+    @Expose
+    @Nullable
+    private int maxTemperature;
+
+    @ColumnInfo(name = "min_temperature")
+    @SerializedName("minTemperature")
+    @Expose
+    @Nullable
+    private int minTemperature;
+
+    @ColumnInfo(name = "max_humidity")
+    @SerializedName("maxHumidity")
+    @Expose
+    @Nullable
+    private int maxHumidity;
+
+    @ColumnInfo(name = "min_humidity")
+    @SerializedName("minHumidity")
+    @Expose
+    @Nullable
+    private int minHumidity;
+
+    @ColumnInfo(name = "max_co2")
+    @SerializedName("maxCo2")
+    @Expose
+    @Nullable
+    private int maxCo2;
+
+    @ColumnInfo(name = "min_co2")
+    @SerializedName("minCo2")
+    @Expose
+    @Nullable
+    private int minCo2;
 
     public Artwork() {
 
     }
 
-    public Artwork(int id, String name, String description, String comment, String image, String type, String author, String roomCode,  ArtworkMeasurements artworkMeasurements) {
-        this.artworkMeasurements = artworkMeasurements;
+    public Artwork(int id, String name, String description, String comment, String image, String type, String author, String roomCode, int artworkPosition, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
         this.id = id;
-        this.artworkPosition = artworkPosition;
         this.name = name;
         this.description = description;
         this.comment = comment;
@@ -78,17 +120,55 @@ public class Artwork implements Parcelable {
         this.type = type;
         this.author = author;
         this.roomCode = roomCode;
+        this.artworkPosition = artworkPosition;
+        this.maxLight = maxLight;
+        this.minLight = minLight;
+        this.maxTemperature = maxTemperature;
+        this.minTemperature = minTemperature;
+        this.maxHumidity = maxHumidity;
+        this.minHumidity = minHumidity;
+        this.maxCo2 = maxCo2;
+        this.minCo2 = minCo2;
+    }
+
+    //Constructor for Room database
+    public Artwork(String name, String description, String comment, String image, String type, String author, String roomCode, int artworkPosition, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
+        this.name = name;
+        this.description = description;
+        this.comment = comment;
+        this.image = image;
+        this.type = type;
+        this.author = author;
+        this.roomCode = roomCode;
+        this.artworkPosition = artworkPosition;
+        this.maxLight = maxLight;
+        this.minLight = minLight;
+        this.maxTemperature = maxTemperature;
+        this.minTemperature = minTemperature;
+        this.maxHumidity = maxHumidity;
+        this.minHumidity = minHumidity;
+        this.maxCo2 = maxCo2;
+        this.minCo2 = minCo2;
     }
 
     protected Artwork(Parcel in) {
         id = in.readInt();
         name = in.readString();
         description = in.readString();
+        comment = in.readString();
         image = in.readString();
         type = in.readString();
         author = in.readString();
         roomCode = in.readString();
         artworkPosition = in.readInt();
+        maxLight = in.readInt();
+        minLight = in.readInt();
+        maxTemperature = in.readInt();
+        minTemperature = in.readInt();
+        maxHumidity = in.readInt();
+        minHumidity = in.readInt();
+        maxCo2 = in.readInt();
+        minCo2 = in.readInt();
     }
 
     public static final Creator<Artwork> CREATOR = new Creator<Artwork>() {
@@ -107,8 +187,8 @@ public class Artwork implements Parcelable {
         return id;
     }
 
-    public void setId(int ID) {
-        this.id = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -175,16 +255,68 @@ public class Artwork implements Parcelable {
         this.artworkPosition = artworkPosition;
     }
 
-    public ArtworkMeasurements getArtworkMeasurements() {
-        return artworkMeasurements;
+    public int getMaxLight() {
+        return maxLight;
     }
 
-    public void setArtworkMeasurements(int maxLight, int minLight, int maxTemp, int minTemp, int maxHum, int minHum, int maxCO2, int minCO2) {
-        artworkMeasurements = new ArtworkMeasurements(maxLight, minLight, maxTemp, minTemp, maxHum, minHum, maxCO2, minCO2);
+    public void setMaxLight(int maxLight) {
+        this.maxLight = maxLight;
     }
 
-    public void setArtworkMeasurements(ArtworkMeasurements artworkMeasurements) {
-        this.artworkMeasurements = artworkMeasurements;
+    public int getMinLight() {
+        return minLight;
+    }
+
+    public void setMinLight(int minLight) {
+        this.minLight = minLight;
+    }
+
+    public int getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public void setMaxTemperature(int maxTemperature) {
+        this.maxTemperature = maxTemperature;
+    }
+
+    public int getMinTemperature() {
+        return minTemperature;
+    }
+
+    public void setMinTemperature(int minTemperature) {
+        this.minTemperature = minTemperature;
+    }
+
+    public int getMaxHumidity() {
+        return maxHumidity;
+    }
+
+    public void setMaxHumidity(int maxHumidity) {
+        this.maxHumidity = maxHumidity;
+    }
+
+    public int getMinHumidity() {
+        return minHumidity;
+    }
+
+    public void setMinHumidity(int minHumidity) {
+        this.minHumidity = minHumidity;
+    }
+
+    public int getMaxCo2() {
+        return maxCo2;
+    }
+
+    public void setMaxCo2(int maxCo2) {
+        this.maxCo2 = maxCo2;
+    }
+
+    public int getMinCo2() {
+        return minCo2;
+    }
+
+    public void setMinCo2(int minCo2) {
+        this.minCo2 = minCo2;
     }
 
     @Override

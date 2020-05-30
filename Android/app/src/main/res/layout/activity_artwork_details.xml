@@ -11,7 +11,7 @@
         android:id="@+id/artworkTypePopUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TYPE"
+        android:text="@string/artwork_type_text"
         android:textStyle="bold" />
 
     <ImageView
@@ -23,6 +23,7 @@
         android:layout_marginBottom="5dp" />
 
     <LinearLayout
+        android:id="@+id/firstLayout"
         android:layout_width="match_parent"
         android:layout_height="120sp"
         android:layout_margin="1dp"
@@ -41,8 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name : Your dick"
-                android:gravity="left"
+                android:text="@string/name_artwork"
+                android:gravity="start"
                 android:layout_margin="2sp"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
@@ -52,8 +53,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Author: My Dick"
-                android:gravity="left"
+                android:text="@string/author_name"
+                android:gravity="start"
                 android:layout_margin="2sp"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
@@ -66,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2sp"
-            android:text="You dick aas fajf asfafa  a f  fdijb fdhbd df dig dfhg sd gsdhgsdjgis sidj g shdshg sdhgsdhg sdg s dghs dghsdguhsdjgs dgsdgi sdi gsdgh sdghsoj irut qp smmx vncxjb amzlxmapskorjeurioq asj f ds fsdjf sd jqokqpoiew qw ueq eq "
+            android:text="@string/lorem_ipsum"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="italic" />
@@ -74,6 +75,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/secondLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
@@ -93,7 +95,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="100" />
+            android:text="@string/measurement_value" />
 
         <ImageView
             android:layout_width="25sp"
@@ -107,7 +109,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="100" />
+            android:text="@string/measurement_value" />
 
         <ImageView
             android:layout_width="25sp"
@@ -121,7 +123,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="100" />
+            android:text="@string/measurement_value" />
 
         <ImageView
             android:layout_width="25sp"
@@ -135,7 +137,7 @@
             android:layout_height="25sp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="100" />
+            android:text="@string/measurement_value" />
 
     </LinearLayout>
 

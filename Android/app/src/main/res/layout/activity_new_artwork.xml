@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:gravity="fill"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/edit_artwork_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,10 +24,10 @@
                 android:id="@+id/artworkButton"
                 android:layout_width="120dp"
                 android:layout_height="30dp"
-                android:background="@drawable/button_background"
                 android:layout_marginEnd="20dp"
+                android:background="@drawable/button_background"
                 android:onClick="onCreateArtwork"
-                android:text="@string/add_artwork"/>
+                android:text="@string/add_artwork" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -41,26 +42,30 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
-            <ImageView
-                android:id="@+id/imageUploader"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="75dp"
-                android:contentDescription="@string/image_description"
-                app:srcCompat="@drawable/ic_image_holder"
-                tools:ignore="VectorDrawableCompat" />
-            <ImageView
-                android:id="@+id/imageHolder"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:contentDescription="@string/image_description"
-                android:onClick="onSelectImage"
-                tools:ignore="VectorDrawableCompat" />
+
+                <ImageView
+                    android:id="@+id/imageUploader"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="75dp"
+                    android:contentDescription="@string/image_description"
+                    app:srcCompat="@drawable/ic_image_holder"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <ImageView
+                    android:id="@+id/imageHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image_description"
+                    android:onClick="onSelectImage"
+                    android:scaleType="centerCrop"
+                    tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@null"
-                    android:hint="@string/name"
+                    android:hint="@string/artwork_name_text"
                     android:importantForAutofill="no"
                     android:inputType="textNoSuggestions"
                     android:maxWidth="200dp"
@@ -96,8 +101,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
-                        android:text="@string/author"
-                        android:textColor="@color/colorAccent"/>
+                        android:text="@string/artwork_author_text"
+                        android:textColor="@color/colorAccent" />
 
                     <EditText
                         android:id="@+id/authorField"
@@ -126,53 +131,56 @@
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/type"
                         android:layout_marginBottom="10dp"
+                        android:text="@string/artwork_type_text"
                         android:textColor="@color/colorAccent" />
+
                     <HorizontalScrollView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                    <RadioGroup
-                        android:id="@+id/radioType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
 
-                        <RadioButton
-                            android:id="@+id/painting"
-                            style="@style/ArtworkRB"
+                        <RadioGroup
+                            android:id="@+id/radioType"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_marginEnd="12dp"
-                            android:layout_weight="1"
-                            android:minWidth="70dp"
-                            android:text="@string/painting" />
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                        <RadioButton
-                            android:id="@+id/drawing"
-                            style="@style/ArtworkRB"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_marginEnd="12dp"
-                            android:layout_weight="1"
-                            android:minWidth="80dp"
-                            android:text="@string/drawing" />
+                            <RadioButton
+                                android:id="@+id/painting"
+                                style="@style/ArtworkRB"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_weight="1"
+                                android:minWidth="70dp"
+                                android:text="@string/painting" />
 
-                        <RadioButton
-                            android:id="@+id/ceramics"
-                            style="@style/ArtworkRB"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_marginEnd="12dp"
-                            android:minWidth="70dp"
-                            android:text="@string/ceramics" />
-                        <RadioButton
-                            android:id="@+id/photo"
-                            style="@style/ArtworkRB"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:text="@string/photography" />
-                    </RadioGroup>
+                            <RadioButton
+                                android:id="@+id/drawing"
+                                style="@style/ArtworkRB"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_weight="1"
+                                android:minWidth="80dp"
+                                android:text="@string/drawing" />
+
+                            <RadioButton
+                                android:id="@+id/ceramics"
+                                style="@style/ArtworkRB"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="12dp"
+                                android:minWidth="70dp"
+                                android:text="@string/ceramics" />
+
+                            <RadioButton
+                                android:id="@+id/photo"
+                                style="@style/ArtworkRB"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:text="@string/photography" />
+                        </RadioGroup>
                     </HorizontalScrollView>
                 </LinearLayout>
 
@@ -207,9 +215,10 @@
                         android:background="@color/background"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="@string/description"
+                        android:text="@string/artwork_description_text"
                         android:textColor="@color/colorAccent" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
@@ -243,12 +252,13 @@
                         android:background="@color/background"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="@string/comments"
+                        android:text="@string/artwork_comments_text"
                         android:textColor="@color/colorAccent" />
                 </RelativeLayout>
 
             </LinearLayout>
-            <include layout="@layout/conditions"/>
+
+            <include layout="@layout/conditions" />
 
         </LinearLayout>
     </ScrollView>

@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="Artwork1"
+            android:text="@string/artwork"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -51,30 +51,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="Author1"
+            android:text="@string/artwork_author_text"
             android:textAlignment="center"
             android:textColor="@color/grey"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/artworkDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="Type1"
+            android:text="@string/artwork_type_text"
             android:textAlignment="center"
             android:textColor="@color/grey"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/artworkAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="Description1"
+            android:text="@string/artwork_description_text"
             android:textAlignment="center"
             android:textColor="@color/grey"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:textStyle="italic" />
 
 
