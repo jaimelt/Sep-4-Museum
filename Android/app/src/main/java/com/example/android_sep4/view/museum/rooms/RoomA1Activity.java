@@ -103,12 +103,12 @@ public class RoomA1Activity extends AppCompatActivity {
     public void viewArtworks() {
         for (TextView textView : textViews) {
             textView.setOnClickListener(view -> {
-                Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
                 try {
+                    Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
                     intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
                     startActivity(intent);
                 } catch (IndexOutOfBoundsException e) {
-                    intent.putExtra("ArtworkID", 0);
+                    Intent intent = new Intent(RoomA1Activity.this, EmptyArtworkActivity.class);
                     startActivity(intent);
                 }
             });
