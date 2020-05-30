@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +23,8 @@ public class ArtworkDetails extends AppCompatActivity {
     private TextView artworkName, artworkAuthor, artworkDescription, artworkType,
             humidity, co2, light, temperature;
     private ImageView artworkImage;
-    private int artoworkID;
-    private Artwork artworkInMuseum;
+    private LinearLayout firstLayout, secondLayout;
+    private int artworkID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,41 +33,45 @@ public class ArtworkDetails extends AppCompatActivity {
         setContentView(R.layout.activity_artwork_details);
 
         Intent intent = getIntent();
-        artoworkID = intent.getIntExtra("ArtworkID", 0);
+        artworkID = intent.getIntExtra("ArtworkID", 0);
 
-        System.out.println(artoworkID);
-
-        setViewModel();
         setMetrics();
         findViews();
+        setViewModel();
     }
 
     private void setViewModel() {
         artworkDetailsViewModel = new ViewModelProvider(this).get(ArtworkDetailsViewModel.class);
 
-        artworkDetailsViewModel.getArtworkById(artoworkID).observe(this, apiArtwork -> {
-            artworkDetailsViewModel.getArtworkById(artoworkID).removeObservers(this);
-            String name = apiArtwork.getName();
-            String author = apiArtwork.getAuthor();
-            String description = apiArtwork.getDescription();
-            String type = apiArtwork.getType();
-            Uri imageView = Uri.parse(apiArtwork.getImage());
-            int maxHumidity = apiArtwork.getMaxHumidity();
-            int maxTemp = apiArtwork.getMaxTemperature();
-            int maxCo2 = apiArtwork.getMaxCo2();
-            int maxLight = apiArtwork.getMaxLight();
+        if (artworkID != 0) {
+            artworkDetailsViewModel.getArtworkById(artworkID).observe(this, apiArtwork -> {
+                artworkDetailsViewModel.getArtworkById(artworkID).removeObservers(this);
+                String name = apiArtwork.getName();
+                String author = apiArtwork.getAuthor();
+                String description = apiArtwork.getDescription();
+                String type = apiArtwork.getType();
+                Uri imageView = Uri.parse(apiArtwork.getImage());
+                int maxHumidity = apiArtwork.getMaxHumidity();
+                int maxTemp = apiArtwork.getMaxTemperature();
+                int maxCo2 = apiArtwork.getMaxCo2();
+                int maxLight = apiArtwork.getMaxLight();
 
-            artworkName.setText("Name: " + name);
-            artworkAuthor.setText("Author: " + author);
-            artworkDescription.setText(description);
-            artworkType.setText(type);
-            artworkImage.setImageURI(imageView);
-            humidity.setText(String.valueOf(maxHumidity));
-            co2.setText(String.valueOf(maxCo2));
-            light.setText(String.valueOf(maxLight));
-            temperature.setText(String.valueOf(maxTemp));
+                artworkName.setText("Name: " + name);
+                artworkAuthor.setText("Author: " + author);
+                artworkDescription.setText(description);
+                artworkType.setText(type);
+                artworkImage.setImageURI(imageView);
+                humidity.setText(String.valueOf(maxHumidity));
+                co2.setText(String.valueOf(maxCo2));
+                light.setText(String.valueOf(maxLight));
+                temperature.setText(String.valueOf(maxTemp));
 
-        });
+            });
+        } else {
+            firstLayout.setVisibility(View.INVISIBLE);
+            secondLayout.setVisibility(View.INVISIBLE);
+            artworkType.setText("No artwork");
+        }
     }
 
     public void setMetrics() {
@@ -88,39 +94,7 @@ public class ArtworkDetails extends AppCompatActivity {
         co2 = findViewById(R.id.co2PopUp);
         light = findViewById(R.id.lightPopUp);
         temperature = findViewById(R.id.tempPopUp);
+        firstLayout = findViewById(R.id.firstLayout);
+        secondLayout = findViewById(R.id.secondLayout);
     }
-
-//    private void setArtwork() {
-//        if(artworkInMuseum != null) {
-//            String name = artworkInMuseum.getName();
-//            String author = artworkInMuseum.getAuthor();
-//            String description = artworkInMuseum.getDescription();
-//            String type = artworkInMuseum.getType();
-//            Uri imageView = Uri.parse(artworkInMuseum.getImage());
-//            int maxHumidity = artworkInMuseum.getMaxHumidity();
-//            int maxTemp = artworkInMuseum.getMaxTemperature();
-//            int maxCo2 = artworkInMuseum.getMaxCo2();
-//            int maxLight = artworkInMuseum.getMaxLight();
-//
-//            artworkName.setText("Name: " + name);
-//            artworkAuthor.setText("Author: " + author);
-//            artworkDescription.setText(description);
-//            artworkType.setText(type);
-//            artworkImage.setImageURI(imageView);
-//            humidity.setText(String.valueOf(maxHumidity));
-//            co2.setText(String.valueOf(maxCo2));
-//            light.setText(String.valueOf(maxLight));
-//            temperature.setText(String.valueOf(maxTemp));
-//        } else {
-//            artworkName.setText("Name: ");
-//            artworkAuthor.setText("Author: " );
-//            artworkDescription.setText("description");
-//            artworkType.setText("type");
-//            artworkImage.setImageURI(null);
-//            humidity.setText("maxHumidity");
-//            co2.setText("maxCo2");
-//            light.setText("maxLight");
-//            temperature.setText("maxTemp");
-//        }
-//    }
 }

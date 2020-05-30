@@ -104,19 +104,14 @@ public class RoomA1Activity extends AppCompatActivity {
         for (TextView textView : textViews) {
             textView.setOnClickListener(view -> {
                 Intent intent = new Intent(RoomA1Activity.this, ArtworkDetails.class);
-                intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
-                startActivity(intent);
-
-                Toast.makeText(getApplicationContext(), "This is " + artworksInRoom.get(textViews.indexOf(textView)).getName(), Toast.LENGTH_SHORT).show();
+                try {
+                    intent.putExtra("ArtworkID", artworksInRoom.get(textViews.indexOf(textView)).getId());
+                    startActivity(intent);
+                } catch (IndexOutOfBoundsException e) {
+                    intent.putExtra("ArtworkID", 0);
+                    startActivity(intent);
+                }
             });
         }
-    }
-
-    private void createDialog(View dialogView) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
-        builder.setView(dialogView);
-        AlertDialog dialog = builder.create();
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
     }
 }
