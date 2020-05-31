@@ -17,8 +17,6 @@ namespace WebApplication.Datamodel
         public int Humidity { get; set; }
         public int Co2 { get; set; }
         
-        // live room measurements  & artworks 
-        
         public ICollection<Artwork> ArtworkList { get; set; }
    
         

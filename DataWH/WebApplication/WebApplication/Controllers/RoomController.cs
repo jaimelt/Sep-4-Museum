@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using WebApplication.Database;
 using WebApplication.Database.Repositories.ArtworkRep;
 using WebApplication.Datamodel;
 using WebApplication.MongoDB;
@@ -23,7 +24,7 @@ namespace WebApplication.Controllers
         private readonly RoomRepository roomRepository;
         private readonly IMongoRepository _mongoRepository;
         private ILogger<RoomController> logger;
-       
+
 
 
         public RoomController(RoomRepository roomRepository, MongoRepository mongoRepository,
@@ -38,7 +39,6 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> GetRooms()
         {
-           
             try
             {
                 RoomList roomList = new RoomList();
@@ -65,6 +65,32 @@ namespace WebApplication.Controllers
             try
             {
                 var obj = await roomRepository.GetRoomByLocationCodeAsync(id);
+                if (obj == null)
+                {
+                    logger.LogError("The room does not exist");
+                    return NotFound();
+                }
+                else
+                {
+                    logger.LogInformation($"Returned the room with id {id}");
+                    return Ok(obj);
+                }
+            }
+            catch (Exception exception)
+            {
+                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+        
+        // GET: api/Rooms/5
+        [HttpGet("getdetails/{id}")]
+        public async Task<IActionResult> getroomWithDetails(string id)
+        {
+            try
+            {
+                var obj = await roomRepository.GetRoomWithDetails(id);
                 if (obj == null)
                 {
                     logger.LogError("The room does not exist");
@@ -149,7 +175,8 @@ namespace WebApplication.Controllers
         {
             try
             {
-                var artwork = await roomRepository.GetRoomByLocationCodeAsync(id);
+                var artwork = await roomRepository.GetRoomWithDetails(id);
+                
 
                 if (artwork == null)
                 {

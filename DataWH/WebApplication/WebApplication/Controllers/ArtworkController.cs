@@ -186,35 +186,63 @@ namespace WebApplication.Controllers
                     logger.LogError("Invalid artwork object sent from client");
                     return BadRequest("Invalid artwork object");
                 }
+                
+               
 
                 var movingArtwork = await artworkRepository.GetArtworkById(id);
-                var newRoom = await RoomRepository.GetRoomByLocationCodeAsync(artwork.Location);
-                var previousRoom = await RoomRepository.GetRoomByLocationCodeAsync(movingArtwork.Location);
+                var newRoom = await RoomRepository.GetRoomWithDetails(artwork.Location);
+                var previousRoom = await RoomRepository.GetRoomWithDetails(movingArtwork.Location);
+                
+                artworkRepository.UpdateArtwork(artwork);
+                
+                Console.Write(movingArtwork.Id);
+                Console.WriteLine(newRoom.LocationCode);
+                Console.WriteLine(newRoom.CurrentCapacity);
+                Console.WriteLine(previousRoom.LocationCode);
+                Console.WriteLine(newRoom.CurrentCapacity);
 
                 if (!previousRoom.LocationCode.Equals(newRoom.LocationCode))
-                { 
+                {
                     if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
                     {
                         logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
                         return BadRequest("The room is at full capacity and cannot take more");
                     }
-                    else
+
+                   
+
+                    previousRoom.ArtworkList.Remove(artwork);
+                    previousRoom.CurrentCapacity--;
+                    
+                    movingArtwork.Location = artwork.Location;
+                    
+                    
+                    newRoom.ArtworkList.Add(artwork);
+                    newRoom.CurrentCapacity++;
+
+                    foreach (var c in newRoom.ArtworkList)
                     {
-                        previousRoom.ArtworkList.Remove(movingArtwork);
-                        previousRoom.CurrentCapacity--;
-                        newRoom.ArtworkList.Add(movingArtwork);
-                        newRoom.CurrentCapacity++;
-                        logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                        Console.WriteLine($"new room artwork id {c.Id}");
+                        
                     }
+                    
+                    RoomRepository.updateRoom(previousRoom);
+                    RoomRepository.updateRoom(newRoom);
+                    await  RoomRepository.saveChanges();
+                   
+                    
+                    
+                    logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
+                   
                 }
 
-                artworkRepository.UpdateArtwork(artwork);
+               
                 await artworkRepository.saveChanges();
                 return Ok("Artwork has been moved or has been edited");
             }
             catch (Exception exception)
             {
-                logger.LogError($"Something went wrong internally in the server: ", exception.Message);
+                logger.LogError($"Something went wrong internally in the server: {exception.Message}");
                 return StatusCode(500, "Internal server error");
             }
      

@@ -27,8 +27,13 @@ namespace WebApplication.Database.Repositories.RoomRep
             return await FindByCondition(room => room.LocationCode.
             Equals(roomLocationCode)).FirstOrDefaultAsync();
         }
-        
-        
+
+        public async Task<Room> GetRoomWithDetails(string roomLocationCode)
+        {
+            return await FindByCondition(room => room.LocationCode.Equals(roomLocationCode))
+                .Include(c => c.ArtworkList).FirstOrDefaultAsync();
+        }
+
 
         public void createRoom(Room room)
         {
