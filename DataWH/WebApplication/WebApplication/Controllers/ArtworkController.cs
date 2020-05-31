@@ -161,12 +161,34 @@ namespace WebApplication.Controllers
             }
         }
 
-        [HttpPut("remove/{artid}/{location}")]
+        [HttpPut("move/{artid}/{location}")]
         public async Task<IActionResult> MoveArtwork([FromRoute] int artid, [FromRoute] string location)
         {
-              artworkRepository.MoveArtwork(artid, location);
-              await artworkRepository.saveChanges();
-              return Ok("it has been moved");
+            try
+            {
+                if (artid == null)
+                {
+                    logger.LogError("Art id is null");
+                    return BadRequest("Null artwork id");
+                    
+                } else if (location == null)
+                {
+                    logger.LogError("Location id is null");
+                    return BadRequest("Null Location id");
+                }
+                
+                
+                artworkRepository.MoveArtwork(artid, location);
+                await artworkRepository.saveChanges();
+                return Ok("it has been moved");
+                
+            }
+            
+            catch (Exception exception)
+            {
+                logger.LogError($"Something went wrong internally in the server: {exception.Message}");
+                return StatusCode(500, "Internal server error");
+            }
 
         }
         
