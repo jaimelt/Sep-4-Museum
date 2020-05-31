@@ -161,7 +161,7 @@ namespace WebApplication.Controllers
             }
         }
 
-        [HttpPut("move/{artid}/{location}")]
+        [HttpPut("moveartwork/{artid},{location}")]
         public async Task<IActionResult> MoveArtwork([FromRoute] int artid, [FromRoute] string location)
         {
             try
