@@ -13,5 +13,6 @@ namespace WebApplication.MongoDB
         ICollection<MongoMeasurement> LoadMeasurementsFromDate(DateTime dateTime);
 
         MongoMeasurement LoadLastRoomMeasurement(int room_no);
+        int modifyToMongoRoomID(string room_no);
     }
 }

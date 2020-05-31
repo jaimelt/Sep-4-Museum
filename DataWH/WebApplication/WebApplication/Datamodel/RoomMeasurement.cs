@@ -5,6 +5,20 @@ namespace WebApplication.Datamodel
 {
     public class RoomMeasurement
     {
+        public RoomMeasurement(int id, decimal light, decimal temperature, decimal humidity, decimal co2, string roomNo)
+        {
+            Id = id;
+            Light = light;
+            Temperature = temperature;
+            Humidity = humidity;
+            Co2 = co2;
+            this.roomNo = roomNo;
+        }
+
+        public RoomMeasurement()
+        {
+        }
+
         [Key] public int Id { get; set; }
         [Column(TypeName = "decimal(8,4)")] public decimal Light { get; set; }
         [Column(TypeName = "decimal(8,4)")] public decimal Temperature { get; set; }
