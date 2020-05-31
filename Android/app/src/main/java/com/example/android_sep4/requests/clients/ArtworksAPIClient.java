@@ -241,4 +241,23 @@ public class ArtworksAPIClient {
     public LiveData<ArrayList<Artwork>> getArtworksDataLive() {
         return artworksData;
     }
+
+    public void moveArtwork(int artworkID, String location) {
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
+
+        Call<String> call = endpoints.moveArtwork(artworkID, location);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                System.out.println("SUCCESSFUL MOVE!");
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                System.out.println("MOVE FAILED!");
+            }
+        });
+    }
+
 }

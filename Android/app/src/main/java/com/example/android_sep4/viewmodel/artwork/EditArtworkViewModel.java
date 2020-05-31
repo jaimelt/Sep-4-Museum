@@ -1,16 +1,12 @@
 package com.example.android_sep4.viewmodel.artwork;
 
 import android.app.Application;
-import android.net.Uri;
+import android.widget.RadioGroup;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.repositories.ArtworksRepository;
 
 public class EditArtworkViewModel extends AndroidViewModel {
@@ -29,6 +25,30 @@ public class EditArtworkViewModel extends AndroidViewModel {
     }
 
     public LiveData<Artwork> getArtwork() {
-       return artworksRepository.getArtworkById(id);
+        return artworksRepository.getArtworkById(id);
+    }
+
+    public int validateLocation(RadioGroup location) {
+        if (validate(location)) {
+            return 1;
+        } else if(!validate(location)){
+            return 0;
+        }
+        return 2;
+    }
+
+    private boolean validate(RadioGroup radioGroup) {
+        if (radioGroup.getCheckedRadioButtonId() == -1) {
+            // no radio buttons are checked
+            return false;
+        } else {
+            // one of the radio buttons is checked
+            return true;
+        }
+
+    }
+
+    public void moveArtwork(int artworkID, String location) {
+        artworksRepository.moveArtwork(artworkID, location);
     }
 }

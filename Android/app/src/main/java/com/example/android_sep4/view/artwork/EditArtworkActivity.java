@@ -2,9 +2,11 @@ package com.example.android_sep4.view.artwork;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -42,6 +44,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private EditText minHum;
     private EditText maxHum;
     private EditText commentsField;
+    private Button moveBtn;
     private int artworkID;
     private int artworkPosition;
 
@@ -143,6 +146,7 @@ public class EditArtworkActivity extends AppCompatActivity {
 
         int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
+
         String name = "";
         if (!nameField.getText().toString().isEmpty()) {
             name = nameField.getText().toString();
@@ -170,6 +174,22 @@ public class EditArtworkActivity extends AppCompatActivity {
         Toast.makeText(this, name + " artwork edited", Toast.LENGTH_SHORT).show();
     }
 
+    public void onEditLocation(View view) {
+        int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
+        RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
+
+        int validation = editArtworkViewModel.validateLocation(locationGroup);
+
+        switch (validation) {
+            case 1:
+                String location = selectedRadioButtonLocation.getText().toString();
+                editArtworkViewModel.moveArtwork(artworkID, location);
+                moveBtn.setVisibility(View.GONE);
+            case 0:
+                Toast.makeText(this, "Select the moving location", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private String convertImageToString() {
         imageHolder.buildDrawingCache();
         Bitmap bm = imageHolder.getDrawingCache();
@@ -195,6 +215,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         maxCO2 = findViewById(R.id.maxCO2);
         minHum = findViewById(R.id.minHum);
         maxHum = findViewById(R.id.maxHum);
+        moveBtn = findViewById(R.id.moveBtn);
     }
 
 

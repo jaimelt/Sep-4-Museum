@@ -140,6 +140,10 @@ public class ArtworksRepository {
         return base64Image;
     }
 
+    public void moveArtwork(int artworkID, String location) {
+        artworksAPIClient.moveArtwork(artworkID, location);
+    }
+
 
     //From Room Database
 //    public List<Artwork> getArtworks() {
