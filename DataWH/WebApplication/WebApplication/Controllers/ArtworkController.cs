@@ -7,6 +7,7 @@ using DnsClient.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using WebApplication.Database;
 using WebApplication.Database.Repositories.ArtworkRep;
 using WebApplication.Database.Repositories.RoomRep;
 using WebApplication.Datamodel;
@@ -22,14 +23,13 @@ namespace WebApplication.Controllers
     {
         private readonly ArtworkRepository artworkRepository;
         private readonly ILogger<ArtworkController> logger;
-        private readonly RoomRepository RoomRepository;
+      
 
-        public ArtworkController(ArtworkRepository artworkRepository, ILogger<ArtworkController> logger, RoomRepository RoomRepository)
+        public ArtworkController(ArtworkRepository artworkRepository, ILogger<ArtworkController> logger)
         {
             this.artworkRepository = artworkRepository;
             this.logger = logger;
-            this.RoomRepository = RoomRepository;
-
+            
         }
 
 
@@ -46,7 +46,6 @@ namespace WebApplication.Controllers
 
                 return Ok(artworkList);
 
-               
             }
             catch (Exception exception)
             {
@@ -162,6 +161,16 @@ namespace WebApplication.Controllers
             }
         }
 
+        [HttpPut("remove/{artid}/{location}")]
+        public async Task<IActionResult> MoveArtwork([FromRoute] int artid, [FromRoute] string location)
+        {
+              artworkRepository.MoveArtwork(artid, location);
+              await artworkRepository.saveChanges();
+              return Ok("it has been moved");
+
+        }
+        
+
 
         [HttpPut("edit/{id}")]
         public async Task<IActionResult> PutArtwork([FromRoute] int id, [FromBody] Artwork artwork)
@@ -187,58 +196,10 @@ namespace WebApplication.Controllers
                     return BadRequest("Invalid artwork object");
                 }
                 
-               
 
-                var movingArtwork = await artworkRepository.GetArtworkById(id);
-                var newRoom = await RoomRepository.GetRoomWithDetails(artwork.Location);
-                var previousRoom = await RoomRepository.GetRoomWithDetails(movingArtwork.Location);
-                
                 artworkRepository.UpdateArtwork(artwork);
-                
-                Console.Write(movingArtwork.Id);
-                Console.WriteLine(newRoom.LocationCode);
-                Console.WriteLine(newRoom.CurrentCapacity);
-                Console.WriteLine(previousRoom.LocationCode);
-                Console.WriteLine(newRoom.CurrentCapacity);
-
-                if (!previousRoom.LocationCode.Equals(newRoom.LocationCode))
-                {
-                    if (newRoom.CurrentCapacity == newRoom.TotalCapacity)
-                    {
-                        logger.LogError($"The room with id {newRoom.LocationCode} is at it's maximum capacity");
-                        return BadRequest("The room is at full capacity and cannot take more");
-                    }
-
-                   
-
-                    previousRoom.ArtworkList.Remove(artwork);
-                    previousRoom.CurrentCapacity--;
-                    
-                    movingArtwork.Location = artwork.Location;
-                    
-                    
-                    newRoom.ArtworkList.Add(artwork);
-                    newRoom.CurrentCapacity++;
-
-                    foreach (var c in newRoom.ArtworkList)
-                    {
-                        Console.WriteLine($"new room artwork id {c.Id}");
-                        
-                    }
-                    
-                    RoomRepository.updateRoom(previousRoom);
-                    RoomRepository.updateRoom(newRoom);
-                    await  RoomRepository.saveChanges();
-                   
-                    
-                    
-                    logger.LogInformation($"The artwork has been moved to room {newRoom.LocationCode}");
-                   
-                }
-
-               
                 await artworkRepository.saveChanges();
-                return Ok("Artwork has been moved or has been edited");
+                return Ok("Artwork has been has been edited");
             }
             catch (Exception exception)
             {
