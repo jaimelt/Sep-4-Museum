@@ -46,7 +46,7 @@
     <com_atmel_avrdbg_tool_atmelice>
       <ToolOptions>
         <InterfaceProperties>
-          <JtagDbgClock>1341538</JtagDbgClock>
+          <JtagDbgClock>200000</JtagDbgClock>
         </InterfaceProperties>
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
@@ -55,7 +55,7 @@
       <ToolName>Atmel-ICE</ToolName>
     </com_atmel_avrdbg_tool_atmelice>
     <avrtoolinterface>JTAG</avrtoolinterface>
-    <avrtoolinterfaceclock>1341538</avrtoolinterfaceclock>
+    <avrtoolinterfaceclock>200000</avrtoolinterfaceclock>
     <com_atmel_avrdbg_tool_simulator>
       <ToolOptions xmlns="">
         <InterfaceProperties>
@@ -67,6 +67,17 @@
       </ToolNumber>
       <ToolName xmlns="">Simulator</ToolName>
     </com_atmel_avrdbg_tool_simulator>
+    <custom>
+      <ToolOptions xmlns="">
+        <InterfaceProperties>
+        </InterfaceProperties>
+        <InterfaceName>JTAG</InterfaceName>
+      </ToolOptions>
+      <ToolType xmlns="">custom</ToolType>
+      <ToolNumber xmlns="">
+      </ToolNumber>
+      <ToolName xmlns="">Custom Programming Tool</ToolName>
+    </custom>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -178,12 +189,6 @@
     <Compile Include="src\main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\setup\setup_drivers.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\setup\setup_drivers.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="src\tasks\co2_sensor_task.c">
       <SubType>compile</SubType>
     </Compile>
@@ -200,6 +205,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\tasks\lora_sensor_task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\tasks\rc_servo_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\tasks\rc_servo_task.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\tasks\sensor_control_task.c">
@@ -387,7 +398,6 @@
     <Folder Include="src" />
     <Folder Include="src\constants" />
     <Folder Include="src\handler" />
-    <Folder Include="src\setup" />
     <Folder Include="src\tasks" />
   </ItemGroup>
   <ItemGroup>

@@ -14,7 +14,6 @@
 #include <hal_defs.h>
 
 #include "../constants/global_constants.h"
-#include "../setup/setup_drivers.h"
 
 #define LORA_SENSOR_TAG "LORA SENSOR TASK"
 #define LORA_TASK_NAME "Lorawan"
@@ -139,19 +138,7 @@ void vALoraTask(void *pvParameters)
 			&_lorapayload,
 			portMAX_DELAY) == pdPASS)
 			{
-				//if (_lorapayload != NULL)
-				//{
-					loraDriver_sent_upload_message(_lorapayload);
-				//}
-				/*else
-				{
-					if (_xPrintfSemaphore != NULL)
-					{
-						xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-						printf("%s :: NULL lora payload", LORA_SENSOR_TAG);
-						xSemaphoreGive(_xPrintfSemaphore);
-					}
-				}*/
+				loraDriver_sent_upload_message(_lorapayload);
 			}
 		}
 	}

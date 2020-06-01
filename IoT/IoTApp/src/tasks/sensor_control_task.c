@@ -23,6 +23,7 @@
 #include "light_sensor_task.h"
 #include "temperature_humidity_task.h"
 #include "co2_sensor_task.h"
+#include "rc_servo_task.h"
 
 //constants
 #define SENSOR_CONTROL_TAG "SENSOR CONTROL"
@@ -55,7 +56,7 @@ void vASensorControlTask(void *pvParameters)
 		pdTRUE,
 		pdTRUE,
 		portMAX_DELAY);
-		printf("here\n");
+
 		//get co2
 		uint16_t _co2 = co2sensor_getCo2();
 		
@@ -133,6 +134,8 @@ void sensorControl_create()
 
 	//create light
 	LightSensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
+	
+	rc_servo_create();
 
 	_sensor_control_task_handle = NULL;
 	//create the task
