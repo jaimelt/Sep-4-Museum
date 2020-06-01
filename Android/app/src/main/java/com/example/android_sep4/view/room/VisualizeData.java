@@ -6,8 +6,17 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.android_sep4.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.Chart;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 public class VisualizeData extends AppCompatActivity {
     private TextView light;
@@ -19,7 +28,7 @@ public class VisualizeData extends AppCompatActivity {
     private TextView liveDataCo2;
     private TextView liveDataHumidity;
     private TextView liveDataTemperature;
-
+    private BarChart chart;
     private String locationCode;
     private String description;
     private double optimalTemperature;
@@ -62,6 +71,37 @@ public class VisualizeData extends AppCompatActivity {
         liveDataHumidity.setText("30");
         liveDataTemperature.setText("25");
         liveDataLight.setText("400");
+        addDataToChart();
+    }
+
+    private void addDataToChart(){
+        ArrayList<BarEntry> live = new ArrayList<BarEntry>();
+        live.add(new BarEntry(1F,30));
+        live.add(new BarEntry(2F,40));
+        live.add(new BarEntry(3F,50));
+        live.add(new BarEntry(4F,50));
+        ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
+        entries.add(new BarEntry(1F,30));
+        entries.add(new BarEntry(2F,40));
+        entries.add(new BarEntry(3F,50));
+        entries.add(new BarEntry(4F,50));
+        BarDataSet barDataSet = new BarDataSet(entries, "Data");
+
+        ArrayList<String> measurementsName = new ArrayList<>();
+        measurementsName.add("Light");
+        measurementsName.add("Co2");
+        measurementsName.add("Temp");
+        measurementsName.add("Humidity");
+
+        BarData data  = new BarData(barDataSet);
+        data.setBarWidth(0.9f);
+        chart.setData(data);
+        chart.setFitBars(true);
+        chart.invalidate();
+        chart.setDrawGridBackground(false);
+        chart.setDrawBorders(false);
+        chart.setDrawValueAboveBar(false);
+        chart.setBackgroundColor(00000);
 
     }
 
@@ -74,5 +114,6 @@ public class VisualizeData extends AppCompatActivity {
         liveDataTemperature = findViewById(R.id.LiveTemperature);
         liveDataHumidity = findViewById(R.id.LiveHumidity);
         liveDataCo2 = findViewById(R.id.liveCo2);
+        chart = (BarChart) findViewById(R.id.chart);
     }
 }

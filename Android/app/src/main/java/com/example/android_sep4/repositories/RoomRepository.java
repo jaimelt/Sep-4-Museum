@@ -1,12 +1,14 @@
 package com.example.android_sep4.repositories;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.preference.PreferenceManager;
 
-import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.R;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.requests.clients.RoomsAPIClient;
@@ -21,8 +23,6 @@ public class RoomRepository {
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
     private RoomsAPIClient roomsAPIClient;
     private Application application;
-    private boolean danger;
-
     public RoomRepository(Application application) {
         this.application = application;
         roomsAPIClient = new RoomsAPIClient(application);
@@ -44,6 +44,20 @@ public class RoomRepository {
             public void onChanged(ArrayList<Room> rooms) {
                 if (rooms.isEmpty()) {
                 } else {
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
+                    boolean prefTemperature = sharedPreferences.getBoolean(application.getString(R.string.pref_temperature_key), application.getResources().getBoolean(R.bool.pref_temperature_default));
+                    for (Room room : rooms) {
+                        if (!prefTemperature) {
+
+                            double celsius = room.getTemperature();
+                            double fahrenheit = celsius * 1.8 + 32.0;
+                     /*    double celsiusLive = room.getLiveRoomMeasurements().getTemp();
+                           double fahrenheitLive = celsiusLive* 1.8 + 32.0;*/
+                            //  room.getLiveRoomMeasurements().setTemp(fahrenheitLive);
+                            room.setTemperature(fahrenheit);
+                        }
+
+                    }
                     roomsData.setValue(rooms);
                 }
             }
