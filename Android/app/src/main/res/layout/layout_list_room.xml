@@ -18,6 +18,7 @@
             android:background="@color/colorPrimary">
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/titleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
