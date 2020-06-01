@@ -38,6 +38,9 @@
             android:name=".view.artwork.EditArtworkActivity"
             android:parentActivityName=".view.MainActivity" />
         <activity
+            android:name=".view.room.VisualizeData"
+            android:parentActivityName=".view.MainActivity"/>
+        <activity
             android:name=".view.artwork.NewArtworkActivity"
             android:parentActivityName=".view.MainActivity" />
         <activity android:name=".view.MainActivity">

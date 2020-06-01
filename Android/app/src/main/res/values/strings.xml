@@ -49,6 +49,7 @@
     <string name="login">Login</string>
     <string name="sendVisitors">Send visitors</string>
     <string name="co2">CO2</string>
+    <string name="visualize">Visualize</string>
     <string name="light">Light</string>
     <string name="humidity">Humidity</string>
     <string name="min">min.</string>

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Room;
+import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.repositories.RoomRepository;
 
 import java.util.ArrayList;
@@ -24,10 +25,13 @@ public class RoomsTabViewModel extends AndroidViewModel {
         return roomsRepository.getRoomsData();
     }
 
+/*    public LiveData<RoomMeasurements> getLiveMeasurements(String roomCode){
+        return  roomsRepository.getLiveMeasurements(roomCode);
+    }*/
+
     public LiveData<Boolean> getIsLoading() {
         return roomsRepository.getIsLoading();
     }
 
-    public boolean getIsInDanger(){return roomsRepository.getDanger();}
 
 }

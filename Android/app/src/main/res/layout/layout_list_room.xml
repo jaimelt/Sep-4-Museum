@@ -337,8 +337,18 @@
                     android:background="@drawable/button_background"
                     android:text="@string/edit"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/showRoomArtworks"
+                    app:layout_constraintEnd_toStartOf="@id/showRoomMeasurements"
                     app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/showRoomMeasurements"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:text="@string/visualize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/showRoomArtworks"
+                    app:layout_constraintStart_toEndOf="@id/editOptimalButton" />
 
                 <Button
                     android:id="@+id/showRoomArtworks"
@@ -348,7 +358,7 @@
                     android:text="@string/artworks"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/editOptimalButton" />
+                    app:layout_constraintStart_toEndOf="@id/showRoomMeasurements" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

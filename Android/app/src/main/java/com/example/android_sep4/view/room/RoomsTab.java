@@ -49,36 +49,9 @@ public class RoomsTab extends Fragment {
                              Bundle savedInstanceState) {
         setViewModel();
         setHasOptionsMenu(true);
-        notification();
         return inflater.inflate(R.layout.fragment_rooms_tab, container, false);
     }
 
-    private void notification() {
-        createNotificationChannel();
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity().getBaseContext(), "museum")
-                .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Title")
-                .setContentText("text")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getActivity().getBaseContext());
-        if (roomsTabViewModel.getIsInDanger()) {
-            notificationManager.notify(100, builder.build());
-        }
-    }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "studentChannel";
-            String description = "Channel for room";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("museum", name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
 
     public void setViewModel() {
         roomsTabViewModel = new ViewModelProvider(this).get(RoomsTabViewModel.class);
@@ -86,7 +59,9 @@ public class RoomsTab extends Fragment {
         roomsTabViewModel.getRooms().observe(getViewLifecycleOwner(), rooms -> {
             adapter.setRooms(rooms);
         });
-
+      /*  roomsTabViewModel.getLiveMeasurements(room).observe(getViewLifecycleOwner(), rooms -> {
+            adapter.setRooms(rooms);
+        });*/
         roomsTabViewModel.getIsLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {

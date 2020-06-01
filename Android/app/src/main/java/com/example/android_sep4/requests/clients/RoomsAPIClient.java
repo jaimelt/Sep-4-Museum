@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.Room;
+import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Rooms;
 import com.example.android_sep4.requests.RoomEndpoints;
 import com.example.android_sep4.requests.ServiceGenerator;
@@ -21,7 +22,7 @@ import static android.content.ContentValues.TAG;
 
 public class RoomsAPIClient {
     private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
-    private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
+    private MutableLiveData<RoomMeasurements> liveRoomMeasurements = new MutableLiveData<RoomMeasurements>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private Room room;
     private Application application;
@@ -52,36 +53,31 @@ public class RoomsAPIClient {
             }
         });
     }
+/*
 
-
-    public LiveData<Room> getRoomById(String id) {
+    public LiveData<RoomMeasurements> getLiveMeasurements(String roomCode) {
         RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
 
-        Call<Room> call = endpoints.getRoomById(id);
+        Call<RoomMeasurements> call = endpoints.getLiveRoomMeasurements(roomCode);
 
-        call.enqueue(new Callback<Room>() {
+        call.enqueue(new Callback<RoomMeasurements>() {
             @Override
-            public void onResponse(Call<Room> call, Response<Room> response) {
+            public void onResponse(Call<RoomMeasurements> call, Response<RoomMeasurements> response) {
                 Log.i(TAG, "onResponse: success!");
-//                Room apiRoomById = response.body();
-//                if (apiRoomById != null) {
-//                    room = new Room(apiRoomById.getLocationCode(), apiRoomById.getDescription(), apiRoomById.getTotalCapacity(), apiRoomById.getCurrentCapacity(), apiRoomById.getArtworkList(), apiRoomById.getLight(), apiRoomById.getTemperature(), apiRoomById.getHumidity(), apiRoomById.getCo2(),
-//                            apiRoomById.getLiveRoomMeasurements());
-//                }
                 if(response.isSuccessful() && response.body() != null)
                 {
-                    roomByIdData.setValue(response.body());
+                    liveRoomMeasurements.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<Room> call, Throwable t) {
+            public void onFailure(Call<RoomMeasurements> call, Throwable t) {
                 Log.i(TAG, "onFailure: called");
 
             }
         });
-        return roomByIdData;
-    }
+        return liveRoomMeasurements;
+    }*/
 
     public LiveData<Boolean> getIsLoading() {
         return isLoading;
@@ -111,4 +107,8 @@ public class RoomsAPIClient {
     public LiveData<ArrayList<Room>> getRoomsDataLive() {
         return roomsData;
     }
+
+/*    public LiveData<RoomMeasurements> getLiveMeasurements(){
+        return  liveRoomMeasurements;
+    }*/
 }

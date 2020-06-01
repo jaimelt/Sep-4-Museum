@@ -1,11 +1,14 @@
 package com.example.android_sep4.repositories;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.preference.PreferenceManager;
 
+import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.model.Artworks;
 import com.example.android_sep4.requests.NotificationsEndpoints;
@@ -37,6 +40,12 @@ public class NotificationRepository {
     }
 
     public LiveData<Boolean> getIsLoaded() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
+        boolean prefNotification = sharedPreferences.getBoolean(application.getString(R.string.pref_notification_key), application.getResources().getBoolean(R.bool.pref_notification_default));
+        if (!prefNotification)
+        {
+            loaded.setValue(false);;
+        }
         return loaded;
     }
 

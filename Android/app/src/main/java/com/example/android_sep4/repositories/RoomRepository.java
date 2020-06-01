@@ -16,7 +16,8 @@ import java.util.ArrayList;
 public class RoomRepository {
     private static RoomRepository instance;
     private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
-    private MutableLiveData<Room> roomByIdData = new MutableLiveData<>();
+
+    private MutableLiveData<RoomMeasurements> liveMeasurements = new MutableLiveData<>();
     private ArrayList<Room> roomsDataSet = new ArrayList<>();
     private RoomsAPIClient roomsAPIClient;
     private Application application;
@@ -27,6 +28,7 @@ public class RoomRepository {
         roomsAPIClient = new RoomsAPIClient(application);
 
     }
+
 
     public static RoomRepository getInstance(Application application) {
         if (instance == null) {
@@ -41,42 +43,28 @@ public class RoomRepository {
             @Override
             public void onChanged(ArrayList<Room> rooms) {
                 if (rooms.isEmpty()) {
-                    //ROOM DATABASE
                 } else {
                     roomsData.setValue(rooms);
-                    //danger = getIsInDanger();
                 }
             }
         });
         return roomsData;
     }
 
-    public boolean getDanger() {
-        return danger;
-    }
 
-//    public boolean getIsInDanger() {
-//        for (Room room : roomsDataSet) {
-//            for (Artwork artwork : room.getArtworkList().getArtworks()) {
-//                System.out.println(room.getArtworkList().getArtworks().size());
-//                if (artwork.getMaxCo2() < room.getLiveRoomMeasurements().getCo2() || artwork.getMinCo2() > room.getLiveRoomMeasurements().getCo2()) {
-//                    danger = true;
-//                } else if (artwork.getMaxHumidity() < room.getLiveRoomMeasurements().getHumidity() || artwork.getMinHumidity() > room.getLiveRoomMeasurements().getHumidity()) {
-//                    danger = true;
-//                } else if (artwork.getMaxTemperature() < room.getLiveRoomMeasurements().getTemp() || artwork.getMinTemperature() > room.getLiveRoomMeasurements().getTemp()) {
-//                    danger = true;
-//                } else if (artwork.getMaxLight() < room.getLiveRoomMeasurements().getLight() || artwork.getMinLight() > room.getLiveRoomMeasurements().getLight()) {
-//                    danger = true;
-//                }
-//            }
-//        }
-//        return danger;
-//    }
-
-
-    public LiveData<Room> getRoomById(String locationCode) {
-        return roomsAPIClient.getRoomById(locationCode);
-    }
+/*    public LiveData<RoomMeasurements> getLiveMeasurements(String roomCode) {
+        roomsAPIClient.getLiveMeasurements(roomCode);
+        roomsAPIClient.getLiveMeasurements().observeForever(new Observer<RoomMeasurements>() {
+            @Override
+            public void onChanged(RoomMeasurements liveData) {
+                if (liveData == null) {
+                } else {
+                    liveMeasurements.setValue(liveData);
+                }
+            }
+        });
+        return liveMeasurements;
+    }*/
 
     public LiveData<Boolean> getIsLoading() {
         return roomsAPIClient.getIsLoading();
