@@ -175,4 +175,8 @@ public class AuthAPIClient {
         }
         deleteUser(user.getEmail());
     }
+
+    public LiveData<Boolean> getIsValidating() {
+        return isValidating;
+    }
 }

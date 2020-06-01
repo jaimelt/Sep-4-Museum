@@ -30,12 +30,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        setViewModel();
 
         progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
+
+        setViewModel();
 
         loginButton = findViewById(R.id.btn_login);
         emailField = findViewById(R.id.input_email);
@@ -48,9 +49,11 @@ public class LoginActivity extends AppCompatActivity {
         loginActivityViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
         loginActivityViewModel.getIsValidating().observe(this, aBoolean -> {
-            if (!aBoolean) {
+            if (aBoolean) {
                 progressDialog.show();
-            } else progressDialog.dismiss();
+            } else {
+                progressDialog.dismiss();
+            }
         });
     }
 
@@ -65,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         switch (validation){
             case 1:
                 verifyLogin(email, password);
+                loginButton.setClickable(false);
                 break;
             case 2:
                 emailField.setError("Email format is not valid");

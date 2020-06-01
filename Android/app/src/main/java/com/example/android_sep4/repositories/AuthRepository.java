@@ -26,7 +26,6 @@ public class AuthRepository {
     private static AuthRepository instance;
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
     private AuthAPIClient authAPIClient;
-    private Boolean valid = false;
     private Application application;
 
     public AuthRepository(Application application)
@@ -59,8 +58,8 @@ public class AuthRepository {
         authAPIClient.updateUser(updatedUser);
     }
 
-    public MutableLiveData<Boolean> getIsValidating() {
-        return isValidating;
+    public LiveData<Boolean> getIsValidating() {
+        return authAPIClient.getIsValidating();
     }
 
     public LiveData<ArrayList<User>> getUsers() {
