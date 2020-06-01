@@ -42,10 +42,13 @@ public class NotificationRepository {
     public LiveData<Boolean> getIsLoaded() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
         boolean prefNotification = sharedPreferences.getBoolean(application.getString(R.string.pref_notification_key), application.getResources().getBoolean(R.bool.pref_notification_default));
+        System.out.println(prefNotification+"notification settings");
         if (!prefNotification)
         {
-            loaded.setValue(false);;
+            loaded.setValue(false);
+            System.out.println(loaded.getValue() + " loaded");
         }
+        System.out.println(loaded.getValue()+"after IF");
         return loaded;
     }
 
@@ -62,6 +65,7 @@ public class NotificationRepository {
                 if (response.isSuccessful() && response.body() != null) {
                     artworksInDangerData.setValue(response.body().getArtworks());
                     loaded.setValue(true);
+                    loaded = new MutableLiveData<>();
                 }
             }
 
@@ -70,6 +74,7 @@ public class NotificationRepository {
                 ArrayList<Artwork> arrayList = new ArrayList<>();
                 artworksInDangerData.setValue(arrayList);
                 loaded.setValue(false);
+                loaded = new MutableLiveData<>();
                 Log.i("Notification Repository", "onFailure: called");
             }
         });
