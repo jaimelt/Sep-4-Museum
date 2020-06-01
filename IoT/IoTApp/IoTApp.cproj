@@ -180,16 +180,16 @@
     <Compile Include="src\constants\global_constants.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\handler\rc_servo_handler.c">
+    <Compile Include="src\handlers\rc_servo_handler.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\handler\rc_servo_handler.h">
+    <Compile Include="src\handlers\rc_servo_handler.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\handler\sensor_data_package_handler.c">
+    <Compile Include="src\handlers\sensor_data_package_handler.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\handler\sensor_data_package_handler.h">
+    <Compile Include="src\handlers\sensor_data_package_handler.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">
@@ -397,7 +397,7 @@
     <Folder Include="FreeRTOS\src\" />
     <Folder Include="src" />
     <Folder Include="src\constants" />
-    <Folder Include="src\handler" />
+    <Folder Include="src\handlers" />
     <Folder Include="src\tasks" />
   </ItemGroup>
   <ItemGroup>
