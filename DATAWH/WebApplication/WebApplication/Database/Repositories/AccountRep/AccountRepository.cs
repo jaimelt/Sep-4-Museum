@@ -83,6 +83,7 @@ namespace WebApplication.Database.Repositories.AccountRep
             }
             catch (Exception e)
             {
+                Console.WriteLine($"Message: {e.Message}");
                 return null;
             }
 

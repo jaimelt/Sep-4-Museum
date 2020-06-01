@@ -1,0 +1,68 @@
+GET https://localhost:5001/artworks/getall
+Accept: application/json
+
+###
+
+GET https://localhost:5001/artworks/getone/22
+Accept: application/json
+
+###
+
+GET https://localhost:5001/artworks/getallbyroom/A1
+Accept: application/json
+
+###
+
+POST https://localhost:5001/artworks/createartwork
+Content-Type: application/json
+
+{
+    "name": "Don't touch - testing artwork",
+    "description": "This is for testing",
+    "image": "This has been changed",
+    "type": "Drawing",
+    "author": "Unknown",
+    "location": "Storage",
+    "minLight": 3,
+    "maxLight": 50,
+    "minCo2": 11,
+    "maxCo2": 51,
+    "minTemperature": 10,
+    "maxTemperature": 25,
+    "minHumidity": 20,
+    "maxHumidity": 60,
+    "artworkPosition": 1,
+    "comment": "Testing purposes"
+}
+###
+
+PUT https://localhost:5001/artworks/edit/127
+Content-Type: application/json
+
+{ "id": 127,
+  "name": "Don't touch - testing artwork",
+  "description": "Changed in testing ",
+  "image": "This has been changed",
+  "type": "Drawing",
+  "author": "Unknown",
+  "location": "Storage",
+  "minLight": 3,
+  "maxLight": 50,
+  "minCo2": 11,
+  "maxCo2": 51,
+  "minTemperature": 10,
+  "maxTemperature": 25,
+  "minHumidity": 20,
+  "maxHumidity": 60,
+  "artworkPosition": 1,
+  "comment": "Testing purposes"
+}
+###
+
+PUT https://localhost:5001/artworks/moveartwork/126,A1
+Content-Type: application/json
+
+###
+
+DELETE https://localhost:5001/artworks/delete/126
+Accept: application/json

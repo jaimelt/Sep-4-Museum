@@ -152,7 +152,7 @@ namespace WebApplication.Controllers
                 artworkRepository.DeleteArtwork(artwork);
                 await artworkRepository.saveChanges();
 
-                return NoContent();
+                return Ok("Artwork has been deleted");
             }
             catch (Exception exception)
             {
@@ -197,6 +197,7 @@ namespace WebApplication.Controllers
         [HttpPut("edit/{id}")]
         public async Task<IActionResult> PutArtwork([FromRoute] int id, [FromBody] Artwork artwork)
         {
+            
 
             try
             {
@@ -221,7 +222,7 @@ namespace WebApplication.Controllers
 
                 artworkRepository.UpdateArtwork(artwork);
                 await artworkRepository.saveChanges();
-                return Ok("Artwork has been has been edited");
+                return NoContent();
             }
             catch (Exception exception)
             {
