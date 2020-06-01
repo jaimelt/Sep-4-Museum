@@ -19,18 +19,18 @@ public class RoomMeasurements {
     private String id;
     private double light;
     @SerializedName("temperature")
-    private int temp;
-    private int humidity;
-    private int co2;
+    private double temp;
+    private double humidity;
+    private double co2;
 
-    public RoomMeasurements(double light, int temp, int humidity, int co2) {
+    public RoomMeasurements(double light, double temp, double humidity, double co2) {
         this.light = light;
         this.temp = temp;
         this.humidity = humidity;
         this.co2 = co2;
     }
 
-    public RoomMeasurements(String locationCode, double light, int temp, int humidity, int co2) {
+    public RoomMeasurements(String locationCode, double light, double temp, double humidity, double co2) {
         id = locationCode;
         this.light = light;
         this.temp = temp;
@@ -46,19 +46,19 @@ public class RoomMeasurements {
         this.id = id;
     }
 
-    public int getCo2() {
+    public double getCo2() {
         return co2;
     }
 
-    public void setCo2(int co2) {
+    public void setCo2(double co2) {
         this.co2 = co2;
     }
 
-    public int getTemp() {
+    public double getTemp() {
         return temp;
     }
 
-    public void setTemp(int temp) {
+    public void setTemp(double temp) {
         this.temp = temp;
     }
 
@@ -66,18 +66,16 @@ public class RoomMeasurements {
         return light;
     }
 
-    public void setLight(int light) {
+    public void setLight(double light) {
         this.light = light;
     }
 
-    public int getHumidity() {
+    public double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(int humidity) {
+    public void setHumidity(double humidity) {
         this.humidity = humidity;
     }
-
-
 
 }

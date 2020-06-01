@@ -41,7 +41,9 @@ public class RoomsAPIClient {
             public void onResponse(Call<Rooms> call, Response<Rooms> response) {
                 Log.i(TAG, "onResponse: success!");
                 if (response.isSuccessful() && response.body() != null) {
+
                     roomsData.setValue(response.body().getRooms());
+                    roomsData = new MutableLiveData<>();
                 }
                 isLoading.setValue(false);
             }
