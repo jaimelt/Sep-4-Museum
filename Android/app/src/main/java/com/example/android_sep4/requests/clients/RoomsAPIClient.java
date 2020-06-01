@@ -3,6 +3,7 @@ package com.example.android_sep4.requests.clients;
 import android.app.Application;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -22,7 +23,7 @@ import static android.content.ContentValues.TAG;
 
 public class RoomsAPIClient {
     private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
-    private MutableLiveData<RoomMeasurements> liveRoomMeasurements = new MutableLiveData<RoomMeasurements>();
+    private MutableLiveData<RoomMeasurements> liveRoomMeasurements = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private Room room;
     private Application application;
@@ -38,7 +39,7 @@ public class RoomsAPIClient {
         Call<Rooms> call = endpoints.getRoomsDetails();
         call.enqueue(new Callback<Rooms>() {
             @Override
-            public void onResponse(Call<Rooms> call, Response<Rooms> response) {
+            public void onResponse(@NonNull Call<Rooms> call, @NonNull Response<Rooms> response) {
                 Log.i(TAG, "onResponse: success!");
                 if (response.isSuccessful() && response.body() != null) {
 
@@ -49,7 +50,7 @@ public class RoomsAPIClient {
             }
 
             @Override
-            public void onFailure(Call<Rooms> call, Throwable t) {
+            public void onFailure(@NonNull Call<Rooms> call, @NonNull Throwable t) {
                 Log.i(TAG, "onFailure: called");
                 roomsData.setValue(new ArrayList<>());
             }
@@ -93,13 +94,13 @@ public class RoomsAPIClient {
 
         call.enqueue(new Callback<Room>() {
             @Override
-            public void onResponse(Call<Room> call, Response<Room> response) {
+            public void onResponse(@NonNull Call<Room> call, @NonNull Response<Room> response) {
                 getRoomsData();
                 Log.i(TAG, "onResponse: success!");
             }
 
             @Override
-            public void onFailure(Call<Room> call, Throwable t) {
+            public void onFailure(@NonNull Call<Room> call, @NonNull Throwable t) {
                 getRoomsData();
                 Log.i(TAG, "onFailure: called");
             }
