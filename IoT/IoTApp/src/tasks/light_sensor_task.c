@@ -9,7 +9,7 @@
 
 #include "../constants/global_constants.h"
 #include "light_sensor_task.h"
-#include "rc_servo_handler.h"
+#include "../handler/rc_servo_handler.h"
 
 #define LIGHT_TASK_PRIORITY (configMAX_PRIORITIES - 3)
 #define LIGHT_SENSOR_TASK_NAME "Light"

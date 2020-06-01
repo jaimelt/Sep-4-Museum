@@ -50,10 +50,12 @@ void temperatureHumiditySensor_inLoop()
 {
 	//wait for the start measuring bit in the event group
 	xEventGroupWaitBits(_eventGroupHandleMeasure,
-						TEMPERATURE_HUMIDITY_MEASURE_BIT,
-						pdTRUE,
-						pdTRUE,
-						portMAX_DELAY);
+	TEMPERATURE_HUMIDITY_MEASURE_BIT,
+	pdTRUE,
+	pdTRUE,
+	portMAX_DELAY);
+	
+	hih8120DriverReturnCode_t result;
 
 	//wake up the sensor from power down
 	result = hih8120Wakeup();
@@ -66,8 +68,6 @@ void temperatureHumiditySensor_inLoop()
 		//printf(" :: DRIVER CANNOT WAKE UP\n");
 		xSemaphoreGive(_xPrintfSemaphore);
 	}
-
-	hih8120DriverReturnCode_t result;
 
 	//pool sensor for result
 	result = hih8120Meassure();
@@ -107,7 +107,7 @@ void _TemperatureHumiditySensorTask(void *pvParameters)
 }
 
 void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure,
-									  EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore)
+EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore)
 {
 	//setting variables
 	_xPrintfSemaphore = pvPrintfSemaphore;
@@ -124,11 +124,11 @@ void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure,
 
 	//task creation
 	xTaskCreate(_TemperatureHumiditySensorTask,
-				(const portCHAR *)TEMPERATURE_HUMIDITY_SENSOR_TASK_NAME,
-				configMINIMAL_STACK_SIZE,
-				NULL,
-				Temperature_Humidity_TASK_PRIORITY,
-				&_temperatureHumiditySensorTaskHandle);
+	(const portCHAR *)TEMPERATURE_HUMIDITY_SENSOR_TASK_NAME,
+	configMINIMAL_STACK_SIZE,
+	NULL,
+	Temperature_Humidity_TASK_PRIORITY,
+	&_temperatureHumiditySensorTaskHandle);
 }
 
 float temperatureHumiditySensor_getHumidity()
