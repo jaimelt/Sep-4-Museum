@@ -23,7 +23,6 @@
 #include "light_sensor_task.h"
 #include "temperature_humidity_task.h"
 #include "co2_sensor_task.h"
-#include "rc_servo_task.h"
 
 //constants
 #define SENSOR_CONTROL_TAG "SENSOR CONTROL"
@@ -45,14 +44,14 @@ void vASensorControlTask(void *pvParameters)
 	{
 		//set bits to measure
 		xEventGroupSetBits(_event_group_measure,
-		((TEMPERATURE_HUMIDITY_MEASURE_BIT) | (CO2_MEASURE_BIT) | (LIGHT_MEASURE_BIT)));
+		ALL_MEASURE_BITS);
 
 		/*CO2_READY_BIT | TEMPERATURE_HUMIDITY_READY_BIT |    */
 
 		//wait for new data bits
 		xEventGroupWaitBits(
 		_event_group_new_data,
-		((TEMPERATURE_HUMIDITY_READY_BIT) | (CO2_READY_BIT) | (LIGHT_READY_BIT)),
+		ALL_READY_BITS,
 		pdTRUE,
 		pdTRUE,
 		portMAX_DELAY);
@@ -113,15 +112,12 @@ void sensorControl_create()
 
 	if (_event_group_measure == NULL)
 	_event_group_measure = xEventGroupCreate();
-	//_event_group_measure != NULL ? printf("%s :: SUCCESS :: created event group measure\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group measure failed\n", SENSOR_CONTROL_TAG);
 
 	if (_event_group_new_data == NULL)
 	_event_group_new_data = xEventGroupCreate();
-	//_event_group_new_data != NULL ? printf("%s :: SUCCESS :: created event group new data\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of event group new data failed\n", SENSOR_CONTROL_TAG);
 
 	if (_sendingQueue == NULL)
 	_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
-	//_sendingQueue != NULL ? printf("%s :: SUCCESS :: created queue\n", SENSOR_CONTROL_TAG) : printf("%s :: ERROR :: creation of queue\n", SENSOR_CONTROL_TAG);
 
 	//create lora driver
 	loraSensor_create(_sendingQueue, _xPrintfSemaphore);
@@ -134,8 +130,6 @@ void sensorControl_create()
 
 	//create light
 	LightSensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
-	
-	rc_servo_create();
 
 	_sensor_control_task_handle = NULL;
 	//create the task

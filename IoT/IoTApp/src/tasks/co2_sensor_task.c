@@ -41,29 +41,33 @@ static void _setup_co2_driver()
 {
 	//setup driver
 	mh_z19_create(ser_USART3, co2Sensor_callback);
-	//printf("Initialized CO2\n");
 }
 
-void _CO2SensorTask(void *pvParameters)
+void co2Sensor_inLoop()
 {
-	for(;;)
+	//wait for the start measuring bit in the event group
+	xEventGroupWaitBits(_eventGroupHandleMeasure,
+						CO2_MEASURE_BIT,
+						pdTRUE,
+						pdTRUE,
+						portMAX_DELAY);
+
+	//perform measuring
+	_rc = mh_z19_take_meassuring();
+
+	if (_rc != MHZ19_OK)
 	{
-		//wait for the start measuring bit in the event group
-		xEventGroupWaitBits(_eventGroupHandleMeasure,
-		CO2_MEASURE_BIT,
-		pdTRUE,
-		pdTRUE,
-		portMAX_DELAY);
-		
-		//perform measuring
-		_rc = mh_z19_take_meassuring();
-		
-		if(_rc != MHZ19_OK)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			//printf(":: Fetch co2 data failed \n");
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
+		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		//printf(":: Fetch co2 data failed \n");
+		xSemaphoreGive(_xPrintfSemaphore);
+	}
+}
+
+void vAco2SensorTask(void *pvParameters)
+{
+	for (;;)
+	{
+		co2Sensor_inLoop();
 	}
 	vTaskDelete(_CO2SensorTaskHandle);
 }
@@ -75,21 +79,21 @@ void co2Sensor_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandle_
 	_eventGroupHandleMeasure = pvEventHandleMeasure;
 	_eventGroupHandleNewData = pvEventHandleNewData;
 	_lastCo2Measurement = 0;
-	
+
 	//starting the drivers
 	_setup_co2_driver();
-	
+
 	//task handler
 	_CO2SensorTaskHandle = NULL;
-	
+
 	//task creation
 	xTaskCreate(
-	_CO2SensorTask,
-	(const portCHAR *)CO2_SENSOR_TASK_NAME,
-	configMINIMAL_STACK_SIZE,
-	NULL,
-	CO2_TASK_PRIORITY,
-	&_CO2SensorTaskHandle);
+		vAco2SensorTask,
+		(const portCHAR *)CO2_SENSOR_TASK_NAME,
+		configMINIMAL_STACK_SIZE,
+		NULL,
+		CO2_TASK_PRIORITY,
+		&_CO2SensorTaskHandle);
 }
 
 uint16_t co2sensor_getCo2()

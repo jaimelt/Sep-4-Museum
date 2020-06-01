@@ -2,17 +2,15 @@
 * lora_sensor_task.c
 *
 * Created: 16/05/2020 11.33.49
-*  Author:
+*  Author: Marina Ionel
 */
 #include <stdio.h>
-#include <ATMEGA_FreeRTOS.h>
-#include <queue.h>
-#include <semphr.h>
-#include <task.h>
+
 #include <lora_driver.h>
 #include <iled.h>
 #include <hal_defs.h>
 
+#include "lora_sensor_task.h"
 #include "../constants/global_constants.h"
 
 #define LORA_SENSOR_TAG "LORA SENSOR TASK"
@@ -25,14 +23,14 @@ static TaskHandle_t _lora_task_handle;
 
 static char _out_buf[100];
 
-#define LED_TASK_PRIORITY   7
+#define LED_TASK_PRIORITY 7
 
 static void _setup_lora_driver()
 {
 	//hal_create(LED_TASK_PRIORITY);
 	// Initialise the LoRaWAN driver without down-link buffer
 	//lora_driver_create(LORA_USART, NULL);
-	
+
 	e_LoRa_return_code_t rc;
 	led_slow_blink(led_ST2); // OPTIONAL: Led the green led blink slowly while we are setting up LoRa
 
@@ -109,21 +107,20 @@ void loraDriver_sent_upload_message(lora_payload_t uplink_lora_payoad)
 	{
 		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 		printf("Upload Message >%s<\n", lora_driver_map_return_code_to_text(
-		lora_driver_sent_upload_message(false, &uplink_lora_payoad)));
+											lora_driver_sent_upload_message(false, &uplink_lora_payoad)));
 		xSemaphoreGive(_xPrintfSemaphore);
 	}
 }
 
 void vALoraTask(void *pvParameters)
 {
-	//(void*)pvParameters;
-
 	lora_driver_reset_rn2483(1);
 	vTaskDelay(2);
 	lora_driver_reset_rn2483(0);
 	vTaskDelay(150);
 
 	lora_driver_flush_buffers();
+
 	_setup_lora_driver();
 
 	vTaskDelay(150);
@@ -135,8 +132,8 @@ void vALoraTask(void *pvParameters)
 		if (_receivingQueue != NULL)
 		{
 			if (xQueueReceive(_receivingQueue,
-			&_lorapayload,
-			portMAX_DELAY) == pdPASS)
+							  &_lorapayload,
+							  portMAX_DELAY) == pdPASS)
 			{
 				loraDriver_sent_upload_message(_lorapayload);
 			}
@@ -145,7 +142,8 @@ void vALoraTask(void *pvParameters)
 	vTaskDelete(_lora_task_handle);
 }
 
-static void _init_hal(){
+static void _init_hal()
+{
 	hal_create(LED_TASK_PRIORITY);
 	lora_driver_create(LORA_USART, NULL);
 }
@@ -159,10 +157,10 @@ void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore)
 	_init_hal();
 
 	xTaskCreate(
-	vALoraTask,						  /* Task function. */
-	(const portCHAR *)LORA_TASK_NAME, /* String with name of task. */
-	configMINIMAL_STACK_SIZE + 200,	  /* Stack size in words. */
-	NULL,							  /* Parameter passed as input of the task */
-	LORAWAN_TASK_PRIORITY,			  /* Priority of the task. */
-	&_lora_task_handle);			  /* Task handle. */
+		vALoraTask,						  /* Task function. */
+		(const portCHAR *)LORA_TASK_NAME, /* String with name of task. */
+		configMINIMAL_STACK_SIZE + 200,	  /* Stack size in words. */
+		NULL,							  /* Parameter passed as input of the task */
+		LORAWAN_TASK_PRIORITY,			  /* Priority of the task. */
+		&_lora_task_handle);			  /* Task handle. */
 }

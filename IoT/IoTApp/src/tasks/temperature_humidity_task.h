@@ -17,8 +17,8 @@
 #include <hih8120.h>
 
 //functions
-void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure, 
-EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore);
+void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure,
+                                      EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore);
 
 float temperatureHumiditySensor_getHumidity();
 

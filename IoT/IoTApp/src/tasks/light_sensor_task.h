@@ -5,9 +5,13 @@
 *  Author: Marina Ionel
 */
 #pragma once
+
+//freertos
 #include <ATMEGA_FreeRTOS.h>
+#include <task.h>
 #include <semphr.h>
 #include <event_groups.h>
+//driver
 #include <tsl2591.h>
 
 void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure,
