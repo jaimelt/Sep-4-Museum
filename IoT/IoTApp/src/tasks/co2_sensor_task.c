@@ -55,12 +55,10 @@ void co2Sensor_inLoop()
 	//perform measuring
 	_rc = mh_z19_take_meassuring();
 
-	if (_rc != MHZ19_OK)
-	{
-		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		//printf(":: Fetch co2 data failed \n");
-		xSemaphoreGive(_xPrintfSemaphore);
-	}
+	// if (_rc != MHZ19_OK)
+	// {
+	// 		printf(":: Fetch co2 data failed \n");
+	// }
 }
 
 void vAco2SensorTask(void *pvParameters)

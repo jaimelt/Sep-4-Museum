@@ -70,22 +70,29 @@ static void _setup_light_driver()
 	}
 }
 
+void LightSensor_inLoop()
+{
+	xEventGroupWaitBits(_eventGroupHandleMeasure,
+						LIGHT_MEASURE_BIT,
+						pdTRUE,
+						pdTRUE,
+						portMAX_DELAY);
+
+	tsl2591FetchData();
+
+	// int result = tsl2591FetchData();
+
+	// if (result != TSL2591_OK)
+	// {
+	// 	//printf("%s :: Fetch light data failed %d\n", LIGHT_SENSOR_TAG, result);
+	// }
+}
+
 void vALightSensorTask(void *pvParameters)
 {
 	for (;;)
 	{
-		xEventGroupWaitBits(_eventGroupHandleMeasure,
-							LIGHT_MEASURE_BIT,
-							pdTRUE,
-							pdTRUE,
-							portMAX_DELAY);
-
-		int result = tsl2591FetchData();
-
-		if (result != TSL2591_OK)
-		{
-			//printf("%s :: Fetch light data failed %d\n", LIGHT_SENSOR_TAG, result);
-		}
+		LightSensor_inLoop();
 	}
 	vTaskDelete(_lightSensorTaskHandle);
 }

@@ -20,6 +20,8 @@
 void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure,
                                       EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore);
 
+void temperatureHumiditySensor_inLoop(); //in header for testing
+
 float temperatureHumiditySensor_getHumidity();
 
 float temperatureHumiditySensor_getTemperature();

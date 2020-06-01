@@ -46,57 +46,62 @@ static void _setup_temperature_humidity_driver()
 	}
 }
 
-static hih8120DriverReturnCode_t result;
+void temperatureHumiditySensor_inLoop()
+{
+	//wait for the start measuring bit in the event group
+	xEventGroupWaitBits(_eventGroupHandleMeasure,
+						TEMPERATURE_HUMIDITY_MEASURE_BIT,
+						pdTRUE,
+						pdTRUE,
+						portMAX_DELAY);
+
+	//wake up the sensor from power down
+	result = hih8120Wakeup();
+	vTaskDelay(100);
+
+	if (HIH8120_OK != result)
+	{
+		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+		//printf("%s", TEMPERATURE_HUMIDITY_SENSOR_TAG);
+		//printf(" :: DRIVER CANNOT WAKE UP\n");
+		xSemaphoreGive(_xPrintfSemaphore);
+	}
+
+	hih8120DriverReturnCode_t result;
+
+	//pool sensor for result
+	result = hih8120Meassure();
+	//delay 50ms to wait for the sensor to be ready
+	vTaskDelay(100);
+
+	//check the result
+	if (HIH8120_OK != result)
+	{
+		int count = 10;
+		while ((HIH8120_TWI_BUSY == result) && count > 0)
+		{
+			result = hih8120Meassure();
+			vTaskDelay(pdMS_TO_TICKS(20UL));
+
+			count--;
+		}
+	}
+	if (result == HIH8120_OK)
+	{
+		//get measurements
+		_lastMeasurementTemperature = hih8120GetTemperature();
+		_lastMeasurementHumidity = hih8120GetHumidity();
+
+		//set the bit to true to signalize that the measurement was completed
+		xEventGroupSetBits(_eventGroupHandleNewData, TEMPERATURE_HUMIDITY_READY_BIT);
+	}
+}
 
 void _TemperatureHumiditySensorTask(void *pvParameters)
 {
 	for (;;)
 	{
-		//wait for the start measuring bit in the event group
-		xEventGroupWaitBits(_eventGroupHandleMeasure,
-							TEMPERATURE_HUMIDITY_MEASURE_BIT,
-							pdTRUE,
-							pdTRUE,
-							portMAX_DELAY);
-
-		//wake up the sensor from power down
-		result = hih8120Wakeup();
-		vTaskDelay(100);
-
-		if (HIH8120_OK != result)
-		{
-			xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-			//printf("%s", TEMPERATURE_HUMIDITY_SENSOR_TAG);
-			//printf(" :: DRIVER CANNOT WAKE UP\n");
-			xSemaphoreGive(_xPrintfSemaphore);
-		}
-
-		//pool sensor for result
-		result = hih8120Meassure();
-		//delay 50ms to wait for the sensor to be ready
-		vTaskDelay(100);
-
-		//check the result
-		if (HIH8120_OK != result)
-		{
-			int count = 10;
-			while ((HIH8120_TWI_BUSY == result) && count > 0)
-			{
-				result = hih8120Meassure();
-				vTaskDelay(pdMS_TO_TICKS(20UL));
-
-				count--;
-			}
-		}
-		if (result == HIH8120_OK)
-		{
-			//get measurements
-			_lastMeasurementTemperature = hih8120GetTemperature();
-			_lastMeasurementHumidity = hih8120GetHumidity();
-
-			//set the bit to true to signalize that the measurement was completed
-			xEventGroupSetBits(_eventGroupHandleNewData, TEMPERATURE_HUMIDITY_READY_BIT);
-		}
+		temperatureHumiditySensor_inLoop();
 	}
 	vTaskDelete(_temperatureHumiditySensorTaskHandle);
 }

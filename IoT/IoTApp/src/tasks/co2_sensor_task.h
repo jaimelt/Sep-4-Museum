@@ -18,6 +18,9 @@
 
 void co2Sensor_create(EventGroupHandle_t pvEventHandleMeasure,
                       EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore);
+
 void co2Sensor_callback(uint16_t ppm); //in header for testing
+
 void co2Sensor_inLoop(); //in header for testing
+
 uint16_t co2sensor_getCo2();

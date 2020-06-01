@@ -132,6 +132,7 @@ void sensorControl_create()
 	LightSensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
 
 	_sensor_control_task_handle = NULL;
+	
 	//create the task
 	xTaskCreate(
 	vASensorControlTask,						/* Task function. */
