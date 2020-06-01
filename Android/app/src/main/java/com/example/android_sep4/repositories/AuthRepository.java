@@ -27,6 +27,7 @@ public class AuthRepository {
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
     private AuthAPIClient authAPIClient;
     private Application application;
+    private String email;
 
     public AuthRepository(Application application)
     {
@@ -42,6 +43,7 @@ public class AuthRepository {
     }
 
     public LiveData<Boolean> validateLogin(String email, String password) {
+        this.email = email;
         authAPIClient.validateLogin(email, password);
         return authAPIClient.getValidLogin();
     }
@@ -68,5 +70,9 @@ public class AuthRepository {
 
     public LiveData<Boolean> getIsLoading() {
         return authAPIClient.getIsLoading();
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
