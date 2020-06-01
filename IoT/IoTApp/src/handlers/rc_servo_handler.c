@@ -9,29 +9,29 @@
 #include <rcServo.h>
 
 #include "rc_servo_handler.h"
-static bool IsUp;
+static bool _IsUp;
 
 void rcServo_Up()
 {
-	if (IsUp == false)
+	if (_IsUp == false)
 	{
 		rcServoSet(0, 100);
-		IsUp = true;
+		_IsUp = true;
 	}
 }
 
 void rcServo_Down()
 {
-	if (IsUp == true)
+	if (_IsUp == true)
 	{
 		rcServoSet(0, -100);
-		IsUp = false;
+		_IsUp = false;
 	}
 }
 
 void rc_servo_create()
 {
-	IsUp = false;
+	_IsUp = false;
 	// Create and initialize the rc-servo driver
 	rcServoCreate();
 }
