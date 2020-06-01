@@ -30,4 +30,6 @@ public interface RoomEndpoints {
     @PUT("rooms/put/{id}")
     Call<Room> editOptimalConditions(@Path("id") String id, @Body Room room);
 
+/*    @GET("/measurements/{roomCode}")
+    Call<RoomMeasurements> getLiveRoomMeasurements(@Path("roomCode") String roomCode);*/
 }

@@ -17,6 +17,7 @@ import com.example.android_sep4.R;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.view.room.EditRoomActivity;
 import com.example.android_sep4.view.room.RoomArtworksActivity;
+import com.example.android_sep4.view.room.VisualizeData;
 
 import java.util.ArrayList;
 
@@ -63,6 +64,24 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             notifyItemChanged(position);
             intent.putExtra("locationCode", room1.getLocationCode());
             System.out.println(room1.getLocationCode());
+            v.getContext().startActivity(intent);
+        });
+        holder.visulizeData.setOnClickListener(v -> {
+
+            Intent intent = new Intent(v.getContext(), VisualizeData.class);
+            intent.putExtra("optimalTemperature", rooms.get(position).getTemperature());
+            intent.putExtra("optimalLight", rooms.get(position).getLight());
+            intent.putExtra("optimalCo2", rooms.get(position).getCo2());
+            intent.putExtra("optimalHumidity", rooms.get(position).getHumidity());
+          /*  intent.putExtra("liveCo2",rooms.get(position).getLiveRoomMeasurements().getCo2());
+            intent.putExtra("liveHumidity", rooms.get(position).getLiveRoomMeasurements().getHumidity());
+            intent.putExtra("liveTemp", rooms.get(position).getLiveRoomMeasurements().getTemp());
+            intent.putExtra("liveLight", rooms.get(position).getLiveRoomMeasurements().getLight());*/
+            intent.putExtra("locationCode", rooms.get(position).getLocationCode());
+
+            Room room12 = rooms.get(position);
+            room12.setExpanded(!room12.isExpanded());
+            notifyItemChanged(position);
             v.getContext().startActivity(intent);
         });
 
@@ -117,6 +136,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         TextView optimalLight;
         TextView optimalTemperature;
         TextView optimalHumidity;
+        Button visulizeData;
         Button editRoomsConditions;
         Button viewRoomArtworks;
         RelativeLayout parentLayoutRoom;
@@ -136,6 +156,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             parentLayoutRoom = itemView.findViewById(R.id.parent_layoutRoom);
             expandableLayout = itemView.findViewById(R.id.expandableLayout);
             viewRoomArtworks = itemView.findViewById(R.id.showRoomArtworks);
+            visulizeData = itemView.findViewById(R.id.showRoomMeasurements);
             optimalCo2 = itemView.findViewById(R.id.co2OptimalTextViewId);
             optimalHumidity = itemView.findViewById(R.id.humidityOptimalTextViewID);
             optimalLight = itemView.findViewById(R.id.lightOptimalTextViewId);

@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<SwitchPreference
-    android:defaultValue="@bool/pref_notification_default"
-    android:key="@string/pref_notification_key"
-    app:iconSpaceReserved="false"
-    android:summaryOff="@string/pref_notification_sum_off"
-    android:summaryOn="@string/pref_notification_sum_on"
-    android:title="@string/pref_notification_label"/>
+
+    <PreferenceCategory
+        android:icon="@drawable/ic_user"
+        app:key="@string/pref_user_title_key"
+        app:title="@string/pref_user_title_label">
+        <Preference
+            app:iconSpaceReserved="false"
+            android:key="@string/pref_user_button_key"
+            android:summary="@string/pref_user_summary"
+            android:title="@string/pref_user_title" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:icon="@drawable/ic_notification"
+        app:key="@string/pref_notification_title_key"
+        app:title="@string/pref_notification_title_label">
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:defaultValue="@bool/pref_notification_default"
+            android:key="@string/pref_notification_key"
+            android:summaryOff="@string/pref_notification_sum_off"
+            android:summaryOn="@string/pref_notification_sum_on"
+            android:title="@string/pref_notification_label" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:icon="@drawable/ic_general"
+        app:key="@string/pref_general_title_key"
+        app:title="@string/pref_general_title_label">
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:defaultValue="@bool/pref_temperature_unit"
+            android:key="@string/pref_temperature_key"
+            android:summaryOff="@string/fahrenheit"
+            android:summaryOn="@string/celsius"
+            android:title="@string/pref_temperature_label"
+           />
+    </PreferenceCategory>
+
 </PreferenceScreen>
