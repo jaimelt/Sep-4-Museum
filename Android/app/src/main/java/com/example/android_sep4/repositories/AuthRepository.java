@@ -42,8 +42,9 @@ public class AuthRepository {
         return instance;
     }
 
-    public boolean validateLogin(String email, String password) {
-        return authAPIClient.validateLogin(email, password);
+    public LiveData<Boolean> validateLogin(String email, String password) {
+        authAPIClient.validateLogin(email, password);
+        return authAPIClient.getValidLogin();
     }
 
     public void registerUser(String email, String password) {

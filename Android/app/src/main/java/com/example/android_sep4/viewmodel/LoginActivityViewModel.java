@@ -15,7 +15,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
         authRepository = AuthRepository.getInstance(application);
     }
 
-    public boolean validateLogin(String email, String password) {
+    public LiveData<Boolean> validateLogin(String email, String password) {
         return authRepository.validateLogin(email, password);
     }
 

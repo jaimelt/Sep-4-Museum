@@ -1,6 +1,7 @@
 package com.example.android_sep4.requests.clients;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -24,7 +25,7 @@ public class AuthAPIClient {
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
     private MutableLiveData<ArrayList<User>> usersData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
-    private Boolean valid = false;
+    private MutableLiveData<Boolean> validLogin = new MutableLiveData<>();
     private Application application;
 
     public AuthAPIClient(Application application)
@@ -53,7 +54,7 @@ public class AuthAPIClient {
         return convertToHex(sha1hash);
     }
 
-    public boolean validateLogin(String email, String password) {
+    public void validateLogin(String email, String password) {
         isValidating.setValue(true);
 
         User user = new User(email, password);
@@ -64,7 +65,7 @@ public class AuthAPIClient {
         call.enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                valid = response.body();
+                validLogin.setValue(response.body());
                 isValidating.setValue(false);
             }
 
@@ -73,7 +74,11 @@ public class AuthAPIClient {
 
             }
         });
-        return valid;
+    }
+
+    public LiveData<Boolean> getValidLogin()
+    {
+        return validLogin;
     }
 
     public void registerUser(String email, String password) {

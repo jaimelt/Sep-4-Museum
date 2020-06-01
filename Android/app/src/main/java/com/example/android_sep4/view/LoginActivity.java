@@ -1,6 +1,7 @@
 package com.example.android_sep4.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -81,14 +82,20 @@ public class LoginActivity extends AppCompatActivity {
 
         System.out.println(email + "  " + password);
 
-        boolean valid = loginActivityViewModel.validateLogin(email, password);
+        LiveData<Boolean> validLogin = loginActivityViewModel.validateLogin(email, password);
+        validLogin.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean valid) {
+                if (valid) {
+                    Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(mainActivity);
+                    finish();
+                } else {
+                    onLoginFailed("Email or password is not correct.");
+                }
+            }
+        });
 
-        if (valid) {
-            Intent mainActivity = new Intent(this, MainActivity.class);
-            startActivity(mainActivity);
-        } else {
-            onLoginFailed("Email or password is not correct.");
-        }
     }
 
     public void onLoginFailed(String feedback) {

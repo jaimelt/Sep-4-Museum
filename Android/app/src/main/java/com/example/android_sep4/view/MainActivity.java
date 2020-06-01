@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private RoomsTab roomsTab;
     private ArtworksTab artworksTab;
     private TabLayout tabLayout;
+    private boolean doubleBackToExitPressedOnce = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // .... other stuff in my onResume ....
+        this.doubleBackToExitPressedOnce = false;
+    }
+
     private void notification() {
         createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "museum")
@@ -146,6 +155,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, R.string.exit_back_twice, Toast.LENGTH_SHORT).show();
     }
 
 
