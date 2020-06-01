@@ -3,6 +3,7 @@ package com.example.android_sep4.view.room;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -34,11 +36,12 @@ import com.example.android_sep4.viewmodel.roomList.RoomsTabViewModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RoomsTab extends Fragment {
+public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener {
     static final String EXTRA_ROOM = "Room Name";
     private RoomsTabViewModel roomsTabViewModel;
     private RoomsAdapter adapter;
     private ProgressBar progressBar;
+    private RecyclerView recyclerView;
 
     public RoomsTab() {
         // Required empty public constructor
@@ -65,7 +68,7 @@ public class RoomsTab extends Fragment {
         roomsTabViewModel.getIsLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean) {
+                if (aBoolean) {
                     progressBar.setVisibility(View.VISIBLE);
                 } else progressBar.setVisibility(View.GONE);
             }
@@ -75,8 +78,8 @@ public class RoomsTab extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_viewRoom);
-        adapter = new RoomsAdapter();
+        recyclerView = view.findViewById(R.id.recycler_viewRoom);
+        adapter = new RoomsAdapter(getContext());
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(llm);
@@ -110,4 +113,10 @@ public class RoomsTab extends Fragment {
 
     }
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(getString(R.string.pref_temperature_key))) {
+            adapter.notifyDataSetChanged();
+        }
+    }
 }

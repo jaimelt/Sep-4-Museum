@@ -1,6 +1,8 @@
 package com.example.android_sep4.adapters;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
@@ -25,8 +28,10 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
     private static final String TAG = "RecyclerViewAdapter";
     private ArrayList<Room> rooms;
+    private Context context;
 
-    public RoomsAdapter() {
+    public RoomsAdapter(Context context) {
+        this.context = context;
     }
 
     @NonNull
@@ -41,6 +46,18 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull final RoomsAdapter.ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
         Room room = rooms.get(position);
+
+        //Preference from settings for Celsius/Fahrenheit unit
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean prefTemperature = sharedPreferences.getBoolean(context.getString(R.string.pref_temperature_key), context.getResources().getBoolean(R.bool.pref_temperature_default));
+        if(prefTemperature)
+        {
+            holder.temperatureUnit.setText(context.getString(R.string.temperature_unit_celsius));
+        }
+        else {
+            holder.temperatureUnit.setText(context.getString(R.string.temperature_unit_fahrenheit));
+        }
+
 
         holder.locationCode.setText(room.getLocationCode());
         if (room.getLiveRoomMeasurements() != null) {
@@ -141,6 +158,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         Button viewRoomArtworks;
         RelativeLayout parentLayoutRoom;
         ConstraintLayout expandableLayout;
+        TextView temperatureUnit;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -161,6 +179,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             optimalHumidity = itemView.findViewById(R.id.humidityOptimalTextViewID);
             optimalLight = itemView.findViewById(R.id.lightOptimalTextViewId);
             optimalTemperature = itemView.findViewById(R.id.temperatureOptimalTextViewId);
+            temperatureUnit = itemView.findViewById(R.id.measurementSignTemperature);
 
             locationCode.setOnClickListener(view -> {
                 Room room = rooms.get(getAdapterPosition());

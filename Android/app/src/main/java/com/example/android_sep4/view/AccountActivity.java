@@ -66,7 +66,7 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
     }
 
     private void setToolbar() {
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Manage user accounts");

@@ -31,7 +31,7 @@
         app:title="@string/pref_general_title_label">
         <SwitchPreferenceCompat
             app:iconSpaceReserved="false"
-            android:defaultValue="@bool/pref_temperature_unit"
+            android:defaultValue="@bool/pref_temperature_default"
             android:key="@string/pref_temperature_key"
             android:summaryOff="@string/fahrenheit"
             android:summaryOn="@string/celsius"

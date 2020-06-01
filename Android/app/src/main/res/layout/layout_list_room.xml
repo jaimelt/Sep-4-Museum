@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="40dp"
-                    android:text="@string/temperature_unit"
+                    android:text="@string/temperature_unit_celsius"
                     android:textSize="18sp"
                     app:layout_constraintStart_toEndOf="@id/temperatureOptimalTextViewId"
                     app:layout_constraintTop_toBottomOf="@id/co2OptimalTextViewId" />
@@ -155,8 +155,8 @@
 
                 <ImageView
                     android:id="@+id/humidityId"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="30dp"
                     app:layout_constraintStart_toStartOf="parent"
