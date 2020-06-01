@@ -8,15 +8,20 @@
     android:layout_height="match_parent"
     tools:context=".view.museum.rooms.RoomA2Activity">
 
+    <include
+        layout="@layout/toolbar" />
+
     <ImageView
         android:id="@+id/room_a2_image"
         android:layout_width="411dp"
-        android:layout_height="698dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/museum_content_description"
+        android:layout_marginTop="@dimen/toolbar_height"
         android:layout_gravity="top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
         app:srcCompat="@drawable/room_a2" />
 
     <TextView

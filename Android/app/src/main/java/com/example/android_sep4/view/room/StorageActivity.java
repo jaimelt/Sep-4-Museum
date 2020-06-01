@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -33,6 +34,12 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
+
+        Toolbar toolbar = findViewById(R.id.storage_toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Storage");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         progressBar = findViewById(R.id.progress_bar_storage);
         deleteIcon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_delete);
         setViewModel();
@@ -49,12 +56,20 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         artworksStorageViewModel.getIsLoading().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean) {
+                if (aBoolean) {
                     progressBar.setVisibility(View.VISIBLE);
                 } else progressBar.setVisibility(View.GONE);
             }
         });
 
+    }
+
+    @Override
+    //finish on activity when up navigation is clicked - animation slide to right
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        finish();
+        return true;
     }
 
     private void initRecycleView() {
@@ -65,6 +80,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
     }
+
     public void onListItemClick(int clickedItemIndex) {
 
     }

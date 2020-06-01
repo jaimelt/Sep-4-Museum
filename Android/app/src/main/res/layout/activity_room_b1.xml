@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     tools:context=".view.museum.rooms.RoomB1Activity">
+    <include layout="@layout/toolbar" />
 
     <ImageView
         android:id="@+id/room_b1_image"
         android:layout_width="410dp"
-        android:layout_height="705dp"
+        android:layout_height="match_parent"
         android:layout_gravity="top"
+        android:layout_marginTop="@dimen/toolbar_height"
+        android:contentDescription="@string/museum_content_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

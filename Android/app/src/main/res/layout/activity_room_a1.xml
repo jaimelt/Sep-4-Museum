@@ -8,18 +8,22 @@
     android:layout_height="match_parent"
     tools:context=".view.museum.rooms.RoomA1Activity">
 
+    <include layout="@layout/toolbar" />
+
     <ImageView
         android:id="@+id/room_a1_image"
         android:layout_width="416dp"
-        android:layout_height="671dp"
+        android:layout_height="match_parent"
         android:layout_gravity="top"
+        android:layout_marginTop="@dimen/toolbar_height"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/room_a1" />
+        app:srcCompat="@drawable/room_a1"
+        android:contentDescription="@string/museum_content_description" />
 
     <TextView
         android:id="@+id/artwork_place_6"
