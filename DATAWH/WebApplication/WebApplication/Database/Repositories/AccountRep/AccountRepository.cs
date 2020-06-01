@@ -68,6 +68,7 @@ namespace WebApplication.Database.Repositories.AccountRep
                 Console.WriteLine("null object---------------------");
                 return false;
             }
+            Console.WriteLine(admin.Password);
             if (a1.Password.Equals(admin.Password))
                 return true;
 
@@ -83,6 +84,7 @@ namespace WebApplication.Database.Repositories.AccountRep
             }
             catch (Exception e)
             {
+               Console.WriteLine( e.Message);
                 return null;
             }
 
