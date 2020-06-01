@@ -92,5 +92,13 @@
     <string name="position12">12</string>
     <string name="position11">11</string>
     <string name="position10">10</string>
+    <string name="pref_temperature_key" translatable="false">temperature</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="celsius">Celsius</string>
+    <string name="pref_temperature_label">Temperature unit</string>
+    <string name="pref_notification_title_key" translatable="false">notifications_category</string>
+    <string name="pref_notification_title_label">Notifications</string>
+    <string name="pref_general_title_key" translatable="false">general_category</string>
+    <string name="pref_general_title_label">General</string>
 
 </resources>

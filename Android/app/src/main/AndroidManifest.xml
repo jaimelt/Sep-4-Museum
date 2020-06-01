@@ -15,7 +15,8 @@
         <activity android:name=".view.museum.rooms.EmptyArtworkActivity"
             android:theme="@style/AppTheme.PopUpTheme"/>
         <activity android:name=".view.VisitorsActivity" />
-        <activity android:name=".view.settings.SettingsActivity" />
+        <activity android:name=".view.settings.SettingsActivity"
+            android:parentActivityName=".view.MainActivity"/>
         <activity
             android:name=".view.AccountActivity"
             android:parentActivityName=".view.MainActivity" />
