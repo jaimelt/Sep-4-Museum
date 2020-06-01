@@ -93,9 +93,9 @@ public class EditArtworkActivity extends AppCompatActivity {
         //TODO: How to set image
 
         nameField.setText(artwork.getName());
-        authorField.setHint(artwork.getAuthor());
-        descriptionField.setHint(artwork.getDescription());
-        commentsField.setHint(artwork.getComment());
+        authorField.setText(artwork.getAuthor());
+        descriptionField.setText(artwork.getDescription());
+        commentsField.setText(artwork.getComment());
 //        imageHolder.setImageURI(editArtworkViewModel.getImage());
 
         String type = artwork.getType();

@@ -27,7 +27,7 @@ public interface RoomEndpoints {
     @GET("/artworks?roomCode={roomCode}")
     Call<Artworks> getArtworksByRoomId(@Path("roomCode") String roomCode);
 
-    @PUT("/put/{id}")
+    @PUT("rooms/put/{id}")
     Call<Room> editOptimalConditions(@Path("id") String id, @Body Room room);
 
 }

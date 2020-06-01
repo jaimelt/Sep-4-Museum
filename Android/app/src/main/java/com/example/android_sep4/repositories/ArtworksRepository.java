@@ -8,9 +8,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
-import com.example.android_sep4.database.ArtworkDao;
-import com.example.android_sep4.database.ArtworkWithMeasurements;
-import com.example.android_sep4.database.MuseumDb;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.requests.clients.ArtworksAPIClient;
 
@@ -20,7 +17,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.List;
 
 public class ArtworksRepository {
     private static ArtworksRepository instance;
@@ -29,17 +25,17 @@ public class ArtworksRepository {
     private MutableLiveData<ArrayList<Artwork>> artworksInRoomData = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Artwork>> artworksInStorage = new MutableLiveData<>();
     private ArrayList<Artwork> artworksDataSet = new ArrayList<>();
-    private ArtworkDao artworkDao;
+//    private ArtworkDao artworkDao;
     private Artwork artwork = new Artwork();
     //TODO: needs to be updated, rn it is for testing
-    private LiveData<List<ArtworkWithMeasurements>> artworks;
+//    private LiveData<List<ArtworkWithMeasurements>> artworks;
     private Application application;
 
     //ArtworksRepository should not be singleton
     public ArtworksRepository(Application application) {
-        MuseumDb database = MuseumDb.getInstance(application);
-        artworkDao = database.artworkDao();
-        artworks = artworkDao.getAllLiveArtworks();
+//        MuseumDb database = MuseumDb.getInstance(application);
+//        artworkDao = database.artworkDao();
+//        artworks = artworkDao.getAllLiveArtworks();
         artworksAPIClient = new ArtworksAPIClient(application);
         this.application = application;
 

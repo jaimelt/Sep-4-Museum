@@ -86,38 +86,21 @@ public class ArtworksAPIClient {
     public void editArtwork(Artwork editedArtwork) {
         int artworkID = editedArtwork.getId();
 
-        Artwork updatedArtwork = new Artwork();
-        updatedArtwork.setName(editedArtwork.getName());
-        updatedArtwork.setAuthor(editedArtwork.getAuthor());
-        updatedArtwork.setDescription(editedArtwork.getDescription());
-        updatedArtwork.setComment(editedArtwork.getComment());
-        updatedArtwork.setImage(editedArtwork.getImage());
-        updatedArtwork.setType(editedArtwork.getType());
-        updatedArtwork.setRoomCode(editedArtwork.getRoomCode());
-        updatedArtwork.setArtworkPosition(editedArtwork.getArtworkPosition());
-        updatedArtwork.setMaxCo2(editedArtwork.getMaxCo2());
-        updatedArtwork.setMinCo2(editedArtwork.getMinCo2());
-        updatedArtwork.setMaxHumidity(editedArtwork.getMaxHumidity());
-        updatedArtwork.setMinHumidity(editedArtwork.getMinHumidity());
-        updatedArtwork.setMaxTemperature(editedArtwork.getMaxTemperature());
-        updatedArtwork.setMinTemperature(editedArtwork.getMinTemperature());
-        updatedArtwork.setMinLight(editedArtwork.getMinLight());
-        updatedArtwork.setMaxLight(editedArtwork.getMaxLight());
-
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-        Call<Artwork> call = endpoints.editArtwork(artworkID, updatedArtwork);
-
+        Call<Artwork> call = endpoints.editArtwork(artworkID, editedArtwork);
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(Call<Artwork> call, Response<Artwork> response) {
                 System.out.println("SUCCESSFUL UPDATE!");
+                getArtworksData();
                 //HERE YOU WILL CALL THE ROOM DATABASE TO EDIT THE ARTWORK FROM THERE
             }
 
             @Override
             public void onFailure(Call<Artwork> call, Throwable t) {
                 System.out.println("UPDATE FAILED!");
+                getArtworksData();
                 //ALSO HERE, IF THE CALL IS FAILED AT LEAST WE WILL UPDATE IT IN THE LOCAL DATABASE
             }
         });
