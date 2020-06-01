@@ -10,12 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,6 +37,7 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
     private RoomsAdapter adapter;
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
+    private SharedPreferences sharedPreferences;
 
     public RoomsTab() {
         // Required empty public constructor
@@ -45,9 +48,20 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
                              Bundle savedInstanceState) {
         setViewModel();
         setHasOptionsMenu(true);
+        setSharePreferenceChangeListener();
         return inflater.inflate(R.layout.fragment_rooms_tab, container, false);
     }
 
+    private void setSharePreferenceChangeListener() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+    }
 
     public void setViewModel() {
         roomsTabViewModel = new ViewModelProvider(this).get(RoomsTabViewModel.class);
@@ -102,8 +116,11 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        Toast.makeText(getContext(), "IT CHANGED", Toast.LENGTH_SHORT).show();
         if (key.equals(getString(R.string.pref_temperature_key))) {
-            adapter.notifyDataSetChanged();
+            roomsTabViewModel.getRooms().observe(getViewLifecycleOwner(), rooms -> {
+                adapter.setRooms(rooms);
+            });
         }
     }
 }
