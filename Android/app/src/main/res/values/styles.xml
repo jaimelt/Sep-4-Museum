@@ -1,0 +1,68 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarStyle">@style/myTheme.ActionBar</item>
+        <item name="tabBackground">@color/colorPrimary</item>
+        <item name="android:gravity">center</item>
+        <item name="tabSelectedTextColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="actionOverflowMenuStyle">@style/CMOptionsMenu</item>
+    </style>
+
+    <style name="CMOptionsMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@color/grey_options_menu</item>
+    </style>
+
+    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="myTheme.ActionBar" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/colorPrimary</item>
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/CustomTextAppearance</item>
+    </style>
+
+    <style name="CustomTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="Background">
+        <item name="backgroundColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="EditViewStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TransparentText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#00000000</item>
+    </style>
+
+    <style name="ArtworkRB">
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/selectable_text_color</item>
+        <item name="android:background">@drawable/selectable_bg_color</item>
+        <item name="android:button">@android:color/transparent</item>
+    </style>
+    
+    <style name="AppTheme.PopUpTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+</resources>
