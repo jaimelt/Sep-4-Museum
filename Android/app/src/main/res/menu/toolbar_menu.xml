@@ -14,8 +14,4 @@
         android:title="@string/action_settings"
         android:icon="@drawable/ic_settings"
         app:showAsAction="collapseActionView" />
-    <item android:id="@+id/visitors"
-        android:title="@string/visitors"
-        app:showAsAction="collapseActionView" />
-
 </menu>
