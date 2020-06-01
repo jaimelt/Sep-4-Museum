@@ -102,12 +102,12 @@ public class AuthAPIClient {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                System.out.println("User deleted");
+                getUsers();
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                System.out.println("User was not deleted");
+                getUsers();
             }
         });
     }

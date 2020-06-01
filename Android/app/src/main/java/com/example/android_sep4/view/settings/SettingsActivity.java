@@ -18,6 +18,8 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setTitle("Settings");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
     @Override
