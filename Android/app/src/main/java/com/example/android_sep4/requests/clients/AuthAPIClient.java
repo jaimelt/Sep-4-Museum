@@ -1,6 +1,7 @@
 package com.example.android_sep4.requests.clients;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -90,21 +91,23 @@ public class AuthAPIClient {
         });
     }
 
-    public void updateUser(User updatedUser) {
+    public void changePassword(User user) {
         AuthEndpoints endpoints = ServiceGenerator.getAuthEndpoints();
 
-        User user = new User(updatedUser.getEmail(), updatedUser.getPassword());
+//        User user = new User(updatedUser.getEmail(), updatedUser.getPassword());
 
         Call<User> call = endpoints.updateUser(user);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
-
+                if (response.isSuccessful() && response.body() != null) {
+                    Toast.makeText(application, "Password changed", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
-
+                Toast.makeText(application, "Password changed", Toast.LENGTH_SHORT).show();
             }
         });
     }
