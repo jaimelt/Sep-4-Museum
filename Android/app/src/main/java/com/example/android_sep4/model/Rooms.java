@@ -15,9 +15,7 @@ public class Rooms {
 
     public void changeCelsiusToFahrenheit() {
         for (Room room : rooms) {
-            double celsius = room.getTemperature();
-            double fahrenheit = celsius * 1.8 + 32.0;
-            room.setTemperature(fahrenheit);
+            room.changeCelsiusToFahrenheit();
         }
     }
 }

@@ -133,8 +133,14 @@ public class Room {
         return expanded;
     }
 
+
+
     public void setExpanded(boolean expanded) {
         this.expanded = expanded;
     }
 
+    public void changeCelsiusToFahrenheit() {
+        double fahrenheit = (temperature * 1.8) + 32.0;
+        this.setTemperature(fahrenheit);
+    }
 }
