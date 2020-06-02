@@ -21,12 +21,13 @@
 #define CO2_TASK_PRIORITY (configMAX_PRIORITIES - 3)
 #define CO2_SENSOR_TASK_NAME "CO2"
 #define CO2_SENSOR_TAG "CO2 SENSOR TASK"
+//task handler
+static TaskHandle_t _CO2SensorTaskHandle;
 
-//local variables
+//private fields
 static SemaphoreHandle_t _xPrintfSemaphore;
 static EventGroupHandle_t _eventGroupHandleMeasure;
 static EventGroupHandle_t _eventGroupHandleNewData;
-static TaskHandle_t _CO2SensorTaskHandle;
 static uint16_t _lastCo2Measurement;
 static mh_z19_return_code_t _rc;
 
@@ -39,13 +40,13 @@ void co2Sensor_callback(uint16_t ppm)
 
 static void _setup_co2_driver()
 {
-	//setup driver
+	//create driver
 	mh_z19_create(ser_USART3, co2Sensor_callback);
 }
 
 void co2Sensor_inLoop()
 {
-	//wait for the start measuring bit in the event group
+	//wait for the start measuring bit to be true in the event group
 	xEventGroupWaitBits(_eventGroupHandleMeasure,
 						CO2_MEASURE_BIT,
 						pdTRUE,
@@ -58,6 +59,7 @@ void co2Sensor_inLoop()
 	// if (_rc != MHZ19_OK)
 	// {
 	// 		printf(":: Fetch co2 data failed \n");
+	//		return;
 	// }
 }
 

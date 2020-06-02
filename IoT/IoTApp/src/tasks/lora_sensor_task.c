@@ -4,22 +4,29 @@
 * Created: 16/05/2020 11.33.49
 *  Author: Marina Ionel
 */
-#include <stdio.h>
 
+//header
+#include "lora_sensor_task.h"
+
+//required libraries
+#include <stdio.h>
 #include <lora_driver.h>
 #include <iled.h>
 #include <hal_defs.h>
 
-#include "lora_sensor_task.h"
+//constants
 #include "../constants/global_constants.h"
 
+//task details
 #define LORA_SENSOR_TAG "LORA SENSOR TASK"
 #define LORA_TASK_NAME "Lorawan"
 #define LORAWAN_TASK_PRIORITY (configMAX_PRIORITIES - 1)
+//task handler
+static TaskHandle_t _lora_task_handle;
 
+//private fields
 static QueueHandle_t _receivingQueue;
 static SemaphoreHandle_t _xPrintfSemaphore;
-static TaskHandle_t _lora_task_handle;
 
 static char _out_buf[100];
 

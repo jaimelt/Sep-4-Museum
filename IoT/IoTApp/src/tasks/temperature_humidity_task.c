@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdio_driver.h>
 #include <avr/io.h>
+
 //constants
 #include "../constants/global_constants.h"
 
@@ -21,18 +22,19 @@
 #define Temperature_Humidity_TASK_PRIORITY (configMAX_PRIORITIES - 3)
 #define TEMPERATURE_HUMIDITY_SENSOR_TASK_NAME "TempHum"
 #define TEMPERATURE_HUMIDITY_SENSOR_TAG "TEMP/HUM SENSOR TASK"
+//task handler
+static TaskHandle_t _temperatureHumiditySensorTaskHandle;
 
-//local variables
+//private fields
 static SemaphoreHandle_t _xPrintfSemaphore;
 static EventGroupHandle_t _eventGroupHandleMeasure;
 static EventGroupHandle_t _eventGroupHandleNewData;
-static TaskHandle_t _temperatureHumiditySensorTaskHandle;
 static float _lastMeasurementTemperature;
 static float _lastMeasurementHumidity;
 
 static void _setup_temperature_humidity_driver()
 {
-	//set up driver
+	//create driver
 	int result = hih8120Create();
 	if (HIH8120_OK != result)
 	{
@@ -48,7 +50,7 @@ static void _setup_temperature_humidity_driver()
 
 void temperatureHumiditySensor_inLoop()
 {
-	//wait for the start measuring bit in the event group
+	//wait for the start measuring bit to be true in the event group
 	xEventGroupWaitBits(_eventGroupHandleMeasure,
 						TEMPERATURE_HUMIDITY_MEASURE_BIT,
 						pdTRUE,
@@ -59,36 +61,41 @@ void temperatureHumiditySensor_inLoop()
 
 	//wake up the sensor from power down
 	result = hih8120Wakeup();
+	
+	//after the wakeup, the sensor needs minimum 50ms to start measuring
 	vTaskDelay(100);
 
-	if (HIH8120_OK != result)
-	{
-		xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+	//if (HIH8120_OK != result)
+	//{
+		//xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
 		//printf("%s", TEMPERATURE_HUMIDITY_SENSOR_TAG);
 		//printf(" :: DRIVER CANNOT WAKE UP\n");
-		xSemaphoreGive(_xPrintfSemaphore);
-	}
+		//xSemaphoreGive(_xPrintfSemaphore);
+	//}
 
 	//pool sensor for result
 	result = hih8120Meassure();
-	//delay 50ms to wait for the sensor to be ready
+	
+	//delay to fetch the results from the sensor
 	vTaskDelay(100);
 
 	//check the result
 	if (HIH8120_OK != result)
 	{
+		//10 trials to get the measurement from the sensor
 		int count = 10;
 		while ((HIH8120_TWI_BUSY == result) && count > 0)
 		{
 			result = hih8120Meassure();
-			vTaskDelay(pdMS_TO_TICKS(20UL));
-
+			//delay to fetch the results from the sensor
+			vTaskDelay(20);
 			count--;
 		}
 	}
+	
+	//get measurements
 	if (result == HIH8120_OK)
 	{
-		//get measurements
 		_lastMeasurementTemperature = hih8120GetTemperature();
 		_lastMeasurementHumidity = hih8120GetHumidity();
 
@@ -97,7 +104,7 @@ void temperatureHumiditySensor_inLoop()
 	}
 }
 
-void _TemperatureHumiditySensorTask(void *pvParameters)
+void vATemperatureHumiditySensorTask(void *pvParameters)
 {
 	for (;;)
 	{

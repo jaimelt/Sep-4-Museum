@@ -4,24 +4,33 @@
 * Created: 13/05/2020 16.19.34
 *  Author: Marina Ionel
 */
+
+//header
+#include "light_sensor_task.h"
+
+//required libraries
 #include <stdlib.h>
 #include <stdio.h>
 
+//constants
 #include "../constants/global_constants.h"
-#include "light_sensor_task.h"
 
+//task details
 #define LIGHT_TASK_PRIORITY (configMAX_PRIORITIES - 3)
 #define LIGHT_SENSOR_TASK_NAME "Light"
 #define LIGHT_SENSOR_TAG "LIGHT SENSOR TASK"
+//task handler
+static TaskHandle_t _lightSensorTaskHandle;
 
+//private fields
 static SemaphoreHandle_t _xPrintfSemaphore;
 static EventGroupHandle_t _eventGroupHandleMeasure;
 static EventGroupHandle_t _eventGroupHandleNewData;
-static TaskHandle_t _lightSensorTaskHandle;
 static float _lastMeasurementLux;
 
 void LightSensor_callback(tsl2591ReturnCode_t rc)
 {
+	//verify if the value was measured
 	if (rc != TSL2591_DATA_READY)
 	{
 		return;
@@ -32,14 +41,17 @@ void LightSensor_callback(tsl2591ReturnCode_t rc)
 	{
 		//set data
 		_lastMeasurementLux = _lux;
+		//set the bit to true to signalize that the measurement was completed
 		xEventGroupSetBits(_eventGroupHandleNewData, LIGHT_READY_BIT);
 	}
 }
 
 static void _setup_light_driver()
 {
-	//create
+	//create driver
 	int result = tsl2591Create(LightSensor_callback);
+	
+	//check if creation was completed
 	if (result != TSL2591_OK)
 	{
 		exit(EXIT_FAILURE);
@@ -63,12 +75,14 @@ static void _setup_light_driver()
 
 void LightSensor_inLoop()
 {
+	//wait for the start measuring bit to be true in the event group
 	xEventGroupWaitBits(_eventGroupHandleMeasure,
 						LIGHT_MEASURE_BIT,
 						pdTRUE,
 						pdTRUE,
 						portMAX_DELAY);
-
+						
+	//perform measuring
 	tsl2591FetchData();
 
 	// int result = tsl2591FetchData();
@@ -90,15 +104,19 @@ void vALightSensorTask(void *pvParameters)
 
 void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore)
 {
+	//setting variables
 	_xPrintfSemaphore = pvPrintfSemaphore;
 	_eventGroupHandleMeasure = pvEventHandleMeasure;
 	_eventGroupHandleNewData = pvEventHandleNewData;
 	_lastMeasurementLux = 0;
 
+	//starting the drivers
 	_setup_light_driver();
 
+	//task handler
 	_lightSensorTaskHandle = NULL;
 
+	//task creation
 	xTaskCreate(
 		vALightSensorTask,
 		(const portCHAR *)LIGHT_SENSOR_TASK_NAME,

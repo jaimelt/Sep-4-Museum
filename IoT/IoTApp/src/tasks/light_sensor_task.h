@@ -4,16 +4,19 @@
 * Created: 13/05/2020 18.44.41
 *  Author: Marina Ionel
 */
+
 #pragma once
 
-//freertos
+//FreeRTOS
 #include <ATMEGA_FreeRTOS.h>
 #include <task.h>
 #include <semphr.h>
 #include <event_groups.h>
+
 //driver
 #include <tsl2591.h>
 
+//functions
 void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure,
 						EventGroupHandle_t pvEventHandleNewData,
 						SemaphoreHandle_t pvPrintfSemaphore);

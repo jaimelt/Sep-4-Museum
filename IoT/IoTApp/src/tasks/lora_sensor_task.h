@@ -6,9 +6,11 @@
 */
 #pragma once
 
+//FreeRTOS
 #include <ATMEGA_FreeRTOS.h>
 #include <queue.h>
 #include <semphr.h>
 #include <task.h>
 
+//functions
 void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore);
