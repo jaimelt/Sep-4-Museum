@@ -55,12 +55,17 @@ void vASensorControlTask(void *pvParameters)
 						   ALL_MEASURE_BITS);
 
 		//wait for new data bits set by the sensors when the measurements are done
-		xEventGroupWaitBits(
+		EventBits_t uxBits = xEventGroupWaitBits(
 			_event_group_new_data,
 			ALL_READY_BITS,
 			pdTRUE,
 			pdTRUE,
-			portMAX_DELAY);
+			TIME_DELAY_BETWEEN_MEASUREMENTS);
+
+		if ((uxBits & ALL_READY_BITS) != ALL_READY_BITS)
+		{
+			continue;
+		}
 
 		//get co2
 		uint16_t _co2 = co2sensor_getCo2();
