@@ -84,8 +84,7 @@ public class LoRaClient implements WebSocket.Listener {
             return;
         }
 
-        if (json.get("cmd").equals("gw")) {
-            LOGGER.info("Received gw telegram");
+        if (!json.get("cmd").equals("rx")) {
             return;
         }
 
