@@ -9,7 +9,6 @@
 
 #include "../constants/global_constants.h"
 #include "light_sensor_task.h"
-#include "../handler/rc_servo_handler.h"
 
 #define LIGHT_TASK_PRIORITY (configMAX_PRIORITIES - 3)
 #define LIGHT_SENSOR_TASK_NAME "Light"
@@ -33,14 +32,6 @@ void LightSensor_callback(tsl2591ReturnCode_t rc)
 	{
 		//set data
 		_lastMeasurementLux = _lux;
-		if (_lux > CRITICAL_LIGHT_MAX)
-		{
-			rcServo_Down();
-		}
-		if (_lux < CRITICAL_LIGHT_MIN)
-		{
-			rcServo_Up();
-		}
 		xEventGroupSetBits(_eventGroupHandleNewData, LIGHT_READY_BIT);
 	}
 }
@@ -105,8 +96,6 @@ void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandl
 	_lastMeasurementLux = 0;
 
 	_setup_light_driver();
-	//create rc servo
-	rc_servo_create();
 
 	_lightSensorTaskHandle = NULL;
 
