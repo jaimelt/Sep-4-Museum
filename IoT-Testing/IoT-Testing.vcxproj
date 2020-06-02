@@ -38,8 +38,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>./libs/avr-libc/avr-libc/include;../IoT/IoTApp/drivers;../IoT/IoTApp/FreeRTOS/src;../IoT/IoTApp/FreeRTOS/FreeRTOSTraceDriver;./libs/fff;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="..\IoT\IoTApp\src\handler\sensor_data_package_handler.c" />
+    <ClCompile Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.c" />
+    <ClCompile Include="..\IoT\IoTApp\src\handlers\sensor_data_package_handler.c" />
     <ClCompile Include="..\IoT\IoTApp\src\tasks\co2_sensor_task.c" />
     <ClCompile Include="..\IoT\IoTApp\src\tasks\light_sensor_task.c" />
     <ClCompile Include="test.cpp" />
@@ -49,7 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\IoT\IoTApp\src\constants\global_constants.h" />
-    <ClInclude Include="..\IoT\IoTApp\src\handler\sensor_data_package_handler.h" />
+    <ClInclude Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.h" />
+    <ClInclude Include="..\IoT\IoTApp\src\handlers\sensor_data_package_handler.h" />
     <ClInclude Include="..\IoT\IoTApp\src\tasks\co2_sensor_task.h" />
     <ClInclude Include="..\IoT\IoTApp\src\tasks\light_sensor_task.h" />
     <ClInclude Include="fff\fff.h" />
@@ -78,7 +86,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -110,7 +118,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>

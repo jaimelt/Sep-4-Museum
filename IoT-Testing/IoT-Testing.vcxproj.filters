@@ -2,13 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="test.cpp" />
-    <ClCompile Include="..\IoT\IoTApp\src\handler\sensor_data_package_handler.c">
-      <Filter>IoTProjectFiles</Filter>
-    </ClCompile>
     <ClCompile Include="..\IoT\IoTApp\src\tasks\co2_sensor_task.c">
       <Filter>IoTProjectFiles</Filter>
     </ClCompile>
     <ClCompile Include="..\IoT\IoTApp\src\tasks\light_sensor_task.c">
+      <Filter>IoTProjectFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.c">
+      <Filter>IoTProjectFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\IoT\IoTApp\src\handlers\sensor_data_package_handler.c">
       <Filter>IoTProjectFiles</Filter>
     </ClCompile>
   </ItemGroup>
@@ -18,9 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\IoT\IoTApp\src\handler\sensor_data_package_handler.h">
-      <Filter>IoTProjectFiles</Filter>
-    </ClInclude>
     <ClInclude Include="..\IoT\IoTApp\src\constants\global_constants.h">
       <Filter>IoTProjectFiles</Filter>
     </ClInclude>
@@ -32,6 +32,12 @@
     </ClInclude>
     <ClInclude Include="fff\fff.h" />
     <ClInclude Include="force_include.h" />
+    <ClInclude Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.h">
+      <Filter>IoTProjectFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IoT\IoTApp\src\handlers\sensor_data_package_handler.h">
+      <Filter>IoTProjectFiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
