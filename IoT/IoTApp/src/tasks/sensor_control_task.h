@@ -5,5 +5,5 @@
  *  Author: Marina Ionel
  */
 #pragma once
+
 void sensorControl_create();
-void vASensorControlTask(void *pvParameters);
