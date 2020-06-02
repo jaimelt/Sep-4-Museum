@@ -52,7 +52,6 @@ public class UserFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_DeviceDefault_Dialog_Alert);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_change_password, null);
-        builder.setTitle("Change name");
         builder.setView(view);
         AlertDialog dialog = builder.create();
         EditText passwordField = view.findViewById(R.id.passwordField);
