@@ -8,11 +8,7 @@ namespace WebApplication.SQLCommands
 {
     public static class Dimensions
     {
-        private const string WarehouseConnectionString =
-            "Server=sqlserversss.database.windows.net;Database=museum.warehouse;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;";
-        
-        private const string StagingConnectionString =
-            "Server=sqlserversss.database.windows.net;Database=museum.staging;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;";
+       
         
         private const string MuseumConnectionString =
             "Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;";
@@ -21,128 +17,105 @@ namespace WebApplication.SQLCommands
 
          public static async Task<IActionResult> DimRoomTable()
         {
-            await using var sqlConnection = new SqlConnection(Dimensions.WarehouseConnectionString);
+            await using var sqlConnection = new SqlConnection(Dimensions.MuseumConnectionString);
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
             commandCreateDimRoom.CommandText = 
-                @"CREATE TABLE dim_room
+                @"CREATE TABLE museum.dbo.DIMENSION_dimRoom
             (
             R_ID int IDENTITY, 
-            locationCode char (10),
-            Description char (50),
+            locationCode varchar (10),
+            Description varchar (50),
             optimalLight int,
             optimalTemperature int,
             optimalHumidity int,
             optimalCo2 int,
-            ValidFrom DATE,
+            ValidFrom Date,
             ValidTo DATE,
             PRIMARY KEY (R_ID));
             ";
 
             await commandCreateDimRoom.ExecuteNonQueryAsync();
             await commandCreateDimRoom.DisposeAsync();
-          
+            await sqlConnection.CloseAsync();
 
             return null;
         }
          
+         
          public static async Task<IActionResult> DimDateTable()
          {
-             await using var sqlConnection = new SqlConnection(Dimensions.WarehouseConnectionString);
+             await using var sqlConnection = new SqlConnection(Dimensions.MuseumConnectionString);
              await sqlConnection.OpenAsync();
              var commandCreateDimDate = sqlConnection.CreateCommand();
              
              commandCreateDimDate.CommandText =
-                 @"CREATE TABLE dim_date
-                 (
-                 D_ID int IDENTITY,
-                 DateID nvarchar(10),
-                 Year int, 
-                 Month int, 
-                 Day int, 
-                 WeekDay int, 
-                 MonthDay int, 
-                 WeekDayName nvarchar(50), 
-                 MonthName nvarchar(50), 
-                 PRIMARY KEY (D_ID));
-                 ";
+                 @"CREATE TABLE museum.dbo.DIMENSION_dimDate
+                 (D_ID int IDENTITY,
+                CalendarDate DATE ,
+                Year int,
+                Month int,
+                Day int,
+                WeekDay int,
+                MonthDay int,
+                WeekDayname varchar (50),
+                 MonthName varchar (50),
+                  PRIMARY KEY (D_ID))";
              
              await commandCreateDimDate.ExecuteNonQueryAsync();
              await commandCreateDimDate.DisposeAsync();
+             await sqlConnection.CloseAsync();
 
              return null;
          }
          
          public static async Task<IActionResult> FMeasurementsTable()
          {
-             await using var sqlConnection = new SqlConnection(Dimensions.WarehouseConnectionString);
+             await using var sqlConnection = new SqlConnection(Dimensions.MuseumConnectionString);
              await sqlConnection.OpenAsync();
              var commandCreateMeasurementsFTable = sqlConnection.CreateCommand();
 
              commandCreateMeasurementsFTable.CommandText =
-                 @"CREATE TABLE F_Measurements 
+                 @"CREATE TABLE museum.dbo.FACT_Measurement
                  (
-                 M_ID int identity, 
-                 R_ID int FOREIGN KEY REFERENCES dim_room(R_ID), 
-                 D_ID int FOREIGN KEY REFERENCES dim_date(D_ID), 
-                 locationCode nvarchar(10), DateID nvarchar(10), 
-                 lightMeasurement decimal, temperatureMeasurement decimal, 
-                 humidityMeasurement decimal, 
-                 co2Measurement decimal, 
-                 PRIMARY KEY (M_ID))
+                
+                 R_ID int FOREIGN KEY REFERENCES DIMENSION_dimRoom(R_ID), 
+                 D_ID int FOREIGN KEY REFERENCES DIMENSION_dimDate(D_ID), 
+                 locationCode varchar (10),
+                MeasurementDate DATE ,
+                    lightMeasurement int,
+            temperatureMeasurement int,
+                humidityMeasurement int,
+                    co2Measurement int)
                  ";
              
              await commandCreateMeasurementsFTable.ExecuteNonQueryAsync();
              await commandCreateMeasurementsFTable.DisposeAsync();
+             await sqlConnection.CloseAsync();
 
              return null;
          }
          
          public static async Task<IActionResult> LastUpdateTable()
          {
-             await using var sqlConnection = new SqlConnection(Dimensions.WarehouseConnectionString);
+             await using var sqlConnection = new SqlConnection(Dimensions.MuseumConnectionString);
              await sqlConnection.OpenAsync();
              var commandCreateLastUpdate = sqlConnection.CreateCommand();
             
              commandCreateLastUpdate.CommandText = 
-                 @"CREATE TABLE LastUpdate 
+                 @"CREATE TABLE museum.dbo.DIMENSION_LastUpdated
                  (
                  LastUpdate Date);
                  ";
              
              await commandCreateLastUpdate.ExecuteNonQueryAsync();
              await commandCreateLastUpdate.DisposeAsync();
+             await sqlConnection.CloseAsync(); 
 
              return null;
          }
          
-         public static async Task<IActionResult> something()
-         {
-             await using var sqlConnection = new SqlConnection(Dimensions.WarehouseConnectionString);
-             await sqlConnection.OpenAsync();
-             var commandCreateLastUpdate = sqlConnection.CreateCommand();
-
-             string sql = @"USE [museum.warehouse]
-                    GO
-                    CREATE TABLE test2(
-                    name int);
-                 ";
-
-             await using (var command = new SqlCommand("hello", sqlConnection)
-             {
-                 CommandType = CommandType.StoredProcedure
-             })
-             {
-                 sqlConnection.Open();
-                 command.ExecuteNonQuery();
-             }
-            
-         
-             await commandCreateLastUpdate.ExecuteNonQueryAsync();
-             await commandCreateLastUpdate.DisposeAsync();
-
-             return null;
-         }
+      
     }
 }

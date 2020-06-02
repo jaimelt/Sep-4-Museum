@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,6 +11,8 @@ namespace WebApplication.Datamodel
         [Column(TypeName = "decimal(8,4)")] public decimal Temperature { get; set; }
         [Column(TypeName = "decimal(8,4)")] public decimal Humidity { get; set; }
         [Column(TypeName = "decimal(8,4)")] public decimal Co2 { get; set; }
+        
+        public DateTime MeasurementDate { get; set; }
 
         public string roomNo { get; set; }
 
