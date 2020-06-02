@@ -30,5 +30,4 @@ public interface AuthEndpoints {
     Call<User> deleteUser(@Path("email") String email);
 
 
-
 }

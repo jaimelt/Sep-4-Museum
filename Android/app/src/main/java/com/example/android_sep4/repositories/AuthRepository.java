@@ -1,32 +1,21 @@
 package com.example.android_sep4.repositories;
 
 import android.app.Application;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.User;
-import com.example.android_sep4.requests.AuthEndpoints;
-import com.example.android_sep4.requests.ServiceGenerator;
 import com.example.android_sep4.requests.clients.AuthAPIClient;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AuthRepository {
     private static AuthRepository instance;
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
     private AuthAPIClient authAPIClient;
     private Application application;
+    private String email;
 
     public AuthRepository(Application application)
     {
@@ -42,6 +31,7 @@ public class AuthRepository {
     }
 
     public LiveData<Boolean> validateLogin(String email, String password) {
+        this.email = email;
         authAPIClient.validateLogin(email, password);
         return authAPIClient.getValidLogin();
     }
@@ -54,8 +44,9 @@ public class AuthRepository {
         authAPIClient.deleteUserByIndex(index);
     }
 
-    public void updateUser(User updatedUser) {
-        authAPIClient.updateUser(updatedUser);
+    public void changePassword(String password) {
+        User user = new User(email, password);
+        authAPIClient.changePassword(user);
     }
 
     public LiveData<Boolean> getIsValidating() {
@@ -68,5 +59,9 @@ public class AuthRepository {
 
     public LiveData<Boolean> getIsLoading() {
         return authAPIClient.getIsLoading();
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

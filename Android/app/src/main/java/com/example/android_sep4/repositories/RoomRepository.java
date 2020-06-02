@@ -26,7 +26,6 @@ public class RoomRepository {
     public RoomRepository(Application application) {
         this.application = application;
         roomsAPIClient = new RoomsAPIClient(application);
-
     }
 
 
@@ -37,12 +36,13 @@ public class RoomRepository {
         return instance;
     }
 
-    public LiveData<ArrayList<Room>> getRoomsData() {
+    public void getRoomsData() {
         roomsAPIClient.getRoomsData();
         roomsAPIClient.getRoomsDataLive().observeForever(new Observer<ArrayList<Room>>() {
             @Override
             public void onChanged(ArrayList<Room> rooms) {
                 if (rooms.isEmpty()) {
+
                 } else {
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
                     boolean prefTemperature = sharedPreferences.getBoolean(application.getString(R.string.pref_temperature_key), application.getResources().getBoolean(R.bool.pref_temperature_default));
@@ -62,6 +62,10 @@ public class RoomRepository {
                 }
             }
         });
+    }
+
+    public LiveData<ArrayList<Room>> getRoomsDataLive()
+    {
         return roomsData;
     }
 

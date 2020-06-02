@@ -15,7 +15,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/activity_settings"
-        android:name="com.example.android_sep4.view.settings.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary" />

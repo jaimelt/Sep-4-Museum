@@ -13,6 +13,8 @@
     <color name="color_photo">#7E8CE0</color>
     <color name="grey_options_menu">#333333</color>
     <color name="optimalValue">#00FF00</color>
+    <color name="optimalColor">	#4CB3D2</color>
+    <color name="actualColor">#DD4D4D</color>
 
 
 </resources>
