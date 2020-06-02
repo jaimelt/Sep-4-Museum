@@ -139,11 +139,9 @@ public class MainActivity extends AppCompatActivity {
         liveData.observe(this, artworks -> {
             liveData.removeObservers(this);
             artworksInDanger.addAll(artworks);
-            System.out.println(artworksInDanger.size() + "artworks in danger");
 
             LiveData<Boolean> booleanLiveData = notificationsViewModel.getIsLoaded();
             booleanLiveData.observe(this, aBoolean -> {
-                System.out.println(aBoolean + " mainview");
                 if (aBoolean) {
                     notification();
                 }

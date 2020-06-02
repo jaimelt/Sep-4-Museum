@@ -42,13 +42,10 @@ public class NotificationRepository {
     public LiveData<Boolean> getIsLoaded() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
         boolean prefNotification = sharedPreferences.getBoolean(application.getString(R.string.pref_notification_key), application.getResources().getBoolean(R.bool.pref_notification_default));
-        System.out.println(prefNotification+"notification settings");
         if (!prefNotification)
         {
             loaded.setValue(false);
-            System.out.println(loaded.getValue() + " loaded");
         }
-        System.out.println(loaded.getValue()+"after IF");
         return loaded;
     }
 
