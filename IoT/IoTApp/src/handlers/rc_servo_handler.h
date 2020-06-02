@@ -5,8 +5,10 @@
 * Created: 01/06/2020 11.03.23
 *  Author: Marina Ionel
 */
+
 #pragma once
 
+//functions
 void rc_servo_create();
 
 void rcServo_Up();

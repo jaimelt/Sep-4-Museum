@@ -5,15 +5,19 @@
 *  Author: Marina Ionel
 */
 
-#include <stdint.h>
+//header
+#include "sensor_data_package_handler.h"
 
+//FreeRTOS
 #include <ATMEGA_FreeRTOS.h>
-#include <stdio_driver.h>
 
+//required libraries
+#include <stdio_driver.h>
+#include <stdint.h>
 #include <lora_driver.h>
 
+//private variables
 #define RATIO 100
-
 static uint16_t _co2_ppm = 0;
 static float _light = 0;
 static float _humidity = 0;
@@ -41,12 +45,14 @@ void SensorDataPackageHandler_setLight(float lux)
 
 lora_payload_t SensorDataPackageHandler_getLoraPayload(uint8_t portNo)
 {
+	//create payload
 	lora_payload_t _uplink_payload = {.len = 8, .bytes = {0}, .port_no = portNo};
 
 	uint16_t _light_as_int = _light * RATIO;
 	uint16_t _humidity_as_int = _humidity * RATIO;
 	uint16_t _temperature_as_int = _temperature * RATIO;
-
+	
+	//set measurements in the payload
 	_uplink_payload.bytes[0] = _humidity_as_int >> 8;
 	_uplink_payload.bytes[1] = _humidity_as_int & 0xFF;
 	_uplink_payload.bytes[2] = _temperature_as_int >> 8;

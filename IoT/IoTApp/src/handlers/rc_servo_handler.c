@@ -5,10 +5,15 @@
 * Created: 01/06/2020 11.03.08
 *  Author: Marina Ionel
 */
+
+//header
+#include "rc_servo_handler.h"
+
+//required libraries
 #include <stdbool.h>
 #include <rcServo.h>
 
-#include "rc_servo_handler.h"
+//private variables
 static bool _IsUp;
 
 void rcServo_Up()

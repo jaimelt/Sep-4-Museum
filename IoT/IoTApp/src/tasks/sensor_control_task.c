@@ -5,9 +5,20 @@
 *  Author: Marina Ionel
 */
 
+//headers
+#include "sensor_control_task.h"
+#include "../handlers/sensor_data_package_handler.h"
+#include "lora_sensor_task.h"
+#include "light_sensor_task.h"
+#include "temperature_humidity_task.h"
+#include "co2_sensor_task.h"
+#include "../handlers/rc_servo_handler.h"
+
+//required libraries
 #include <stdio.h>
 #include <avr/io.h>
-//freertos
+
+//FreeRTOS
 #include <ATMEGA_FreeRTOS.h>
 #include <task.h>
 #include <semphr.h>
@@ -17,24 +28,19 @@
 #include <lora_driver.h>
 #include <stdio_driver.h>
 
-#include "sensor_control_task.h"
-#include "../constants/global_constants.h"
-#include "../handlers/sensor_data_package_handler.h"
-#include "lora_sensor_task.h"
-#include "light_sensor_task.h"
-#include "temperature_humidity_task.h"
-#include "co2_sensor_task.h"
-#include "../handlers/rc_servo_handler.h"
-
 //constants
+#include "../constants/global_constants.h"
+
+//task details
 #define SENSOR_CONTROL_TAG "SENSOR CONTROL"
-//1 minutes in ms = 60000
-#define TIME_DELAY_BETWEEN_MEASUREMENTS ((5 * 60000) / portTICK_PERIOD_MS)
 #define SENSOR_CONTROL_TASK_PRIORITY (configMAX_PRIORITIES - 3)
 #define SENSOR_CONTROL_TASK_NAME "SensorC"
 
-//private fields
+//task handler
 static TaskHandle_t _sensor_control_task_handle = NULL;
+
+//private fields
+#define TIME_DELAY_BETWEEN_MEASUREMENTS ((5 * 60000) / portTICK_PERIOD_MS)//1 minutes in ms = 60000
 static SemaphoreHandle_t _xPrintfSemaphore = NULL;
 static EventGroupHandle_t _event_group_measure = NULL;
 static EventGroupHandle_t _event_group_new_data = NULL;
@@ -44,13 +50,11 @@ void vASensorControlTask(void *pvParameters)
 {
 	for (;;)
 	{
-		//set bits to measure
+		//set bits to true in order to start measurements
 		xEventGroupSetBits(_event_group_measure,
 						   ALL_MEASURE_BITS);
 
-		/*CO2_READY_BIT | TEMPERATURE_HUMIDITY_READY_BIT |    */
-
-		//wait for new data bits
+		//wait for new data bits set by the sensors when the measurements are done
 		xEventGroupWaitBits(
 			_event_group_new_data,
 			ALL_READY_BITS,
@@ -86,6 +90,7 @@ void vASensorControlTask(void *pvParameters)
 		printf("Light %.2f \n", _lightInLux);
 		xSemaphoreGive(_xPrintfSemaphore);
 
+		//light values checking that trigger rcServo behavior
 		if (_lightInLux > CRITICAL_LIGHT_MAX)
 		{
 			rcServo_Down();
@@ -95,13 +100,16 @@ void vASensorControlTask(void *pvParameters)
 			rcServo_Up();
 		}
 
+		//set the measurement values inside the sensor data package
 		SensorDataPackageHandler_setCo2ppm(_co2);
 		SensorDataPackageHandler_setTemperature(_temperature);
 		SensorDataPackageHandler_setHumidity(_humidity);
 		SensorDataPackageHandler_setLight(_lightInLux);
 
+		//get the payload
 		lora_payload_t _lora_payload = SensorDataPackageHandler_getLoraPayload(LORA_PAYLOAD_PORT_NO);
 
+		//send the payload to the queue
 		xQueueSend(_sendingQueue, //queue handler
 				   (void *)&_lora_payload,
 				   portMAX_DELAY);
@@ -113,6 +121,7 @@ void vASensorControlTask(void *pvParameters)
 
 void sensorControl_create()
 {
+	//create print mutex
 	if (_xPrintfSemaphore == NULL)
 	{
 		_xPrintfSemaphore = xSemaphoreCreateMutex();
@@ -120,25 +129,27 @@ void sensorControl_create()
 			xSemaphoreGive(_xPrintfSemaphore);
 	}
 
+	//create event groups
 	if (_event_group_measure == NULL)
 		_event_group_measure = xEventGroupCreate();
 
 	if (_event_group_new_data == NULL)
 		_event_group_new_data = xEventGroupCreate();
 
+	//create queue
 	if (_sendingQueue == NULL)
 		_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
 
-	//create lora driver
+	//create lora task
 	loraSensor_create(_sendingQueue, _xPrintfSemaphore);
 
-	//create co2
+	//create co2 task
 	co2Sensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
 
-	//create humidity/temperature
+	//create humidity/temperature task
 	temperatureHumiditySensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
 
-	//create light
+	//create light task
 	LightSensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
 
 	//create rc servo
