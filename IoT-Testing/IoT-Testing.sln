@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IoT-Testing", "IoT-Testing.vcxproj", "{8618FC55-E954-45CF-9B5E-6D4142D4481E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IoT-TestingTest", "..\IoT_TestingTest\IoT_TestingTest.vcxproj", "{924D3CA5-1475-42D7-9797-2EC080F38EA3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -22,14 +20,6 @@ Global
 		{8618FC55-E954-45CF-9B5E-6D4142D4481E}.Release|x64.Build.0 = Release|x64
 		{8618FC55-E954-45CF-9B5E-6D4142D4481E}.Release|x86.ActiveCfg = Release|Win32
 		{8618FC55-E954-45CF-9B5E-6D4142D4481E}.Release|x86.Build.0 = Release|Win32
-		{924D3CA5-1475-42D7-9797-2EC080F38EA3}.Debug|x64.ActiveCfg = Debug|x64
-		{924D3CA5-1475-42D7-9797-2EC080F38EA3}.Debug|x64.Build.0 = Debug|x64
-		{924D3CA5-1475-42D7-9797-2EC080F38EA3}.Debug|x86.ActiveCfg = Debug|Win32
-		{924D3CA5-1475-42D7-9797-2EC080F38EA3}.Debug|x86.Build.0 = Debug|Win32
-		{924D3CA5-1475-42D7-9797-2EC080F38EA3}.Release|x64.ActiveCfg = Release|x64
-		{924D3CA5-1475-42D7-9797-2EC080F38EA3}.Release|x64.Build.0 = Release|x64
-		{924D3CA5-1475-42D7-9797-2EC080F38EA3}.Release|x86.ActiveCfg = Release|Win32
-		{924D3CA5-1475-42D7-9797-2EC080F38EA3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
