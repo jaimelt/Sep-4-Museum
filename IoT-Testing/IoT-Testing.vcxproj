@@ -38,11 +38,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>./libs/avr-libc/avr-libc/include;../IoT/IoTApp/drivers;../IoT/IoTApp/FreeRTOS/src;../IoT/IoTApp/FreeRTOS/FreeRTOSTraceDriver;./libs/fff;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>C:\Users\dimin\OneDrive\VIA\4th Semerster\ESW-1\Coding\Sep-4-Museum\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;C:\Users\dimin\OneDrive\VIA\4th Semerster\ESW-1\Coding\Sep-4-Museum\IoT\IoTApp\drivers;C:\Users\dimin\OneDrive\VIA\4th Semerster\ESW-1\Stuff\FreeRTOSv10.3.0\FreeRTOS\Source\portable\MSVC-MingW;C:\Users\dimin\OneDrive\VIA\4th Semerster\ESW-1\Stuff\FreeRTOSv10.3.0\FreeRTOS\Source\include;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\IoT\IoTApp\src\handler\sensor_data_package_handler.c" />
     <ClCompile Include="..\IoT\IoTApp\src\tasks\co2_sensor_task.c" />
     <ClCompile Include="..\IoT\IoTApp\src\tasks\light_sensor_task.c" />
-    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -52,8 +54,6 @@
     <ClInclude Include="..\IoT\IoTApp\src\handler\sensor_data_package_handler.h" />
     <ClInclude Include="..\IoT\IoTApp\src\tasks\co2_sensor_task.h" />
     <ClInclude Include="..\IoT\IoTApp\src\tasks\light_sensor_task.h" />
-    <ClInclude Include="fff\fff.h" />
-    <ClInclude Include="force_include.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -78,7 +78,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -99,7 +99,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ForcedIncludeFiles>"C:\Users\Marina Ionel\OneDrive - ViaUC\semester 4\SEP4\Sep-4-Museum\IoT-Testing\force_include.h";%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>"C:\Users\dimin\OneDrive\VIA\4th Semerster\ESW-1\Coding\Sep-4-Museum\IoT-Testing\force_include.h";%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
