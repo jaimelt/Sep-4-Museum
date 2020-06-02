@@ -25,7 +25,7 @@ public class LoRaClient implements WebSocket.Listener {
         CompletableFuture<WebSocket> ws = client.newWebSocketBuilder()
                 .buildAsync(URI.create(TOKEN), this);
         try {
-            fileHandler = new FileHandler("bridge-app.log");
+            fileHandler = new FileHandler("bridge-app.log", true);
         } catch (IOException e) {
             e.printStackTrace();
         }
