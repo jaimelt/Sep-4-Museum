@@ -130,7 +130,7 @@ void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure,
 	_temperatureHumiditySensorTaskHandle = NULL;
 
 	//task creation
-	xTaskCreate(_TemperatureHumiditySensorTask,
+	xTaskCreate(vATemperatureHumiditySensorTask,
 				(const portCHAR *)TEMPERATURE_HUMIDITY_SENSOR_TASK_NAME,
 				configMINIMAL_STACK_SIZE,
 				NULL,

@@ -13,8 +13,6 @@
 
 //required libraries
 #include <stdio_driver.h>
-#include <stdint.h>
-#include <lora_driver.h>
 
 //private variables
 #define RATIO 100

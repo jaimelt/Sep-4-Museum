@@ -6,6 +6,8 @@
  */
 
 #pragma once
+#include <stdint.h>
+#include <lora_driver.h>
 
 //functions
 void SensorDataPackageHandler_setCo2ppm(uint16_t ppm);
