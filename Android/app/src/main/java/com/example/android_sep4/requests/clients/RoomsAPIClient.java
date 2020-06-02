@@ -22,7 +22,7 @@ import retrofit2.Response;
 import static android.content.ContentValues.TAG;
 
 public class RoomsAPIClient {
-    private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
+    private MutableLiveData<Rooms> roomsData = new MutableLiveData<>();
     private MutableLiveData<RoomMeasurements> liveRoomMeasurements = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private Room room;
@@ -43,7 +43,7 @@ public class RoomsAPIClient {
                 Log.i(TAG, "onResponse: success!");
                 if (response.isSuccessful() && response.body() != null) {
 
-                    roomsData.setValue(response.body().getRooms());
+                    roomsData.setValue(response.body());
                     roomsData = new MutableLiveData<>();
                 }
                 isLoading.setValue(false);
@@ -52,7 +52,7 @@ public class RoomsAPIClient {
             @Override
             public void onFailure(@NonNull Call<Rooms> call, @NonNull Throwable t) {
                 Log.i(TAG, "onFailure: called");
-                roomsData.setValue(new ArrayList<>());
+                roomsData.setValue(new Rooms(new ArrayList<>()));
             }
         });
     }
@@ -107,7 +107,7 @@ public class RoomsAPIClient {
         });
     }
 
-    public LiveData<ArrayList<Room>> getRoomsDataLive() {
+    public LiveData<Rooms> getRoomsDataLive() {
         return roomsData;
     }
 
