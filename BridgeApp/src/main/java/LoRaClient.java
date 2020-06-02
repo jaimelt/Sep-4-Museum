@@ -8,8 +8,8 @@ import java.net.http.WebSocket;
 import java.nio.ByteBuffer;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
-import java.util.logging.Logger;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Logger;
 
 public class LoRaClient implements WebSocket.Listener {
     private final IDatabase database = new MongoDbDatabase();
@@ -84,11 +84,11 @@ public class LoRaClient implements WebSocket.Listener {
             return;
         }
 
-        if (!json.get("cmd").equals("rx")) {
-            return;
-        }
+        if (!json.get("cmd").equals("rx")) return;
 
         var dataAsHex = (String) json.get("data");
+
+        if (dataAsHex == null) return;
 
 //        spit data string every 4 characters
         String[] measurementsAsHex = dataAsHex.split("(?<=\\G....)");
