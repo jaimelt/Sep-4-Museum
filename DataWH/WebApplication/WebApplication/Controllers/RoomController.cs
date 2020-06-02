@@ -39,7 +39,7 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> GetRooms()
         {
-            StageDim.PopulateStageDimRoom();
+            TransferSql.TransferDataFromMongoDb();
             
             try
             {
@@ -229,8 +229,17 @@ namespace WebApplication.Controllers
                 logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
+            
+            
 
 
+        }
+        [HttpPost("{test}")]
+        public  ICollection<MongoMeasurement> deleteAdmin(string email)
+        {
+            
+            
+            return _mongoRepository.LoadAllMeasurements();
         }
     }
 }

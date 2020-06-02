@@ -36,7 +36,9 @@ namespace WebApplication.MongoDB
         public ICollection<MongoMeasurement> LoadAllMeasurements()
         {
             _roomMeasurement = database.GetCollection<MongoMeasurement>(_settings.MeasurementsCollectionName);
-            ICollection<MongoMeasurement> measurements = _roomMeasurement.Find("data").ToList();
+            BsonDocument filter = new BsonDocument("room_no", 1);
+            ICollection<MongoMeasurement> measurements = _roomMeasurement.Find(filter).ToList();
+            
             return measurements;
         }
 
