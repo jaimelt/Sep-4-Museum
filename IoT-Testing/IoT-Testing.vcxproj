@@ -39,10 +39,10 @@
     <IncludePath>./libs/avr-libc/avr-libc/include;../IoT/IoTApp/drivers;../IoT/IoTApp/FreeRTOS/src;../IoT/IoTApp/FreeRTOS/FreeRTOSTraceDriver;./libs/fff;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
+    <IncludePath>.\libs\fff;.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
+    <IncludePath>.\libs\fff;.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.c" />
