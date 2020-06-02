@@ -144,8 +144,6 @@ void sensorControl_create()
 	//create rc servo
 	rc_servo_create();
 
-	_sensor_control_task_handle = NULL;
-
 	//create the task
 	xTaskCreate(
 		vASensorControlTask,						/* Task function. */
