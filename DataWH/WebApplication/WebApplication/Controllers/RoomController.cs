@@ -39,8 +39,7 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> GetRooms()
         {
-            StageDim.StageDimDate();
-            StageDim.StageDimRoom();
+            StageDim.PopulateStageDimRoom();
             
             try
             {

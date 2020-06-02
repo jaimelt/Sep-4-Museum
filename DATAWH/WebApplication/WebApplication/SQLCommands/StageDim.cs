@@ -48,14 +48,13 @@ optimalCo2 int
             (	
                 [R_ID] [int] NULL,
                 [D_ID] [int] NULL,
-[locationCode] [nvarchar](10) NULL,
-[MeasurementDate] [datetime] NULL,
-[lightMeasurement] [int] NULL,
-[temperatureMeasurement] [int] NULL,
-[humidityMeasurement] [int] NULL,
-[co2Measurement] [int] NULL
-);
-            ";
+                [locationCode] [nvarchar](10) NULL,
+                [MeasurementDate] [datetime] NULL,
+                [lightMeasurement] [int] NULL,
+                [temperatureMeasurement] [int] NULL,
+                [humidityMeasurement] [int] NULL,
+                [co2Measurement] [int] NULL);   ";
+         
 
             await commandCreateDimRoom.ExecuteNonQueryAsync();
             await commandCreateDimRoom.DisposeAsync();
@@ -72,17 +71,17 @@ optimalCo2 int
 
             commandCreateDimRoom.CommandText = 
                 @"CREATE TABLE [STAGE_DimDate](
-D_ID int IDENTITY,
-CalendarDate DATE ,
-Year int,
-Month int,
-Day int,
-WeekDay int,
-MonthDay int,
-WeekDayname varchar (50),
-MonthName varchar (50)
-)
-            ";
+                  D_ID int IDENTITY,
+                  CalendarDate DATE ,
+                  Year int,
+                  Month int,
+                  Day int,
+                  WeekDay int,
+                  MonthDay int,
+                  WeekDayname varchar (50),
+                  MonthName varchar (50))  ";
+
+          
 
             await commandCreateDimRoom.ExecuteNonQueryAsync();
             await commandCreateDimRoom.DisposeAsync();
@@ -90,5 +89,71 @@ MonthName varchar (50)
 
             return null;
         }
+        
+        public static async Task PopulateStageDimDate()
+        {
+            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+            await sqlConnection.OpenAsync();
+            var commandCreateDimRoom = sqlConnection.CreateCommand();
+
+            commandCreateDimRoom.CommandText = 
+                @"
+                            go
+            DECLARE @StartDate DATETIME
+            DECLARE @EndDate DATETIME
+            SET @StartDate='2020-05-21'
+            SET @EndDate= DATEADD(d, 15, @StartDate)
+            WHILE @StartDate<= @EndDate
+            BEGIN INSERT INTO [STAGE_DimDate]
+            (CalendarDate, Year, Month, Day, WeekDay,MonthDay, WeekDayname, MonthName)
+            SELECT
+            @StartDate,
+            DATENAME(YEAR, @StartDate),
+            DATEPART(MONTH, @StartDate),
+            DATEPART(DAY, @StartDate),
+            DATEPART(WEEKDAY,@startDate),
+            DATEPART(DAY, @StartDate),
+            DATENAME(WEEKDAY, @StartDate),
+            DATENAME(MONTH, @StartDate)
+            SET @StartDate= DATEADD(dd, 1, @StartDate)
+               END ";
+
+          
+
+            await commandCreateDimRoom.ExecuteNonQueryAsync();
+            await commandCreateDimRoom.DisposeAsync();
+            await sqlConnection.CloseAsync();
+
+            
+        }
+        
+        public static async Task PopulateStageDimRoom()
+        {
+            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+            await sqlConnection.OpenAsync();
+            var commandCreateDimRoom = sqlConnection.CreateCommand();
+
+            commandCreateDimRoom.CommandText = 
+                @"INSERT INTO[STAGE_DimRoom]
+(
+locationCode,
+Description,
+optimalLight,
+optimalTemperature,
+optimalHumidity,
+optimalCo2
+)
+SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM [museum].[dbo].[Rooms]  ";
+              
+
+
+          
+
+            await commandCreateDimRoom.ExecuteNonQueryAsync();
+            await commandCreateDimRoom.DisposeAsync();
+            await sqlConnection.CloseAsync();
+
+            
+        }
     }
-}
+    }

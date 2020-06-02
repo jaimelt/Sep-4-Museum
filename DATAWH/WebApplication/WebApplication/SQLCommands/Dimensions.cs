@@ -22,7 +22,7 @@ namespace WebApplication.SQLCommands
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
             commandCreateDimRoom.CommandText = 
-                @"CREATE TABLE museum.dbo.DIMENSION_dimRoom
+                @"CREATE TABLE museum.dbo.DIMENSION_DimRoom
             (
             R_ID int IDENTITY, 
             locationCode varchar (10),
@@ -51,7 +51,7 @@ namespace WebApplication.SQLCommands
              var commandCreateDimDate = sqlConnection.CreateCommand();
              
              commandCreateDimDate.CommandText =
-                 @"CREATE TABLE museum.dbo.DIMENSION_dimDate
+                 @"CREATE TABLE museum.dbo.DIMENSION_DimDate
                  (D_ID int IDENTITY,
                 CalendarDate DATE ,
                 Year int,
@@ -80,8 +80,8 @@ namespace WebApplication.SQLCommands
                  @"CREATE TABLE museum.dbo.FACT_Measurement
                  (
                 
-                 R_ID int FOREIGN KEY REFERENCES DIMENSION_dimRoom(R_ID), 
-                 D_ID int FOREIGN KEY REFERENCES DIMENSION_dimDate(D_ID), 
+                 R_ID int FOREIGN KEY REFERENCES DIMENSION_DimRoom(R_ID), 
+                 D_ID int FOREIGN KEY REFERENCES DIMENSION_DimDate(D_ID), 
                  locationCode varchar (10),
                 MeasurementDate DATE ,
                     lightMeasurement int,
