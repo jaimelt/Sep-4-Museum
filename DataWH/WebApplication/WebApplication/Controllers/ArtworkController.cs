@@ -39,6 +39,7 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> getallArtworks()
         {
+            StageDim.PopulateStageDimDate();
             try
             {
                 ArtworkList artworkList = new ArtworkList();

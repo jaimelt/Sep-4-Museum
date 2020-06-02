@@ -127,23 +127,23 @@ optimalCo2 int
             
         }
         
-        public static async Task PopulateStageDimRoom()
+        public static async Task<IActionResult> PopulateStageDimRoom()
         {
             await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
             commandCreateDimRoom.CommandText = 
-                @"INSERT INTO[STAGE_DimRoom]
+                @"INSERT INTO STAGE_DimRoom
 (
 locationCode,
 Description,
-optimalLight,
-optimalTemperature,
+optimalCo2,
 optimalHumidity,
-optimalCo2
+optimalTemperature,
+optimalLight
 )
-SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM [museum].[dbo].[Rooms]  ";
+SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM Rooms";
               
 
 
@@ -153,7 +153,7 @@ SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM [museum
             await commandCreateDimRoom.DisposeAsync();
             await sqlConnection.CloseAsync();
 
-            
+            return null; 
         }
     }
     }
