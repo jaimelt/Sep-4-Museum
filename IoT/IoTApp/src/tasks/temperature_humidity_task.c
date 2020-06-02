@@ -61,21 +61,21 @@ void temperatureHumiditySensor_inLoop()
 
 	//wake up the sensor from power down
 	result = hih8120Wakeup();
-	
+
 	//after the wakeup, the sensor needs minimum 50ms to start measuring
 	vTaskDelay(100);
 
 	//if (HIH8120_OK != result)
 	//{
-		//xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
-		//printf("%s", TEMPERATURE_HUMIDITY_SENSOR_TAG);
-		//printf(" :: DRIVER CANNOT WAKE UP\n");
-		//xSemaphoreGive(_xPrintfSemaphore);
+	//xSemaphoreTake(_xPrintfSemaphore, portMAX_DELAY);
+	//printf("%s", TEMPERATURE_HUMIDITY_SENSOR_TAG);
+	//printf(" :: DRIVER CANNOT WAKE UP\n");
+	//xSemaphoreGive(_xPrintfSemaphore);
 	//}
 
 	//pool sensor for result
 	result = hih8120Meassure();
-	
+
 	//delay to fetch the results from the sensor
 	vTaskDelay(100);
 
@@ -92,7 +92,7 @@ void temperatureHumiditySensor_inLoop()
 			count--;
 		}
 	}
-	
+
 	//get measurements
 	if (result == HIH8120_OK)
 	{

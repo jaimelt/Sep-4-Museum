@@ -50,7 +50,7 @@ static void _setup_light_driver()
 {
 	//create driver
 	int result = tsl2591Create(LightSensor_callback);
-	
+
 	//check if creation was completed
 	if (result != TSL2591_OK)
 	{
@@ -81,7 +81,7 @@ void LightSensor_inLoop()
 						pdTRUE,
 						pdTRUE,
 						portMAX_DELAY);
-						
+
 	//perform measuring
 	tsl2591FetchData();
 

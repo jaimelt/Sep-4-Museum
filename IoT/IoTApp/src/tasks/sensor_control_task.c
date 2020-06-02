@@ -40,7 +40,7 @@
 static TaskHandle_t _sensor_control_task_handle = NULL;
 
 //private fields
-#define TIME_DELAY_BETWEEN_MEASUREMENTS ((5 * 60000) / portTICK_PERIOD_MS)//1 minutes in ms = 60000
+#define TIME_DELAY_BETWEEN_MEASUREMENTS ((5 * 60000) / portTICK_PERIOD_MS) //1 minutes in ms = 60000
 static SemaphoreHandle_t _xPrintfSemaphore = NULL;
 static EventGroupHandle_t _event_group_measure = NULL;
 static EventGroupHandle_t _event_group_new_data = NULL;
