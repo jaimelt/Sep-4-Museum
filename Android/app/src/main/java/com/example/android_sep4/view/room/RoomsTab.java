@@ -67,7 +67,7 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
         roomsTabViewModel = new ViewModelProvider(this).get(RoomsTabViewModel.class);
         roomsTabViewModel.getRooms();
         roomsTabViewModel.getRoomsLive().observe(getViewLifecycleOwner(), rooms -> {
-            adapter.setRooms(rooms);
+            adapter.setRooms(rooms.getRooms());
         });
       /*  roomsTabViewModel.getLiveMeasurements(room).observe(getViewLifecycleOwner(), rooms -> {
             adapter.setRooms(rooms);

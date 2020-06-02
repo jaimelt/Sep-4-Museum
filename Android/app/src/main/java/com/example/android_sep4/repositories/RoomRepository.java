@@ -1,27 +1,16 @@
 package com.example.android_sep4.repositories;
 
 import android.app.Application;
-import android.content.SharedPreferences;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.preference.PreferenceManager;
 
-import com.example.android_sep4.R;
 import com.example.android_sep4.model.Room;
-import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Rooms;
 import com.example.android_sep4.requests.clients.RoomsAPIClient;
 
-import java.util.ArrayList;
 
 public class RoomRepository {
     private static RoomRepository instance;
-    private MutableLiveData<ArrayList<Room>> roomsData = new MutableLiveData<>();
-
-    private MutableLiveData<RoomMeasurements> liveMeasurements = new MutableLiveData<>();
-    private ArrayList<Room> roomsDataSet = new ArrayList<>();
     private RoomsAPIClient roomsAPIClient;
     private Application application;
     public RoomRepository(Application application) {
@@ -39,27 +28,11 @@ public class RoomRepository {
 
     public void getRoomsData() {
         roomsAPIClient.getRoomsData();
-        roomsAPIClient.getRoomsDataLive().observeForever(new Observer<Rooms>() {
-            @Override
-            public void onChanged(Rooms rooms) {
-                if (rooms.getRooms().isEmpty()) {
-
-                } else {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
-                    boolean prefTemperature = sharedPreferences.getBoolean(application.getString(R.string.pref_temperature_key), application.getResources().getBoolean(R.bool.pref_temperature_default));
-                    if(!prefTemperature)
-                    {
-                       rooms.changeCelsiusToFahrenheit();
-                    }
-                    roomsData.setValue(rooms.getRooms());
-                }
-            }
-        });
     }
 
-    public LiveData<ArrayList<Room>> getRoomsDataLive()
+    public LiveData<Rooms> getRoomsDataLive()
     {
-        return roomsData;
+        return roomsAPIClient.getRoomsDataLive();
     }
 
 

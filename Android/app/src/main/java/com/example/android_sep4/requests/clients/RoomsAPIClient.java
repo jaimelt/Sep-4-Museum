@@ -1,12 +1,15 @@
 package com.example.android_sep4.requests.clients;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.preference.PreferenceManager;
 
+import com.example.android_sep4.R;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Rooms;
@@ -42,8 +45,14 @@ public class RoomsAPIClient {
             public void onResponse(@NonNull Call<Rooms> call, @NonNull Response<Rooms> response) {
                 Log.i(TAG, "onResponse: success!");
                 if (response.isSuccessful() && response.body() != null) {
-
-                    roomsData.setValue(response.body());
+                    Rooms rooms = response.body();
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
+                    boolean prefTemperature = sharedPreferences.getBoolean(application.getString(R.string.pref_temperature_key), application.getResources().getBoolean(R.bool.pref_temperature_default));
+                    if(!prefTemperature)
+                    {
+                        rooms.changeCelsiusToFahrenheit();
+                    }
+                    roomsData.setValue(rooms);
                     roomsData = new MutableLiveData<>();
                 }
                 isLoading.setValue(false);

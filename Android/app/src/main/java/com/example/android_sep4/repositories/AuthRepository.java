@@ -3,7 +3,6 @@ package com.example.android_sep4.repositories;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.example.android_sep4.model.User;
 import com.example.android_sep4.requests.clients.AuthAPIClient;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 
 public class AuthRepository {
     private static AuthRepository instance;
-    private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
     private AuthAPIClient authAPIClient;
     private Application application;
     private String email;

@@ -29,7 +29,6 @@ public class NotificationRepository {
 
     public NotificationRepository(Application application) {
         this.application = application;
-
     }
 
     public static synchronized NotificationRepository getInstance(Application application) {

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.model.RoomMeasurements;
+import com.example.android_sep4.model.Rooms;
 import com.example.android_sep4.repositories.RoomRepository;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class RoomsTabViewModel extends AndroidViewModel {
         roomsRepository = RoomRepository.getInstance(application);
     }
 
-    public LiveData<ArrayList<Room>> getRoomsLive() {
+    public LiveData<Rooms> getRoomsLive() {
         return roomsRepository.getRoomsDataLive();
     }
 
