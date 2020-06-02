@@ -17,6 +17,7 @@
 #include <lora_driver.h>
 #include <stdio_driver.h>
 
+#include "sensor_control_task.h"
 #include "../constants/global_constants.h"
 #include "../handlers/sensor_data_package_handler.h"
 #include "lora_sensor_task.h"
