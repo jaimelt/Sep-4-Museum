@@ -133,8 +133,6 @@ public class Room {
         return expanded;
     }
 
-
-
     public void setExpanded(boolean expanded) {
         this.expanded = expanded;
     }
