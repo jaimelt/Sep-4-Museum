@@ -11,6 +11,7 @@ import androidx.preference.PreferenceManager;
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.model.RoomMeasurements;
+import com.example.android_sep4.model.Rooms;
 import com.example.android_sep4.requests.clients.RoomsAPIClient;
 
 import java.util.ArrayList;
@@ -38,27 +39,19 @@ public class RoomRepository {
 
     public void getRoomsData() {
         roomsAPIClient.getRoomsData();
-        roomsAPIClient.getRoomsDataLive().observeForever(new Observer<ArrayList<Room>>() {
+        roomsAPIClient.getRoomsDataLive().observeForever(new Observer<Rooms>() {
             @Override
-            public void onChanged(ArrayList<Room> rooms) {
-                if (rooms.isEmpty()) {
+            public void onChanged(Rooms rooms) {
+                if (rooms.getRooms().isEmpty()) {
 
                 } else {
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
                     boolean prefTemperature = sharedPreferences.getBoolean(application.getString(R.string.pref_temperature_key), application.getResources().getBoolean(R.bool.pref_temperature_default));
-                    for (Room room : rooms) {
-                        if (!prefTemperature) {
-
-                            double celsius = room.getTemperature();
-                            double fahrenheit = celsius * 1.8 + 32.0;
-                     /*    double celsiusLive = room.getLiveRoomMeasurements().getTemp();
-                           double fahrenheitLive = celsiusLive* 1.8 + 32.0;*/
-                            //  room.getLiveRoomMeasurements().setTemp(fahrenheitLive);
-                            room.setTemperature(fahrenheit);
-                        }
-
+                    if(!prefTemperature)
+                    {
+                       rooms.changeCelsiusToFahrenheit();
                     }
-                    roomsData.setValue(rooms);
+                    roomsData.setValue(rooms.getRooms());
                 }
             }
         });
