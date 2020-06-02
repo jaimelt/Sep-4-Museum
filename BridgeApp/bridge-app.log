@@ -142,3 +142,65 @@ Jun 02, 2020 8:35:42 PM LoRaClient onText
 INFO: Received data: {"cmd":"gw","seqno":176,"EUI":"0004A30B002523BC","ts":1591122941570,"fcnt":32,"port":1,"freq":868300000,"toa":0,"dr":"SF10 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-10,"ts":1591122941570,"tmms":50000,"time":"2020-06-02T18:35:41.286793043Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"125b095202c31980"}
 Jun 02, 2020 8:35:42 PM LoRaClient parseAndInsertData
 INFO: Received json telegram: {"cmd":"gw","seqno":176,"EUI":"0004A30B002523BC","ts":1591122941570,"fcnt":32,"port":1,"freq":868300000,"toa":0,"dr":"SF10 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-10,"ts":1591122941570,"tmms":50000,"time":"2020-06-02T18:35:41.286793043Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"125b095202c31980"}
+Jun 02, 2020 8:36:42 PM LoRaClient onOpen
+INFO: WebSocket Listener has been opened for requests.
+Jun 02, 2020 8:37:55 PM LoRaClient onText
+INFO: Received data: {"cmd":"rx","seqno":177,"EUI":"0004A30B002523BC","ts":1591123075090,"fcnt":0,"port":1,"freq":868300000,"rssi":-115,"snr":-10,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02c418ed"}
+Jun 02, 2020 8:37:55 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"rx","seqno":177,"EUI":"0004A30B002523BC","ts":1591123075090,"fcnt":0,"port":1,"freq":868300000,"rssi":-115,"snr":-10,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02c418ed"}
+Jun 02, 2020 8:37:56 PM LoRaClient onText
+INFO: Received data: {"cmd":"gw","seqno":177,"EUI":"0004A30B002523BC","ts":1591123075090,"fcnt":0,"port":1,"freq":868300000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-10,"ts":1591123075090,"tmms":50000,"time":"2020-06-02T18:37:54.815219124Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02c418ed"}
+Jun 02, 2020 8:37:56 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"gw","seqno":177,"EUI":"0004A30B002523BC","ts":1591123075090,"fcnt":0,"port":1,"freq":868300000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-10,"ts":1591123075090,"tmms":50000,"time":"2020-06-02T18:37:54.815219124Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02c418ed"}
+Jun 02, 2020 8:42:52 PM LoRaClient onText
+INFO: Received data: {"cmd":"rx","seqno":178,"EUI":"0004A30B002523BC","ts":1591123372261,"fcnt":1,"port":1,"freq":867300000,"rssi":-115,"snr":-7,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02cd17e8"}
+Jun 02, 2020 8:42:52 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"rx","seqno":178,"EUI":"0004A30B002523BC","ts":1591123372261,"fcnt":1,"port":1,"freq":867300000,"rssi":-115,"snr":-7,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02cd17e8"}
+Jun 02, 2020 8:42:52 PM LoRaClient onText
+INFO: Received data: {"cmd":"gw","seqno":178,"EUI":"0004A30B002523BC","ts":1591123372261,"fcnt":1,"port":1,"freq":867300000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-7,"ts":1591123372261,"tmms":50000,"time":"2020-06-02T18:42:51.958043136Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02cd17e8"}
+Jun 02, 2020 8:42:52 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"gw","seqno":178,"EUI":"0004A30B002523BC","ts":1591123372261,"fcnt":1,"port":1,"freq":867300000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-7,"ts":1591123372261,"tmms":50000,"time":"2020-06-02T18:42:51.958043136Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02cd17e8"}
+Jun 02, 2020 8:48:05 PM LoRaClient onText
+INFO: Received data: {"cmd":"rx","seqno":179,"EUI":"0004A30B002523BC","ts":1591123685407,"fcnt":2,"port":1,"freq":868500000,"rssi":-115,"snr":-5,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02e312de"}
+Jun 02, 2020 8:48:05 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"rx","seqno":179,"EUI":"0004A30B002523BC","ts":1591123685407,"fcnt":2,"port":1,"freq":868500000,"rssi":-115,"snr":-5,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02e312de"}
+Jun 02, 2020 8:48:06 PM LoRaClient onText
+INFO: Received data: {"cmd":"gw","seqno":179,"EUI":"0004A30B002523BC","ts":1591123685407,"fcnt":2,"port":1,"freq":868500000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-5,"ts":1591123685407,"tmms":50000,"time":"2020-06-02T18:48:05.091629011Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02e312de"}
+Jun 02, 2020 8:48:06 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"gw","seqno":179,"EUI":"0004A30B002523BC","ts":1591123685407,"fcnt":2,"port":1,"freq":868500000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-5,"ts":1591123685407,"tmms":50000,"time":"2020-06-02T18:48:05.091629011Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02e312de"}
+Jun 02, 2020 8:53:18 PM LoRaClient onText
+INFO: Received data: {"cmd":"rx","seqno":180,"EUI":"0004A30B002523BC","ts":1591123998466,"fcnt":3,"port":1,"freq":867500000,"rssi":-112,"snr":-8,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02d70f8e"}
+Jun 02, 2020 8:53:18 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"rx","seqno":180,"EUI":"0004A30B002523BC","ts":1591123998466,"fcnt":3,"port":1,"freq":867500000,"rssi":-112,"snr":-8,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02d70f8e"}
+Jun 02, 2020 8:53:19 PM LoRaClient onText
+INFO: Received data: {"cmd":"gw","seqno":180,"EUI":"0004A30B002523BC","ts":1591123998466,"fcnt":3,"port":1,"freq":867500000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-112,"snr":-8,"ts":1591123998466,"tmms":50000,"time":"2020-06-02T18:53:18.233863029Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02d70f8e"}
+Jun 02, 2020 8:53:19 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"gw","seqno":180,"EUI":"0004A30B002523BC","ts":1591123998466,"fcnt":3,"port":1,"freq":867500000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-112,"snr":-8,"ts":1591123998466,"tmms":50000,"time":"2020-06-02T18:53:18.233863029Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02d70f8e"}
+Jun 02, 2020 8:58:32 PM LoRaClient onText
+INFO: Received data: {"cmd":"rx","seqno":181,"EUI":"0004A30B002523BC","ts":1591124311674,"fcnt":4,"port":1,"freq":867700000,"rssi":-115,"snr":-8,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02e40f6d"}
+Jun 02, 2020 8:58:32 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"rx","seqno":181,"EUI":"0004A30B002523BC","ts":1591124311674,"fcnt":4,"port":1,"freq":867700000,"rssi":-115,"snr":-8,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02e40f6d"}
+Jun 02, 2020 8:58:32 PM LoRaClient onText
+INFO: Received data: {"cmd":"gw","seqno":181,"EUI":"0004A30B002523BC","ts":1591124311674,"fcnt":4,"port":1,"freq":867700000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-8,"ts":1591124311674,"tmms":50000,"time":"2020-06-02T18:58:31.376089053Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02e40f6d"}
+Jun 02, 2020 8:58:32 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"gw","seqno":181,"EUI":"0004A30B002523BC","ts":1591124311674,"fcnt":4,"port":1,"freq":867700000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-8,"ts":1591124311674,"tmms":50000,"time":"2020-06-02T18:58:31.376089053Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02e40f6d"}
+Jun 02, 2020 9:03:45 PM LoRaClient onText
+INFO: Received data: {"cmd":"rx","seqno":182,"EUI":"0004A30B002523BC","ts":1591124624795,"fcnt":5,"port":1,"freq":867100000,"rssi":-116,"snr":-13,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02d80eda"}
+Jun 02, 2020 9:03:45 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"rx","seqno":182,"EUI":"0004A30B002523BC","ts":1591124624795,"fcnt":5,"port":1,"freq":867100000,"rssi":-116,"snr":-13,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02d80eda"}
+Jun 02, 2020 9:03:45 PM LoRaClient onText
+INFO: Received data: {"cmd":"gw","seqno":182,"EUI":"0004A30B002523BC","ts":1591124624795,"fcnt":5,"port":1,"freq":867100000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-116,"snr":-13,"ts":1591124624795,"tmms":50000,"time":"2020-06-02T19:03:44.513731082Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02d80eda"}
+Jun 02, 2020 9:03:45 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"gw","seqno":182,"EUI":"0004A30B002523BC","ts":1591124624795,"fcnt":5,"port":1,"freq":867100000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-116,"snr":-13,"ts":1591124624795,"tmms":50000,"time":"2020-06-02T19:03:44.513731082Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02d80eda"}
+Jun 02, 2020 9:06:42 PM LoRaClient onPing
+INFO: Ping: Client ---> Server
+Jun 02, 2020 9:06:42 PM LoRaClient onPing
+INFO: 
+Jun 02, 2020 9:08:58 PM LoRaClient onText
+INFO: Received data: {"cmd":"rx","seqno":183,"EUI":"0004A30B002523BC","ts":1591124937972,"fcnt":6,"port":1,"freq":868100000,"rssi":-115,"snr":-8,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02e00eb9"}
+Jun 02, 2020 9:08:58 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"rx","seqno":183,"EUI":"0004A30B002523BC","ts":1591124937972,"fcnt":6,"port":1,"freq":868100000,"rssi":-115,"snr":-8,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"bat":255,"offline":false,"data":"12e6096c02e00eb9"}
+Jun 02, 2020 9:08:58 PM LoRaClient onText
+INFO: Received data: {"cmd":"gw","seqno":183,"EUI":"0004A30B002523BC","ts":1591124937972,"fcnt":6,"port":1,"freq":868100000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-8,"ts":1591124937972,"tmms":50000,"time":"2020-06-02T19:08:57.653796076Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02e00eb9"}
+Jun 02, 2020 9:08:58 PM LoRaClient parseAndInsertData
+INFO: Received json telegram: {"cmd":"gw","seqno":183,"EUI":"0004A30B002523BC","ts":1591124937972,"fcnt":6,"port":1,"freq":868100000,"toa":0,"dr":"SF12 BW125 4/5","ack":false,"gws":[{"rssi":-115,"snr":-8,"ts":1591124937972,"tmms":50000,"time":"2020-06-02T19:08:57.653796076Z","gweui":"7076FFFFFF019DE0","ant":0,"lat":55.870655,"lon":9.886778}],"bat":255,"data":"12e6096c02e00eb9"}

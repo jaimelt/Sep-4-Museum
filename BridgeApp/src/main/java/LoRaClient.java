@@ -115,6 +115,6 @@ public class LoRaClient implements WebSocket.Listener {
         double temperatureAsDouble = ((double) temperatureAsInt) / ratio;
         double lightAsDouble = ((double) lightAsInt) / ratio;
 
-        database.insert(co2, humidityAsDouble, temperatureAsDouble, lightAsDouble, ThreadLocalRandom.current().nextInt(0, 8));
+        database.insert(co2, humidityAsDouble, temperatureAsDouble, lightAsDouble, ThreadLocalRandom.current().nextInt(1, 8));
     }
 }
