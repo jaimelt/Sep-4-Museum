@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:gravity="fill"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/edit_artwork_layout">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/edit_artwork_toolbar"
@@ -41,7 +42,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/edit_artwork_container">
 
             <ImageView
                 android:id="@+id/imageHolder"

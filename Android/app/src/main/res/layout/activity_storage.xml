@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="horizontal"
-    tools:context=".view.artwork.ArtworksTab">
+    tools:context=".view.artwork.ArtworksTab"
+    android:id="@+id/storage_activity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/storage_toolbar"

@@ -6,20 +6,26 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/museum_layout"
     tools:context=".view.museum.MuseumTab">
+
+    <!-- TODO: Update blank fragment layout -->
 
     <Button
         android:id="@+id/storage"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"
         android:background="@drawable/button_background"
-        android:textSize="17sp"
         android:text="@string/storage"
         android:textAllCaps="false"
-        android:layout_margin="20dp"/>
-    <!-- TODO: Update blank fragment layout -->
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/room_museum"

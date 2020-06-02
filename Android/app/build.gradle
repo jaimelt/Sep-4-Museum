@@ -32,6 +32,7 @@ repositories {
 
 dependencies {
 
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0-rc01'
     def archLifecycleVersion = "2.2.0"
     def room_version = "2.2.5"
     def preference_version = "1.1.1"
@@ -51,6 +52,8 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation "androidx.preference:preference:$preference_version"
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

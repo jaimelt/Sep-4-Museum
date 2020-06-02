@@ -139,7 +139,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView lightValue;
         TextView temperatureValue;
@@ -160,7 +160,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         ConstraintLayout expandableLayout;
         TextView temperatureUnit;
 
-        ViewHolder(@NonNull View itemView) {
+       public ViewHolder(@NonNull View itemView) {
             super(itemView);
             description = itemView.findViewById(R.id.descriptionContent);
             co2Value = itemView.findViewById(R.id.co2TextViewId);
