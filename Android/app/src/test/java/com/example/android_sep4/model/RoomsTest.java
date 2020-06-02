@@ -37,11 +37,11 @@ public class RoomsTest {
         Room room1 = rooms.getRooms().get(1);
         Room room2 = rooms.getRooms().get(2);
         Room room3 = rooms.getRooms().get(3);
+        Assert.assertEquals(4, rooms.getRooms().size(), 0);
         Assert.assertEquals(32.0, room.getTemperature(), 0);
         Assert.assertEquals(-0.4, room1.getTemperature(), 0.1);
         Assert.assertEquals(140, room2.getTemperature(), 0);
         Assert.assertEquals(-40, room3.getTemperature(), 0);
-
     }
 
     @After
