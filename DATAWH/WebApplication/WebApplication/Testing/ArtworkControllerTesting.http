@@ -17,31 +17,35 @@ POST https://localhost:5001/artworks/createartwork
 Content-Type: application/json
 
 {
-    "name": "Don't touch - testing artwork",
-    "description": "This is for testing",
-    "image": "This has been changed",
-    "type": "Drawing",
-    "author": "Unknown",
-    "location": "Storage",
-    "minLight": 3,
-    "maxLight": 50,
-    "minCo2": 11,
-    "maxCo2": 51,
-    "minTemperature": 10,
-    "maxTemperature": 25,
-    "minHumidity": 20,
-    "maxHumidity": 60,
-    "artworkPosition": 1,
-    "comment": "Testing purposes"
+  "name": "Object 4 for testing",
+  "description": "Object 1 for testing",
+  "image": "Object 1 for testing",
+  "type": "Drawing",
+  "author": "Unknown",
+  "location": "Storage",
+  "minLight": 3,
+  "maxLight": 50,
+  "minCo2": 11,
+  "maxCo2": 51,
+  "minTemperature": 10,
+  "maxTemperature": 25,
+  "minHumidity": 20,
+  "maxHumidity": 60,
+  "artworkPosition": 1,
+  "comment": "Testing purposes"
 }
 ###
 
-PUT https://localhost:5001/artworks/edit/127
+// other available artwork objects for testing: 136 and 137 ids 
+//change Description of artwork object 135
+PUT https://localhost:5001/artworks/edit/135
 Content-Type: application/json
 
-{ "id": 127,
-  "name": "Don't touch - testing artwork",
-  "description": "Changed in testing ",
+
+
+{ "id": 135,
+  "name": "Object 1 for testing",
+  "description": "Testing edit for Description on artwork object id 135 ",
   "image": "This has been changed",
   "type": "Drawing",
   "author": "Unknown",
@@ -59,10 +63,11 @@ Content-Type: application/json
 }
 ###
 
-PUT https://localhost:5001/artworks/moveartwork/126,A1
+// Testing can be performed with artwork Id 135, 136, 137 
+PUT https://localhost:5001/moveartwork?id=135&location=A1
 Content-Type: application/json
 
 ###
 
-DELETE https://localhost:5001/artworks/delete/126
+DELETE https://localhost:5001/artworks/delete/138
 Accept: application/json

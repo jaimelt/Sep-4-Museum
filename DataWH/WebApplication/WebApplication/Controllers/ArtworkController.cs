@@ -23,13 +23,15 @@ namespace WebApplication.Controllers
     {
         private readonly ArtworkRepository artworkRepository;
         private readonly ILogger<ArtworkController> logger;
+        private readonly RoomRepository RoomRepository;
       
 
-        public ArtworkController(ArtworkRepository artworkRepository, ILogger<ArtworkController> logger)
+        public ArtworkController(ArtworkRepository artworkRepository, ILogger<ArtworkController> logger, RoomRepository RoomRepository)
         {
             this.artworkRepository = artworkRepository;
             this.logger = logger;
-            
+            this.RoomRepository = RoomRepository; 
+
         }
 
 
@@ -123,6 +125,8 @@ namespace WebApplication.Controllers
 
                 artworkRepository.CreateArtWork(artwork);
                 await artworkRepository.saveChanges();
+                
+               
 
                 return CreatedAtRoute("", new {id = artwork.Id}, artwork);
 
@@ -161,7 +165,7 @@ namespace WebApplication.Controllers
             }
         }
 
-        [HttpPut("moveartwork?id={artid}&location={location}")]
+        [HttpPut("moveartwork/{artid}/{location}")]
         public async Task<IActionResult> MoveArtwork([FromRoute] int artid, [FromRoute] string location)
         {
             try
