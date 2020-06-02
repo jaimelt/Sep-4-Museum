@@ -52,9 +52,9 @@ namespace WebApplication.SQLCommands
                     sqlCommand.Parameters.Add(@"RoomId", SqlDbType.Int).Value = roomMeasurements[i].Id;
                     sqlCommand.Parameters.Add(@"Temperature", SqlDbType.Decimal).Value = roomMeasurements[i].Temperature;
                     sqlCommand.Parameters.Add(@"Light", SqlDbType.Decimal).Value = roomMeasurements[i].Light;
-                    sqlCommand.Parameters.Add(@"Co2", SqlDbType.Decimal).Value = roomMeasurements[i].Temperature;
-                    sqlCommand.Parameters.Add(@"Humidity", SqlDbType.Decimal).Value = roomMeasurements[i].Temperature;
-                    sqlCommand.Parameters.Add(@"ReadingDate", SqlDbType.Date).Value = roomMeasurements[i].Temperature;
+                    sqlCommand.Parameters.Add(@"Co2", SqlDbType.Decimal).Value = roomMeasurements[i].Co2;
+                    sqlCommand.Parameters.Add(@"Humidity", SqlDbType.Decimal).Value = roomMeasurements[i].Humidity;
+                    sqlCommand.Parameters.Add(@"ReadingDate", SqlDbType.Date).Value = roomMeasurements[i].MeasurementDate;
 
                     sqlCommand.ExecuteNonQuery();
                     sqlCommand.Dispose();
@@ -62,58 +62,14 @@ namespace WebApplication.SQLCommands
 
                 }
             }
-            catch (SystemException)
+            catch (Exception exception)
             {
-                throw;
+                Console.WriteLine(" Transfer data from Mongodb is facing some issues" + exception.Message );
             }
 
 
         }
 
-        public static List<Visitor> TransferDataFromSQL()
-        {
-            SqlConnection connection =
-                new SqlConnection(
-                    "Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;");
-
-            List<Visitor>  me  = connection.Query<Visitor>("Select * FROM Visitors").ToList();
-
-
-            return null; 
-        }
-        
-        public static List<Visitor> TransferDataFromSQL1()
-        {
-            SqlConnection connection =
-                new SqlConnection(
-                    "Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;");
-
-            List<Visitor>  me  = connection.Query<Visitor>("Select * FROM Visitors").ToList();
-            foreach (var c in me)
-            {
-                Console.WriteLine(c.VisitingDate);
-            }
-            return me; 
-
-
-        }
-        
-        
-        public static List<Visitor> TransferDataFromSQL2()
-        {
-            SqlConnection connection =
-                new SqlConnection(
-                    "Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;");
-
-            List<Visitor>  me  = connection.Query<Visitor>("Select * FROM Visitors").ToList();
-            foreach (var c in me)
-            {
-                Console.WriteLine(c.VisitingDate);
-            }
-            return me; 
-
-
-        }
 
 
 

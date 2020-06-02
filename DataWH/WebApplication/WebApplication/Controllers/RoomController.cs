@@ -39,6 +39,8 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> GetRooms()
         {
+            StageDim.PopulateStageDimRoom();
+            
             try
             {
                 RoomList roomList = new RoomList();
