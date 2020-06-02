@@ -30,7 +30,7 @@ public interface ArtworkEndpoints {
     @GET("/artworks/getallbyroom/{roomCode}")
     Call<Artworks> getArtworksByRoomId(@Path("roomCode") String roomCode);
 
-    @PUT("/moveartwork/{id}")
+    @PUT("/moveartwork/{id}/{locationCode}")
     Call<String> moveArtwork(@Path("id") int id, @Body String locationCode);
 
 }
