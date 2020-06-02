@@ -28,26 +28,6 @@ public class EditArtworkViewModel extends AndroidViewModel {
         return artworksRepository.getArtworkById(id);
     }
 
-    public int validateLocation(RadioGroup location) {
-        if (validate(location)) {
-            return 1;
-        } else if(!validate(location)){
-            return 0;
-        }
-        return 2;
-    }
-
-    private boolean validate(RadioGroup radioGroup) {
-        if (radioGroup.getCheckedRadioButtonId() == -1) {
-            // no radio buttons are checked
-            return false;
-        } else {
-            // one of the radio buttons is checked
-            return true;
-        }
-
-    }
-
     public void moveArtwork(int artworkID, String location) {
         artworksRepository.moveArtwork(artworkID, location);
     }

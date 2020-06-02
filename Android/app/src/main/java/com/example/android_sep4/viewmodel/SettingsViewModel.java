@@ -5,14 +5,17 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
+import com.example.android_sep4.model.Validator;
 import com.example.android_sep4.repositories.AuthRepository;
 
 public class SettingsViewModel extends AndroidViewModel {
     private AuthRepository authRepository;
+    private Validator validator;
 
     public SettingsViewModel(@NonNull Application application) {
         super(application);
         authRepository = AuthRepository.getInstance(application);
+        this.validator = new Validator();
     }
 
     public String getEmail() {
@@ -27,14 +30,7 @@ public class SettingsViewModel extends AndroidViewModel {
         return validation;
     }
 
-    private int validate(String password, String repeatPassword)
-    {
-        if (password.isEmpty() || password.length() < 6 || password.length() > 16) {
-            return 2;
-        } else if (!password.equals(repeatPassword)) {
-            return 3;
-        } else {
-            return 1;
-        }
+    private int validate(String password, String repeatPassword) {
+        return validator.validateChangePassword(password, repeatPassword);
     }
 }

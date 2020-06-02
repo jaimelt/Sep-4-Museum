@@ -178,16 +178,10 @@ public class EditArtworkActivity extends AppCompatActivity {
         int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
 
-        int validation = editArtworkViewModel.validateLocation(locationGroup);
-
-        switch (validation) {
-            case 1:
-                String location = selectedRadioButtonLocation.getText().toString();
-                editArtworkViewModel.moveArtwork(artworkID, location);
-                moveBtn.setVisibility(View.GONE);
-            case 0:
-                Toast.makeText(this, "Select the moving location", Toast.LENGTH_SHORT).show();
-        }
+        String location = selectedRadioButtonLocation.getText().toString();
+        editArtworkViewModel.moveArtwork(artworkID, location);
+        moveBtn.setVisibility(View.GONE);
+        
     }
 
     private String convertImageToString() {
