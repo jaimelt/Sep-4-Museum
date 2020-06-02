@@ -545,8 +545,7 @@
 #include <avr/portpins.h>
 
 #include <avr/common.h>
-
-#include <avr/version.h>
+#include<avr/version.h>
 
 #if __AVR_ARCH__ >= 100
 #  include <avr/xmega.h>
