@@ -18,22 +18,27 @@ namespace WebApplication.SQLCommands
         {
             var mongoClient = new MongoClient("mongodb+srv://adminsep4iot:kk7ojsEwek8yOk8m@sep4iot-5ef3i.azure.mongodb.net/test?retryWrites=true&w=majority");
 
-            var mongoDatabase = mongoClient.GetDatabase("RoomMeasurements");
+            var mongoDatabase = mongoClient.GetDatabase("sep4iot");
 
-            var measurementsCollection = mongoDatabase.GetCollection<RoomMeasurement>("RoomMeasurements");
-            var allMeasurements = measurementsCollection.AsQueryable<RoomMeasurement>().ToList();
+            var measurementsCollection = mongoDatabase.GetCollection<RoomMeasurement>("test");
+            var allMeasurements = measurementsCollection.AsQueryable().ToList(); 
+            
+            Console.WriteLine(allMeasurements[0].Co2 + "hello");
 
             var roomMeasurements = new List<RoomMeasurement>();
 
-            allMeasurements.ForEach(measurement => roomMeasurements.Add(measurement));
+            foreach (var c in allMeasurements)
+            {
+               roomMeasurements.Add(c);
+            }
 
-            //check if it worked
-            Console.WriteLine(roomMeasurements[0].Co2);
+            
+        
 
             SqlConnection sqlConnection;
             SqlCommand sqlCommand;
 
-            string connection = "sqlexpress connection";
+            string connection ="Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;";
 
             sqlConnection = new SqlConnection(connection);
 
@@ -42,19 +47,19 @@ namespace WebApplication.SQLCommands
                 for (int i = 0; i < roomMeasurements.Count; i++)
                 {
                     string sql =
-                        "Insert into RoomMeasurements (RoomId,Temperature,Light,CO2,Humidity,ReadingDate)" +
-                        " values (@RoomId,@Temperature,@Light,@CO2,@Humidity,@ReadingDate);";
+                        @"Insert Into RoomMeasurements (Temperature,Light,CO2,Humidity,MeasurementDate)
+                         VALUES (@Temperature,@Light,@CO2,@Humidity);";
 
                     sqlConnection.Open();
 
                     sqlCommand = new SqlCommand(sql, sqlConnection);
 
-                    sqlCommand.Parameters.Add(@"RoomId", SqlDbType.Int).Value = roomMeasurements[i].Id;
+                  
                     sqlCommand.Parameters.Add(@"Temperature", SqlDbType.Decimal).Value = roomMeasurements[i].Temperature;
                     sqlCommand.Parameters.Add(@"Light", SqlDbType.Decimal).Value = roomMeasurements[i].Light;
                     sqlCommand.Parameters.Add(@"Co2", SqlDbType.Decimal).Value = roomMeasurements[i].Co2;
                     sqlCommand.Parameters.Add(@"Humidity", SqlDbType.Decimal).Value = roomMeasurements[i].Humidity;
-                    sqlCommand.Parameters.Add(@"ReadingDate", SqlDbType.Date).Value = roomMeasurements[i].MeasurementDate;
+              
 
                     sqlCommand.ExecuteNonQuery();
                     sqlCommand.Dispose();
