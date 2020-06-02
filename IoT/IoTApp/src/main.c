@@ -7,19 +7,18 @@
 #include <FreeRTOSTraceDriver.h>
 #include <stdio_driver.h>
 #include <serial.h>
-#include "avr/interrupt.h"
 #include "tasks/sensor_control_task.h"
 
 int main(void)
 {
 	trace_init();
-	stdioCreate(ser_USART0);	
-	//sei();
+	stdioCreate(ser_USART0);
+
 	printf("Program Started!!\n");
-	
+
 	sensorControl_create();
-	
+
 	vTaskStartScheduler();
 
-	while (1) {}
+	while (1){}
 }
