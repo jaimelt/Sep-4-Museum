@@ -113,8 +113,8 @@ void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure,
 	_xPrintfSemaphore = pvPrintfSemaphore;
 	_eventGroupHandleMeasure = pvEventHandleMeasure;
 	_eventGroupHandleNewData = pvEventHandleNewData;
-	_lastMeasurementTemperature = 0.0;
-	_lastMeasurementHumidity = 0.0;
+	_lastMeasurementTemperature = 0;
+	_lastMeasurementHumidity = 0;
 
 	//starting the drivers
 	_setup_temperature_humidity_driver();
