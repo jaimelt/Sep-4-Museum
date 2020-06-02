@@ -9,6 +9,7 @@ import java.nio.ByteBuffer;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.logging.Logger;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LoRaClient implements WebSocket.Listener {
     private final IDatabase database = new MongoDbDatabase();
@@ -104,6 +105,6 @@ public class LoRaClient implements WebSocket.Listener {
         double temperatureAsDouble = ((double) temperatureAsInt) / ratio;
         double lightAsDouble = ((double) lightAsInt) / ratio;
 
-        database.insert(co2, humidityAsDouble, temperatureAsDouble, lightAsDouble, 1);
+        database.insert(co2, humidityAsDouble, temperatureAsDouble, lightAsDouble, ThreadLocalRandom.current().nextInt(0, 8));
     }
 }
