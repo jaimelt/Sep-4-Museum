@@ -114,10 +114,10 @@ void vATemperatureHumiditySensorTask(void *pvParameters)
 }
 
 void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure,
-									  EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore)
+									  EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pPrintfSemaphore)
 {
 	//setting variables
-	_xPrintfSemaphore = pvPrintfSemaphore;
+	_xPrintfSemaphore = pPrintfSemaphore;
 	_eventGroupHandleMeasure = pvEventHandleMeasure;
 	_eventGroupHandleNewData = pvEventHandleNewData;
 	_lastMeasurementTemperature = 0;
