@@ -162,10 +162,10 @@ public class NewArtworkActivity extends AppCompatActivity {
                 maxLight.setError("Enter the maximum light value of the artwork");
                 break;
             case 14:
-                nameField.setError("Name has not allowed characters");
+                nameField.setError("Wrong input");
                 break;
             case 15:
-                authorField.setError("Author name has not allowed characters");
+                authorField.setError("Wrong input");
                 break;
             case 16:
                 if(!typeBoolean)
