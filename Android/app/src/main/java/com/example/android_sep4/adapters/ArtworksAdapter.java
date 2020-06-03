@@ -43,17 +43,18 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (Artwork artwork : copyOfArtworks) {
-                    if (artwork.getName().toLowerCase().contains(filterPattern) || artwork.getAuthor().toLowerCase().contains(filterPattern)) {
+                    if (artwork.getName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(artwork);
                     }
+                }
+                if(filteredList.size() == 0)
+                {
+                    Toast.makeText(context, "No artwork with this name was found", Toast.LENGTH_SHORT).show();
                 }
             }
             FilterResults results = new FilterResults();
             results.values = filteredList;
-            if(results.count == 0)
-            {
-                Toast.makeText(context, "Nothing was found", Toast.LENGTH_SHORT).show();
-            }
+
             return results;
         }
 
