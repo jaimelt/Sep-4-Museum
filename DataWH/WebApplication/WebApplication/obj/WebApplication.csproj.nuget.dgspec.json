@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj": {}
   },
   "projects": {
@@ -17,22 +16,6 @@
         "configFilePaths": [
           "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-    "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
-        "projectName": "WebApplication",
-        "projectPath": "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
-        "packagesPath": "C:\\Users\\Florinel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Florinel\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> dh.florinx
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -89,20 +72,7 @@
             "net48"
           ],
           "assetTargetFallback": true,
-<<<<<<< HEAD
           "warn": true
-=======
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Florinel\\.dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
->>>>>>> dh.florinx
         }
       }
     }

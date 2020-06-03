@@ -1,17 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-<<<<<<< HEAD
     "projectUniqueName": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
     "projectName": "WebApplication",
     "projectPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
     "outputPath": "C:\\Users\\Jaime\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\obj\\",
-=======
-    "projectUniqueName": "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
-    "projectName": "WebApplication",
-    "projectPath": "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
-    "outputPath": "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\obj\\",
->>>>>>> dh.florinx
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp3.1"
@@ -68,20 +61,7 @@
         "net48"
       ],
       "assetTargetFallback": true,
-<<<<<<< HEAD
       "warn": true
-=======
-      "warn": true,
-      "frameworkReferences": {
-        "Microsoft.AspNetCore.App": {
-          "privateAssets": "none"
-        },
-        "Microsoft.NETCore.App": {
-          "privateAssets": "all"
-        }
-      },
-      "runtimeIdentifierGraphPath": "C:\\Users\\Florinel\\.dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
->>>>>>> dh.florinx
     }
   }
 }
