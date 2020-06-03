@@ -68,9 +68,6 @@ namespace WebApplication.Controllers
 
             return roomMeasurementList;
 
-
-
-
         }
     }
 }

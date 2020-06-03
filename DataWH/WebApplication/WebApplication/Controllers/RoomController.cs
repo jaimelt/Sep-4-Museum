@@ -39,7 +39,7 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public  async Task<IActionResult> GetRooms()
         {
-            StageDim.PopulateDimRoom();
+            StageDim.PopulateFactTable();
             
             try {
                 RoomList roomList = new RoomList();
