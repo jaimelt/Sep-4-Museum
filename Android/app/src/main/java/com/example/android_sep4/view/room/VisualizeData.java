@@ -38,10 +38,10 @@ public class VisualizeData extends AppCompatActivity {
             optimalLight = bundle.getDouble("optimalLight");
             optimalCo2 = bundle.getDouble("optimalCo2");
             optimalHumidity = bundle.getDouble("optimalHumidity");
-          /*  liveCo2 = bundle.getDouble("liveCo2");
+            liveCo2 = bundle.getDouble("liveCo2");
             liveHumidity = bundle.getDouble("liveHumidity");
             liveLight = bundle.getDouble("liveLight");
-            liveTemp = bundle.getDouble("liveTemp");*/
+            liveTemp = bundle.getDouble("liveTemp");
         }
 
         addDataToChart();

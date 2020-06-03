@@ -3,8 +3,10 @@ package com.example.android_sep4.repositories;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.android_sep4.model.Room;
+import com.example.android_sep4.model.RoomMeasurements;
 import com.example.android_sep4.model.Rooms;
 import com.example.android_sep4.requests.clients.RoomsAPIClient;
 
@@ -35,20 +37,6 @@ public class RoomRepository {
         return roomsAPIClient.getRoomsDataLive();
     }
 
-
-/*    public LiveData<RoomMeasurements> getLiveMeasurements(String roomCode) {
-        roomsAPIClient.getLiveMeasurements(roomCode);
-        roomsAPIClient.getLiveMeasurements().observeForever(new Observer<RoomMeasurements>() {
-            @Override
-            public void onChanged(RoomMeasurements liveData) {
-                if (liveData == null) {
-                } else {
-                    liveMeasurements.setValue(liveData);
-                }
-            }
-        });
-        return liveMeasurements;
-    }*/
 
     public LiveData<Boolean> getIsLoading() {
         return roomsAPIClient.getIsLoading();

@@ -28,7 +28,6 @@ public class RoomsAPIClient {
     private MutableLiveData<Rooms> roomsData = new MutableLiveData<>();
     private MutableLiveData<RoomMeasurements> liveRoomMeasurements = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
-    private Room room;
     private Application application;
 
 
@@ -46,6 +45,7 @@ public class RoomsAPIClient {
                 Log.i(TAG, "onResponse: success!");
                 if (response.isSuccessful() && response.body() != null) {
                     Rooms rooms = response.body();
+                    System.out.println(rooms.getRooms().get(1).getLiveRoomMeasurements().getCo2());
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
                     boolean prefTemperature = sharedPreferences.getBoolean(application.getString(R.string.pref_temperature_key), application.getResources().getBoolean(R.bool.pref_temperature_default));
                     if(!prefTemperature)
@@ -65,31 +65,6 @@ public class RoomsAPIClient {
             }
         });
     }
-/*
-
-    public LiveData<RoomMeasurements> getLiveMeasurements(String roomCode) {
-        RoomEndpoints endpoints = ServiceGenerator.getRoomEndpoints();
-
-        Call<RoomMeasurements> call = endpoints.getLiveRoomMeasurements(roomCode);
-
-        call.enqueue(new Callback<RoomMeasurements>() {
-            @Override
-            public void onResponse(Call<RoomMeasurements> call, Response<RoomMeasurements> response) {
-                Log.i(TAG, "onResponse: success!");
-                if(response.isSuccessful() && response.body() != null)
-                {
-                    liveRoomMeasurements.setValue(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<RoomMeasurements> call, Throwable t) {
-                Log.i(TAG, "onFailure: called");
-
-            }
-        });
-        return liveRoomMeasurements;
-    }*/
 
     public LiveData<Boolean> getIsLoading() {
         return isLoading;
@@ -120,7 +95,4 @@ public class RoomsAPIClient {
         return roomsData;
     }
 
-/*    public LiveData<RoomMeasurements> getLiveMeasurements(){
-        return  liveRoomMeasurements;
-    }*/
 }

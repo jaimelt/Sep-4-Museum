@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Entity(foreignKeys = {
@@ -16,33 +17,58 @@ import com.google.gson.annotations.SerializedName;
 public class RoomMeasurements {
     @PrimaryKey
     @NonNull
-    private String id;
+    @SerializedName("id")
+    @Expose
+    private int id;
+    @SerializedName("light")
+    @Expose
     private double light;
     @SerializedName("temperature")
-    private double temp;
+    @Expose
+    private double temperature;
+    @SerializedName("humidity")
+    @Expose
     private double humidity;
+    @SerializedName("co2")
+    @Expose
     private double co2;
+    @SerializedName("measurementDate")
+    @Expose
+    private String measurementDate;
+    @SerializedName("roomNo")
+    @Expose
+    private String roomNo;
 
-    public RoomMeasurements(double light, double temp, double humidity, double co2) {
-        this.light = light;
-        this.temp = temp;
-        this.humidity = humidity;
-        this.co2 = co2;
-    }
 
     public RoomMeasurements(String locationCode, double light, double temp, double humidity, double co2) {
-        id = locationCode;
+        this.roomNo = locationCode;
         this.light = light;
-        this.temp = temp;
+        this.temperature = temp;
         this.humidity = humidity;
         this.co2 = co2;
     }
 
-    public String getId() {
+    public String getMeasurementDate() {
+        return measurementDate;
+    }
+
+    public void setMeasurementDate(String measurementDate) {
+        this.measurementDate = measurementDate;
+    }
+
+    public String getRoomNo() {
+        return roomNo;
+    }
+
+    public void setRoomNo(String roomNo) {
+        this.roomNo = roomNo;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -55,11 +81,11 @@ public class RoomMeasurements {
     }
 
     public double getTemp() {
-        return temp;
+        return temperature;
     }
 
     public void setTemp(double temp) {
-        this.temp = temp;
+        this.temperature = temp;
     }
 
     public double getLight() {
