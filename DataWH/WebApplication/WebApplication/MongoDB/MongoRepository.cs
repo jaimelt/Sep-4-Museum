@@ -42,8 +42,10 @@ namespace WebApplication.MongoDB
                 _roomMeasurement.Find(FilterDefinition<MongoMeasurement>.Empty).ToList();
             foreach (var m in mongoMeasurements)
             {
+                RoomMeasurement = new RoomMeasurement();
                 RoomMeasurement.setMeasurementsFromMongo(m);
                 measurementList.addRoomMeasurement(RoomMeasurement);
+                
             }
 
 

@@ -39,8 +39,8 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public  async Task<IActionResult> GetRooms()
         {
-       
-
+            TransferSql.TransferDataFromMongoDb();
+            
             try {
                 RoomList roomList = new RoomList();
                 roomList.rooms = await roomRepository.getAllRoomsAsync();

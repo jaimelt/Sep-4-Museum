@@ -73,6 +73,8 @@ namespace WebApplication.Datamodel
             Humidity = mongoMeasurement.humidity;
             Light = mongoMeasurement.light;
             Temperature = mongoMeasurement.temperature;
+            MeasurementDate = mongoMeasurement.time;
+            Console.WriteLine(mongoMeasurement.time);
             setroomNoFromInt(mongoMeasurement.room_no);
         }
     }

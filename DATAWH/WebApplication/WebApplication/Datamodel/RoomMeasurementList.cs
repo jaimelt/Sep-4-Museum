@@ -12,7 +12,7 @@ namespace WebApplication.Datamodel
         }
 
         [NotMapped]        
-        public ICollection<RoomMeasurement> Measurements { get; set; }
+        public List<RoomMeasurement> Measurements { get; set; }
 
         public RoomMeasurement getRoomMeasurementByRoomNo(string roomNo)
         {
@@ -30,6 +30,13 @@ namespace WebApplication.Datamodel
         {
             Measurements.Add(roomMeasurement);
             Console.WriteLine(roomMeasurement.roomNo);
+           
+        }
+
+        public void getRoomMeasurement(int id)
+        {
+
+            ;
         }
 
         public void mockMeasurementsExceptRoomNo(string roomNo)

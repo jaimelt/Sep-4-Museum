@@ -155,8 +155,7 @@ SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM Rooms";
 
             return null; 
         }
-<<<<<<< HEAD
-=======
+
         
         public static async Task<IActionResult> PopulateStageFactMeasurements()
         {
@@ -165,7 +164,7 @@ SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM Rooms";
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
             commandCreateDimRoom.CommandText = 
-                @" INTO[musemDW].[dbo].[stage_fact_measurements](
+                @"INSERT INTO[musemDW].[dbo].[STAGE_FactMeasurements](
 locationCode,
 MeasurementDate,
 lightMeasurement,
@@ -193,6 +192,6 @@ WHERE rm.MeasurementDate <= '2020-05-25'";
 
             return null; 
         }
->>>>>>> dh.florinx
+
     }
     }
