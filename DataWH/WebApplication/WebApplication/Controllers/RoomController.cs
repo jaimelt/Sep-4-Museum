@@ -45,8 +45,6 @@ namespace WebApplication.Controllers
                 RoomList roomList = new RoomList();
                 roomList.rooms = await roomRepository.getAllRoomsAsync();
                 roomList.addMeasurements(_mongoRepository.LoadAllRoomLastMeasurements());
-             
-                
                 logger.LogInformation("Returning all the rooms stored in the database");
                 return Ok(roomList); }
             catch (Exception exception)
