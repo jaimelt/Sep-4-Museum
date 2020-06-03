@@ -5,6 +5,7 @@ import android.widget.RadioGroup;
 import androidx.core.util.PatternsCompat;
 
 public class Validator {
+    private static final String NON_NORMAL_CHARACTERS_PATTERN = "^((?=[A-Za-z0-9@])(?![_\\\\-]).)*$";
 
     public Validator (){
 
@@ -49,9 +50,13 @@ public class Validator {
             return 12;
         } else if (maxLightInt <= 0) {
             return 13;
-        } else {
+        } else if (!hasSymbols(name)){
             return 14;
         }
+        else if(!hasSymbols(author)) {
+            return 15;
+        }
+        else return 16;
     }
 
     public int validateLogin(String email, String password){
@@ -75,5 +80,9 @@ public class Validator {
         } else {
             return 1;
         }
+    }
+
+    private boolean hasSymbols(String string) {
+        return string.matches(NON_NORMAL_CHARACTERS_PATTERN);
     }
 }
