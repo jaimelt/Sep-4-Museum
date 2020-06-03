@@ -50,6 +50,10 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
             }
             FilterResults results = new FilterResults();
             results.values = filteredList;
+            if(results.count == 0)
+            {
+                Toast.makeText(context, "Nothing was found", Toast.LENGTH_SHORT).show();
+            }
             return results;
         }
 
