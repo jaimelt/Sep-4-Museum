@@ -39,13 +39,13 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public  async Task<IActionResult> GetRooms()
         {
-            StageDim.PopulateDimRoom();
+            
             
             try {
                 RoomList roomList = new RoomList();
                 roomList.rooms = await roomRepository.getAllRoomsAsync();
-                roomList.addMeasurements(_mongoRepository.LoadAllRoomLastMeasurements());
-                logger.LogInformation("Returning all the rooms stored in the database");
+                // roomList.addMeasurements(_mongoRepository.LoadAllRoomLastMeasurements());
+                // logger.LogInformation("Returning all the rooms stored in the database");
                 return Ok(roomList); }
             catch (Exception exception)
             {

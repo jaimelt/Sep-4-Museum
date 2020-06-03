@@ -79,26 +79,14 @@ namespace WebApplication.Controllers
             admin.Email = email;
             Console.WriteLine("delete admin");
             var obj = _accountRepository.GetAdminByEmail(admin);
-            Task.Delay(3000);
+           Task.Delay(3000);
             if (_accountRepository.Delete(await obj))
                 return Ok("Account deleted.");
 
             return BadRequest("Account doesn't exist");
         }
         
-        [HttpDelete("{test}")]
-        public async Task<IActionResult> test(string email)
-        {
-            Administrator admin = new Administrator();
-            admin.Email = email;
-            Console.WriteLine("delete admin");
-            var obj = _accountRepository.GetAdminByEmail(admin);
-            Task.Delay(3000);
-            if (_accountRepository.Delete(await obj))
-                return Ok("Account deleted.");
-
-            return BadRequest("Account doesn't exist");
-        }
+     
 
         // Edit admin account username or password
         [HttpPut]
@@ -108,7 +96,7 @@ namespace WebApplication.Controllers
             var obj = _accountRepository.GetAdminByEmail(admin);
 
 
-            Task.Delay(3000);
+          Task.Delay(3000);
 
             if (admin == null)
             {

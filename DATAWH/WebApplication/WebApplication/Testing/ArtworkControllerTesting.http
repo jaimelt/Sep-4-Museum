@@ -1,9 +1,12 @@
+// More testing can be performed with artwork Id 148, 149
+
+
 GET https://localhost:5001/artworks/getall
 Accept: application/json
 
 ###
 
-GET https://localhost:5001/artworks/getone/22
+GET https://localhost:5001/artworks/getone/148
 Accept: application/json
 
 ###
@@ -17,7 +20,7 @@ POST https://localhost:5001/artworks/createartwork
 Content-Type: application/json
 
 {
-  "name": "Object 4 for testing",
+  "name": "Object 1 for testing",
   "description": "Object 1 for testing",
   "image": "Object 1 for testing",
   "type": "Drawing",
@@ -38,14 +41,14 @@ Content-Type: application/json
 
 // other available artwork objects for testing: 136 and 137 ids 
 //change Description of artwork object 135
-PUT https://localhost:5001/artworks/edit/135
+PUT https://localhost:5001/artworks/edit/148
 Content-Type: application/json
 
 
 
-{ "id": 135,
-  "name": "Object 1 for testing",
-  "description": "Testing edit for Description on artwork object id 135 ",
+{ "id": 148,
+  "name": "Testing - Name has been changed",
+  "description": "Testing - Name has been changed",
   "image": "This has been changed",
   "type": "Drawing",
   "author": "Unknown",
@@ -63,11 +66,7 @@ Content-Type: application/json
 }
 ###
 
-// Testing can be performed with artwork Id 135, 136, 137 
-PUT https://localhost:5001/moveartwork?id=135&location=A1
-Content-Type: application/json
 
-###
 
-DELETE https://localhost:5001/artworks/delete/138
+DELETE https://localhost:5001/artworks/delete/156
 Accept: application/json

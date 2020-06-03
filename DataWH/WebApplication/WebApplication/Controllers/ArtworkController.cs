@@ -227,7 +227,7 @@ namespace WebApplication.Controllers
 
                 artworkRepository.UpdateArtwork(artwork);
                 await artworkRepository.saveChanges();
-                return NoContent();
+                return Ok("Artwork has been edited");
             }
             catch (Exception exception)
             {
