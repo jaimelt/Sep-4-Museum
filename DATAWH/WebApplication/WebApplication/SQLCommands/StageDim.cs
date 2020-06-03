@@ -163,7 +163,8 @@ SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM Rooms";
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
             commandCreateDimRoom.CommandText = 
-                @" INTO[musemDW].[dbo].[stage_fact_measurements](
+                @" INSERT INTO museum.dbo.STAGE_FactMeasurements
+INTO[musemDW].[dbo].[stage_fact_measurements](
 locationCode,
 MeasurementDate,
 lightMeasurement,
