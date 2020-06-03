@@ -32,6 +32,10 @@ static EventGroupHandle_t _eventGroupHandleNewData;
 static float _lastMeasurementTemperature;
 static float _lastMeasurementHumidity;
 
+//constants
+#define WAKEUP_DELAY 100
+#define MEASUREMENT_DELAY 20
+
 static void _setup_temperature_humidity_driver()
 {
 	//create driver
@@ -63,7 +67,7 @@ void temperatureHumiditySensor_inLoop()
 	result = hih8120Wakeup();
 
 	//after the wakeup, the sensor needs minimum 50ms to start measuring
-	vTaskDelay(100);
+	vTaskDelay(WAKEUP_DELAY);
 
 	//if (HIH8120_OK != result)
 	//{
@@ -77,7 +81,7 @@ void temperatureHumiditySensor_inLoop()
 	result = hih8120Meassure();
 
 	//delay to fetch the results from the sensor
-	vTaskDelay(100);
+	vTaskDelay(WAKEUP_DELAY);
 
 	//check the result
 	if (HIH8120_OK != result)
@@ -88,7 +92,7 @@ void temperatureHumiditySensor_inLoop()
 		{
 			result = hih8120Meassure();
 			//delay to fetch the results from the sensor
-			vTaskDelay(20);
+			vTaskDelay(MEASUREMENT_DELAY);
 			count--;
 		}
 	}
