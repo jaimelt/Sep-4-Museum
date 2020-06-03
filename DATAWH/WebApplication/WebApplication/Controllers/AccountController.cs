@@ -26,7 +26,7 @@ namespace WebApplication.Controllers
         }
 
         // Login method, verifies if given username/password matches in the database
-        [HttpGet]
+        [HttpPost("login")] 
         public bool login([FromBody] Administrator admin)
         {
             if (admin == null)
@@ -35,6 +35,8 @@ namespace WebApplication.Controllers
                 return false;
             }
 
+            Console.WriteLine(admin.Email);
+            Console.WriteLine(admin.Password);
             return _accountRepository.login(admin);
         }
 
@@ -70,7 +72,7 @@ namespace WebApplication.Controllers
         }
 
         // Delete existing account by username//password
-        [HttpDelete("delete/{email}")]
+        [HttpDelete("{email}")]
         public async Task<IActionResult> deleteAdmin(string email)
         {
             Administrator admin = new Administrator();
@@ -80,7 +82,21 @@ namespace WebApplication.Controllers
             Task.Delay(3000);
             if (_accountRepository.Delete(await obj))
                 return Ok("Account deleted.");
-            
+
+            return BadRequest("Account doesn't exist");
+        }
+        
+        [HttpDelete("{test}")]
+        public async Task<IActionResult> test(string email)
+        {
+            Administrator admin = new Administrator();
+            admin.Email = email;
+            Console.WriteLine("delete admin");
+            var obj = _accountRepository.GetAdminByEmail(admin);
+            Task.Delay(3000);
+            if (_accountRepository.Delete(await obj))
+                return Ok("Account deleted.");
+
             return BadRequest("Account doesn't exist");
         }
 
@@ -107,7 +123,7 @@ namespace WebApplication.Controllers
                 if (_accountRepository.Update(await obj))
                     return Ok("User updated");
             }
-          
+
 
             return BadRequest("Username doesn't exist");
         }

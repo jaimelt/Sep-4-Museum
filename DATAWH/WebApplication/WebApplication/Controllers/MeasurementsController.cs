@@ -22,12 +22,12 @@ namespace WebApplication.Controllers
             _artworkRepository = artworkRepository;
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<RoomMeasurement>> GetMeasurementConditions([FromRoute] int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<RoomMeasurement>> GetMeasurementConditions([FromRoute] string id)
         {
             Console.WriteLine("--------------------");
             
-            MongoMeasurement mongoMeasurement = _mongoRepository.LoadLastRoomMeasurement(id);
+            MongoMeasurement mongoMeasurement = _mongoRepository.LoadLastRoomMeasurement(_mongoRepository.modifyToMongoRoomID(id));
             RoomMeasurement temp = new RoomMeasurement();
             temp.setMeasurementsFromMongo(mongoMeasurement);
 
@@ -53,6 +53,24 @@ namespace WebApplication.Controllers
              Console.WriteLine(  "--------"+ VARIABLE.Comment);
             }
             return artworkAudit.Artworks;
+        }
+
+        [HttpGet("getall/{roomCode}")]
+        public RoomMeasurementList getAllMeasurements(string roomCode)
+        {
+            //Only 1 room is real the rest is harcoded because we only have 1 set of sensors
+            
+            RoomMeasurementList roomMeasurementList = new RoomMeasurementList();
+            roomMeasurementList.mockMeasurementsExceptRoomNo(roomCode);
+            RoomMeasurement roomMeasurement = new RoomMeasurement();
+            roomMeasurement.setMeasurementsFromMongo(_mongoRepository.LoadLastRoomMeasurement(_mongoRepository.modifyToMongoRoomID(roomCode)));
+            roomMeasurementList.addRoomMeasurement(roomMeasurement);
+
+            return roomMeasurementList;
+
+
+
+
         }
     }
 }

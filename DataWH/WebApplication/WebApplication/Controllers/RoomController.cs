@@ -37,20 +37,16 @@ namespace WebApplication.Controllers
 
         // GET: api/Rooms
         [HttpGet("getall")]
-        public async Task<IActionResult> GetRooms()
+        public  async Task<IActionResult> GetRooms()
         {
             TransferSql.TransferDataFromMongoDb();
             
-            try
-            {
+            try {
                 RoomList roomList = new RoomList();
-                roomList.rooms = (List<Room>) await roomRepository.getAllRoomsAsync();
-
+                roomList.rooms = await roomRepository.getAllRoomsAsync();
+                roomList.addMeasurements(_mongoRepository.LoadAllRoomLastMeasurements());
                 logger.LogInformation("Returning all the rooms stored in the database");
-
-                return Ok(roomList);
-
-            }
+                return Ok(roomList); }
             catch (Exception exception)
             {
                 logger.LogError($"Something went wrong internally in the server: ", exception.Message);
@@ -229,8 +225,17 @@ namespace WebApplication.Controllers
                 logger.LogError($"Something went wrong internally in the server: ", exception.Message);
                 return StatusCode(500, "Internal server error");
             }
+            
+            
 
 
+        }
+        [HttpPost("{test}")]
+        public  RoomMeasurementList deleteAdmin(string email)
+        {
+            
+            
+            return _mongoRepository.LoadAllMeasurements();
         }
     }
 }

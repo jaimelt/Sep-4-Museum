@@ -30,7 +30,7 @@ namespace WebApplication.Controllers
             {
                 if (visitors == null)
                 {
-                    Logger.LogError("The visitor List is null. ");
+                    Logger.LogError("The visitor List is null.");
                     return BadRequest("Null visitor list");
                 }
                 
