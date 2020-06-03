@@ -117,13 +117,13 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
                 return false;
             }
 
             //To have real time filtering
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
                 return false;
             }
         });
