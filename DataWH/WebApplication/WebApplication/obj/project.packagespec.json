@@ -1,11 +1,14 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
+    "projectUniqueName": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/WebApplication.csproj",
     "projectName": "WebApplication",
-    "projectPath": "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\WebApplication.csproj",
-    "outputPath": "C:\\Users\\Florinel\\Documents\\GitHub\\Sep-4-Museum\\DATAWH\\WebApplication\\WebApplication\\obj\\",
+    "projectPath": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/WebApplication.csproj",
+    "outputPath": "/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/obj/",
     "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
     "originalTargetFrameworks": [
       "netcoreapp3.1"
     ],
@@ -69,7 +72,7 @@
           "privateAssets": "all"
         }
       },
-      "runtimeIdentifierGraphPath": "C:\\Users\\Florinel\\.dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+      "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.300/RuntimeIdentifierGraph.json"
     }
   }
 }
