@@ -15,6 +15,10 @@
 #include <semphr.h>
 #include <task.h>
 
+//drivers
+#include <lora_driver.h>
+#include <iled.h>
+
 //functions
 
 /**

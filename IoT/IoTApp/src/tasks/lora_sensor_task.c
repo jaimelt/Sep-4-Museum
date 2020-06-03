@@ -10,8 +10,6 @@
 
 //required libraries
 #include <stdio.h>
-#include <lora_driver.h>
-#include <iled.h>
 #include <hal_defs.h>
 
 //constants
@@ -31,11 +29,14 @@ static SemaphoreHandle_t _xPrintfSemaphore;
 static char _out_buf[100];
 
 #define LED_TASK_PRIORITY 7
+#define LORA_CONNECTION_DELAY 5000UL
+#define LORA_RESET_DELAY 2
+#define LORA_SETUP_DELAY 150
 
 static void _setup_lora_driver()
 {
 	//hal_create(LED_TASK_PRIORITY);
-	// Initialise the LoRaWAN driver without down-link buffer
+	// Initialize the LoRaWAN driver without down-link buffer
 	//lora_driver_create(LORA_USART, NULL);
 
 	e_LoRa_return_code_t rc;
@@ -77,7 +78,7 @@ static void _setup_lora_driver()
 			// Make the red led pulse to tell something went wrong
 			led_long_puls(led_ST1); // OPTIONAL
 			// Wait 5 sec and lets try again
-			vTaskDelay(pdMS_TO_TICKS(5000UL));
+			vTaskDelay(pdMS_TO_TICKS(LORA_CONNECTION_DELAY));
 		}
 		else
 		{
@@ -122,15 +123,15 @@ void loraDriver_sent_upload_message(lora_payload_t uplink_lora_payoad)
 void vALoraTask(void *pvParameters)
 {
 	lora_driver_reset_rn2483(1);
-	vTaskDelay(2);
+	vTaskDelay(LORA_RESET_DELAY);
 	lora_driver_reset_rn2483(0);
-	vTaskDelay(150);
+	vTaskDelay(LORA_SETUP_DELAY);
 
 	lora_driver_flush_buffers();
 
 	_setup_lora_driver();
 
-	vTaskDelay(150);
+	vTaskDelay(LORA_SETUP_DELAY);
 
 	static lora_payload_t _lorapayload;
 

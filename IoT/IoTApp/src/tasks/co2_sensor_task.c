@@ -72,10 +72,10 @@ void vAco2SensorTask(void *pvParameters)
 	vTaskDelete(_CO2SensorTaskHandle);
 }
 
-void co2Sensor_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore)
+void co2Sensor_create(EventGroupHandle_t pvEventHandleMeasure, EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pPrintfSemaphore)
 {
 	//setting variables
-	_xPrintfSemaphore = pvPrintfSemaphore;
+	_xPrintfSemaphore = pPrintfSemaphore;
 	_eventGroupHandleMeasure = pvEventHandleMeasure;
 	_eventGroupHandleNewData = pvEventHandleNewData;
 	_lastCo2Measurement = 0;

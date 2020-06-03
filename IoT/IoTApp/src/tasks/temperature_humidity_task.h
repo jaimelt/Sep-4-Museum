@@ -38,7 +38,7 @@
  * \
  */
 void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure,
-                                      EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore);
+                                      EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pPrintfSemaphore);
 
 /*
  * \brief in header for testing

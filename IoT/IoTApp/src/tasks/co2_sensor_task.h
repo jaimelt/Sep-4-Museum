@@ -42,7 +42,7 @@ The current header file represents all the functionality for CO2 sensor
  * \
  */
 void co2Sensor_create(EventGroupHandle_t pvEventHandleMeasure,
-                      EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pvPrintfSemaphore);
+                      EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pPrintfSemaphore);
 
 /**
  * \brief set the bit to true to signalize that the measurement was completed
