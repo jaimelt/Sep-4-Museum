@@ -23,13 +23,15 @@ namespace WebApplication.Controllers
     {
         private readonly ArtworkRepository artworkRepository;
         private readonly ILogger<ArtworkController> logger;
+        private readonly RoomRepository RoomRepository;
       
 
-        public ArtworkController(ArtworkRepository artworkRepository, ILogger<ArtworkController> logger)
+        public ArtworkController(ArtworkRepository artworkRepository, ILogger<ArtworkController> logger, RoomRepository RoomRepository)
         {
             this.artworkRepository = artworkRepository;
             this.logger = logger;
-            
+            this.RoomRepository = RoomRepository; 
+
         }
 
 
@@ -37,6 +39,7 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> getallArtworks()
         {
+            StageDim.PopulateStageDimDate();
             try
             {
                 ArtworkList artworkList = new ArtworkList();
@@ -123,6 +126,8 @@ namespace WebApplication.Controllers
 
                 artworkRepository.CreateArtWork(artwork);
                 await artworkRepository.saveChanges();
+                
+               
 
                 return CreatedAtRoute("", new {id = artwork.Id}, artwork);
 
@@ -152,7 +157,7 @@ namespace WebApplication.Controllers
                 artworkRepository.DeleteArtwork(artwork);
                 await artworkRepository.saveChanges();
 
-                return NoContent();
+                return Ok("Artwork has been deleted");
             }
             catch (Exception exception)
             {
@@ -161,7 +166,7 @@ namespace WebApplication.Controllers
             }
         }
 
-        [HttpPut("moveartwork/{artid},{location}")]
+        [HttpPut("moveartwork/{artid}/{location}")]
         public async Task<IActionResult> MoveArtwork([FromRoute] int artid, [FromRoute] string location)
         {
             try
@@ -197,6 +202,7 @@ namespace WebApplication.Controllers
         [HttpPut("edit/{id}")]
         public async Task<IActionResult> PutArtwork([FromRoute] int id, [FromBody] Artwork artwork)
         {
+            
 
             try
             {
@@ -221,7 +227,7 @@ namespace WebApplication.Controllers
 
                 artworkRepository.UpdateArtwork(artwork);
                 await artworkRepository.saveChanges();
-                return Ok("Artwork has been has been edited");
+                return NoContent();
             }
             catch (Exception exception)
             {

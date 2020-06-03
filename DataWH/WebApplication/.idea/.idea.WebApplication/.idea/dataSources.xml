@@ -10,17 +10,5 @@
         <property name="applicationName" value="DataGrip" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="museum.warehouse@sqlserversss.database.windows.net" uuid="ffc938f0-ece3-43a2-be46-0f77e63a7c06">
-      <driver-ref>sqlserver.jtds</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:jtds:sqlserver://sqlserversss.database.windows.net:1433/museum.warehouse</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="museum.staging@sqlserversss.database.windows.net" uuid="1085238e-8f2f-4290-b439-30d1f2259c75">
-      <driver-ref>sqlserver.jtds</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:jtds:sqlserver://sqlserversss.database.windows.net:1433/museum.staging</jdbc-url>
-    </data-source>
   </component>
 </project>

@@ -45,9 +45,19 @@ namespace WebApplication.Database.Repositories.ArtworkRep
 
         public void CreateArtWork(Artwork artwork)
         {
-            Create(artwork);
             
+            Create(artwork);
+            var storage = context.Rooms.Find("Storage");
+            if (storage.CurrentCapacity != storage.TotalCapacity)
+            {
+                storage.ArtworkList = new List<Artwork>();
+                storage.ArtworkList.Add(artwork);
+                storage.CurrentCapacity++; 
+            }
+
         }
+
+     
 
         public void MoveArtwork(int artId, string location)
         {
