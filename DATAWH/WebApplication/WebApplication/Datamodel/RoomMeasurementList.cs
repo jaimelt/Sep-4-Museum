@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication.Datamodel
 {
@@ -7,10 +8,11 @@ namespace WebApplication.Datamodel
     {
         public RoomMeasurementList()
         {
-            Measurements = new List<RoomMeasurement>();
+          Measurements = new List<RoomMeasurement>();
         }
 
-        public List<RoomMeasurement> Measurements { get; set; }
+        [NotMapped]        
+        public ICollection<RoomMeasurement> Measurements { get; set; }
 
         public RoomMeasurement getRoomMeasurementByRoomNo(string roomNo)
         {

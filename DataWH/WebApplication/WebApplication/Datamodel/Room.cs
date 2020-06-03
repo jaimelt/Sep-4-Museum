@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication.Datamodel
 {
@@ -18,6 +19,8 @@ namespace WebApplication.Datamodel
         public int Co2 { get; set; }
         
         public ICollection<Artwork> ArtworkList { get; set; }
+        [NotMapped]  
+        public RoomMeasurement measurements { get; set; }
    
         
         
