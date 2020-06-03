@@ -155,5 +155,44 @@ SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM Rooms";
 
             return null; 
         }
+<<<<<<< HEAD
+=======
+        
+        public static async Task<IActionResult> PopulateStageFactMeasurements()
+        {
+            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+            await sqlConnection.OpenAsync();
+            var commandCreateDimRoom = sqlConnection.CreateCommand();
+
+            commandCreateDimRoom.CommandText = 
+                @" INTO[musemDW].[dbo].[stage_fact_measurements](
+locationCode,
+MeasurementDate,
+lightMeasurement,
+temperatureMeasurement,
+humidityMeasurement,
+co2Measurement)
+SELECT
+LocationCode,
+rm.MeasurementDate,
+r.Light,
+r.Temperature,
+r.Humidity,
+r.Co2f
+FROM museum.dbo.Rooms r
+JOIN museum.dbo.RoomMeasurements rm on r.LiveRoomMeasurementsId = rm.Id
+WHERE rm.MeasurementDate <= '2020-05-25'";
+              
+
+
+          
+
+            await commandCreateDimRoom.ExecuteNonQueryAsync();
+            await commandCreateDimRoom.DisposeAsync();
+            await sqlConnection.CloseAsync();
+
+            return null; 
+        }
+>>>>>>> dh.florinx
     }
     }
