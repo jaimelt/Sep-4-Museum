@@ -39,7 +39,7 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public  async Task<IActionResult> GetRooms()
         {
-            TransferSql.TransferDataFromMongoDb();
+            StageDim.PopulateDimRoom();
             
             try {
                 RoomList roomList = new RoomList();

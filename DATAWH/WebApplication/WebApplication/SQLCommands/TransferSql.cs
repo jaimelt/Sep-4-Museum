@@ -7,7 +7,6 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
 using MongoDB.Driver;
 using WebApplication.Datamodel;
-using Dapper;
 using WebApplication.MongoDB;
 
 

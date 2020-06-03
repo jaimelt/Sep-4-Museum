@@ -20,7 +20,6 @@ namespace WebApplication.SQLCommands
             commandCreateDimRoom.CommandText = 
                 @"CREATE TABLE STAGE_dimRoom 
 (	
-R_ID int,
 locationCode varchar (10),
 Description varchar (50),
 optimalLight int,
@@ -163,8 +162,7 @@ SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM Rooms";
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
             commandCreateDimRoom.CommandText = 
-                @" INSERT INTO museum.dbo.STAGE_FactMeasurements
-INTO[musemDW].[dbo].[stage_fact_measurements](
+                @" INSERT INTO museum.dbo.STAGE_FactMeasurements(
 locationCode,
 MeasurementDate,
 lightMeasurement,
@@ -174,13 +172,69 @@ co2Measurement)
 SELECT
 LocationCode,
 rm.MeasurementDate,
-r.Light,
-r.Temperature,
-r.Humidity,
-r.Co2f
+rm.Light,
+rm.Temperature,
+rm.Humidity,
+rm.Co2
 FROM museum.dbo.Rooms r
-JOIN museum.dbo.RoomMeasurements rm on r.LiveRoomMeasurementsId = rm.Id
-WHERE rm.MeasurementDate <= '2020-05-25'";
+JOIN museum.dbo.RoomMeasurements rm on r.LocationCode = rm.roomNo
+WHERE rm.MeasurementDate <= '2020-05-25T00:00:00'";
+              
+
+
+          
+
+            await commandCreateDimRoom.ExecuteNonQueryAsync();
+            await commandCreateDimRoom.DisposeAsync();
+            await sqlConnection.CloseAsync();
+
+            return null; 
+        }
+        
+        public static async Task<IActionResult> UpdateKeysStageFactMeasurements()
+        {
+            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+            await sqlConnection.OpenAsync();
+            var coomand1 = sqlConnection.CreateCommand();
+
+            coomand1.CommandText = 
+                "UPDATE museum.dbo.STAGE_FactMeasurements SET R_ID=( SELECT R_ID FROM museum.dbo.DIMENSION_DimRoom r WHERE r.locationCode = STAGE_FactMeasurements.locationCode);";
+            
+            
+            var command2 = sqlConnection.CreateCommand();
+
+            command2.CommandText =
+                " UPDATE museum.dbo.STAGE_FactMeasurements SET D_ID=( SELECT D_ID FROM museum.dbo.DIMENSION_DimDate d WHERE d.CalendarDate= STAGE_FactMeasurements.MeasurementDate);";
+            
+
+          
+
+            await coomand1.ExecuteNonQueryAsync();
+            await command2.ExecuteNonQueryAsync();
+            await coomand1.DisposeAsync();
+            await command2.DisposeAsync();
+            await sqlConnection.CloseAsync();
+
+            return null; 
+        }
+        
+        public static async Task<IActionResult> PopulateDimRoom()
+        {
+            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+            await sqlConnection.OpenAsync();
+            var commandCreateDimRoom = sqlConnection.CreateCommand();
+
+            commandCreateDimRoom.CommandText = 
+                @"INSERT INTO museum.dbo.DIMENSION_DimRoom
+(
+locationCode,
+Description,
+optimalLight,
+optimalTemperature,
+optimalHumidity,
+optimalCo2
+)
+SELECT locationCode, Description, optimalLight, optimalTemperature, optimalHumidity, optimalCo2 FROM Museum.dbo.STAGE_DimRoom";
               
 
 
