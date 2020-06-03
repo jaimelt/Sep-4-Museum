@@ -38,7 +38,7 @@
                 android:minWidth="30dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
             <TextView
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="30dp"
                 android:backgroundTint="@color/white"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
             <TextView
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="30dp"
                 android:backgroundTint="@color/white"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
             <TextView
@@ -93,7 +93,7 @@
                 android:minWidth="30dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
             <TextView
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="30dp"
                 android:backgroundTint="@color/white"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
             <TextView
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="30dp"
                 android:backgroundTint="@color/white"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
             <TextView
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="30dp"
                 android:backgroundTint="@color/white"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
             <TextView
@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="30dp"
                 android:backgroundTint="@color/white"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 tools:ignore="LabelFor,UnusedAttribute"
                 android:autofillHints="" />
             <TextView
