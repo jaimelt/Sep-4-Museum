@@ -18,12 +18,12 @@
 //functions
 
 /**
- * \brief 
+ * \brief Initializes the Lora drivers and creates the Lora task
  * 
- * \param pQueue align all the data into a queue 
- * \param pPrintfSemaphore 
+ * \param pQueue				To detach sensor_control task from Lora task and to pass the data
+ * \param pPrintfSemaphore		Semaphore to protect printf
  * 
- * \iniatilaze the LoRa driver by _setup_lora_driver if everything is OK,
- * a new task will run to sent the data
+ * \initialize the LoRa driver by _setup_lora_driver. If everything is OK,
+ * a new task will run to send the data
  */
 void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore);

@@ -9,7 +9,7 @@
 /*                           CO2		                                 /         */
 /************************************************************************/
 /*
-The current header file represents all the tasks for CO2 sensor
+The current header file represents all the functionality for CO2 sensor
 */
 #pragma once
 
@@ -31,16 +31,14 @@ The current header file represents all the tasks for CO2 sensor
 
 //Functions
 /**
- * \brief Creates and setup the driver by calling mh_z19_create() method from co2 driver
+ * \brief Creates and sets up the driver by calling mh_z19_create() method for the co2 sensor and creates a the CO2 task
  * \ 
- * \param pvEventHandleMeasure 
- * \param pvEventHandleNewData 
- * \param pvPrintfSemaphore
+ * \param pvEventHandleMeasure		Event group for measuring
+ * \param pvEventHandleNewData		Event group for the retrieved new data
+ * \param pvPrintfSemaphore			Semaphore to protect printf
  * \
- * \ the setup driver for co2 must be implemented
- * \in xTaskCreate must be implemented the co2 task
- * \
- * \co2sensor_inLoop starts measuring 
+ * \the CO2 drivers are initialized
+ * \CO2 task is created
  * \
  */
 void co2Sensor_create(EventGroupHandle_t pvEventHandleMeasure,
@@ -61,6 +59,6 @@ void co2Sensor_inLoop(); //in header for testing
 /**
  * \brief Gets the last data that was taken from the sensor
  * 
- * \return the last measurement value from CO2 sensor
+ * \returns the last measurement value from CO2 sensor
  */
 uint16_t co2sensor_getCo2();

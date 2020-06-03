@@ -23,7 +23,7 @@ void SensorDataPackageHandler_setLight(float lux);
 /**
  * \brief Set all the measurements in the payload 
  * 
- * \param portNo
+ * \param portNo	Port number
  *
  * \The data from Humidity, Temperature, CO2 and Light sensors will be set in an array _uplink_payload
  * \ Each value form the sensor has 2 bytes

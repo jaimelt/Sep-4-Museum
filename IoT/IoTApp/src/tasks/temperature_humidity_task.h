@@ -27,11 +27,11 @@
 //functions
 /**
  * \brief Setup the Temperature and Humidity driver 
- *	and creates a task to get new measurement from light sensor
+ *	and creates a task to get new measurement from temperature and humidity sensor
  * 
- * \param pvEventHandleMeasure
- * \param pvEventHandleNewData
- * \param pvPrintfSemaphore
+ * \param pvEventHandleMeasure		Event group for measuring
+ * \param pvEventHandleNewData		Event group for the retrieved new data
+ * \param pvPrintfSemaphore			Semaphore to protect printf
  * 
  * \setting up the temperature/Humidity driver
  * \Create a task to get temperature and humidity  

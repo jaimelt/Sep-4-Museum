@@ -7,7 +7,7 @@
 /************************************************************************/
 /*                           Light                                       /         */
 /************************************************************************/
-//The current header file represents all the tasks for Light sensor create, callback and get
+//The current header file represents all the functionality for Light sensor
 
 #pragma once
 
@@ -23,24 +23,23 @@
 
 //functions
 /**
- * \brief Setup the light driver and creates a task to
- *		 get new measurement from light sensor
+ * \brief Setup the light driver and creates the light task
  * 
- * \param pvEventHandleMeasure
- * \param pvEventHandleNewData
- * \param pvPrintfSemaphore
+ * \param pvEventHandleMeasure		Event group for measuring
+ * \param pvEventHandleNewData		Event group for the retrieved new data
+ * \param pvPrintfSemaphore			Semaphore to protect printf
  * 
- * \ the setup driver for light is implemented
- * \in xTaskCreate is implemented the light task
+ * \the light drivers are initialized
+ * \light task is created
  */
 void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure,
 						EventGroupHandle_t pvEventHandleNewData,
 						SemaphoreHandle_t pvPrintfSemaphore);
 
 /**
- * \brief all back set up the bit to true to signalize that the measurement was completed
+ * \brief if the data from the sensor is ready then the light bit in the event group is set
  * 
- * \param pvTsl2591ReturnCode
+ * \param pvTsl2591ReturnCode	Return code to check the result
  * 
  */
 void LightSensor_callback(tsl2591ReturnCode_t pvTsl2591ReturnCode); //in header for testing

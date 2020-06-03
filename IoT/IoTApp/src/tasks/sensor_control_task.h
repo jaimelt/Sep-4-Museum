@@ -10,9 +10,7 @@
 //functions
 /**
  * \First step when the program runs
- * \brief Starts all the tasks(sensors) as: LoRa, Co2, Temperature/Humidity, Light and RC Servo sensors 
- * 
- * 
+ * \brief Creates all the tasks(sensors): LoRa, Co2, Temperature/Humidity, Light and RC Servo sensors 
  * \
  */
 void sensorControl_create();
