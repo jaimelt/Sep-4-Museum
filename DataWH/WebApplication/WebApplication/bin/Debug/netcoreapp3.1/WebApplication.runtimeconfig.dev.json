@@ -1,8 +1,13 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
+<<<<<<< HEAD
       "C:\\Users\\Jaime\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Jaime\\.nuget\\packages"
+=======
+      "C:\\Users\\Florinel\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Florinel\\.nuget\\packages"
+>>>>>>> dh.florinx
     ]
   }
 }
