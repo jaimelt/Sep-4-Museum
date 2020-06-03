@@ -6,7 +6,7 @@
  */
 public interface IDatabase {
     /**
-     * Insert a document with the specified parameters (sensor data) to the sep4 mongoDb database.
+     * Insert a document with the specified parameters (sensor data) to the data storage.
      *
      * @param co2         The value of co2 (in ppm) as a integer
      * @param humidity    The value of humidity as double

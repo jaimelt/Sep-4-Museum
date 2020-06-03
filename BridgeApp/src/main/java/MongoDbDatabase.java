@@ -30,6 +30,7 @@ public class MongoDbDatabase implements IDatabase {
 
     /**
      * The implementation of {@linkplain IDatabase#insert(int, double, double, double, int)}
+     * which inserts the sensor data values to the mongoDb database.
      */
     @Override
     public void insert(int co2, double humidity, double temperature, double light, int roomId) {
