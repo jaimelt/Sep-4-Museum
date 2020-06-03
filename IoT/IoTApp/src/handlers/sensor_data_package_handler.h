@@ -25,8 +25,8 @@ void SensorDataPackageHandler_setLight(float lux);
  * 
  * \param portNo	Port number
  *
- * \The data from Humidity, Temperature, CO2 and Light sensors will be set in an array _uplink_payload
- * \ Each value form the sensor has 2 bytes
+ * The data from Humidity, Temperature, CO2 and Light sensors will be set in an array _uplink_payload
+ * Each value form the sensor has 2 bytes
  * \return _uplink_payload
  */
 lora_payload_t SensorDataPackageHandler_getLoraPayload(uint8_t portNo);

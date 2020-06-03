@@ -8,12 +8,6 @@
 //header
 #include "sensor_data_package_handler.h"
 
-//FreeRTOS
-#include <ATMEGA_FreeRTOS.h>
-
-//required libraries
-#include <stdio_driver.h>
-
 //private variables
 #define RATIO 100
 static uint16_t _co2_ppm = 0;
