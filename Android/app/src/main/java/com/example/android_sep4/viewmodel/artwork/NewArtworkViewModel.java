@@ -30,8 +30,22 @@ public class NewArtworkViewModel extends AndroidViewModel {
 
     }
 
-    public int validateFields(String name, String author, RadioGroup type, String description, String comment, String image, int minTempInt, int maxTempInt, int minLightInt, int maxLightInt, int minCO2Int, int maxCO2Int, int maxHumInt, int minHumInt) {
-      return validator.validateFieldsArtwork(name, author, type, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
+    public int validateFields(String name, String author, String description, String comment, String image, int minTempInt, int maxTempInt, int minLightInt, int maxLightInt, int minCO2Int, int maxCO2Int, int maxHumInt, int minHumInt) {
+      return validator.validateFieldsArtwork(name, author, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
+    }
+
+    public boolean validateGroup(RadioGroup radioGroup)
+    {
+        if (radioGroup.getCheckedRadioButtonId() == -1)
+        {
+            // no radio buttons are checked
+            return false;
+        }
+        else
+        {
+            // one of the radio buttons is checked
+            return true;
+        }
     }
 
 }
