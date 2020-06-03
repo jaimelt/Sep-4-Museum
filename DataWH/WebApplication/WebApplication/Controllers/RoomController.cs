@@ -44,8 +44,8 @@ namespace WebApplication.Controllers
             try {
                 RoomList roomList = new RoomList();
                 roomList.rooms = await roomRepository.getAllRoomsAsync();
-                // roomList.addMeasurements(_mongoRepository.LoadAllRoomLastMeasurements());
-                // logger.LogInformation("Returning all the rooms stored in the database");
+                 roomList.addMeasurements(_mongoRepository.LoadAllRoomLastMeasurements());
+                logger.LogInformation("Returning all the rooms stored in the database");
                 return Ok(roomList); }
             catch (Exception exception)
             {
@@ -153,7 +153,7 @@ namespace WebApplication.Controllers
                 roomRepository.updateRoom(room);
                 await roomRepository.saveChanges();
 
-                return NoContent();
+                return Ok("Room details have been changed");
             }
             catch (Exception exception)
             {
@@ -185,7 +185,7 @@ namespace WebApplication.Controllers
                 roomRepository.deleteRoom(artwork);
                 await roomRepository.saveChanges();
 
-                return NoContent();
+                return Ok("Room has been deleted");
             }
             catch (Exception exception)
             {
