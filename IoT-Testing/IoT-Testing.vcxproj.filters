@@ -30,7 +30,6 @@
     <ClInclude Include="..\IoT\IoTApp\src\tasks\light_sensor_task.h">
       <Filter>IoTProjectFiles</Filter>
     </ClInclude>
-    <ClInclude Include="fff\fff.h" />
     <ClInclude Include="force_include.h" />
     <ClInclude Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.h">
       <Filter>IoTProjectFiles</Filter>
@@ -38,6 +37,7 @@
     <ClInclude Include="..\IoT\IoTApp\src\handlers\sensor_data_package_handler.h">
       <Filter>IoTProjectFiles</Filter>
     </ClInclude>
+    <ClInclude Include="libs\fff\fff.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
