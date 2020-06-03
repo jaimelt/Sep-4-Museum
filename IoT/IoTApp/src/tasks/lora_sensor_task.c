@@ -10,8 +10,6 @@
 
 //required libraries
 #include <stdio.h>
-#include <lora_driver.h>
-#include <iled.h>
 #include <hal_defs.h>
 
 //constants

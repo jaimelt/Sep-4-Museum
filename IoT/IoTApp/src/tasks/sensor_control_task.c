@@ -25,7 +25,7 @@
 #include <queue.h>
 
 //drivers
-#include <lora_driver.h>
+//#include <lora_driver.h>
 #include <stdio_driver.h>
 
 //constants
