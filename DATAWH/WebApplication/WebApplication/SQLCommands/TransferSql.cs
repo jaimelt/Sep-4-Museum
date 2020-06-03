@@ -20,18 +20,14 @@ namespace WebApplication.SQLCommands
 
             var mongoDatabase = mongoClient.GetDatabase("sep4iot");
 
-            var measurementsCollection = mongoDatabase.GetCollection<RoomMeasurement>("test");
-            var allMeasurements = measurementsCollection.AsQueryable().ToList(); 
-            
-            Console.WriteLine(allMeasurements[0].Co2 + "hello");
+            var measurementsCollection = mongoDatabase.GetCollection<MongoMeasurement>("test");
+            var allMeasurements = measurementsCollection.AsQueryable().ToList();
 
-            var roomMeasurements = new List<RoomMeasurement>();
 
             foreach (var c in allMeasurements)
             {
-               roomMeasurements.Add(c);
+                Console.WriteLine(c.temperature);
             }
-
             
         
 
