@@ -176,7 +176,7 @@ rm.MeasurementDate,
 r.Light,
 r.Temperature,
 r.Humidity,
-r.Co2
+r.Co2f
 FROM museum.dbo.Rooms r
 JOIN museum.dbo.RoomMeasurements rm on r.LiveRoomMeasurementsId = rm.Id
 WHERE rm.MeasurementDate <= '2020-05-25'";
