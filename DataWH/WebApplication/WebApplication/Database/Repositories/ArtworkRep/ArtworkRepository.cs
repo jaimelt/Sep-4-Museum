@@ -111,6 +111,63 @@ namespace WebApplication.Database.Repositories.ArtworkRep
 
         public void DeleteArtwork(Artwork artwork)
         {
+            var room = context.Rooms.Find(artwork.Location);
+            
+            switch (room.LocationCode)
+            {
+                case "Storage":
+                    room.ArtworkList = new List<Artwork>();
+                    room.ArtworkList.Remove(artwork);
+                    room.CurrentCapacity++;
+                    break;
+                
+                case "A1":
+                    room.ArtworkList = new List<Artwork>();
+                    room.ArtworkList.Remove(artwork);
+                    room.CurrentCapacity++;
+                    break;
+                
+                case "A2":
+                    room.ArtworkList = new List<Artwork>();
+                    room.ArtworkList.Remove(artwork);
+                    room.CurrentCapacity++;
+                    break;
+                
+                case "A3":
+                    room.ArtworkList = new List<Artwork>();
+                    room.ArtworkList.Remove(artwork);
+                    room.CurrentCapacity++;
+                    break;
+                
+                case "B1":
+                    room.ArtworkList = new List<Artwork>();
+                    room.ArtworkList.Remove(artwork);
+                    room.CurrentCapacity++;
+                    break;
+                
+                case "B2":
+                    room.ArtworkList = new List<Artwork>();
+                    room.ArtworkList.Remove(artwork);
+                    room.CurrentCapacity++;
+                    break;
+                
+                case "B3":
+                    room.ArtworkList = new List<Artwork>();
+                    room.ArtworkList.Remove(artwork);
+                    room.CurrentCapacity++;
+                    break;
+                
+                case "B4":
+                    room.ArtworkList = new List<Artwork>();
+                    room.ArtworkList.Remove(artwork);
+                    room.CurrentCapacity++;
+                    break;
+                
+                default:
+                    Console.WriteLine("Room was not assigned to any room");
+                    break;
+                
+            }
             Delete(artwork);
 
             context.SaveChanges();
