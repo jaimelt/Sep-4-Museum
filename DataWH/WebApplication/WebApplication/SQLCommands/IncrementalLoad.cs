@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 
 namespace WebApplication.SQLCommands
 {
-    public class IncrementalLoad
+    static class IncrementalLoad
     {
         internal const string MuseumConnectionString =
             "Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;";
@@ -12,7 +12,7 @@ namespace WebApplication.SQLCommands
 
         public static async Task<IActionResult> CreateTempDimRoom()
         {
-            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+            await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -37,7 +37,7 @@ namespace WebApplication.SQLCommands
         
         public static async Task<IActionResult> CreateTempFactMeasurements()
         {
-            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -66,7 +66,7 @@ namespace WebApplication.SQLCommands
 
         public static async Task<IActionResult> InsertIntoRoom()
         {
-            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -107,7 +107,7 @@ namespace WebApplication.SQLCommands
         
         public static async Task<IActionResult> DeleteRoom()
         {
-            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -128,7 +128,7 @@ namespace WebApplication.SQLCommands
         
         public static async Task<IActionResult> EditRoom()
         {
-            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);;
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -150,7 +150,7 @@ namespace WebApplication.SQLCommands
         
         public static async Task<IActionResult> CheckAddedRows()
         {
-            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -193,7 +193,7 @@ where LocationCode in
         
         public static async Task<IActionResult> CheckDeletedRows()
         {
-            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -224,7 +224,7 @@ where LocationCode in
         
         public static async Task<IActionResult> HandleChangesInDimRoom()
         {
-            await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
             await sqlConnection.OpenAsync();
             var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -266,7 +266,7 @@ except
         
         public static async Task<IActionResult> Update()
         {
-	        await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
 	        await sqlConnection.OpenAsync();
 	        var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -290,7 +290,7 @@ where locationCode in
         
         public static async Task<IActionResult> InsertNewRowsInDimRoom()
         {
-	        await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
 	        await sqlConnection.OpenAsync();
 	        var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -320,7 +320,7 @@ where locationCode in
         
         public static async Task<IActionResult> InsertNewRowsInTemp_F_Measurements()
         {
-	        await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
 	        await sqlConnection.OpenAsync();
 	        var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -350,7 +350,7 @@ where rm.MeasurementDate > (select LastUpdate from museum.dbo.DIMENSION_LastUpda
         
         public static async Task<IActionResult> SetFKInTemp_F_Measurements()
         {
-	        await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
 	        await sqlConnection.OpenAsync();
 	        var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -380,7 +380,7 @@ set D_ID =
         
         public static async Task<IActionResult> TransferDataToFact()
         {
-	        await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
 	        await sqlConnection.OpenAsync();
 	        var commandCreateDimRoom = sqlConnection.CreateCommand();
 
@@ -408,7 +408,7 @@ set D_ID =
         
         public static async Task<IActionResult> UpdateLastUpdatedField()
         {
-	        await using var sqlConnection = new SqlConnection(StageDim.MuseumConnectionString);
+	        await using var sqlConnection = new SqlConnection(IncrementalLoad.MuseumConnectionString);
 	        await sqlConnection.OpenAsync();
 	        var commandCreateDimRoom = sqlConnection.CreateCommand();
 
