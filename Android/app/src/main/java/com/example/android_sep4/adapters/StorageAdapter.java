@@ -39,6 +39,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.ViewHold
 
     public void deleteArtwork(int position) {
         artworks.remove(position);
+        notifyDataSetChanged();
     }
 
     @NonNull

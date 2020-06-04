@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.android_sep4.R;
 import com.example.android_sep4.view.AccountActivity;
 import com.example.android_sep4.view.settings.SettingsActivity;
-import com.example.android_sep4.view.room.StorageActivity;
+import com.example.android_sep4.view.museum.storage.StorageActivity;
 import com.example.android_sep4.view.museum.rooms.RoomA1Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA2Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA3Activity;

@@ -43,7 +43,7 @@ public class ArtworksStorageViewModel extends AndroidViewModel {
         return artworksRepository.getIsLoading();
     }
 
-    public void positionToId(int position) {
+    public void deleteArtwork(int position) {
         artworks = new ArrayList<>();
         int id = 0;
         artworks.addAll(artworksLive.getValue());

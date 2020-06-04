@@ -135,7 +135,7 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
     private void openDeleteDialog(int index)
     {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert);
-        alertDialog.setTitle("Exit");
+        alertDialog.setTitle("Delete user account");
         alertDialog.setMessage("Are you sure about deleting this user account?");
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
