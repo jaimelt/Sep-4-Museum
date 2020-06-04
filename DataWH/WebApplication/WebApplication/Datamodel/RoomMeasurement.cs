@@ -19,7 +19,7 @@ namespace WebApplication.Datamodel
         public RoomMeasurement()
         {
         }
-
+        
         [Key] public int Id { get; set; }
         [Column(TypeName = "decimal(8,4)")] public decimal Light { get; set; }
         [Column(TypeName = "decimal(8,4)")] public decimal Temperature { get; set; }
