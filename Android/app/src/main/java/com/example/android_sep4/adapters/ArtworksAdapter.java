@@ -49,7 +49,7 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
                 }
                 if(filteredList.size() == 0)
                 {
-                    Toast.makeText(context, "No artwork with this name was found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Could not find the artwork with name " + constraint, Toast.LENGTH_SHORT).show();
                 }
             }
             FilterResults results = new FilterResults();
