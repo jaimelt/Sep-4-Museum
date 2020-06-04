@@ -39,7 +39,8 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public  async Task<IActionResult> GetRooms()
         {
-            StageDim.PopulateFactTable();
+            IncrementalLoad.UpdateLastUpdatedField();
+            
             
             try {
                 RoomList roomList = new RoomList();
