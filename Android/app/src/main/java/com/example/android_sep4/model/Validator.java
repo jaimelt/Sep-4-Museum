@@ -105,4 +105,26 @@ public class Validator {
             return 5;
         }
     }
+
+    public int validateEditRoomFields(String lightText, String co2Text, String temperatureText, String humidityText) {
+        if(lightText.isEmpty())
+        {
+            return 1;
+        }
+        else if(co2Text.isEmpty())
+        {
+            return 2;
+        }
+        else if(temperatureText.isEmpty())
+        {
+            return 3;
+        }
+        else if(humidityText.isEmpty())
+        {
+            return 4;
+        }
+        else {
+            return 5;
+        }
+    }
 }
