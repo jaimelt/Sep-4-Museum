@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <avr/io.h>
-#include <avr/sfr_defs.h>
 
 #include <ATMEGA_FreeRTOS.h>
 

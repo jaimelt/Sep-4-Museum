@@ -21,7 +21,6 @@
     <ClInclude Include="..\IoT\IoTApp\src\constants\global_constants.h">
       <Filter>IoTProjectFiles</Filter>
     </ClInclude>
-    <ClInclude Include="force_include.h" />
     <ClInclude Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.h">
       <Filter>IoTProjectFiles</Filter>
     </ClInclude>
@@ -83,6 +82,7 @@
     <ClInclude Include="..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.h">
       <Filter>FreeRTOS</Filter>
     </ClInclude>
+    <ClInclude Include="force_include.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

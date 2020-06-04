@@ -1,56 +1,50 @@
-/*
-* light_sensor_task.h
-*
-* Created: 13/05/2020 18.44.41
-*  Author: Marina Ionel
-*/
-/************************************************************************/
-/*                           Light                                       /         */
-/************************************************************************/
-//The current header file represents all the functionality for Light sensor
+/**
+ * \file
+ * \brief Light sensor implementation using tasks
+ * \note Depends on tsl2591.h
+ *
+ * \author Marina Ionel
+ * \version 1.0.0
+ *
+ * \created 13/05/2020 18.44.41
+ */
 
 #pragma once
 
-//FreeRTOS
+ //FreeRTOS
 #include <ATMEGA_FreeRTOS.h>
 #include <task.h>
 #include <semphr.h>
 #include <event_groups.h>
 
-//driver
-//The Data-sheet for TSL2591 can be found here <a href="https://ams.com/documents/20143/36005/TSL2591_DS000338_6-00.pdf/090eb50d-bb18-5b45-4938-9b3672f86b80">TSL2591 Datasheet - June 2018</a>
 #include <tsl2591.h>
 
-//functions
 /**
- * \brief Setup the light driver and creates the light task
- * 
- * \param pvEventHandleMeasure		Event group for measuring
- * \param pvEventHandleNewData		Event group for the retrieved new data
- * \param pvPrintfSemaphore			Semaphore to protect printf
- * 
- * \the light drivers are initialized
- * \light task is created
+ * \brief Creates and initializes the light sensor (Creates and enables the tsl2591 driver; creates the light sensor task)
+ *
+ * \param[in] pvEventHandleMeasure		Event group used for triggering the start of a measurement; passed by the controller task
+ * \param[in] pvEventHandleNewData		Event group used for signalizing that a measurement is completed and the data can be retrieved
+ * \param[in] pPrintfSemaphore			Mutex for protecting printf function call
+ *
  */
 void LightSensor_create(EventGroupHandle_t pvEventHandleMeasure,
-						EventGroupHandle_t pvEventHandleNewData,
-						SemaphoreHandle_t pvPrintfSemaphore);
+	EventGroupHandle_t pvEventHandleNewData,
+	SemaphoreHandle_t pvPrintfSemaphore);
 
-/**
- * \brief if the data from the sensor is ready then the light bit in the event group is set
- * 
- * \param pvTsl2591ReturnCode	Return code to check the result
- * 
- */
+ /**
+  * \brief The callback function for the tsl2591 driver measuring.
+  * It retrieves the data (light value in lux) and signalizes the finished measurement.
+  *
+  * \param[in] pvTsl2591ReturnCode return code indicating the status of the finished measuring process
+  */
 void LightSensor_callback(tsl2591ReturnCode_t pvTsl2591ReturnCode); //in header for testing
 
+
 /**
- * \brief the last data that was taken from the sensor
- * 
- * 
- * \return the last measurement value from light sensor
+ * \brief Gets the last measurement in lux
+ *
+ * \returns last measured value from light sensor
  */
 float LightSensor_getLightMeasurement();
 
-//in header for testing
-void LightSensor_inLoop(); 
+//void LightSensor_inLoop(); //in header for testing

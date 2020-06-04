@@ -8,7 +8,7 @@
 //headers
 #include "sensor_control_task.h"
 #include "../handlers/sensor_data_package_handler.h"
-#include "lora_sensor_task.h"
+#include "lora_task.h"
 #include "light_sensor_task.h"
 #include "temperature_humidity_task.h"
 #include "co2_sensor_task.h"
@@ -146,7 +146,7 @@ void sensorControl_create()
 		_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
 
 	//create lora task
-	loraSensor_create(_sendingQueue, _xPrintfSemaphore);
+	lorawan_create(_sendingQueue, _xPrintfSemaphore);
 
 	//create co2 task
 	co2Sensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);

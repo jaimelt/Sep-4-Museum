@@ -1,63 +1,47 @@
-
-/*
-* temperature_humidity_task.h
-*
-* Created: 26/05/2020 12.39.34
-* Author: Fabian Bernhardt
-*/
-/************************************************************************/
-/*                      Temperature & Humidity				             /         */
-/************************************************************************/
-/*
- * The current header file represents all the tasks for 
- * Temperature/Humidity sensor create, callback and get 
-*/
+/**
+ * \file
+ * \brief Temperature/humidity sensor implementation using tasks
+ *
+ * \note Depends on hih8120.h
+ *
+ * \author Fabian Bernhardt
+ * \version 1.0.0
+ * \created 26/05/2020 12.39.34
+ */
 #pragma once
 
-//FreeRTOS
+ //FreeRTOS
 #include <ATMEGA_FreeRTOS.h>
 #include <semphr.h>
 #include <event_groups.h>
 #include <task.h>
 
-//drivers
-//The user manual for HIH8120 can be found here <a href="https://sensing.honeywell.com/i2c-comms-humidicon-tn-009061-2-en-final-07jun12.pdf">I2C Communication with the Honeywell HumidIcon Digital Humidity/Temperature Sensors (Version: 1.0)</a>
 #include <hih8120.h>
 
-//functions
 /**
- * \brief Setup the Temperature and Humidity driver 
- *	and creates a task to get new measurement from temperature and humidity sensor
- * 
- * \param pvEventHandleMeasure		Event group for measuring
- * \param pvEventHandleNewData		Event group for the retrieved new data
- * \param pvPrintfSemaphore			Semaphore to protect printf
- * 
- * \setting up the temperature/Humidity driver
- * \Create a task to get temperature and humidity  
- * \
+ * \brief Creates and initializes the temperature and humidity sensor
+ * (Creates the hih8120 driver; creates the temperature/humidity sensor task)
+ *
+ * \param[in] pvEventHandleMeasure		Event group used for triggering the start of a measurement; passed by the controller task
+ * \param[in] pvEventHandleNewData		Event group used for signalizing that a measurement is completed and the data can be retrieved
+ * \param[in] pPrintfSemaphore			Mutex for protecting printf function call
+ *
  */
 void temperatureHumiditySensor_create(EventGroupHandle_t pvEventHandleMeasure,
-                                      EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pPrintfSemaphore);
+	EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pPrintfSemaphore);
 
-/*
- * \brief in header for testing
- * 
- */
-void temperatureHumiditySensor_inLoop();
+//void temperatureHumiditySensor_inLoop(); //in header for testing
 
 /**
- * \brief the last data that was taken from the sensor
- * 
- * 
- * \return the last measurement(Humidity) value from Temperature/Humidity sensor
+ * \brief Gets the last measurement of humidity
+ *
+ * \returns last measured humidity value from temperature/humidity sensor
  */
 float temperatureHumiditySensor_getHumidity();
 
 /**
- * \brief the last data that was taken from the sensor
- * 
- * 
- * \return the last measurement(Temperature) value from Temperature/Humidity sensor
+ * \brief Gets the last measurement of temperature
+ *
+ * \returns last measured temperature value from temperature/humidity sensor
  */
 float temperatureHumiditySensor_getTemperature();

@@ -1,64 +1,51 @@
-/*
- * co2_sensor_task.h
+/**
+ * \file
+ * \brief Co2 sensor implementation using tasks
+ * \note Depends on mh_z19.h
  *
- * Created: 16/05/2020 11.15.11
- *  Author: Justinas Jancys, Fabian Bernhardt
+ * \authors Justinas Jancys, Fabian Bernhardt
+ * \version 1.0.0
+ *
+ * \created 16/05/2020 11.15.11
+ *
  */
-
-/************************************************************************/
-/*                           CO2		                                 /         */
-/************************************************************************/
-/*
-The current header file represents all the functionality for CO2 sensor
-*/
 #pragma once
 
 
-//FreeRTOS
+ //FreeRTOS
 #include <stdint.h>
 #include <ATMEGA_FreeRTOS.h>
 #include <semphr.h>
 #include <event_groups.h>
 #include <task.h>
 
-
 //drivers
-//The simple user manual for MH-Z19 can be found here <a href="https://www.winsen-sensor.com/d/files/PDF/Infrared%20Gas%20Sensor/NDIR%20CO2%20SENSOR/MH-Z19%20CO2%20Ver1.0.pdf">Intelligent Infrared CO2 Module
-//(Model: MH-Z19) User's Manual (Version: 1.0)</a>
 #include <mh_z19.h>
 
-
-
-//Functions
 /**
- * \brief Creates and sets up the driver by calling mh_z19_create() method for the co2 sensor and creates a the CO2 task
- * \ 
- * \param pvEventHandleMeasure		Event group for measuring
- * \param pvEventHandleNewData		Event group for the retrieved new data
- * \param pvPrintfSemaphore			Semaphore to protect printf
- * \
- * \the CO2 drivers are initialized
- * \CO2 task is created
- * \
+ * \brief Creates and initializes the co2 sensor (Creates the MH-Z19 driver; creates the co2 sensor task)
+ *
+ * \param[in] pvEventHandleMeasure		Event group used for triggering the start of a measurement; passed by the controller task
+ * \param[in] pvEventHandleNewData		Event group used for signalizing that a measurement is completed and the data can be retrieved
+ * \param[in] pPrintfSemaphore			Mutex for protecting printf function call
+ *
  */
 void co2Sensor_create(EventGroupHandle_t pvEventHandleMeasure,
-                      EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pPrintfSemaphore);
+	EventGroupHandle_t pvEventHandleNewData, SemaphoreHandle_t pPrintfSemaphore);
 
 /**
- * \brief set the bit to true to signalize that the measurement was completed
- * 
- * \param ppm will represent an 16 bits witch will represent the CO2 measure 
- * 
- * \ void
+ * \brief The callback function for the MH-Z19 driver measuring.
+ * It retrieves the data (co2 value in ppm) and signalizes the finished measurement. 
+ *
+ * \param[in] ppm value set by the MH-Z19 driver representing the measurement
  */
 void co2Sensor_callback(uint16_t ppm); //in header for testing
 
-void co2Sensor_inLoop(); //in header for testing
-
+//void co2Sensor_inLoop(); //in header for testing
 
 /**
- * \brief Gets the last data that was taken from the sensor
- * 
- * \returns the last measurement value from CO2 sensor
+ * \brief Gets the last measurement in ppm
+ *
+ * \returns last measured value from CO2 sensor
  */
 uint16_t co2sensor_getCo2();

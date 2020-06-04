@@ -207,10 +207,10 @@
     <Compile Include="src\tasks\light_sensor_task.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\tasks\lora_sensor_task.c">
+    <Compile Include="src\tasks\lora_task.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\tasks\lora_sensor_task.h">
+    <Compile Include="src\tasks\lora_task.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\tasks\sensor_control_task.c">

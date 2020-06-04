@@ -1,12 +1,15 @@
-/*
- * global_constants.h
+/**
+ * \file
+ * \brief Constants that can be accessed globally representing configuration data
  *
- * Created: 16/05/2020 10.46.56
- *  Author: Marina Ionel
+ * \author Marina Ionel
+ * \version 1.0.0
+ *
+ * \created 16/05/2020 10.46.56
  */
 #pragma once
 
-//Parameters for OTAA join
+ //Parameters for OTAA join
 #define LORA_appEUI "e8ba58083fa48824"
 
 #define LORA_appKEY "33a1fd9d394852209520d4bf0c15bfda"

@@ -1,16 +1,17 @@
-/*
- * sensor_control_task.h
+/**
+ * \file
+ * \brief Sensor control task implementation
  *
- * Created: 16/05/2020 10.20.54
- *  Author: Marina Ionel
+ * \author Marina Ionel
+ * \version 1.0.0
+ * \created 16/05/2020 10.20.54
  */
 
 #pragma once
 
-//functions
-/**
- * \First step when the program runs
- * \brief Creates all the tasks(sensors): LoRa, Co2, Temperature/Humidity, Light and RC Servo sensors 
- * \
- */
+ //functions
+ /**
+  * \brief Creates the sensor control task, the rcServo handler and all the dependent tasks: LoRa, Co2, Temperature/Humidity, Light
+  *
+  */
 void sensorControl_create();

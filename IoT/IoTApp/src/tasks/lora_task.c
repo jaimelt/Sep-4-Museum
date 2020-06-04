@@ -1,12 +1,12 @@
 /*
-* lora_sensor_task.c
+* lora_task.c
 *
 * Created: 16/05/2020 11.33.49
 *  Author: Marina Ionel
 */
 
 //header
-#include "lora_sensor_task.h"
+#include "lora_task.h"
 
 //required libraries
 #include <stdio.h>
@@ -35,10 +35,6 @@ static char _out_buf[100];
 
 static void _setup_lora_driver()
 {
-	//hal_create(LED_TASK_PRIORITY);
-	// Initialize the LoRaWAN driver without down-link buffer
-	//lora_driver_create(LORA_USART, NULL);
-
 	e_LoRa_return_code_t rc;
 	led_slow_blink(led_ST2); // OPTIONAL: Led the green led blink slowly while we are setting up LoRa
 
@@ -156,7 +152,7 @@ static void _init_hal()
 	lora_driver_create(LORA_USART, NULL);
 }
 
-void loraSensor_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore)
+void lorawan_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore)
 {
 	_receivingQueue = pQueue;
 	_xPrintfSemaphore = pPrintfSemaphore;
