@@ -1,38 +1,34 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace WebApplication.Datamodel
 {
     public class RoomMeasurement
     {
-        [BsonRepresentation(BsonType.ObjectId)]
+        public RoomMeasurement(int id, decimal light, decimal temperature, decimal humidity, decimal co2, string roomNo)
+        {
+            Id = id;
+            Light = light;
+            Temperature = temperature;
+            Humidity = humidity;
+            Co2 = co2;
+            this.roomNo = roomNo;
+        }
 
-        public string MongoId;
+        public RoomMeasurement()
+        {
+        }
         
-        [Key] 
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
+        [Column(TypeName = "decimal(8,4)")] public decimal Light { get; set; }
+        [Column(TypeName = "decimal(8,4)")] public decimal Temperature { get; set; }
+        [Column(TypeName = "decimal(8,4)")] public decimal Humidity { get; set; }
+        [Column(TypeName = "decimal(8,4)")] public decimal Co2 { get; set; }
         
-        [Column(TypeName = "decimal(8,4)")]
-        public decimal Light { get; set; }
-        [Column(TypeName = "decimal(8,4)")]
-  
-        public decimal Temperature { get; set; }
-        [Column(TypeName = "decimal(8,4)")] 
-     
-        public decimal Humidity { get; set; }
-        [Column(TypeName = "decimal(8,4)")] 
-       
-        public decimal Co2 { get; set; }
-        
-       
         public DateTime MeasurementDate { get; set; }
-        
-        public string roomNo { get; set; }
 
-     
+        public string roomNo { get; set; }
 
 
         public void setroomNoFromInt(int roomNo)
@@ -77,6 +73,8 @@ namespace WebApplication.Datamodel
             Humidity = mongoMeasurement.humidity;
             Light = mongoMeasurement.light;
             Temperature = mongoMeasurement.temperature;
+            MeasurementDate = mongoMeasurement.time;
+            Console.WriteLine(mongoMeasurement.time);
             setroomNoFromInt(mongoMeasurement.room_no);
         }
     }

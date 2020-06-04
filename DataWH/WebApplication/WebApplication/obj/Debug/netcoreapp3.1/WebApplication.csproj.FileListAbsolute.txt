@@ -136,7 +136,6 @@
 /Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/obj/Debug/netcoreapp3.1/WebApplication.dll
 /Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/obj/Debug/netcoreapp3.1/WebApplication.pdb
 /Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/obj/Debug/netcoreapp3.1/WebApplication.genruntimeconfig.cache
-/Users/Florinelx/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Dapper.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/appsettings.Development.json
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/appsettings.json
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
@@ -146,9 +145,6 @@ C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplicatio
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/WebApplication.runtimeconfig.dev.json
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/WebApplication.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/WebApplication.pdb
-C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/ADONetHelper.dll
-C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/ADONetHelper.Core.dll
-C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/ADONetHelper.SqlServer.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Dapper.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/DnsClient.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Microsoft.Data.SqlClient.dll
@@ -164,7 +160,6 @@ C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplicatio
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyModel.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
@@ -189,7 +184,6 @@ C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplicatio
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/System.Runtime.Caching.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/System.Security.Cryptography.ProtectedData.dll
-C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/System.Text.Json.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/Microsoft.Data.SqlClient.dll
 C:/Users/Jaime/Documents/GitHub/Sep-4-Museum/DATAWH/WebApplication/WebApplication/bin/Debug/netcoreapp3.1/runtimes/win/native/libzstd.dll
@@ -222,7 +216,6 @@ C:\Users\Florinel\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication\WebApplica
 C:\Users\Florinel\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\WebApplication.runtimeconfig.dev.json
 C:\Users\Florinel\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\WebApplication.dll
 C:\Users\Florinel\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\WebApplication.pdb
-C:\Users\Florinel\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\Dapper.dll
 C:\Users\Florinel\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\DnsClient.dll
 C:\Users\Florinel\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\Florinel\Documents\GitHub\Sep-4-Museum\DATAWH\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll

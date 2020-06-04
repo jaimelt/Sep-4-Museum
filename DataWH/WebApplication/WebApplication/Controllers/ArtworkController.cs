@@ -39,7 +39,7 @@ namespace WebApplication.Controllers
         [HttpGet("getall")]
         public async Task<IActionResult> getallArtworks()
         {
-            StageDim.PopulateStageDimDate();
+           
             try
             {
                 ArtworkList artworkList = new ArtworkList();
@@ -227,7 +227,7 @@ namespace WebApplication.Controllers
 
                 artworkRepository.UpdateArtwork(artwork);
                 await artworkRepository.saveChanges();
-                return NoContent();
+                return Ok("Artwork has been edited");
             }
             catch (Exception exception)
             {

@@ -8,10 +8,12 @@ namespace WebApplication.MongoDB
 {
     public interface IMongoRepository
     {
-        RoomMeasurement loadActualMeasurement(int roomNo);
-        ICollection<MongoMeasurement> LoadAllMeasurements();
+  
+        RoomMeasurementList LoadAllMeasurements();
         ICollection<MongoMeasurement> LoadMeasurementsFromDate(DateTime dateTime);
 
         MongoMeasurement LoadLastRoomMeasurement(int room_no);
+        RoomMeasurementList LoadAllRoomLastMeasurements();
+        int modifyToMongoRoomID(string room_no);
     }
 }

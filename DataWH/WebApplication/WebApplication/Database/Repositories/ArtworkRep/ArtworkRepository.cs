@@ -59,7 +59,7 @@ namespace WebApplication.Database.Repositories.ArtworkRep
 
      
 
-        public void MoveArtwork(int artId, string location)
+        public string MoveArtwork(int artId, string location)
         {
             var artworkobject = context.Artworks.Find(artId);
             artworkobject.Location = location; 
@@ -85,11 +85,21 @@ namespace WebApplication.Database.Repositories.ArtworkRep
                 previousroom.CurrentCapacity--;
             }
 
-            newRoom.ArtworkList = new List<Artwork>();
-            newRoom.ArtworkList.Add(artworkobject);
-            newRoom.CurrentCapacity++; 
+            
+            if (newRoom.CurrentCapacity != newRoom.TotalCapacity)
+            { newRoom.ArtworkList = new List<Artwork>();
+                newRoom.ArtworkList.Add(artworkobject);
+                newRoom.CurrentCapacity++;
+            }
+            else
+            {
+                return "Storage is full, artwork is not assigned to any room";
+            }
 
-           context.SaveChanges();
+            context.SaveChanges();
+            return "Room has been added to the Storage";
+
+           
         }
 
         
