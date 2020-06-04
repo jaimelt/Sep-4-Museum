@@ -147,31 +147,39 @@ public class EditArtworkActivity extends AppCompatActivity {
         int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
 
-        String name = "";
-        if (!nameField.getText().toString().isEmpty()) {
-            name = nameField.getText().toString();
-        } else {
-            name = nameField.getHint().toString();
-        }
-
+        String name = nameField.getText().toString();
         String author = authorField.getText().toString();
-        String type = selectedRadioButtonType.getText().toString();
-        String location = selectedRadioButtonLocation.getText().toString();
-        String description = descriptionField.getText().toString();
-        String comment = commentsField.getText().toString();
-        String image = convertImageToString();
-        int minTempInt = Integer.parseInt(minTemp.getText().toString());
-        int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
-        int minLightInt = Integer.parseInt(minLight.getText().toString());
-        int maxLightInt = Integer.parseInt(maxLight.getText().toString());
-        int minCO2Int = Integer.parseInt(minCO2.getText().toString());
-        int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
-        int minHumInt = Integer.parseInt(minHum.getText().toString());
-        int maxHumInt = Integer.parseInt(maxHum.getText().toString());
-        editArtworkViewModel.editArtwork(artworkID, name, author, type, location, description, comment, image, artworkPosition, maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
-
-        finish();
-        Toast.makeText(this, name + " artwork edited", Toast.LENGTH_SHORT).show();
+        int validation = editArtworkViewModel.validate(name, author);
+        switch (validation) {
+            case 1:
+                nameField.setError("Enter the name of the artwork");
+                break;
+            case 2:
+                nameField.setError("Wrong input");
+                break;
+            case 3:
+                authorField.setError("Enter the name of the author");
+                break;
+            case 4:
+                authorField.setError("Wrong input");
+                break;
+            case 5:
+                String type = selectedRadioButtonType.getText().toString();
+                String location = selectedRadioButtonLocation.getText().toString();
+                String description = descriptionField.getText().toString();
+                String comment = commentsField.getText().toString();
+                String image = convertImageToString();
+                int minTempInt = Integer.parseInt(minTemp.getText().toString());
+                int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
+                int minLightInt = Integer.parseInt(minLight.getText().toString());
+                int maxLightInt = Integer.parseInt(maxLight.getText().toString());
+                int minCO2Int = Integer.parseInt(minCO2.getText().toString());
+                int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
+                int minHumInt = Integer.parseInt(minHum.getText().toString());
+                int maxHumInt = Integer.parseInt(maxHum.getText().toString());
+                editArtworkViewModel.editArtwork(artworkID, name, author, type, location, description, comment, image, artworkPosition, maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
+                finish();
+        }
     }
 
     public void onEditLocation(View view) {
@@ -181,7 +189,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         String location = selectedRadioButtonLocation.getText().toString();
         editArtworkViewModel.moveArtwork(artworkID, location);
         moveBtn.setVisibility(View.GONE);
-        
+
     }
 
     private String convertImageToString() {

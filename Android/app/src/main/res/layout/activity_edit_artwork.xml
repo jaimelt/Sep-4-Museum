@@ -71,7 +71,7 @@
                     android:importantForAutofill="no"
                     android:inputType="textNoSuggestions"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/grey"
                     tools:ignore="LabelFor" />
 
                 <LinearLayout

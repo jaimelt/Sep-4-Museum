@@ -1,14 +1,11 @@
 package com.example.android_sep4.viewmodel.artwork;
 
 import android.app.Application;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Artwork;
-import com.example.android_sep4.model.ArtworkMeasurements;
 import com.example.android_sep4.model.Validator;
 import com.example.android_sep4.repositories.ArtworksRepository;
 
@@ -31,7 +28,7 @@ public class NewArtworkViewModel extends AndroidViewModel {
     }
 
     public int validateFields(String name, String author, String description, String comment, String image, int minTempInt, int maxTempInt, int minLightInt, int maxLightInt, int minCO2Int, int maxCO2Int, int maxHumInt, int minHumInt) {
-      return validator.validateFieldsArtwork(name, author, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
+      return validator.validateAddArtworkFields(name, author, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
     }
 
     public boolean validateGroup(RadioGroup radioGroup)

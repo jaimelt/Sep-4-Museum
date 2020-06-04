@@ -1,22 +1,24 @@
 package com.example.android_sep4.viewmodel.artwork;
 
 import android.app.Application;
-import android.widget.RadioGroup;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.model.Validator;
 import com.example.android_sep4.repositories.ArtworksRepository;
 
 public class EditArtworkViewModel extends AndroidViewModel {
     private ArtworksRepository artworksRepository;
     private int id;
+    private Validator validator;
 
     public EditArtworkViewModel(Application application, int id) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
         this.id = id;
+        validator = new Validator();
     }
 
     public void editArtwork(int id, String name, String author, String type, String location, String description, String comment, String image, int position, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
@@ -30,5 +32,9 @@ public class EditArtworkViewModel extends AndroidViewModel {
 
     public void moveArtwork(int artworkID, String location) {
         artworksRepository.moveArtwork(artworkID, location);
+    }
+
+    public int validate(String name, String author) {
+        return validator.validateEditArtworkFields(name, author);
     }
 }

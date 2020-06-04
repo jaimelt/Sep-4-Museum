@@ -119,6 +119,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         if(!typeBoolean)
         {
             Toast.makeText(this, "Select the type of the artwork", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         switch (validation) {

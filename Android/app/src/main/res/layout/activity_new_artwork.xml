@@ -84,7 +84,7 @@
                     android:inputType="textNoSuggestions"
                     android:maxWidth="200dp"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/grey"
                     tools:ignore="LabelFor" />
 
                 <LinearLayout

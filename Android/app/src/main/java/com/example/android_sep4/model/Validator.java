@@ -1,7 +1,5 @@
 package com.example.android_sep4.model;
 
-import android.widget.RadioGroup;
-
 import androidx.core.util.PatternsCompat;
 
 public class Validator {
@@ -23,7 +21,7 @@ public class Validator {
         }
     }
 
-    public int validateFieldsArtwork(String name, String author, String description, String comment, String image, int minTempInt, int maxTempInt, int minLightInt, int maxLightInt, int minCO2Int, int maxCO2Int, int maxHumInt, int minHumInt) {
+    public int validateAddArtworkFields(String name, String author, String description, String comment, String image, int minTempInt, int maxTempInt, int minLightInt, int maxLightInt, int minCO2Int, int maxCO2Int, int maxHumInt, int minHumInt) {
         if (name.isEmpty()) {
             return 1;
         } else if (author.isEmpty()) {
@@ -50,10 +48,10 @@ public class Validator {
             return 12;
         } else if (maxLightInt <= 0) {
             return 13;
-        } else if (!hasSymbols(name)){
+        } else if (!hasAllowedSymbols(name)){
             return 14;
         }
-        else if(!hasSymbols(author)) {
+        else if(!hasAllowedSymbols(author)) {
             return 15;
         }
         else return 16;
@@ -82,7 +80,29 @@ public class Validator {
         }
     }
 
-    private boolean hasSymbols(String string) {
+    private boolean hasAllowedSymbols(String string) {
         return string.matches(NON_NORMAL_CHARACTERS_PATTERN);
+    }
+
+    public int validateEditArtworkFields(String name, String author) {
+        if(name.isEmpty())
+        {
+            return 1;
+        }
+        else if(!hasAllowedSymbols(name))
+        {
+            return 2;
+        }
+        else if(author.isEmpty())
+        {
+            return 3;
+        }
+        else if(!hasAllowedSymbols(author))
+        {
+            return 4;
+        }
+        else {
+            return 5;
+        }
     }
 }
