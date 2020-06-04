@@ -1,4 +1,3 @@
-// More testing can be performed with artwork Id 148, 149
 
 
 GET https://localhost:5001/artworks/getall
@@ -20,7 +19,7 @@ POST https://localhost:5001/artworks/createartwork
 Content-Type: application/json
 
 {
-  "name": "Object 1 for testing",
+  "name": "Object  for testing",
   "description": "Object 1 for testing",
   "image": "Object 1 for testing",
   "type": "Drawing",
@@ -67,6 +66,7 @@ Content-Type: application/json
 ###
 
 
-
-DELETE https://localhost:5001/artworks/delete/156
+DELETE https://localhost:5001/artworks/delete/164
 Accept: application/json
+
+###

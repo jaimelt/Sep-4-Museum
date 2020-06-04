@@ -154,8 +154,11 @@ namespace WebApplication.Controllers
                     return NotFound();
                 }
 
+                var room = await RoomRepository.GetRoomByLocationCodeAsync(artwork.Location);
+                
+
                 artworkRepository.DeleteArtwork(artwork);
-                await artworkRepository.saveChanges();
+             
 
                 return Ok("Artwork has been deleted");
             }
