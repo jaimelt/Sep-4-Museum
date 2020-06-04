@@ -45,7 +45,6 @@ public class RoomsAPIClient {
                 Log.i(TAG, "onResponse: success!");
                 if (response.isSuccessful() && response.body() != null) {
                     Rooms rooms = response.body();
-                    System.out.println(rooms.getRooms().get(1).getLiveRoomMeasurements().getCo2());
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
                     boolean prefTemperature = sharedPreferences.getBoolean(application.getString(R.string.pref_temperature_key), application.getResources().getBoolean(R.bool.pref_temperature_default));
                     if(!prefTemperature)

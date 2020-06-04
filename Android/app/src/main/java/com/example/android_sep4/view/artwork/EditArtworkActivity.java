@@ -155,13 +155,13 @@ public class EditArtworkActivity extends AppCompatActivity {
                 nameField.setError("Enter the name of the artwork");
                 break;
             case 2:
-                nameField.setError("Wrong input");
+                nameField.setError("Invalid input on name");
                 break;
             case 3:
                 authorField.setError("Enter the name of the author");
                 break;
             case 4:
-                authorField.setError("Wrong input");
+                authorField.setError("Invalid input on author name");
                 break;
             case 5:
                 String type = selectedRadioButtonType.getText().toString();
