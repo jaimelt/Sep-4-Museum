@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Entity(foreignKeys = {
@@ -16,68 +17,91 @@ import com.google.gson.annotations.SerializedName;
 public class RoomMeasurements {
     @PrimaryKey
     @NonNull
-    private String id;
+    @SerializedName("id")
+    @Expose
+    private int id;
+    @SerializedName("light")
+    @Expose
     private double light;
     @SerializedName("temperature")
-    private int temp;
-    private int humidity;
-    private int co2;
+    @Expose
+    private double temperature;
+    @SerializedName("humidity")
+    @Expose
+    private double humidity;
+    @SerializedName("co2")
+    @Expose
+    private double co2;
+    @SerializedName("measurementDate")
+    @Expose
+    private String measurementDate;
+    @SerializedName("roomNo")
+    @Expose
+    private String roomNo;
 
-    public RoomMeasurements(double light, int temp, int humidity, int co2) {
+
+    public RoomMeasurements(String locationCode, double light, double temp, double humidity, double co2) {
+        this.roomNo = locationCode;
         this.light = light;
-        this.temp = temp;
+        this.temperature = temp;
         this.humidity = humidity;
         this.co2 = co2;
     }
 
-    public RoomMeasurements(String locationCode, double light, int temp, int humidity, int co2) {
-        id = locationCode;
-        this.light = light;
-        this.temp = temp;
-        this.humidity = humidity;
-        this.co2 = co2;
+    public String getMeasurementDate() {
+        return measurementDate;
     }
 
-    public String getId() {
+    public void setMeasurementDate(String measurementDate) {
+        this.measurementDate = measurementDate;
+    }
+
+    public String getRoomNo() {
+        return roomNo;
+    }
+
+    public void setRoomNo(String roomNo) {
+        this.roomNo = roomNo;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public int getCo2() {
+    public double getCo2() {
         return co2;
     }
 
-    public void setCo2(int co2) {
+    public void setCo2(double co2) {
         this.co2 = co2;
     }
 
-    public int getTemp() {
-        return temp;
+    public double getTemp() {
+        return temperature;
     }
 
-    public void setTemp(int temp) {
-        this.temp = temp;
+    public void setTemp(double temp) {
+        this.temperature = temp;
     }
 
     public double getLight() {
         return light;
     }
 
-    public void setLight(int light) {
+    public void setLight(double light) {
         this.light = light;
     }
 
-    public int getHumidity() {
+    public double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(int humidity) {
+    public void setHumidity(double humidity) {
         this.humidity = humidity;
     }
-
-
 
 }

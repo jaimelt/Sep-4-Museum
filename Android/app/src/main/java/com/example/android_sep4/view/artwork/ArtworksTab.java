@@ -26,7 +26,6 @@ import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.ArtworksAdapter;
 import com.example.android_sep4.view.AccountActivity;
 import com.example.android_sep4.view.settings.SettingsActivity;
-import com.example.android_sep4.view.VisitorsActivity;
 import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -114,18 +113,17 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
         MenuItem searchItem = menu.findItem(R.id.search);
         MenuItem manageAccountsItem = menu.findItem(R.id.manageAccounts);
         MenuItem settingsItem = menu.findItem(R.id.settings);
-        MenuItem visitorsItem = menu.findItem(R.id.visitors);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
                 return false;
             }
 
             //To have real time filtering
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -137,11 +135,6 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
 
         settingsItem.setOnMenuItemClickListener(item -> {
             startActivity(new Intent(getContext(), SettingsActivity.class));
-            return true;
-        });
-
-        visitorsItem.setOnMenuItemClickListener(item -> {
-            startActivity(new Intent(getContext(), VisitorsActivity.class));
             return true;
         });
     }

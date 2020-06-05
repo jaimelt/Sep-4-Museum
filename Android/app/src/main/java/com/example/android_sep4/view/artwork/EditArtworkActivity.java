@@ -2,9 +2,11 @@ package com.example.android_sep4.view.artwork;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -42,6 +44,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private EditText minHum;
     private EditText maxHum;
     private EditText commentsField;
+    private Button moveBtn;
     private int artworkID;
     private int artworkPosition;
 
@@ -90,9 +93,9 @@ public class EditArtworkActivity extends AppCompatActivity {
         //TODO: How to set image
 
         nameField.setText(artwork.getName());
-        authorField.setHint(artwork.getAuthor());
-        descriptionField.setHint(artwork.getDescription());
-        commentsField.setHint(artwork.getComment());
+        authorField.setText(artwork.getAuthor());
+        descriptionField.setText(artwork.getDescription());
+        commentsField.setText(artwork.getComment());
 //        imageHolder.setImageURI(editArtworkViewModel.getImage());
 
         String type = artwork.getType();
@@ -143,31 +146,50 @@ public class EditArtworkActivity extends AppCompatActivity {
 
         int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
-        String name = "";
-        if (!nameField.getText().toString().isEmpty()) {
-            name = nameField.getText().toString();
-        } else {
-            name = nameField.getHint().toString();
-        }
 
+        String name = nameField.getText().toString();
         String author = authorField.getText().toString();
-        String type = selectedRadioButtonType.getText().toString();
-        String location = selectedRadioButtonLocation.getText().toString();
-        String description = descriptionField.getText().toString();
-        String comment = commentsField.getText().toString();
-        String image = convertImageToString();
-        int minTempInt = Integer.parseInt(minTemp.getText().toString());
-        int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
-        int minLightInt = Integer.parseInt(minLight.getText().toString());
-        int maxLightInt = Integer.parseInt(maxLight.getText().toString());
-        int minCO2Int = Integer.parseInt(minCO2.getText().toString());
-        int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
-        int minHumInt = Integer.parseInt(minHum.getText().toString());
-        int maxHumInt = Integer.parseInt(maxHum.getText().toString());
-        editArtworkViewModel.editArtwork(artworkID, name, author, type, location, description, comment, image, artworkPosition, maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
+        int validation = editArtworkViewModel.validate(name, author);
+        switch (validation) {
+            case 1:
+                nameField.setError("Enter the name of the artwork");
+                break;
+            case 2:
+                nameField.setError("Invalid input on name");
+                break;
+            case 3:
+                authorField.setError("Enter the name of the author");
+                break;
+            case 4:
+                authorField.setError("Invalid input on author name");
+                break;
+            case 5:
+                String type = selectedRadioButtonType.getText().toString();
+                String location = selectedRadioButtonLocation.getText().toString();
+                String description = descriptionField.getText().toString();
+                String comment = commentsField.getText().toString();
+                String image = convertImageToString();
+                int minTempInt = Integer.parseInt(minTemp.getText().toString());
+                int maxTempInt = Integer.parseInt(maxTemp.getText().toString());
+                int minLightInt = Integer.parseInt(minLight.getText().toString());
+                int maxLightInt = Integer.parseInt(maxLight.getText().toString());
+                int minCO2Int = Integer.parseInt(minCO2.getText().toString());
+                int maxCO2Int = Integer.parseInt(maxCO2.getText().toString());
+                int minHumInt = Integer.parseInt(minHum.getText().toString());
+                int maxHumInt = Integer.parseInt(maxHum.getText().toString());
+                editArtworkViewModel.editArtwork(artworkID, name, author, type, location, description, comment, image, artworkPosition, maxLightInt, minLightInt, maxTempInt, minTempInt, maxHumInt, minHumInt, maxCO2Int, minCO2Int);
+                finish();
+        }
+    }
 
-        finish();
-        Toast.makeText(this, name + " artwork edited", Toast.LENGTH_SHORT).show();
+    public void onEditLocation(View view) {
+        int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
+        RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
+
+        String location = selectedRadioButtonLocation.getText().toString();
+        editArtworkViewModel.moveArtwork(artworkID, location);
+        moveBtn.setVisibility(View.GONE);
+
     }
 
     private String convertImageToString() {
@@ -195,6 +217,7 @@ public class EditArtworkActivity extends AppCompatActivity {
         maxCO2 = findViewById(R.id.maxCO2);
         minHum = findViewById(R.id.minHum);
         maxHum = findViewById(R.id.maxHum);
+        moveBtn = findViewById(R.id.moveBtn);
     }
 
 

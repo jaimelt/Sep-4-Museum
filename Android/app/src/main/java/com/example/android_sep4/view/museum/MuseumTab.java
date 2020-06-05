@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.android_sep4.R;
 import com.example.android_sep4.view.AccountActivity;
 import com.example.android_sep4.view.settings.SettingsActivity;
-import com.example.android_sep4.view.VisitorsActivity;
-import com.example.android_sep4.view.room.StorageActivity;
+import com.example.android_sep4.view.museum.storage.StorageActivity;
 import com.example.android_sep4.view.museum.rooms.RoomA1Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA2Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA3Activity;
@@ -72,7 +70,6 @@ public class MuseumTab extends Fragment {
         MenuItem searchItem = menu.findItem(R.id.search);
         MenuItem manageItem = menu.findItem(R.id.manageAccounts);
         MenuItem settingsItem = menu.findItem(R.id.settings);
-        MenuItem visitorsItem = menu.findItem(R.id.visitors);
         searchItem.setVisible(false);
 
         manageItem.setOnMenuItemClickListener(item -> {
@@ -82,11 +79,6 @@ public class MuseumTab extends Fragment {
 
         settingsItem.setOnMenuItemClickListener(item -> {
             startActivity(new Intent(getContext(), SettingsActivity.class));
-            return true;
-        });
-
-        visitorsItem.setOnMenuItemClickListener(item -> {
-            startActivity(new Intent(getContext(), VisitorsActivity.class));
             return true;
         });
 

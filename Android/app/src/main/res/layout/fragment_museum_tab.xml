@@ -6,20 +6,26 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/museum_layout"
     tools:context=".view.museum.MuseumTab">
+
+    <!-- TODO: Update blank fragment layout -->
 
     <Button
         android:id="@+id/storage"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp"
         android:background="@drawable/button_background"
-        android:textSize="17sp"
         android:text="@string/storage"
         android:textAllCaps="false"
-        android:layout_margin="20dp"/>
-    <!-- TODO: Update blank fragment layout -->
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/room_museum"
@@ -35,6 +41,7 @@
         app:srcCompat="@drawable/museum_graph" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/room_a1"
         android:layout_width="61dp"
         android:layout_height="68dp"
@@ -48,6 +55,7 @@
         app:layout_constraintVertical_bias="0.559" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/room_a2"
         android:layout_width="106dp"
         android:layout_height="58dp"
@@ -61,6 +69,7 @@
         app:layout_constraintVertical_bias="0.3" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/room_a3"
         android:layout_width="143dp"
         android:layout_height="25dp"
@@ -74,6 +83,7 @@
         app:layout_constraintVertical_bias="0.143" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/room_b1"
         android:layout_width="68dp"
         android:layout_height="39dp"
@@ -87,6 +97,7 @@
         app:layout_constraintVertical_bias="0.264" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/room_b2"
         android:layout_width="47dp"
         android:layout_height="69dp"
@@ -100,6 +111,7 @@
         app:layout_constraintVertical_bias="0.204" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/room_b3"
         android:layout_width="75dp"
         android:layout_height="152dp"
@@ -113,6 +125,7 @@
         app:layout_constraintVertical_bias="0.868" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/room_b4"
         android:layout_width="86dp"
         android:layout_height="41dp"

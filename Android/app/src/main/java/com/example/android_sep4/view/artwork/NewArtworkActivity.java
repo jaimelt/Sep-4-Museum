@@ -114,7 +114,13 @@ public class NewArtworkActivity extends AppCompatActivity {
             maxHumInt = Integer.parseInt(maxHum.getText().toString());
         }
 
-        int validation = newArtworkViewModel.validateFields(name, author, typeGroup, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
+        int validation = newArtworkViewModel.validateFields(name, author, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
+        boolean typeBoolean = newArtworkViewModel.validateGroup(typeGroup);
+        if(!typeBoolean)
+        {
+            Toast.makeText(this, "Select the type of the artwork", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         switch (validation) {
             case 1:
@@ -124,42 +130,49 @@ public class NewArtworkActivity extends AppCompatActivity {
                 authorField.setError("Enter the author of the artwork");
                 break;
             case 3:
-                Toast.makeText(this, "Select the type of the artwork", Toast.LENGTH_SHORT).show();
-                break;
-            case 4:
                 descriptionField.setError("Enter the description of the artwork");
                 break;
-            case 5:
+            case 4:
                 commentField.setError("Enter the comment of the artwork");
                 break;
-            case 6:
+            case 5:
                 Toast.makeText(this, "Select the image of the artwork", Toast.LENGTH_SHORT).show();;
                 break;
-            case 7:
+            case 6:
                 minTemp.setError("Enter the minimum temperature of the artwork");
                 break;
-            case 8:
+            case 7:
                 maxTemp.setError("Enter the maximum temperature of the artwork");
                 break;
-            case 9:
+            case 8:
                 minCO2.setError("Enter the minimum CO2 value of the artwork");
                 break;
-            case 10:
+            case 9:
                 maxCO2.setError("Enter the maximum CO2 value of the artwork");
                 break;
-            case 11:
+            case 10:
                 minHum.setError("Enter the minimum humidity of the artwork");
                 break;
-            case 12:
+            case 11:
                 maxHum.setError("Enter the maximum humidity of the artwork");
                 break;
-            case 13:
+            case 12:
                 minLight.setError("Enter the minimum light value of the artwork");
                 break;
-            case 14:
+            case 13:
                 maxLight.setError("Enter the maximum light value of the artwork");
                 break;
+            case 14:
+                nameField.setError("Invalid input on name");
+                break;
             case 15:
+                authorField.setError("Invalid input on author name");
+                break;
+            case 16:
+                if(!typeBoolean)
+                {
+                    break;
+                }
                 String type = selectedRadioButton.getText().toString();
                 newArtworkViewModel.addArtwork(name, author, type, description, comment, image, "Storage", minCO2Int, maxCO2Int, minHumInt, maxHumInt, minLightInt, maxLightInt, minTempInt, maxTempInt);
                 finish();

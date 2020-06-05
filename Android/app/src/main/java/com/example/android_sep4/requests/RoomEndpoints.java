@@ -18,16 +18,9 @@ public interface RoomEndpoints {
     @GET("/rooms/getall")
     Call<Rooms> getRoomsDetails();
 
-    @GET("rooms/{locationCode}")
-    Call<Room> getRoomByLocation(@Path("locationCode") String locationCode);
-
-    @GET("get/{id}")
-    Call<Room> getRoomById(@Path("id") String id);
-
-    @GET("/artworks?roomCode={roomCode}")
-    Call<Artworks> getArtworksByRoomId(@Path("roomCode") String roomCode);
-
-    @PUT("/put/{id}")
+    @PUT("rooms/put/{id}")
     Call<Room> editOptimalConditions(@Path("id") String id, @Body Room room);
 
+/*    @GET("/measurements/{roomCode}")
+    Call<RoomMeasurements> getLiveRoomMeasurements(@Path("roomCode") String roomCode);*/
 }

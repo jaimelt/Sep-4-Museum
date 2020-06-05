@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.Nullable;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -12,15 +11,8 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Entity(foreignKeys = {
-        @ForeignKey(
-                entity = Room.class,
-                parentColumns = "location_code",
-                childColumns = "room_code"
-        )})
-public class Artwork implements Parcelable {
+public class Artwork {
 
-    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
     private int id;
@@ -49,59 +41,49 @@ public class Artwork implements Parcelable {
     @Expose
     private String author;
 
-    @ColumnInfo(name = "room_code")
     @SerializedName("location")
     @Expose
     private String roomCode;
 
-    @ColumnInfo(name = "artwork_position")
     @SerializedName("artworkPosition")
     @Expose
     private int artworkPosition;
 
-    @ColumnInfo(name = "max_light")
     @SerializedName("maxLight")
     @Expose
     @Nullable
     private int maxLight;
 
-    @ColumnInfo(name = "min_light")
     @SerializedName("minLight")
     @Expose
     @Nullable
     private int minLight;
 
-    @ColumnInfo(name = "max_temperature")
     @SerializedName("maxTemperature")
     @Expose
     @Nullable
     private int maxTemperature;
 
-    @ColumnInfo(name = "min_temperature")
     @SerializedName("minTemperature")
     @Expose
     @Nullable
     private int minTemperature;
 
-    @ColumnInfo(name = "max_humidity")
     @SerializedName("maxHumidity")
     @Expose
     @Nullable
     private int maxHumidity;
 
-    @ColumnInfo(name = "min_humidity")
     @SerializedName("minHumidity")
     @Expose
     @Nullable
     private int minHumidity;
 
-    @ColumnInfo(name = "max_co2")
     @SerializedName("maxCo2")
     @Expose
     @Nullable
     private int maxCo2;
 
-    @ColumnInfo(name = "min_co2")
     @SerializedName("minCo2")
     @Expose
     @Nullable
@@ -150,38 +132,6 @@ public class Artwork implements Parcelable {
         this.maxCo2 = maxCo2;
         this.minCo2 = minCo2;
     }
-
-    protected Artwork(Parcel in) {
-        id = in.readInt();
-        name = in.readString();
-        description = in.readString();
-        comment = in.readString();
-        image = in.readString();
-        type = in.readString();
-        author = in.readString();
-        roomCode = in.readString();
-        artworkPosition = in.readInt();
-        maxLight = in.readInt();
-        minLight = in.readInt();
-        maxTemperature = in.readInt();
-        minTemperature = in.readInt();
-        maxHumidity = in.readInt();
-        minHumidity = in.readInt();
-        maxCo2 = in.readInt();
-        minCo2 = in.readInt();
-    }
-
-    public static final Creator<Artwork> CREATOR = new Creator<Artwork>() {
-        @Override
-        public Artwork createFromParcel(Parcel in) {
-            return new Artwork(in);
-        }
-
-        @Override
-        public Artwork[] newArray(int size) {
-            return new Artwork[size];
-        }
-    };
 
     public int getId() {
         return id;
@@ -319,20 +269,4 @@ public class Artwork implements Parcelable {
         this.minCo2 = minCo2;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeString(name);
-        parcel.writeString(description);
-        parcel.writeString(image);
-        parcel.writeString(type);
-        parcel.writeString(author);
-        parcel.writeString(roomCode);
-        parcel.writeInt(artworkPosition);
-    }
 }

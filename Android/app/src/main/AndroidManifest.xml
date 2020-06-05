@@ -14,12 +14,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.museum.rooms.EmptyArtworkActivity"
             android:theme="@style/AppTheme.PopUpTheme"/>
-        <activity android:name=".view.VisitorsActivity" />
-        <activity android:name=".view.settings.SettingsActivity" />
+        <activity android:name=".view.settings.SettingsActivity"
+            android:parentActivityName=".view.MainActivity"/>
         <activity
             android:name=".view.AccountActivity"
             android:parentActivityName=".view.MainActivity" />
-        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.MainActivity" />
+
         <activity
             android:name=".view.museum.rooms.ArtworkDetails"
             android:theme="@style/AppTheme.PopUpTheme" />
@@ -30,22 +31,27 @@
         <activity android:name=".view.museum.rooms.RoomA3Activity" />
         <activity android:name=".view.museum.rooms.RoomA2Activity" />
         <activity android:name=".view.museum.rooms.RoomA1Activity" />
-        <activity android:name=".view.room.StorageActivity" />
+        <activity android:name=".view.museum.storage.StorageActivity"
+            android:parentActivityName=".view.MainActivity"/>
         <activity android:name=".view.room.EditRoomActivity" />
         <activity android:name=".view.room.RoomArtworksActivity" />
         <activity
             android:name=".view.artwork.EditArtworkActivity"
             android:parentActivityName=".view.MainActivity" />
         <activity
+            android:name=".view.room.VisualizeData"
+            android:parentActivityName=".view.MainActivity"/>
+        <activity
             android:name=".view.artwork.NewArtworkActivity"
             android:parentActivityName=".view.MainActivity" />
-        <activity android:name=".view.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".view.LoginActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

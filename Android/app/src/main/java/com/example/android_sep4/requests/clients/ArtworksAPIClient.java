@@ -3,6 +3,7 @@ package com.example.android_sep4.requests.clients;
 import android.app.Application;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -40,7 +41,7 @@ public class ArtworksAPIClient {
 
         call.enqueue(new Callback<Artworks>() {
             @Override
-            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+            public void onResponse(@NonNull Call<Artworks> call, @NonNull Response<Artworks> response) {
                 Log.i(TAG, "onResponse: success!");
                 if (response.isSuccessful() && response.body() != null) {
                     artworksData.setValue(response.body().getArtworks());
@@ -49,7 +50,7 @@ public class ArtworksAPIClient {
             }
 
             @Override
-            public void onFailure(Call<Artworks> call, Throwable t) {
+            public void onFailure(@NonNull Call<Artworks> call, @NonNull Throwable t) {
                 ArrayList<Artwork> arrayList = new ArrayList<>();
                 artworksData.setValue(arrayList);
                 Log.i(TAG, "onFailure: called");
@@ -66,7 +67,7 @@ public class ArtworksAPIClient {
         System.out.println("API CLIENT ID " + id);
         call.enqueue(new Callback<Artwork>() {
             @Override
-            public void onResponse(Call<Artwork> call, Response<Artwork> response) {
+            public void onResponse(@NonNull Call<Artwork> call, @NonNull Response<Artwork> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     artworkData.setValue(response.body());
                     artworkData = new MutableLiveData<>();
@@ -74,7 +75,7 @@ public class ArtworksAPIClient {
             }
 
             @Override
-            public void onFailure(Call<Artwork> call, Throwable t) {
+            public void onFailure(@NonNull Call<Artwork> call, @NonNull Throwable t) {
                 artworkData.setValue(new Artwork());
                 //CALL DATABASE TO SET THE ARTWORK BY ID
             }
@@ -86,38 +87,21 @@ public class ArtworksAPIClient {
     public void editArtwork(Artwork editedArtwork) {
         int artworkID = editedArtwork.getId();
 
-        Artwork updatedArtwork = new Artwork();
-        updatedArtwork.setName(editedArtwork.getName());
-        updatedArtwork.setAuthor(editedArtwork.getAuthor());
-        updatedArtwork.setDescription(editedArtwork.getDescription());
-        updatedArtwork.setComment(editedArtwork.getComment());
-        updatedArtwork.setImage(editedArtwork.getImage());
-        updatedArtwork.setType(editedArtwork.getType());
-        updatedArtwork.setRoomCode(editedArtwork.getRoomCode());
-        updatedArtwork.setArtworkPosition(editedArtwork.getArtworkPosition());
-        updatedArtwork.setMaxCo2(editedArtwork.getMaxCo2());
-        updatedArtwork.setMinCo2(editedArtwork.getMinCo2());
-        updatedArtwork.setMaxHumidity(editedArtwork.getMaxHumidity());
-        updatedArtwork.setMinHumidity(editedArtwork.getMinHumidity());
-        updatedArtwork.setMaxTemperature(editedArtwork.getMaxTemperature());
-        updatedArtwork.setMinTemperature(editedArtwork.getMinTemperature());
-        updatedArtwork.setMinLight(editedArtwork.getMinLight());
-        updatedArtwork.setMaxLight(editedArtwork.getMaxLight());
-
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
 
-        Call<Artwork> call = endpoints.editArtwork(artworkID, updatedArtwork);
-
+        Call<Artwork> call = endpoints.editArtwork(artworkID, editedArtwork);
         call.enqueue(new Callback<Artwork>() {
             @Override
-            public void onResponse(Call<Artwork> call, Response<Artwork> response) {
+            public void onResponse(@NonNull Call<Artwork> call, @NonNull Response<Artwork> response) {
                 System.out.println("SUCCESSFUL UPDATE!");
+                getArtworksData();
                 //HERE YOU WILL CALL THE ROOM DATABASE TO EDIT THE ARTWORK FROM THERE
             }
 
             @Override
-            public void onFailure(Call<Artwork> call, Throwable t) {
+            public void onFailure(@NonNull Call<Artwork> call, @NonNull Throwable t) {
                 System.out.println("UPDATE FAILED!");
+                getArtworksData();
                 //ALSO HERE, IF THE CALL IS FAILED AT LEAST WE WILL UPDATE IT IN THE LOCAL DATABASE
             }
         });
@@ -149,14 +133,14 @@ public class ArtworksAPIClient {
 
         call.enqueue(new Callback<Artwork>() {
             @Override
-            public void onResponse(Call<Artwork> call, Response<Artwork> response) {
+            public void onResponse(@NonNull Call<Artwork> call, @NonNull Response<Artwork> response) {
                 getArtworksData();
                 System.out.println("SUCCESSFUL UPDATE!");
                 //CALL ROOM DATABASE TO ADD
             }
 
             @Override
-            public void onFailure(Call<Artwork> call, Throwable t) {
+            public void onFailure(@NonNull Call<Artwork> call, @NonNull Throwable t) {
                 getArtworksData();
                 System.out.println("UPDATE FAILED!");
                 //CALL THE ROOM TO ADD ALSO IN CASE THE API IS FAILED
@@ -172,7 +156,7 @@ public class ArtworksAPIClient {
 
         call.enqueue(new Callback<Artworks>() {
             @Override
-            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+            public void onResponse(@NonNull Call<Artworks> call, @NonNull Response<Artworks> response) {
                 Log.i(TAG, "onResponse: artworks in room");
                 if (response.body() != null && response.isSuccessful()) {
                     artworksInRoomData.setValue(response.body().getArtworks());
@@ -182,7 +166,7 @@ public class ArtworksAPIClient {
             }
 
             @Override
-            public void onFailure(Call<Artworks> call, Throwable t) {
+            public void onFailure(@NonNull Call<Artworks> call, @NonNull Throwable t) {
                 //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
                 artworksInRoomData.setValue(new ArrayList<>());
             }
@@ -198,7 +182,7 @@ public class ArtworksAPIClient {
 
         call.enqueue(new Callback<Artworks>() {
             @Override
-            public void onResponse(Call<Artworks> call, Response<Artworks> response) {
+            public void onResponse(@NonNull Call<Artworks> call, @NonNull Response<Artworks> response) {
                 Log.i(TAG, "onResponse: artworks in room");
                 if (response.body() != null && response.isSuccessful()) {
                     artworksInStorage.setValue(response.body().getArtworks());
@@ -208,7 +192,7 @@ public class ArtworksAPIClient {
             }
 
             @Override
-            public void onFailure(Call<Artworks> call, Throwable t) {
+            public void onFailure(@NonNull Call<Artworks> call, @NonNull Throwable t) {
                 //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
                 artworksInStorage.setValue(new ArrayList<>());
             }
@@ -221,13 +205,13 @@ public class ArtworksAPIClient {
         Call<Artwork> call = endpoints.deleteArtwork(id);
         call.enqueue(new Callback<Artwork>() {
             @Override
-            public void onResponse(Call<Artwork> call, Response<Artwork> response) {
+            public void onResponse(@NonNull Call<Artwork> call, @NonNull Response<Artwork> response) {
                 System.out.println("SUCCESSFUL DELETE!");
                 getArtworksByRoomId("Storage");
             }
 
             @Override
-            public void onFailure(Call<Artwork> call, Throwable t) {
+            public void onFailure(@NonNull Call<Artwork> call, @NonNull Throwable t) {
                 System.out.println("DELETE FAILED!");
                 getArtworksByRoomId("Storage");
             }
@@ -241,4 +225,23 @@ public class ArtworksAPIClient {
     public LiveData<ArrayList<Artwork>> getArtworksDataLive() {
         return artworksData;
     }
+
+    public void moveArtwork(int artworkID, String location) {
+        ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
+
+        Call<String> call = endpoints.moveArtwork(artworkID, location);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+                System.out.println("SUCCESSFUL MOVE!");
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
+                System.out.println("MOVE FAILED!");
+            }
+        });
+    }
+
 }

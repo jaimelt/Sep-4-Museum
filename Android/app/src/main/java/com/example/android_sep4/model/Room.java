@@ -28,11 +28,11 @@ public class Room {
     private double humidity;
     private double co2;
     @Ignore
-    private RoomMeasurements liveRoomMeasurements;
+    private RoomMeasurements measurements;
     @Ignore
     private boolean expanded;
 
-    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, Artworks artworkList, double light, double temperature, double humidity, double co2, RoomMeasurements liveRoomMeasurements) {
+    public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, Artworks artworkList, double light, double temperature, double humidity, double co2, RoomMeasurements measurements) {
         this.locationCode = locationCode;
         this.description = description;
         this.totalCapacity = totalCapacity;
@@ -42,7 +42,7 @@ public class Room {
         this.temperature = temperature;
         this.humidity = humidity;
         this.co2 = co2;
-        this.liveRoomMeasurements = liveRoomMeasurements;
+        this.measurements = measurements;
     }
 
     public Room() {
@@ -122,11 +122,11 @@ public class Room {
     }
 
     public RoomMeasurements getLiveRoomMeasurements() {
-        return liveRoomMeasurements;
+        return measurements;
     }
 
     public void setLiveRoomMeasurements(RoomMeasurements liveRoomMeasurements) {
-        this.liveRoomMeasurements = liveRoomMeasurements;
+        this.measurements = liveRoomMeasurements;
     }
 
     public boolean isExpanded() {
@@ -137,4 +137,8 @@ public class Room {
         this.expanded = expanded;
     }
 
+    public void changeCelsiusToFahrenheit() {
+        double fahrenheit = (temperature * 1.8) + 32.0;
+        this.setTemperature(fahrenheit);
+    }
 }
