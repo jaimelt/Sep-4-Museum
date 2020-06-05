@@ -3,7 +3,7 @@ package com.example.android_sep4.model;
 import androidx.core.util.PatternsCompat;
 
 public class Validator {
-    private static final String NON_NORMAL_CHARACTERS_PATTERN = "^((?=[A-Za-z0-9@])(?![_\\\\-]).)*$";
+    private static final String NORMAL_CHARACTERS_PATTERN = "[a-zA-Z0-9 ]+";
 
     public Validator (){
 
@@ -81,7 +81,7 @@ public class Validator {
     }
 
     private boolean hasAllowedSymbols(String string) {
-        return string.matches(NON_NORMAL_CHARACTERS_PATTERN);
+        return string.matches(NORMAL_CHARACTERS_PATTERN);
     }
 
     public int validateEditArtworkFields(String name, String author) {
