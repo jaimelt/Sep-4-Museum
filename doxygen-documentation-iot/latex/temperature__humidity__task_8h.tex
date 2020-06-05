@@ -1,0 +1,86 @@
+\hypertarget{temperature__humidity__task_8h}{}\doxysection{tasks/temperature\+\_\+humidity\+\_\+task.h File Reference}
+\label{temperature__humidity__task_8h}\index{tasks/temperature\_humidity\_task.h@{tasks/temperature\_humidity\_task.h}}
+
+
+Temperature/humidity sensor implementation using tasks.  
+
+
+{\ttfamily \#include $<$A\+T\+M\+E\+G\+A\+\_\+\+Free\+R\+T\+O\+S.\+h$>$}\newline
+{\ttfamily \#include $<$semphr.\+h$>$}\newline
+{\ttfamily \#include $<$event\+\_\+groups.\+h$>$}\newline
+{\ttfamily \#include $<$task.\+h$>$}\newline
+{\ttfamily \#include $<$hih8120.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{temperature__humidity__task_8h_ac422c452f384286b25cdd8630731088e}{temperature\+Humidity\+Sensor\+\_\+create}} (Event\+Group\+Handle\+\_\+t pv\+Event\+Handle\+Measure, Event\+Group\+Handle\+\_\+t pv\+Event\+Handle\+New\+Data, Semaphore\+Handle\+\_\+t p\+Printf\+Semaphore)
+\begin{DoxyCompactList}\small\item\em Creates and initializes the temperature and humidity sensor (Creates the hih8120 driver; creates the temperature/humidity sensor task) \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{temperature__humidity__task_8h_a00428bf9051213858db3e692e2cb0170}{temperature\+Humidity\+Sensor\+\_\+get\+Humidity}} ()
+\begin{DoxyCompactList}\small\item\em Gets the last measurement of humidity. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{temperature__humidity__task_8h_a2fd62d21c31636729686195b6a7b614f}{temperature\+Humidity\+Sensor\+\_\+get\+Temperature}} ()
+\begin{DoxyCompactList}\small\item\em Gets the last measurement of temperature. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Temperature/humidity sensor implementation using tasks. 
+
+\begin{DoxyNote}{Note}
+Depends on hih8120.\+h
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Fabian Bernhardt 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+26/05/2020 12.\+39.\+34 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{temperature__humidity__task_8h_ac422c452f384286b25cdd8630731088e}\label{temperature__humidity__task_8h_ac422c452f384286b25cdd8630731088e}} 
+\index{temperature\_humidity\_task.h@{temperature\_humidity\_task.h}!temperatureHumiditySensor\_create@{temperatureHumiditySensor\_create}}
+\index{temperatureHumiditySensor\_create@{temperatureHumiditySensor\_create}!temperature\_humidity\_task.h@{temperature\_humidity\_task.h}}
+\doxysubsubsection{\texorpdfstring{temperatureHumiditySensor\_create()}{temperatureHumiditySensor\_create()}}
+{\footnotesize\ttfamily void temperature\+Humidity\+Sensor\+\_\+create (\begin{DoxyParamCaption}\item[{Event\+Group\+Handle\+\_\+t}]{pv\+Event\+Handle\+Measure,  }\item[{Event\+Group\+Handle\+\_\+t}]{pv\+Event\+Handle\+New\+Data,  }\item[{Semaphore\+Handle\+\_\+t}]{p\+Printf\+Semaphore }\end{DoxyParamCaption})}
+
+
+
+Creates and initializes the temperature and humidity sensor (Creates the hih8120 driver; creates the temperature/humidity sensor task) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pv\+Event\+Handle\+Measure} & Event group used for triggering the start of a measurement; passed by the controller task \\
+\hline
+\mbox{\texttt{ in}}  & {\em pv\+Event\+Handle\+New\+Data} & Event group used for signalizing that a measurement is completed and the data can be retrieved \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Printf\+Semaphore} & Mutex for protecting printf function call \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{temperature__humidity__task_8h_a00428bf9051213858db3e692e2cb0170}\label{temperature__humidity__task_8h_a00428bf9051213858db3e692e2cb0170}} 
+\index{temperature\_humidity\_task.h@{temperature\_humidity\_task.h}!temperatureHumiditySensor\_getHumidity@{temperatureHumiditySensor\_getHumidity}}
+\index{temperatureHumiditySensor\_getHumidity@{temperatureHumiditySensor\_getHumidity}!temperature\_humidity\_task.h@{temperature\_humidity\_task.h}}
+\doxysubsubsection{\texorpdfstring{temperatureHumiditySensor\_getHumidity()}{temperatureHumiditySensor\_getHumidity()}}
+{\footnotesize\ttfamily float temperature\+Humidity\+Sensor\+\_\+get\+Humidity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the last measurement of humidity. 
+
+\begin{DoxyReturn}{Returns}
+last measured humidity value from temperature/humidity sensor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{temperature__humidity__task_8h_a2fd62d21c31636729686195b6a7b614f}\label{temperature__humidity__task_8h_a2fd62d21c31636729686195b6a7b614f}} 
+\index{temperature\_humidity\_task.h@{temperature\_humidity\_task.h}!temperatureHumiditySensor\_getTemperature@{temperatureHumiditySensor\_getTemperature}}
+\index{temperatureHumiditySensor\_getTemperature@{temperatureHumiditySensor\_getTemperature}!temperature\_humidity\_task.h@{temperature\_humidity\_task.h}}
+\doxysubsubsection{\texorpdfstring{temperatureHumiditySensor\_getTemperature()}{temperatureHumiditySensor\_getTemperature()}}
+{\footnotesize\ttfamily float temperature\+Humidity\+Sensor\+\_\+get\+Temperature (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the last measurement of temperature. 
+
+\begin{DoxyReturn}{Returns}
+last measured temperature value from temperature/humidity sensor 
+\end{DoxyReturn}

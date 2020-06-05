@@ -1,0 +1,57 @@
+\hypertarget{rc__servo__handler_8h}{}\doxysection{handlers/rc\+\_\+servo\+\_\+handler.h File Reference}
+\label{rc__servo__handler_8h}\index{handlers/rc\_servo\_handler.h@{handlers/rc\_servo\_handler.h}}
+
+
+R\+C-\/servo implementation.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{rc__servo__handler_8h_a5ff21bd667dd34d74d363cb84d8d6626}\label{rc__servo__handler_8h_a5ff21bd667dd34d74d363cb84d8d6626}} 
+void \mbox{\hyperlink{rc__servo__handler_8h_a5ff21bd667dd34d74d363cb84d8d6626}{rc\+\_\+servo\+\_\+create}} ()
+\begin{DoxyCompactList}\small\item\em Creates the rc\+Servo driver. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rc__servo__handler_8h_a371301344bc31122a4aba2cc855cad42}{rc\+Servo\+\_\+\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Move up (position 100) if the rc-\/servo motor is down (position -\/100). This action should lift up the window shutters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rc__servo__handler_8h_af5495eb977b251cf747839d7d1d272fd}{rc\+Servo\+\_\+\+Down}} ()
+\begin{DoxyCompactList}\small\item\em Move down (position -\/100) if the rc-\/servo motor is up (position 100). This action should descent the window shutters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+R\+C-\/servo implementation. 
+
+\begin{DoxyNote}{Note}
+Depends on rc\+Servo.\+h
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Marina Ionel 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+01/06/2020 11.\+03.\+23 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rc__servo__handler_8h_af5495eb977b251cf747839d7d1d272fd}\label{rc__servo__handler_8h_af5495eb977b251cf747839d7d1d272fd}} 
+\index{rc\_servo\_handler.h@{rc\_servo\_handler.h}!rcServo\_Down@{rcServo\_Down}}
+\index{rcServo\_Down@{rcServo\_Down}!rc\_servo\_handler.h@{rc\_servo\_handler.h}}
+\doxysubsubsection{\texorpdfstring{rcServo\_Down()}{rcServo\_Down()}}
+{\footnotesize\ttfamily void rc\+Servo\+\_\+\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Move down (position -\/100) if the rc-\/servo motor is up (position 100). This action should descent the window shutters. 
+
+\mbox{\Hypertarget{rc__servo__handler_8h_a371301344bc31122a4aba2cc855cad42}\label{rc__servo__handler_8h_a371301344bc31122a4aba2cc855cad42}} 
+\index{rc\_servo\_handler.h@{rc\_servo\_handler.h}!rcServo\_Up@{rcServo\_Up}}
+\index{rcServo\_Up@{rcServo\_Up}!rc\_servo\_handler.h@{rc\_servo\_handler.h}}
+\doxysubsubsection{\texorpdfstring{rcServo\_Up()}{rcServo\_Up()}}
+{\footnotesize\ttfamily void rc\+Servo\+\_\+\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Move up (position 100) if the rc-\/servo motor is down (position -\/100). This action should lift up the window shutters. 
+

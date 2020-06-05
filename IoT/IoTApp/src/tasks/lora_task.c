@@ -61,7 +61,8 @@ static void _setup_lora_driver()
 	printf("Set Adaptive Data Rate: ON >%s<\n", lora_driver_map_return_code_to_text(lora_driver_set_adaptive_data_rate(LoRa_ON)));
 
 	// Set receiver window1 delay to 500 ms - this is needed if down-link messages will be used
-	printf("Set Receiver Delay: %d ms >%s<\n", 500, lora_driver_map_return_code_to_text(lora_driver_set_receive_delay(500)));
+	//printf("Set Receiver Delay: %d ms >%s<\n", 500, lora_driver_map_return_code_to_text(lora_driver_set_receive_delay(500)));
+	
 	// Join the LoRaWAN
 	uint8_t maxJoinTriesLeft = 10;
 

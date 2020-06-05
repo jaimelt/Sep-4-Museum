@@ -6,7 +6,7 @@
  * \authors Justinas Jancys, Fabian Bernhardt
  * \version 1.0.0
  *
- * \created 16/05/2020 11.15.11
+ * \date 16/05/2020 11.15.11
  *
  */
 #pragma once

@@ -6,7 +6,7 @@
  *
  * \author Fabian Bernhardt
  * \version 1.0.0
- * \created 26/05/2020 12.39.34
+ * \date 26/05/2020 12.39.34
  */
 #pragma once
 

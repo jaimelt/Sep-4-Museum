@@ -4,7 +4,7 @@
  *
  * \author Marina Ionel
  * \version 1.0.0
- * \created 16/05/2020 10.20.54
+ * \date 16/05/2020 10.20.54
  */
 
 #pragma once

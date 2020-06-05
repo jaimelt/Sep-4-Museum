@@ -13,7 +13,7 @@ int main(void)
 	trace_init();
 	stdioCreate(ser_USART0);
 
-	printf("Program Started!!\n");
+	printf("Program Started!\n");
 
 	sensorControl_create();
 

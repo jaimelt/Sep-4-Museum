@@ -1,0 +1,55 @@
+\hypertarget{lora__task_8h}{}\doxysection{tasks/lora\+\_\+task.h File Reference}
+\label{lora__task_8h}\index{tasks/lora\_task.h@{tasks/lora\_task.h}}
+
+
+Lorawan task implementation.  
+
+
+{\ttfamily \#include $<$A\+T\+M\+E\+G\+A\+\_\+\+Free\+R\+T\+O\+S.\+h$>$}\newline
+{\ttfamily \#include $<$queue.\+h$>$}\newline
+{\ttfamily \#include $<$semphr.\+h$>$}\newline
+{\ttfamily \#include $<$task.\+h$>$}\newline
+{\ttfamily \#include $<$lora\+\_\+driver.\+h$>$}\newline
+{\ttfamily \#include $<$iled.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lora__task_8h_ab033eddb6034c328af9f3ff9bab4783d}{lorawan\+\_\+create}} (Queue\+Handle\+\_\+t p\+Queue, Semaphore\+Handle\+\_\+t p\+Printf\+Semaphore)
+\begin{DoxyCompactList}\small\item\em Creates the lora task Creates and sets up the lora driver. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lorawan task implementation. 
+
+\begin{DoxyNote}{Note}
+depends on lora\+\_\+driver.\+h and iled.\+h
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Marina Ionel 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/05/2020 11.\+34.\+06 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lora__task_8h_ab033eddb6034c328af9f3ff9bab4783d}\label{lora__task_8h_ab033eddb6034c328af9f3ff9bab4783d}} 
+\index{lora\_task.h@{lora\_task.h}!lorawan\_create@{lorawan\_create}}
+\index{lorawan\_create@{lorawan\_create}!lora\_task.h@{lora\_task.h}}
+\doxysubsubsection{\texorpdfstring{lorawan\_create()}{lorawan\_create()}}
+{\footnotesize\ttfamily void lorawan\+\_\+create (\begin{DoxyParamCaption}\item[{Queue\+Handle\+\_\+t}]{p\+Queue,  }\item[{Semaphore\+Handle\+\_\+t}]{p\+Printf\+Semaphore }\end{DoxyParamCaption})}
+
+
+
+Creates the lora task Creates and sets up the lora driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Queue} & The queue for receiving lorapayload\+\_\+t that needs to be sent via lorawan network \\
+\hline
+{\em p\+Printf\+Semaphore} & Mutex for protecting printf function call \\
+\hline
+\end{DoxyParams}

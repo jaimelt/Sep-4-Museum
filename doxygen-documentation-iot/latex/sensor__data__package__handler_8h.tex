@@ -1,0 +1,117 @@
+\hypertarget{sensor__data__package__handler_8h}{}\doxysection{handlers/sensor\+\_\+data\+\_\+package\+\_\+handler.h File Reference}
+\label{sensor__data__package__handler_8h}\index{handlers/sensor\_data\_package\_handler.h@{handlers/sensor\_data\_package\_handler.h}}
+
+
+Sensor data package handler implementation.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$lora\+\_\+driver.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sensor__data__package__handler_8h_a198ccc6951f9b8694143cffd1eb8efcb}{Sensor\+Data\+Package\+Handler\+\_\+set\+Co2ppm}} (uint16\+\_\+t ppm)
+\begin{DoxyCompactList}\small\item\em Set the co2 (in ppm) value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sensor__data__package__handler_8h_a9498ca02754b026f156cb376452745c1}{Sensor\+Data\+Package\+Handler\+\_\+set\+Humidity}} (float humidity)
+\begin{DoxyCompactList}\small\item\em Set the humidity value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sensor__data__package__handler_8h_a0562c23e80e96e10bad0adbc12157dac}{Sensor\+Data\+Package\+Handler\+\_\+set\+Temperature}} (float temperature)
+\begin{DoxyCompactList}\small\item\em Set the temperature value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sensor__data__package__handler_8h_ace0ae71a79e7e9c59f5750200b36f063}{Sensor\+Data\+Package\+Handler\+\_\+set\+Light}} (float lux)
+\begin{DoxyCompactList}\small\item\em Set the light (in lux) value. \end{DoxyCompactList}\item 
+lora\+\_\+payload\+\_\+t \mbox{\hyperlink{sensor__data__package__handler_8h_a396716f20be8eba45a0806044e1b6185}{Sensor\+Data\+Package\+Handler\+\_\+get\+Lora\+Payload}} (uint8\+\_\+t port\+No)
+\begin{DoxyCompactList}\small\item\em Get the uplink lora payload including all sensor values converted to bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sensor data package handler implementation. 
+
+\begin{DoxyAuthor}{Author}
+Marina Ionel 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16/05/2020 12.\+03.\+15 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sensor__data__package__handler_8h_a396716f20be8eba45a0806044e1b6185}\label{sensor__data__package__handler_8h_a396716f20be8eba45a0806044e1b6185}} 
+\index{sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}!SensorDataPackageHandler\_getLoraPayload@{SensorDataPackageHandler\_getLoraPayload}}
+\index{SensorDataPackageHandler\_getLoraPayload@{SensorDataPackageHandler\_getLoraPayload}!sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}}
+\doxysubsubsection{\texorpdfstring{SensorDataPackageHandler\_getLoraPayload()}{SensorDataPackageHandler\_getLoraPayload()}}
+{\footnotesize\ttfamily lora\+\_\+payload\+\_\+t Sensor\+Data\+Package\+Handler\+\_\+get\+Lora\+Payload (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port\+No }\end{DoxyParamCaption})}
+
+
+
+Get the uplink lora payload including all sensor values converted to bytes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+No} & Port number of the uplink lora payload \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+lora\+\_\+payload\+\_\+t the uplink lora payload for sending to lorawan network 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sensor__data__package__handler_8h_a198ccc6951f9b8694143cffd1eb8efcb}\label{sensor__data__package__handler_8h_a198ccc6951f9b8694143cffd1eb8efcb}} 
+\index{sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}!SensorDataPackageHandler\_setCo2ppm@{SensorDataPackageHandler\_setCo2ppm}}
+\index{SensorDataPackageHandler\_setCo2ppm@{SensorDataPackageHandler\_setCo2ppm}!sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}}
+\doxysubsubsection{\texorpdfstring{SensorDataPackageHandler\_setCo2ppm()}{SensorDataPackageHandler\_setCo2ppm()}}
+{\footnotesize\ttfamily void Sensor\+Data\+Package\+Handler\+\_\+set\+Co2ppm (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{ppm }\end{DoxyParamCaption})}
+
+
+
+Set the co2 (in ppm) value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ppm} & the ppm value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sensor__data__package__handler_8h_a9498ca02754b026f156cb376452745c1}\label{sensor__data__package__handler_8h_a9498ca02754b026f156cb376452745c1}} 
+\index{sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}!SensorDataPackageHandler\_setHumidity@{SensorDataPackageHandler\_setHumidity}}
+\index{SensorDataPackageHandler\_setHumidity@{SensorDataPackageHandler\_setHumidity}!sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}}
+\doxysubsubsection{\texorpdfstring{SensorDataPackageHandler\_setHumidity()}{SensorDataPackageHandler\_setHumidity()}}
+{\footnotesize\ttfamily void Sensor\+Data\+Package\+Handler\+\_\+set\+Humidity (\begin{DoxyParamCaption}\item[{float}]{humidity }\end{DoxyParamCaption})}
+
+
+
+Set the humidity value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em humidity} & Humidity value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sensor__data__package__handler_8h_ace0ae71a79e7e9c59f5750200b36f063}\label{sensor__data__package__handler_8h_ace0ae71a79e7e9c59f5750200b36f063}} 
+\index{sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}!SensorDataPackageHandler\_setLight@{SensorDataPackageHandler\_setLight}}
+\index{SensorDataPackageHandler\_setLight@{SensorDataPackageHandler\_setLight}!sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}}
+\doxysubsubsection{\texorpdfstring{SensorDataPackageHandler\_setLight()}{SensorDataPackageHandler\_setLight()}}
+{\footnotesize\ttfamily void Sensor\+Data\+Package\+Handler\+\_\+set\+Light (\begin{DoxyParamCaption}\item[{float}]{lux }\end{DoxyParamCaption})}
+
+
+
+Set the light (in lux) value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lux} & The lux value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sensor__data__package__handler_8h_a0562c23e80e96e10bad0adbc12157dac}\label{sensor__data__package__handler_8h_a0562c23e80e96e10bad0adbc12157dac}} 
+\index{sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}!SensorDataPackageHandler\_setTemperature@{SensorDataPackageHandler\_setTemperature}}
+\index{SensorDataPackageHandler\_setTemperature@{SensorDataPackageHandler\_setTemperature}!sensor\_data\_package\_handler.h@{sensor\_data\_package\_handler.h}}
+\doxysubsubsection{\texorpdfstring{SensorDataPackageHandler\_setTemperature()}{SensorDataPackageHandler\_setTemperature()}}
+{\footnotesize\ttfamily void Sensor\+Data\+Package\+Handler\+\_\+set\+Temperature (\begin{DoxyParamCaption}\item[{float}]{temperature }\end{DoxyParamCaption})}
+
+
+
+Set the temperature value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em temperature} & The temperature value to set \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,88 @@
+\hypertarget{light__sensor__task_8h}{}\doxysection{tasks/light\+\_\+sensor\+\_\+task.h File Reference}
+\label{light__sensor__task_8h}\index{tasks/light\_sensor\_task.h@{tasks/light\_sensor\_task.h}}
+
+
+Light sensor implementation using tasks.  
+
+
+{\ttfamily \#include $<$A\+T\+M\+E\+G\+A\+\_\+\+Free\+R\+T\+O\+S.\+h$>$}\newline
+{\ttfamily \#include $<$task.\+h$>$}\newline
+{\ttfamily \#include $<$semphr.\+h$>$}\newline
+{\ttfamily \#include $<$event\+\_\+groups.\+h$>$}\newline
+{\ttfamily \#include $<$tsl2591.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{light__sensor__task_8h_a27970d06defc6e8bcff29d8c4ff08dce}{Light\+Sensor\+\_\+create}} (Event\+Group\+Handle\+\_\+t pv\+Event\+Handle\+Measure, Event\+Group\+Handle\+\_\+t pv\+Event\+Handle\+New\+Data, Semaphore\+Handle\+\_\+t pv\+Printf\+Semaphore)
+\begin{DoxyCompactList}\small\item\em Creates and initializes the light sensor (Creates and enables the tsl2591 driver; creates the light sensor task) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{light__sensor__task_8h_a6adf4b35160855da537b55dc28fa6434}{Light\+Sensor\+\_\+callback}} (tsl2591\+Return\+Code\+\_\+t pv\+Tsl2591\+Return\+Code)
+\begin{DoxyCompactList}\small\item\em The callback function for the tsl2591 driver measuring. It retrieves the data (light value in lux) and signalizes the finished measurement. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{light__sensor__task_8h_a7e9489f51738574e2c2f010faf78ea4e}{Light\+Sensor\+\_\+get\+Light\+Measurement}} ()
+\begin{DoxyCompactList}\small\item\em Gets the last measurement in lux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Light sensor implementation using tasks. 
+
+\begin{DoxyNote}{Note}
+Depends on tsl2591.\+h
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Marina Ionel 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+13/05/2020 18.\+44.\+41 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{light__sensor__task_8h_a6adf4b35160855da537b55dc28fa6434}\label{light__sensor__task_8h_a6adf4b35160855da537b55dc28fa6434}} 
+\index{light\_sensor\_task.h@{light\_sensor\_task.h}!LightSensor\_callback@{LightSensor\_callback}}
+\index{LightSensor\_callback@{LightSensor\_callback}!light\_sensor\_task.h@{light\_sensor\_task.h}}
+\doxysubsubsection{\texorpdfstring{LightSensor\_callback()}{LightSensor\_callback()}}
+{\footnotesize\ttfamily void Light\+Sensor\+\_\+callback (\begin{DoxyParamCaption}\item[{tsl2591\+Return\+Code\+\_\+t}]{pv\+Tsl2591\+Return\+Code }\end{DoxyParamCaption})}
+
+
+
+The callback function for the tsl2591 driver measuring. It retrieves the data (light value in lux) and signalizes the finished measurement. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pv\+Tsl2591\+Return\+Code} & return code indicating the status of the finished measuring process \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{light__sensor__task_8h_a27970d06defc6e8bcff29d8c4ff08dce}\label{light__sensor__task_8h_a27970d06defc6e8bcff29d8c4ff08dce}} 
+\index{light\_sensor\_task.h@{light\_sensor\_task.h}!LightSensor\_create@{LightSensor\_create}}
+\index{LightSensor\_create@{LightSensor\_create}!light\_sensor\_task.h@{light\_sensor\_task.h}}
+\doxysubsubsection{\texorpdfstring{LightSensor\_create()}{LightSensor\_create()}}
+{\footnotesize\ttfamily void Light\+Sensor\+\_\+create (\begin{DoxyParamCaption}\item[{Event\+Group\+Handle\+\_\+t}]{pv\+Event\+Handle\+Measure,  }\item[{Event\+Group\+Handle\+\_\+t}]{pv\+Event\+Handle\+New\+Data,  }\item[{Semaphore\+Handle\+\_\+t}]{pv\+Printf\+Semaphore }\end{DoxyParamCaption})}
+
+
+
+Creates and initializes the light sensor (Creates and enables the tsl2591 driver; creates the light sensor task) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pv\+Event\+Handle\+Measure} & Event group used for triggering the start of a measurement; passed by the controller task \\
+\hline
+\mbox{\texttt{ in}}  & {\em pv\+Event\+Handle\+New\+Data} & Event group used for signalizing that a measurement is completed and the data can be retrieved \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Printf\+Semaphore} & Mutex for protecting printf function call \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{light__sensor__task_8h_a7e9489f51738574e2c2f010faf78ea4e}\label{light__sensor__task_8h_a7e9489f51738574e2c2f010faf78ea4e}} 
+\index{light\_sensor\_task.h@{light\_sensor\_task.h}!LightSensor\_getLightMeasurement@{LightSensor\_getLightMeasurement}}
+\index{LightSensor\_getLightMeasurement@{LightSensor\_getLightMeasurement}!light\_sensor\_task.h@{light\_sensor\_task.h}}
+\doxysubsubsection{\texorpdfstring{LightSensor\_getLightMeasurement()}{LightSensor\_getLightMeasurement()}}
+{\footnotesize\ttfamily float Light\+Sensor\+\_\+get\+Light\+Measurement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the last measurement in lux. 
+
+\begin{DoxyReturn}{Returns}
+last measured value from light sensor 
+\end{DoxyReturn}
