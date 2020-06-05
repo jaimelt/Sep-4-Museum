@@ -64,11 +64,9 @@ public class LoginActivity extends AppCompatActivity {
         String password = passwordField.getText().toString();
         int validation = loginActivityViewModel.validateFields(email, password);
 
-        loginButton.setEnabled(true);
         switch (validation){
             case 1:
                 verifyLogin(email, password);
-                loginButton.setClickable(false);
                 break;
             case 2:
                 emailField.setError("Email format is not valid");
@@ -81,8 +79,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void verifyLogin(String email, String password) {
-        loginButton.setEnabled(false);
-
 
         System.out.println(email + "  " + password);
 
@@ -104,8 +100,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginFailed(String feedback) {
         Toast.makeText(getBaseContext(), feedback, Toast.LENGTH_LONG).show();
-
-        loginButton.setEnabled(true);
     }
 
 }

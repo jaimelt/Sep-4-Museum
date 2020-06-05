@@ -89,10 +89,13 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             intent.putExtra("optimalLight", rooms.get(position).getLight());
             intent.putExtra("optimalCo2", rooms.get(position).getCo2());
             intent.putExtra("optimalHumidity", rooms.get(position).getHumidity());
-            intent.putExtra("liveCo2",rooms.get(position).getLiveRoomMeasurements().getCo2());
-            intent.putExtra("liveHumidity", rooms.get(position).getLiveRoomMeasurements().getHumidity());
-            intent.putExtra("liveTemp", rooms.get(position).getLiveRoomMeasurements().getTemp());
-            intent.putExtra("liveLight", rooms.get(position).getLiveRoomMeasurements().getLight());
+            if(rooms.get(position).getLiveRoomMeasurements() != null)
+            {
+                intent.putExtra("liveCo2",rooms.get(position).getLiveRoomMeasurements().getCo2());
+                intent.putExtra("liveHumidity", rooms.get(position).getLiveRoomMeasurements().getHumidity());
+                intent.putExtra("liveTemp", rooms.get(position).getLiveRoomMeasurements().getTemp());
+                intent.putExtra("liveLight", rooms.get(position).getLiveRoomMeasurements().getLight());
+            }
             intent.putExtra("locationCode", rooms.get(position).getLocationCode());
 
             Room room12 = rooms.get(position);
