@@ -17,7 +17,7 @@ public interface AuthEndpoints {
     @GET("/account/users")
     Call<Users> getUsers();
 
-    @GET("/login")
+    @POST("account/login")
     Call<Boolean> validateLogin(@Body User user);
 
     @POST("/account")
@@ -28,7 +28,6 @@ public interface AuthEndpoints {
 
     @DELETE("/account/{email}")
     Call<User> deleteUser(@Path("email") String email);
-
 
 
 }

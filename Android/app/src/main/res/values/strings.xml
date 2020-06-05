@@ -49,12 +49,14 @@
     <string name="login">Login</string>
     <string name="sendVisitors">Send visitors</string>
     <string name="co2">CO2</string>
+    <string name="visualize">Visualize</string>
     <string name="light">Light</string>
     <string name="humidity">Humidity</string>
     <string name="min">min.</string>
     <string name="max">max.</string>
     <string name="touch">Touch to write</string>
-    <string name="temperature_unit">°C</string>
+    <string name="temperature_unit_celsius">°C</string>
+    <string name="temperature_unit_fahrenheit">°F</string>
     <string name="light_unit">lx</string>
     <string name="co2_unit">ppm</string>
     <string name="humidity_unit">mg/L</string>
@@ -89,5 +91,31 @@
     <string name="pref_notification_sum_off">Turned off</string>
     <string name="pref_notification_sum_on">Turned on</string>
     <string name="pref_notification_key" translatable="false">notification</string>
+    <string name="position12">12</string>
+    <string name="position11">11</string>
+    <string name="position10">10</string>
+    <string name="pref_temperature_key" translatable="false">temperature</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="celsius">Celsius</string>
+    <string name="pref_temperature_label">Temperature unit</string>
+    <string name="pref_notification_title_key" translatable="false">notifications_category</string>
+    <string name="pref_notification_title_label">Notifications</string>
+    <string name="pref_general_title_key" translatable="false">general_category</string>
+    <string name="pref_general_title_label">General</string>
+    <string name="pref_user_title_key" translatable="false">user_category</string>
+    <string name="pref_user_title_label">User</string>
+    <string name="pref_user_button_key" translatable="false">user_button</string>
+    <string name="pref_user_summary">Tap to manage your account</string>
+    <string name="pref_user_title">Manage account</string>
+    <string name="exit_back_twice">Please press BACK again to exit</string>
+    <string name="museum_content_description">Museum room overview</string>
+    <string name="email">Email:</string>
+    <string name="change_password">Tap to change password</string>
+    <string name="password">Password</string>
+    <string name="change_email">Tap to change email</string>
+    <string name="user_settings_title">User account</string>
+    <string name="change_password_title">Change password</string>
+    <string name="temperatureShort">Temp</string>
+
 
 </resources>

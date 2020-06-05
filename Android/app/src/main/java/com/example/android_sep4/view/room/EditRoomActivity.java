@@ -12,7 +12,7 @@ import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.roomList.EditRoomsConditionsViewModel;
 
 public class EditRoomActivity extends AppCompatActivity {
-    private EditRoomsConditionsViewModel editMeasurements;
+    private EditRoomsConditionsViewModel viewModel;
     private EditText temperature;
     private EditText humidity;
     private EditText co2;
@@ -25,6 +25,7 @@ public class EditRoomActivity extends AppCompatActivity {
     private double optimalHumidity;
     private int totalCapacity;
     private int currentCapacity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,23 +50,46 @@ public class EditRoomActivity extends AppCompatActivity {
         humidity = findViewById(R.id.editHumidityEditText);
         co2 = findViewById(R.id.editCo2EditText);
         light = findViewById(R.id.editLightEditText);
-        temperature.setText(Double.toString(optimalTemperature));
-        co2.setText(Double.toString(optimalCo2));
-        light.setText(Double.toString(optimalLight));
-        humidity.setText(Double.toString(optimalHumidity));
+
+        temperature.setText(String.valueOf(optimalTemperature));
+        co2.setText(String.valueOf(optimalCo2));
+        light.setText(String.valueOf(optimalLight));
+        humidity.setText(String.valueOf(optimalHumidity));
     }
 
     private void setViewModel() {
-        editMeasurements = new ViewModelProvider(this).get(EditRoomsConditionsViewModel.class);
+        viewModel = new ViewModelProvider(this).get(EditRoomsConditionsViewModel.class);
     }
 
     public void onEditRoomOptimal(View view) {
-        double newLight = Double.parseDouble(light.getText().toString());
-        double newCo2 = Double.parseDouble(co2.getText().toString());
-        double newTemperature = Double.parseDouble(temperature.getText().toString());
-        double newHumidity = Double.parseDouble(humidity.getText().toString());
-        editMeasurements.editRoomOptimal(locationCode, description, totalCapacity, currentCapacity, newLight, newCo2, newTemperature, newHumidity, null);
-        finish();
-        Toast.makeText(this, " Optimal conditions edited", Toast.LENGTH_SHORT).show();
+        String lightText = light.getText().toString();
+        String co2Text = co2.getText().toString();
+        String temperatureText = temperature.getText().toString();
+        String humidityText = humidity.getText().toString();
+
+        int validation = viewModel.validateEditRoomFields(lightText, co2Text, temperatureText, humidityText);
+        switch (validation)
+        {
+            case 1:
+                light.setError("Field can not be empty");
+                break;
+            case 2:
+                co2.setError("Field can not be empty");
+                break;
+            case 3:
+                temperature.setError("Field can not be empty");
+                break;
+            case 4:
+                humidity.setError("Field can not be empty");
+                break;
+            case 5:
+                double newLight = Double.parseDouble(light.getText().toString());
+                double newCo2 = Double.parseDouble(co2.getText().toString());
+                double newTemperature = Double.parseDouble(temperature.getText().toString());
+                double newHumidity = Double.parseDouble(humidity.getText().toString());
+                viewModel.editRoomOptimal(locationCode, description, totalCapacity, currentCapacity, newLight, newCo2, newTemperature, newHumidity, null);
+                finish();
+                Toast.makeText(this, " Optimal conditions edited", Toast.LENGTH_SHORT).show();
+        }
     }
 }

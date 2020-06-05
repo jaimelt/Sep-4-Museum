@@ -1,19 +1,17 @@
-package com.example.android_sep4.view.room;
+package com.example.android_sep4.view.museum.storage;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +31,12 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
+
+        Toolbar toolbar = findViewById(R.id.storage_toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Storage");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         progressBar = findViewById(R.id.progress_bar_storage);
         deleteIcon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_delete);
         setViewModel();
@@ -49,7 +53,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         artworksStorageViewModel.getIsLoading().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean) {
+                if (aBoolean) {
                     progressBar.setVisibility(View.VISIBLE);
                 } else progressBar.setVisibility(View.GONE);
             }
@@ -57,48 +61,42 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
 
     }
 
+    @Override
+    //finish on activity when up navigation is clicked - animation slide to right
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        finish();
+        return true;
+    }
+
     private void initRecycleView() {
         RecyclerView recyclerView = findViewById(R.id.recycler_view_storage);
         adapter = new StorageAdapter(this, this);
-        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
     }
-    public void onListItemClick(int clickedItemIndex) {
 
+    public void onListItemClick(int clickedItemIndex) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert);
+        alertDialog.setTitle("Delete artwork");
+        alertDialog.setMessage("Are you sure about deleting this artwork?");
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                artworksStorageViewModel.deleteArtwork(clickedItemIndex);
+                adapter.deleteArtwork(clickedItemIndex);
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 
-
-    private ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
-
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-            return false;
-        }
-
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
-            artworksStorageViewModel.positionToId(viewHolder.getAdapterPosition());
-            adapter.deleteArtwork(viewHolder.getAdapterPosition());
-            adapter.notifyDataSetChanged();
-        }
-
-        @Override
-        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-            View itemView = viewHolder.itemView;
-            final ColorDrawable background = new ColorDrawable(Color.parseColor("#BF1633"));
-            background.setBounds(itemView.getLeft(), itemView.getTop(), ((int) dX), itemView.getBottom());
-            background.draw(c);
-
-            int iconMargin = (itemView.getHeight() - deleteIcon.getIntrinsicHeight()) / 2;
-            deleteIcon.setBounds(itemView.getLeft() + iconMargin, itemView.getTop() + iconMargin, itemView.getLeft() + iconMargin + deleteIcon.getIntrinsicWidth(), itemView.getBottom() - iconMargin);
-            deleteIcon.draw(c);
-
-            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-        }
-    };
 
     @Override
     protected void onPause() {

@@ -11,7 +11,6 @@ using WebApplication.Database;
 using WebApplication.Database.Repositories.ArtworkRep;
 using WebApplication.Database.Repositories.RoomRep;
 using WebApplication.Datamodel;
-using WebApplication.SQLCommands;
 
 
 namespace WebApplication.Controllers
@@ -154,8 +153,11 @@ namespace WebApplication.Controllers
                     return NotFound();
                 }
 
+                var room = await RoomRepository.GetRoomByLocationCodeAsync(artwork.Location);
+                
+
                 artworkRepository.DeleteArtwork(artwork);
-                await artworkRepository.saveChanges();
+             
 
                 return Ok("Artwork has been deleted");
             }

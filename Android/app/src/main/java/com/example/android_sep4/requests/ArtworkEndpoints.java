@@ -18,11 +18,9 @@ public interface ArtworkEndpoints {
     @GET("/artworks/getone/{id}")
     Call<Artwork> getArtworkById(@Path("id") int id);
 
-    //not working
     @POST("/artworks/createartwork")
     Call<Artwork> addArtwork(@Body Artwork artwork);
 
-    //not working
     @PUT("/artworks/edit/{id}")
     Call<Artwork> editArtwork(@Path("id") int id, @Body Artwork body);
 
@@ -31,5 +29,8 @@ public interface ArtworkEndpoints {
 
     @GET("/artworks/getallbyroom/{roomCode}")
     Call<Artworks> getArtworksByRoomId(@Path("roomCode") String roomCode);
+
+    @PUT("/moveartwork/{id}/{locationCode}")
+    Call<String> moveArtwork(@Path("id") int id, @Body String locationCode);
 
 }

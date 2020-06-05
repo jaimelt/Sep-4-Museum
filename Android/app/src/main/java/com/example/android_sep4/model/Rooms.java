@@ -12,4 +12,10 @@ public class Rooms {
     public ArrayList<Room> getRooms() {
         return rooms;
     }
+
+    public void changeCelsiusToFahrenheit() {
+        for (Room room : rooms) {
+            room.changeCelsiusToFahrenheit();
+        }
+    }
 }

@@ -8,16 +8,19 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.model.RoomMeasurements;
+import com.example.android_sep4.model.Validator;
 import com.example.android_sep4.repositories.RoomRepository;
 
 public class EditRoomsConditionsViewModel extends AndroidViewModel {
     private RoomRepository roomRepository;
     private Room room;
     private int position;
+    private Validator validator;
 
     public EditRoomsConditionsViewModel(@NonNull Application application) {
         super(application);
         roomRepository = RoomRepository.getInstance(application);
+        validator = new Validator();
     }
 
     public void setPosition(int position) {
@@ -46,4 +49,7 @@ public class EditRoomsConditionsViewModel extends AndroidViewModel {
         roomRepository.editRoomOptimal(room);
     }
 
+    public int validateEditRoomFields(String lightText, String co2Text, String temperatureText, String humidityText) {
+        return validator.validateEditRoomFields(lightText, co2Text, temperatureText, humidityText);
+    }
 }
