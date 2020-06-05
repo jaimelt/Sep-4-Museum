@@ -19,7 +19,7 @@
         <activity
             android:name=".view.AccountActivity"
             android:parentActivityName=".view.MainActivity" />
-        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.MainActivity" />
 
         <activity
             android:name=".view.museum.rooms.ArtworkDetails"
@@ -44,7 +44,7 @@
         <activity
             android:name=".view.artwork.NewArtworkActivity"
             android:parentActivityName=".view.MainActivity" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.LoginActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
