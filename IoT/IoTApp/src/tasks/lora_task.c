@@ -16,9 +16,9 @@
 #include "../constants/global_constants.h"
 
 //task details
-#define LORA_SENSOR_TAG "LORA SENSOR TASK"
+#define LORA_TAG "LORA TASK"
 #define LORA_TASK_NAME "Lorawan"
-#define LORAWAN_TASK_PRIORITY (configMAX_PRIORITIES - 1)
+#define LORA_TASK_PRIORITY (configMAX_PRIORITIES - 1)
 //task handler
 static TaskHandle_t _lora_task_handle;
 
@@ -166,6 +166,6 @@ void lorawan_create(QueueHandle_t pQueue, SemaphoreHandle_t pPrintfSemaphore)
 		(const portCHAR *)LORA_TASK_NAME, /* String with name of task. */
 		configMINIMAL_STACK_SIZE + 200,	  /* Stack size in words. */
 		NULL,							  /* Parameter passed as input of the task */
-		LORAWAN_TASK_PRIORITY,			  /* Priority of the task. */
+		LORA_TASK_PRIORITY,			  /* Priority of the task. */
 		&_lora_task_handle);			  /* Task handle. */
 }
