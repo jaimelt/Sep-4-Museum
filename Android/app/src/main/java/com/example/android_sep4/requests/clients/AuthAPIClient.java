@@ -1,6 +1,7 @@
 package com.example.android_sep4.requests.clients;
 
 import android.app.Application;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import static android.content.ContentValues.TAG;
 
 public class AuthAPIClient {
     private MutableLiveData<Boolean> isValidating = new MutableLiveData<>();
@@ -40,12 +42,14 @@ public class AuthAPIClient {
         call.enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
+                Log.i(TAG, "onResponse: called!");
                 validLogin.setValue(response.body());
                 isValidating.setValue(false);
             }
 
             @Override
             public void onFailure(@NonNull Call<Boolean> call, @NonNull Throwable t) {
+                Log.i(TAG, "onFailure: called!");
 
             }
         });
@@ -64,11 +68,13 @@ public class AuthAPIClient {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                Log.i(TAG, "onResponse: called!");
                 getUsers();
             }
 
             @Override
             public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                Log.i(TAG, "onFailure: called!");
                 getUsers();
             }
         });
@@ -81,11 +87,13 @@ public class AuthAPIClient {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                Log.i(TAG, "onResponse: called!");
                 getUsers();
             }
 
             @Override
             public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                Log.i(TAG, "onFailure: called!");
                 getUsers();
             }
         });
@@ -94,20 +102,20 @@ public class AuthAPIClient {
     public void changePassword(User user) {
         AuthEndpoints endpoints = ServiceGenerator.getAuthEndpoints();
 
-//        User user = new User(updatedUser.getEmail(), updatedUser.getPassword());
-
         Call<User> call = endpoints.updateUser(user);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    Log.i(TAG, "onResponse: called!");
                     Toast.makeText(application, "Password changed", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
-                Toast.makeText(application, "Password changed", Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "onFailure: called!");
+                Toast.makeText(application, "Password not changed", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -121,6 +129,7 @@ public class AuthAPIClient {
             @Override
             public void onResponse(@NonNull Call<Users> call, @NonNull Response<Users> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    Log.i(TAG, "onResponse: called!");
                     usersData.setValue(response.body().getUsers());
                 }
                 isLoading.setValue(false);
@@ -128,6 +137,7 @@ public class AuthAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<Users> call, @NonNull Throwable t) {
+                Log.i(TAG, "onFailure: called!");
                 usersData.setValue(new ArrayList<>());
             }
         });

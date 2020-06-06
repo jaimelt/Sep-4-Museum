@@ -42,8 +42,8 @@ public class ArtworksAPIClient {
         call.enqueue(new Callback<Artworks>() {
             @Override
             public void onResponse(@NonNull Call<Artworks> call, @NonNull Response<Artworks> response) {
-                Log.i(TAG, "onResponse: success!");
                 if (response.isSuccessful() && response.body() != null) {
+                    Log.i(TAG, "onResponse: called!");
                     artworksData.setValue(response.body().getArtworks());
                 }
                 isLoading.setValue(false);
@@ -54,7 +54,6 @@ public class ArtworksAPIClient {
                 ArrayList<Artwork> arrayList = new ArrayList<>();
                 artworksData.setValue(arrayList);
                 Log.i(TAG, "onFailure: called");
-                // DAVE HERE YOU ARE CALLING THE ROOM DATABASE AND YOU ARE SETTING THE ARTWORKS DATA SET TO THE ARTWORKS THAT WE HAVE IN THERE
             }
         });
     }
@@ -64,11 +63,11 @@ public class ArtworksAPIClient {
         ArtworkEndpoints endpoints = ServiceGenerator.getArtworkEndpoints();
         Call<Artwork> call = endpoints.getArtworkById(id);
 
-        System.out.println("API CLIENT ID " + id);
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(@NonNull Call<Artwork> call, @NonNull Response<Artwork> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    Log.i(TAG, "onResponse: called!");
                     artworkData.setValue(response.body());
                     artworkData = new MutableLiveData<>();
                 }
@@ -76,8 +75,8 @@ public class ArtworksAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<Artwork> call, @NonNull Throwable t) {
+                Log.i(TAG, "onFailure: called!");
                 artworkData.setValue(new Artwork());
-                //CALL DATABASE TO SET THE ARTWORK BY ID
             }
         });
         return artworkData;
@@ -93,16 +92,14 @@ public class ArtworksAPIClient {
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(@NonNull Call<Artwork> call, @NonNull Response<Artwork> response) {
-                System.out.println("SUCCESSFUL UPDATE!");
+                Log.i(TAG, "onResponse: called!");
                 getArtworksData();
-                //HERE YOU WILL CALL THE ROOM DATABASE TO EDIT THE ARTWORK FROM THERE
             }
 
             @Override
             public void onFailure(@NonNull Call<Artwork> call, @NonNull Throwable t) {
-                System.out.println("UPDATE FAILED!");
+                Log.i(TAG, "onFailure: called!");
                 getArtworksData();
-                //ALSO HERE, IF THE CALL IS FAILED AT LEAST WE WILL UPDATE IT IN THE LOCAL DATABASE
             }
         });
     }
@@ -134,16 +131,14 @@ public class ArtworksAPIClient {
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(@NonNull Call<Artwork> call, @NonNull Response<Artwork> response) {
+                Log.i(TAG, "onResponse: called!");
                 getArtworksData();
-                System.out.println("SUCCESSFUL UPDATE!");
-                //CALL ROOM DATABASE TO ADD
             }
 
             @Override
             public void onFailure(@NonNull Call<Artwork> call, @NonNull Throwable t) {
+                Log.i(TAG, "onFailure: called!");
                 getArtworksData();
-                System.out.println("UPDATE FAILED!");
-                //CALL THE ROOM TO ADD ALSO IN CASE THE API IS FAILED
             }
         });
     }
@@ -157,8 +152,8 @@ public class ArtworksAPIClient {
         call.enqueue(new Callback<Artworks>() {
             @Override
             public void onResponse(@NonNull Call<Artworks> call, @NonNull Response<Artworks> response) {
-                Log.i(TAG, "onResponse: artworks in room");
                 if (response.body() != null && response.isSuccessful()) {
+                    Log.i(TAG, "onResponse: called!");
                     artworksInRoomData.setValue(response.body().getArtworks());
                     artworksInRoomData = new MutableLiveData<>();
                     isLoading.setValue(false);
@@ -167,7 +162,7 @@ public class ArtworksAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<Artworks> call, @NonNull Throwable t) {
-                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
+                Log.i(TAG, "onFailure: called!");
                 artworksInRoomData.setValue(new ArrayList<>());
             }
         });
@@ -183,8 +178,8 @@ public class ArtworksAPIClient {
         call.enqueue(new Callback<Artworks>() {
             @Override
             public void onResponse(@NonNull Call<Artworks> call, @NonNull Response<Artworks> response) {
-                Log.i(TAG, "onResponse: artworks in room");
                 if (response.body() != null && response.isSuccessful()) {
+                    Log.i(TAG, "onResponse: artworks in room");
                     artworksInStorage.setValue(response.body().getArtworks());
                     artworksInStorage = new MutableLiveData<>();
                     isLoading.setValue(false);
@@ -193,7 +188,7 @@ public class ArtworksAPIClient {
 
             @Override
             public void onFailure(@NonNull Call<Artworks> call, @NonNull Throwable t) {
-                //HERE YOU ARE CALLING THE ROOM DATABASE AND SETTING artworksDataSet TO THE ARTWORKS FROM ROOM BY ROOM CODE
+                Log.i(TAG, "onFailure: called!");
                 artworksInStorage.setValue(new ArrayList<>());
             }
         });
@@ -206,13 +201,13 @@ public class ArtworksAPIClient {
         call.enqueue(new Callback<Artwork>() {
             @Override
             public void onResponse(@NonNull Call<Artwork> call, @NonNull Response<Artwork> response) {
-                System.out.println("SUCCESSFUL DELETE!");
+                Log.i(TAG, "onResponse: called!");
                 getArtworksByRoomId("Storage");
             }
 
             @Override
             public void onFailure(@NonNull Call<Artwork> call, @NonNull Throwable t) {
-                System.out.println("DELETE FAILED!");
+                Log.i(TAG, "onFailure: called");
                 getArtworksByRoomId("Storage");
             }
         });
@@ -234,12 +229,12 @@ public class ArtworksAPIClient {
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-                System.out.println("SUCCESSFUL MOVE!");
+                Log.i(TAG, "onResponse: called!");
             }
 
             @Override
             public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
-                System.out.println("MOVE FAILED!");
+                Log.i(TAG, "onFailure: called!");
             }
         });
     }
