@@ -45,10 +45,10 @@ public class EditRoomActivity extends AppCompatActivity {
             currentCapacity = bundle.getInt("currentCapacity");
         }
 
-        temperature = findViewById(R.id.editTemperatureEditText);
-        humidity = findViewById(R.id.editHumidityEditText);
-        co2 = findViewById(R.id.editCo2EditText);
-        light = findViewById(R.id.editLightEditText);
+        temperature = findViewById(R.id.edit_temperature_field);
+        humidity = findViewById(R.id.edit_humidity_field);
+        co2 = findViewById(R.id.edit_co2_field);
+        light = findViewById(R.id.edit_light_field);
 
         temperature.setText(String.valueOf(optimalTemperature));
         co2.setText(String.valueOf(optimalCo2));

@@ -8,18 +8,13 @@ public class Room {
     private String locationCode;
     private String description;
     private int totalCapacity;
-    @Ignore
     private int currentCapacity;
-    @Ignore
     private Artworks artworkList;
-    @Ignore
     private double light;
     private double temperature;
     private double humidity;
     private double co2;
-    @Ignore
     private RoomMeasurements measurements;
-    @Ignore
     private boolean expanded;
 
     public Room(@NonNull String locationCode, String description, int totalCapacity, int currentCapacity, Artworks artworkList, double light, double temperature, double humidity, double co2, RoomMeasurements measurements) {

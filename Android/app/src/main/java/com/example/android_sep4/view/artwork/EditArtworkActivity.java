@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,7 +80,6 @@ public class EditArtworkActivity extends AppCompatActivity {
         editArtworkViewModel = new ViewModelProvider(this, new ViewModelFactoryInteger(this.getApplication(), artworkID)).get(EditArtworkViewModel.class);
         editArtworkViewModel.getArtwork().observe(this, artwork -> {
             editArtworkViewModel.getArtwork().removeObservers(this);
-            Toast.makeText(this, "" + artwork.getName(), Toast.LENGTH_SHORT).show();
             setText(artwork);
         });
 
@@ -200,22 +198,22 @@ public class EditArtworkActivity extends AppCompatActivity {
     }
 
     private void bindViews() {
-        imageHolder = findViewById(R.id.imageHolder);
-        nameField = findViewById(R.id.nameField);
-        authorField = findViewById(R.id.authorField);
-        typeGroup = findViewById(R.id.radioType);
-        locationGroup = findViewById(R.id.locationGroup1);
-        descriptionField = findViewById(R.id.descriptionField);
-        commentsField = findViewById(R.id.commentsField);
-        minTemp = findViewById(R.id.minTemp);
-        maxTemp = findViewById(R.id.maxTemp);
-        minLight = findViewById(R.id.minLight);
-        maxLight = findViewById(R.id.maxLight);
-        minCO2 = findViewById(R.id.minCO2);
-        maxCO2 = findViewById(R.id.maxCO2);
-        minHum = findViewById(R.id.minHum);
-        maxHum = findViewById(R.id.maxHum);
-        moveBtn = findViewById(R.id.moveBtn);
+        imageHolder = findViewById(R.id.image_holder);
+        nameField = findViewById(R.id.name_field);
+        authorField = findViewById(R.id.author_field);
+        typeGroup = findViewById(R.id.radio_type);
+        locationGroup = findViewById(R.id.location_group);
+        descriptionField = findViewById(R.id.description_field);
+        commentsField = findViewById(R.id.comments_field);
+        minTemp = findViewById(R.id.min_temp);
+        maxTemp = findViewById(R.id.max_temp);
+        minLight = findViewById(R.id.min_light);
+        maxLight = findViewById(R.id.max_light);
+        minCO2 = findViewById(R.id.min_co2);
+        maxCO2 = findViewById(R.id.max_co2);
+        minHum = findViewById(R.id.min_hum);
+        maxHum = findViewById(R.id.max_hum);
+        moveBtn = findViewById(R.id.move_btn);
     }
 
 

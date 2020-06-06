@@ -76,7 +76,7 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        recyclerView = view.findViewById(R.id.recycler_viewRoom);
+        recyclerView = view.findViewById(R.id.recycler_view_room);
         adapter = new RoomsAdapter(getContext());
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

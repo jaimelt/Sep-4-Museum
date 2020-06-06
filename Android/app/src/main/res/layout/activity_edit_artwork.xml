@@ -22,7 +22,7 @@
             android:gravity="end">
 
             <Button
-                android:id="@+id/artworkButton"
+                android:id="@+id/artwork_button"
                 android:layout_width="120dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="20dp"
@@ -46,7 +46,7 @@
             android:id="@+id/edit_artwork_container">
 
             <ImageView
-                android:id="@+id/imageHolder"
+                android:id="@+id/image_holder"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:contentDescription="@string/image_description"
@@ -62,7 +62,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/nameField"
+                    android:id="@+id/name_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -83,7 +83,7 @@
 
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/author_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
@@ -91,7 +91,7 @@
                         android:textColor="@color/colorAccent" />
 
                     <EditText
-                        android:id="@+id/authorField"
+                        android:id="@+id/author_field"
                         style="@style/EditViewStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/type_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content">
 
                         <RadioGroup
-                            android:id="@+id/radioType"
+                            android:id="@+id/radio_type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -184,7 +184,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/location_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -196,7 +196,7 @@
                         android:layout_height="wrap_content">
 
                         <RadioGroup
-                            android:id="@+id/locationGroup1"
+                            android:id="@+id/location_group"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -276,7 +276,7 @@
                     </HorizontalScrollView>
 
                     <Button
-                        android:id="@+id/moveBtn"
+                        android:id="@+id/move_btn"
                         android:layout_width="120dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
@@ -285,7 +285,7 @@
                         android:fadeScrollbars="true"
                         android:gravity="center"
                         android:onClick="onEditLocation"
-                        android:text="Move Artwork" />
+                        android:text="@string/move_artwork" />
 
 
                 </LinearLayout>
@@ -297,7 +297,7 @@
                     android:layout_margin="20dp">
 
                     <EditText
-                        android:id="@+id/descriptionField"
+                        android:id="@+id/description_field"
                         style="@style/EditViewStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -313,7 +313,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/description_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -333,7 +333,7 @@
                     android:layout_marginBottom="20dp">
 
                     <EditText
-                        android:id="@+id/commentsField"
+                        android:id="@+id/comments_field"
                         style="@style/EditViewStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -349,7 +349,7 @@
                         tools:ignore="LabelFor" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/comments_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"

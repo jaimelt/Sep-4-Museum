@@ -116,6 +116,7 @@
     <string name="user_settings_title">User account</string>
     <string name="change_password_title">Change password</string>
     <string name="temperatureShort">Temp</string>
+    <string name="move_artwork">Move artwork</string>
 
 
 </resources>

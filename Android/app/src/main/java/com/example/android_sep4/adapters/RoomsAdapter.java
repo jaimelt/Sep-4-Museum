@@ -159,24 +159,24 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            description = itemView.findViewById(R.id.descriptionContent);
-            co2Value = itemView.findViewById(R.id.co2TextViewId);
-            locationCode = itemView.findViewById(R.id.titleTextView);
-            lightValue = itemView.findViewById(R.id.lightTextViewId);
-            temperatureValue = itemView.findViewById(R.id.temperatureTextViewId);
-            humidityValue = itemView.findViewById(R.id.humidityTextViewID);
-            roomCapacity = itemView.findViewById(R.id.roomCapacityMaxValueTextView);
-            currentCapacity = itemView.findViewById(R.id.roomCapacityValueTextView);
-            editRoomsConditions = itemView.findViewById(R.id.editOptimalButton);
-            parentLayoutRoom = itemView.findViewById(R.id.parent_layoutRoom);
-            expandableLayout = itemView.findViewById(R.id.expandableLayout);
-            viewRoomArtworks = itemView.findViewById(R.id.showRoomArtworks);
-            visulizeData = itemView.findViewById(R.id.showRoomMeasurements);
-            optimalCo2 = itemView.findViewById(R.id.co2OptimalTextViewId);
-            optimalHumidity = itemView.findViewById(R.id.humidityOptimalTextViewID);
-            optimalLight = itemView.findViewById(R.id.lightOptimalTextViewId);
-            optimalTemperature = itemView.findViewById(R.id.temperatureOptimalTextViewId);
-            temperatureUnit = itemView.findViewById(R.id.measurementSignTemperature);
+            description = itemView.findViewById(R.id.description_content);
+            co2Value = itemView.findViewById(R.id.co2_text_view_id);
+            locationCode = itemView.findViewById(R.id.title);
+            lightValue = itemView.findViewById(R.id.light_text_view_id);
+            temperatureValue = itemView.findViewById(R.id.temperature_text_view_id);
+            humidityValue = itemView.findViewById(R.id.humidity_text_view_id);
+            roomCapacity = itemView.findViewById(R.id.room_capacity_max_value_text_view);
+            currentCapacity = itemView.findViewById(R.id.room_capacity_value_text_view);
+            editRoomsConditions = itemView.findViewById(R.id.edit_optimal_button);
+            parentLayoutRoom = itemView.findViewById(R.id.parent_layout_room);
+            expandableLayout = itemView.findViewById(R.id.expandable_layout);
+            viewRoomArtworks = itemView.findViewById(R.id.show_room_artworks);
+            visulizeData = itemView.findViewById(R.id.show_room_measurements);
+            optimalCo2 = itemView.findViewById(R.id.co2_optimal_text_view_id);
+            optimalHumidity = itemView.findViewById(R.id.humidity_optimal_text_view_id);
+            optimalLight = itemView.findViewById(R.id.light_optimal_text_view_id);
+            optimalTemperature = itemView.findViewById(R.id.temperature_optimal_text_view_id);
+            temperatureUnit = itemView.findViewById(R.id.measurements_sign_temperature);
 
             locationCode.setOnClickListener(view -> {
                 Room room = rooms.get(getAdapterPosition());

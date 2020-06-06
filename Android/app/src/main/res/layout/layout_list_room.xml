@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parent_layoutRoom"
+    android:id="@+id/parent_layout_room"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -19,7 +19,7 @@
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/titleTextView"
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="?attr/selectableItemBackground"
@@ -31,18 +31,18 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/expandableLayout"
+                android:id="@+id/expandable_layout"
                 android:layout_width="0dp"
                 android:layout_height="300dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titleTextView">
+                app:layout_constraintTop_toBottomOf="@id/title">
 
 
                 <ImageView
-                    android:id="@+id/lightId"
+                    android:id="@+id/light_id"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="25dp"
@@ -50,33 +50,33 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/humidityId"
+                    app:layout_constraintTop_toBottomOf="@id/humidity_id"
                     app:srcCompat="@drawable/light" />
 
                 <TextView
-                    android:id="@+id/lightTextViewId"
+                    android:id="@+id/light_text_view_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/measurement_value"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toEndOf="@id/lightId"
-                    app:layout_constraintTop_toBottomOf="@id/humidityTextViewID" />
+                    app:layout_constraintStart_toEndOf="@id/light_id"
+                    app:layout_constraintTop_toBottomOf="@id/humidity_text_view_id" />
 
                 <TextView
-                    android:id="@+id/slashLight"
+                    android:id="@+id/slash_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:text="@string/backSlash"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@id/lightOptimalTextViewId"
-                    app:layout_constraintStart_toEndOf="@id/lightTextViewId"
-                    app:layout_constraintTop_toBottomOf="@id/humidityOptimalTextViewID" />
+                    app:layout_constraintEnd_toStartOf="@id/light_optimal_text_view_id"
+                    app:layout_constraintStart_toEndOf="@id/light_text_view_id"
+                    app:layout_constraintTop_toBottomOf="@id/humidity_optimal_text_view_id" />
 
                 <TextView
-                    android:id="@+id/lightOptimalTextViewId"
+                    android:id="@+id/light_optimal_text_view_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -84,65 +84,65 @@
                     android:text="@string/measurement_value"
                     android:textColor="@color/optimalValue"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toEndOf="@id/lightTextViewId"
-                    app:layout_constraintTop_toBottomOf="@id/humidityOptimalTextViewID" />
+                    app:layout_constraintStart_toEndOf="@id/light_text_view_id"
+                    app:layout_constraintTop_toBottomOf="@id/humidity_optimal_text_view_id" />
 
                 <TextView
-                    android:id="@+id/measurementSignLight"
+                    android:id="@+id/measurements_sign_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/light_unit"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toEndOf="@id/lightOptimalTextViewId"
-                    app:layout_constraintTop_toBottomOf="@id/humidityOptimalTextViewID" />
+                    app:layout_constraintStart_toEndOf="@id/light_optimal_text_view_id"
+                    app:layout_constraintTop_toBottomOf="@id/humidity_optimal_text_view_id" />
 
                 <ImageView
-                    android:id="@+id/temperatureId"
+                    android:id="@+id/temperature_id"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="35dp"
                     android:layout_marginEnd="10dp"
-                    app:layout_constraintEnd_toStartOf="@id/temperatureTextViewId"
-                    app:layout_constraintTop_toBottomOf="@id/co2ID"
+                    app:layout_constraintEnd_toStartOf="@id/temperature_text_view_id"
+                    app:layout_constraintTop_toBottomOf="@id/co2_id"
                     app:srcCompat="@drawable/temperature" />
 
                 <TextView
-                    android:id="@+id/temperatureTextViewId"
+                    android:id="@+id/temperature_text_view_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="40dp"
                     android:text="@string/measurement_value"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@id/temperatureOptimalTextViewId"
-                    app:layout_constraintTop_toBottomOf="@id/co2TextViewId" />
+                    app:layout_constraintEnd_toEndOf="@id/temperature_optimal_text_view_id"
+                    app:layout_constraintTop_toBottomOf="@id/co2_text_view_id" />
 
                 <TextView
-                    android:id="@+id/slashTemperature"
+                    android:id="@+id/slash_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:text="@string/backSlash"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@id/temperatureOptimalTextViewId"
-                    app:layout_constraintStart_toEndOf="@id/temperatureTextViewId"
-                    app:layout_constraintTop_toBottomOf="@id/slashCO2" />
+                    app:layout_constraintEnd_toStartOf="@id/temperature_optimal_text_view_id"
+                    app:layout_constraintStart_toEndOf="@id/temperature_text_view_id"
+                    app:layout_constraintTop_toBottomOf="@id/slash_co2" />
 
                 <TextView
-                    android:id="@+id/measurementSignTemperature"
+                    android:id="@+id/measurements_sign_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="40dp"
                     android:text="@string/temperature_unit_celsius"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toEndOf="@id/temperatureOptimalTextViewId"
-                    app:layout_constraintTop_toBottomOf="@id/co2OptimalTextViewId" />
+                    app:layout_constraintStart_toEndOf="@id/temperature_optimal_text_view_id"
+                    app:layout_constraintTop_toBottomOf="@id/co2_optimal_text_view_id" />
 
                 <TextView
-                    android:id="@+id/temperatureOptimalTextViewId"
+                    android:id="@+id/temperature_optimal_text_view_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -151,10 +151,10 @@
                     android:textColor="@color/optimalValue"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/co2TextViewId" />
+                    app:layout_constraintTop_toBottomOf="@id/co2_text_view_id" />
 
                 <ImageView
-                    android:id="@+id/humidityId"
+                    android:id="@+id/humidity_id"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="15dp"
@@ -164,29 +164,29 @@
                     app:srcCompat="@drawable/humidity" />
 
                 <TextView
-                    android:id="@+id/humidityTextViewID"
+                    android:id="@+id/humidity_text_view_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/measurement_value"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toEndOf="@id/humidityId"
+                    app:layout_constraintStart_toEndOf="@id/humidity_id"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/slashHumidity"
+                    android:id="@+id/slash_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:text="@string/backSlash"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@id/humidityOptimalTextViewID"
-                    app:layout_constraintStart_toEndOf="@id/humidityTextViewID"
+                    app:layout_constraintEnd_toStartOf="@id/humidity_optimal_text_view_id"
+                    app:layout_constraintStart_toEndOf="@id/humidity_text_view_id"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/humidityOptimalTextViewID"
+                    android:id="@+id/humidity_optimal_text_view_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -194,43 +194,43 @@
                     android:text="@string/measurement_value"
                     android:textColor="@color/optimalValue"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toEndOf="@id/humidityTextViewID"
+                    app:layout_constraintStart_toEndOf="@id/humidity_text_view_id"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/measurementSignHumidity"
+                    android:id="@+id/measurement_sign_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/humidity_unit"
                     android:textSize="18sp"
-                    app:layout_constraintStart_toEndOf="@id/humidityOptimalTextViewID"
+                    app:layout_constraintStart_toEndOf="@id/humidity_optimal_text_view_id"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/co2ID"
+                    android:id="@+id/co2_id"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="10dp"
-                    app:layout_constraintEnd_toStartOf="@id/co2TextViewId"
+                    app:layout_constraintEnd_toStartOf="@id/co2_text_view_id"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/co2"/>
 
                 <TextView
-                    android:id="@+id/co2TextViewId"
+                    android:id="@+id/co2_text_view_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="50dp"
                     android:text="@string/measurement_value"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@id/co2OptimalTextViewId"
+                    app:layout_constraintEnd_toEndOf="@id/co2_optimal_text_view_id"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/slashCO2"
+                    android:id="@+id/slash_co2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -238,12 +238,12 @@
                     android:layout_marginRight="5dp"
                     android:text="@string/backSlash"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@id/co2OptimalTextViewId"
-                    app:layout_constraintStart_toEndOf="@id/co2TextViewId"
+                    app:layout_constraintEnd_toStartOf="@id/co2_optimal_text_view_id"
+                    app:layout_constraintStart_toEndOf="@id/co2_text_view_id"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/co2OptimalTextViewId"
+                    android:id="@+id/co2_optimal_text_view_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -251,11 +251,11 @@
                     android:text="@string/measurement_value"
                     android:textColor="@color/optimalValue"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@id/measurementSignCO2"
+                    app:layout_constraintEnd_toStartOf="@id/measurements_sign_co2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/measurementSignCO2"
+                    android:id="@+id/measurements_sign_co2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -266,40 +266,40 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/roomCapacityTextView"
+                    android:id="@+id/room_capacity_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:text="@string/capacity"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@id/roomCapacityValueTextView"
-                    app:layout_constraintTop_toBottomOf="@id/lightId" />
+                    app:layout_constraintEnd_toStartOf="@id/room_capacity_value_text_view"
+                    app:layout_constraintTop_toBottomOf="@id/light_id" />
 
                 <TextView
-                    android:id="@+id/roomCapacityValueTextView"
+                    android:id="@+id/room_capacity_value_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:text="@string/measurement_value"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@id/slashCapacity"
-                    app:layout_constraintTop_toBottomOf="@id/lightId" />
+                    app:layout_constraintEnd_toStartOf="@id/slash_capacity"
+                    app:layout_constraintTop_toBottomOf="@id/light_id" />
 
                 <TextView
-                    android:id="@+id/slashCapacity"
+                    android:id="@+id/slash_capacity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="5dp"
                     android:text="@string/backSlash"
                     android:textSize="20sp"
-                    app:layout_constraintEnd_toStartOf="@id/roomCapacityMaxValueTextView"
-                    app:layout_constraintTop_toBottomOf="@id/lightId" />
+                    app:layout_constraintEnd_toStartOf="@id/room_capacity_max_value_text_view"
+                    app:layout_constraintTop_toBottomOf="@id/light_id" />
 
                 <TextView
-                    android:id="@+id/roomCapacityMaxValueTextView"
+                    android:id="@+id/room_capacity_max_value_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -307,7 +307,7 @@
                     android:text="@string/measurement_value"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lightId" />
+                    app:layout_constraintTop_toBottomOf="@id/light_id" />
 
                 <TextView
                     android:id="@+id/description"
@@ -317,10 +317,10 @@
                     android:text="@string/description_room"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lightId" />
+                    app:layout_constraintTop_toBottomOf="@id/light_id" />
 
                 <TextView
-                    android:id="@+id/descriptionContent"
+                    android:id="@+id/description_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -331,34 +331,34 @@
                     app:layout_constraintTop_toBottomOf="@id/description" />
 
                 <Button
-                    android:id="@+id/editOptimalButton"
+                    android:id="@+id/edit_optimal_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
                     android:text="@string/edit"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/showRoomMeasurements"
+                    app:layout_constraintEnd_toStartOf="@id/show_room_measurements"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
-                    android:id="@+id/showRoomMeasurements"
+                    android:id="@+id/show_room_measurements"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
                     android:text="@string/visualize"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/showRoomArtworks"
-                    app:layout_constraintStart_toEndOf="@id/editOptimalButton" />
+                    app:layout_constraintEnd_toStartOf="@id/show_room_artworks"
+                    app:layout_constraintStart_toEndOf="@id/edit_optimal_button" />
 
                 <Button
-                    android:id="@+id/showRoomArtworks"
+                    android:id="@+id/show_room_artworks"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_background"
                     android:text="@string/artworks"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/showRoomMeasurements" />
+                    app:layout_constraintStart_toEndOf="@id/show_room_measurements" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

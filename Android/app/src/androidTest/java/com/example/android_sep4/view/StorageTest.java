@@ -64,7 +64,7 @@ public class StorageTest {
                         childAtPosition(
                                 allOf(withId(R.id.museum_layout),
                                         childAtPosition(
-                                                withId(R.id.frameLayout),
+                                                withId(R.id.frame_container),
                                                 1)),
                                 0),
                         isDisplayed()));

@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/comments_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit_room_header"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.050000012" />
 
     <TextView
-        android:id="@+id/editTemperatureTextView"
+        android:id="@+id/edit_temperature_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -28,10 +28,10 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/comments_text" />
 
     <EditText
-        android:id="@+id/editTemperatureEditText"
+        android:id="@+id/edit_temperature_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -40,11 +40,11 @@
         android:inputType="number"
         android:text="@string/new_value"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/editTemperatureTextView"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintStart_toEndOf="@+id/edit_temperature_text"
+        app:layout_constraintTop_toBottomOf="@+id/comments_text" />
 
     <TextView
-        android:id="@+id/editHumidityTextView"
+        android:id="@+id/edit_humidity_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -53,10 +53,10 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTemperatureTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_temperature_text" />
 
     <EditText
-        android:id="@+id/editHumidityEditText"
+        android:id="@+id/edit_humidity_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -65,11 +65,11 @@
         android:inputType="number"
         android:text="@string/new_value"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/editHumidityTextView"
-        app:layout_constraintTop_toBottomOf="@+id/editTemperatureEditText" />
+        app:layout_constraintStart_toEndOf="@+id/edit_humidity_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_temperature_field" />
 
     <TextView
-        android:id="@+id/editCo2textView"
+        android:id="@+id/edit_co2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -78,10 +78,10 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editHumidityTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_humidity_text" />
 
     <EditText
-        android:id="@+id/editCo2EditText"
+        android:id="@+id/edit_co2_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
@@ -90,11 +90,11 @@
         android:inputType="number"
         android:text="@string/new_value"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/editCo2textView"
-        app:layout_constraintTop_toBottomOf="@+id/editHumidityEditText" />
+        app:layout_constraintStart_toEndOf="@+id/edit_co2_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_humidity_field" />
 
     <TextView
-        android:id="@+id/editLightTextView"
+        android:id="@+id/edit_light_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -103,10 +103,10 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCo2textView" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_co2_text" />
 
     <EditText
-        android:id="@+id/editLightEditText"
+        android:id="@+id/edit_light_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -115,11 +115,11 @@
         android:inputType="number"
         android:text="@string/new_value"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/editLightTextView"
-        app:layout_constraintTop_toBottomOf="@+id/editCo2EditText" />
+        app:layout_constraintStart_toEndOf="@+id/edit_light_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_co2_field" />
 
     <Button
-        android:id="@+id/buttonSaveChanges"
+        android:id="@+id/btn_save"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
@@ -128,7 +128,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editLightEditText"
+        app:layout_constraintTop_toBottomOf="@+id/edit_light_field"
         app:layout_constraintVertical_bias="0.19999999" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

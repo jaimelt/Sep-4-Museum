@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,11 +23,12 @@
                 android:background="@color/white">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/artwork_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/artwork1" />
+                    app:srcCompat="@drawable/artwork1"
+                    android:contentDescription="@string/image_description" />
             </FrameLayout>
 
         </FrameLayout>
@@ -37,7 +39,7 @@
             android:layout_weight="3">
 
             <TextView
-                android:id="@+id/artworkName"
+                android:id="@+id/artwork_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
@@ -47,34 +49,34 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/artworkType"
+                android:id="@+id/artwork_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:text="Author1"
                 android:textAlignment="center"
                 android:textColor="@color/grey"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/artworkDescription"
+                android:id="@+id/artwork_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:text="Type1"
                 android:textAlignment="center"
                 android:textColor="@color/grey"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/artworkAuthor"
+                android:id="@+id/artwork_author"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:text="Description1"
                 android:textAlignment="center"
                 android:textColor="@color/grey"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:textStyle="italic" />
 
 

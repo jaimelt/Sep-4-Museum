@@ -171,7 +171,7 @@
         app:layout_constraintVertical_bias="0.223" />
 
     <ProgressBar
-        android:id="@+id/progress_bar_roomA1"
+        android:id="@+id/progress_bar_room_a1"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="center"

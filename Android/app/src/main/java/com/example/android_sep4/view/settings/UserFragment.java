@@ -38,10 +38,10 @@ public class UserFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView email = view.findViewById(R.id.emailText);
+        TextView email = view.findViewById(R.id.email_text);
         settingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
         email.setText(settingsViewModel.getEmail());
-        LinearLayout linearLayout = view.findViewById(R.id.changePassword);
+        LinearLayout linearLayout = view.findViewById(R.id.change_password);
         linearLayout.setOnClickListener(v -> showAlertDialog());
     }
 
@@ -52,9 +52,9 @@ public class UserFragment extends Fragment {
         View view = inflater.inflate(R.layout.dialog_change_password, null);
         builder.setView(view);
         AlertDialog dialog = builder.create();
-        EditText passwordField = view.findViewById(R.id.passwordField);
-        EditText repeatPasswordField = view.findViewById(R.id.passwordRepeatField);
-        Button changePasswordBtn = view.findViewById(R.id.changePasswordButton);
+        EditText passwordField = view.findViewById(R.id.password_field);
+        EditText repeatPasswordField = view.findViewById(R.id.password_repeat_field);
+        Button changePasswordBtn = view.findViewById(R.id.change_password_btn);
         changePasswordBtn.setOnClickListener(v -> {
             String password = passwordField.getText().toString().trim();
             String repeatPassword = repeatPasswordField.getText().toString().trim();
@@ -64,11 +64,11 @@ public class UserFragment extends Fragment {
                     dialog.dismiss();
                     break;
                 case 2:
-                    TextInputLayout passwordLayout = view.findViewById(R.id.passwordLayout);
+                    TextInputLayout passwordLayout = view.findViewById(R.id.password_layout);
                     passwordLayout.setError("Password must be between 6 and 16 characters");
                     break;
                 case 3:
-                    TextInputLayout repeatPasswordLayout = view.findViewById(R.id.repeatPasswordLayout);
+                    TextInputLayout repeatPasswordLayout = view.findViewById(R.id.repeat_password_layout);
                     repeatPasswordLayout.setError("Passwords do not match");
                     break;
             }
