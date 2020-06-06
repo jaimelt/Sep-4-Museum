@@ -16,6 +16,11 @@
 #include <stdbool.h>
 #include <rcServo.h>
 
+//constants
+#define RC_SERVO_PORT_NO 0
+#define RC_SERVO_UP_POSITION 100
+#define RC_SERVO_DOWN_POSITION -100
+
 //private variables
 static bool _IsUp;
 
@@ -23,7 +28,7 @@ void rcServo_Up()
 {
 	if (_IsUp == false)
 	{
-		rcServoSet(0, 100);
+		rcServoSet(RC_SERVO_PORT_NO, RC_SERVO_UP_POSITION);
 		_IsUp = true;
 	}
 }
@@ -32,7 +37,7 @@ void rcServo_Down()
 {
 	if (_IsUp == true)
 	{
-		rcServoSet(0, -100);
+		rcServoSet(RC_SERVO_PORT_NO, RC_SERVO_DOWN_POSITION);
 		_IsUp = false;
 	}
 }
@@ -40,7 +45,10 @@ void rcServo_Down()
 void rc_servo_create()
 {
 	_IsUp = false;
+	
 	// Create and initialize the rc-servo driver
 	rcServoCreate();
-	rcServoSet(0, 0);
+	
+	//reset rc-servo position to 0
+	rcServoSet(RC_SERVO_PORT_NO, 0);
 }
