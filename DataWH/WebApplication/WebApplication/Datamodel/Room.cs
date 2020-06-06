@@ -7,11 +7,10 @@ namespace WebApplication.Datamodel
     public class Room
     {
         [Key] public string LocationCode { get; set;}
-        public string Description { get; set; }
-        public int CurrentCapacity { get; set; }
-        public int TotalCapacity { get; set; }
-        
-        // required measurements of the room 
+       
+        [StringLength(1000)]public string Description { get; set; }
+        [Range(0, 200)]public int CurrentCapacity { get; set; }
+        [Range(0, 200)] public int TotalCapacity { get; set; }
         
         public int Light { get; set; }
         public int Temperature { get; set; }
