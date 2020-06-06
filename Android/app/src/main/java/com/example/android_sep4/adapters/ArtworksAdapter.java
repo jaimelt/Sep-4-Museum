@@ -82,7 +82,6 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: called.");
         Uri uri = Uri.parse(artworks.get(position).getImage());
 //        holder.imageView.setImageURI(uri);
         Picasso.with(context).load(uri).resize(0, 300).into(holder.imageView);
