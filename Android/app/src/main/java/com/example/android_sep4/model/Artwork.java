@@ -1,12 +1,6 @@
 package com.example.android_sep4.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import androidx.annotation.Nullable;
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

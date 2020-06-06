@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.android_sep4.R;
 import com.github.mikephil.charting.charts.BarChart;
@@ -14,7 +15,7 @@ import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
 
-public class VisualizeData extends AppCompatActivity {
+public class VisualizeDataActivity extends AppCompatActivity {
     private BarChart chart;
 
     private double optimalTemperature;
@@ -27,10 +28,13 @@ public class VisualizeData extends AppCompatActivity {
     private double liveCo2;
     private double liveLight;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualize_data);
+        setToolbar();
+
         onBindViews();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -45,6 +49,23 @@ public class VisualizeData extends AppCompatActivity {
         }
 
         addDataToChart();
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        setTitle("Graph");
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        finish();
+        return true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

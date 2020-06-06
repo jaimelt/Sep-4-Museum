@@ -57,7 +57,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.ViewHold
 
         ViewHolder(@NonNull View itemView, OnListItemClickListener listener) {
             super(itemView);
-            email = itemView.findViewById(R.id.emailText);
+            email = itemView.findViewById(R.id.email_text);
             onListItemClickListener = listener;
             itemView.setOnClickListener(this);
         }

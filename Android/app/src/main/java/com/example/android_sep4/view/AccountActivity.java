@@ -59,7 +59,10 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
     private void setToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         setTitle("Manage user accounts");
     }
 
@@ -67,10 +70,10 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
     public void onRegisterAccountClicked(View view) {
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_register_account, null);
-        EditText emailField = dialogView.findViewById(R.id.emailField);
-        EditText passwordField = dialogView.findViewById(R.id.passwordField);
-        EditText repeatPasswordField = dialogView.findViewById(R.id.repeatPasswordField);
-        Button createAccountBtn = dialogView.findViewById(R.id.createAccountButton);
+        EditText emailField = dialogView.findViewById(R.id.email_field);
+        EditText passwordField = dialogView.findViewById(R.id.password_field);
+        EditText repeatPasswordField = dialogView.findViewById(R.id.repeat_password_field);
+        Button createAccountBtn = dialogView.findViewById(R.id.create_account_btn);
         openCreateDialog(dialogView, emailField, passwordField, repeatPasswordField, createAccountBtn);
     }
 
@@ -93,11 +96,11 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
                     emailField.setError("Email format is not valid");
                     break;
                 case 3:
-                    TextInputLayout passwordLayout = dialogView.findViewById(R.id.passwordLayout);
+                    TextInputLayout passwordLayout = dialogView.findViewById(R.id.password_layout);
                     passwordLayout.setError("Password must be between 6 and 16 characters");
                     break;
                 case 4:
-                    TextInputLayout repeatPasswordLayout = dialogView.findViewById(R.id.repeatPasswordLayout);
+                    TextInputLayout repeatPasswordLayout = dialogView.findViewById(R.id.repeat_password_layout);
                     repeatPasswordLayout.setError("Passwords do not match");
             }
         });

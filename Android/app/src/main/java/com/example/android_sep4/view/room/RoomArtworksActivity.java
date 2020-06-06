@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +31,23 @@ public class RoomArtworksActivity extends AppCompatActivity {
         }
 
         setViewModel();
+        setToolbar();
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Artwork located in this room");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        finish();
+        return true;
     }
 
     private void setViewModel() {
@@ -49,7 +67,7 @@ public class RoomArtworksActivity extends AppCompatActivity {
     }
 
     private void initRecycleView() {
-        RecyclerView recyclerView = findViewById(R.id.recycler_viewArtworkList);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_artwork_list);
         adapter = new ArtworksInRoomsAdapter(this);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);

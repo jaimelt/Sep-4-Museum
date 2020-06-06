@@ -1,7 +1,6 @@
 package com.example.android_sep4.view.museum.storage;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,14 +32,22 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
 
-        Toolbar toolbar = findViewById(R.id.storage_toolbar);
-        setSupportActionBar(toolbar);
-        setTitle("Storage");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbar();
+
 
         progressBar = findViewById(R.id.progress_bar_storage);
         deleteIcon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_delete);
         setViewModel();
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.storage_toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Storage");
+        if(getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void setViewModel() {

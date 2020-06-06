@@ -39,7 +39,7 @@
             android:name=".view.artwork.EditArtworkActivity"
             android:parentActivityName=".view.MainActivity" />
         <activity
-            android:name=".view.room.VisualizeData"
+            android:name=".view.room.VisualizeDataActivity"
             android:parentActivityName=".view.MainActivity"/>
         <activity
             android:name=".view.artwork.NewArtworkActivity"

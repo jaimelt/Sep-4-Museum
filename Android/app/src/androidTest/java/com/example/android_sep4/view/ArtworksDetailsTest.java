@@ -64,7 +64,7 @@ public class ArtworksDetailsTest {
                         childAtPosition(
                                 allOf(withId(R.id.museum_layout),
                                         childAtPosition(
-                                                withId(R.id.frameLayout),
+                                                withId(R.id.frame_container),
                                                 1)),
                                 2),
                         isDisplayed()));
@@ -80,7 +80,7 @@ public class ArtworksDetailsTest {
                         childAtPosition(
                                 allOf(withId(R.id.museum_layout),
                                         childAtPosition(
-                                                withId(R.id.frameLayout),
+                                                withId(R.id.frame_container),
                                                 1)),
                                 2),
                         isDisplayed()));
@@ -107,7 +107,7 @@ public class ArtworksDetailsTest {
                         childAtPosition(
                                 allOf(withId(R.id.museum_layout),
                                         childAtPosition(
-                                                withId(R.id.frameLayout),
+                                                withId(R.id.frame_container),
                                                 1)),
                                 2),
                         isDisplayed()));

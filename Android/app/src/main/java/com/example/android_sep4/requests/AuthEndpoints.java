@@ -1,7 +1,5 @@
 package com.example.android_sep4.requests;
 
-import androidx.room.Update;
-
 import com.example.android_sep4.model.User;
 import com.example.android_sep4.model.Users;
 

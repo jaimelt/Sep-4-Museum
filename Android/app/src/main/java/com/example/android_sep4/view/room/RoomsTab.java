@@ -76,7 +76,7 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        recyclerView = view.findViewById(R.id.recycler_viewRoom);
+        recyclerView = view.findViewById(R.id.recycler_view_room);
         adapter = new RoomsAdapter(getContext());
         recyclerView.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -107,9 +107,12 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Toast.makeText(getContext(), "IT CHANGED", Toast.LENGTH_SHORT).show();
         if (key.equals(getString(R.string.pref_temperature_key))) {
             roomsTabViewModel.getRooms();
+            roomsTabViewModel.getRoomsLive().observe(getViewLifecycleOwner(), rooms -> {
+                roomsTabViewModel.getRoomsLive().removeObservers(this);
+                adapter.setRooms(rooms.getRooms());
+            });
         }
     }
 }

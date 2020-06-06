@@ -90,7 +90,7 @@ public class MuseumTabTest {
                 allOf(withContentDescription("Museum"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.tabLayout),
+                                        withId(R.id.tab_layout),
                                         0),
                                 0),
                         isDisplayed()));
@@ -100,7 +100,7 @@ public class MuseumTabTest {
                 allOf(withContentDescription("Artworks"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.tabLayout),
+                                        withId(R.id.tab_layout),
                                         0),
                                 1),
                         isDisplayed()));
@@ -110,16 +110,16 @@ public class MuseumTabTest {
                 allOf(withContentDescription("Rooms"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.tabLayout),
+                                        withId(R.id.tab_layout),
                                         0),
                                 2),
                         isDisplayed()));
         actionBar$Tab3.check(matches(isDisplayed()));
 
         ViewInteraction viewPager = onView(
-                allOf(withId(R.id.viewpager),
+                allOf(withId(R.id.view_pager),
                         childAtPosition(
-                                allOf(withId(R.id.frameLayout),
+                                allOf(withId(R.id.frame_container),
                                         childAtPosition(
                                                 withId(R.id.main_content),
                                                 1)),
@@ -128,9 +128,9 @@ public class MuseumTabTest {
         viewPager.check(matches(isDisplayed()));
 
         ViewInteraction viewPager2 = onView(
-                allOf(withId(R.id.viewpager),
+                allOf(withId(R.id.view_pager),
                         childAtPosition(
-                                allOf(withId(R.id.frameLayout),
+                                allOf(withId(R.id.frame_container),
                                         childAtPosition(
                                                 withId(R.id.main_content),
                                                 1)),
