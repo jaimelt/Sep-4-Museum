@@ -1,23 +1,13 @@
 package com.example.android_sep4.model;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
 import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
 
-import java.util.ArrayList;
-
-@Entity
 public class Room {
-    @PrimaryKey
-    @ColumnInfo(name = "location_code")
     @NonNull
     private String locationCode;
     private String description;
-    @ColumnInfo(name = "total_capacity")
     private int totalCapacity;
-
     @Ignore
     private int currentCapacity;
     @Ignore

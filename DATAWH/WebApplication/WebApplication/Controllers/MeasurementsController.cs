@@ -30,8 +30,9 @@ namespace WebApplication.Controllers
             MongoMeasurement mongoMeasurement = _mongoRepository.LoadLastRoomMeasurement(_mongoRepository.modifyToMongoRoomID(id));
             RoomMeasurement temp = new RoomMeasurement();
             temp.setMeasurementsFromMongo(mongoMeasurement);
-
+            
             return temp;
+          
         }
         
         [HttpGet]

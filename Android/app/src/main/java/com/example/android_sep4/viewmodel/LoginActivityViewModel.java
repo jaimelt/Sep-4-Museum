@@ -11,7 +11,8 @@ import com.example.android_sep4.repositories.AuthRepository;
 public class LoginActivityViewModel extends AndroidViewModel {
     private AuthRepository authRepository;
     private Validator validator;
-    public LoginActivityViewModel(Application application)  {
+
+    public LoginActivityViewModel(Application application) {
         super(application);
         authRepository = AuthRepository.getInstance(application);
         this.validator = new Validator();
@@ -25,9 +26,8 @@ public class LoginActivityViewModel extends AndroidViewModel {
         return authRepository.getIsValidating();
     }
 
-    public int validateFields(String email, String password)
-    {
-       return validator.validateLogin(email,password);
+    public int validateFields(String email, String password) {
+        return validator.validateLogin(email, password);
     }
 
 }

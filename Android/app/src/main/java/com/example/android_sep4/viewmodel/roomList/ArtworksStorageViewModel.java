@@ -1,7 +1,6 @@
 package com.example.android_sep4.viewmodel.roomList;
 
 import android.app.Application;
-import android.widget.Toast;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -10,7 +9,6 @@ import androidx.lifecycle.Observer;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.repositories.ArtworksRepository;
-import com.example.android_sep4.repositories.RoomRepository;
 
 import java.util.ArrayList;
 
@@ -18,6 +16,7 @@ public class ArtworksStorageViewModel extends AndroidViewModel {
     private ArtworksRepository artworksRepository;
     private ArrayList<Artwork> artworks = new ArrayList<>();
     private MutableLiveData<ArrayList<Artwork>> artworksLive = new MutableLiveData<>();
+
     public ArtworksStorageViewModel(Application application) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
@@ -26,17 +25,12 @@ public class ArtworksStorageViewModel extends AndroidViewModel {
 
     public LiveData<ArrayList<Artwork>> getArtworksFromStorage(String id) {
 
-        artworksRepository.getArtworksFromStorage(id).observeForever(new Observer<ArrayList<Artwork>>() {
-            @Override
-            public void onChanged(ArrayList<Artwork> artworks) {
-                    artworksLive.setValue(artworks);
-            }
-        });
+        artworksRepository.getArtworksFromStorage(id).observeForever(artworks -> artworksLive.setValue(artworks));
         return artworksLive;
     }
 
     public void removeArtwork(int id) {
-         artworksRepository.deleteArtwork(id);
+        artworksRepository.deleteArtwork(id);
     }
 
     public LiveData<Boolean> getIsLoading() {

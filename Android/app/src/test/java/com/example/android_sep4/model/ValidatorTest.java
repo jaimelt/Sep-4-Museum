@@ -1,6 +1,5 @@
 package com.example.android_sep4.model;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnit4.class)
 public class ValidatorTest {
@@ -29,7 +27,6 @@ public class ValidatorTest {
     private String notAllowed;
     private String nullString;
 
-
     @Before
     public void setUp() throws Exception {
         validator = new Validator();
@@ -43,7 +40,7 @@ public class ValidatorTest {
         temperature = "20";
         light = "300";
         humidity = "20";
-        empty= "";
+        empty = "";
         allowedName = "Leonardo Da Vinci";
         notAllowed = ".Leonardo Da! Vinci";
     }
@@ -93,8 +90,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void validateLogin()
-    {
+    public void validateLogin() {
         int result1 = validator.validateLogin(email, null);
         Assert.assertEquals(2, result1, 0);
 
@@ -114,8 +110,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void validateEditRoomFields()
-    {
+    public void validateEditRoomFields() {
         int result = validator.validateEditRoomFields(light, co2, temperature, empty);
         Assert.assertEquals(4, result, 0);
 
@@ -135,10 +130,9 @@ public class ValidatorTest {
     }
 
     @Test
-    public void validateEditArtworkFields()
-    {
+    public void validateEditArtworkFields() {
         int result = validator.validateEditArtworkFields(allowedName, notAllowed);
-        Assert.assertEquals(4, result,0);
+        Assert.assertEquals(4, result, 0);
 
         int result2 = validator.validateEditArtworkFields(empty, empty);
         Assert.assertEquals(1, result2, 0);

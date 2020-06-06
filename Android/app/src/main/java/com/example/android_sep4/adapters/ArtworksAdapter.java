@@ -15,14 +15,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.android_sep4.view.artwork.EditArtworkActivity;
-import com.squareup.picasso.Picasso;
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
+import com.example.android_sep4.view.artwork.EditArtworkActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,8 +46,7 @@ public class ArtworksAdapter extends RecyclerView.Adapter<ArtworksAdapter.ViewHo
                         filteredList.add(artwork);
                     }
                 }
-                if(filteredList.size() == 0)
-                {
+                if (filteredList.size() == 0) {
                     Toast.makeText(context, "Could not find the artwork with name " + constraint, Toast.LENGTH_SHORT).show();
                 }
             }

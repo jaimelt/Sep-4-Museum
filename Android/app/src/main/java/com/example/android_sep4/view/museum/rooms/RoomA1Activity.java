@@ -1,21 +1,14 @@
 package com.example.android_sep4.view.museum.rooms;
 
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
@@ -51,14 +44,12 @@ public class RoomA1Activity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("A1");
-        if(getSupportActionBar() != null)
-        {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
-    //finish on activity when up navigation is clicked - animation slide to right
     public boolean onSupportNavigateUp() {
         onBackPressed();
         finish();
@@ -81,7 +72,7 @@ public class RoomA1Activity extends AppCompatActivity {
                 }
             } else {
                 progressBar.setVisibility(View.GONE);
-                for(TextView textView : textViews) {
+                for (TextView textView : textViews) {
                     textView.setClickable(true);
                 }
             }

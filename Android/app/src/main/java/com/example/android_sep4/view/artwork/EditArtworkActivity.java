@@ -2,7 +2,6 @@ package com.example.android_sep4.view.artwork;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
@@ -72,7 +71,6 @@ public class EditArtworkActivity extends AppCompatActivity {
     }
 
     @Override
-    //finish on activity when up navigation is clicked - animation slide to right
     public boolean onSupportNavigateUp() {
         onBackPressed();
         finish();

@@ -4,7 +4,6 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModel;
 
 import com.example.android_sep4.model.Room;
 import com.example.android_sep4.model.RoomMeasurements;
@@ -43,7 +42,7 @@ public class EditRoomsConditionsViewModel extends AndroidViewModel {
         return room.getTemperature();
     }
 
-    public void editRoomOptimal(String locationCode, String description, int totalCapacity, int currentCapacity,  double light, double co2,
+    public void editRoomOptimal(String locationCode, String description, int totalCapacity, int currentCapacity, double light, double co2,
                                 double temperature, double humidity, RoomMeasurements roomMeasurements) {
         Room room = new Room(locationCode, description, totalCapacity, currentCapacity, null, light, temperature, humidity, co2, roomMeasurements);
         roomRepository.editRoomOptimal(room);
