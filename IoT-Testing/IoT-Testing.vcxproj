@@ -33,10 +33,10 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;..\IoT\IoTApp\FreeRTOS\src;.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\drivers;.\libs\fff;$(IncludePath)</IncludePath>
+    <IncludePath>..\IoT\IoTApp\drivers;.\libs\fff;..\IoT\IoTApp\FreeRTOS\src;..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;..\IoT\IoTApp\FreeRTOS\src;.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\drivers;.\libs\fff;$(IncludePath)</IncludePath>
+    <IncludePath>..\IoT\IoTApp\drivers;.\libs\fff;..\IoT\IoTApp\FreeRTOS\src;..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>.\libs\fff;.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
@@ -53,24 +53,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\ATMEGA_FreeRTOS.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\croutine.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\event_groups.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\FreeRTOSConfig.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\FreeRTOSVariant.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\list.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\message_buffer.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\mpu_wrappers.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\portable.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\portmacro.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\projdefs.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\queue.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\semphr.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\stack_macros.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\stream_buffer.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\task.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\timers.h" />
     <ClInclude Include="..\IoT\IoTApp\src\constants\global_constants.h" />
     <ClInclude Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.h" />
     <ClInclude Include="..\IoT\IoTApp\src\handlers\sensor_data_package_handler.h" />

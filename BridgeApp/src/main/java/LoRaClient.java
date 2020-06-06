@@ -24,7 +24,7 @@ import java.util.logging.SimpleFormatter;
  */
 public class LoRaClient implements WebSocket.Listener {
     // the reference to the database repository
-    private final IDatabase database = new MongoDbDatabase();
+    private final IDatabase database;
     // the hardware connection string including the token
     private final String HARDWARE_CONNECTION_STRING = "wss://iotnet.teracom.dk/app?token=vnoSvwAAABFpb3RuZXQudGVyYWNvbS5ka14S7zZXBMiAAcsYgh0N79M=";
     // a logger object for logging the
@@ -35,7 +35,7 @@ public class LoRaClient implements WebSocket.Listener {
     private final int RATIO = 100;
 
     /**
-     * The constructor for the Lorawan client.
+     * The constructor for the Lorawan client initializing the fields.
      */
     public LoRaClient() {
         HttpClient client = HttpClient.newHttpClient();
@@ -48,6 +48,7 @@ public class LoRaClient implements WebSocket.Listener {
         }
         LOGGER.addHandler(fileHandler);
         fileHandler.setFormatter(new SimpleFormatter());
+        database = new MongoDbDatabase();
     }
 
     /**
