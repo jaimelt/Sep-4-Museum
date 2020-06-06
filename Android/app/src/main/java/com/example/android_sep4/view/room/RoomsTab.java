@@ -110,6 +110,10 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
         Toast.makeText(getContext(), "IT CHANGED", Toast.LENGTH_SHORT).show();
         if (key.equals(getString(R.string.pref_temperature_key))) {
             roomsTabViewModel.getRooms();
+            roomsTabViewModel.getRoomsLive().observe(getViewLifecycleOwner(), rooms -> {
+                roomsTabViewModel.getRoomsLive().removeObservers(this);
+                adapter.setRooms(rooms.getRooms());
+            });
         }
     }
 }
