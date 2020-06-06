@@ -70,10 +70,12 @@ namespace WebApplication.Database.Repositories.ArtworkRep
             if (previousroom == null)
             {
                 Console.WriteLine("The previous room is null");
-            } else if (artworkobject == null)
+            }
+            else if (artworkobject == null)
             {
                 Console.WriteLine("The artwork is null");
-            }  else if (newRoom == null)
+            }  
+            else if (newRoom == null)
             {
                 Console.WriteLine("The new room is null");
             }

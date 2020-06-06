@@ -7,9 +7,7 @@ using DnsClient.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using WebApplication.Database;
 using WebApplication.Database.Repositories.ArtworkRep;
-using WebApplication.Database.Repositories.RoomRep;
 using WebApplication.Datamodel;
 
 
@@ -22,15 +20,14 @@ namespace WebApplication.Controllers
     {
         private readonly ArtworkRepository artworkRepository;
         private readonly ILogger<ArtworkController> logger;
-        private readonly RoomRepository RoomRepository;
+        
       
 
-        public ArtworkController(ArtworkRepository artworkRepository, ILogger<ArtworkController> logger, RoomRepository RoomRepository)
+        public ArtworkController(ArtworkRepository artworkRepository, ILogger<ArtworkController> logger)
         {
             this.artworkRepository = artworkRepository;
             this.logger = logger;
-            this.RoomRepository = RoomRepository; 
-
+            
         }
 
 
@@ -69,11 +66,9 @@ namespace WebApplication.Controllers
                     logger.LogError("The artwork does not exist");
                     return NotFound();
                 }
-                else
-                {
-                    logger.LogInformation($"Returned the artwork with id {id}");
-                    return Ok(obj);
-                }
+
+                logger.LogInformation($"Returned the artwork with id {id}");
+                return Ok(obj);
             }
             catch (Exception exception)
             {
@@ -123,10 +118,10 @@ namespace WebApplication.Controllers
                     return BadRequest("Invalid model object");
                 }
 
+                logger.LogInformation("A new artwork object has been created");
                 artworkRepository.CreateArtWork(artwork);
                 await artworkRepository.saveChanges();
                 
-               
 
                 return CreatedAtRoute("", new {id = artwork.Id}, artwork);
 
@@ -152,8 +147,7 @@ namespace WebApplication.Controllers
                     logger.LogError($"Artwork object with id {id} has not been found in the database");
                     return NotFound();
                 }
-
-                var room = await RoomRepository.GetRoomByLocationCodeAsync(artwork.Location);
+                
                 
 
                 artworkRepository.DeleteArtwork(artwork);
@@ -178,13 +172,15 @@ namespace WebApplication.Controllers
                     logger.LogError("Art id is null");
                     return BadRequest("Null artwork id");
                     
-                } else if (location == null)
+                } 
+                
+                if (location == null)
                 {
                     logger.LogError("Location id is null");
                     return BadRequest("Null Location id");
                 }
-                
-                
+
+              
                 artworkRepository.MoveArtwork(artid, location);
                 await artworkRepository.saveChanges();
                 return Ok("it has been moved");
@@ -208,17 +204,18 @@ namespace WebApplication.Controllers
 
             try
             {
-                if (!id.Equals(artwork.Id))
-                {
-                    logger.LogError("Invalid artwork id");
-                    return BadRequest("Invalid artwork id");
-                }
-
                 if (artwork == null)
                 {
                     logger.LogError("Artwork object sent was null");
                     return BadRequest("Artwork object is null");
                 }
+                
+                if (!id.Equals(artwork.Id))
+                {
+                    logger.LogError("Invalid artwork id");
+                    return BadRequest("Invalid artwork id");
+                }
+                
 
                 if (!ModelState.IsValid)
                 {
@@ -237,9 +234,7 @@ namespace WebApplication.Controllers
                 return StatusCode(500, "Internal server error");
             }
      
-
             
-
 
         }
     }
