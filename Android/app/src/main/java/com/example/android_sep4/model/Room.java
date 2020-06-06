@@ -1,7 +1,6 @@
 package com.example.android_sep4.model;
 
 import androidx.annotation.NonNull;
-import androidx.room.Ignore;
 
 public class Room {
     @NonNull
