@@ -16,9 +16,18 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         setFragment();
+        setToolbar();
+
+    }
+
+    private void setToolbar() {
         Toolbar toolbar = findViewById(R.id.settings_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        setTitle("Settings");
     }
 
     private void setFragment() {
@@ -30,8 +39,9 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+        if (getSupportFragmentManager().getBackStackEntryCount() <= 1) {
             getSupportFragmentManager().popBackStack();
+            super.onBackPressed();
             finish();
             return true;
         }
@@ -42,12 +52,14 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+        if (getSupportFragmentManager().getBackStackEntryCount() <= 1) {
             getSupportFragmentManager().popBackStack();
+            super.onBackPressed();
             finish();
         }
         setTitle("Settings");
         getSupportFragmentManager().popBackStack();
+        setFragment();
         super.onBackPressed();
     }
 }

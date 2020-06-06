@@ -84,16 +84,16 @@ public class ArtworkDetails extends AppCompatActivity {
     }
 
     public void findViews() {
-        artworkName = findViewById(R.id.artworkNamePopUp);
-        artworkAuthor = findViewById(R.id.artworkAuthorPopUp);
-        artworkDescription = findViewById(R.id.artworkDescriptionPopUp);
-        artworkType = findViewById(R.id.artworkTypePopUp);
-        artworkImage = findViewById(R.id.artworkImagePopUp);
-        humidity = findViewById(R.id.humidityPopUp);
-        co2 = findViewById(R.id.co2PopUp);
-        light = findViewById(R.id.lightPopUp);
-        temperature = findViewById(R.id.tempPopUp);
-        firstLayout = findViewById(R.id.firstLayout);
-        secondLayout = findViewById(R.id.secondLayout);
+        artworkName = findViewById(R.id.artwork_name_pop_up);
+        artworkAuthor = findViewById(R.id.artwork_author_pop_up);
+        artworkDescription = findViewById(R.id.artwork_description_pop_up);
+        artworkType = findViewById(R.id.artwork_type_pop_up);
+        artworkImage = findViewById(R.id.artwork_image_pop_up);
+        humidity = findViewById(R.id.humidity_pop_up);
+        co2 = findViewById(R.id.co2_pop_up);
+        light = findViewById(R.id.light_pop_up);
+        temperature = findViewById(R.id.temp_pop_up);
+        firstLayout = findViewById(R.id.first_layout);
+        secondLayout = findViewById(R.id.second_layout);
     }
 }

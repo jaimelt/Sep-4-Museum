@@ -97,7 +97,7 @@ public class RoomA1Activity extends AppCompatActivity {
         place_holder_7 = findViewById(R.id.artwork_place_7);
         place_holder_8 = findViewById(R.id.artwork_place_8);
         place_holder_9 = findViewById(R.id.artwork_place_9);
-        progressBar = findViewById(R.id.progress_bar_roomA1);
+        progressBar = findViewById(R.id.progress_bar_room_a1);
     }
 
     public void setTextViews() {

@@ -73,11 +73,11 @@ public class ArtworksInRoomsAdapter extends RecyclerView.Adapter<ArtworksInRooms
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.imageView);
-            artworkName = itemView.findViewById(R.id.artworkName);
-            artworkDescription = itemView.findViewById(R.id.artworkDescription);
-            artworkAuthor = itemView.findViewById(R.id.artworkAuthor);
-            artworkType = itemView.findViewById(R.id.artworkType);
+            imageView = itemView.findViewById(R.id.artwork_image);
+            artworkName = itemView.findViewById(R.id.artwork_name);
+            artworkDescription = itemView.findViewById(R.id.artwork_description);
+            artworkAuthor = itemView.findViewById(R.id.artwork_author);
+            artworkType = itemView.findViewById(R.id.artwork_type);
             parentLayout = itemView.findViewById(R.id.parent_layout_room_artworks);
         }
     }

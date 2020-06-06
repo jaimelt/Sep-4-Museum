@@ -13,9 +13,6 @@
     <Filter Include="IoTProjectFiles">
       <UniqueIdentifier>{36b91b6b-4d73-4ff4-b0a6-eb972ae9e978}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FreeRTOS">
-      <UniqueIdentifier>{ed5dc335-b0fe-4be9-81ae-16cd9b45620d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\IoT\IoTApp\src\constants\global_constants.h">
@@ -28,60 +25,6 @@
       <Filter>IoTProjectFiles</Filter>
     </ClInclude>
     <ClInclude Include="libs\fff\fff.h" />
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\ATMEGA_FreeRTOS.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\croutine.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\event_groups.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\FreeRTOSConfig.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\FreeRTOSVariant.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\list.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\message_buffer.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\mpu_wrappers.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\portable.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\portmacro.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\projdefs.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\queue.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\semphr.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\stack_macros.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\stream_buffer.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\task.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\src\timers.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.h">
-      <Filter>FreeRTOS</Filter>
-    </ClInclude>
     <ClInclude Include="force_include.h" />
   </ItemGroup>
   <ItemGroup>

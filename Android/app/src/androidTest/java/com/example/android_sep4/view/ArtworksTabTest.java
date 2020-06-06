@@ -59,7 +59,7 @@ public class ArtworksTabTest {
                 allOf(withContentDescription("Artworks"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.tabLayout),
+                                        withId(R.id.tab_layout),
                                         0),
                                 1),
                         isDisplayed()));
@@ -69,7 +69,7 @@ public class ArtworksTabTest {
                 allOf(withContentDescription("Museum"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.tabLayout),
+                                        withId(R.id.tab_layout),
                                         0),
                                 0),
                         isDisplayed()));
@@ -79,7 +79,7 @@ public class ArtworksTabTest {
                 allOf(withContentDescription("Rooms"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.tabLayout),
+                                        withId(R.id.tab_layout),
                                         0),
                                 2),
                         isDisplayed()));
@@ -109,7 +109,7 @@ public class ArtworksTabTest {
                 allOf(withId(R.id.recycler_view),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.frameLayout),
+                                        withId(R.id.frame_container),
                                         1),
                                 0),
                         isDisplayed()));

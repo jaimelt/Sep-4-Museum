@@ -9,7 +9,7 @@
     android:id="@+id/artwork_details_layout">
 
     <TextView
-        android:id="@+id/artworkTypePopUp"
+        android:id="@+id/artwork_type_pop_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/artwork_type_text"
@@ -17,7 +17,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/artworkImagePopUp"
+        android:id="@+id/artwork_image_pop_up"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="top"
@@ -25,7 +25,7 @@
         android:layout_marginBottom="5dp" />
 
     <LinearLayout
-        android:id="@+id/firstLayout"
+        android:id="@+id/first_layout"
         android:layout_width="match_parent"
         android:layout_height="120sp"
         android:layout_margin="1dp"
@@ -40,7 +40,7 @@
             >
 
             <TextView
-                android:id="@+id/artworkNamePopUp"
+                android:id="@+id/artwork_name_pop_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -51,7 +51,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/artworkAuthorPopUp"
+                android:id="@+id/artwork_author_pop_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -65,7 +65,7 @@
 
 
         <TextView
-            android:id="@+id/artworkDescriptionPopUp"
+            android:id="@+id/artwork_description_pop_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2sp"
@@ -77,7 +77,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/secondLayout"
+        android:id="@+id/second_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="1dp"
@@ -92,7 +92,7 @@
             app:srcCompat="@drawable/humidity" />
 
         <TextView
-            android:id="@+id/humidityPopUp"
+            android:id="@+id/humidity_pop_up"
             android:layout_width="25sp"
             android:layout_height="25sp"
             android:layout_gravity="center"
@@ -106,7 +106,7 @@
             app:srcCompat="@drawable/co2" />
 
         <TextView
-            android:id="@+id/co2PopUp"
+            android:id="@+id/co2_pop_up"
             android:layout_width="25sp"
             android:layout_height="25sp"
             android:layout_gravity="center"
@@ -120,7 +120,7 @@
             app:srcCompat="@drawable/light" />
 
         <TextView
-            android:id="@+id/lightPopUp"
+            android:id="@+id/light_pop_up"
             android:layout_width="25sp"
             android:layout_height="25sp"
             android:layout_gravity="center"
@@ -134,7 +134,7 @@
             app:srcCompat="@drawable/temperature" />
 
         <TextView
-            android:id="@+id/tempPopUp"
+            android:id="@+id/temp_pop_up"
             android:layout_width="25sp"
             android:layout_height="25sp"
             android:layout_gravity="center"

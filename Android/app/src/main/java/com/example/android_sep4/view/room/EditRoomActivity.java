@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
@@ -32,6 +33,7 @@ public class EditRoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_room);
 
         setViewModel();
+        setToolbar();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -45,15 +47,31 @@ public class EditRoomActivity extends AppCompatActivity {
             currentCapacity = bundle.getInt("currentCapacity");
         }
 
-        temperature = findViewById(R.id.editTemperatureEditText);
-        humidity = findViewById(R.id.editHumidityEditText);
-        co2 = findViewById(R.id.editCo2EditText);
-        light = findViewById(R.id.editLightEditText);
+        temperature = findViewById(R.id.edit_temperature_field);
+        humidity = findViewById(R.id.edit_humidity_field);
+        co2 = findViewById(R.id.edit_co2_field);
+        light = findViewById(R.id.edit_light_field);
 
         temperature.setText(String.valueOf(optimalTemperature));
         co2.setText(String.valueOf(optimalCo2));
         light.setText(String.valueOf(optimalLight));
         humidity.setText(String.valueOf(optimalHumidity));
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Edit optimal conditions");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        finish();
+        return true;
     }
 
     private void setViewModel() {

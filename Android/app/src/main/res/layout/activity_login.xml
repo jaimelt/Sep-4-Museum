@@ -67,7 +67,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:background="@color/colorAccent"
-        android:foreground="?selectableItemBackground"
         android:padding="12dp"
         android:text="@string/login" />
 
