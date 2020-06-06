@@ -1,16 +1,6 @@
 package com.example.android_sep4.view;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -20,7 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.AccountAdapter;
@@ -44,13 +40,10 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
 
     private void setProgressBar() {
         ProgressBar progressBar = findViewById(R.id.progress_bar_artworks);
-        viewModel.getIsLoading().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if(aBoolean) {
-                    progressBar.setVisibility(View.VISIBLE);
-                } else progressBar.setVisibility(View.GONE);
-            }
+        viewModel.getIsLoading().observe(this, aBoolean -> {
+            if (aBoolean) {
+                progressBar.setVisibility(View.VISIBLE);
+            } else progressBar.setVisibility(View.GONE);
         });
     }
 
@@ -60,9 +53,7 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
         recyclerView.setAdapter(accountAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(llm);
-        viewModel.getUsers().observe(this, users -> {
-            accountAdapter.setUsers(users);
-        });
+        viewModel.getUsers().observe(this, users -> accountAdapter.setUsers(users));
     }
 
     private void setToolbar() {
@@ -110,15 +101,13 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
                     repeatPasswordLayout.setError("Passwords do not match");
             }
         });
-        if(dialog.getWindow() != null)
-        {
+        if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         dialog.show();
     }
 
     @Override
-    //finish on activity when up navigation is clicked - animation slide to right
     public boolean onSupportNavigateUp() {
         onBackPressed();
         finish();
@@ -132,23 +121,12 @@ public class AccountActivity extends AppCompatActivity implements AccountAdapter
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
-    private void openDeleteDialog(int index)
-    {
+    private void openDeleteDialog(int index) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert);
         alertDialog.setTitle("Delete user account");
         alertDialog.setMessage("Are you sure about deleting this user account?");
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                viewModel.deleteUser(index);
-            }
-        });
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        alertDialog.setPositiveButton("Yes", (dialog, which) -> viewModel.deleteUser(index));
+        alertDialog.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
         alertDialog.show();
     }
 }

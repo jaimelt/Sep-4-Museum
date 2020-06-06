@@ -26,7 +26,6 @@ public class EditRoomActivity extends AppCompatActivity {
     private int totalCapacity;
     private int currentCapacity;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +67,7 @@ public class EditRoomActivity extends AppCompatActivity {
         String humidityText = humidity.getText().toString();
 
         int validation = viewModel.validateEditRoomFields(lightText, co2Text, temperatureText, humidityText);
-        switch (validation)
-        {
+        switch (validation) {
             case 1:
                 light.setError("Field can not be empty");
                 break;

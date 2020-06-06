@@ -15,8 +15,7 @@ public class AuthRepository {
     private Application application;
     private String email;
 
-    public AuthRepository(Application application)
-    {
+    public AuthRepository(Application application) {
         this.application = application;
         authAPIClient = new AuthAPIClient(application);
     }

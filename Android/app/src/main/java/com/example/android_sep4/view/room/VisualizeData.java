@@ -1,8 +1,10 @@
 package com.example.android_sep4.view.room;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android_sep4.R;
 import com.github.mikephil.charting.charts.BarChart;
@@ -10,11 +12,9 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
-
 import java.util.ArrayList;
 
 public class VisualizeData extends AppCompatActivity {
-
     private BarChart chart;
 
     private double optimalTemperature;
@@ -47,6 +47,7 @@ public class VisualizeData extends AppCompatActivity {
         addDataToChart();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void addDataToChart() {
 
         ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
@@ -68,7 +69,6 @@ public class VisualizeData extends AppCompatActivity {
         set1.setValueTextSize(18);
         set2.setValueTextColor(getColor(R.color.white));
         set2.setValueTextSize(18);
-
 
         BarData data = new BarData(set1, set2);
         float groupSpace = 0.5f;

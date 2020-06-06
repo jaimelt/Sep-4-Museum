@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +31,6 @@ import com.example.android_sep4.viewmodel.roomList.RoomsTabViewModel;
  * A simple {@link Fragment} subclass.
  */
 public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener {
-    static final String EXTRA_ROOM = "Room Name";
     private RoomsTabViewModel roomsTabViewModel;
     private RoomsAdapter adapter;
     private ProgressBar progressBar;
@@ -40,7 +38,6 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
     private SharedPreferences sharedPreferences;
 
     public RoomsTab() {
-        // Required empty public constructor
     }
 
     @Override
@@ -69,13 +66,10 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
         roomsTabViewModel.getRoomsLive().observe(getViewLifecycleOwner(), rooms -> {
             adapter.setRooms(rooms.getRooms());
         });
-        roomsTabViewModel.getIsLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    progressBar.setVisibility(View.VISIBLE);
-                } else progressBar.setVisibility(View.GONE);
-            }
+        roomsTabViewModel.getIsLoading().observe(getViewLifecycleOwner(), aBoolean -> {
+            if (aBoolean) {
+                progressBar.setVisibility(View.VISIBLE);
+            } else progressBar.setVisibility(View.GONE);
         });
 
     }

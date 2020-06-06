@@ -38,8 +38,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     @Override
     public RoomsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_room, parent, false);
-        RoomsAdapter.ViewHolder viewHolder = new RoomsAdapter.ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -50,11 +49,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         //Preference from settings for Celsius/Fahrenheit unit
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         boolean prefTemperature = sharedPreferences.getBoolean(context.getString(R.string.pref_temperature_key), context.getResources().getBoolean(R.bool.pref_temperature_default));
-        if(prefTemperature)
-        {
+        if (prefTemperature) {
             holder.temperatureUnit.setText(context.getString(R.string.temperature_unit_celsius));
-        }
-        else {
+        } else {
             holder.temperatureUnit.setText(context.getString(R.string.temperature_unit_fahrenheit));
         }
 
@@ -68,7 +65,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.roomCapacity.setText(String.valueOf(room.getTotalCapacity()));
         holder.currentCapacity.setText(String.valueOf(room.getCurrentCapacity()));
         holder.description.setText(room.getDescription());
-        //Optimal conditions
         holder.optimalTemperature.setText(String.valueOf(room.getTemperature()));
         holder.optimalLight.setText(String.valueOf(room.getLight()));
         holder.optimalHumidity.setText(String.valueOf(room.getHumidity()));
@@ -89,10 +85,12 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             intent.putExtra("optimalLight", rooms.get(position).getLight());
             intent.putExtra("optimalCo2", rooms.get(position).getCo2());
             intent.putExtra("optimalHumidity", rooms.get(position).getHumidity());
-            intent.putExtra("liveCo2",rooms.get(position).getLiveRoomMeasurements().getCo2());
-            intent.putExtra("liveHumidity", rooms.get(position).getLiveRoomMeasurements().getHumidity());
-            intent.putExtra("liveTemp", rooms.get(position).getLiveRoomMeasurements().getTemp());
-            intent.putExtra("liveLight", rooms.get(position).getLiveRoomMeasurements().getLight());
+            if (rooms.get(position).getLiveRoomMeasurements() != null) {
+                intent.putExtra("liveCo2", rooms.get(position).getLiveRoomMeasurements().getCo2());
+                intent.putExtra("liveHumidity", rooms.get(position).getLiveRoomMeasurements().getHumidity());
+                intent.putExtra("liveTemp", rooms.get(position).getLiveRoomMeasurements().getTemp());
+                intent.putExtra("liveLight", rooms.get(position).getLiveRoomMeasurements().getLight());
+            }
             intent.putExtra("locationCode", rooms.get(position).getLocationCode());
 
             Room room12 = rooms.get(position);
@@ -159,7 +157,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         ConstraintLayout expandableLayout;
         TextView temperatureUnit;
 
-       public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             description = itemView.findViewById(R.id.descriptionContent);
             co2Value = itemView.findViewById(R.id.co2TextViewId);

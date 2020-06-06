@@ -11,11 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
-import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.viewmodel.museum.rooms.ArtworkDetailsViewModel;
 
 public class ArtworkDetails extends AppCompatActivity {
@@ -40,6 +38,7 @@ public class ArtworkDetails extends AppCompatActivity {
         setViewModel();
     }
 
+    @SuppressLint("SetTextI18n")
     private void setViewModel() {
         artworkDetailsViewModel = new ViewModelProvider(this).get(ArtworkDetailsViewModel.class);
 

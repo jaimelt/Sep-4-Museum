@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.viewmodel.ViewModelFactory;
-import com.example.android_sep4.viewmodel.museum.rooms.RoomB1ViewModel;
 import com.example.android_sep4.viewmodel.museum.rooms.RoomB2ViewModel;
 
 import java.util.ArrayList;
@@ -45,14 +43,12 @@ public class RoomB2Activity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("B2");
-        if(getSupportActionBar() != null)
-        {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
-    //finish on activity when up navigation is clicked - animation slide to right
     public boolean onSupportNavigateUp() {
         onBackPressed();
         finish();
@@ -75,7 +71,7 @@ public class RoomB2Activity extends AppCompatActivity {
                 }
             } else {
                 progressBar.setVisibility(View.GONE);
-                for(TextView textView : textViews) {
+                for (TextView textView : textViews) {
                     textView.setClickable(true);
                 }
             }
@@ -127,4 +123,5 @@ public class RoomB2Activity extends AppCompatActivity {
                 }
             });
         }
-    }}
+    }
+}

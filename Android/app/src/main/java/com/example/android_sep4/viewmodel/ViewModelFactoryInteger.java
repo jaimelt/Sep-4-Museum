@@ -11,12 +11,10 @@ public class ViewModelFactoryInteger implements ViewModelProvider.Factory {
     private Application mApplication;
     private int mParam = 0;
 
-
     public ViewModelFactoryInteger(Application application, int mParam) {
         mApplication = application;
         this.mParam = mParam;
     }
-
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
