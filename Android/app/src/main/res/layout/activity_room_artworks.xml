@@ -7,9 +7,12 @@
     android:background="@color/colorPrimary"
     tools:context=".view.room.RoomArtworksActivity">
 
+    <include layout="@layout/toolbar"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_artwork_list"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height"
         android:layout_height="match_parent"
         tools:listitem="@layout/layout_list_artwork"/>
 

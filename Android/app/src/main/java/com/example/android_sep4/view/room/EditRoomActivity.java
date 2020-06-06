@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
@@ -32,6 +33,7 @@ public class EditRoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_room);
 
         setViewModel();
+        setToolbar();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -54,6 +56,22 @@ public class EditRoomActivity extends AppCompatActivity {
         co2.setText(String.valueOf(optimalCo2));
         light.setText(String.valueOf(optimalLight));
         humidity.setText(String.valueOf(optimalHumidity));
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Edit optimal conditions");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        finish();
+        return true;
     }
 
     private void setViewModel() {

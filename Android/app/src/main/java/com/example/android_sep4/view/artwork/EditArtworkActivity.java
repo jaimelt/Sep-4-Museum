@@ -59,14 +59,18 @@ public class EditArtworkActivity extends AppCompatActivity {
 
         System.out.println(artworkID);
         setViewModel();
+        setToolbar();
+        bindViews();
+    }
 
+    private void setToolbar() {
         Toolbar toolbar = findViewById(R.id.edit_artwork_toolbar);
         setSupportActionBar(toolbar);
-
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         setTitle("Edit artwork");
-
-        bindViews();
     }
 
     @Override

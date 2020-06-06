@@ -48,13 +48,17 @@ public class NewArtworkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_artwork);
 
         setViewModel();
+        setToolbar();
+        bindViews();
+    }
 
+    private void setToolbar() {
         Toolbar toolbar = findViewById(R.id.edit_artwork_toolbar);
         setSupportActionBar(toolbar);
-
-        bindViews();
-
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null)
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         setTitle("New artwork");
     }
 
@@ -64,6 +68,7 @@ public class NewArtworkActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        onBackPressed();
         finish();
         return true;
     }

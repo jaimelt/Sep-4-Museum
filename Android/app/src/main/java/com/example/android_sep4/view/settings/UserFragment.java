@@ -30,7 +30,10 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        getActivity().setTitle("User");
+        if(getActivity() != null)
+        {
+            getActivity().setTitle("User");
+        }
         return inflater.inflate(R.layout.fragment_user_settings, container, false);
     }
 

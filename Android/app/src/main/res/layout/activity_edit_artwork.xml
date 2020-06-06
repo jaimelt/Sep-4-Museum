@@ -67,6 +67,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:background="@null"
+                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:hint="@string/artwork_name_text"
                     android:importantForAutofill="no"
                     android:inputType="textNoSuggestions"
