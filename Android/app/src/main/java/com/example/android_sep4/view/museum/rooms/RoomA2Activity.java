@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -44,14 +43,12 @@ public class RoomA2Activity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("A2");
-        if(getSupportActionBar() != null)
-        {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
-    //finish on activity when up navigation is clicked - animation slide to right
     public boolean onSupportNavigateUp() {
         onBackPressed();
         finish();
@@ -74,7 +71,7 @@ public class RoomA2Activity extends AppCompatActivity {
                 }
             } else {
                 progressBar.setVisibility(View.GONE);
-                for(TextView textView : textViews) {
+                for (TextView textView : textViews) {
                     textView.setClickable(true);
                 }
             }

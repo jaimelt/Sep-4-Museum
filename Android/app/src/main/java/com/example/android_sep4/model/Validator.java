@@ -5,7 +5,7 @@ import androidx.core.util.PatternsCompat;
 public class Validator {
     private static final String NORMAL_CHARACTERS_PATTERN = "[a-zA-Z0-9 ]+";
 
-    public Validator (){
+    public Validator() {
 
     }
 
@@ -48,29 +48,24 @@ public class Validator {
             return 12;
         } else if (maxLightInt <= 0) {
             return 13;
-        } else if (!hasAllowedSymbols(name)){
+        } else if (!hasAllowedSymbols(name)) {
             return 14;
-        }
-        else if(!hasAllowedSymbols(author)) {
+        } else if (!hasAllowedSymbols(author)) {
             return 15;
-        }
-        else return 16;
+        } else return 16;
     }
 
-    public int validateLogin(String email, String password){
+    public int validateLogin(String email, String password) {
         if (email.isEmpty() || !PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()) {
             return 2;
-        }
-        else if (password.isEmpty() || password.length() < 6 || password.length() > 16) {
+        } else if (password.isEmpty() || password.length() < 6 || password.length() > 16) {
             return 3;
-        }
-        else {
+        } else {
             return 1;
         }
     }
 
-    public int validateChangePassword(String password, String repeatPassword)
-    {
+    public int validateChangePassword(String password, String repeatPassword) {
         if (password.isEmpty() || password.length() < 6 || password.length() > 16) {
             return 2;
         } else if (!password.equals(repeatPassword)) {
@@ -85,45 +80,29 @@ public class Validator {
     }
 
     public int validateEditArtworkFields(String name, String author) {
-        if(name.isEmpty())
-        {
+        if (name.isEmpty()) {
             return 1;
-        }
-        else if(!hasAllowedSymbols(name))
-        {
+        } else if (!hasAllowedSymbols(name)) {
             return 2;
-        }
-        else if(author.isEmpty())
-        {
+        } else if (author.isEmpty()) {
             return 3;
-        }
-        else if(!hasAllowedSymbols(author))
-        {
+        } else if (!hasAllowedSymbols(author)) {
             return 4;
-        }
-        else {
+        } else {
             return 5;
         }
     }
 
     public int validateEditRoomFields(String lightText, String co2Text, String temperatureText, String humidityText) {
-        if(lightText.isEmpty())
-        {
+        if (lightText.isEmpty()) {
             return 1;
-        }
-        else if(co2Text.isEmpty())
-        {
+        } else if (co2Text.isEmpty()) {
             return 2;
-        }
-        else if(temperatureText.isEmpty())
-        {
+        } else if (temperatureText.isEmpty()) {
             return 3;
-        }
-        else if(humidityText.isEmpty())
-        {
+        } else if (humidityText.isEmpty()) {
             return 4;
-        }
-        else {
+        } else {
             return 5;
         }
     }

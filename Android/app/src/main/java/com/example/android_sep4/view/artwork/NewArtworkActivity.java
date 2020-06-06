@@ -63,13 +63,11 @@ public class NewArtworkActivity extends AppCompatActivity {
     }
 
     @Override
-    //finish on activity when up navigation is clicked - animation slide to right
     public boolean onSupportNavigateUp() {
         finish();
         return true;
     }
 
-    //TODO: Make scrollview for layout / limit height for multiline description
 
     public void onSelectImage(View view) {
         Intent intent = new Intent(
@@ -116,8 +114,7 @@ public class NewArtworkActivity extends AppCompatActivity {
 
         int validation = newArtworkViewModel.validateFields(name, author, description, comment, image, minTempInt, maxTempInt, minLightInt, maxLightInt, minCO2Int, maxCO2Int, maxHumInt, minHumInt);
         boolean typeBoolean = newArtworkViewModel.validateGroup(typeGroup);
-        if(!typeBoolean)
-        {
+        if (!typeBoolean) {
             Toast.makeText(this, "Select the type of the artwork", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -136,7 +133,8 @@ public class NewArtworkActivity extends AppCompatActivity {
                 commentField.setError("Enter the comment of the artwork");
                 break;
             case 5:
-                Toast.makeText(this, "Select the image of the artwork", Toast.LENGTH_SHORT).show();;
+                Toast.makeText(this, "Select the image of the artwork", Toast.LENGTH_SHORT).show();
+                ;
                 break;
             case 6:
                 minTemp.setError("Enter the minimum temperature of the artwork");
@@ -169,8 +167,7 @@ public class NewArtworkActivity extends AppCompatActivity {
                 authorField.setError("Invalid input on author name");
                 break;
             case 16:
-                if(!typeBoolean)
-                {
+                if (!typeBoolean) {
                     break;
                 }
                 String type = selectedRadioButton.getText().toString();
@@ -188,7 +185,6 @@ public class NewArtworkActivity extends AppCompatActivity {
         if (requestCode == IMAGE_PICK_CODE) {
             imageHolder.setImageURI(data != null ? data.getData() : null);
             imageUploader.setVisibility(View.INVISIBLE);
-            //TODO: ResultInfo failure when not selecting picture
         }
     }
 
@@ -196,7 +192,7 @@ public class NewArtworkActivity extends AppCompatActivity {
         imageHolder.buildDrawingCache();
         Bitmap bm = imageHolder.getDrawingCache();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
         return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }

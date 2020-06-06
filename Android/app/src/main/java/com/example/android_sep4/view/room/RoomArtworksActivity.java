@@ -5,21 +5,16 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.ArtworksInRoomsAdapter;
-import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.viewmodel.ViewModelFactory;
 import com.example.android_sep4.viewmodel.roomList.RoomArtworksViewModel;
 
-import java.util.ArrayList;
-
 public class RoomArtworksActivity extends AppCompatActivity {
-    private static final String TAG = "RoomArtworksActivity";
     private RoomArtworksViewModel roomArtworksViewModel;
     private ArtworksInRoomsAdapter adapter;
     private String locationCode;
@@ -30,7 +25,9 @@ public class RoomArtworksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_artworks);
         Bundle bundle = getIntent().getExtras();
-        locationCode = bundle.getString("locationCode");
+        if (bundle != null) {
+            locationCode = bundle.getString("locationCode");
+        }
 
         setViewModel();
     }
@@ -44,13 +41,10 @@ public class RoomArtworksActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         });
 
-        roomArtworksViewModel.getIsLoading().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if(aBoolean) {
-                    progressBar.setVisibility(View.VISIBLE);
-                } else progressBar.setVisibility(View.GONE);
-            }
+        roomArtworksViewModel.getIsLoading().observe(this, aBoolean -> {
+            if (aBoolean) {
+                progressBar.setVisibility(View.VISIBLE);
+            } else progressBar.setVisibility(View.GONE);
         });
     }
 

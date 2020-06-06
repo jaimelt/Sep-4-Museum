@@ -42,13 +42,12 @@ public class RoomsAPIClient {
         call.enqueue(new Callback<Rooms>() {
             @Override
             public void onResponse(@NonNull Call<Rooms> call, @NonNull Response<Rooms> response) {
-                Log.i(TAG, "onResponse: success!");
+                Log.i(TAG, "onResponse: called!");
                 if (response.isSuccessful() && response.body() != null) {
                     Rooms rooms = response.body();
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
                     boolean prefTemperature = sharedPreferences.getBoolean(application.getString(R.string.pref_temperature_key), application.getResources().getBoolean(R.bool.pref_temperature_default));
-                    if(!prefTemperature)
-                    {
+                    if (!prefTemperature) {
                         rooms.changeCelsiusToFahrenheit();
                     }
                     roomsData.setValue(rooms);

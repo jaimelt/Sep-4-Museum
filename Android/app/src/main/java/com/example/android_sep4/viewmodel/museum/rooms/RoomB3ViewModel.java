@@ -7,15 +7,13 @@ import androidx.lifecycle.LiveData;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.repositories.ArtworksRepository;
-import com.example.android_sep4.repositories.RoomRepository;
 
 import java.util.ArrayList;
 
 public class RoomB3ViewModel extends AndroidViewModel {
-
     private ArtworksRepository artworksRepository;
 
-    public RoomB3ViewModel(Application application)  {
+    public RoomB3ViewModel(Application application) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
     }

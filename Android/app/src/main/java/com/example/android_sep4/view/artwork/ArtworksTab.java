@@ -34,13 +34,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * A simple {@link Fragment} subclass.
  */
 public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemClickListener {
-    static final String EXTRA_ARTWORK = "Artwork name";
     private ArtworksTabViewModel artworksTabViewModel;
     private ArtworksAdapter adapter;
     private ProgressBar progressBar;
 
     public ArtworksTab() {
-        // Required empty public constructor
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -57,7 +55,6 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
     public void onResume() {
         super.onResume();
 
-        //update list when getting back from add activity
         adapter.notifyDataSetChanged();
     }
 
@@ -73,7 +70,7 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
         artworksTabViewModel.getIsLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if(aBoolean) {
+                if (aBoolean) {
                     progressBar.setVisibility(View.VISIBLE);
                 } else progressBar.setVisibility(View.GONE);
             }
@@ -121,7 +118,6 @@ public class ArtworksTab extends Fragment implements ArtworksAdapter.OnListItemC
                 return false;
             }
 
-            //To have real time filtering
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;

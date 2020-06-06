@@ -5,10 +5,6 @@ import android.app.NotificationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +16,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Artwork;
@@ -28,9 +23,6 @@ import com.example.android_sep4.view.artwork.ArtworksTab;
 import com.example.android_sep4.view.museum.MuseumTab;
 import com.example.android_sep4.view.room.RoomsTab;
 import com.example.android_sep4.viewmodel.NotificationsViewModel;
-import com.example.android_sep4.viewmodel.ViewModelFactory;
-import com.example.android_sep4.viewmodel.artwork.ArtworksTabViewModel;
-import com.example.android_sep4.viewmodel.museum.rooms.RoomA1ViewModel;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -46,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private ArtworksTab artworksTab;
     private TabLayout tabLayout;
     private boolean doubleBackToExitPressedOnce = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
             int currentTabPos = savedInstanceState.getInt(CURRENT_POSITION2_KEY);
             tabLayout.getTabAt(currentTabPos).select();
             viewPager.setCurrentItem(currentPos);
-        }
-        else {
+        } else {
             setFragment(museumTab);
         }
 
@@ -102,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // .... other stuff in my onResume ....
         this.doubleBackToExitPressedOnce = false;
     }
 
@@ -146,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     notification();
                 }
                 booleanLiveData.removeObservers(this);
-        });
+            });
         });
     }
 
@@ -166,14 +155,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Save the user's current game state
         int position = tabLayout.getSelectedTabPosition();
         savedInstanceState.putInt(CURRENT_POSITION_KEY, viewPager.getCurrentItem());
         savedInstanceState.putInt(CURRENT_POSITION2_KEY, position);
 
-        // Always call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(savedInstanceState);
     }
 

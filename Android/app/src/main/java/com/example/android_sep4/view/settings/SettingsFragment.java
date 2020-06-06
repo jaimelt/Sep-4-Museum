@@ -1,7 +1,6 @@
 package com.example.android_sep4.view.settings;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.Preference;
@@ -17,15 +16,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         Preference button = findPreference(getString(R.string.pref_user_button_key));
         if (button != null) {
-            button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    UserFragment userFragment = new UserFragment();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.activity_settings, userFragment).addToBackStack(null);
-                    transaction.commit();
-                    return true;
-                }
+            button.setOnPreferenceClickListener(preference -> {
+                UserFragment userFragment = new UserFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.activity_settings, userFragment).addToBackStack(null);
+                transaction.commit();
+                return true;
             });
         }
     }

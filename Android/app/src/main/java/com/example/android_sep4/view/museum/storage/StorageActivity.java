@@ -3,10 +3,12 @@ package com.example.android_sep4.view.museum.storage;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -21,10 +23,10 @@ import com.example.android_sep4.viewmodel.roomList.ArtworksStorageViewModel;
 
 public class StorageActivity extends AppCompatActivity implements StorageAdapter.OnListItemClickListener {
     private static final String TAG = "StorageActivity";
+    private final static String LOCATION_CODE = "storage";
     private ArtworksStorageViewModel artworksStorageViewModel;
     private StorageAdapter adapter;
     private Drawable deleteIcon;
-    private final static String LOCATION_CODE = "storage";
     private ProgressBar progressBar;
 
     @Override
@@ -50,19 +52,15 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
             adapter.notifyDataSetChanged();
         });
 
-        artworksStorageViewModel.getIsLoading().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    progressBar.setVisibility(View.VISIBLE);
-                } else progressBar.setVisibility(View.GONE);
-            }
+        artworksStorageViewModel.getIsLoading().observe(this, aBoolean -> {
+            if (aBoolean) {
+                progressBar.setVisibility(View.VISIBLE);
+            } else progressBar.setVisibility(View.GONE);
         });
 
     }
 
     @Override
-    //finish on activity when up navigation is clicked - animation slide to right
     public boolean onSupportNavigateUp() {
         onBackPressed();
         finish();
@@ -77,23 +75,16 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         recyclerView.setLayoutManager(llm);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
     public void onListItemClick(int clickedItemIndex) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert);
         alertDialog.setTitle("Delete artwork");
         alertDialog.setMessage("Are you sure about deleting this artwork?");
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                artworksStorageViewModel.deleteArtwork(clickedItemIndex);
-                adapter.deleteArtwork(clickedItemIndex);
-            }
+        alertDialog.setPositiveButton("Yes", (dialog, which) -> {
+            artworksStorageViewModel.deleteArtwork(clickedItemIndex);
+            adapter.deleteArtwork(clickedItemIndex);
         });
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        alertDialog.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
         alertDialog.show();
     }
 

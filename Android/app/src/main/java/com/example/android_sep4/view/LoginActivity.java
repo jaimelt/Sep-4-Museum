@@ -1,18 +1,16 @@
 package com.example.android_sep4.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.LoginActivityViewModel;
@@ -64,11 +62,9 @@ public class LoginActivity extends AppCompatActivity {
         String password = passwordField.getText().toString();
         int validation = loginActivityViewModel.validateFields(email, password);
 
-        loginButton.setEnabled(true);
-        switch (validation){
+        switch (validation) {
             case 1:
                 verifyLogin(email, password);
-                loginButton.setClickable(false);
                 break;
             case 2:
                 emailField.setError("Email format is not valid");
@@ -77,35 +73,23 @@ public class LoginActivity extends AppCompatActivity {
                 passwordField.setError("Password needs to be between 6 and 16 characters");
                 break;
         }
-
     }
 
     public void verifyLogin(String email, String password) {
-        loginButton.setEnabled(false);
-
-
-        System.out.println(email + "  " + password);
-
         LiveData<Boolean> validLogin = loginActivityViewModel.validateLogin(email, password);
-        validLogin.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean valid) {
-                if (valid) {
-                    Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(mainActivity);
-                    finish();
-                } else {
-                    onLoginFailed("Email or password is not correct.");
-                }
+        validLogin.observe(this, valid -> {
+            if (valid) {
+                Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(mainActivity);
+                finish();
+            } else {
+                onLoginFailed("Email or password is not correct.");
             }
         });
-
     }
 
     public void onLoginFailed(String feedback) {
         Toast.makeText(getBaseContext(), feedback, Toast.LENGTH_LONG).show();
-
-        loginButton.setEnabled(true);
     }
 
 }

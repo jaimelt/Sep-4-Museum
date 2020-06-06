@@ -17,8 +17,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.view.AccountActivity;
-import com.example.android_sep4.view.settings.SettingsActivity;
-import com.example.android_sep4.view.museum.storage.StorageActivity;
 import com.example.android_sep4.view.museum.rooms.RoomA1Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA2Activity;
 import com.example.android_sep4.view.museum.rooms.RoomA3Activity;
@@ -26,23 +24,22 @@ import com.example.android_sep4.view.museum.rooms.RoomB1Activity;
 import com.example.android_sep4.view.museum.rooms.RoomB2Activity;
 import com.example.android_sep4.view.museum.rooms.RoomB3Activity;
 import com.example.android_sep4.view.museum.rooms.RoomB4Activity;
+import com.example.android_sep4.view.museum.storage.StorageActivity;
+import com.example.android_sep4.view.settings.SettingsActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MuseumTab extends Fragment {
-
     private TextView a1, a2, a3, b1, b2, b3, b4;
     private Button storage;
 
     public MuseumTab() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_museum_tab, container, false);
     }

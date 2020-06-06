@@ -12,15 +12,9 @@ import java.util.ArrayList;
 public class ArtworksRepository {
     private static ArtworksRepository instance;
     private ArtworksAPIClient artworksAPIClient;
-    //    private ArtworkDao artworkDao;
-    //    private LiveData<List<ArtworkWithMeasurements>> artworks;
     private Application application;
 
-    //ArtworksRepository should not be singleton
     public ArtworksRepository(Application application) {
-//        MuseumDb database = MuseumDb.getInstance(application);
-//        artworkDao = database.artworkDao();
-//        artworks = artworkDao.getAllLiveArtworks();
         artworksAPIClient = new ArtworksAPIClient(application);
         this.application = application;
 
@@ -70,16 +64,4 @@ public class ArtworksRepository {
     public void moveArtwork(int artworkID, String location) {
         artworksAPIClient.moveArtwork(artworkID, location);
     }
-
-
-    //From Room Database
-//    public List<Artwork> getArtworks() {
-//        List<ArtworkWithMeasurements> artworkWithMeasurements = artworkDao.getAllArtworks();
-//        List<Artwork> artworks = new ArrayList<>();
-//        for (ArtworkWithMeasurements artwork : artworkWithMeasurements) {
-//            artwork.artwork.setArtworkMeasurements(artwork.roomMeasurements);
-//            artworks.add(artwork.artwork);
-//        }
-//        return artworks;
-//    }
 }

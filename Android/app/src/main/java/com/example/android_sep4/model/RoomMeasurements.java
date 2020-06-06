@@ -1,21 +1,11 @@
 package com.example.android_sep4.model;
 
 import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Entity(foreignKeys = {
-        @ForeignKey(
-                entity = Room.class,
-                parentColumns = "location_code",
-                childColumns = "id"
-        )})
 public class RoomMeasurements {
-    @PrimaryKey
     @NonNull
     @SerializedName("id")
     @Expose
