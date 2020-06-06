@@ -119,7 +119,7 @@ namespace WebApplication.Controllers
                 }
 
                 logger.LogInformation("A new artwork object has been created");
-                artworkRepository.CreateArtWork(artwork);
+                 artworkRepository.CreateArtWork(artwork);
                 await artworkRepository.saveChanges();
                 
 
@@ -149,9 +149,8 @@ namespace WebApplication.Controllers
                 }
                 
                 
-
                 artworkRepository.DeleteArtwork(artwork);
-             
+                await artworkRepository.saveChanges();
 
                 return Ok("Artwork has been deleted");
             }
@@ -221,6 +220,12 @@ namespace WebApplication.Controllers
                 {
                     logger.LogError("Invalid artwork object sent from client");
                     return BadRequest("Invalid artwork object");
+                }
+
+                if (!artworkRepository.ArtworkExists(id))
+                {
+                    logger.LogError("Artwork does not exist in the database");
+                    return BadRequest("Artwork does not exist in the database");
                 }
                 
 

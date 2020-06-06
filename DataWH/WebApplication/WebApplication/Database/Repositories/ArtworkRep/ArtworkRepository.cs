@@ -172,7 +172,7 @@ namespace WebApplication.Database.Repositories.ArtworkRep
             }
             Delete(artwork);
 
-            context.SaveChanges();
+          
         }
 
         public bool ArtworkExists(int artId)

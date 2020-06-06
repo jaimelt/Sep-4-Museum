@@ -114,7 +114,6 @@ namespace WebApplication.Controllers
         [HttpGet("getmeasurementconditions/{id:int}")]
         public async Task<ActionResult<RoomMeasurement>> GetMeasurementConditions([FromRoute] int id)
         {
-            Console.WriteLine("--------------------");
             MongoMeasurement mongoMeasurement = _mongoRepository.LoadLastRoomMeasurement(id);
             RoomMeasurement temp = new RoomMeasurement();
             temp.Co2 = mongoMeasurement.co2;
@@ -231,12 +230,6 @@ namespace WebApplication.Controllers
 
 
         }
-        [HttpPost("{test}")]
-        public  RoomMeasurementList deleteAdmin(string email)
-        {
-            
-            
-            return _mongoRepository.LoadAllMeasurements();
-        }
+   
     }
 }
