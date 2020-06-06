@@ -7,7 +7,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.repositories.ArtworksRepository;
-import com.example.android_sep4.repositories.RoomRepository;
 
 import java.util.ArrayList;
 
