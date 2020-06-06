@@ -46,7 +46,8 @@ namespace WebApplication.Controllers
                 roomList.rooms = await roomRepository.getAllRoomsAsync();
                  roomList.addMeasurements(_mongoRepository.LoadAllRoomLastMeasurements());
                 logger.LogInformation("Returning all the rooms stored in the database");
-                return Ok(roomList); }
+                return Ok(roomList); 
+            }
             catch (Exception exception)
             {
                 logger.LogError($"Something went wrong internally in the server: ", exception.Message);
