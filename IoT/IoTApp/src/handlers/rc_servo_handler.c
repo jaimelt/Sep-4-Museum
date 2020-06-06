@@ -9,6 +9,9 @@
 //header
 #include "rc_servo_handler.h"
 
+//freertos
+#include "ATMEGA_FreeRTOS.h"
+
 //required libraries
 #include <stdbool.h>
 #include <rcServo.h>
@@ -39,4 +42,5 @@ void rc_servo_create()
 	_IsUp = false;
 	// Create and initialize the rc-servo driver
 	rcServoCreate();
+	rcServoSet(0, 0);
 }
