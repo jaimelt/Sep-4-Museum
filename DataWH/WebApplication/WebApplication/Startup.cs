@@ -33,21 +33,20 @@ namespace WebApplication
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        { services.Configure<MongoDbSettings>(
+        { 
+            services.AddDbContext<MuseumContext>(opt =>
+                opt.UseSqlServer("Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;"));
+            
+            services.Configure<MongoDbSettings>(
               Configuration.GetSection(nameof(MongoDbSettings)));
            services.AddScoped<ArtworkRepository>();
            services.AddScoped<RoomRepository>();
           services.AddScoped<MongoRepository>();
           services.AddScoped<VisitorRepository>();
           services.AddScoped<AccountRepository>();
-         string ConnectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<MuseumContext>(opt =>
-                opt.UseSqlServer("Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;"));
+
             services.AddControllers();
             
-            
-           // services.AddSingleton<IMongoDBSettings>(sp =>
-          //      sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
             
         }
 
