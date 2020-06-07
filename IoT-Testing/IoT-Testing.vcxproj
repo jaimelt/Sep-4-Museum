@@ -33,10 +33,10 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\IoT\IoTApp\drivers;.\libs\fff;..\IoT\IoTApp\FreeRTOS\src;..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;$(IncludePath)</IncludePath>
+    <IncludePath>.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\drivers;.\libs\fff;..\IoT\IoTApp\FreeRTOS\src;..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\IoT\IoTApp\drivers;.\libs\fff;..\IoT\IoTApp\FreeRTOS\src;..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;$(IncludePath)</IncludePath>
+    <IncludePath>.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\drivers;.\libs\fff;..\IoT\IoTApp\FreeRTOS\src;..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>.\libs\fff;.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
