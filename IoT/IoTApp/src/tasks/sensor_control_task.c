@@ -12,7 +12,7 @@
 #include "light_sensor_task.h"
 #include "temperature_humidity_task.h"
 #include "co2_sensor_task.h"
-#include "../handlers/rc_servo_handler.h"
+#include "rc_servo_task.h"
 
 //required libraries
 #include <stdio.h>
@@ -45,6 +45,7 @@ static SemaphoreHandle_t _xPrintfSemaphore = NULL;
 static EventGroupHandle_t _event_group_measure = NULL;
 static EventGroupHandle_t _event_group_new_data = NULL;
 static QueueHandle_t _sendingQueue = NULL;
+static QueueHandle_t _rc_servo_queue = NULL;
 
 void vASensorControlTask(void *pvParameters)
 {
@@ -95,14 +96,17 @@ void vASensorControlTask(void *pvParameters)
 		printf("Light %.2f \n", _lightInLux);
 		xSemaphoreGive(_xPrintfSemaphore);
 
+		rcServo_Action_t _tmp;
 		//light values checking that trigger rcServo behavior
 		if (_lightInLux > CRITICAL_LIGHT_MAX)
 		{
-			rcServo_Down();
+			_tmp = DOWN;
+			xQueueSend(_rc_servo_queue, &_tmp, portMAX_DELAY);
 		}
 		if (_lightInLux < CRITICAL_LIGHT_MIN)
 		{
-			rcServo_Up();
+			_tmp = UP;
+			xQueueSend(_rc_servo_queue, &_tmp, portMAX_DELAY);
 		}
 
 		//set the measurement values inside the sensor data package
@@ -141,9 +145,13 @@ void sensorControl_create()
 	if (_event_group_new_data == NULL)
 		_event_group_new_data = xEventGroupCreate();
 
-	//create queue
+	//create lorawan queue
 	if (_sendingQueue == NULL)
 		_sendingQueue = xQueueCreate(1, sizeof(lora_payload_t));
+
+	//create rc servo queue
+	if (_rc_servo_queue == NULL)
+		_rc_servo_queue = xQueueCreate(1, sizeof(rcServo_Action_t));
 
 	//create lora task
 	lorawan_create(_sendingQueue, _xPrintfSemaphore);
@@ -158,7 +166,7 @@ void sensorControl_create()
 	LightSensor_create(_event_group_measure, _event_group_new_data, _xPrintfSemaphore);
 
 	//create rc servo
-	rc_servo_create();
+	rcServoTask_create(_rc_servo_queue);
 
 	//create the task
 	xTaskCreate(

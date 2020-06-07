@@ -180,12 +180,6 @@
     <Compile Include="src\constants\global_constants.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\handlers\rc_servo_handler.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\handlers\rc_servo_handler.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="src\handlers\sensor_data_package_handler.c">
       <SubType>compile</SubType>
     </Compile>
@@ -211,6 +205,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\tasks\lora_task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\tasks\rc_servo_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\tasks\rc_servo_task.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\tasks\sensor_control_task.c">
