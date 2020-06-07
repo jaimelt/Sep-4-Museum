@@ -63,17 +63,22 @@ void rcServoTask(void *pvParameters)
 	vTaskDelete(_rc_servo_task_handle);
 }
 
+static void inline _setup_rc_servo()
+{
+	// Create and initialize the rc-servo driver
+	rcServoCreate();
+
+	//reset rc-servo position to 0
+	rcServoSet(RC_SERVO_PORT_NO, 0);
+}
+
 void rcServoTask_create(QueueHandle_t queue)
 {
 	_IsUp = false;
 	_rc_servo_queue = queue;
 	_rc_servo_task_handle = NULL;
 
-	// Create and initialize the rc-servo driver
-	rcServoCreate();
-
-	//reset rc-servo position to 0
-	rcServoSet(RC_SERVO_PORT_NO, 0);
+	_setup_rc_servo();
 
 	xTaskCreate(rcServoTask, RC_SERVO_TASK_NAME, configMINIMAL_STACK_SIZE, NULL, RC_SERVO_TASK_PRIORITY, &_rc_servo_task_handle);
 }

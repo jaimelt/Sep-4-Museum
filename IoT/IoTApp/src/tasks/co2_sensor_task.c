@@ -38,7 +38,7 @@ void co2Sensor_callback(uint16_t ppm)
 	xEventGroupSetBits(_eventGroupHandleNewData, CO2_READY_BIT);
 }
 
-static void _setup_co2_driver()
+static void inline _setup_co2_driver()
 {
 	//create driver
 	mh_z19_create(ser_USART3, co2Sensor_callback);

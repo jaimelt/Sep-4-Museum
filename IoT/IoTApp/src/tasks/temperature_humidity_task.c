@@ -36,7 +36,7 @@ static float _lastMeasurementHumidity;
 #define WAKEUP_DELAY 100
 #define MEASUREMENT_DELAY 20
 
-static void _setup_temperature_humidity_driver()
+static void inline _setup_temperature_humidity_driver()
 {
 	//create driver
 	int result = hih8120Create();

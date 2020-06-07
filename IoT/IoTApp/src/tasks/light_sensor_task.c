@@ -46,7 +46,7 @@ void LightSensor_callback(tsl2591ReturnCode_t rc)
 	}
 }
 
-static void _setup_light_driver()
+static void inline _setup_light_driver()
 {
 	//create driver
 	int result = tsl2591Create(LightSensor_callback);
