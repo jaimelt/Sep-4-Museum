@@ -7,7 +7,6 @@
     <string name="artwork_description_text">Description</string>
     <string name="artwork_comments_text">Comments</string>
     <string name="image_description">Image</string>
-    <string name="delete_instruction">To remove an artwork, please swipe right</string>
     <string name="artwork_type_text">Type</string>
     <string name="artwork_author_text">Author</string>
     <string name="artwork_location_text">Location</string>
