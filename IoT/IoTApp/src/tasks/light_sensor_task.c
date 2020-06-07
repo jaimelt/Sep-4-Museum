@@ -73,7 +73,7 @@ static void inline _setup_light_driver()
 	}
 }
 
-void LightSensor_inLoop()
+static void inline LightSensor_inLoop()
 {
 	//wait for the start measuring bit to be true in the event group
 	xEventGroupWaitBits(_eventGroupHandleMeasure,

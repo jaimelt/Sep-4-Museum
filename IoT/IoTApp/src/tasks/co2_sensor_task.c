@@ -44,7 +44,7 @@ static void inline _setup_co2_driver()
 	mh_z19_create(ser_USART3, co2Sensor_callback);
 }
 
-void co2Sensor_inLoop()
+static void inline co2Sensor_inLoop()
 {
 	//wait for the start measuring bit to be true in the event group
 	xEventGroupWaitBits(_eventGroupHandleMeasure,

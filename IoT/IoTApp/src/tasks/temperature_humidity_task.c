@@ -52,7 +52,7 @@ static void inline _setup_temperature_humidity_driver()
 	}
 }
 
-void temperatureHumiditySensor_inLoop()
+static void inline temperatureHumiditySensor_inLoop()
 {
 	//wait for the start measuring bit to be true in the event group
 	xEventGroupWaitBits(_eventGroupHandleMeasure,
