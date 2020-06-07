@@ -1,3 +1,8 @@
+//file: test.cpp
+//created: a long time ago
+//author: Marina Ionel
+//brief: I spent a lifetime trying to implement this and hate it for taking my time. :(
+
 #include "gtest/gtest.h"
 #include "fff.h"
 DEFINE_FFF_GLOBALS
