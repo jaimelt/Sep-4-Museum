@@ -14,6 +14,9 @@
 #include <queue.h>
 #include <task.h>
 
+/**
+* \brief Action enum representing an action that can be made by the rc-servo.
+*/
 typedef enum Action
 {
 	UP,
