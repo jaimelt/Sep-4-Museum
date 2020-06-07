@@ -33,10 +33,10 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\drivers;.\libs\fff;..\IoT\IoTApp\FreeRTOS\src;..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;$(IncludePath)</IncludePath>
+    <IncludePath>.\libs\fff;.\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\drivers;.\libs\fff;..\IoT\IoTApp\FreeRTOS\src;..\IoT\IoTApp\FreeRTOS\FreeRTOSTraceDriver;$(IncludePath)</IncludePath>
+    <IncludePath>.\libs\fff;.\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>.\libs\fff;.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
@@ -45,7 +45,6 @@
     <IncludePath>.\libs\fff;.\libs\avr-libc\avr-libc\include;..\IoT\IoTApp\FreeRTOS;..\IoT\IoTApp\drivers;..\IoT\IoTApp\FreeRTOS\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.c" />
     <ClCompile Include="..\IoT\IoTApp\src\handlers\sensor_data_package_handler.c" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
@@ -54,10 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\IoT\IoTApp\src\constants\global_constants.h" />
-    <ClInclude Include="..\IoT\IoTApp\src\handlers\rc_servo_handler.h" />
     <ClInclude Include="..\IoT\IoTApp\src\handlers\sensor_data_package_handler.h" />
     <ClInclude Include="force_include.h" />
     <ClInclude Include="libs\fff\fff.h" />
+    <ClInclude Include="lora_driver.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
