@@ -1,11 +1,10 @@
-package com.example.android_sep4.viewmodel.roomList;
+package com.example.android_sep4.viewmodel.museum.storage;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.repositories.ArtworksRepository;

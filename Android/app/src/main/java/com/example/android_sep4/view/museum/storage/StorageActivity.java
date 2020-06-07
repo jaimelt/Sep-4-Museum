@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.StorageAdapter;
-import com.example.android_sep4.viewmodel.roomList.ArtworksStorageViewModel;
+import com.example.android_sep4.viewmodel.museum.storage.ArtworksStorageViewModel;
 
 public class StorageActivity extends AppCompatActivity implements StorageAdapter.OnListItemClickListener {
     private static final String TAG = "StorageActivity";
