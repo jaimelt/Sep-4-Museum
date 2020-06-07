@@ -78,7 +78,6 @@ public class MuseumTab extends Fragment {
             startActivity(new Intent(getContext(), SettingsActivity.class));
             return true;
         });
-
     }
 
     private void setUpClickListeners() {

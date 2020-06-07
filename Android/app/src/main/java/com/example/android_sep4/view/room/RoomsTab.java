@@ -49,16 +49,9 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
         return inflater.inflate(R.layout.fragment_rooms_tab, container, false);
     }
 
-    private void setSharePreferenceChangeListener() {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
-    }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
-    }
+
+
 
     public void setViewModel() {
         roomsTabViewModel = new ViewModelProvider(this).get(RoomsTabViewModel.class);
@@ -103,6 +96,17 @@ public class RoomsTab extends Fragment implements SharedPreferences.OnSharedPref
             return true;
         });
 
+    }
+
+    private void setSharePreferenceChangeListener() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
