@@ -17,12 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.adapters.StorageAdapter;
-import com.example.android_sep4.viewmodel.museum.storage.ArtworksStorageViewModel;
+import com.example.android_sep4.viewmodel.museum.storage.StorageViewModel;
 
 public class StorageActivity extends AppCompatActivity implements StorageAdapter.OnListItemClickListener {
     private static final String TAG = "StorageActivity";
     private final static String LOCATION_CODE = "storage";
-    private ArtworksStorageViewModel artworksStorageViewModel;
+    private StorageViewModel storageViewModel;
     private StorageAdapter adapter;
     private Drawable deleteIcon;
     private ProgressBar progressBar;
@@ -51,14 +51,14 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
     }
 
     private void setViewModel() {
-        artworksStorageViewModel = new ViewModelProvider(this).get(ArtworksStorageViewModel.class);
+        storageViewModel = new ViewModelProvider(this).get(StorageViewModel.class);
         initRecycleView();
-        artworksStorageViewModel.getArtworksFromStorage(LOCATION_CODE).observe(this, artworks -> {
+        storageViewModel.getArtworksFromStorage(LOCATION_CODE).observe(this, artworks -> {
             adapter.setArtworks(artworks);
             adapter.notifyDataSetChanged();
         });
 
-        artworksStorageViewModel.getIsLoading().observe(this, aBoolean -> {
+        storageViewModel.getIsLoading().observe(this, aBoolean -> {
             if (aBoolean) {
                 progressBar.setVisibility(View.VISIBLE);
             } else progressBar.setVisibility(View.GONE);
@@ -87,7 +87,7 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
         alertDialog.setTitle("Delete artwork");
         alertDialog.setMessage("Are you sure about deleting this artwork?");
         alertDialog.setPositiveButton("Yes", (dialog, which) -> {
-            artworksStorageViewModel.deleteArtwork(clickedItemIndex);
+            storageViewModel.deleteArtwork(clickedItemIndex);
             adapter.deleteArtwork(clickedItemIndex);
         });
         alertDialog.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
@@ -98,13 +98,13 @@ public class StorageActivity extends AppCompatActivity implements StorageAdapter
     @Override
     protected void onPause() {
         super.onPause();
-        artworksStorageViewModel.getArtworksFromStorage(LOCATION_CODE).removeObservers(this);
+        storageViewModel.getArtworksFromStorage(LOCATION_CODE).removeObservers(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        artworksStorageViewModel.getArtworksFromStorage(LOCATION_CODE).observe(this, artworks -> {
+        storageViewModel.getArtworksFromStorage(LOCATION_CODE).observe(this, artworks -> {
             adapter.setArtworks(artworks);
             adapter.notifyDataSetChanged();
         });
