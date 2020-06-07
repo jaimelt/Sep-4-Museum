@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.android_sep4.R;
 import com.example.android_sep4.viewmodel.roomList.EditRoomsConditionsViewModel;
 
-public class EditRoomActivity extends AppCompatActivity {
+public class EditRoomsConditionsActivity extends AppCompatActivity {
     private EditRoomsConditionsViewModel viewModel;
     private EditText temperature;
     private EditText humidity;
