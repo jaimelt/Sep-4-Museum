@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IoT: handlers/rc_servo_handler.h File Reference</title>
+<title>IoT App: src/tasks/rc_servo_task.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">IoT
+   <div id="projectname">IoT App
    </div>
   </td>
  </tr>
@@ -61,77 +61,76 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_97bbe734eff8d6674660850430e62f3c.html">handlers</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b118c466441e8db851de69c6796245a3.html">tasks</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">rc_servo_handler.h File Reference</div>  </div>
+<div class="title">rc_servo_task.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>RC-servo implementation.  
+<p>RC-servo task implementation.  
 <a href="#details">More...</a></p>
-
-<p><a href="rc__servo__handler_8h_source.html">Go to the source code of this file.</a></p>
+<div class="textblock"><code>#include &lt;ATMEGA_FreeRTOS.h&gt;</code><br />
+<code>#include &lt;queue.h&gt;</code><br />
+<code>#include &lt;task.h&gt;</code><br />
+</div>
+<p><a href="rc__servo__task_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aa807933964aa9c9641221f42bdcdf312"><td class="memItemLeft" align="right" valign="top"><a id="aa807933964aa9c9641221f42bdcdf312"></a>
+typedef enum Action&#160;</td><td class="memItemRight" valign="bottom"><b>rcServo_Action_t</b></td></tr>
+<tr class="separator:aa807933964aa9c9641221f42bdcdf312"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a8bb1ef53467e4f61410d12822d922498"><td class="memItemLeft" align="right" valign="top"><a id="a8bb1ef53467e4f61410d12822d922498"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Action</b> { <b>UP</b>, 
+<b>DOWN</b>
+ }</td></tr>
+<tr class="separator:a8bb1ef53467e4f61410d12822d922498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5ff21bd667dd34d74d363cb84d8d6626"><td class="memItemLeft" align="right" valign="top"><a id="a5ff21bd667dd34d74d363cb84d8d6626"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rc__servo__handler_8h.html#a5ff21bd667dd34d74d363cb84d8d6626">rc_servo_create</a> ()</td></tr>
-<tr class="memdesc:a5ff21bd667dd34d74d363cb84d8d6626"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the rcServo driver. <br /></td></tr>
-<tr class="separator:a5ff21bd667dd34d74d363cb84d8d6626"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a371301344bc31122a4aba2cc855cad42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rc__servo__handler_8h.html#a371301344bc31122a4aba2cc855cad42">rcServo_Up</a> ()</td></tr>
-<tr class="memdesc:a371301344bc31122a4aba2cc855cad42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move up (position 100) if the rc-servo motor is down (position -100). This action should lift up the window shutters.  <a href="rc__servo__handler_8h.html#a371301344bc31122a4aba2cc855cad42">More...</a><br /></td></tr>
-<tr class="separator:a371301344bc31122a4aba2cc855cad42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5495eb977b251cf747839d7d1d272fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rc__servo__handler_8h.html#af5495eb977b251cf747839d7d1d272fd">rcServo_Down</a> ()</td></tr>
-<tr class="memdesc:af5495eb977b251cf747839d7d1d272fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move down (position -100) if the rc-servo motor is up (position 100). This action should descent the window shutters.  <a href="rc__servo__handler_8h.html#af5495eb977b251cf747839d7d1d272fd">More...</a><br /></td></tr>
-<tr class="separator:af5495eb977b251cf747839d7d1d272fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c0621f3b0638602e7052ca55be166d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rc__servo__task_8h.html#a5c0621f3b0638602e7052ca55be166d2">rcServoTask_create</a> (QueueHandle_t queue)</td></tr>
+<tr class="memdesc:a5c0621f3b0638602e7052ca55be166d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the rcServo driver.  <a href="rc__servo__task_8h.html#a5c0621f3b0638602e7052ca55be166d2">More...</a><br /></td></tr>
+<tr class="separator:a5c0621f3b0638602e7052ca55be166d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>RC-servo implementation. </p>
+<div class="textblock"><p>RC-servo task implementation. </p>
 <dl class="section note"><dt>Note</dt><dd>Depends on rcServo.h</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Marina Ionel </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0.0</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>01/06/2020 11.03.23 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="af5495eb977b251cf747839d7d1d272fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5495eb977b251cf747839d7d1d272fd">&#9670;&nbsp;</a></span>rcServo_Down()</h2>
+<a id="a5c0621f3b0638602e7052ca55be166d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c0621f3b0638602e7052ca55be166d2">&#9670;&nbsp;</a></span>rcServoTask_create()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void rcServo_Down </td>
+          <td class="memname">void rcServoTask_create </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">QueueHandle_t&#160;</td>
+          <td class="paramname"><em>queue</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Move down (position -100) if the rc-servo motor is up (position 100). This action should descent the window shutters. </p>
-
-</div>
-</div>
-<a id="a371301344bc31122a4aba2cc855cad42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a371301344bc31122a4aba2cc855cad42">&#9670;&nbsp;</a></span>rcServo_Up()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rcServo_Up </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Move up (position 100) if the rc-servo motor is down (position -100). This action should lift up the window shutters. </p>
+<p>Creates the rcServo driver. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">queue</td><td>The receiving queue for getting what action should be performed by rc-servo motor </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
