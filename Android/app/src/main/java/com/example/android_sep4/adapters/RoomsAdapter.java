@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_sep4.R;
 import com.example.android_sep4.model.Room;
-import com.example.android_sep4.view.room.EditRoomActivity;
+import com.example.android_sep4.view.room.EditRoomsConditionsActivity;
 import com.example.android_sep4.view.room.RoomArtworksActivity;
 import com.example.android_sep4.view.room.VisualizeDataActivity;
 
@@ -101,7 +101,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
         holder.editRoomsConditions.setOnClickListener(v -> {
 
-            Intent intent = new Intent(v.getContext(), EditRoomActivity.class);
+            Intent intent = new Intent(v.getContext(), EditRoomsConditionsActivity.class);
             intent.putExtra("optimalTemperature", rooms.get(position).getTemperature());
             intent.putExtra("optimalLight", rooms.get(position).getLight());
             intent.putExtra("optimalCo2", rooms.get(position).getCo2());

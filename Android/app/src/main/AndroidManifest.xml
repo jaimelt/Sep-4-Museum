@@ -33,7 +33,7 @@
         <activity android:name=".view.museum.rooms.RoomA1Activity" />
         <activity android:name=".view.museum.storage.StorageActivity"
             android:parentActivityName=".view.MainActivity"/>
-        <activity android:name=".view.room.EditRoomActivity" />
+        <activity android:name=".view.room.EditRoomsConditionsActivity" />
         <activity android:name=".view.room.RoomArtworksActivity" />
         <activity
             android:name=".view.artwork.EditArtworkActivity"

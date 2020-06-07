@@ -1,23 +1,22 @@
-package com.example.android_sep4.viewmodel.roomList;
+package com.example.android_sep4.viewmodel.museum.storage;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
 import com.example.android_sep4.model.Artwork;
 import com.example.android_sep4.repositories.ArtworksRepository;
 
 import java.util.ArrayList;
 
-public class ArtworksStorageViewModel extends AndroidViewModel {
+public class StorageViewModel extends AndroidViewModel {
     private ArtworksRepository artworksRepository;
     private ArrayList<Artwork> artworks = new ArrayList<>();
     private MutableLiveData<ArrayList<Artwork>> artworksLive = new MutableLiveData<>();
 
-    public ArtworksStorageViewModel(Application application) {
+    public StorageViewModel(Application application) {
         super(application);
         artworksRepository = ArtworksRepository.getInstance(application);
 
