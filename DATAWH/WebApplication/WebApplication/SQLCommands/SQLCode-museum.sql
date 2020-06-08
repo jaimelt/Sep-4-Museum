@@ -1,6 +1,6 @@
+use museum
 
-
-CREATE TABLE dim_room (	--Creates room dimension table
+CREATE TABLE DIMENSION_DimRoom (	--Creates room dimension table
 R_ID int IDENTITY,
 locationCode nvarchar(10),
 Description nvarchar(50),
@@ -13,7 +13,7 @@ ValidTo Datetime
 PRIMARY KEY (R_ID)
 );
 
-CREATE TABLE dim_date(	--creates date dimention table
+CREATE TABLE DIMENSION_DimDate(	--creates date dimention table
 D_ID int IDENTITY,
 CalendarDate datetime,
 Year int,
@@ -26,26 +26,42 @@ MonthName nvarchar(50),
 PRIMARY KEY (D_ID)
 );
 
-CREATE TABLE F_Measurements (	--create sales fact table
-R_ID int FOREIGN KEY REFERENCES dim_room(R_ID),
-D_ID int FOREIGN KEY REFERENCES dim_date(D_ID),
-locationCode nvarchar(10),
-MeasurementDate datetime,
+
+-- Creates the time dimension table
+CREATE TABLE [dbo].[DimTime](
+    [TimeId] [int] IDENTITY(1,1) NOT NULL,
+    [Time] [time](0) NULL,
+    [Hour] [int] NULL,
+    [Minute] [int] NULL,
+    [MilitaryHour] int NOT null,
+    [MilitaryMinute] int NOT null,
+    [AMPM] [varchar](2) NOT NULL,
+    [DayPartEN] [varchar](10) NULL,
+    [HourFromTo12] [varchar](17) NULL,
+    [HourFromTo24] [varchar](13) NULL,
+    [Notation12] [varchar](10) NULL,
+    [Notation24] [varchar](10) NULL
+);
+
+CREATE TABLE FACT_Measurement (	--create measurements fact table
+R_ID int FOREIGN KEY REFERENCES DIMENSION_DimRoom(R_ID),
+D_ID int FOREIGN KEY REFERENCES DIMENSION_DimDate(D_ID),
+T_ID int,
 lightMeasurement int,
 temperatureMeasurement int,
 humidityMeasurement int,
 co2Measurement int,
 );
 
-CREATE TABLE LastUpdate(	--creates lastupdate table
+
+CREATE TABLE DIMENSION_LastUpdated(	--creates lastupdate table
 	LastUpdate datetime
 );
 
 
 --creates the staging area tables
-CREATE TABLE stage_dim_room 
+CREATE TABLE STAGE_DimRoom
 (	
-R_ID int,
 locationCode nvarchar(10),
 Description nvarchar(50),
 optimalLight int,
@@ -54,7 +70,7 @@ optimalHumidity int,
 optimalCo2 int
 );
 
-CREATE TABLE stage_fact_measurements
+CREATE TABLE STAGE_FactMeasurements
 (
 [R_ID] [int] NULL,
 [D_ID] [int] NULL,
@@ -66,9 +82,9 @@ CREATE TABLE stage_fact_measurements
 [co2Measurement] [int] NULL
 )
 
-select * from [stage_dim_room]
+select * from [STAGE_DimRoom]
 
-CREATE TABLE [stage_dim_date](
+CREATE TABLE [STAGE_DimDate](
 D_ID int IDENTITY,
 CalendarDate datetime,
 Year int,
@@ -84,7 +100,7 @@ MonthName nvarchar(50)
 
 --Inserts data to the staging area(point 1)
 
-INSERT INTO[stage_dim_room]
+INSERT INTO[STAGE_DimRoom]
 (
 locationCode,
 Description,
@@ -93,8 +109,9 @@ optimalTemperature,
 optimalHumidity,
 optimalCo2
 )
-SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM [museum].[dbo].[Rooms] r
+SELECT LocationCode, Description, Light, Temperature, Humidity, Co2 FROM [museum].[dbo].[Rooms]
 
+--Populate the stage date table
 
 go
 DECLARE @StartDate DATETIME
@@ -102,7 +119,7 @@ DECLARE @EndDate DATETIME
 SET @StartDate='2020-05-21'
 SET @EndDate= DATEADD(d, 15, @StartDate)
 WHILE @StartDate<= @EndDate
-BEGIN INSERT INTO [stage_dim_date]
+BEGIN INSERT INTO [STAGE_DimDate]
 (CalendarDate, Year, Month, Day, WeekDay,MonthDay, WeekDayname, MonthName)
 SELECT
 @StartDate,
@@ -116,9 +133,72 @@ DATENAME(MONTH, @StartDate)
 SET @StartDate= DATEADD(dd, 1, @StartDate)
 END
 
+--Populate the time dimension table
+
+
+-- Needed if the dimension already existed
+-- with other column, otherwise the validation
+-- of the insert could fail.
+GO
+ 
+-- Create a time and a counter variable for the loop
+DECLARE @Time as time;
+SET @Time = '0:00';
+ 
+DECLARE @counter as int;
+SET @counter = 0;
+ 
+ 
+-- Two variables to store the day part for two languages
+DECLARE @daypartEN as varchar(20);
+set @daypartEN = '';
+ 
+ 
+-- Loop 1440 times (24hours * 60minutes)
+WHILE @counter < 1440
+BEGIN
+ 
+    -- Determine datepart
+    SELECT  @daypartEN = CASE
+                         WHEN (@Time >= '0:00' and @Time < '6:00') THEN 'Night'
+                         WHEN (@Time >= '6:00' and @Time < '12:00') THEN 'Morning'
+                         WHEN (@Time >= '12:00' and @Time < '18:00') THEN 'Afternoon'
+                         ELSE 'Evening'
+                         END
+ 
+    INSERT INTO DimTime ([Time]
+                       , [Hour]
+                       , [Minute]
+                       , [MilitaryHour]
+                       , [MilitaryMinute]
+                       , [AMPM]
+                       , [DayPartEN]
+                       , [HourFromTo12]
+                       , [HourFromTo24]
+                       , [Notation12]
+                       , [Notation24])
+                VALUES (@Time
+                       , DATEPART(Hour, @Time) + 1
+                       , DATEPART(Minute, @Time) + 1
+                       , DATEPART(Hour, @Time)
+                       , DATEPART(Minute, @Time)
+                       , CASE WHEN (DATEPART(Hour, @Time) < 12) THEN 'AM' ELSE 'PM' END
+                       , @daypartEN
+                       , CONVERT(varchar(10), DATEADD(Minute, -DATEPART(Minute,@Time), @Time),100)  + ' - ' + CONVERT(varchar(10), DATEADD(Hour, 1, DATEADD(Minute, -DATEPART(Minute,@Time), @Time)),100)
+                       , CAST(DATEADD(Minute, -DATEPART(Minute,@Time), @Time) as varchar(5)) + ' - ' + CAST(DATEADD(Hour, 1, DATEADD(Minute, -DATEPART(Minute,@Time), @Time)) as varchar(5))
+                       , CONVERT(varchar(10), @Time,100)
+                       , CAST(@Time as varchar(5))
+                       );
+ 
+    -- Raise time with one minute
+    SET @Time = DATEADD(minute, 1, @Time);
+ 
+    -- Raise counter by one
+    set @counter = @counter + 1;
+END
 
 --Populate the DW dimention tables (point 3)
-INSERT INTO dbo.dim_room(locationCode,
+INSERT INTO DIMENSION_DimRoom(locationCode,
 Description,
 optimalLight,
 optimalTemperature,
@@ -128,18 +208,18 @@ Description,
 optimalLight,
 optimalTemperature,
 optimalHumidity,
-optimalCo2 FROM stage_dim_room);
-UPDATE dbo.dim_room set ValidFrom='2020-05-21';
-UPDATE dbo.dim_room set ValidTo='2099-12-31';
+optimalCo2 FROM STAGE_DimRoom);
+UPDATE DIMENSION_DimRoom set ValidFrom='2020-05-21';
+UPDATE DIMENSION_DimRoom set ValidTo='2099-12-31';
 
-INSERT INTO dbo.dim_date(CalendarDate, Year, Month, Day, WeekDay,MonthDay, WeekDayname, MonthName)(SELECT CalendarDate, Year, Month, Day, WeekDay,MonthDay, WeekDayname, MonthName FROM stage_dim_date);
+INSERT INTO DIMENSION_DimDate(CalendarDate, Year, Month, Day, WeekDay,MonthDay, WeekDayname, MonthName)(SELECT CalendarDate, Year, Month, Day, WeekDay,MonthDay, WeekDayname, MonthName FROM STAGE_DimDate);
 
 
 
 --Populate stating fact table(point 4)
-SELECT * FROM stage_fact_measurements;
+SELECT * FROM STAGE_FactMeasurements;
 
-INSERT INTO[musemDW].[dbo].[stage_fact_measurements](
+INSERT INTO[museum].[dbo].[STAGE_FactMeasurements](
 locationCode,
 MeasurementDate,
 lightMeasurement,
@@ -154,25 +234,23 @@ r.Temperature,
 r.Humidity,
 r.Co2
 FROM museum.dbo.Rooms r
-JOIN museum.dbo.RoomMeasurements rm on r.LiveRoomMeasurementsId = rm.Id
+JOIN museum.dbo.RoomMeasurements rm on r.LocationCode = rm.roomNo
 WHERE rm.MeasurementDate <= '2020-05-25'
 
 --Key lookup for surrogate keys (point 5)
 
-UPDATE stage_fact_measurements
-SET R_ID=( SELECT R_ID FROM musemDW.dbo.dim_room r WHERE r.locationCode = stage_fact_measurements.locationCode);
+UPDATE STAGE_FactMeasurements
+SET R_ID=( SELECT R_ID FROM museum.dbo.DIMENSION_DimRoom r WHERE r.locationCode = STAGE_FactMeasurements.locationCode);
 
-UPDATE stage_fact_measurements
-SET D_ID=( SELECT D_ID FROM musemDW.dbo.stage_dim_date d WHERE d.CalendarDate=stage_fact_measurements.MeasurementDate);
+UPDATE STAGE_FactMeasurements
+SET D_ID=( SELECT D_ID FROM museum.dbo.DIMENSION_DimDate d WHERE d.CalendarDate=STAGE_FactMeasurements.MeasurementDate);
 
 
 
 --Populate fact table in DW(point 6)
-INSERT INTO dbo.F_Measurements(
+INSERT INTO dbo.FACT_Measurement(
 R_ID,
 D_ID,
-locationCode,
-MeasurementDate,
 lightMeasurement,
 temperatureMeasurement,
 humidityMeasurement,
@@ -180,30 +258,28 @@ co2Measurement)
 (SELECT 
 R_ID,
 D_ID,
-locationCode,
-MeasurementDate,
 lightMeasurement,
 temperatureMeasurement,
 humidityMeasurement,
-co2Measurement FROM stage_fact_measurements);
-SELECT *FROM F_Measurements;
+co2Measurement FROM STAGE_FactMeasurements);
+SELECT *FROM FACT_Measurement;
 
 
 
 
 --Set lastUpdated teble to '2020-05-25'(point 7)
-INSERT INTO dbo.LastUpdate(LastUpdate) VALUES ('2020-06-01');
-select * from LastUpdate;
+INSERT INTO dbo.DIMENSION_LastUpdated(LastUpdate) VALUES ('2020-05-20');
+select * from DIMENSION_LastUpdated;
 
 
-use musemDW
+use museum
 
 ------START OF THE INCREMENTAL LOAD------
 
---create temporary dimension tables which will be used 
+-- create temporary dimension tables which will be used 
 -- for the incremental load of the data
 
-CREATE TABLE Temp_Room
+CREATE TABLE Temp_DimRoom
 (
 	R_ID int NOT NULL,
 	locationCode nvarchar(10) NULL,
@@ -216,11 +292,11 @@ CREATE TABLE Temp_Room
 
 --create the temporary fact measurements table
 
-CREATE TABLE Temp_F_Measurements
+CREATE TABLE Temp_Fact_Measurements
 (
 [R_ID] [int] NULL,
 [D_ID] [int] NULL,
-[locationCode] [nvarchar] NULL,
+[locationCode] [nvarchar](10) NULL,
 [MeasurementDate] [datetime] NULL,
 [lightMeasurement] [int] NULL,
 [temperatureMeasurement] [int] NULL,
@@ -239,8 +315,7 @@ INSERT INTO [museum].[dbo].[Rooms]
 	Light,
 	Temperature,
 	Humidity,
-	Co2,
-	LiveRoomMeasurementsId
+	Co2
 )
 VALUES
 (
@@ -251,55 +326,32 @@ VALUES
 	567,
 	23,
 	47,
-	12,
-	37
+	12
 )
 
-INSERT INTO [museum].[dbo].[RoomMeasurements]
-(
-	Light,
-	Temperature,
-	Humidity,
-	Co2,
-	MeasurementDate
-)
-VALUES
-(
-	300,
-	20,
-	50,
-	35,
-	'2020-06-01'
-)
 
--- remove Room and Room measurement
 
---go
---UPDATE museum.dbo.Rooms
---set Description = 'A changed room'
---where LocationCode = 'B3';
+-- remove Room 
+
 
 go
 delete from museum.dbo.Rooms
-where LocationCode = 'C1';
+where LocationCode = 'DEL1';
 
-go
-delete from museum.dbo.RoomMeasurements
-where Id = 38;
 
 -- edit room measurements
 
 go 
-update museum.dbo.RoomMeasurements
+update museum.dbo.Rooms
 set Light=123, Temperature = 18, Humidity = 10,Co2 = 21
-where Id= 31;
+where LocationCode='C1'
 
-use musemDW
+use museum
 
 --------CHECK FOR ADDED ROWS
 
 go 
-insert into dim_room
+insert into DIMENSION_DimRoom
 (
 	locationCode,
 	Description,
@@ -310,8 +362,7 @@ insert into dim_room
 	ValidFrom,
 	ValidTo
 )
-select LocationCode, Description, r.Light, r.Temperature, r.Humidity, r.Co2, (select LastUpdate from LastUpdate), '9999-12-31' from [museum].[dbo].[Rooms] r
-join [museum].[dbo].[RoomMeasurements] rm on r.LiveRoomMeasurementsId = rm.Id
+select r.LocationCode, r.Description, r.Light, r.Temperature, r.Humidity, r.Co2, (select LastUpdate from DIMENSION_LastUpdated), '9999-12-31' from [museum].[dbo].[Rooms] r
 where LocationCode in
 (
 
@@ -320,23 +371,23 @@ where LocationCode in
 	)
 	except
 	(
-		select LocationCode from dim_room
+		select LocationCode from DIMENSION_DimRoom
 	)
 
 )
 
-use musemDW
+use museum
 
 
 ------CHECK FOR DELETED ROWS
 
 go
-update dbo.dim_room
-set ValidTo = (select LastUpdate from LastUpdate)
+update dbo.DIMENSION_DimRoom
+set ValidTo = (select LastUpdate from DIMENSION_LastUpdated)
 where locationCode in
 (
 	(
-		select locationCode from dbo.dim_room
+		select locationCode from dbo.DIMENSION_DimRoom
 	)
 	except
 	(
@@ -348,8 +399,10 @@ where locationCode in
 
 -- for room
 
+use museum
+
 go 
-insert into Temp_Room
+insert into Temp_DimRoom
 (
 	locationCode,
 	Description,
@@ -358,45 +411,38 @@ insert into Temp_Room
 	optimalHumidity,
 	optimalCo2
 )
-(
-
-	(
-	
+select r.LocationCode, r.Description, r.Light, r.Temperature, r.Humidity, r.Co2  from [museum].[dbo].[Rooms] r  --source DB
+except
 		(
-			select LocationCode, Description, r.Light, r.Temperature, r.Humidity, r.Co2  from [museum].[dbo].[Rooms] r
+			select locationCode, Description, optimalLight, optimalTemperature, optimalHumidity, optimalCo2 from DIMENSION_DimRoom dr -- room dimension
+			where ValidTo > (select LastUpdate from DIMENSION_LastUpdated)
 		)
-		except
-		(
-			select locationCode, Description, optimalLight, optimalTemperature, optimalHumidity, optimalCo2 from dim_room
-			where ValidTo > (select LastUpdate from LastUpdate)
-		)
-
-	)
-	except
+except
 	(
-		select LocationCode, Description, r.Light, r.Temperature, r.Humidity, r.Co2 from [museum].[dbo].[Rooms] r
-		where LocationCode not in
+		select LocationCode, Description, r.Light, r.Temperature, r.Humidity, r.Co2 from [museum].[dbo].[Rooms] r --source DB
+		where LocationCode not in --business key 
 		(
-			select LocationCode from dim_room
+			select LocationCode from DIMENSION_DimRoom
 		)
 	)
 
-)
+
+
 
 
 
 --here we upadted the rows that already exist
 
-update dim_room set ValidTo = (select LastUpdate from LastUpdate)
+update DIMENSION_DimRoom set ValidTo = (select LastUpdate from DIMENSION_LastUpdated)
 where locationCode in
 ( 
-	select locationCode from Temp_Room
+	select locationCode from Temp_DimRoom
 )
 
 --insert the newly added rows into the dimension tables
 
 
-insert into musemDW.dbo.dim_room
+insert into museum.dbo.DIMENSION_DimRoom
 (
 	locationCode,
 	Description,
@@ -406,16 +452,18 @@ insert into musemDW.dbo.dim_room
 	optimalCo2,
 	ValidFrom,
 	ValidTo
-)select locationCode, Description, optimalLight, optimalTemperature, optimalHumidity, optimalCo2, (select LastUpdate from LastUpdate), '9999-12-31' from Temp_Room
+)select locationCode, Description, optimalLight, optimalTemperature, optimalHumidity, optimalCo2, (select LastUpdate from DIMENSION_LastUpdated), '9999-12-31' from Temp_DimRoom
 
-use musemDW
+use museum
 
 
 ------Inserting the data from the Tempoary fact measurements table
 ------to the final fact table
 
+use museum
+
 go
-insert into Temp_F_Measurements
+insert into Temp_Fact_Measurements
 (
 	locationCode,
 	MeasurementDate,
@@ -425,42 +473,42 @@ insert into Temp_F_Measurements
 	co2Measurement
 )
 select LocationCode, rm.MeasurementDate, r.Light, r.Temperature, r.Humidity, r.Co2 from [museum].[dbo].[Rooms] r
-join [museum].[dbo].[RoomMeasurements] rm on r.LiveRoomMeasurementsId = rm.Id
-where rm.MeasurementDate > (select LastUpdate from LastUpdate)
+join [museum].[dbo].[RoomMeasurements] rm on r.LocationCode = rm.roomNo
+where rm.MeasurementDate > (select LastUpdate from DIMENSION_LastUpdated)
 
 go
-update Temp_F_Measurements
+update Temp_Fact_Measurements
 set R_ID = 
 (
-	select R_ID from dim_room
-	where dim_room.locationCode = Temp_F_Measurements.locationCode
+	select R_ID from DIMENSION_DimRoom
+	where DIMENSION_DimRoom.locationCode = Temp_Fact_Measurements.locationCode
 	and ValidTo = '9999-12-31'
 );
-update Temp_F_Measurements
+update Temp_Fact_Measurements
 set D_ID = 
 (
-	select D_ID from dim_date
-	where dim_date.CalendarDate = Temp_F_Measurements.MeasurementDate
+	select D_ID from DIMENSION_DimDate
+	where DIMENSION_DimDate.CalendarDate = Temp_Fact_Measurements.MeasurementDate
 );
 
 
-use musemDW
+use museum
 
-insert into F_Measurements
+insert into FACT_Measurement
 (
-	locationCode,
-	MeasurementDate,
+	R_ID,
+	D_ID,
 	lightMeasurement,
 	temperatureMeasurement,
 	humidityMeasurement,
 	co2Measurement
 )
-select locationCode, MeasurementDate, lightMeasurement, temperatureMeasurement, humidityMeasurement,co2Measurement from Temp_F_Measurements
+select R_ID, D_ID, lightMeasurement, temperatureMeasurement, humidityMeasurement,co2Measurement from Temp_Fact_Measurements
 
 -- When the Incremental load is done, the LastUpdate will be 
 -- reseted to the current date
 
-update LastUpdate
+update DIMENSION_LastUpdated
 set LastUpdate = (select GETDATE());
 
 
