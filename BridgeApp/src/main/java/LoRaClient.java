@@ -44,6 +44,7 @@ public class LoRaClient implements WebSocket.Listener {
         try {
             fileHandler = new FileHandler("bridge-app.log", true);
         } catch (IOException e) {
+            LOGGER.severe(e.getMessage());
             e.printStackTrace();
         }
         LOGGER.addHandler(fileHandler);
