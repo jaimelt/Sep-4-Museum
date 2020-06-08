@@ -90,6 +90,7 @@
     <string name="change_password_title">Change password</string>
     <string name="temperatureShort">Temp</string>
     <string name="move_artwork">Move artwork</string>
+    <string name="change_password_button">Change password</string>
 
     <string name="app_name" translatable="false">Brukenthal museum</string>
     <string name="position1" translatable="false">1</string>
@@ -115,6 +116,5 @@
     <string name="pref_user_title_key" translatable="false">user_category</string>
     <string name="pref_user_button_key" translatable="false">user_button</string>
     <string name="lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sollicitudin mauris at arcu pellentesque, non aliquet lorem congue. Donec sit amet eros ullamcorper, luctus nulla ac, egestas lacus. Mauris sit amet iaculis nisi.  </string>
-
 
 </resources>
