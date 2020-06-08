@@ -9,12 +9,6 @@ public class User {
 
     }
 
-    public User(int id, String email)
-    {
-        this.id= id;
-
-    }
-
     public User(String email, String password) {
         this.email = email;
         this.password = password;

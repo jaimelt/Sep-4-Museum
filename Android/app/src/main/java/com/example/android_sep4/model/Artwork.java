@@ -107,26 +107,6 @@ public class Artwork {
         this.minCo2 = minCo2;
     }
 
-    //Constructor for Room database
-    public Artwork(String name, String description, String comment, String image, String type, String author, String roomCode, int artworkPosition, int maxLight, int minLight, int maxTemperature, int minTemperature, int maxHumidity, int minHumidity, int maxCo2, int minCo2) {
-        this.name = name;
-        this.description = description;
-        this.comment = comment;
-        this.image = image;
-        this.type = type;
-        this.author = author;
-        this.roomCode = roomCode;
-        this.artworkPosition = artworkPosition;
-        this.maxLight = maxLight;
-        this.minLight = minLight;
-        this.maxTemperature = maxTemperature;
-        this.minTemperature = minTemperature;
-        this.maxHumidity = maxHumidity;
-        this.minHumidity = minHumidity;
-        this.maxCo2 = maxCo2;
-        this.minCo2 = minCo2;
-    }
-
     public int getId() {
         return id;
     }
