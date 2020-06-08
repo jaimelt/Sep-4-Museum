@@ -13,9 +13,7 @@ namespace WebApplication.SQLCommands
         private const string MuseumConnectionString =
             "Server=sqlserversss.database.windows.net;Database=museum;User Id=museum;password=Mus12345;MultipleActiveResultSets=True;";
 
-        
-
-         public static async Task<IActionResult> DimRoomTable()
+        public static async Task<IActionResult> DimRoomTable()
         {
             await using var sqlConnection = new SqlConnection(Dimensions.MuseumConnectionString);
             await sqlConnection.OpenAsync();
