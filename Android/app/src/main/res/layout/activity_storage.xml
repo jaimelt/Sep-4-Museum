@@ -16,18 +16,11 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/toolbar_height"
-        android:gravity="center"
-        android:text="@string/delete_instruction" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_storage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="@dimen/toolbar_height"
         tools:listitem="@layout/layout_list_artwork">
 
     </androidx.recyclerview.widget.RecyclerView>

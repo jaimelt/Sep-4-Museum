@@ -11,3 +11,5 @@ Florian-Leonard Bordei, Jaume Lopez Topping, Sabin-Daniel Sirbu
 
 Embedded: 
 Marina Ionel, Fabian Stefan Bernhardt, Justinas Jancys, Dementie Bors
+
+For using Android application, please login with these credentials: Email: 123@gmail.com, Password: 123456

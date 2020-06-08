@@ -45,6 +45,7 @@ public class EditArtworkActivity extends AppCompatActivity {
     private Button moveBtn;
     private int artworkID;
     private int artworkPosition;
+    private String location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,7 @@ public class EditArtworkActivity extends AppCompatActivity {
             }
         }
 
-        String location = artwork.getRoomCode();
+        location = artwork.getRoomCode();
         for (int i = 0; i < locationGroup.getChildCount(); i++) {
             RadioButton radioButton = (RadioButton) locationGroup.getChildAt(i);
             if (radioButton.getText().toString().equals(location)) {
@@ -144,9 +145,6 @@ public class EditArtworkActivity extends AppCompatActivity {
         int selectedIdType = typeGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButtonType = findViewById(selectedIdType);
 
-        int selectedIdLocation = locationGroup.getCheckedRadioButtonId();
-        RadioButton selectedRadioButtonLocation = findViewById(selectedIdLocation);
-
         String name = nameField.getText().toString();
         String author = authorField.getText().toString();
         int validation = editArtworkViewModel.validate(name, author);
@@ -165,7 +163,6 @@ public class EditArtworkActivity extends AppCompatActivity {
                 break;
             case 5:
                 String type = selectedRadioButtonType.getText().toString();
-                String location = selectedRadioButtonLocation.getText().toString();
                 String description = descriptionField.getText().toString();
                 String comment = commentsField.getText().toString();
                 String image = convertImageToString();
