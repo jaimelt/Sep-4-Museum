@@ -46,7 +46,8 @@ namespace WebApplication.Controllers
                 roomList.rooms = await roomRepository.getAllRoomsAsync();
                  roomList.addMeasurements(_mongoRepository.LoadAllRoomLastMeasurements());
                 logger.LogInformation("Returning all the rooms stored in the database");
-                return Ok(roomList); }
+                return Ok(roomList); 
+            }
             catch (Exception exception)
             {
                 logger.LogError($"Something went wrong internally in the server: ", exception.Message);
@@ -113,7 +114,6 @@ namespace WebApplication.Controllers
         [HttpGet("getmeasurementconditions/{id:int}")]
         public async Task<ActionResult<RoomMeasurement>> GetMeasurementConditions([FromRoute] int id)
         {
-            Console.WriteLine("--------------------");
             MongoMeasurement mongoMeasurement = _mongoRepository.LoadLastRoomMeasurement(id);
             RoomMeasurement temp = new RoomMeasurement();
             temp.Co2 = mongoMeasurement.co2;
@@ -230,12 +230,6 @@ namespace WebApplication.Controllers
 
 
         }
-        [HttpPost("{test}")]
-        public  RoomMeasurementList deleteAdmin(string email)
-        {
-            
-            
-            return _mongoRepository.LoadAllMeasurements();
-        }
+   
     }
 }
