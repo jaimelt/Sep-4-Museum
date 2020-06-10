@@ -1,0 +1,72 @@
+
+
+GET https://localhost:5001/artworks/getall
+Accept: application/json
+
+###
+
+GET https://localhost:5001/artworks/getone/148
+Accept: application/json
+
+###
+
+GET https://localhost:5001/artworks/getallbyroom/A1
+Accept: application/json
+
+###
+
+POST https://localhost:5001/artworks/createartwork
+Content-Type: application/json
+
+{
+  "name": "Object  for testing",
+  "description": "Object 1 for testing",
+  "image": "Object 1 for testing",
+  "type": "Drawing",
+  "author": "Unknown",
+  "location": "Storage",
+  "minLight": 3,
+  "maxLight": 50,
+  "minCo2": 11,
+  "maxCo2": 51,
+  "minTemperature": 10,
+  "maxTemperature": 25,
+  "minHumidity": 20,
+  "maxHumidity": 60,
+  "artworkPosition": 1,
+  "comment": "Testing purposes"
+}
+###
+
+// other available artwork objects for testing: 136 and 137 ids 
+//change Description of artwork object 135
+PUT https://localhost:5001/artworks/edit/148
+Content-Type: application/json
+
+
+
+{ "id": 148,
+  "name": "Testing - Name has been changed",
+  "description": "Testing - Name has been changed",
+  "image": "This has been changed",
+  "type": "Drawing",
+  "author": "Unknown",
+  "location": "Storage",
+  "minLight": 3,
+  "maxLight": 50,
+  "minCo2": 11,
+  "maxCo2": 51,
+  "minTemperature": 10,
+  "maxTemperature": 25,
+  "minHumidity": 20,
+  "maxHumidity": 60,
+  "artworkPosition": 1,
+  "comment": "Testing purposes"
+}
+###
+
+
+DELETE https://localhost:5001/artworks/delete/164
+Accept: application/json
+
+###
